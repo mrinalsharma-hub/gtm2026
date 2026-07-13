@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RSVP · Garima weds Mrinal</title>
+<meta name="description" content="Tell us you're coming — RSVP for the wedding, 20–22 November 2026, Nainital">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="index.html" aria-label="Home">
+    <span class="brand-ring"><span>G·M</span></span>
+    <span class="brand-name">Garima &amp; Mrinal</span>
+  </a>
+  <nav class="primary">
+    <a href="index.html">Home</a>
+    <a href="events.html">Events</a>
+    <a href="travel.html">Travel</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="invite/">Invitation</a>
+    <a class="nav-rsvp" href="rsvp.html" aria-current="page">RSVP</a>
+  </nav>
+  <button id="menu-btn" aria-label="Open menu">Menu</button>
+</header>
+<div id="menu-panel">
+  <button id="menu-close" aria-label="Close menu">Close</button>
+  <a href="index.html">Home</a>
+  <a href="events.html">Events</a>
+  <a href="travel.html">Travel</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="invite/">Invitation</a>
+  <a href="rsvp.html" aria-current="page">RSVP</a>
+</div>
+
+<main>
+  <section class="hero on-red">
+    <p class="eyebrow">We hope you can make it</p>
+    <h1 class="page-title">RSVP</h1>
+    <p class="sub">Tell us you're coming — it takes less than a minute.</p>
+    <svg class="flourish" viewBox="0 0 270 40" aria-hidden="true">
+      <path d="M10,20 C60,20 90,20 125,20"/>
+      <path d="M260,20 C210,20 180,20 145,20"/>
+      <path d="M135,28 C129,22 129,12 135,6 C141,12 141,22 135,28 Z"/>
+      <circle class="fill" cx="10" cy="20" r="2.6"/>
+      <circle class="fill" cx="260" cy="20" r="2.6"/>
+    </svg>
+  </section>
+
+  <section class="section" style="max-width:760px">
+    <div id="rsvp-thanks">
+      <p class="big">Thank you</p>
+      <p class="sub" style="margin-top:16px">Your response has reached us safely.<br>We can't wait to see you in the hills.</p>
+      <a class="btn btn-red" style="margin-top:34px" href="travel.html">Plan your trip</a>
+    </div>
+
+    <form id="rsvp-form" class="form-card" novalidate>
+      <div class="field">
+        <label for="f-name">Your name</label>
+        <input type="text" id="f-name" name="name" autocomplete="name" required>
+        <p class="hint">One response per family is perfect — just tell us how many of you are coming below.</p>
+      </div>
+
+      <div class="field">
+        <label for="f-contact">Phone or email</label>
+        <input type="text" id="f-contact" name="contact" autocomplete="email" required>
+        <p class="hint">So we can reach you with venue and stay details.</p>
+      </div>
+
+      <div class="field">
+        <label>Will you be joining us?</label>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="attending" value="Joyfully accept" required> Joyfully accept</label>
+          <label class="choice"><input type="radio" name="attending" value="Regretfully decline"> Regretfully decline</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-guests">Number of guests</label>
+        <select id="f-guests" name="guests">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6 or more</option>
+        </select>
+        <p class="hint">Including yourself.</p>
+      </div>
+
+      <div class="field">
+        <label>Which celebrations will you attend?</label>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" name="events" value="Mehndi Night · Friday 20 Nov"> Mehndi Night · Friday 20 Nov</label>
+          <label class="choice"><input type="checkbox" name="events" value="Wedding Day · Saturday 21 Nov"> Wedding Day · Saturday 21 Nov</label>
+          <label class="choice"><input type="checkbox" name="events" value="Farewell Breakfast · Sunday 22 Nov"> Farewell Breakfast · Sunday 22 Nov</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="f-diet">Dietary preferences <span style="text-transform:none;letter-spacing:.05em">(optional)</span></label>
+        <input type="text" id="f-diet" name="dietary" placeholder="Vegetarian, Jain, allergies…">
+      </div>
+
+      <div class="field">
+        <label for="f-msg">A note for us <span style="text-transform:none;letter-spacing:.05em">(optional)</span></label>
+        <textarea id="f-msg" name="message"></textarea>
+      </div>
+
+      <div style="text-align:center">
+        <button type="submit" class="btn btn-solid">Send RSVP</button>
+        <p id="rsvp-status" role="status"></p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site">
+  <p class="f-names r">Garima</p>
+  <p class="f-weds r">weds</p>
+  <p class="f-names r">Mrinal</p>
+  <p class="f-meta r">20 – 22 November 2026 · Nainital · Uttarakhand</p>
+  <nav class="r">
+    <a href="events.html">Events</a>
+    <a href="travel.html">Travel</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="invite/">Invitation</a>
+    <a href="rsvp.html">RSVP</a>
+  </nav>
+  <p class="f-love r">made with love, in the Kumaon hills</p>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+/* ── RSVP → Google Form bridge ─────────────────────────────
+   Responses land in the Google Form (and its linked Sheet).
+   RSVP_CONFIG.formId is the long id in the form's URL;
+   entries map each field to the form's entry.<n> input names. */
+var RSVP_CONFIG={
+  formId:"1FAIpQLSfeO8PSZsK5uh-BZzMEa5SIlpMaKwp1fx9R5dhrdmgSYiibVg",
+  entries:{
+    name:"entry.874918285",
+    contact:"entry.2141331214",
+    attending:"entry.1260390804",
+    guests:"entry.530695183",
+    events:"entry.1296232095",
+    dietary:"entry.154148020",
+    message:"entry.1246319647"
+  }
+};
+
+(function(){
+  var form=document.getElementById('rsvp-form'),
+      status=document.getElementById('rsvp-status'),
+      thanks=document.getElementById('rsvp-thanks');
+
+  if(!RSVP_CONFIG.formId){
+    /* not wired yet — keep collecting responses on the old page */
+    form.innerHTML=
+      '<div style="text-align:center">'+
+      '<p class="sub">Our RSVP form is being moved here — for now, please respond on our Joy page.</p>'+
+      '<a class="btn btn-red" style="margin-top:30px" href="https://withjoy.com/GTM2026/rsvp" target="_blank" rel="noopener">RSVP on Joy</a>'+
+      '</div>';
+    return;
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.querySelector('#f-name').value.trim(),
+        contact=form.querySelector('#f-contact').value.trim(),
+        attending=form.querySelector('input[name=attending]:checked');
+    if(!name||!contact||!attending){
+      status.textContent='Please fill in your name, contact and whether you can join us.';
+      return;
+    }
+    var p=new URLSearchParams();
+    p.append(RSVP_CONFIG.entries.name,name);
+    p.append(RSVP_CONFIG.entries.contact,contact);
+    p.append(RSVP_CONFIG.entries.attending,attending.value);
+    p.append(RSVP_CONFIG.entries.guests,form.querySelector('#f-guests').value);
+    form.querySelectorAll('input[name=events]:checked').forEach(function(c){
+      p.append(RSVP_CONFIG.entries.events,c.value);
+    });
+    var diet=form.querySelector('#f-diet').value.trim(),
+        msg=form.querySelector('#f-msg').value.trim();
+    if(diet)p.append(RSVP_CONFIG.entries.dietary,diet);
+    if(msg)p.append(RSVP_CONFIG.entries.message,msg);
+
+    status.textContent='Sending…';
+    fetch('https://docs.google.com/forms/d/e/'+RSVP_CONFIG.formId+'/formResponse',{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:p.toString()
+    }).then(function(){
+      form.style.display='none';
+      thanks.style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(){
+      status.textContent='Something went wrong — please try again, or write to us directly.';
+    });
+  });
+})();
+</script>
+</body>
+</html>
