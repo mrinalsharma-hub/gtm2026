@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Garima weds Mrinal — Wedding Invitation</title>
+<meta property="og:title" content="Garima weds Mrinal">
+<meta property="og:description" content="20 – 22 November 2026 · Nainital, Uttarakhand — Tap to open your invitation">
+<meta property="og:image" content="https://i.ibb.co/yc1Q9xDH/Site-Left-Panel-Web.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#A71F23;
+  --red-hi:#B22429;
+  --red-lo:#7E1216;
+  --ivory:#FFF6E8;
+  --ivory-dim:rgba(255,246,232,.82);
+  --ivory-faint:rgba(255,246,232,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  overflow:hidden;
+  background:var(--red-lo);
+  color:var(--ivory);
+  font-family:'Lustria',Georgia,serif;
+  -webkit-font-smoothing:antialiased;
+  touch-action:manipulation;
+  user-select:none;
+}
+
+/* ── camera over one big canvas ─────────────────────── */
+#camera{position:fixed;inset:0;overflow:hidden}
+#canvas{
+  position:absolute;left:0;top:0;
+  width:180vw;height:510vh;
+  background:
+    radial-gradient(90vw 90vh at 50vw 50vh, rgba(255,255,255,.05), transparent 70%),
+    radial-gradient(90vw 90vh at 130vw 460vh, rgba(255,255,255,.06), transparent 70%),
+    linear-gradient(165deg, var(--red-hi) 0%, var(--red) 42%, #96181c 75%, var(--red-lo) 100%);
+  will-change:transform;
+}
+body.playing #canvas{animation:cameraPath 42.5s linear both}
+@keyframes cameraPath{
+  0%,15.294%   {transform:translate3d(0,0,0);animation-timing-function:cubic-bezier(.5,.06,.45,.94)}
+  19.529%,32.941%{transform:translate3d(-80vw,-60vh,0);animation-timing-function:cubic-bezier(.5,.06,.45,.94)}
+  37.176%,51.294%{transform:translate3d(0,-160vh,0);animation-timing-function:cubic-bezier(.5,.06,.45,.94)}
+  55.059%,67.765%{transform:translate3d(-80vw,-220vh,0);animation-timing-function:cubic-bezier(.5,.06,.45,.94)}
+  71.529%,88.941%{transform:translate3d(0,-320vh,0);animation-timing-function:cubic-bezier(.5,.06,.45,.94)}
+  94.118%,100% {transform:translate3d(-80vw,-410vh,0)}
+}
+#float{position:absolute;inset:0;animation:floatDrift 9s ease-in-out infinite alternate}
+@keyframes floatDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(0,-9px,0)}}
+
+/* ── texture + vignette ─────────────────────────────── */
+#grain{position:fixed;inset:0;width:100%;height:100%;z-index:30;pointer-events:none;opacity:.05}
+#vignette{position:fixed;inset:0;z-index:31;pointer-events:none;
+  background:radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(40,4,6,.5) 100%)}
+
+/* ── petals (viewport layer → parallax over canvas) ─── */
+#petals{position:fixed;inset:0;z-index:5;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:0;left:var(--x);width:var(--size);height:var(--size);
+  opacity:0;will-change:transform;
+  animation:petalFall var(--dur) linear var(--delay) infinite}
+@keyframes petalFall{
+  0%  {transform:translateY(-12vh) translateX(0) rotate(0deg);opacity:0}
+  9%  {opacity:var(--op)}
+  50% {transform:translateY(46vh) translateX(var(--sway)) rotate(var(--halfspin))}
+  86% {opacity:var(--op)}
+  100%{transform:translateY(110vh) translateX(calc(var(--sway)*-.55)) rotate(var(--spin));opacity:0}
+}
+
+/* ── scene stations on the canvas ───────────────────── */
+.scene{position:absolute;width:100vw;height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:5vh 26px;pointer-events:none}
+#s1{left:0;top:0}
+#s2{left:80vw;top:60vh}
+#s3{left:0;top:160vh}
+#s4{left:80vw;top:220vh}
+#s5{left:0;top:320vh}
+#s6{left:80vw;top:410vh}
+body.finale #s6 a{pointer-events:auto}
+
+/* ── element effects (delay via --d) ────────────────── */
+.a-fade{opacity:0}
+body.playing .a-fade{animation:fadeUp 1.1s cubic-bezier(.22,.9,.3,1) var(--d) both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.a-dot{opacity:0}
+body.playing .a-dot{animation:dotFade .7s ease var(--d) both}
+@keyframes dotFade{from{opacity:0}to{opacity:1}}
+
+.a-name{opacity:0}
+body.playing .a-name{animation:nameIn 1.7s cubic-bezier(.22,.9,.3,1) var(--d) both}
+@keyframes nameIn{
+  from{opacity:0;letter-spacing:.5em;filter:blur(7px);transform:translateY(10px)}
+  to  {opacity:1;letter-spacing:.16em;filter:blur(0);transform:translateY(0)}}
+
+.a-pop{opacity:0}
+body.playing .a-pop{animation:popIn 1s cubic-bezier(.2,1.5,.4,1) var(--d) both}
+@keyframes popIn{from{opacity:0;transform:scale(.55)}70%{opacity:1;transform:scale(1.06)}to{opacity:1;transform:scale(1)}}
+
+/* SVG line-drawing */
+.md{stroke-dasharray:1;stroke-dashoffset:1}
+body.playing .md{animation:draw var(--dur,1.2s) ease var(--d) both}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.spin{animation:spin 75s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── typography ─────────────────────────────────────── */
+.eyebrow{font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--ivory-dim)}
+.shloka{font-family:Georgia,'Noto Serif Devanagari',serif;font-size:clamp(19px,5vw,25px);letter-spacing:.06em}
+.name{font-family:'Cinzel',serif;font-weight:400;font-size:clamp(40px,10vw,64px);line-height:1.08}
+.weds{font-family:'Lustria',serif;font-style:italic;font-size:clamp(18px,4.6vw,24px);
+  color:var(--ivory-dim);letter-spacing:.3em;margin:10px 0;text-transform:lowercase}
+.sub{font-size:clamp(15px,3.8vw,17px);letter-spacing:.08em;color:var(--ivory-dim);line-height:1.6}
+
+/* ── canvas decor (artwork between stations) ────────── */
+.decor{position:absolute;opacity:var(--o,.2);pointer-events:none}
+.decor svg{width:100%;height:auto;display:block}
+.decor path,.decor circle,.decor line{stroke:var(--ivory);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.decor .fill{fill:var(--ivory);stroke:none}
+
+/* ── scene 1: invocation ────────────────────────────── */
+#s1 .shloka{margin-bottom:6px}
+#s1 .eyebrow{font-size:11px;margin-bottom:5vh}
+.mandala{width:min(68vw,340px);height:auto;display:block}
+.mandala circle,.mandala path{stroke:var(--ivory);fill:none;stroke-width:2.6;stroke-linecap:round}
+.mandala .fill{fill:var(--ivory);stroke:none}
+
+/* ── scene 2: names ─────────────────────────────────── */
+#s2 .eyebrow{margin-bottom:4.5vh}
+.flourish{width:min(60vw,270px);margin:3.5vh 0 2.5vh}
+.flourish path,.flourish circle{stroke:var(--ivory-dim);fill:none;stroke-width:2;stroke-linecap:round}
+.flourish .fill{fill:var(--ivory-dim);stroke:none}
+
+/* ── scene 3: nainital ──────────────────────────────── */
+.lakeart{width:min(94vw,620px);height:auto;display:block;margin-bottom:2.5vh}
+.lakeart path,.lakeart circle{stroke:var(--ivory);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.lakeart .thin{stroke-width:1.8;stroke:var(--ivory-dim)}
+body.playing .boat-g{animation:bob 5s ease-in-out 20.8s infinite alternate;transform-box:fill-box;transform-origin:center}
+@keyframes bob{from{transform:translateY(0) rotate(0deg)}to{transform:translateY(-4px) rotate(1.4deg)}}
+#s3 .place{font-family:'Cinzel',serif;font-size:clamp(20px,5.4vw,28px);letter-spacing:.18em;text-transform:uppercase}
+#s3 .sub{margin-top:12px}
+
+/* ── scene 4: date ──────────────────────────────────── */
+.date-frame{position:relative;padding:7vh 12vw}
+.corner{position:absolute;width:min(17vw,84px);height:min(17vw,84px)}
+.corner svg{width:100%;height:100%;display:block}
+.corner path,.corner circle{stroke:var(--ivory-dim);fill:none;stroke-width:2.2;stroke-linecap:round}
+.corner .fill{fill:var(--ivory-dim);stroke:none}
+.c-tl{top:0;left:0}.c-tr{top:0;right:0;transform:scaleX(-1)}
+.c-bl{bottom:0;left:0;transform:scaleY(-1)}.c-br{bottom:0;right:0;transform:scale(-1,-1)}
+.day-word{font-family:'Cinzel',serif;font-size:clamp(15px,4vw,19px);letter-spacing:.5em;text-transform:uppercase;color:var(--ivory-dim)}
+.day-num{font-family:'Cinzel',serif;font-size:clamp(110px,30vw,168px);font-weight:400;line-height:1;margin:1vh 0}
+.day-my{font-family:'Cinzel',serif;font-size:clamp(17px,4.6vw,23px);letter-spacing:.34em;text-transform:uppercase}
+#s4 .sub{margin-top:4vh}
+
+/* ── scene 5: events ────────────────────────────────── */
+#s5 h2{font-family:'Cinzel',serif;font-weight:400;font-size:clamp(23px,6vw,30px);letter-spacing:.2em;text-transform:uppercase;margin-bottom:4.5vh}
+.day-label{font-size:10.5px;letter-spacing:.3em;white-space:nowrap;text-transform:uppercase;color:var(--ivory-faint);margin:3vh 0 1.6vh;
+  display:flex;align-items:center;gap:14px}
+.day-label::before,.day-label::after{content:"";height:1px;width:26px;background:var(--ivory-faint)}
+.ev{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:1.05vh 0;align-items:baseline}
+.ev-t{text-align:right;font-style:italic;font-size:clamp(13px,3.6vw,15px);color:var(--ivory-dim)}
+.ev-n{text-align:left;font-family:'Cinzel',serif;font-size:clamp(14px,4vw,17px);letter-spacing:.1em}
+
+/* ── scene 6: finale ────────────────────────────────── */
+#hands{height:min(30vh,300px);width:auto;margin-bottom:1.5vh;opacity:0}
+body.playing #hands{
+  animation:fadeUp 1.3s cubic-bezier(.22,.9,.3,1) 40.3s both,
+            breathe 8s ease-in-out 41.6s infinite alternate}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.025) translateY(-5px)}}
+#s6 .name{font-size:clamp(26px,7vw,40px)}
+#s6 .weds{font-size:clamp(15px,3.8vw,18px);margin:4px 0}
+.rule{width:min(46vw,190px);height:1px;background:var(--ivory-faint);margin:2vh 0}
+#s6 .when{font-style:italic;font-size:clamp(16px,4.2vw,19px);color:var(--ivory)}
+#s6 .where{font-size:clamp(13px,3.6vw,15px);letter-spacing:.24em;text-transform:uppercase;color:var(--ivory-dim);margin-top:8px}
+#countdown{font-size:12.5px;letter-spacing:.28em;text-transform:uppercase;color:var(--ivory-faint);margin-top:1.8vh}
+.rsvp{display:inline-block;margin-top:2.8vh;padding:14px 50px;border:1.5px solid var(--ivory);border-radius:2px;
+  font-family:'Cinzel',serif;font-size:16px;letter-spacing:.42em;text-indent:.42em;text-transform:uppercase;
+  color:var(--ivory);text-decoration:none;background:transparent;transition:background .35s,color .35s}
+.rsvp:hover{background:var(--ivory);color:var(--red)}
+body.playing .rsvp.a-pop{animation:popIn 1s cubic-bezier(.2,1.5,.4,1) var(--d) both,glow 1.9s ease-in-out 43.6s infinite alternate}
+@keyframes glow{from{box-shadow:0 0 0 0 rgba(255,246,232,0)}to{box-shadow:0 0 30px 2px rgba(255,246,232,.38)}}
+.joyurl{margin-top:2vh;font-size:12px;letter-spacing:.14em;color:var(--ivory-faint)}
+.joyurl a{color:var(--ivory-faint);text-decoration:none;border-bottom:1px solid rgba(255,246,232,.25)}
+
+/* ── cover ──────────────────────────────────────────── */
+#cover{position:fixed;inset:0;z-index:40;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:6vh 26px;cursor:pointer;
+  background:radial-gradient(130% 100% at 50% 28%, var(--red-hi) 0%, var(--red) 46%, var(--red-lo) 100%);
+  transition:opacity 1.1s ease,transform 1.1s ease}
+#cover.played{opacity:0;transform:scale(1.06);pointer-events:none}
+#cover .bgmandala{position:absolute;width:min(150vw,760px);opacity:.07;animation:spin 90s linear infinite}
+#cover .bgmandala circle,#cover .bgmandala path{stroke:var(--ivory);fill:none;stroke-width:2.6;stroke-linecap:round}
+#cover .bgmandala .fill{fill:var(--ivory);stroke:none}
+.mono-ring{position:relative;width:min(42vw,168px);height:min(42vw,168px);border-radius:50%;
+  border:1.5px solid var(--ivory-dim);display:flex;align-items:center;justify-content:center;margin-bottom:4.5vh}
+.mono-ring::before{content:"";position:absolute;inset:7px;border-radius:50%;border:1px solid var(--ivory-faint)}
+.mono-ring span{font-family:'Cinzel',serif;font-size:clamp(30px,9vw,40px);letter-spacing:.08em}
+#cover h1{font-family:'Cinzel',serif;font-weight:400;font-size:clamp(21px,5.4vw,34px);letter-spacing:.12em;white-space:nowrap}
+#cover .sub{margin-top:10px}
+.tap{margin-top:7vh;font-size:12.5px;letter-spacing:.44em;text-indent:.44em;text-transform:uppercase;
+  color:var(--ivory-dim);animation:pulseSoft 2s ease-in-out infinite}
+@keyframes pulseSoft{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* ── controls ───────────────────────────────────────── */
+.ctl{position:fixed;z-index:50;background:none;border:none;cursor:pointer;
+  font-family:'Lustria',serif;font-size:12px;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--ivory-faint);padding:12px;opacity:0;pointer-events:none;transition:opacity .8s,color .3s}
+.ctl:hover{color:var(--ivory)}
+#skip{right:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
+#replay{left:14px;bottom:calc(14px + env(safe-area-inset-bottom))}
+body.playing:not(.finale) #skip{opacity:1;pointer-events:auto;transition-delay:2.5s}
+body.finale #replay{opacity:1;pointer-events:auto;transition-delay:1.2s}
+
+@media (max-height:640px){
+  #s1 .eyebrow{margin-bottom:2.5vh}
+  .mandala{width:min(58vw,270px)}
+  .ev{margin:.7vh 0}
+  #hands{height:24vh}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══ -->
+<div id="cover" role="button" aria-label="Open the invitation">
+  <svg class="bgmandala" viewBox="0 0 440 440" aria-hidden="true">
+    <circle class="fill" cx="220" cy="220" r="7"/>
+    <circle cx="220" cy="220" r="26"/>
+    <g>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(45 220 220)"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(90 220 220)"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(135 220 220)"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(180 220 220)"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(225 220 220)"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(270 220 220)"/>
+      <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(315 220 220)"/>
+    </g>
+    <circle cx="220" cy="220" r="100"/>
+    <circle cx="220" cy="220" r="168"/>
+  </svg>
+  <div class="mono-ring"><span>G · M</span></div>
+  <h1>Garima weds Mrinal</h1>
+  <p class="sub">20 – 22 November 2026 · Nainital</p>
+  <p class="tap">Tap to open</p>
+</div>
+
+<!-- ══ THE BIG CANVAS ══ -->
+<div id="camera"><div id="canvas"><div id="float">
+
+  <!-- ── canvas artwork between stations ── -->
+  <div class="decor" style="left:3vw;top:5vh;width:15vw;--o:.16">
+    <svg viewBox="0 0 100 100">
+      <path d="M4,96 C4,45 45,4 96,4"/>
+      <path d="M22,96 C22,55 55,22 96,22"/>
+      <circle class="fill" cx="34" cy="34" r="2.6"/>
+    </svg>
+  </div>
+  <!-- vine that draws itself on the flight A → B -->
+  <div class="decor" style="left:85vw;top:42vh;width:38vw;--o:.34">
+    <svg viewBox="0 0 380 150">
+      <path class="md" style="--d:6.4s;--dur:1.8s" pathLength="1" d="M8,120 C80,140 150,60 220,70 C290,80 330,40 372,26"/>
+      <path class="md" style="--d:6.9s;--dur:.9s" pathLength="1" d="M85,112 C78,92 88,78 104,72 M104,72 C110,88 100,104 85,112"/>
+      <path class="md" style="--d:7.3s;--dur:.9s" pathLength="1" d="M235,66 C246,50 262,46 276,52 M276,52 C268,68 250,74 235,66"/>
+      <circle class="fill a-dot" style="--d:7.8s" cx="160" cy="86" r="3"/>
+      <circle class="fill a-dot" style="--d:7.9s" cx="310" cy="48" r="3"/>
+      <circle class="fill a-dot" style="--d:8.0s" cx="372" cy="26" r="3.6"/>
+    </svg>
+  </div>
+  <!-- paisley on the flight B → C -->
+  <div class="decor" style="left:80vw;top:142vh;width:15vw;--o:.2">
+    <svg viewBox="0 0 100 110">
+      <path d="M56,6 C26,10 10,40 20,66 C30,92 66,98 80,76 C90,60 80,42 64,44 C50,46 46,62 56,70"/>
+      <circle class="fill" cx="58" cy="56" r="3"/>
+      <circle class="fill" cx="30" cy="30" r="2.2"/>
+      <circle class="fill" cx="22" cy="80" r="2.2"/>
+    </svg>
+  </div>
+  <!-- huge slow mandala, passed on the way down -->
+  <div class="decor spin" style="left:14vw;top:118vh;width:52vw;--o:.09">
+    <svg viewBox="0 0 440 440">
+      <circle class="fill" cx="220" cy="220" r="7"/>
+      <circle cx="220" cy="220" r="26"/>
+      <g>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(45 220 220)"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(90 220 220)"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(135 220 220)"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(180 220 220)"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(225 220 220)"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(270 220 220)"/>
+        <path d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(315 220 220)"/>
+      </g>
+      <circle cx="220" cy="220" r="100"/>
+      <circle cx="220" cy="220" r="168"/>
+    </svg>
+  </div>
+  <!-- diya row on the flight C → D -->
+  <div class="decor" style="left:87vw;top:230vh;width:24vw;--o:.26">
+    <svg viewBox="0 0 240 80">
+      <g>
+        <path d="M10,56 Q40,74 70,56 L10,56"/>
+        <path d="M40,52 C33,42 35,32 40,24 C45,32 47,42 40,52"/>
+      </g>
+      <g>
+        <path d="M90,56 Q120,74 150,56 L90,56"/>
+        <path d="M120,52 C113,42 115,32 120,24 C125,32 127,42 120,52"/>
+      </g>
+      <g>
+        <path d="M170,56 Q200,74 230,56 L170,56"/>
+        <path d="M200,52 C193,42 195,32 200,24 C205,32 207,42 200,52"/>
+      </g>
+      <circle class="fill" cx="40" cy="18" r="2"/>
+      <circle class="fill" cx="120" cy="18" r="2"/>
+      <circle class="fill" cx="200" cy="18" r="2"/>
+    </svg>
+  </div>
+  <!-- aipan birds on the flight D → E (like the groom's sleeve) -->
+  <div class="decor" style="left:84vw;top:312vh;width:20vw;--o:.24">
+    <svg viewBox="0 0 200 90">
+      <g>
+        <path d="M14,44 Q30,22 54,32 Q48,52 22,52 Z"/>
+        <circle cx="60" cy="26" r="6"/>
+        <path d="M66,26 L76,29 L66,32"/>
+        <path d="M34,52 L34,62 M44,50 L44,60"/>
+        <path d="M14,44 L4,36 M14,48 L4,46"/>
+      </g>
+      <g transform="translate(196,0) scale(-1,1)">
+        <path d="M14,58 Q30,36 54,46 Q48,66 22,66 Z"/>
+        <circle cx="60" cy="40" r="6"/>
+        <path d="M66,40 L76,43 L66,46"/>
+        <path d="M34,66 L34,76 M44,64 L44,74"/>
+        <path d="M14,58 L4,50 M14,62 L4,60"/>
+      </g>
+      <circle class="fill" cx="98" cy="20" r="2.4"/>
+      <circle class="fill" cx="106" cy="34" r="1.8"/>
+    </svg>
+  </div>
+  <!-- lotus on the flight E → F -->
+  <div class="decor" style="left:64vw;top:398vh;width:19vw;--o:.2">
+    <svg viewBox="0 0 160 110">
+      <path d="M80,96 C60,72 60,40 80,16 C100,40 100,72 80,96"/>
+      <path d="M74,92 C48,84 34,60 38,34 C60,44 74,64 74,92" transform="rotate(-6 80 96)"/>
+      <path d="M86,92 C112,84 126,60 122,34 C100,44 86,64 86,92" transform="rotate(6 80 96)"/>
+      <path d="M40,100 Q80,112 120,100"/>
+      <circle class="fill" cx="28" cy="98" r="2.4"/>
+      <circle class="fill" cx="132" cy="98" r="2.4"/>
+    </svg>
+  </div>
+  <!-- dotted swirl near the finale approach -->
+  <div class="decor" style="left:104vw;top:426vh;width:13vw;--o:.26">
+    <svg viewBox="0 0 100 100">
+      <path style="stroke-dasharray:.5 9" d="M50,50 C50,34 66,30 74,40 C84,52 74,70 58,72 C36,75 22,56 28,36 C34,16 60,6 80,16"/>
+    </svg>
+  </div>
+  <!-- vasudhara bars -->
+  <div class="decor" style="left:150vw;top:178vh;width:8vw;--o:.14">
+    <svg viewBox="0 0 80 90">
+      <path d="M8,6 L8,66 M24,6 L24,66 M40,6 L40,66 M56,6 L56,66 M72,6 L72,66"/>
+      <circle class="fill" cx="8" cy="80" r="2.6"/><circle class="fill" cx="24" cy="80" r="2.6"/>
+      <circle class="fill" cx="40" cy="80" r="2.6"/><circle class="fill" cx="56" cy="80" r="2.6"/>
+      <circle class="fill" cx="72" cy="80" r="2.6"/>
+    </svg>
+  </div>
+  <div class="decor" style="left:10vw;top:282vh;width:8vw;--o:.14">
+    <svg viewBox="0 0 80 90">
+      <path d="M8,6 L8,66 M24,6 L24,66 M40,6 L40,66 M56,6 L56,66 M72,6 L72,66"/>
+      <circle class="fill" cx="8" cy="80" r="2.6"/><circle class="fill" cx="24" cy="80" r="2.6"/>
+      <circle class="fill" cx="40" cy="80" r="2.6"/><circle class="fill" cx="56" cy="80" r="2.6"/>
+      <circle class="fill" cx="72" cy="80" r="2.6"/>
+    </svg>
+  </div>
+  <!-- scattered aipan flowers -->
+  <div class="decor" style="left:20vw;top:88vh;width:5vw;--o:.14"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:140vw;top:38vh;width:4vw;--o:.13"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:160vw;top:150vh;width:5vw;--o:.13"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:30vw;top:242vh;width:4vw;--o:.14"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:150vw;top:298vh;width:5vw;--o:.13"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:18vw;top:352vh;width:4vw;--o:.14"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:120vw;top:382vh;width:5vw;--o:.13"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:160vw;top:468vh;width:4vw;--o:.14"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+  <div class="decor" style="left:40vw;top:452vh;width:5vw;--o:.13"><svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg></div>
+
+  <!-- ══ STATION 1 · INVOCATION ══ -->
+  <section class="scene" id="s1">
+    <p class="shloka a-fade" style="--d:.9s">॥ श्री गणेशाय नमः ॥</p>
+    <p class="eyebrow a-fade" style="--d:1.4s">With the blessings of Lord Ganesha &amp; our families</p>
+    <svg class="mandala" viewBox="0 0 440 440" aria-hidden="true">
+      <circle class="fill a-pop" style="--d:1.2s" cx="220" cy="220" r="7"/>
+      <circle class="md" style="--d:1.5s;--dur:.9s" pathLength="1" cx="220" cy="220" r="26"/>
+      <g>
+        <path class="md" style="--d:1.75s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z"/>
+        <path class="md" style="--d:1.82s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(45 220 220)"/>
+        <path class="md" style="--d:1.89s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(90 220 220)"/>
+        <path class="md" style="--d:1.96s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(135 220 220)"/>
+        <path class="md" style="--d:2.03s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(180 220 220)"/>
+        <path class="md" style="--d:2.10s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(225 220 220)"/>
+        <path class="md" style="--d:2.17s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(270 220 220)"/>
+        <path class="md" style="--d:2.24s" pathLength="1" d="M220,184 C207,167 207,145 220,128 C233,145 233,167 220,184 Z" transform="rotate(315 220 220)"/>
+      </g>
+      <circle class="md" style="--d:2.55s;--dur:1.1s" pathLength="1" cx="220" cy="220" r="100"/>
+      <g>
+        <circle class="fill a-dot" style="--d:2.75s" cx="220" cy="108" r="4"/>
+        <circle class="fill a-dot" style="--d:2.79s" cx="220" cy="108" r="4" transform="rotate(22.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:2.83s" cx="220" cy="108" r="4" transform="rotate(45 220 220)"/>
+        <circle class="fill a-dot" style="--d:2.87s" cx="220" cy="108" r="4" transform="rotate(67.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:2.91s" cx="220" cy="108" r="4" transform="rotate(90 220 220)"/>
+        <circle class="fill a-dot" style="--d:2.95s" cx="220" cy="108" r="4" transform="rotate(112.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:2.99s" cx="220" cy="108" r="4" transform="rotate(135 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.03s" cx="220" cy="108" r="4" transform="rotate(157.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.07s" cx="220" cy="108" r="4" transform="rotate(180 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.11s" cx="220" cy="108" r="4" transform="rotate(202.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.15s" cx="220" cy="108" r="4" transform="rotate(225 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.19s" cx="220" cy="108" r="4" transform="rotate(247.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.23s" cx="220" cy="108" r="4" transform="rotate(270 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.27s" cx="220" cy="108" r="4" transform="rotate(292.5 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.31s" cx="220" cy="108" r="4" transform="rotate(315 220 220)"/>
+        <circle class="fill a-dot" style="--d:3.35s" cx="220" cy="108" r="4" transform="rotate(337.5 220 220)"/>
+      </g>
+      <g>
+        <path class="md" style="--d:3.45s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(11.25 220 220)"/>
+        <path class="md" style="--d:3.50s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(33.75 220 220)"/>
+        <path class="md" style="--d:3.55s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(56.25 220 220)"/>
+        <path class="md" style="--d:3.60s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(78.75 220 220)"/>
+        <path class="md" style="--d:3.65s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(101.25 220 220)"/>
+        <path class="md" style="--d:3.70s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(123.75 220 220)"/>
+        <path class="md" style="--d:3.75s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(146.25 220 220)"/>
+        <path class="md" style="--d:3.80s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(168.75 220 220)"/>
+        <path class="md" style="--d:3.85s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(191.25 220 220)"/>
+        <path class="md" style="--d:3.90s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(213.75 220 220)"/>
+        <path class="md" style="--d:3.95s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(236.25 220 220)"/>
+        <path class="md" style="--d:4.00s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(258.75 220 220)"/>
+        <path class="md" style="--d:4.05s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(281.25 220 220)"/>
+        <path class="md" style="--d:4.10s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(303.75 220 220)"/>
+        <path class="md" style="--d:4.15s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(326.25 220 220)"/>
+        <path class="md" style="--d:4.20s;--dur:.8s" pathLength="1" d="M220,98 C212,86 212,72 220,62 C228,72 228,86 220,98" transform="rotate(348.75 220 220)"/>
+      </g>
+      <circle class="md" style="--d:4.35s;--dur:1.3s" pathLength="1" cx="220" cy="220" r="168"/>
+      <circle class="a-dot" style="--d:4.9s;stroke-dasharray:.5 9" cx="220" cy="220" r="180"/>
+    </svg>
+  </section>
+
+  <!-- ══ STATION 2 · NAMES ══ -->
+  <section class="scene" id="s2">
+    <p class="eyebrow a-fade" style="--d:8.6s">Together with their families</p>
+    <h1 class="name a-name" style="--d:9.0s">GARIMA</h1>
+    <p class="weds a-fade" style="--d:9.7s">weds</p>
+    <h1 class="name a-name" style="--d:10.1s">MRINAL</h1>
+    <svg class="flourish" viewBox="0 0 270 40" aria-hidden="true">
+      <path class="md" style="--d:11.2s;--dur:1.1s" pathLength="1" d="M10,20 C60,20 90,20 125,20"/>
+      <path class="md" style="--d:11.2s;--dur:1.1s" pathLength="1" d="M260,20 C210,20 180,20 145,20"/>
+      <path class="md" style="--d:11.8s;--dur:.7s" pathLength="1" d="M135,28 C129,22 129,12 135,6 C141,12 141,22 135,28 Z"/>
+      <circle class="fill a-dot" style="--d:12.2s" cx="10" cy="20" r="2.6"/>
+      <circle class="fill a-dot" style="--d:12.2s" cx="260" cy="20" r="2.6"/>
+    </svg>
+    <p class="sub a-fade" style="--d:12.1s">Come join us on our special day</p>
+  </section>
+
+  <!-- ══ STATION 3 · NAINITAL ══ -->
+  <section class="scene" id="s3">
+    <svg class="lakeart" viewBox="0 0 620 400" aria-hidden="true">
+      <path class="md" style="--d:16.0s;--dur:1.1s" pathLength="1" d="M88,40 a26,26 0 1 0 18,46 a20,20 0 1 1 -18,-46"/>
+      <g class="thin">
+        <path class="md thin" style="--d:16.6s;--dur:.4s" pathLength="1" d="M170,54 h10 M175,49 v10"/>
+        <path class="md thin" style="--d:16.8s;--dur:.4s" pathLength="1" d="M255,82 h9 M259.5,77.5 v9"/>
+        <path class="md thin" style="--d:17.0s;--dur:.4s" pathLength="1" d="M330,44 h10 M335,39 v10"/>
+        <path class="md thin" style="--d:17.2s;--dur:.4s" pathLength="1" d="M436,70 h9 M440.5,65.5 v9"/>
+        <path class="md thin" style="--d:17.4s;--dur:.4s" pathLength="1" d="M520,50 h10 M525,45 v10"/>
+      </g>
+      <path class="md" style="--d:16.4s;--dur:2s" pathLength="1" d="M0,168 C70,118 150,104 230,148 C300,186 380,140 460,132 C530,126 580,142 620,134"/>
+      <path class="md" style="--d:17.0s;--dur:2s" pathLength="1" d="M0,238 C90,196 190,206 290,228 C390,250 500,214 620,232"/>
+      <path class="md" style="--d:17.9s;--dur:.6s" pathLength="1" d="M100,228 L100,194 M93,216 L100,207 L107,216 M94.5,208 L100,200 L105.5,208 M96,201 L100,194 L104,201"/>
+      <path class="md" style="--d:18.1s;--dur:.6s" pathLength="1" d="M128,236 L128,208 M121,226 L128,219 L135,226 M122.5,220 L128,213 L133.5,220 M124,214 L128,208 L132,214"/>
+      <path class="md" style="--d:18.3s;--dur:.6s" pathLength="1" d="M505,226 L505,194 M498,215 L505,206 L512,215 M499.5,208 L505,200 L510.5,208 M501,201 L505,194 L509,201"/>
+      <path class="md" style="--d:18.5s;--dur:.6s" pathLength="1" d="M532,232 L532,206 M526,222 L532,216 L538,222 M527,216 L532,210 L537,216 M528,211 L532,206 L536,211"/>
+      <path class="md" style="--d:18.4s;--dur:1.3s" pathLength="1" d="M40,300 C150,294 300,306 420,299 C480,296 540,300 580,298"/>
+      <path class="md thin" style="--d:18.7s;--dur:1.2s" pathLength="1" d="M90,318 C200,313 330,322 520,316"/>
+      <path class="md thin" style="--d:19.0s;--dur:1.2s" pathLength="1" d="M150,336 C260,331 380,339 470,334"/>
+      <g class="boat-g">
+        <path class="md" style="--d:19.0s;--dur:.7s" pathLength="1" d="M272,286 Q300,304 328,286 L272,286"/>
+        <path class="md" style="--d:19.3s;--dur:.5s" pathLength="1" d="M300,286 L300,238"/>
+        <path class="md" style="--d:19.5s;--dur:.7s" pathLength="1" d="M296,244 L296,282 L262,282 Z"/>
+        <path class="md" style="--d:19.8s;--dur:.6s" pathLength="1" d="M304,250 L304,282 L330,282 Z"/>
+      </g>
+      <path class="md thin" style="--d:20.2s;--dur:.6s" pathLength="1" d="M282,314 h12 M300,320 h16 M290,328 h9"/>
+    </svg>
+    <p class="place a-fade" style="--d:20.2s">Nainital</p>
+    <p class="sub a-fade" style="--d:20.7s">A wedding in the Kumaon hills<br>20 – 22 November 2026</p>
+  </section>
+
+  <!-- ══ STATION 4 · THE DATE ══ -->
+  <section class="scene" id="s4">
+    <div class="date-frame">
+      <div class="corner c-tl"><svg viewBox="0 0 90 90"><path class="md" style="--d:23.7s;--dur:1.1s" pathLength="1" d="M6,84 C6,40 40,6 84,6"/><path class="md" style="--d:24.1s;--dur:.9s" pathLength="1" d="M22,84 C22,52 52,22 84,22"/><circle class="fill a-dot" style="--d:24.6s" cx="6" cy="84" r="3"/><circle class="fill a-dot" style="--d:24.6s" cx="84" cy="6" r="3"/><circle class="fill a-dot" style="--d:24.8s" cx="34" cy="34" r="2.4"/></svg></div>
+      <div class="corner c-tr"><svg viewBox="0 0 90 90"><path class="md" style="--d:23.7s;--dur:1.1s" pathLength="1" d="M6,84 C6,40 40,6 84,6"/><path class="md" style="--d:24.1s;--dur:.9s" pathLength="1" d="M22,84 C22,52 52,22 84,22"/><circle class="fill a-dot" style="--d:24.6s" cx="6" cy="84" r="3"/><circle class="fill a-dot" style="--d:24.6s" cx="84" cy="6" r="3"/><circle class="fill a-dot" style="--d:24.8s" cx="34" cy="34" r="2.4"/></svg></div>
+      <div class="corner c-bl"><svg viewBox="0 0 90 90"><path class="md" style="--d:23.7s;--dur:1.1s" pathLength="1" d="M6,84 C6,40 40,6 84,6"/><path class="md" style="--d:24.1s;--dur:.9s" pathLength="1" d="M22,84 C22,52 52,22 84,22"/><circle class="fill a-dot" style="--d:24.6s" cx="6" cy="84" r="3"/><circle class="fill a-dot" style="--d:24.6s" cx="84" cy="6" r="3"/><circle class="fill a-dot" style="--d:24.8s" cx="34" cy="34" r="2.4"/></svg></div>
+      <div class="corner c-br"><svg viewBox="0 0 90 90"><path class="md" style="--d:23.7s;--dur:1.1s" pathLength="1" d="M6,84 C6,40 40,6 84,6"/><path class="md" style="--d:24.1s;--dur:.9s" pathLength="1" d="M22,84 C22,52 52,22 84,22"/><circle class="fill a-dot" style="--d:24.6s" cx="6" cy="84" r="3"/><circle class="fill a-dot" style="--d:24.6s" cx="84" cy="6" r="3"/><circle class="fill a-dot" style="--d:24.8s" cx="34" cy="34" r="2.4"/></svg></div>
+      <p class="day-word a-fade" style="--d:24.0s">Saturday</p>
+      <p class="day-num a-pop" style="--d:24.4s">21</p>
+      <p class="day-my a-fade" style="--d:25.0s">November 2026</p>
+    </div>
+    <p class="sub a-fade" style="--d:25.7s">Baraat at ten · Pheras at one</p>
+  </section>
+
+  <!-- ══ STATION 5 · CELEBRATIONS ══ -->
+  <section class="scene" id="s5">
+    <h2 class="a-fade" style="--d:30.8s">The Celebrations</h2>
+    <p class="day-label a-fade" style="--d:31.3s">Friday · 20 November</p>
+    <div class="ev a-fade" style="--d:31.7s"><span class="ev-t">8:00 PM</span><span class="ev-n">Mehndi Night</span></div>
+    <p class="day-label a-fade" style="--d:32.1s">Saturday · 21 November</p>
+    <div class="ev a-fade" style="--d:32.5s"><span class="ev-t">10:00 AM</span><span class="ev-n">Baraat</span></div>
+    <div class="ev a-fade" style="--d:32.9s"><span class="ev-t">11:30 AM</span><span class="ev-n">Varmaala</span></div>
+    <div class="ev a-fade" style="--d:33.3s"><span class="ev-t">1:00 PM</span><span class="ev-n">Pheras &amp; Saptapadi</span></div>
+    <div class="ev a-fade" style="--d:33.7s"><span class="ev-t">4:30 PM</span><span class="ev-n">Vidaai</span></div>
+    <div class="ev a-fade" style="--d:34.1s"><span class="ev-t">7:00 PM</span><span class="ev-n">Party &amp; Dinner</span></div>
+    <p class="day-label a-fade" style="--d:34.6s">Sunday · 22 November</p>
+    <div class="ev a-fade" style="--d:35.0s"><span class="ev-t">8:30 AM</span><span class="ev-n">Farewell Breakfast</span></div>
+  </section>
+
+  <!-- ══ STATION 6 · FINALE ══ -->
+  <section class="scene" id="s6">
+    <img id="hands" src="https://i.ibb.co/F43SK0DR/Site-Left-Panel-Mobile.png" alt="Bride and groom holding hands — Aipan artwork">
+    <h1 class="name a-name" style="--d:40.8s">GARIMA</h1>
+    <p class="weds a-fade" style="--d:41.1s">weds</p>
+    <h1 class="name a-name" style="--d:41.2s">MRINAL</h1>
+    <div class="rule a-fade" style="--d:41.5s"></div>
+    <p class="when a-fade" style="--d:41.7s">Saturday, the 21st of November, 2026</p>
+    <p class="where a-fade" style="--d:41.9s">Nainital · Uttarakhand</p>
+    <p id="countdown" class="a-fade" style="--d:42.1s"></p>
+    <a class="rsvp a-pop" style="--d:42.4s" href="../rsvp.html">RSVP</a>
+    <p class="joyurl a-fade" style="--d:42.8s">details &amp; travel · <a href="../">our wedding website</a></p>
+  </section>
+
+</div></div></div>
+
+<div id="petals" aria-hidden="true"></div>
+
+<svg id="grain" aria-hidden="true"><filter id="gf"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2"/></filter><rect width="100%" height="100%" filter="url(#gf)"/></svg>
+<div id="vignette"></div>
+
+<button class="ctl" id="skip">Skip ›</button>
+<button class="ctl" id="replay">↻ Replay</button>
+
+<template id="petal-tpl">
+  <svg class="petal" viewBox="0 0 64 64">
+    <g fill="#FFF6E8">
+      <circle cx="32" cy="32" r="4.5"/>
+      <path d="M32,26 C26.5,18 26.5,8 32,3 C37.5,8 37.5,18 32,26 Z"/>
+      <path d="M32,26 C26.5,18 26.5,8 32,3 C37.5,8 37.5,18 32,26 Z" transform="rotate(90 32 32)"/>
+      <path d="M32,26 C26.5,18 26.5,8 32,3 C37.5,8 37.5,18 32,26 Z" transform="rotate(180 32 32)"/>
+      <path d="M32,26 C26.5,18 26.5,8 32,3 C37.5,8 37.5,18 32,26 Z" transform="rotate(270 32 32)"/>
+      <circle cx="13" cy="13" r="2.2"/><circle cx="51" cy="13" r="2.2"/>
+      <circle cx="13" cy="51" r="2.2"/><circle cx="51" cy="51" r="2.2"/>
+    </g>
+  </svg>
+</template>
+
+<script>
+(function(){
+  var body=document.body,
+      cover=document.getElementById('cover'),
+      petals=document.getElementById('petals'),
+      tpl=document.getElementById('petal-tpl'),
+      FINALE_AT=43400, finaleTimer=null;
+
+  /* countdown to the pheras */
+  var wed=new Date('2026-11-21T10:00:00+05:30'),
+      days=Math.ceil((wed-Date.now())/864e5),
+      cd=document.getElementById('countdown');
+  cd.textContent = days>1 ? '· '+days+' days to go ·' : days===1 ? '· tomorrow ·' : '· just married ·';
+
+  function spawnPetals(fullSky){
+    petals.innerHTML='';
+    for(var i=0;i<14;i++){
+      var p=tpl.content.firstElementChild.cloneNode(true),
+          dur=9+Math.random()*6,
+          size=14+Math.random()*22,
+          dir=Math.random()<.5?-1:1,
+          spin=dir*(240+Math.random()*300);
+      p.style.setProperty('--x',(3+Math.random()*94)+'vw');
+      p.style.setProperty('--size',size.toFixed(0)+'px');
+      p.style.setProperty('--dur',dur.toFixed(2)+'s');
+      p.style.setProperty('--delay',(fullSky? -(Math.random()*dur) : 7+Math.random()*11).toFixed(2)+'s');
+      p.style.setProperty('--sway',(dir*(18+Math.random()*30)).toFixed(0)+'px');
+      p.style.setProperty('--spin',spin.toFixed(0)+'deg');
+      p.style.setProperty('--halfspin',(spin*.5).toFixed(0)+'deg');
+      p.style.setProperty('--op',(.5+Math.random()*.4).toFixed(2));
+      petals.appendChild(p);
+    }
+  }
+
+  function seek(t){
+    document.getAnimations().forEach(function(a){
+      if(a.animationName==='petalFall'||a.animationName==='pulseSoft'||a.animationName==='floatDrift')return;
+      try{a.currentTime=t}catch(e){}
+    });
+  }
+  function armFinale(){
+    clearTimeout(finaleTimer);
+    finaleTimer=setTimeout(function(){body.classList.add('finale')},FINALE_AT);
+  }
+  function skip(){
+    clearTimeout(finaleTimer);
+    seek(FINALE_AT+2500);
+    body.classList.add('finale');
+    spawnPetals(true);
+  }
+  function replay(){
+    body.classList.remove('finale');
+    seek(0);
+    spawnPetals(false);
+    armFinale();
+  }
+  function play(){
+    if(body.classList.contains('playing'))return;
+    body.classList.add('playing');
+    cover.classList.add('played');
+    spawnPetals(false);
+    armFinale();
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      requestAnimationFrame(function(){requestAnimationFrame(skip)});
+    }
+  }
+
+  cover.addEventListener('click',play);
+  document.getElementById('skip').addEventListener('click',skip);
+  document.getElementById('replay').addEventListener('click',replay);
+})();
+</script>
+</body>
+</html>
