@@ -411,40 +411,41 @@ var RSVP_CONFIG={
   window.addEventListener('resize', resize);
   resize();
 
-  // 2 Extended Full-Width 3D Silk Satin Folds (Appbar Red Theme - Left to Right Spreading)
+  // 2 Extended Full-Width 3D Silk Satin Folds (Subtle Red Blend Theme)
   const silkFolds = [
     {
-      amplitude: 100,
-      frequency: 0.0020,
-      speed: 0.0035,
+      amplitude: 70,
+      frequency: 0.0018,
+      speed: 0.0025,
       angle: -Math.PI / 12,
       offset: 0,
-      specular: 'rgba(255, 228, 200, 0.45)',
-      midtone: 'rgba(195, 45, 50, 0.35)',
-      shadow: 'rgba(95, 12, 16, 0.30)',
+      specular: 'rgba(255, 230, 215, 0.16)',
+      midtone: 'rgba(180, 35, 40, 0.08)',
+      shadow: 'rgba(70, 8, 12, 0.06)',
       yRatio: 0.30
     },
     {
-      amplitude: 120,
-      frequency: 0.0016,
-      speed: 0.0028,
+      amplitude: 85,
+      frequency: 0.0014,
+      speed: 0.0020,
       angle: -Math.PI / 10,
       offset: Math.PI * 0.75,
-      specular: 'rgba(255, 235, 210, 0.50)',
-      midtone: 'rgba(182, 35, 40, 0.38)',
-      shadow: 'rgba(85, 10, 14, 0.32)',
+      specular: 'rgba(255, 235, 220, 0.18)',
+      midtone: 'rgba(170, 30, 35, 0.10)',
+      shadow: 'rgba(60, 6, 10, 0.07)',
       yRatio: 0.65
     }
   ];
 
   function drawSilkFold(fold, t) {
     ctx.save();
+    ctx.globalCompositeOperation = 'soft-light';
     
     const cos = Math.cos(fold.angle);
     const sin = Math.sin(fold.angle);
     const scrollOffset = scrollY * 0.06;
 
-    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 22 - scrollOffset;
+    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 18 - scrollOffset;
 
     const startX = -width * 0.6;
     const endX = width * 1.8;
@@ -454,9 +455,8 @@ var RSVP_CONFIG={
     ctx.moveTo(startX, height * 1.8);
 
     for (let x = startX; x <= endX; x += step) {
-      // Left-to-Right spreading wave motion math
-      const normX = (x - startX) / (endX - startX); // 0.0 at left, 1.0 at right
-      const fanning = 0.6 + 0.8 * normX; // spreading factor expanding from left to right
+      const normX = (x - startX) / (endX - startX);
+      const fanning = 0.6 + 0.8 * normX;
       
       const wave1 = Math.sin(x * fold.frequency - t * fold.speed + fold.offset) * (fold.amplitude * fanning);
       const wave2 = Math.cos(x * fold.frequency * 0.45 - t * fold.speed * 0.7 + fold.offset) * (fold.amplitude * 0.4 * fanning);
