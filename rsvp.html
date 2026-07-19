@@ -40,8 +40,8 @@
   100%{transform:scale(1.12) translate(2%,-2%) rotate(1deg);opacity:0.95;}
 }
 .paper::after{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.88;z-index:1;
-  background:url('images/organic-pebble-paper-bg.jpg') repeat center top / cover;
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.75;z-index:1;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
   mix-blend-mode:multiply;
   transition:opacity 0.8s ease;
 }
@@ -207,6 +207,40 @@ footer.site{margin-top:0 !important;}
 <main class="paper">
   <div class="dg-bg-mesh"></div>
   <canvas id="bg-anim"></canvas>
+  <svg class="pebble-bg" viewBox="0 0 1000 1600" preserveAspectRatio="xMidYMin slice" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;mix-blend-mode:multiply;opacity:0.85;">
+    <defs>
+      <filter id="pebbleShadow" x="-30%" y="-30%" width="160%" height="160%">
+        <feDropShadow dx="-18" dy="28" stdDeviation="35" flood-color="#8C6E54" flood-opacity="0.14" />
+      </filter>
+
+      <linearGradient id="pebbleGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FAF0E4" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#F2DFCA" stop-opacity="0.85"/>
+      </linearGradient>
+
+      <linearGradient id="pebbleGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FAF3E8" stop-opacity="0.92"/>
+        <stop offset="100%" stop-color="#EAD7BF" stop-opacity="0.88"/>
+      </linearGradient>
+
+      <linearGradient id="pebbleGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#FDF6EC" stop-opacity="0.95"/>
+        <stop offset="100%" stop-color="#F0DCB8" stop-opacity="0.80"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Top-Left Large Organic Pebble -->
+    <path d="M 120 180 C 100 40, 550 50, 780 250 C 950 400, 850 780, 580 820 C 320 850, 140 380, 120 180 Z" 
+          fill="url(#pebbleGrad1)" filter="url(#pebbleShadow)" />
+
+    <!-- Bottom-Right Large Organic Pebble -->
+    <path d="M 450 750 C 700 700, 980 900, 950 1280 C 920 1550, 600 1600, 480 1420 C 350 1220, 300 820, 450 750 Z" 
+          fill="url(#pebbleGrad2)" filter="url(#pebbleShadow)" />
+
+    <!-- Bottom-Left Overlapping Organic Pebble -->
+    <path d="M -50 1000 C 150 900, 420 1050, 480 1350 C 520 1600, 200 1680, -20 1600 C -150 1520, -180 1150, -50 1000 Z" 
+          fill="url(#pebbleGrad3)" filter="url(#pebbleShadow)" />
+  </svg>
   <div class="rsvp-wrap">
 
     <aside class="intro">
