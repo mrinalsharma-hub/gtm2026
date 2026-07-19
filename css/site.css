@@ -15,7 +15,7 @@
   --ink-faint:rgba(102,17,20,.55);
   --line:rgba(167,31,35,.28);         /* hairlines on ivory */
   --line-soft:rgba(167,31,35,.16);
-  --header-h:64px;
+  --header-h:72px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -26,6 +26,7 @@ body{
   font-family:'Lustria',Georgia,serif;
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
+  overscroll-behavior-y:none;
 }
 img,svg{max-width:100%;display:block}
 a{color:inherit}
