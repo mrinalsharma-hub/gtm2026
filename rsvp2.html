@@ -18,16 +18,16 @@
 
 .paper{
   position:relative;
-  background:#F9E7CF;
+  background:linear-gradient(165deg, #B22429, #A71F23 70%);
   overflow:hidden;
 }
 .dg-bg-mesh{
   position:absolute;inset:-20%;pointer-events:none;z-index:0;
   background:
-    radial-gradient(circle at 20% 30%, rgba(249, 231, 207, 0.95) 0%, transparent 55%),
-    radial-gradient(circle at 80% 20%, rgba(242, 218, 188, 0.85) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(224, 196, 162, 0.70) 0%, transparent 55%),
-    radial-gradient(circle at 75% 75%, rgba(255, 243, 224, 0.90) 0%, transparent 50%);
+    radial-gradient(circle at 20% 30%, rgba(185, 38, 43, 0.95) 0%, transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(167, 31, 35, 0.85) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(126, 18, 22, 0.75) 0%, transparent 55%),
+    radial-gradient(circle at 75% 75%, rgba(195, 45, 50, 0.90) 0%, transparent 50%);
   filter:blur(60px);
   animation:dgVelvetShift 24s ease-in-out infinite alternate;
   will-change:transform,opacity;
@@ -40,9 +40,9 @@
   100%{transform:scale(1.12) translate(2%,-2%) rotate(1deg);opacity:0.95;}
 }
 .paper::after{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.48;z-index:1;
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.35;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / 56% auto;
-  mix-blend-mode:multiply;
+  mix-blend-mode:overlay;
   transition:opacity 0.8s ease;
 }
 .paper>*{position:relative;z-index:2}
@@ -56,23 +56,23 @@
 }
 
 /* ── left · Please RSVP ─────────────────────────────── */
-.intro{color:#19202F}
+.intro{color:#FFF6E8}
 .please{
   display:block;font-family:'Pinyon Script',cursive;font-weight:400;
-  font-size:clamp(32px,3.4vw,46px);color:#C81A1F;letter-spacing:.02em;
+  font-size:clamp(32px,3.4vw,46px);color:#FFF6E8;letter-spacing:.02em;
   margin:0 0 -.52em .1em;position:relative;z-index:2;
 }
 .rsvp-word{
   font-family:'Cormorant Upright',serif;font-weight:300;line-height:.95;
-  font-size:clamp(72px,9.5vw,124px);letter-spacing:.03em;color:#C81A1F;margin:0;
+  font-size:clamp(72px,9.5vw,124px);letter-spacing:.03em;color:#FFF6E8;margin:0;
 }
 .intro-lead{
   font-family:'Cormorant Garamond',serif;font-weight:500;
-  font-size:24px;line-height:30px;color:#19202F;margin-top:48px;padding-left:60px !important;
+  font-size:24px;line-height:30px;color:#FFF6E8;margin-top:48px;padding-left:60px !important;
 }
 .intro-copy{
   font-family:'Cormorant Garamond',serif;font-weight:500;
-  font-size:24px;line-height:30px;color:#19202F;margin-top:1.2em;max-width:460px;padding-left:60px !important;
+  font-size:24px;line-height:30px;color:rgba(255,246,232,0.90);margin-top:1.2em;max-width:460px;padding-left:60px !important;
 }
 
 /* ── right · form card ──────────────────────────────── */
@@ -412,7 +412,7 @@ var RSVP_CONFIG={
   window.addEventListener('resize', resize);
   resize();
 
-  // 2 Extended Full-Width 3D Silk Satin Folds (#F9E7CF Champagne Gold Theme - Left to Right Spreading)
+  // 2 Extended Full-Width 3D Silk Satin Folds (Appbar Red Theme - Left to Right Spreading)
   const silkFolds = [
     {
       amplitude: 100,
@@ -420,9 +420,9 @@ var RSVP_CONFIG={
       speed: 0.0035,
       angle: -Math.PI / 12,
       offset: 0,
-      specular: 'rgba(255, 248, 238, 0.48)',
-      midtone: 'rgba(249, 231, 207, 0.32)',
-      shadow: 'rgba(215, 185, 145, 0.20)',
+      specular: 'rgba(255, 228, 200, 0.45)',
+      midtone: 'rgba(195, 45, 50, 0.35)',
+      shadow: 'rgba(95, 12, 16, 0.30)',
       yRatio: 0.30
     },
     {
@@ -431,9 +431,9 @@ var RSVP_CONFIG={
       speed: 0.0028,
       angle: -Math.PI / 10,
       offset: Math.PI * 0.75,
-      specular: 'rgba(255, 252, 245, 0.52)',
-      midtone: 'rgba(242, 218, 188, 0.34)',
-      shadow: 'rgba(205, 172, 134, 0.22)',
+      specular: 'rgba(255, 235, 210, 0.50)',
+      midtone: 'rgba(182, 35, 40, 0.38)',
+      shadow: 'rgba(85, 10, 14, 0.32)',
       yRatio: 0.65
     }
   ];
