@@ -153,9 +153,9 @@ main{display:block}
 /* ── cards ──────────────────────────────────────────── */
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:44px;text-align:left}
 .card{
-  position:relative;border:1.5px solid var(--line);border-radius:2px;padding:30px 26px 28px;background:transparent;
+  position:relative;border:none;border-radius:2px;padding:30px 26px 28px;background:transparent;
 }
-.card::before{content:"";position:absolute;inset:6px;border:1px solid var(--line-soft);border-radius:1px;pointer-events:none}
+.card::before{display:none}
 .card h3{font-size:16px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
 .card p{font-size:14.5px;color:var(--ink-soft);line-height:1.7}
 .card .card-icon{width:44px;height:44px;margin-bottom:16px}

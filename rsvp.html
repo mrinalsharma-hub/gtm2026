@@ -60,10 +60,11 @@
 
 /* ── right · form card ──────────────────────────────── */
 .card{
-  background:#FCF3E7;border-radius:28px;
+  background:#FCF3E7;border-radius:28px;border:none;
   padding:clamp(30px,4.2vw,56px);
   box-shadow:0 24px 60px rgba(62,32,12,.10);
 }
+.card::before{display:none}
 .fgroup+.fgroup{margin-top:44px}
 .flabel{
   display:block;font-family:'Cormorant Garamond',serif;font-weight:600;
