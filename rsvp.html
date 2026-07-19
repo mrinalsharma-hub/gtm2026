@@ -375,7 +375,7 @@ var RSVP_CONFIG={
   const canvas = document.getElementById('bg-anim');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let width, height;
+  let width, height, t = 0;
 
   function resize() {
     const parent = canvas.parentElement;
@@ -385,87 +385,29 @@ var RSVP_CONFIG={
   window.addEventListener('resize', resize);
   resize();
 
-  const numParticles = 50;
-  const numPetals = 25;
-  const particles = [];
-  const petals = [];
-
-  for (let i = 0; i < numParticles; i++) {
-    particles.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 2.8 + 0.8,
-      dx: (Math.random() - 0.5) * 0.5,
-      dy: -Math.random() * 0.6 - 0.2,
-      opacity: Math.random() * 0.65 + 0.2,
-      pulse: Math.random() * Math.PI * 2,
-      pulseSpeed: Math.random() * 0.03 + 0.01,
-      color: Math.random() > 0.4 ? 'rgba(167, 31, 35, ' : 'rgba(212, 160, 23, '
-    });
-  }
-
-  for (let i = 0; i < numPetals; i++) {
-    petals.push({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 10 + 6,
-      angle: Math.random() * Math.PI * 2,
-      angularVelocity: (Math.random() - 0.5) * 0.025,
-      dx: Math.sin(Math.random() * Math.PI * 2) * 0.6,
-      dy: Math.random() * 0.7 + 0.3,
-      opacity: Math.random() * 0.40 + 0.15,
-      wobble: Math.random() * Math.PI * 2,
-      wobbleSpeed: Math.random() * 0.02 + 0.01
-    });
-  }
-
-  function drawPetal(ctx, x, y, size, angle, opacity) {
-    ctx.save();
-    ctx.translate(x, y);
-    ctx.rotate(angle);
-    ctx.globalAlpha = opacity;
-    ctx.fillStyle = 'rgba(167, 31, 35, 0.55)';
-    ctx.beginPath();
-    ctx.moveTo(0, 0);
-    ctx.bezierCurveTo(-size / 2, -size / 2, -size, size / 3, 0, size);
-    ctx.bezierCurveTo(size, size / 3, size / 2, -size / 2, 0, 0);
-    ctx.fill();
-    ctx.restore();
-  }
+  // 4 large subtle ambient light gradients that drift gently
+  const blobs = [
+    { xRatio: 0.25, yRatio: 0.20, radiusRatio: 0.50, color: 'rgba(212, 160, 23, 0.14)', speedX: 0.0004, speedY: 0.0003, ampX: 0.15, ampY: 0.12 },
+    { xRatio: 0.75, yRatio: 0.35, radiusRatio: 0.55, color: 'rgba(167, 31, 35, 0.09)',  speedX: 0.0003, speedY: 0.0005, ampX: 0.12, ampY: 0.18 },
+    { xRatio: 0.30, yRatio: 0.75, radiusRatio: 0.60, color: 'rgba(230, 208, 187, 0.30)', speedX: 0.0005, speedY: 0.0004, ampX: 0.18, ampY: 0.15 },
+    { xRatio: 0.80, yRatio: 0.80, radiusRatio: 0.50, color: 'rgba(212, 160, 23, 0.12)', speedX: 0.0004, speedY: 0.0006, ampX: 0.14, ampY: 0.12 }
+  ];
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
+    t += 1;
 
-    particles.forEach(p => {
-      p.x += p.dx + Math.sin(p.pulse) * 0.35;
-      p.y += p.dy;
-      p.pulse += p.pulseSpeed;
+    blobs.forEach(b => {
+      const cx = width * (b.xRatio + Math.sin(t * b.speedX) * b.ampX);
+      const cy = height * (b.yRatio + Math.cos(t * b.speedY) * b.ampY);
+      const radius = Math.max(width, height) * b.radiusRatio;
 
-      if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
-      if (p.x < -10) p.x = width + 10;
-      if (p.x > width + 10) p.x = -10;
+      const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+      grad.addColorStop(0, b.color);
+      grad.addColorStop(1, 'rgba(255, 255, 255, 0)');
 
-      const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + currentOpacity + ')';
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = 'rgba(212, 160, 23, 0.6)';
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    });
-
-    petals.forEach(pt => {
-      pt.wobble += pt.wobbleSpeed;
-      pt.x += Math.sin(pt.wobble) * 0.85 + pt.dx;
-      pt.y += pt.dy;
-      pt.angle += pt.angularVelocity;
-
-      if (pt.y > height + 20) { pt.y = -20; pt.x = Math.random() * width; }
-      if (pt.x < -20) pt.x = width + 20;
-      if (pt.x > width + 20) pt.x = -20;
-
-      drawPetal(ctx, pt.x, pt.y, pt.size, pt.angle, pt.opacity);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, width, height);
     });
 
     requestAnimationFrame(animate);
