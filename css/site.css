@@ -67,7 +67,7 @@ header.site{
 nav.primary{display:flex;align-items:center;gap:clamp(16px,3vw,36px)}
 nav.primary a{
   font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
-  font-size:28px !important;font-weight:400 !important;letter-spacing:3.08px !important;text-transform:uppercase !important;
+  font-size:20px !important;font-weight:400 !important;letter-spacing:3.08px !important;text-transform:uppercase !important;
   color:#FFFFFF !important;text-decoration:none !important;padding:6px 2px;transition:color .3s;text-align:center !important;
 }
 nav.primary a:hover{color:#FFF !important;border-bottom:1px solid #FFFFFF !important}
