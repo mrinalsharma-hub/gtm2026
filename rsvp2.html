@@ -44,7 +44,7 @@
   transition:opacity 0.8s ease;
 }
 .paper>*{position:relative;z-index:2}
-#bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+#bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;mix-blend-mode:soft-light;opacity:0.35;}
 
 .rsvp-wrap{
   max-width:1240px;margin:0 auto;
@@ -411,29 +411,29 @@ var RSVP_CONFIG={
   window.addEventListener('resize', resize);
   resize();
 
-  // 2 Extended Full-Width 3D Silk Satin Folds (Subtle Red Blend Theme)
+  // 2 Extended Full-Width 3D Silk Satin Folds (Ultra-Seamless Soft Blend Theme)
   const silkFolds = [
     {
-      amplitude: 70,
-      frequency: 0.0018,
-      speed: 0.0025,
+      amplitude: 50,
+      frequency: 0.0014,
+      speed: 0.0018,
       angle: -Math.PI / 12,
       offset: 0,
-      specular: 'rgba(255, 230, 215, 0.16)',
-      midtone: 'rgba(180, 35, 40, 0.08)',
-      shadow: 'rgba(70, 8, 12, 0.06)',
-      yRatio: 0.30
+      specular: 'rgba(255, 240, 230, 0.12)',
+      midtone: 'rgba(215, 60, 65, 0.04)',
+      shadow: 'rgba(80, 10, 14, 0.03)',
+      yRatio: 0.32
     },
     {
-      amplitude: 85,
-      frequency: 0.0014,
-      speed: 0.0020,
+      amplitude: 65,
+      frequency: 0.0011,
+      speed: 0.0014,
       angle: -Math.PI / 10,
       offset: Math.PI * 0.75,
-      specular: 'rgba(255, 235, 220, 0.18)',
-      midtone: 'rgba(170, 30, 35, 0.10)',
-      shadow: 'rgba(60, 6, 10, 0.07)',
-      yRatio: 0.65
+      specular: 'rgba(255, 245, 235, 0.14)',
+      midtone: 'rgba(205, 50, 55, 0.05)',
+      shadow: 'rgba(70, 8, 12, 0.04)',
+      yRatio: 0.68
     }
   ];
 
@@ -445,7 +445,7 @@ var RSVP_CONFIG={
     const sin = Math.sin(fold.angle);
     const scrollOffset = scrollY * 0.06;
 
-    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 18 - scrollOffset;
+    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 15 - scrollOffset;
 
     const startX = -width * 0.6;
     const endX = width * 1.8;
@@ -472,10 +472,13 @@ var RSVP_CONFIG={
     ctx.lineTo(endX, height * 1.8);
     ctx.closePath();
 
-    const grad = ctx.createLinearGradient(0, baseY - fold.amplitude, 0, baseY + fold.amplitude * 1.8);
-    grad.addColorStop(0, fold.specular);
-    grad.addColorStop(0.35, fold.midtone);
-    grad.addColorStop(1, fold.shadow);
+    // Multi-stop seamless gradient fading to transparent at bounds
+    const grad = ctx.createLinearGradient(0, baseY - fold.amplitude * 1.5, 0, baseY + fold.amplitude * 2.2);
+    grad.addColorStop(0, 'rgba(255, 240, 230, 0)');
+    grad.addColorStop(0.25, fold.specular);
+    grad.addColorStop(0.55, fold.midtone);
+    grad.addColorStop(0.85, fold.shadow);
+    grad.addColorStop(1, 'rgba(70, 8, 12, 0)');
 
     ctx.fillStyle = grad;
     ctx.fill();
