@@ -4,12 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>RSVP · Garima weds Mrinal</title>
-<meta name="description" content="Tell us you're coming — RSVP for the wedding, 20–22 November 2026, Nainital">
+<meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
+<style>
+/* ═══ RSVP page · GTM_RSVP_1 (Figma) ═══
+   Invite Red #C81A1F · Ink #19202F · parchment ground
+   Cormorant Upright display · Cormorant Garamond text
+   Burgues Script → Pinyon Script (web substitute)      */
+
+.paper{
+  position:relative;
+  background:
+    radial-gradient(55% 45% at 12% 88%, rgba(213,184,133,.38), transparent 62%),
+    radial-gradient(42% 36% at 84% 28%, rgba(255,253,247,.75), transparent 65%),
+    radial-gradient(60% 50% at 72% 92%, rgba(218,193,148,.30), transparent 60%),
+    radial-gradient(45% 40% at 40% 15%, rgba(255,251,241,.5), transparent 60%),
+    #F2E6D2;
+}
+.paper::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+.paper>*{position:relative}
+
+.rsvp-wrap{
+  max-width:1180px;margin:0 auto;
+  padding:clamp(44px,7vh,96px) 26px clamp(64px,9vh,120px);
+  display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,640px);
+  gap:clamp(40px,6vw,96px);align-items:start;
+}
+
+/* ── left · Please RSVP ─────────────────────────────── */
+.intro{color:#19202F}
+.please{
+  display:block;font-family:'Pinyon Script',cursive;font-weight:400;
+  font-size:clamp(32px,3.4vw,46px);color:#C81A1F;letter-spacing:.02em;
+  margin:0 0 -.52em .1em;position:relative;z-index:2;
+}
+.rsvp-word{
+  font-family:'Cormorant Upright',serif;font-weight:300;line-height:.95;
+  font-size:clamp(72px,9.5vw,124px);letter-spacing:.03em;color:#C81A1F;margin:0;
+}
+.intro-lead{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(19px,1.9vw,24px);line-height:1.25;margin-top:2.4em;
+}
+.intro-copy{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(19px,1.9vw,24px);line-height:1.25;margin-top:1.2em;max-width:340px;
+}
+
+/* ── right · form card ──────────────────────────────── */
+.card{
+  background:#FCF3E7;border-radius:28px;
+  padding:clamp(30px,4.2vw,56px);
+  box-shadow:0 24px 60px rgba(62,32,12,.10);
+}
+.fgroup+.fgroup{margin-top:44px}
+.flabel{
+  display:block;font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(20px,2vw,24px);line-height:1.25;color:#C81A1F;
+}
+.fhint{
+  font-family:'Cormorant Garamond',serif;font-size:15px;line-height:1.4;
+  color:rgba(25,32,47,.62);margin:5px 0 0;
+}
+.finput{
+  width:100%;height:48px;background:#FFF;color:#19202F;
+  border:1px solid rgba(25,32,47,.30);border-radius:10px;padding:0 16px;
+  font-family:'Cormorant Garamond',serif;font-weight:500;font-size:17px;
+  outline:none;transition:border-color .25s;margin-top:14px;
+}
+.finput:focus{border-color:#C81A1F}
+.finput::placeholder{color:rgba(25,32,47,.45)}
+.farea{height:auto;min-height:120px;padding:13px 16px;resize:vertical;line-height:1.45}
+
+/* names */
+.name-row{position:relative}
+.name-row .rm{
+  position:absolute;right:10px;top:calc(50% + 7px);translate:0 -50%;
+  background:none;border:none;color:#C81A1F;font-size:17px;line-height:1;
+  cursor:pointer;padding:6px;font-family:'Cormorant Garamond',serif;
+}
+.add-link{
+  display:inline-block;background:none;border:none;cursor:pointer;padding:0;
+  margin-top:13px;color:#C81A1F;font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:16px;text-decoration:underline;text-underline-offset:3px;
+}
+.add-link:hover{color:#A81318}
+
+/* option rows (radio / checkbox bars) */
+.opt-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.opt-row{
+  display:flex;align-items:center;gap:14px;background:#FFF;
+  min-height:48px;border-radius:12px;padding:4px 14px;cursor:pointer;
+  font-family:'Cormorant Garamond',serif;font-size:17px;color:#19202F;
+  border:1px solid transparent;transition:border-color .25s;
+}
+.opt-row:hover{border-color:rgba(200,26,31,.35)}
+.opt-row input{position:absolute;opacity:0;pointer-events:none}
+.opt-row .opt-text strong{font-weight:700}
+.mark{flex:none;width:22px;height:22px;position:relative;transition:border-color .2s,background .2s}
+.mark.radio{border:1.5px solid rgba(25,32,47,.38);border-radius:50%}
+.opt-row input:checked+.mark.radio{border-color:#C81A1F}
+.opt-row input:checked+.mark.radio::after{
+  content:"";position:absolute;inset:4px;border-radius:50%;background:#C81A1F;
+}
+.mark.check{border:1.5px solid rgba(25,32,47,.38);border-radius:5px}
+.opt-row input:checked+.mark.check{background:#C81A1F;border-color:#C81A1F}
+.opt-row input:checked+.mark.check::after{
+  content:"";position:absolute;left:7px;top:3px;width:5px;height:11px;
+  border:solid #FFF;border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.opt-row:has(input:checked){border-color:#C81A1F}
+
+/* submit */
+.fsubmit{margin-top:44px}
+.send-btn{
+  display:inline-block;background:#C81A1F;color:#FFF;border:none;cursor:pointer;
+  border-radius:999px;padding:14px 48px;
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;letter-spacing:.02em;
+  transition:background .3s;
+}
+.send-btn:hover{background:#A81318}
+#rsvp-status{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  color:rgba(25,32,47,.72);margin-top:14px;min-height:1.3em;
+}
+
+/* thanks state */
+#rsvp-thanks{display:none;text-align:center;padding:6vh 0}
+#rsvp-thanks .big{
+  font-family:'Cormorant Upright',serif;font-weight:300;
+  font-size:clamp(40px,6vw,72px);letter-spacing:.04em;color:#C81A1F;
+}
+#rsvp-thanks .sub{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(18px,2vw,22px);line-height:1.35;color:#19202F;margin-top:18px;
+}
+#rsvp-thanks .btn-red{margin-top:36px}
+
+/* responsive */
+@media (max-width:960px){
+  .rsvp-wrap{grid-template-columns:1fr;gap:44px}
+  .intro{text-align:center}
+  .please{margin-left:0}
+  .intro-copy{margin-left:auto;margin-right:auto}
+}
+</style>
 </head>
 <body>
 
@@ -38,86 +184,98 @@
   <a href="rsvp.html" aria-current="page">RSVP</a>
 </div>
 
-<main>
-  <section class="hero on-red">
-    <p class="eyebrow">We hope you can make it</p>
-    <h1 class="page-title">RSVP</h1>
-    <p class="sub">Tell us you're coming — it takes less than a minute.</p>
-    <svg class="flourish" viewBox="0 0 270 40" aria-hidden="true">
-      <path d="M10,20 C60,20 90,20 125,20"/>
-      <path d="M260,20 C210,20 180,20 145,20"/>
-      <path d="M135,28 C129,22 129,12 135,6 C141,12 141,22 135,28 Z"/>
-      <circle class="fill" cx="10" cy="20" r="2.6"/>
-      <circle class="fill" cx="260" cy="20" r="2.6"/>
-    </svg>
-  </section>
+<main class="paper">
+  <div class="rsvp-wrap">
 
-  <section class="section" style="max-width:760px">
-    <div id="rsvp-thanks">
-      <p class="big">Thank you</p>
-      <p class="sub" style="margin-top:16px">Your response has reached us safely.<br>We can't wait to see you in the hills.</p>
-      <a class="btn btn-red" style="margin-top:34px" href="travel.html">Plan your trip</a>
-    </div>
+    <aside class="intro">
+      <span class="please">Please</span>
+      <h1 class="rsvp-word">RSVP</h1>
+      <p class="intro-lead">Help us finalize our celebration!</p>
+      <p class="intro-copy">
+        Please provide the full names of all attending guests in your party,
+        and let us know of any specific food allergies so we may accommodate you.
+      </p>
+    </aside>
 
-    <form id="rsvp-form" class="form-card" novalidate>
-      <div class="field">
-        <label for="f-name">Your name</label>
-        <input type="text" id="f-name" name="name" autocomplete="name" required>
-        <p class="hint">One response per family is perfect — just tell us how many of you are coming below.</p>
+    <section class="card">
+      <div id="rsvp-thanks">
+        <p class="big">Thank you</p>
+        <p class="sub">Your response has reached us safely.<br>We can't wait to celebrate with you.</p>
+        <a class="btn btn-red" href="travel.html">Plan your trip</a>
       </div>
 
-      <div class="field">
-        <label for="f-contact">Phone or email</label>
-        <input type="text" id="f-contact" name="contact" autocomplete="email" required>
-        <p class="hint">So we can reach you with venue and stay details.</p>
-      </div>
-
-      <div class="field">
-        <label>Will you be joining us?</label>
-        <div class="choices">
-          <label class="choice"><input type="radio" name="attending" value="Joyfully accept" required> Joyfully accept</label>
-          <label class="choice"><input type="radio" name="attending" value="Regretfully decline"> Regretfully decline</label>
+      <form id="rsvp-form" novalidate>
+        <div class="fgroup">
+          <label class="flabel" for="name-1">Name(s)</label>
+          <p class="fhint">One response per family is perfect - just tell us how many of you are coming below</p>
+          <div id="name-list">
+            <div class="name-row">
+              <input type="text" class="finput name-input" id="name-1" placeholder="Please enter your full name" autocomplete="name">
+            </div>
+          </div>
+          <button type="button" id="add-person" class="add-link">+ Add another person</button>
         </div>
-      </div>
 
-      <div class="field">
-        <label for="f-guests">Number of guests</label>
-        <select id="f-guests" name="guests">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6 or more</option>
-        </select>
-        <p class="hint">Including yourself.</p>
-      </div>
-
-      <div class="field">
-        <label>Which celebrations will you attend?</label>
-        <div class="choices">
-          <label class="choice"><input type="checkbox" name="events" value="Mehndi Night · Friday 20 Nov"> Mehndi Night · Friday 20 Nov</label>
-          <label class="choice"><input type="checkbox" name="events" value="Wedding Day · Saturday 21 Nov"> Wedding Day · Saturday 21 Nov</label>
-          <label class="choice"><input type="checkbox" name="events" value="Farewell Breakfast · Sunday 22 Nov"> Farewell Breakfast · Sunday 22 Nov</label>
+        <div class="fgroup">
+          <span class="flabel">Will you be joining us?</span>
+          <div class="opt-rows">
+            <label class="opt-row">
+              <input type="radio" name="attending" value="Joyfully accept">
+              <span class="mark radio"></span>
+              <span class="opt-text"><strong>Yes,</strong> can&rsquo;t wait!</span>
+            </label>
+            <label class="opt-row">
+              <input type="radio" name="attending" value="Regretfully decline">
+              <span class="mark radio"></span>
+              <span class="opt-text"><strong>Sorry,</strong> can&rsquo;t make it!</span>
+            </label>
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label for="f-diet">Dietary preferences <span style="text-transform:none;letter-spacing:.05em">(optional)</span></label>
-        <input type="text" id="f-diet" name="dietary" placeholder="Vegetarian, Jain, allergies…">
-      </div>
+        <div class="fgroup">
+          <label class="flabel" for="f-contact">Phone or email</label>
+          <input type="text" id="f-contact" class="finput" placeholder="In case we want to reach you" autocomplete="email">
+        </div>
 
-      <div class="field">
-        <label for="f-msg">A note for us <span style="text-transform:none;letter-spacing:.05em">(optional)</span></label>
-        <textarea id="f-msg" name="message"></textarea>
-      </div>
+        <div class="fgroup">
+          <span class="flabel">Which celebrations will you attend?</span>
+          <div class="opt-rows">
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Mehndi Night · Friday Nov 20, 2026">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Mehndi Night</strong>&ensp;Friday Nov 20, 2026</span>
+            </label>
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Day Wedding · Saturday Nov 21, 2026">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Day Wedding</strong>&ensp;Saturday Nov 21, 2026</span>
+            </label>
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Evening Party · Saturday Nov 21, 2026">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Evening Party</strong>&ensp;Saturday Nov 21, 2026</span>
+            </label>
+          </div>
+        </div>
 
-      <div style="text-align:center">
-        <button type="submit" class="btn btn-solid">Send RSVP</button>
-        <p id="rsvp-status" role="status"></p>
-      </div>
-    </form>
-  </section>
+        <div class="fgroup">
+          <label class="flabel" for="f-diet">Dietary preferences&ensp;(optional)</label>
+          <input type="text" id="f-diet" class="finput" placeholder="Vegetarian, Jain, Allergies ...">
+        </div>
+
+        <div class="fgroup">
+          <label class="flabel" for="f-msg">Note for us&ensp;(optional)</label>
+          <textarea id="f-msg" class="finput farea"></textarea>
+        </div>
+
+        <div class="fsubmit">
+          <button type="submit" class="send-btn">Send RSVP</button>
+          <p id="rsvp-status" role="status"></p>
+        </div>
+      </form>
+    </section>
+
+  </div>
 </main>
 
 <footer class="site">
@@ -139,8 +297,7 @@
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
-   RSVP_CONFIG.formId is the long id in the form's URL;
-   entries map each field to the form's entry.<n> input names. */
+   Checkbox values must match the Form's option strings exactly. */
 var RSVP_CONFIG={
   formId:"1FAIpQLSfeO8PSZsK5uh-BZzMEa5SIlpMaKwp1fx9R5dhrdmgSYiibVg",
   entries:{
@@ -157,32 +314,43 @@ var RSVP_CONFIG={
 (function(){
   var form=document.getElementById('rsvp-form'),
       status=document.getElementById('rsvp-status'),
-      thanks=document.getElementById('rsvp-thanks');
+      thanks=document.getElementById('rsvp-thanks'),
+      list=document.getElementById('name-list'),
+      addBtn=document.getElementById('add-person'),
+      MAX_NAMES=8;
 
-  if(!RSVP_CONFIG.formId){
-    /* not wired yet — keep collecting responses on the old page */
-    form.innerHTML=
-      '<div style="text-align:center">'+
-      '<p class="sub">Our RSVP form is being moved here — for now, please respond on our Joy page.</p>'+
-      '<a class="btn btn-red" style="margin-top:30px" href="https://withjoy.com/GTM2026/rsvp" target="_blank" rel="noopener">RSVP on Joy</a>'+
-      '</div>';
-    return;
-  }
+  addBtn.addEventListener('click',function(){
+    var count=list.querySelectorAll('.name-input').length;
+    if(count>=MAX_NAMES)return;
+    var row=document.createElement('div');
+    row.className='name-row';
+    row.innerHTML='<input type="text" class="finput name-input" placeholder="Please enter their full name">'+
+                  '<button type="button" class="rm" aria-label="Remove this person">&#10005;</button>';
+    list.appendChild(row);
+    row.querySelector('.rm').addEventListener('click',function(){row.remove()});
+    row.querySelector('input').focus();
+    if(list.querySelectorAll('.name-input').length>=MAX_NAMES)addBtn.style.display='none';
+  });
+  list.addEventListener('click',function(){
+    if(list.querySelectorAll('.name-input').length<MAX_NAMES)addBtn.style.display='';
+  });
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var name=form.querySelector('#f-name').value.trim(),
+    var names=[].slice.call(form.querySelectorAll('.name-input'))
+                .map(function(i){return i.value.trim()})
+                .filter(Boolean),
         contact=form.querySelector('#f-contact').value.trim(),
         attending=form.querySelector('input[name=attending]:checked');
-    if(!name||!contact||!attending){
+    if(!names.length||!contact||!attending){
       status.textContent='Please fill in your name, contact and whether you can join us.';
       return;
     }
     var p=new URLSearchParams();
-    p.append(RSVP_CONFIG.entries.name,name);
+    p.append(RSVP_CONFIG.entries.name,names.join(', '));
     p.append(RSVP_CONFIG.entries.contact,contact);
     p.append(RSVP_CONFIG.entries.attending,attending.value);
-    p.append(RSVP_CONFIG.entries.guests,form.querySelector('#f-guests').value);
+    p.append(RSVP_CONFIG.entries.guests,String(names.length));
     form.querySelectorAll('input[name=events]:checked').forEach(function(c){
       p.append(RSVP_CONFIG.entries.events,c.value);
     });
