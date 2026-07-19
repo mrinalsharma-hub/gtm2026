@@ -18,13 +18,16 @@
 
 .paper{
   position:relative;
-  background:#FFFFFF;
+  background:#FAF5EE;
+  overflow:hidden;
 }
 .paper::after{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:.90;
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.82;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
+  mix-blend-mode:multiply;
 }
 .paper>*{position:relative;z-index:2}
+#bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
 
 .rsvp-wrap{
   max-width:1240px;margin:0 auto;
@@ -183,6 +186,7 @@ footer.site{margin-top:0 !important;}
 </div>
 
 <main class="paper">
+  <canvas id="bg-anim"></canvas>
   <div class="rsvp-wrap">
 
     <aside class="intro">
@@ -363,6 +367,111 @@ var RSVP_CONFIG={
       status.textContent='Something went wrong — please try again, or write to us directly.';
     });
   });
+})();
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('bg-anim');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height;
+
+  function resize() {
+    const parent = canvas.parentElement;
+    width = canvas.width = parent.clientWidth || window.innerWidth;
+    height = canvas.height = parent.clientHeight || window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  const numParticles = 50;
+  const numPetals = 25;
+  const particles = [];
+  const petals = [];
+
+  for (let i = 0; i < numParticles; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 2.8 + 0.8,
+      dx: (Math.random() - 0.5) * 0.5,
+      dy: -Math.random() * 0.6 - 0.2,
+      opacity: Math.random() * 0.65 + 0.2,
+      pulse: Math.random() * Math.PI * 2,
+      pulseSpeed: Math.random() * 0.03 + 0.01,
+      color: Math.random() > 0.4 ? 'rgba(167, 31, 35, ' : 'rgba(212, 160, 23, '
+    });
+  }
+
+  for (let i = 0; i < numPetals; i++) {
+    petals.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      size: Math.random() * 10 + 6,
+      angle: Math.random() * Math.PI * 2,
+      angularVelocity: (Math.random() - 0.5) * 0.025,
+      dx: Math.sin(Math.random() * Math.PI * 2) * 0.6,
+      dy: Math.random() * 0.7 + 0.3,
+      opacity: Math.random() * 0.40 + 0.15,
+      wobble: Math.random() * Math.PI * 2,
+      wobbleSpeed: Math.random() * 0.02 + 0.01
+    });
+  }
+
+  function drawPetal(ctx, x, y, size, angle, opacity) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle);
+    ctx.globalAlpha = opacity;
+    ctx.fillStyle = 'rgba(167, 31, 35, 0.55)';
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.bezierCurveTo(-size / 2, -size / 2, -size, size / 3, 0, size);
+    ctx.bezierCurveTo(size, size / 3, size / 2, -size / 2, 0, 0);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach(p => {
+      p.x += p.dx + Math.sin(p.pulse) * 0.35;
+      p.y += p.dy;
+      p.pulse += p.pulseSpeed;
+
+      if (p.y < -10) { p.y = height + 10; p.x = Math.random() * width; }
+      if (p.x < -10) p.x = width + 10;
+      if (p.x > width + 10) p.x = -10;
+
+      const currentOpacity = p.opacity * (0.6 + 0.4 * Math.sin(p.pulse));
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color + currentOpacity + ')';
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = 'rgba(212, 160, 23, 0.6)';
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    });
+
+    petals.forEach(pt => {
+      pt.wobble += pt.wobbleSpeed;
+      pt.x += Math.sin(pt.wobble) * 0.85 + pt.dx;
+      pt.y += pt.dy;
+      pt.angle += pt.angularVelocity;
+
+      if (pt.y > height + 20) { pt.y = -20; pt.x = Math.random() * width; }
+      if (pt.x < -20) pt.x = width + 20;
+      if (pt.x > width + 20) pt.x = -20;
+
+      drawPetal(ctx, pt.x, pt.y, pt.size, pt.angle, pt.opacity);
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
 })();
 </script>
 </body>
