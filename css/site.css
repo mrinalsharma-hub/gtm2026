@@ -67,7 +67,7 @@ header.site{
 nav.primary{display:flex;align-items:center;gap:clamp(16px,3vw,36px)}
 nav.primary a{
   font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
-  font-size:18px !important;font-weight:400 !important;letter-spacing:2.75px !important;text-transform:uppercase !important;
+  font-size:18px !important;font-weight:400 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;
   color:#FFFFFF !important;text-decoration:none !important;padding:6px 2px;transition:color .3s;text-align:center !important;
 }
 nav.primary a:hover{color:#FFF !important;border-bottom:1px solid #FFFFFF !important}
@@ -77,7 +77,7 @@ nav.primary a[aria-current="page"]{color:#FFF !important}
 #menu-btn{
   display:none;background:none;border:none;cursor:pointer;color:#FFFFFF !important;
   font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
-  font-size:18px !important;font-weight:400 !important;letter-spacing:2.75px !important;text-transform:uppercase !important;padding:10px;
+  font-size:18px !important;font-weight:400 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;padding:10px;
 }
 #menu-panel{
   position:fixed;inset:0;z-index:200;display:none;flex-direction:column;align-items:center;justify-content:center;gap:4vh;
@@ -86,14 +86,14 @@ nav.primary a[aria-current="page"]{color:#FFF !important}
 #menu-panel.open{display:flex}
 #menu-panel a{
   font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
-  font-size:18px !important;font-weight:400 !important;letter-spacing:2.75px !important;text-transform:uppercase !important;
+  font-size:18px !important;font-weight:400 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;
   color:#FFFFFF !important;text-decoration:none;
 }
 #menu-panel a:hover,#menu-panel a[aria-current="page"]{color:#FFFFFF !important}
 #menu-close{
   position:absolute;top:18px;right:18px;background:none;border:none;cursor:pointer;
   color:#FFFFFF !important;font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
-  font-size:18px !important;font-weight:400 !important;letter-spacing:2.75px !important;text-transform:uppercase !important;padding:12px;
+  font-size:18px !important;font-weight:400 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;padding:12px;
 }
 
 /* ── hero ───────────────────────────────────────────── */
