@@ -188,6 +188,7 @@ input[type=text],input[type=email],input[type=tel],input[type=number],select,tex
   font-family:'Roboto Flex',sans-serif;font-weight:400;font-size:16px;color:#19202F;outline:none;transition:border-color .25s;
 }
 input:focus,select:focus,textarea:focus{border-color:#19202F}
+input::placeholder,textarea::placeholder{color:rgba(25,32,47,.40)}
 textarea{min-height:120px;padding:14px 16px;height:auto;resize:vertical}
 .choices{display:flex;flex-direction:column;gap:12px}
 .choice{display:flex;align-items:center;gap:12px;cursor:pointer;font-size:15.5px;color:var(--ink)}
