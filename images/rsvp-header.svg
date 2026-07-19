@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="100%" height="auto" role="img" aria-label="Please RSVP">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400&amp;family=Pinyon+Script&amp;display=swap');
+    .please-text {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 52px;
+      fill: #C81A1F;
+    }
+    .rsvp-text {
+      font-family: 'Cormorant Upright', serif;
+      font-weight: 300;
+      font-size: 112px;
+      fill: #C81A1F;
+      letter-spacing: 0.03em;
+    }
+  </style>
+  <text x="12" y="46" class="please-text">Please</text>
+  <text x="5" y="142" class="rsvp-text">RSVP</text>
+</svg>
