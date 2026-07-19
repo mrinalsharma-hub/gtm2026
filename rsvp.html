@@ -395,7 +395,7 @@ var RSVP_CONFIG={
   const canvas = document.getElementById('bg-anim');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  let width, height, step = 0;
+  let width, height, time = 0;
   let scrollY = window.scrollY || 0;
 
   window.addEventListener('scroll', () => {
@@ -410,67 +410,86 @@ var RSVP_CONFIG={
   window.addEventListener('resize', resize);
   resize();
 
-  // Dolce & Gabbana Silk Beige Wave Layers
-  const waves = [
-    {
-      amplitude: 60,
-      frequency: 0.005,
-      speed: 0.008,
-      offset: 0,
-      color1: 'rgba(238, 226, 213, 0.40)',
-      color2: 'rgba(247, 242, 236, 0.05)',
-      yRatio: 0.30
-    },
+  // Envato Silk Fabric Fold Frequencies & Sheen Properties
+  const silkFolds = [
     {
       amplitude: 75,
-      frequency: 0.003,
-      speed: 0.006,
-      offset: Math.PI * 0.6,
-      color1: 'rgba(224, 208, 192, 0.35)',
-      color2: 'rgba(238, 226, 213, 0.02)',
-      yRatio: 0.48
+      frequency: 0.0035,
+      speed: 0.004,
+      angle: -Math.PI / 5,
+      offset: 0,
+      specular: 'rgba(252, 246, 238, 0.35)',
+      midtone: 'rgba(215, 185, 148, 0.22)',
+      shadow: 'rgba(125, 94, 58, 0.15)',
+      yRatio: 0.20
     },
     {
-      amplitude: 50,
-      frequency: 0.007,
-      speed: 0.011,
-      offset: Math.PI * 1.2,
-      color1: 'rgba(245, 235, 224, 0.45)',
-      color2: 'rgba(224, 208, 192, 0.03)',
+      amplitude: 95,
+      frequency: 0.0028,
+      speed: 0.003,
+      angle: -Math.PI / 4.5,
+      offset: Math.PI * 0.5,
+      specular: 'rgba(255, 250, 244, 0.40)',
+      midtone: 'rgba(205, 172, 134, 0.25)',
+      shadow: 'rgba(110, 80, 48, 0.18)',
+      yRatio: 0.42
+    },
+    {
+      amplitude: 85,
+      frequency: 0.0042,
+      speed: 0.005,
+      angle: -Math.PI / 6,
+      offset: Math.PI * 1.1,
+      specular: 'rgba(248, 238, 226, 0.32)',
+      midtone: 'rgba(222, 194, 158, 0.20)',
+      shadow: 'rgba(135, 102, 64, 0.14)',
       yRatio: 0.65
     },
     {
-      amplitude: 65,
-      frequency: 0.004,
-      speed: 0.007,
-      offset: Math.PI * 1.7,
-      color1: 'rgba(216, 196, 182, 0.30)',
-      color2: 'rgba(247, 242, 236, 0.02)',
-      yRatio: 0.82
+      amplitude: 70,
+      frequency: 0.0032,
+      speed: 0.0035,
+      angle: -Math.PI / 5.2,
+      offset: Math.PI * 1.6,
+      specular: 'rgba(253, 247, 240, 0.38)',
+      midtone: 'rgba(210, 178, 140, 0.24)',
+      shadow: 'rgba(118, 88, 52, 0.16)',
+      yRatio: 0.85
     }
   ];
 
-  function drawWave(w, t) {
+  function drawSilkFold(fold, t) {
     ctx.save();
+    
+    const cos = Math.cos(fold.angle);
+    const sin = Math.sin(fold.angle);
+    const scrollOffset = scrollY * 0.06;
+
+    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 20 - scrollOffset;
+
     ctx.beginPath();
+    ctx.moveTo(-width * 0.5, height * 1.5);
 
-    const scrollOffset = scrollY * 0.08;
-    const baseY = height * w.yRatio + Math.sin(t * 0.005 + w.offset) * 15 - scrollOffset;
-    ctx.moveTo(0, height);
-    ctx.lineTo(0, baseY);
+    const step = 15;
+    for (let x = -width * 0.5; x <= width * 1.5; x += step) {
+      const wave1 = Math.sin(x * fold.frequency + t * fold.speed + fold.offset) * fold.amplitude;
+      const wave2 = Math.cos(x * fold.frequency * 0.5 + t * fold.speed * 0.6) * (fold.amplitude * 0.5);
+      const y = baseY + wave1 + wave2;
 
-    for (let x = 0; x <= width; x += 10) {
-      const y = baseY + Math.sin(x * w.frequency + t * w.speed + w.offset) * w.amplitude
-                      + Math.cos(x * w.frequency * 0.4 + t * w.speed * 0.5) * (w.amplitude * 0.4);
-      ctx.lineTo(x, y);
+      const rx = x * cos - y * sin;
+      const ry = x * sin + y * cos;
+
+      if (x === -width * 0.5) ctx.moveTo(rx, ry);
+      else ctx.lineTo(rx, ry);
     }
 
-    ctx.lineTo(width, height);
+    ctx.lineTo(width * 1.5, height * 1.5);
     ctx.closePath();
 
-    const grad = ctx.createLinearGradient(0, baseY - w.amplitude, 0, height);
-    grad.addColorStop(0, w.color1);
-    grad.addColorStop(1, w.color2);
+    const grad = ctx.createLinearGradient(0, baseY - fold.amplitude, 0, baseY + fold.amplitude * 1.5);
+    grad.addColorStop(0, fold.specular);
+    grad.addColorStop(0.35, fold.midtone);
+    grad.addColorStop(1, fold.shadow);
 
     ctx.fillStyle = grad;
     ctx.fill();
@@ -479,9 +498,9 @@ var RSVP_CONFIG={
 
   function animate() {
     ctx.clearRect(0, 0, width, height);
-    step += 1;
+    time += 1;
 
-    waves.forEach(w => drawWave(w, step));
+    silkFolds.forEach(fold => drawSilkFold(fold, time));
 
     requestAnimationFrame(animate);
   }
