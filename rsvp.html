@@ -410,29 +410,29 @@ var RSVP_CONFIG={
   window.addEventListener('resize', resize);
   resize();
 
-  // 2 Extended Full-Width 3D Silk Satin Folds (#F9E7CF Champagne Gold Theme)
+  // 2 Extended Full-Width 3D Silk Satin Folds (#F9E7CF Champagne Gold Theme - Left to Right Spreading)
   const silkFolds = [
     {
-      amplitude: 110,
-      frequency: 0.0022,
+      amplitude: 100,
+      frequency: 0.0020,
       speed: 0.0035,
-      angle: -Math.PI / 6,
+      angle: -Math.PI / 12,
       offset: 0,
-      specular: 'rgba(255, 248, 238, 0.45)',
-      midtone: 'rgba(249, 231, 207, 0.30)',
-      shadow: 'rgba(215, 185, 145, 0.22)',
-      yRatio: 0.32
+      specular: 'rgba(255, 248, 238, 0.48)',
+      midtone: 'rgba(249, 231, 207, 0.32)',
+      shadow: 'rgba(215, 185, 145, 0.20)',
+      yRatio: 0.30
     },
     {
-      amplitude: 130,
-      frequency: 0.0018,
+      amplitude: 120,
+      frequency: 0.0016,
       speed: 0.0028,
-      angle: -Math.PI / 5,
+      angle: -Math.PI / 10,
       offset: Math.PI * 0.75,
-      specular: 'rgba(255, 252, 245, 0.50)',
-      midtone: 'rgba(242, 218, 188, 0.32)',
-      shadow: 'rgba(205, 172, 134, 0.24)',
-      yRatio: 0.68
+      specular: 'rgba(255, 252, 245, 0.52)',
+      midtone: 'rgba(242, 218, 188, 0.34)',
+      shadow: 'rgba(205, 172, 134, 0.22)',
+      yRatio: 0.65
     }
   ];
 
@@ -443,25 +443,32 @@ var RSVP_CONFIG={
     const sin = Math.sin(fold.angle);
     const scrollOffset = scrollY * 0.06;
 
-    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 25 - scrollOffset;
+    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 22 - scrollOffset;
+
+    const startX = -width * 0.6;
+    const endX = width * 1.8;
+    const step = 12;
 
     ctx.beginPath();
-    ctx.moveTo(-width * 0.8, height * 1.8);
+    ctx.moveTo(startX, height * 1.8);
 
-    const step = 15;
-    for (let x = -width * 0.8; x <= width * 1.8; x += step) {
-      const wave1 = Math.sin(x * fold.frequency + t * fold.speed + fold.offset) * fold.amplitude;
-      const wave2 = Math.cos(x * fold.frequency * 0.5 + t * fold.speed * 0.6) * (fold.amplitude * 0.5);
+    for (let x = startX; x <= endX; x += step) {
+      // Left-to-Right spreading wave motion math
+      const normX = (x - startX) / (endX - startX); // 0.0 at left, 1.0 at right
+      const fanning = 0.6 + 0.8 * normX; // spreading factor expanding from left to right
+      
+      const wave1 = Math.sin(x * fold.frequency - t * fold.speed + fold.offset) * (fold.amplitude * fanning);
+      const wave2 = Math.cos(x * fold.frequency * 0.45 - t * fold.speed * 0.7 + fold.offset) * (fold.amplitude * 0.4 * fanning);
       const y = baseY + wave1 + wave2;
 
       const rx = x * cos - y * sin;
       const ry = x * sin + y * cos;
 
-      if (x === -width * 0.8) ctx.moveTo(rx, ry);
+      if (x === startX) ctx.moveTo(rx, ry);
       else ctx.lineTo(rx, ry);
     }
 
-    ctx.lineTo(width * 1.8, height * 1.8);
+    ctx.lineTo(endX, height * 1.8);
     ctx.closePath();
 
     const grad = ctx.createLinearGradient(0, baseY - fold.amplitude, 0, baseY + fold.amplitude * 1.8);
