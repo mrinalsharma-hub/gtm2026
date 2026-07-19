@@ -16,13 +16,18 @@
    Cormorant Upright display · Cormorant Garamond text
    Burgues Script → Pinyon Script (web substitute)      */
 
+body{
+  background:linear-gradient(180deg, #A71F23 0%, #8C191D 35%, #6B1115 70%, #4D090C 100%) !important;
+}
 header.site{
-  background:#B22429 !important;
+  background:transparent !important;
   border-bottom:1px solid rgba(255,246,232,.12) !important;
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
 }
 .paper{
   position:relative;
-  background:linear-gradient(180deg, #B22429 0%, #9E1D22 35%, #7D1317 70%, #580C0F 100%);
+  background:transparent !important;
   overflow:hidden;
 }
 .dg-bg-mesh{
