@@ -66,11 +66,11 @@ header.site{
 }
 nav.primary{display:flex;align-items:center;gap:clamp(16px,3vw,36px)}
 nav.primary a{
-  font-family:'Cormorant Upright','Cormorant Garamond',serif;
-  font-size:clamp(16px,1.8vw,28px);font-weight:400;letter-spacing:3.08px;text-transform:uppercase;
-  color:#FFFFFF;text-decoration:none;padding:6px 2px;transition:color .3s;text-align:center;
+  font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
+  font-size:28px !important;font-weight:400 !important;letter-spacing:3.08px !important;text-transform:uppercase !important;
+  color:#FFFFFF !important;text-decoration:none !important;padding:6px 2px;transition:color .3s;text-align:center !important;
 }
-nav.primary a:hover, nav.primary a[aria-current="page"]{color:#FFF;border-bottom:1px solid #FFFFFF}
+nav.primary a:hover, nav.primary a[aria-current="page"]{color:#FFF !important;border-bottom:1px solid #FFFFFF !important}
 
 /* mobile menu */
 #menu-btn{
