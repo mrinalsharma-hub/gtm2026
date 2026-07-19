@@ -70,7 +70,8 @@ nav.primary a{
   font-size:28px !important;font-weight:400 !important;letter-spacing:3.08px !important;text-transform:uppercase !important;
   color:#FFFFFF !important;text-decoration:none !important;padding:6px 2px;transition:color .3s;text-align:center !important;
 }
-nav.primary a:hover, nav.primary a[aria-current="page"]{color:#FFF !important;border-bottom:1px solid #FFFFFF !important}
+nav.primary a:hover{color:#FFF !important;border-bottom:1px solid #FFFFFF !important}
+nav.primary a[aria-current="page"]{color:#FFF !important}
 
 /* mobile menu */
 #menu-btn{
