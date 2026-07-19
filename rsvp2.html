@@ -216,7 +216,6 @@ footer.site{margin-top:0 !important;}
 
 <main class="paper">
   <div class="dg-bg-mesh"></div>
-  <canvas id="bg-anim"></canvas>
   <div class="rsvp-wrap">
 
     <aside class="intro">
@@ -400,111 +399,5 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script>
-(function() {
-  const canvas = document.getElementById('bg-anim');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let width, height, time = 0;
-  let scrollY = window.scrollY || 0;
-
-  window.addEventListener('scroll', () => {
-    scrollY = window.scrollY || 0;
-  }, { passive: true });
-
-  function resize() {
-    const parent = canvas.parentElement;
-    width = canvas.width = parent.clientWidth || window.innerWidth;
-    height = canvas.height = parent.clientHeight || window.innerHeight;
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  // 2 Extended Full-Width 3D Silk Satin Folds (Ultra-Seamless Soft Blend Theme)
-  const silkFolds = [
-    {
-      amplitude: 50,
-      frequency: 0.0014,
-      speed: 0.0018,
-      angle: -Math.PI / 12,
-      offset: 0,
-      specular: 'rgba(255, 240, 230, 0.12)',
-      midtone: 'rgba(215, 60, 65, 0.04)',
-      shadow: 'rgba(80, 10, 14, 0.03)',
-      yRatio: 0.32
-    },
-    {
-      amplitude: 65,
-      frequency: 0.0011,
-      speed: 0.0014,
-      angle: -Math.PI / 10,
-      offset: Math.PI * 0.75,
-      specular: 'rgba(255, 245, 235, 0.14)',
-      midtone: 'rgba(205, 50, 55, 0.05)',
-      shadow: 'rgba(70, 8, 12, 0.04)',
-      yRatio: 0.68
-    }
-  ];
-
-  function drawSilkFold(fold, t) {
-    ctx.save();
-    ctx.globalCompositeOperation = 'soft-light';
-    
-    const cos = Math.cos(fold.angle);
-    const sin = Math.sin(fold.angle);
-    const scrollOffset = scrollY * 0.06;
-
-    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 15 - scrollOffset;
-
-    const startX = -width * 0.6;
-    const endX = width * 1.8;
-    const step = 12;
-
-    ctx.beginPath();
-    ctx.moveTo(startX, height * 1.8);
-
-    for (let x = startX; x <= endX; x += step) {
-      const normX = (x - startX) / (endX - startX);
-      const fanning = 0.6 + 0.8 * normX;
-      
-      const wave1 = Math.sin(x * fold.frequency - t * fold.speed + fold.offset) * (fold.amplitude * fanning);
-      const wave2 = Math.cos(x * fold.frequency * 0.45 - t * fold.speed * 0.7 + fold.offset) * (fold.amplitude * 0.4 * fanning);
-      const y = baseY + wave1 + wave2;
-
-      const rx = x * cos - y * sin;
-      const ry = x * sin + y * cos;
-
-      if (x === startX) ctx.moveTo(rx, ry);
-      else ctx.lineTo(rx, ry);
-    }
-
-    ctx.lineTo(endX, height * 1.8);
-    ctx.closePath();
-
-    // Multi-stop seamless gradient fading to transparent at bounds
-    const grad = ctx.createLinearGradient(0, baseY - fold.amplitude * 1.5, 0, baseY + fold.amplitude * 2.2);
-    grad.addColorStop(0, 'rgba(255, 240, 230, 0)');
-    grad.addColorStop(0.25, fold.specular);
-    grad.addColorStop(0.55, fold.midtone);
-    grad.addColorStop(0.85, fold.shadow);
-    grad.addColorStop(1, 'rgba(70, 8, 12, 0)');
-
-    ctx.fillStyle = grad;
-    ctx.fill();
-    ctx.restore();
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, width, height);
-    time += 1;
-
-    silkFolds.forEach(fold => drawSilkFold(fold, time));
-
-    requestAnimationFrame(animate);
-  }
-
-  animate();
-})();
-</script>
 </body>
 </html>
