@@ -17,35 +17,20 @@
    Burgues Script → Pinyon Script (web substitute)      */
 
 body{
-  background:linear-gradient(180deg, #A71F23 0%, #8C191D 35%, #6B1115 70%, #4D090C 100%) !important;
+  background:linear-gradient(180deg, #A71F23 0%, #941B1F 35%, #7B1317 70%, #630C10 100%) !important;
 }
 header.site{
-  background:transparent !important;
+  background:#A71F23 !important;
   border-bottom:1px solid rgba(255,246,232,.12) !important;
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
 }
 .paper{
   position:relative;
   background:transparent !important;
   overflow:hidden;
 }
-.dg-bg-mesh{
-  position:absolute;inset:-20%;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(circle at 50% 10%, rgba(185, 38, 43, 0.40) 0%, transparent 65%),
-    radial-gradient(circle at 50% 90%, rgba(70, 8, 12, 0.50) 0%, transparent 65%);
-  filter:blur(60px);
-  animation:dgVelvetShift 24s ease-in-out infinite alternate;
-  will-change:transform,opacity;
-  transition:opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-@keyframes dgVelvetShift{
-  0%{transform:scale(1) translate(0%,0%) rotate(0deg);opacity:0.90;}
-  33%{transform:scale(1.08) translate(3%,-4%) rotate(2deg);opacity:1.0;}
-  66%{transform:scale(1.04) translate(-3%,3%) rotate(-2deg);opacity:0.88;}
-  100%{transform:scale(1.12) translate(2%,-2%) rotate(1deg);opacity:0.95;}
-}
+.dg-bg-mesh{display:none !important;}
 .paper::after{
   content:"";position:absolute;inset:0;pointer-events:none;opacity:0.70;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
