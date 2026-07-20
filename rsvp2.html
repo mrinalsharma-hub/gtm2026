@@ -33,14 +33,19 @@ header.site{
   backdrop-filter:none !important;
   -webkit-backdrop-filter:none !important;
   box-shadow:none !important;
-  transition:background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease;
+  transition:background 0.15s ease-out, border-color 0.15s ease-out;
 }
 header.site::before{display:none !important;}
 header.site.scrolled{
-  background:#902C25 !important;
-  backdrop-filter:blur(16px) !important;
-  -webkit-backdrop-filter:blur(16px) !important;
+  background:#B22B26 !important;
   border-bottom:1px solid rgba(255,246,232,0.36) !important;
+}
+header.site.scrolled::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute;inset:0;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
+  mix-blend-mode:multiply;opacity:0.85;z-index:-1;pointer-events:none;
 }
 .paper{
   position:relative;
@@ -402,7 +407,7 @@ var RSVP_CONFIG={
   const header = document.querySelector('header.site');
   if (!header) return;
   function checkScroll() {
-    if (window.scrollY > 20) {
+    if (window.scrollY > 5) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
