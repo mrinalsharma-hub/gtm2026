@@ -73,15 +73,15 @@ header.site::before{
 
 /* ── right · form card ──────────────────────────────── */
 .card{
-  background:#FFF8EE !important;backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);border-radius:28px;border:none;
+  background:rgba(255, 248, 238, 0.95) !important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:28px;border:none;
   padding:clamp(30px,4.2vw,56px);
   box-shadow:0 24px 60px rgba(62,32,12,.10);
 }
 .card::before{display:none}
 .fgroup+.fgroup{margin-top:48px}
 .flabel{
-  display:block;font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:24px;line-height:30px;color:#C81A1F;
+  display:block !important;font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;
+  font-size:24px !important;line-height:30px !important;color:#C81A1F !important;
 }
 .fhint, p.fhint{
   font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:13px !important;
@@ -104,36 +104,36 @@ textarea.farea{height:auto !important;min-height:120px !important;padding:14px 1
 .name-row{position:relative}
 .name-row .rm{
   position:absolute;right:10px;top:calc(50% + 7px);translate:0 -50%;
-  background:none;border:none;color:#C81A1F;font-size:17px;line-height:1;
-  cursor:pointer;padding:6px;font-family:'Cormorant Garamond',serif;
+  background:none;border:none;color:#C81A1F !important;font-size:17px;line-height:1;
+  cursor:pointer;padding:6px;font-family:'Cormorant Garamond',serif !important;
 }
 .add-link{
   display:inline-block;background:none;border:none;cursor:pointer;padding:0;
-  margin-top:14px;color:#C81A1F;font-family:'Cormorant Garamond',serif;
-  font-weight:600;font-size:18px;text-decoration:underline;text-underline-offset:4px;
+  margin-top:14px;color:#C81A1F !important;font-family:'Cormorant Garamond',serif !important;
+  font-weight:600 !important;font-size:18px !important;text-decoration:underline !important;text-underline-offset:4px !important;
 }
-.add-link:hover{color:#A81318}
+.add-link:hover{color:#A81318 !important}
 
 /* option rows (radio / checkbox bars) */
 .opt-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
 .opt-row{
-  display:flex;align-items:center;gap:14px;background:#FFF;
+  display:flex;align-items:center;gap:14px;background:#FFF !important;
   min-height:48px;border-radius:12px;padding:4px 14px;cursor:pointer;
-  font-family:'Roboto Flex',sans-serif;font-weight:400;font-size:17px;line-height:30px;
-  letter-spacing:0.17px;color:#19202F;
+  font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:17px !important;line-height:30px !important;
+  letter-spacing:0.17px !important;color:#19202F !important;
   border:none;transition:border-color .25s;
 }
 .opt-row:hover{border-color:transparent}
 .opt-row input{position:absolute;opacity:0;pointer-events:none}
-.opt-row .opt-text strong{font-weight:600}
+.opt-row .opt-text strong{font-weight:600 !important}
 .mark{flex:none;width:22px;height:22px;position:relative;transition:border-color .2s,background .2s}
 .mark.radio{border:1.5px solid rgba(25,32,47,.38);border-radius:50%}
-.opt-row input:checked+.mark.radio{border-color:#C81A1F}
+.opt-row input:checked+.mark.radio{border-color:#C81A1F !important}
 .opt-row input:checked+.mark.radio::after{
-  content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#C81A1F;transform:translate(-50%,-50%);
+  content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#C81A1F !important;transform:translate(-50%,-50%);
 }
 .mark.check{border:1.5px solid rgba(25,32,47,.38);border-radius:6px}
-.opt-row input:checked+.mark.check{background:#C81A1F;border-color:#C81A1F}
+.opt-row input:checked+.mark.check{background:#C81A1F !important;border-color:#C81A1F !important}
 .opt-row input:checked+.mark.check::after{
   content:"";position:absolute;left:50%;top:44%;width:5px;height:10px;
   border:solid #FFF;border-width:0 2px 2px 0;transform:translate(-50%,-50%) rotate(45deg);
@@ -144,15 +144,15 @@ textarea.farea{height:auto !important;min-height:120px !important;padding:14px 1
 .fsubmit{margin-top:44px}
 .send-btn{
   display:inline-flex;align-items:center;justify-content:center;
-  height:64px;padding:0 48px;background:#C81A1F;color:#FFF;border:none;cursor:pointer;
+  height:64px;padding:0 48px;background:#C81A1F !important;color:#FFF !important;border:none;cursor:pointer;
   border-radius:999px;
-  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;letter-spacing:.02em;
+  font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-size:24px !important;letter-spacing:.02em !important;
   transition:background .3s;
 }
-.send-btn:hover{background:#A81318}
+.send-btn:hover{background:#A81318 !important}
 #rsvp-status{
-  font-family:'Cormorant Garamond',serif;font-size:15px;
-  color:rgba(25,32,47,.72);margin-top:14px;min-height:1.3em;
+  font-family:'Cormorant Garamond',serif !important;font-size:15px !important;
+  color:rgba(25,32,47,.72) !important;margin-top:14px;min-height:1.3em;
 }
 footer.site{margin-top:0 !important;}
 
