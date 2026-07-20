@@ -17,25 +17,27 @@
    Burgues Script → Pinyon Script (web substitute)      */
 
 body{
+  position:relative;
   background:linear-gradient(180deg, var(--red-hi) 0%, var(--red) 35%, var(--red-lo) 100%) !important;
 }
+body::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.70;z-index:1;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
+  mix-blend-mode:overlay;
+}
 header.site{
-  background:linear-gradient(165deg, var(--red-hi), var(--red) 70%) !important;
+  position:sticky !important;top:0;z-index:100;
+  background:transparent !important;
   border-bottom:1px solid rgba(255,246,232,.18) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
 }
 .paper{
   position:relative;
   background:transparent !important;
   overflow:hidden;
 }
-.dg-bg-mesh{display:none !important;}
-.paper::after{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.70;z-index:1;
-  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:overlay;
-  transition:opacity 0.8s ease;
-}
-.paper>*{position:relative;z-index:2}
+.dg-bg-mesh, .paper::after{display:none !important;}
 #bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;mix-blend-mode:soft-light;opacity:0.35;}
 
 .rsvp-wrap{
