@@ -18,19 +18,22 @@
 
 body{
   position:relative;
-  background:linear-gradient(180deg, var(--red-hi) 0%, var(--red) 35%, var(--red-lo) 100%) !important;
+  background:linear-gradient(180deg, #A71F23 0%, #8C191D 35%, #6B1115 70%, #4D090C 100%) !important;
 }
 body::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.70;z-index:1;
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.40;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:overlay;
+  mix-blend-mode:multiply;
 }
 header.site{
   position:sticky !important;top:0;z-index:1000 !important;
-  background:linear-gradient(165deg, var(--red-hi), var(--red) 70%) !important;
+  background:linear-gradient(180deg, #A71F23 0%, #9C1D21 100%) !important;
   border-bottom:1px solid rgba(255,246,232,.18) !important;
-  backdrop-filter:blur(12px) !important;
-  -webkit-backdrop-filter:blur(12px) !important;
+}
+header.site::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.40;z-index:-1;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
+  mix-blend-mode:multiply;
 }
 .paper{
   position:relative;
