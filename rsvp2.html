@@ -27,14 +27,10 @@ body::before{
 }
 header.site{
   position:sticky !important;top:0;z-index:1000 !important;
-  background:linear-gradient(180deg, #A71F23 0%, #9C1D21 100%) !important;
-  border-bottom:1px solid rgba(255,246,232,.18) !important;
+  background:transparent !important;
+  border-bottom:1px solid rgba(255,246,232,0.36) !important;
 }
-header.site::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.60;z-index:-1;
-  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:overlay;
-}
+header.site::before{display:none !important;}
 .paper{
   position:relative;
   background:transparent !important;
