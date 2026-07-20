@@ -18,12 +18,12 @@
 
 body{
   position:relative;
-  background:linear-gradient(180deg, rgba(184,50,39,0.65) 0%, rgba(184,50,39,0.45) 55%, rgba(167,31,35,0.15) 85%, #A71F23 100%) !important;
+  background:linear-gradient(180deg, #B83227 0%, #9E2226 45%, #7F1418 80%, #5F0B0E 100%) !important;
 }
 body::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.60;z-index:1;
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.40;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:overlay;
+  mix-blend-mode:multiply;
 }
 header.site{
   position:sticky !important;top:0;z-index:1000 !important;
@@ -36,7 +36,7 @@ header.site::before{
   content:"" !important;
   display:block !important;
   position:absolute;top:0;left:0;width:100%;height:100px;
-  background:linear-gradient(180deg, rgba(167,31,35,0.85) 0%, rgba(140,25,29,0.50) 65%, rgba(107,17,21,0) 100%) !important;
+  background:linear-gradient(180deg, rgba(184,50,39,0.85) 0%, rgba(158,34,38,0.50) 65%, rgba(127,20,24,0) 100%) !important;
   backdrop-filter:blur(12px) !important;
   -webkit-backdrop-filter:blur(12px) !important;
   z-index:-1;pointer-events:none;
