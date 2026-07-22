@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Schedule · Garima weds Mrinal</title>
+<meta name="description" content="The celebrations — three days in Nainital, 20–22 November 2026">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400;500;600&family=Pinyon+Script&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=13">
+<style>
+/* ═══ Schedule page · Matched to RSVP 2 (rsvp2.html) ═══ */
+
+body{
+  position:relative;
+  background-color:#A71F23 !important;
+  background-image:linear-gradient(180deg, rgba(184,50,39,0.65) 0%, rgba(167,31,35,0.45) 45%, #A71F23 100%) !important;
+}
+body::before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.85;z-index:1;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
+  mix-blend-mode:multiply;
+}
+header.site{
+  --nav-alpha:0;
+  position:sticky !important;top:0;z-index:1000 !important;
+  background:rgba(178, 43, 38, calc(var(--nav-alpha) * 0.98)) !important;
+  border-bottom:1px solid rgba(255, 246, 232, calc(var(--nav-alpha) * 0.36)) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  box-shadow:none !important;
+}
+header.site::before{
+  content:"" !important;
+  display:block !important;
+  position:absolute;inset:0;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
+  mix-blend-mode:multiply;
+  opacity:calc(var(--nav-alpha) * 0.85) !important;
+  z-index:-1;pointer-events:none;
+}
+.paper{
+  position:relative;
+  background:transparent !important;
+  overflow:hidden;
+}
+.dg-bg-mesh, .paper::after{display:none !important;}
+
+.rsvp-wrap{
+  max-width:1340px;margin:0 auto;
+  padding:120px 20px 104px;
+  display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,720px);
+  gap:100px;align-items:start;
+}
+
+/* ── left · Please RSVP style title ────────────────── */
+.intro{color:#FFFFFF !important}
+.please{
+  display:block;font-family:'Pinyon Script',cursive;font-weight:400;
+  font-size:clamp(32px,3.4vw,46px);color:#FFFFFF !important;letter-spacing:.02em;
+  margin:0 0 -.52em .1em;position:relative;z-index:2;
+}
+.rsvp-word{
+  font-family:'Cormorant Upright',serif;font-weight:300;line-height:.95;
+  font-size:clamp(72px,9.5vw,124px);letter-spacing:.03em;color:#FFFFFF !important;margin:0;
+}
+.intro-lead{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:24px;line-height:30px;color:#FFFFFF !important;margin-top:48px;padding-left:60px !important;
+}
+.intro-copy{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:24px;line-height:30px;color:#FFFFFF !important;margin-top:1.2em;max-width:460px;padding-left:60px !important;
+}
+
+/* ── right · form card matching rsvp2.html ─────────── */
+.card{
+  position:relative;z-index:10 !important;
+  background:#F9E6CF !important;
+  backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+  border-radius:28px;border:none;
+  padding:clamp(36px, 5vw, 64px) clamp(40px, 8vw, 120px) !important;
+  box-shadow:0 24px 60px rgba(62,32,12,.10);
+}
+
+/* Schedule specific styles inside card */
+.sched-day{
+  font-family:'Cormorant Garamond',serif !important;
+  font-weight:600 !important;
+  font-size:28px !important;
+  line-height:34px !important;
+  color:#C81A1F !important;
+  border-bottom:1.5px solid rgba(200,26,31,0.25);
+  padding-bottom:8px;
+  margin-top:40px;
+  margin-bottom:20px;
+}
+.sched-day:first-child{margin-top:0;}
+
+.sched-item{
+  display:grid;
+  grid-template-columns:100px 1fr;
+  gap:16px;
+  margin-bottom:24px;
+  align-items:baseline;
+}
+.sched-time{
+  font-family:'Roboto Flex',sans-serif;
+  font-weight:600;
+  font-size:15px;
+  color:#C81A1F;
+  letter-spacing:0.3px;
+}
+.sched-info{}
+.sched-title{
+  font-family:'Cormorant Garamond',serif;
+  font-weight:600;
+  font-size:22px;
+  line-height:28px;
+  color:#19202F;
+  margin-bottom:4px;
+}
+.sched-desc{
+  font-family:'Roboto Flex',sans-serif;
+  font-weight:400;
+  font-size:15px;
+  line-height:1.5;
+  color:rgba(25,32,47,0.78);
+}
+
+.sched-divider{
+  border:none;
+  border-top:1px dashed rgba(200,26,31,0.25);
+  margin:48px 0;
+}
+
+.info-section-title{
+  font-family:'Cormorant Garamond',serif !important;
+  font-weight:600 !important;
+  font-size:28px !important;
+  color:#C81A1F !important;
+  margin-bottom:24px;
+}
+
+.info-cards{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  margin-bottom:36px;
+}
+.info-card-item{
+  background:#FFFFFF !important;
+  border-radius:16px;
+  padding:24px 28px;
+  border:1px solid rgba(200,26,31,0.12);
+}
+.info-card-item h3{
+  font-family:'Cormorant Garamond',serif !important;
+  font-weight:600 !important;
+  font-size:22px !important;
+  color:#C81A1F !important;
+  margin:0 0 8px 0;
+}
+.info-card-item p{
+  font-family:'Roboto Flex',sans-serif !important;
+  font-size:15px !important;
+  line-height:1.5 !important;
+  color:#19202F !important;
+  margin:0;
+}
+.info-card-item a{
+  color:#C81A1F;
+  text-decoration:underline;
+  font-weight:500;
+}
+
+.btn-rsvp-link{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:64px;padding:0 48px;background:#C81A1F !important;color:#FFF !important;border:none;cursor:pointer;
+  border-radius:999px;text-decoration:none;
+  font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-size:24px !important;letter-spacing:.02em !important;
+  transition:background .3s;
+  width:100%;
+}
+.btn-rsvp-link:hover{background:#A81318 !important}
+
+/* responsive */
+@media (max-width:960px){
+  .rsvp-wrap{padding:48px 20px 64px;grid-template-columns:1fr;gap:44px}
+  .intro{text-align:center !important;display:flex;flex-direction:column;align-items:center;}
+  .please{margin:0 auto -.52em !important;text-align:center !important;}
+  .intro-lead, .intro-copy{text-align:center !important;padding-left:0 !important;margin-left:auto !important;margin-right:auto !important;}
+  .sched-item{grid-template-columns:1fr;gap:4px;}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="index.html" aria-label="Home">G&amp;M</a>
+  <nav class="primary">
+    <a href="schedule.html" aria-current="page">Schedule</a>
+    <a href="travel.html">Travel &amp; Stay</a>
+    <a href="invite/">Invitation</a>
+    <a href="rsvp.html">RSVP</a>
+    <a href="rsvp2.html">RSVP 2</a>
+  </nav>
+  <button id="menu-btn" aria-label="Open menu">Menu</button>
+</header>
+<div id="menu-panel">
+  <button id="menu-close" aria-label="Close menu">Close</button>
+  <a href="index.html">Home</a>
+  <a href="schedule.html" aria-current="page">Schedule</a>
+  <a href="travel.html">Travel &amp; Stay</a>
+  <a href="invite/">Invitation</a>
+  <a href="rsvp.html">RSVP</a>
+  <a href="rsvp2.html">RSVP 2</a>
+</div>
+
+<main class="paper">
+  <div class="rsvp-wrap">
+
+    <aside class="intro">
+      <span class="please">The Celebrations</span>
+      <h1 class="rsvp-word">Schedule</h1>
+      <p class="intro-lead">Three days in Nainital<br>20 – 22 November 2026</p>
+      <p class="intro-copy">
+        Join us for three days of joy, color, tradition, and music in the hills.
+      </p>
+    </aside>
+
+    <section class="card">
+      <h2 class="sched-day">Friday · 20 November</h2>
+      <div class="sched-item">
+        <span class="sched-time">8:00 PM</span>
+        <div class="sched-info">
+          <div class="sched-title">Mehndi Night</div>
+          <div class="sched-desc">Henna, folk songs and a night of colour to open the festivities.</div>
+        </div>
+      </div>
+
+      <h2 class="sched-day">Saturday · 21 November</h2>
+      <div class="sched-item">
+        <span class="sched-time">10:00 AM</span>
+        <div class="sched-info">
+          <div class="sched-title">Baraat</div>
+          <div class="sched-desc">The groom arrives — drums, dancing and all.</div>
+        </div>
+      </div>
+      <div class="sched-item">
+        <span class="sched-time">11:30 AM</span>
+        <div class="sched-info">
+          <div class="sched-title">Varmaala</div>
+          <div class="sched-desc">The exchange of garlands.</div>
+        </div>
+      </div>
+      <div class="sched-item">
+        <span class="sched-time">1:00 PM</span>
+        <div class="sched-info">
+          <div class="sched-title">Pheras &amp; Saptapadi</div>
+          <div class="sched-desc">The wedding ceremony — seven vows around the sacred fire.</div>
+        </div>
+      </div>
+      <div class="sched-item">
+        <span class="sched-time">4:30 PM</span>
+        <div class="sched-info">
+          <div class="sched-title">Vidaai</div>
+          <div class="sched-desc">A tender farewell as the bride leaves with her new family.</div>
+        </div>
+      </div>
+      <div class="sched-item">
+        <span class="sched-time">7:00 PM</span>
+        <div class="sched-info">
+          <div class="sched-title">Party &amp; Dinner</div>
+          <div class="sched-desc">Music, toasts and a feast under the November sky.</div>
+        </div>
+      </div>
+
+      <h2 class="sched-day">Sunday · 22 November</h2>
+      <div class="sched-item">
+        <span class="sched-time">8:30 AM</span>
+        <div class="sched-info">
+          <div class="sched-title">Farewell Breakfast</div>
+          <div class="sched-desc">One last meal together before the mountains wave you goodbye.</div>
+        </div>
+      </div>
+
+      <hr class="sched-divider">
+
+      <h2 class="info-section-title">Good to know</h2>
+      <div class="info-cards">
+        <div class="info-card-item">
+          <h3>Venue</h3>
+          <p>Exact venue details will be shared here soon — all celebrations take place in and around Nainital.</p>
+        </div>
+        <div class="info-card-item">
+          <h3>What to wear</h3>
+          <p>Festive Indian wear. November evenings in the hills are cold — bring a warm layer for after sunset.</p>
+        </div>
+        <div class="info-card-item">
+          <h3>Questions</h3>
+          <p>Anything we haven't covered? Leave us a note with your <a href="rsvp.html">RSVP</a> and we'll get back to you.</p>
+        </div>
+      </div>
+
+      <a class="btn-rsvp-link" href="rsvp.html">RSVP now</a>
+    </section>
+
+  </div>
+</main>
+
+<script src="js/site.js"></script>
+<script>
+(function() {
+  const header = document.querySelector('header.site');
+  if (!header) return;
+  function updateHeader() {
+    const scrollY = window.scrollY || window.pageYOffset;
+    const progress = Math.min(1, Math.max(0, scrollY / 70));
+    header.style.setProperty('--nav-alpha', progress.toFixed(3));
+  }
+  window.addEventListener('scroll', updateHeader, { passive: true });
+  updateHeader();
+})();
+</script>
+
+</body>
+</html>
