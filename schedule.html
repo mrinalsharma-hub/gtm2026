@@ -219,11 +219,19 @@ body::before{
 
 /* responsive */
 @media (max-width:767px){
-  .rsvp-wrap{padding:48px 20px 64px;grid-template-columns:1fr;gap:44px}
+  .rsvp-wrap{padding:24px 0 64px !important;grid-template-columns:1fr;gap:32px;width:100% !important;}
   .intro, .card{grid-column:auto !important;}
-  .intro{text-align:center !important;display:flex;flex-direction:column;align-items:center;}
+  .intro{text-align:center !important;display:flex;flex-direction:column;align-items:center;padding:0 16px;}
   .please{margin:0 auto -.52em !important;text-align:center !important;}
   .intro-lead, .intro-copy{text-align:center !important;padding-left:0 !important;margin-left:auto !important;margin-right:auto !important;}
+  .figma-side-flowers{display:none !important;}
+  .card{
+    -webkit-transform:none !important;
+    transform:none !important;
+    width:100% !important;
+    border-radius:0 !important;
+    margin:0 !important;
+  }
 }
 </style>
 </head>
