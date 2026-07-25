@@ -129,6 +129,89 @@ nav.primary a[aria-current="page"]{
   border-bottom-color:#FFFFFF !important;
 }
 
+/* ── 1.5 Column Width Left Vertical Sidebar Navigation (Desktop >= 1024px) ── */
+@media screen and (min-width: 1024px) {
+  header.site {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    right: auto !important;
+    width: calc(100vw * (1.5 / 7)) !important;
+    min-width: 200px !important;
+    max-width: 280px !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    background: rgba(140, 22, 26, 0.52) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    border-right: 1px solid rgba(255, 246, 232, 0.18) !important;
+    box-shadow: 4px 0 28px rgba(18, 4, 2, 0.35) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 52px 18px 36px 18px !important;
+    z-index: 1000 !important;
+  }
+
+  .brand {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 38px !important;
+  }
+
+  .brand .logo-img {
+    width: 148px !important;
+    height: 148px !important;
+  }
+
+  nav.primary {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-top: 12px !important;
+  }
+
+  nav.primary a {
+    font-size: 17px !important;
+    letter-spacing: 2.8px !important;
+    padding: 10px 14px !important;
+    border-bottom: none !important;
+    border-left: 2px solid transparent !important;
+    display: block !important;
+    width: 90% !important;
+    text-align: center !important;
+    transition: all 0.25s ease !important;
+  }
+
+  nav.primary a:hover,
+  nav.primary a[aria-current="page"] {
+    border-bottom-color: transparent !important;
+    border-left-color: #FFFFFF !important;
+    background: rgba(255, 246, 232, 0.10) !important;
+    border-radius: 3px !important;
+  }
+
+  /* Shift main content 5.5 columns to the right */
+  body > main,
+  body > div.rsvp-wrap,
+  .site-footer,
+  footer {
+    margin-left: calc(100vw * (1.5 / 7)) !important;
+    width: calc(100% - calc(100vw * (1.5 / 7))) !important;
+    max-width: none !important;
+  }
+
+  body > header.site + main,
+  body > header.site + div.rsvp-wrap {
+    padding-top: 40px !important;
+  }
+}
+
 /* mobile menu */
 #menu-btn{
   display:none;background:none;border:none;cursor:pointer;color:#FFFFFF !important;
