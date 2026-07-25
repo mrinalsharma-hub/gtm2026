@@ -35,12 +35,26 @@ body::before{
 .dotted-rule .fill{fill:#FFFFFF !important;}
 .card{
   position:relative;z-index:10 !important;
-  background:url('images/deckle-paper-card.png?v=3') center center / 100% 100% no-repeat !important;
-  border-radius:0 !important;
+  background:#F8F3E8 !important;
+  border-radius:3px !important;
   padding:44px 34px !important;
-  box-shadow:none !important;
-  filter:drop-shadow(0 14px 28px rgba(28,6,3,0.32)) !important;
+  box-shadow:0 18px 48px rgba(18,4,2,0.32) !important;
+  filter:none !important;
+  overflow:hidden;
 }
+.card::before{
+  content:"";position:absolute;inset:0;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center / 360px auto;
+  opacity:0.35;mix-blend-mode:multiply;pointer-events:none;z-index:0;
+}
+.card::after{
+  content:"";position:absolute;inset:10px;
+  border:1px solid rgba(186,140,72,0.48);
+  outline:1px solid rgba(186,140,72,0.22);
+  outline-offset:-4px;
+  border-radius:2px;pointer-events:none;z-index:1;
+}
+.card>*{position:relative;z-index:2;}
 .card h3{color:#C81A1F !important;}
 .card p{color:rgba(25,32,47,0.82) !important;}
 .gal figure{border-color:rgba(255,246,232,0.25) !important;}

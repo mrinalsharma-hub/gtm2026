@@ -65,14 +65,27 @@ body::before{
 
 .card{
   position:relative;z-index:10 !important;
-  background:url('images/deckle-paper-card.png?v=3') center center / 100% 100% no-repeat !important;
+  background:#F8F3E8 !important;
   backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
-  border-radius:0 !important;border:none !important;
-  padding:clamp(52px, 7vw, 84px) clamp(44px, 7vw, 100px) !important;
-  box-shadow:none !important;
-  filter:drop-shadow(0 20px 42px rgba(28,6,3,0.38)) !important;
+  border-radius:3px !important;border:none !important;
+  padding:clamp(52px, 6.5vw, 84px) clamp(44px, 6.5vw, 92px) !important;
+  box-shadow:0 28px 72px rgba(18,4,2,0.38), 0 6px 20px rgba(18,4,2,0.22) !important;
+  filter:none !important;
+  overflow:hidden;
 }
-.card::before{display:none}
+.card::before{
+  content:"";position:absolute;inset:0;
+  background:url('images/paper-bg-flawless-seamless.jpg') repeat center / 360px auto;
+  opacity:0.38;mix-blend-mode:multiply;pointer-events:none;z-index:0;
+}
+.card::after{
+  content:"";position:absolute;inset:16px;
+  border:1px solid rgba(186,140,72,0.52);
+  outline:1px solid rgba(186,140,72,0.25);
+  outline-offset:-6px;
+  border-radius:2px;pointer-events:none;z-index:1;
+}
+.card>*{position:relative;z-index:2;}
 .fgroup+.fgroup{margin-top:48px}
 .flabel{
   display:block !important;font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;
