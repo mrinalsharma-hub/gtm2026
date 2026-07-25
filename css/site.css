@@ -89,7 +89,6 @@ header.site::before{
   width:156px;
   height:156px;
   object-fit:contain;
-  border-radius:50%;
   filter:none !important;
   transition:transform .35s cubic-bezier(.33,1,.68,1);
   overflow:visible !important;
