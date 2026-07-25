@@ -307,6 +307,53 @@ body::before{
         <span>WEEKEND</span>
       </h2>
 
+      <!-- Events List from Figma-Agent -->
+      <div class="figma-schedule-timeline">
+        
+        <!-- Day 1: Nov 20 -->
+        <div class="figma-timeline-row">
+          <div class="figma-timeline-date">
+            <span class="figma-date-month">NOV</span>
+            <span class="figma-date-day">20</span>
+          </div>
+          <div class="figma-timeline-events">
+            <div class="figma-event-item">
+              <p class="figma-event-eyebrow">BY 6PM</p>
+              <h3 class="figma-event-title">Arrive in Nainital</h3>
+              <p class="figma-event-desc">Welcome to Nainital! Take the evening to settle in, refresh, and soak up the mountain air. We’ve kept tonight entirely free so you can unwind at your own pace after your journey.</p>
+            </div>
+            
+            <div class="figma-event-item">
+              <p class="figma-event-eyebrow">7:30 PM ONWARDS AT TBC</p>
+              <h3 class="figma-event-title">Mehndi</h3>
+              <p class="figma-event-desc">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet ceremonies, we couldn't resist! Join us for a cozy, informal henna session—especially for the ladies!</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Day 2: Nov 21 -->
+        <div class="figma-timeline-row">
+          <div class="figma-timeline-date">
+            <span class="figma-date-month">NOV</span>
+            <span class="figma-date-day">21</span>
+          </div>
+          <div class="figma-timeline-events">
+            <div class="figma-event-item">
+              <p class="figma-event-eyebrow">10 AM ONWARDS</p>
+              <h3 class="figma-event-title">Day Wedding</h3>
+              <p class="figma-event-desc">Venue: Balrampur House Nainital</p>
+              <img src="images/day-wedding-venue.png" alt="Balrampur House Nainital" class="figma-event-image">
+            </div>
+            
+            <div class="figma-event-item">
+              <p class="figma-event-eyebrow">7:00 PM ONWARDS AT TBC</p>
+              <h3 class="figma-event-title">Evening Party</h3>
+              <p class="figma-event-desc">Music, toast and a feast under the November sky.<br>Dress code: TBC</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
 
     </section>
 
@@ -330,6 +377,102 @@ body::before{
     -webkit-clip-path: none !important;
     transform: none !important;
     -webkit-transform: none !important;
+  }
+  
+  html body section.card .figma-schedule-timeline {
+    width: 100% !important;
+    max-width: 540px !important;
+    margin: 50px auto 0 auto !important;
+    padding-bottom: 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 48px !important;
+    text-align: left !important;
+    position: relative !important;
+    z-index: 100 !important;
+  }
+  
+  html body section.card .figma-timeline-row {
+    display: flex !important;
+    gap: 24px !important;
+    align-items: flex-start !important;
+  }
+  
+  html body section.card .figma-timeline-date {
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: right !important;
+    color: #ac2525 !important;
+    font-family: 'Cormorant Infant', 'Cormorant Garamond', serif !important;
+    line-height: 0.8 !important;
+    flex-shrink: 0 !important;
+    min-width: 64px !important;
+    letter-spacing: -0.04em !important;
+  }
+  
+  html body section.card .figma-date-month {
+    font-size: 26px !important;
+    font-weight: 500 !important;
+  }
+  
+  html body section.card .figma-date-day {
+    font-size: 38px !important;
+    font-weight: 500 !important;
+    margin-top: 4px !important;
+  }
+
+  html body section.card .figma-timeline-events {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 36px !important;
+    flex: 1 !important;
+  }
+  
+  html body section.card .figma-event-item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 6px !important;
+  }
+  
+  html body section.card .figma-event-eyebrow {
+    color: #08526f !important;
+    font-family: 'Cormorant Infant', serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    line-height: 1.2 !important;
+  }
+  
+  html body section.card .figma-event-title {
+    color: #ac2525 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 28px !important;
+    font-weight: 500 !important;
+    margin: 0 !important;
+    line-height: 1 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+  }
+  
+  html body section.card .figma-event-desc {
+    color: #0b5673 !important;
+    font-family: 'Cormorant Infant', serif !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+  }
+  
+  html body section.card .figma-event-image {
+    width: 100% !important;
+    max-width: 380px !important;
+    border-radius: 9px !important;
+    margin-top: 6px !important;
+    display: block !important;
+    object-fit: cover !important;
+    box-shadow: none !important;
   }
 </style>
 
