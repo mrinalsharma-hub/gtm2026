@@ -15,14 +15,15 @@
 
 body{
   position:relative;
+  min-height:100vh;
   background-color:#A71F23 !important;
-  background-image:linear-gradient(180deg, rgba(184,50,39,0.65) 0%, rgba(167,31,35,0.45) 45%, #A71F23 100%) !important;
+  background-image:linear-gradient(180deg, rgba(184,50,39,0.70) 0%, rgba(167,31,35,0.50) 45%, #A71F23 100%) !important;
+  background-attachment:fixed !important;
 }
 body::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.85;z-index:1;
+  content:"";position:fixed !important;inset:0;pointer-events:none;opacity:0.85;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
   mix-blend-mode:multiply;
-}
 }
 .paper{
   position:relative;
@@ -62,7 +63,7 @@ body::before{
 
 .card{
   position:relative;z-index:10 !important;
-  background:#F5EFE2 url('images/pressed-paper-texture.jpg?v=5') no-repeat center center / cover !important;
+  background:#F4EEDF url('images/pressed-paper-texture.jpg?v=6') repeat center top / 600px auto !important;
   backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
   border-radius:3px !important;border:none !important;
   padding:clamp(52px, 6.5vw, 84px) clamp(44px, 6.5vw, 92px) !important;
