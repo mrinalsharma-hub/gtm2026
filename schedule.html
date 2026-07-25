@@ -78,20 +78,17 @@ body::before{
 }
 .card::before, .card::after{display:none !important;}
 
-/* Top Decorative Block Print Red Pattern Band */
-.figma-top-pattern{
-  height:16px;
+/* Top Ornamental Red Block-Print Pattern Band from Figma */
+.figma-top-border-wrap{
   width:100%;
-  background-color:#AC2525;
-  background-image:repeating-linear-gradient(
-    45deg,
-    #931C1C,
-    #931C1C 6px,
-    #AC2525 6px,
-    #AC2525 12px
-  );
-  border-bottom:2px solid #7D1515;
-  margin-bottom:28px;
+  padding:14px 18px 0 18px;
+  box-sizing:border-box;
+  margin-bottom:16px;
+}
+.figma-top-border-img{
+  width:100%;
+  height:auto;
+  display:block;
 }
 
 /* Mandala Flower Centerpiece */
@@ -210,7 +207,9 @@ body::before{
     </aside>
 
     <section class="card figma-card-design">
-      <div class="figma-top-pattern" aria-hidden="true"></div>
+      <div class="figma-top-border-wrap">
+        <img src="images/figma-top-border-band.png?v=2" alt="" class="figma-top-border-img">
+      </div>
 
       <div class="figma-flower-wrap">
         <img src="images/figma-mandala-flower.svg" alt="" class="figma-mandala-img">
