@@ -55,13 +55,15 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:400;line-height:1.15}
 /* ── header / nav (Navbar) ──────────────────────────── */
 header.site{
   position:fixed !important;top:0;left:0;right:0;z-index:1000 !important;
-  min-height:72px !important;
-  background:transparent !important;
-  border-bottom:none !important;
+  height:72px !important;
+  background:rgba(140, 22, 26, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid rgba(255, 246, 232, 0.1) !important;
   outline:none !important;
-  box-shadow:none !important;
-  display:flex;align-items:flex-start;justify-content:space-between;
-  padding:24px clamp(20px,4vw,48px) 0 !important;color:var(--ivory);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  display:flex;align-items:center !important;justify-content:space-between;
+  padding:0 clamp(20px,4vw,48px) !important;color:var(--ivory);
   transition:none !important;
   overflow:visible !important;
 }
@@ -86,8 +88,8 @@ header.site::before{
 }
 .brand .logo-img{
   display:block;
-  width:156px;
-  height:156px;
+  width:56px;
+  height:56px;
   object-fit:contain;
   filter:none !important;
   transition:transform .35s cubic-bezier(.33,1,.68,1);
@@ -107,8 +109,8 @@ header.site::before{
     margin-top:0;
   }
   .brand .logo-img{
-    width:104px;
-    height:104px;
+    width:48px;
+    height:48px;
   }
 }
 html{
@@ -116,7 +118,7 @@ html{
   scrollbar-gutter:stable;
 }
 
-nav.primary{display:flex;align-items:center;gap:clamp(16px,3vw,36px);margin-top:16px}
+nav.primary{display:flex;align-items:center;gap:clamp(16px,2vw,32px);margin-top:0}
 nav.primary a{
   font-family:'Cormorant Upright','Cormorant Garamond',serif !important;
   font-size:18px !important;font-weight:400 !important;letter-spacing:2.5px !important;text-transform:uppercase !important;
@@ -129,96 +131,7 @@ nav.primary a[aria-current="page"]{
   border-bottom-color:#FFFFFF !important;
 }
 
-/* ── 8-Column Grid Architecture (Desktop >= 1024px) ──
-   Column Breakdown:
-   - 1.5 cols (18.75%) = Left Persistent Vertical Navbar
-   - 6.5 cols (81.25%) = Main Content Region
-     ├─ 6.0 cols (75.00%) = Card + Botanical Flower Composition
-     └─ 0.5 col  ( 6.25%) = Reserved Far-Right Crimson Negative Space (guarantees zero cropping)
-*/
-@media screen and (min-width: 1024px) {
-  header.site {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    bottom: 0 !important;
-    right: auto !important;
-    width: calc(100vw * (1.5 / 8)) !important;
-    min-width: 190px !important;
-    max-width: 260px !important;
-    height: 100vh !important;
-    min-height: 100vh !important;
-    background: rgba(140, 22, 26, 0.52) !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border-right: 1px solid rgba(255, 246, 232, 0.18) !important;
-    box-shadow: 4px 0 28px rgba(18, 4, 2, 0.35) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    padding: 52px 16px 36px 16px !important;
-    z-index: 1000 !important;
-  }
-
-  .brand {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    margin-bottom: 38px !important;
-  }
-
-  .brand .logo-img {
-    width: 142px !important;
-    height: 142px !important;
-  }
-
-  nav.primary {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 24px !important;
-    width: 100% !important;
-    margin-top: 12px !important;
-  }
-
-  nav.primary a {
-    font-size: 16.5px !important;
-    letter-spacing: 2.6px !important;
-    padding: 10px 12px !important;
-    border-bottom: none !important;
-    border-left: 2px solid transparent !important;
-    display: block !important;
-    width: 92% !important;
-    text-align: center !important;
-    transition: all 0.25s ease !important;
-  }
-
-  nav.primary a:hover,
-  nav.primary a[aria-current="page"] {
-    border-bottom-color: transparent !important;
-    border-left-color: #FFFFFF !important;
-    background: rgba(255, 246, 232, 0.10) !important;
-    border-radius: 3px !important;
-  }
-
-  /* Main Workspace Content: Occupies remaining 6.5 cols, with 0.5 col reserved right margin */
-  body > main,
-  body > div.rsvp-wrap,
-  .site-footer,
-  footer {
-    margin-left: calc(100vw * (1.5 / 8)) !important;
-    width: calc(100vw * (6.5 / 8)) !important;
-    padding-right: calc(100vw * (0.5 / 8)) !important;
-    box-sizing: border-box !important;
-    max-width: none !important;
-  }
-
-  body > header.site + main,
-  body > header.site + div.rsvp-wrap {
-    padding-top: 40px !important;
-  }
-}
+/* Left Sidebar layout removed per user request for thin top navbar */
 
 /* mobile menu */
 #menu-btn{
