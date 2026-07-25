@@ -26,23 +26,6 @@ body::before{
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
   mix-blend-mode:multiply;
 }
-header.site{
-  --nav-alpha:0;
-  position:sticky !important;top:0;z-index:1000 !important;
-  background:rgba(178, 43, 38, calc(var(--nav-alpha) * 0.98)) !important;
-  border-bottom:1px solid rgba(255, 246, 232, calc(var(--nav-alpha) * 0.36)) !important;
-  backdrop-filter:none !important;
-  -webkit-backdrop-filter:none !important;
-  box-shadow:none !important;
-}
-header.site::before{
-  content:"" !important;
-  display:block !important;
-  position:absolute;inset:0;
-  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:multiply;
-  opacity:calc(var(--nav-alpha) * 0.85) !important;
-  z-index:-1;pointer-events:none;
 }
 .paper{
   position:relative;
@@ -197,22 +180,20 @@ footer.site{margin-top:0 !important;}
 <header class="site">
   <a class="brand" href="index.html" aria-label="Home">G&amp;M</a>
   <nav class="primary">
+    <a href="invite/">Invitation</a>
     <a href="schedule.html">Schedule</a>
     <a href="travel.html">Travel &amp; Stay</a>
-    <a href="invite/">Invitation</a>
-    <a href="rsvp.html">RSVP</a>
-    <a href="rsvp2.html" aria-current="page">RSVP 2</a>
+    <a href="rsvp2.html" aria-current="page">RSVP Please</a>
   </nav>
   <button id="menu-btn" aria-label="Open menu">Menu</button>
 </header>
 <div id="menu-panel">
   <button id="menu-close" aria-label="Close menu">Close</button>
   <a href="index.html">Home</a>
+  <a href="invite/">Invitation</a>
   <a href="schedule.html">Schedule</a>
   <a href="travel.html">Travel &amp; Stay</a>
-  <a href="invite/">Invitation</a>
-  <a href="rsvp.html">RSVP</a>
-  <a href="rsvp2.html" aria-current="page">RSVP 2</a>
+  <a href="rsvp2.html" aria-current="page">RSVP Please</a>
 </div>
 
 <main class="paper">
@@ -400,19 +381,7 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script>
-(function() {
-  const header = document.querySelector('header.site');
-  if (!header) return;
-  function updateHeader() {
-    const scrollY = window.scrollY || window.pageYOffset;
-    const progress = Math.min(1, Math.max(0, scrollY / 70));
-    header.style.setProperty('--nav-alpha', progress.toFixed(3));
-  }
-  window.addEventListener('scroll', updateHeader, { passive: true });
-  updateHeader();
-})();
-</script>
+
 
 </body>
 </html>
