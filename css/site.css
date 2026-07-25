@@ -86,8 +86,8 @@ header.site::before{
 }
 .brand .logo-img{
   display:block;
-  width:140px;
-  height:140px;
+  width:156px;
+  height:156px;
   object-fit:contain;
   border-radius:50%;
   filter:none !important;
@@ -108,8 +108,8 @@ header.site::before{
     margin-top:0;
   }
   .brand .logo-img{
-    width:96px;
-    height:96px;
+    width:104px;
+    height:104px;
   }
 }
 html{
