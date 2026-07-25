@@ -97,17 +97,22 @@ body::before{
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
-/* Top Ornamental Band (Figma Master Node 298:106 & 328:376: 100% flush top-edge alignment with zero ecru margin above top red stroke) */
+/* Top Ornamental Band (Figma Master Node 298:106 & 328:376: 100% dead flush at top-left-right edges of card) */
 .figma-top-border-wrap{
+  position:absolute !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
   width:100% !important;
-  padding:0 !important;
-  box-sizing:border-box !important;
-  margin:0 !important;
+  height:auto !important;
+  z-index:25 !important;
+  pointer-events:none !important;
   line-height:0 !important;
   border-top-left-radius:3px !important;
   border-top-right-radius:3px !important;
   overflow:hidden !important;
 }
+.figma-top-border-wrap svg,
 .figma-top-border-img{
   width:100% !important;
   height:auto !important;
@@ -292,8 +297,73 @@ body::before{
     <section class="card figma-card-design">
       <img src="images/figma-side-flowers-flush-v3.png?v=77777" alt="" class="figma-side-flowers" style="position: absolute !important; top: 12% !important; right: calc(-32% + 9px) !important; width: 62% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important; filter: drop-shadow(6px 12px 20px rgba(18, 2, 4, 0.26)) drop-shadow(2px 4px 6px rgba(18, 2, 4, 0.16)) !important;" aria-hidden="true">
 
-      <div class="figma-top-border-wrap">
-        <img src="images/figma-top-border-master.png?v=999" alt="" class="figma-top-border-img">
+      <div class="figma-top-border-wrap" aria-hidden="true">
+        <svg preserveAspectRatio="none" overflow="visible" style="display:block;width:100%;height:auto;" viewBox="0 0 1417 93" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Border">
+            <g id="Rectangle_14"><rect x="0.5" y="5.5" width="1415" height="80" fill="url(#pattern0_328_452)"/></g>
+            <g id="Line_2"><line x1="0.5" y1="90.5" x2="1416.5" y2="90.5" stroke="#AC2525" stroke-width="4"/></g>
+            <g id="Line_3"><line x1="0.5" y1="2.5" x2="1416.5" y2="2.5" stroke="#AC2525" stroke-width="4"/></g>
+          </g>
+          <defs>
+            <pattern id="pattern0_328_452" patternUnits="userSpaceOnUse" patternTransform="matrix(152.55 0 0 81 631.05 4.325)" preserveAspectRatio="none" viewBox="-0.5 -0.5 113 60" width="1" height="1">
+              <use xlink:href="#pattern0_328_452_inner" transform="translate(-113 -60)"/>
+              <use xlink:href="#pattern0_328_452_inner" transform="translate(0 -60)"/>
+              <use xlink:href="#pattern0_328_452_inner" transform="translate(-113 0)"/>
+              <g id="pattern0_328_452_inner">
+                <rect id="Rectangle_12" x="56.5684" y="0.585786" width="99.8858" height="99.8858" rx="2" transform="rotate(45 56.5684 0.585786)" stroke="#AC2525" stroke-width="2"/>
+                <g id="Rectangle_13">
+                  <mask id="path-3-inside-1_328_452" fill="white">
+                    <rect x="56.5684" y="8" width="97.8858" height="97.8858" rx="1" transform="rotate(45 56.5684 8)"/>
+                  </mask>
+                  <rect x="56.5684" y="8" width="97.8858" height="97.8858" rx="1" transform="rotate(45 56.5684 8)" stroke="#AC2525" stroke-width="4" mask="url(#path-3-inside-1_328_452)"/>
+                </g>
+                <g id="Floral" clip-path="url(#clip1_328_452)">
+                  <g id="Group_1">
+                    <path id="Ellipse_18" d="M57 56.5C61.173 56.5 64.5 59.6639 64.5 63.5C64.5 67.3361 61.173 70.5 57 70.5C52.827 70.5 49.5 67.3361 49.5 63.5C49.5 59.6639 52.827 56.5 57 56.5Z" fill="#AC2525" stroke="#AC2525"/>
+                    <path id="Polygon_1" d="M56.625 59L49.7975 41.0119C49.3591 39.8568 49.2745 38.5974 49.5544 37.394C51.2959 29.908 61.9541 29.908 63.6956 37.394C63.9755 38.5974 63.8909 39.8568 63.4525 41.0119L56.625 59Z" fill="#AC2525"/>
+                    <path id="Polygon_2" d="M57.4315 58.9998L62.8357 46.028C63.4625 44.5234 64.6685 43.3343 66.1818 42.7288L66.6585 42.5381C69.765 41.2951 72.9875 44.0567 72.2349 47.3169C71.8366 49.0422 70.7748 50.5411 69.2794 51.4891L57.4315 58.9998Z" fill="#AC2525"/>
+                    <path id="Polygon_3" d="M58.6246 59.0175L72.1254 50.5991C73.4246 49.789 74.9784 49.4903 76.4854 49.7611L77.1702 49.8842C80.0237 50.397 81.4205 53.6627 79.8205 56.0804C78.6067 57.9145 76.5539 59.0175 74.3545 59.0175L58.6246 59.0175Z" fill="#AC2525"/>
+                    <path id="Polygon_4" d="M55.6254 59.0004L50.5667 46.102C49.9596 44.554 48.7397 43.3258 47.1959 42.7081L46.8055 42.5519C43.6851 41.3033 40.4481 44.0773 41.2041 47.3521C41.5978 49.0574 42.6371 50.5436 44.1037 51.4985L55.6254 59.0004Z" fill="#AC2525"/>
+                    <path id="Polygon_5" d="M54.6245 59.0168L40.8112 50.5689C39.5164 49.777 37.9761 49.4879 36.4823 49.7563L35.775 49.8835C32.9215 50.3962 31.5247 53.662 33.1247 56.0796C34.3385 57.9137 36.3913 59.0168 38.5907 59.0168L54.6245 59.0168Z" fill="#AC2525"/>
+                  </g>
+                </g>
+                <g id="Floral_2" clip-path="url(#clip2_328_452)">
+                  <g id="Group_1_2">
+                    <path id="Ellipse_18_2" d="M112 4.5C107.827 4.5 104.5 1.33608 104.5 -2.5C104.5 -6.33609 107.827 -9.5 112 -9.5C116.173 -9.5 119.5 -6.33609 119.5 -2.5C119.5 1.33609 116.173 4.5 112 4.5Z" fill="#AC2525" stroke="#AC2525"/>
+                    <path id="Polygon_1_2" d="M112.375 2L119.202 19.9881C119.641 21.1432 119.726 22.4026 119.446 23.606C117.704 31.092 107.046 31.092 105.304 23.606C105.024 22.4026 105.109 21.1432 105.548 19.9881L112.375 2Z" fill="#AC2525"/>
+                    <path id="Polygon_2_2" d="M111.568 2.00018L106.164 14.972C105.537 16.4766 104.332 17.6657 102.818 18.2712L102.342 18.4619C99.235 19.7049 96.0125 16.9433 96.7651 13.6831C97.1634 11.9578 98.2252 10.4589 99.7206 9.51093L111.568 2.00018Z" fill="#AC2525"/>
+                    <path id="Polygon_3_2" d="M110.375 1.98248L96.8746 10.4009C95.5754 11.211 94.0216 11.5097 92.5146 11.2389L91.8298 11.1158C88.9763 10.603 87.5795 7.33729 89.1795 4.91965C90.3933 3.08555 92.4461 1.98248 94.6455 1.98248L110.375 1.98248Z" fill="#AC2525"/>
+                    <path id="Polygon_4_2" d="M113.375 1.9996L118.433 14.898C119.04 16.446 120.26 17.6742 121.804 18.2919L122.194 18.4481C125.315 19.6967 128.552 16.9227 127.796 13.6479C127.402 11.9426 126.363 10.4564 124.896 9.50147L113.375 1.9996Z" fill="#AC2525"/>
+                    <path id="Polygon_5_2" d="M114.375 1.98321L128.189 10.4311C129.484 11.223 131.024 11.5121 132.518 11.2437L133.225 11.1165C136.078 10.6038 137.475 7.33803 135.875 4.92038C134.661 3.08628 132.609 1.98322 130.409 1.98321L114.375 1.98321Z" fill="#AC2525"/>
+                  </g>
+                </g>
+                <g id="Dots">
+                  <circle cx="17.61" cy="57.8" r="1.5" fill="#AC2525"/>
+                  <circle cx="12.05" cy="63.39" r="1.5" fill="#AC2525"/>
+                  <circle cx="23.25" cy="52.14" r="1.5" fill="#AC2525"/>
+                  <circle cx="28.90" cy="46.47" r="1.5" fill="#AC2525"/>
+                  <circle cx="34.54" cy="40.80" r="1.5" fill="#AC2525"/>
+                  <circle cx="40.19" cy="35.13" r="1.5" fill="#AC2525"/>
+                  <circle cx="45.83" cy="29.46" r="1.5" fill="#AC2525"/>
+                  <circle cx="51.47" cy="23.79" r="1.5" fill="#AC2525"/>
+                  <circle cx="57.12" cy="18.12" r="1.5" fill="#AC2525"/>
+                  <circle cx="98.11" cy="56.07" r="1.5" fill="#AC2525"/>
+                  <circle cx="103.68" cy="61.64" r="1.5" fill="#AC2525"/>
+                  <circle cx="92.45" cy="50.42" r="1.5" fill="#AC2525"/>
+                  <circle cx="86.79" cy="44.77" r="1.5" fill="#AC2525"/>
+                  <circle cx="81.13" cy="39.11" r="1.5" fill="#AC2525"/>
+                  <circle cx="75.47" cy="33.46" r="1.5" fill="#AC2525"/>
+                  <circle cx="69.81" cy="27.80" r="1.5" fill="#AC2525"/>
+                  <circle cx="64.15" cy="22.15" r="1.5" fill="#AC2525"/>
+                  <circle cx="58.49" cy="16.50" r="1.5" fill="#AC2525"/>
+                </g>
+              </g>
+            </pattern>
+            <clipPath id="clip1_328_452"><rect width="55" height="52" fill="white" transform="translate(29 7)"/></clipPath>
+            <clipPath id="clip2_328_452"><rect width="55" height="52" fill="white" transform="translate(140 54) rotate(-180)"/></clipPath>
+            <clipPath id="clip3_328_452"><rect width="55" height="52" fill="white" transform="translate(28 54) rotate(-180)"/></clipPath>
+          </defs>
+        </svg>
       </div>
 
       <div class="figma-flower-wrap">
