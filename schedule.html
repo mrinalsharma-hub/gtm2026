@@ -84,61 +84,72 @@ body::before{
 .card>*{position:relative;z-index:2;}
 
 /* Schedule specific styles inside card */
+/* Schedule handwritten calligraphy ink typography */
 .sched-day{
   font-family:'Cormorant Garamond',serif !important;
   font-weight:600 !important;
-  font-size:28px !important;
-  line-height:34px !important;
-  color:#C81A1F !important;
-  border-bottom:1.5px solid rgba(200,26,31,0.25);
-  padding-bottom:8px;
-  margin-top:40px;
-  margin-bottom:20px;
+  font-style:italic !important;
+  font-size:30px !important;
+  line-height:36px !important;
+  color:#701115 !important;
+  text-shadow:0.2px 0.2px 0.5px rgba(112,17,21,0.5), 0 0 0.3px rgba(112,17,21,0.6) !important;
+  border-bottom:1px solid rgba(112,17,21,0.32);
+  padding-bottom:10px;
+  margin-top:44px;
+  margin-bottom:24px;
+  letter-spacing:0.02em;
 }
 .sched-day:first-child{margin-top:0;}
 
 .sched-item{
   display:grid;
-  grid-template-columns:100px 1fr;
-  gap:16px;
-  margin-bottom:24px;
+  grid-template-columns:110px 1fr;
+  gap:18px;
+  margin-bottom:26px;
   align-items:baseline;
 }
 .sched-time{
-  font-family:'Roboto Flex',sans-serif;
-  font-weight:600;
-  font-size:15px;
-  color:#C81A1F;
-  letter-spacing:0.3px;
+  font-family:'Cormorant Garamond',serif !important;
+  font-weight:600 !important;
+  font-size:18px !important;
+  color:#701115 !important;
+  text-shadow:0.15px 0.15px 0.4px rgba(112,17,21,0.45) !important;
+  letter-spacing:0.04em !important;
 }
 .sched-info{}
 .sched-title{
-  font-family:'Cormorant Garamond',serif;
-  font-weight:600;
-  font-size:22px;
-  line-height:28px;
-  color:#19202F;
-  margin-bottom:4px;
+  font-family:'Cormorant Garamond',serif !important;
+  font-weight:600 !important;
+  font-size:24px !important;
+  line-height:30px !important;
+  color:#261713 !important;
+  text-shadow:0.2px 0.2px 0.45px rgba(38,23,19,0.5) !important;
+  margin-bottom:5px;
+  letter-spacing:0.01em;
 }
 .sched-desc{
-  font-family:'Roboto Flex',sans-serif;
-  font-weight:400;
-  font-size:15px;
-  line-height:1.5;
-  color:rgba(25,32,47,0.78);
+  font-family:'Cormorant Garamond',serif !important;
+  font-weight:400 !important;
+  font-style:italic !important;
+  font-size:18px !important;
+  line-height:1.55 !important;
+  color:rgba(38,23,19,0.86) !important;
+  text-shadow:0.15px 0.15px 0.35px rgba(38,23,19,0.35) !important;
 }
 
 .sched-divider{
   border:none;
-  border-top:1px dashed rgba(200,26,31,0.25);
+  border-top:1px dashed rgba(112,17,21,0.28);
   margin:48px 0;
 }
 
 .info-section-title{
   font-family:'Cormorant Garamond',serif !important;
   font-weight:600 !important;
-  font-size:28px !important;
-  color:#C81A1F !important;
+  font-style:italic !important;
+  font-size:30px !important;
+  color:#701115 !important;
+  text-shadow:0.2px 0.2px 0.5px rgba(112,17,21,0.5) !important;
   margin-bottom:24px;
 }
 
@@ -149,23 +160,25 @@ body::before{
   margin-bottom:36px;
 }
 .info-card-item{
-  background:#FFFFFF !important;
-  border-radius:16px;
-  padding:24px 28px;
-  border:1px solid rgba(200,26,31,0.12);
+  background:rgba(255,251,244,0.75) !important;
+  border-radius:12px;
+  padding:22px 26px;
+  border:1px solid rgba(112,17,21,0.18);
 }
 .info-card-item h3{
   font-family:'Cormorant Garamond',serif !important;
   font-weight:600 !important;
-  font-size:22px !important;
-  color:#C81A1F !important;
+  font-size:23px !important;
+  color:#701115 !important;
+  text-shadow:0.15px 0.15px 0.4px rgba(112,17,21,0.4) !important;
   margin:0 0 8px 0;
 }
 .info-card-item p{
-  font-family:'Roboto Flex',sans-serif !important;
-  font-size:15px !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:18px !important;
   line-height:1.5 !important;
-  color:#19202F !important;
+  color:#261713 !important;
+  text-shadow:0.15px 0.15px 0.3px rgba(38,23,19,0.3) !important;
   margin:0;
 }
 .info-card-item a{
