@@ -77,11 +77,11 @@ body::before{
 }
 .card::before, .card::after{display:none !important;}
 
-/* Botanical Floral Illustration Bouquet from Figma node 328:392 (Shifted 30px left) */
+/* Botanical Floral Illustration Bouquet from Figma node 328:392 (Direct calc offset shift left) */
 .figma-side-flowers{
   position:absolute !important;
   top:13% !important;
-  right:-22% !important;
+  right:calc(-22% + 40px) !important;
   width:60% !important;
   max-width:560px !important;
   height:auto !important;
@@ -90,8 +90,8 @@ body::before{
   filter:drop-shadow(6px 16px 32px rgba(18,4,2,0.45));
   clip-path:none !important;
   -webkit-clip-path:none !important;
-  transform:translateX(-30px) !important;
-  -webkit-transform:translateX(-30px) !important;
+  transform:none !important;
+  -webkit-transform:none !important;
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
@@ -243,7 +243,7 @@ body::before{
     </aside>
 
     <section class="card figma-card-design">
-      <img src="images/figma-side-flowers.png?v=88" alt="" class="figma-side-flowers" aria-hidden="true">
+      <img src="images/figma-side-flowers.png?v=99" alt="" class="figma-side-flowers" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
         <img src="images/figma-top-border-perfect.png?v=50" alt="" class="figma-top-border-img">
