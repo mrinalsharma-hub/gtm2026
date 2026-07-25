@@ -97,13 +97,16 @@ body::before{
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
-/* Top Ornamental Band (Figma Node 328:406 & 328:376: top gap 42px / 2123px canvas height = 1.98%; width 1415px full edge-to-edge flush) */
+/* Top Ornamental Band (Figma Master Node 298:106 & 328:376: 100% flush top-edge alignment with zero ecru margin above top red stroke) */
 .figma-top-border-wrap{
   width:100% !important;
-  padding:1.98% 0 0 0 !important;
+  padding:0 !important;
   box-sizing:border-box !important;
   margin:0 !important;
   line-height:0 !important;
+  border-top-left-radius:3px !important;
+  border-top-right-radius:3px !important;
+  overflow:hidden !important;
 }
 .figma-top-border-img{
   width:100% !important;
@@ -290,7 +293,7 @@ body::before{
       <img src="images/figma-side-flowers-flush-v3.png?v=77777" alt="" class="figma-side-flowers" style="position: absolute !important; top: 12% !important; right: calc(-32% + 9px) !important; width: 62% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important; filter: drop-shadow(6px 12px 20px rgba(18, 2, 4, 0.26)) drop-shadow(2px 4px 6px rgba(18, 2, 4, 0.16)) !important;" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
-        <img src="images/figma-top-border-perfect.svg?v=555" alt="" class="figma-top-border-img">
+        <img src="images/figma-top-border-master.png?v=999" alt="" class="figma-top-border-img">
       </div>
 
       <div class="figma-flower-wrap">
