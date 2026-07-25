@@ -77,17 +77,19 @@ body::before{
 }
 .card::before, .card::after{display:none !important;}
 
-/* Botanical Floral Illustration Bouquet from Figma node 328:392 (Aligned alongside WEDDING WEEKEND, spilling ~60% outside right rim) */
+/* Botanical Floral Illustration Bouquet from Figma node 328:392 (Wine poppy visible inside card, bottom stems clipped at card bottom rim) */
 .figma-side-flowers{
   position:absolute !important;
-  top:7.5% !important;
-  right:-26% !important;
-  width:58% !important;
-  max-width:540px !important;
+  top:5.5% !important;
+  right:-12% !important;
+  width:64% !important;
+  max-width:620px !important;
   height:auto !important;
   pointer-events:none !important;
   z-index:30 !important;
   filter:drop-shadow(6px 16px 32px rgba(18,4,2,0.45));
+  clip-path:polygon(-100% 0%, 200% 0%, 200% 92.5%, -100% 92.5%) !important;
+  -webkit-clip-path:polygon(-100% 0%, 200% 0%, 200% 92.5%, -100% 92.5%) !important;
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
