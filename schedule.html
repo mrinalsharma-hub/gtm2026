@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Infant:wght@600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400;500;600&family=Pinyon+Script&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Infant:wght@600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400;500;600&family=Pinyon+Script&family=WindSong:wght@400;500&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=13">
 <style>
 /* ═══ Schedule page · Matched to RSVP 2 (rsvp2.html) ═══ */
@@ -138,8 +138,9 @@ body::before{
   will-change:transform;
 }
 
-/* WEDDING WEEKEND Title (Figma node 327:2809: font 'Cormorant' Regular 400, text 132px/1415px = 9.33vw, leading 108px/132px = 0.818, tracking -1.32px = -0.01em, #ac2525; gap to list 180px/1415px = 12.72%) */
+/* WEDDING WEEKEND Title (Figma node 327:2809 & 328:423: "The" calligraphic script overlay rotated -5.12deg, WEDDING WEEKEND Cormorant 64px) */
 .figma-wedding-title{
+  position:relative !important;
   font-family:'Cormorant',serif !important;
   font-weight:400 !important;
   font-size:64px !important;
@@ -147,10 +148,25 @@ body::before{
   color:#AC2525 !important;
   text-transform:uppercase !important;
   letter-spacing:-0.02em !important;
-  margin:0 0 12.72% 0 !important;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+  margin:0 auto 12.72% auto !important;
+  display:inline-flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+.figma-title-script-the{
+  position:absolute !important;
+  left:-0.28em !important;
+  top:-0.58em !important;
+  font-family:'WindSong','Pinyon Script','Cormorant Garamond',cursive !important;
+  font-weight:400 !important;
+  font-size:0.76em !important;
+  line-height:1 !important;
+  color:#AC2525 !important;
+  text-transform:none !important;
+  letter-spacing:normal !important;
+  -webkit-transform:rotate(-5.12deg) !important;
+  transform:rotate(-5.12deg) !important;
+  pointer-events:none;
 }
 
 /* Centered Events Group (Figma node 327:5512: vertical gap between event blocks 160px/1415px = 11.31%) */
@@ -243,7 +259,7 @@ body::before{
     </aside>
 
     <section class="card figma-card-design">
-      <img src="images/figma-side-flowers-flush-v3.png?v=10001" alt="" class="figma-side-flowers" style="position: absolute !important; top: 12% !important; right: -29.5% !important; width: 62% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important; filter: drop-shadow(6px 16px 32px rgba(18,4,2,0.45)) !important;" aria-hidden="true">
+      <img src="images/figma-side-flowers-flush-v3.png?v=20002" alt="" class="figma-side-flowers" style="position: absolute !important; top: 12% !important; right: calc(-29.5% + 8px) !important; width: 62% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important; filter: drop-shadow(6px 16px 32px rgba(18,4,2,0.45)) !important;" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
         <img src="images/figma-top-border-perfect.png?v=50" alt="" class="figma-top-border-img">
@@ -254,6 +270,7 @@ body::before{
       </div>
 
       <h2 class="figma-wedding-title">
+        <span class="figma-title-script-the">The</span>
         <span>WEDDING</span>
         <span>WEEKEND</span>
       </h2>
@@ -298,7 +315,7 @@ body::before{
   html body section.card img.figma-side-flowers {
     position: absolute !important;
     top: 12% !important;
-    right: -29.5% !important;
+    right: calc(-29.5% + 8px) !important;
     width: 62% !important;
     max-width: 580px !important;
     height: auto !important;
