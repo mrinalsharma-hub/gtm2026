@@ -63,139 +63,108 @@ body::before{
 
 .card{
   position:relative;z-index:10 !important;
-  background-color:#E3D8C0 !important;
-  background-image:url('images/pressed-paper-texture.jpg?v=15') !important;
+  background-color:#FFF6CD !important;
+  background-image:url('images/pressed-paper-texture.jpg?v=16') !important;
   background-repeat:repeat !important;
   background-position:left top !important;
   background-size:380px 380px !important;
   backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
   border-radius:3px !important;border:none !important;
-  padding:clamp(52px, 6.5vw, 84px) clamp(44px, 6.5vw, 92px) !important;
+  padding:0 0 64px 0 !important;
   box-shadow:0 28px 72px rgba(18,4,2,0.38), 0 6px 20px rgba(18,4,2,0.22) !important;
   filter:none !important;
   overflow:hidden;
+  text-align:center !important;
 }
-.card::before{
-  display:none !important;
-}
-.card::after{
-  display:none !important;
-}
-.card>*{position:relative;z-index:2;}
+.card::before, .card::after{display:none !important;}
 
-/* Schedule specific styles inside card */
-/* Schedule handwritten calligraphy ink typography */
-.sched-day{
-  font-family:'Cormorant Garamond',serif !important;
-  font-weight:600 !important;
-  font-style:italic !important;
-  font-size:30px !important;
-  line-height:36px !important;
-  color:#701115 !important;
-  text-shadow:0.2px 0.2px 0.5px rgba(112,17,21,0.5), 0 0 0.3px rgba(112,17,21,0.6) !important;
-  border-bottom:1px solid rgba(112,17,21,0.32);
-  padding-bottom:10px;
-  margin-top:44px;
-  margin-bottom:24px;
-  letter-spacing:0.02em;
+/* Top Decorative Block Print Red Pattern Band */
+.figma-top-pattern{
+  height:16px;
+  width:100%;
+  background-color:#AC2525;
+  background-image:repeating-linear-gradient(
+    45deg,
+    #931C1C,
+    #931C1C 6px,
+    #AC2525 6px,
+    #AC2525 12px
+  );
+  border-bottom:2px solid #7D1515;
+  margin-bottom:28px;
 }
-.sched-day:first-child{margin-top:0;}
 
-.sched-item{
-  display:grid;
-  grid-template-columns:110px 1fr;
-  gap:18px;
-  margin-bottom:26px;
-  align-items:baseline;
+/* Mandala Flower Centerpiece */
+.figma-flower-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:18px auto 12px;
 }
-.sched-time{
-  font-family:'Cormorant Garamond',serif !important;
-  font-weight:600 !important;
-  font-size:18px !important;
-  color:#701115 !important;
-  text-shadow:0.15px 0.15px 0.4px rgba(112,17,21,0.45) !important;
-  letter-spacing:0.04em !important;
+.figma-mandala-img{
+  width:132px;
+  height:132px;
+  display:block;
+  margin:0 auto;
 }
-.sched-info{}
-.sched-title{
-  font-family:'Cormorant Garamond',serif !important;
-  font-weight:600 !important;
-  font-size:24px !important;
-  line-height:30px !important;
-  color:#261713 !important;
-  text-shadow:0.2px 0.2px 0.45px rgba(38,23,19,0.5) !important;
-  margin-bottom:5px;
-  letter-spacing:0.01em;
+
+/* WEDDING WEEKEND Title */
+.figma-wedding-title{
+  font-family:'Cormorant Garamond','Cormorant',serif !important;
+  font-weight:400 !important;
+  font-size:clamp(42px, 5vw, 64px) !important;
+  line-height:0.93 !important;
+  color:#AC2525 !important;
+  text-transform:uppercase !important;
+  letter-spacing:-0.01em !important;
+  margin:18px 0 46px 0 !important;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
-.sched-desc{
+
+/* Centered Events Group */
+.figma-events-list{
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+  align-items:center;
+  padding:0 24px;
+}
+.figma-event-block{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.figma-event-meta{
+  font-family:'Cormorant Garamond','Cormorant Infant',serif !important;
+  font-weight:700 !important;
+  font-size:clamp(13px, 1.4vw, 18px) !important;
+  line-height:1.35 !important;
+  color:#0B5673 !important;
+  letter-spacing:0.24em !important;
+  text-transform:uppercase !important;
+  text-align:center !important;
+  margin-bottom:6px;
+}
+.figma-event-title{
   font-family:'Cormorant Garamond',serif !important;
   font-weight:400 !important;
-  font-style:italic !important;
-  font-size:18px !important;
-  line-height:1.55 !important;
-  color:rgba(38,23,19,0.86) !important;
-  text-shadow:0.15px 0.15px 0.35px rgba(38,23,19,0.35) !important;
-}
-
-.sched-divider{
-  border:none;
-  border-top:1px dashed rgba(112,17,21,0.28);
-  margin:48px 0;
-}
-
-.info-section-title{
-  font-family:'Cormorant Garamond',serif !important;
-  font-weight:600 !important;
-  font-style:italic !important;
-  font-size:30px !important;
-  color:#701115 !important;
-  text-shadow:0.2px 0.2px 0.5px rgba(112,17,21,0.5) !important;
-  margin-bottom:24px;
-}
-
-.info-cards{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:16px;
-  margin-bottom:36px;
-}
-.info-card-item{
-  background:rgba(255,251,244,0.75) !important;
-  border-radius:12px;
-  padding:22px 26px;
-  border:1px solid rgba(112,17,21,0.18);
-}
-.info-card-item h3{
-  font-family:'Cormorant Garamond',serif !important;
-  font-weight:600 !important;
-  font-size:23px !important;
-  color:#701115 !important;
-  text-shadow:0.15px 0.15px 0.4px rgba(112,17,21,0.4) !important;
-  margin:0 0 8px 0;
-}
-.info-card-item p{
-  font-family:'Cormorant Garamond',serif !important;
-  font-size:18px !important;
-  line-height:1.5 !important;
-  color:#261713 !important;
-  text-shadow:0.15px 0.15px 0.3px rgba(38,23,19,0.3) !important;
-  margin:0;
-}
-.info-card-item a{
-  color:#C81A1F;
-  text-decoration:underline;
-  font-weight:500;
+  font-size:clamp(44px, 5.2vw, 72px) !important;
+  line-height:1.02 !important;
+  color:#AC2525 !important;
+  margin:0 !important;
+  text-align:center !important;
 }
 
 .btn-rsvp-link{
   display:inline-flex;align-items:center;justify-content:center;
-  height:64px;padding:0 48px;background:#C81A1F !important;color:#FFF !important;border:none;cursor:pointer;
+  height:56px;padding:0 42px;background:#AC2525 !important;color:#FFF !important;border:none;cursor:pointer;
   border-radius:999px;text-decoration:none;
-  font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-size:24px !important;letter-spacing:.02em !important;
+  font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-size:22px !important;letter-spacing:.03em !important;
   transition:background .3s;
-  width:100%;
 }
-.btn-rsvp-link:hover{background:#A81318 !important}
+.btn-rsvp-link:hover{background:#8E1E1E !important}
 
 /* responsive */
 @media (max-width:767px){
@@ -204,7 +173,6 @@ body::before{
   .intro{text-align:center !important;display:flex;flex-direction:column;align-items:center;}
   .please{margin:0 auto -.52em !important;text-align:center !important;}
   .intro-lead, .intro-copy{text-align:center !important;padding-left:0 !important;margin-left:auto !important;margin-right:auto !important;}
-  .sched-item{grid-template-columns:1fr;gap:4px;}
 }
 </style>
 </head>
@@ -241,81 +209,47 @@ body::before{
       </p>
     </aside>
 
-    <section class="card">
-      <h2 class="sched-day">Friday · 20 November</h2>
-      <div class="sched-item">
-        <span class="sched-time">8:00 PM</span>
-        <div class="sched-info">
-          <div class="sched-title">Mehndi Night</div>
-          <div class="sched-desc">Henna, folk songs and a night of colour to open the festivities.</div>
+    <section class="card figma-card-design">
+      <div class="figma-top-pattern" aria-hidden="true"></div>
+
+      <div class="figma-flower-wrap">
+        <img src="images/figma-mandala-flower.svg" alt="" class="figma-mandala-img">
+      </div>
+
+      <h2 class="figma-wedding-title">
+        <span>WEDDING</span>
+        <span>WEEKEND</span>
+      </h2>
+
+      <div class="figma-events-list">
+        <div class="figma-event-block">
+          <div class="figma-event-meta">
+            <div>FRIDAY, 20 NOV 2026</div>
+            <div>7:30 PM ONWARDS</div>
+          </div>
+          <h3 class="figma-event-title">Mehndi</h3>
+        </div>
+
+        <div class="figma-event-block">
+          <div class="figma-event-meta">
+            <div>SATURDAY, 21 NOV 2026</div>
+            <div>10:00 AM ONWARDS</div>
+          </div>
+          <h3 class="figma-event-title">Day Wedding</h3>
+        </div>
+
+        <div class="figma-event-block">
+          <div class="figma-event-meta">
+            <div>SATURDAY, 21 NOV 2026</div>
+            <div>7:00 PM ONWARDS</div>
+          </div>
+          <h3 class="figma-event-title">Evening Party</h3>
         </div>
       </div>
 
-      <h2 class="sched-day">Saturday · 21 November</h2>
-      <div class="sched-item">
-        <span class="sched-time">10:00 AM</span>
-        <div class="sched-info">
-          <div class="sched-title">Baraat</div>
-          <div class="sched-desc">The groom arrives — drums, dancing and all.</div>
-        </div>
+      <div style="margin-top: 48px; text-align: center;">
+        <a class="btn-rsvp-link" href="rsvp2.html">RSVP now</a>
       </div>
-      <div class="sched-item">
-        <span class="sched-time">11:30 AM</span>
-        <div class="sched-info">
-          <div class="sched-title">Varmaala</div>
-          <div class="sched-desc">The exchange of garlands.</div>
-        </div>
-      </div>
-      <div class="sched-item">
-        <span class="sched-time">1:00 PM</span>
-        <div class="sched-info">
-          <div class="sched-title">Pheras &amp; Saptapadi</div>
-          <div class="sched-desc">The wedding ceremony — seven vows around the sacred fire.</div>
-        </div>
-      </div>
-      <div class="sched-item">
-        <span class="sched-time">4:30 PM</span>
-        <div class="sched-info">
-          <div class="sched-title">Vidaai</div>
-          <div class="sched-desc">A tender farewell as the bride leaves with her new family.</div>
-        </div>
-      </div>
-      <div class="sched-item">
-        <span class="sched-time">7:00 PM</span>
-        <div class="sched-info">
-          <div class="sched-title">Party &amp; Dinner</div>
-          <div class="sched-desc">Music, toasts and a feast under the November sky.</div>
-        </div>
-      </div>
-
-      <h2 class="sched-day">Sunday · 22 November</h2>
-      <div class="sched-item">
-        <span class="sched-time">8:30 AM</span>
-        <div class="sched-info">
-          <div class="sched-title">Farewell Breakfast</div>
-          <div class="sched-desc">One last meal together before the mountains wave you goodbye.</div>
-        </div>
-      </div>
-
-      <hr class="sched-divider">
-
-      <h2 class="info-section-title">Good to know</h2>
-      <div class="info-cards">
-        <div class="info-card-item">
-          <h3>Venue</h3>
-          <p>Exact venue details will be shared here soon — all celebrations take place in and around Nainital.</p>
-        </div>
-        <div class="info-card-item">
-          <h3>What to wear</h3>
-          <p>Festive Indian wear. November evenings in the hills are cold — bring a warm layer for after sunset.</p>
-        </div>
-        <div class="info-card-item">
-          <h3>Questions</h3>
-          <p>Anything we haven't covered? Leave us a note with your <a href="rsvp.html">RSVP</a> and we'll get back to you.</p>
-        </div>
-      </div>
-
-      <a class="btn-rsvp-link" href="rsvp.html">RSVP now</a>
     </section>
 
   </div>
