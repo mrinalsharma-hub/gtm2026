@@ -242,6 +242,21 @@ body::before{
 .btn-rsvp-link:hover{background:#8E1E1E !important}
 
 /* responsive */
+@media (max-width: 1250px) and (min-width: 768px) {
+  .rsvp-wrap {
+    grid-template-columns: 1fr !important;
+    padding: 64px 200px 104px 40px !important; /* extra padding right to fit the protruding flowers without scroll */
+  }
+  .intro {
+    display: none !important; /* it is empty anyway */
+  }
+  .card {
+    -webkit-transform: none !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    max-width: 800px !important;
+  }
+}
 @media (max-width:767px){
   .rsvp-wrap{padding:24px 0 64px !important;grid-template-columns:1fr;gap:32px;width:100% !important;}
   .intro, .card{grid-column:auto !important;}
