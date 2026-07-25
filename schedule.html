@@ -91,6 +91,11 @@ body::before{
   display:block;
 }
 
+@keyframes mandalaSpinSlow{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
+}
+
 /* Mandala Flower Centerpiece (Figma width: 319px / 1415px canvas = 22.54%; top gap from border end 179px / 1415px = 12.65%; bottom gap to title 65px / 1415px = 4.59%) */
 .figma-flower-wrap{
   display:flex;
@@ -106,6 +111,9 @@ body::before{
   height:auto;
   display:block;
   margin:0 auto;
+  transform-origin:center center;
+  animation:mandalaSpinSlow 42s linear infinite;
+  will-change:transform;
 }
 
 /* WEDDING WEEKEND Title (Figma node 327:2809: font 'Cormorant' Regular 400, text 132px/1415px = 9.33vw, leading 108px/132px = 0.818, tracking -1.32px = -0.01em, #ac2525; gap to list 180px/1415px = 12.72%) */
