@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400;500;600&family=Pinyon+Script&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Infant:wght@600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400;500;600&family=Pinyon+Script&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=13">
 <style>
 /* ═══ Schedule page · Matched to RSVP 2 (rsvp2.html) ═══ */
@@ -91,40 +91,40 @@ body::before{
   display:block;
 }
 
-/* Mandala Flower Centerpiece */
+/* Mandala Flower Centerpiece (Figma width: 319px / 1415px canvas = 22.54%) */
 .figma-flower-wrap{
   display:flex;
   justify-content:center;
   align-items:center;
-  margin:18px auto 12px;
+  margin:28px auto 14px;
 }
 .figma-mandala-img{
-  width:132px;
-  height:132px;
+  width:clamp(100px, 22.5vw, 156px);
+  height:auto;
   display:block;
   margin:0 auto;
 }
 
-/* WEDDING WEEKEND Title */
+/* WEDDING WEEKEND Title (Figma node 327:2809: font 'Cormorant' Regular 400, text 132px/1415px = 9.33vw, leading 108px/132px = 0.818, tracking -1.32px = -0.01em, #ac2525) */
 .figma-wedding-title{
-  font-family:'Cormorant Garamond','Cormorant',serif !important;
+  font-family:'Cormorant',serif !important;
   font-weight:400 !important;
-  font-size:clamp(42px, 5vw, 64px) !important;
-  line-height:0.93 !important;
+  font-size:clamp(36px, 9.33vw, 70px) !important;
+  line-height:0.82 !important;
   color:#AC2525 !important;
   text-transform:uppercase !important;
   letter-spacing:-0.01em !important;
-  margin:18px 0 46px 0 !important;
+  margin:22px 0 56px 0 !important;
   display:flex;
   flex-direction:column;
   align-items:center;
 }
 
-/* Centered Events Group */
+/* Centered Events Group (Figma node 327:5512: vertical gap 160px/2123px = clamp) */
 .figma-events-list{
   display:flex;
   flex-direction:column;
-  gap:40px;
+  gap:clamp(36px, 7.5vh, 68px);
   align-items:center;
   padding:0 24px;
 }
@@ -132,23 +132,25 @@ body::before{
   display:flex;
   flex-direction:column;
   align-items:center;
+  gap:clamp(6px, 1.88vh, 14px);
 }
+/* Date & Time Header (Figma node 327:5515: font 'Cormorant Infant' Bold 700, text 36px/1415px = 2.54vw, tracking 6.84px/36px = 0.19em, leading 42px/36px = 1.167, #0b5673) */
 .figma-event-meta{
-  font-family:'Cormorant Garamond','Cormorant Infant',serif !important;
+  font-family:'Cormorant Infant',serif !important;
   font-weight:700 !important;
-  font-size:clamp(13px, 1.4vw, 18px) !important;
-  line-height:1.35 !important;
+  font-size:clamp(13px, 2.54vw, 20px) !important;
+  line-height:1.17 !important;
   color:#0B5673 !important;
-  letter-spacing:0.24em !important;
+  letter-spacing:0.19em !important;
   text-transform:uppercase !important;
   text-align:center !important;
-  margin-bottom:6px;
 }
+/* Event Title Name (Figma node 327:5514: font 'Cormorant Garamond' Regular 400, text 104px/1415px = 7.35vw, leading 80px/104px = 0.769, #ac2525) */
 .figma-event-title{
   font-family:'Cormorant Garamond',serif !important;
   font-weight:400 !important;
-  font-size:clamp(44px, 5.2vw, 72px) !important;
-  line-height:1.02 !important;
+  font-size:clamp(40px, 7.35vw, 62px) !important;
+  line-height:0.77 !important;
   color:#AC2525 !important;
   margin:0 !important;
   text-align:center !important;
