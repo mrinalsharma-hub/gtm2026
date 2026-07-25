@@ -1,12 +1,12 @@
 <svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="1417" height="93" viewBox="0 0 1417 93" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="Border">
-<g id="Rectangle 14" filter="url(#filter0_g_328_452)">
+<g id="Rectangle 14">
 <rect x="0.5" y="5.5" width="1415" height="80" fill="url(#pattern0_328_452)"/>
 </g>
-<g id="Line 2" filter="url(#filter1_g_328_452)">
+<g id="Line 2">
 <line x1="0.5" y1="90.5" x2="1416.5" y2="90.5" stroke="var(--stroke-0, #AC2525)" stroke-width="4"/>
 </g>
-<g id="Line 3" filter="url(#filter2_g_328_452)">
+<g id="Line 3">
 <line x1="0.5" y1="2.5" x2="1416.5" y2="2.5" stroke="var(--stroke-0, #AC2525)" stroke-width="4"/>
 </g>
 </g>
