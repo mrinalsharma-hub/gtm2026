@@ -55,23 +55,30 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:400;line-height:1.15}
 /* ── header / nav (Navbar) ──────────────────────────── */
 header.site{
   position:fixed !important;top:0;left:0;right:0;z-index:1000 !important;
-  min-height:84px !important;
+  height:72px !important;
   background:transparent !important;
   border-bottom:none !important;
   outline:none !important;
   box-shadow:none !important;
   display:flex;align-items:center;justify-content:space-between;
-  padding:12px clamp(20px,4vw,48px) !important;color:var(--ivory);
+  padding:0 clamp(20px,4vw,48px) !important;color:var(--ivory);
   transition:none !important;
+  overflow:visible !important;
 }
 header.site::before{
   display:none !important;
 }
 .brand{
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   text-decoration:none;
   line-height:1;
   pointer-events:all;
+  position:relative;
+  z-index:1010;
+  margin-top:14px;
+  overflow:visible !important;
   transition:transform .35s cubic-bezier(.33,1,.68,1);
   -webkit-user-select:none;
   -moz-user-select:none;
@@ -80,29 +87,32 @@ header.site::before{
 .brand .logo-img{
   display:block;
   height:auto;
-  width:6.3888888889vw;
-  max-width:125px;
+  width:76px;
   border-radius:50%;
+  filter:drop-shadow(0 6px 14px rgba(0,0,0,0.28));
   transition:transform .35s cubic-bezier(.33,1,.68,1);
+  overflow:visible !important;
 }
 @media (hover:hover){
   .brand:hover .logo-img{
-    transform:scale(1.05);
+    transform:scale(1.06);
   }
 }
-@media screen and (max-width:1441px){
+@media screen and (min-width:1442px){
   .brand .logo-img{
-    width:92px;
+    width:clamp(82px,5.2vw,98px);
   }
 }
 @media screen and (max-width:1023px){
   header.site{
-    min-height:66px !important;
-    padding:8px clamp(14px,3.5vw,24px) !important;
+    height:62px !important;
+    padding:0 clamp(14px,3.5vw,22px) !important;
+  }
+  .brand{
+    margin-top:10px;
   }
   .brand .logo-img{
-    width:19.2vw;
-    max-width:78px;
+    width:62px;
   }
 }
 html{
