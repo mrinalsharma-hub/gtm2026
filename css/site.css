@@ -129,7 +129,13 @@ nav.primary a[aria-current="page"]{
   border-bottom-color:#FFFFFF !important;
 }
 
-/* ── 1.5 Column Width Left Vertical Sidebar Navigation (Desktop >= 1024px) ── */
+/* ── 8-Column Grid Architecture (Desktop >= 1024px) ──
+   Column Breakdown:
+   - 1.5 cols (18.75%) = Left Persistent Vertical Navbar
+   - 6.5 cols (81.25%) = Main Content Region
+     ├─ 6.0 cols (75.00%) = Card + Botanical Flower Composition
+     └─ 0.5 col  ( 6.25%) = Reserved Far-Right Crimson Negative Space (guarantees zero cropping)
+*/
 @media screen and (min-width: 1024px) {
   header.site {
     position: fixed !important;
@@ -137,9 +143,9 @@ nav.primary a[aria-current="page"]{
     left: 0 !important;
     bottom: 0 !important;
     right: auto !important;
-    width: calc(100vw * (1.5 / 7)) !important;
-    min-width: 200px !important;
-    max-width: 280px !important;
+    width: calc(100vw * (1.5 / 8)) !important;
+    min-width: 190px !important;
+    max-width: 260px !important;
     height: 100vh !important;
     min-height: 100vh !important;
     background: rgba(140, 22, 26, 0.52) !important;
@@ -151,7 +157,7 @@ nav.primary a[aria-current="page"]{
     flex-direction: column !important;
     align-items: center !important;
     justify-content: flex-start !important;
-    padding: 52px 18px 36px 18px !important;
+    padding: 52px 16px 36px 16px !important;
     z-index: 1000 !important;
   }
 
@@ -163,8 +169,8 @@ nav.primary a[aria-current="page"]{
   }
 
   .brand .logo-img {
-    width: 148px !important;
-    height: 148px !important;
+    width: 142px !important;
+    height: 142px !important;
   }
 
   nav.primary {
@@ -177,13 +183,13 @@ nav.primary a[aria-current="page"]{
   }
 
   nav.primary a {
-    font-size: 17px !important;
-    letter-spacing: 2.8px !important;
-    padding: 10px 14px !important;
+    font-size: 16.5px !important;
+    letter-spacing: 2.6px !important;
+    padding: 10px 12px !important;
     border-bottom: none !important;
     border-left: 2px solid transparent !important;
     display: block !important;
-    width: 90% !important;
+    width: 92% !important;
     text-align: center !important;
     transition: all 0.25s ease !important;
   }
@@ -196,13 +202,15 @@ nav.primary a[aria-current="page"]{
     border-radius: 3px !important;
   }
 
-  /* Shift main content 5.5 columns to the right */
+  /* Main Workspace Content: Occupies remaining 6.5 cols, with 0.5 col reserved right margin */
   body > main,
   body > div.rsvp-wrap,
   .site-footer,
   footer {
-    margin-left: calc(100vw * (1.5 / 7)) !important;
-    width: calc(100% - calc(100vw * (1.5 / 7))) !important;
+    margin-left: calc(100vw * (1.5 / 8)) !important;
+    width: calc(100vw * (6.5 / 8)) !important;
+    padding-right: calc(100vw * (0.5 / 8)) !important;
+    box-sizing: border-box !important;
     max-width: none !important;
   }
 
