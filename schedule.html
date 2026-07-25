@@ -35,12 +35,11 @@ body::before{
   max-width:1380px;margin:0 auto;
   padding:120px 24px 104px;
   display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:clamp(24px,3.5vw,64px);
+  grid-template-columns:35fr 65fr;
+  gap:clamp(32px,4vw,72px);
   align-items:start;
 }
 .intro{
-  grid-column:span 4;
   color:#FFFFFF !important;
 }
 .please{
@@ -62,7 +61,6 @@ body::before{
 }
 
 .card{
-  grid-column:span 3;
   position:relative;z-index:10 !important;
   background:url('images/deckle-paper-card.png?v=3') center center / 100% 100% no-repeat !important;
   backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
