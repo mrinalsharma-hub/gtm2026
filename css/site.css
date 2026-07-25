@@ -61,7 +61,7 @@ header.site{
   outline:none !important;
   box-shadow:none !important;
   display:flex;align-items:flex-start;justify-content:space-between;
-  padding:14px clamp(20px,4vw,48px) 0 !important;color:var(--ivory);
+  padding:24px clamp(20px,4vw,48px) 0 !important;color:var(--ivory);
   transition:none !important;
   overflow:visible !important;
 }
