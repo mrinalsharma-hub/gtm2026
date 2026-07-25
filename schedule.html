@@ -13,17 +13,19 @@
 <style>
 /* ═══ Schedule page · Matched to RSVP 2 (rsvp2.html) ═══ */
 
-body{
-  position:relative;
+html, body{
+  margin:0;padding:0;width:100%;
   min-height:100vh;
-  background-color:#A71F23 !important;
-  background-image:linear-gradient(180deg, rgba(184,50,39,0.70) 0%, rgba(167,31,35,0.50) 45%, #A71F23 100%) !important;
+  background-color:#8C191D !important;
+  background-image:radial-gradient(circle at 50% 25%, #A92328 0%, #8C191D 58%, #6E1114 100%) !important;
   background-attachment:fixed !important;
+  background-size:cover !important;
 }
 body::before{
-  content:"";position:fixed !important;inset:0;pointer-events:none;opacity:0.85;z-index:1;
-  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:multiply;
+  content:"";position:fixed !important;top:0;left:0;right:0;bottom:0;
+  width:100vw;height:100vh;pointer-events:none;opacity:0.32;z-index:1;
+  background:url('images/pressed-paper-tile.jpg') repeat center top / 280px 280px;
+  mix-blend-mode:overlay;
 }
 .paper{
   position:relative;
