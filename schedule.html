@@ -75,6 +75,8 @@ body::before{
   box-shadow: 12px 20px 48px -4px rgba(20, 5, 10, 0.4), 4px 8px 18px -2px rgba(20, 5, 10, 0.2) !important;
   filter:none !important;
   overflow:visible !important;
+  clip-path: inset(-500px 0px -500px -500px) !important;
+  -webkit-clip-path: inset(-500px 0px -500px -500px) !important;
   text-align:center !important;
   -webkit-transform:translateX(-40px) !important;
   transform:translateX(-40px) !important;
@@ -96,6 +98,38 @@ body::before{
   -webkit-clip-path:none !important;
   transform:none !important;
   -webkit-transform:none !important;
+}
+
+/* Option C Multi-Breakpoint Sub-Pixel Calibration for .figma-side-flowers trailing green stem */
+@media (min-width: 1750px) {
+  html body section.card img.figma-side-flowers,
+  .figma-side-flowers {
+    right: -26.6% !important;
+  }
+}
+@media (max-width: 1749px) and (min-width: 1480px) {
+  html body section.card img.figma-side-flowers,
+  .figma-side-flowers {
+    right: -25.4% !important;
+  }
+}
+@media (max-width: 1479px) and (min-width: 1380px) {
+  html body section.card img.figma-side-flowers,
+  .figma-side-flowers {
+    right: -25.9% !important;
+  }
+}
+@media (max-width: 1379px) and (min-width: 1300px) {
+  html body section.card img.figma-side-flowers,
+  .figma-side-flowers {
+    right: -27.0% !important;
+  }
+}
+@media (max-width: 1299px) and (min-width: 1050px) {
+  html body section.card img.figma-side-flowers,
+  .figma-side-flowers {
+    right: -26.9% !important;
+  }
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
