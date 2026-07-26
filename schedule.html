@@ -71,7 +71,7 @@ body::before{
   backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
   border-radius:3px !important;border:none !important;
   box-sizing:border-box !important;
-  padding:10px 32px 64px 32px !important;
+  padding:10px 0 64px 0 !important;
   box-shadow: 12px 20px 48px -4px rgba(20, 5, 10, 0.4), 4px 8px 18px -2px rgba(20, 5, 10, 0.2) !important;
   filter:none !important;
   overflow:visible !important;
@@ -255,10 +255,6 @@ body::before{
     transform-origin: top left !important;
     left: 10px !important;
   }
-  .figma-side-flowers {
-    transform: scale(0.9) !important;
-    transform-origin: top right !important;
-  }
   .card {
      transform: scale(0.9) translateX(-25%) !important;
      transform-origin: top center !important;
@@ -275,10 +271,6 @@ body::before{
     transform: scale(0.7) !important;
     transform-origin: top left !important;
     left: 0px !important;
-  }
-  .figma-side-flowers {
-    transform: scale(0.75) !important;
-    transform-origin: top right !important;
   }
   .card {
      transform: scale(0.75) translateX(-20%) !important;
@@ -299,10 +291,6 @@ body::before{
     transform: scale(0.55) !important;
     transform-origin: top left !important;
     left: -20px !important;
-  }
-  .figma-side-flowers {
-    transform: scale(0.6) !important;
-    transform-origin: top right !important;
   }
   .card {
      transform: scale(0.6) translateX(-20%) !important;
@@ -348,7 +336,17 @@ body::before{
     width: 100% !important;
     border-radius: 0 !important;
     margin: 0 !important;
-    padding: 32px 24px 64px 24px !important; /* Fixed broken left paddings */
+    padding: 10px 0 64px 0 !important;
+  }
+  .figma-wedding-title {
+    font-size: min(15vw, 73.7px) !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    margin-bottom: 40px !important;
+  }
+  html body section.card .figma-schedule-timeline {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
   }
   html body section.card .figma-timeline-row {
     flex-direction: column !important;
@@ -364,6 +362,14 @@ body::before{
   html body section.card .figma-timeline-events {
     gap: 40px !important;
   }
+}
+html body section.card .figma-schedule-timeline {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+}
+html body section.card .figma-wedding-title {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
 }
 </style>
 </head>
