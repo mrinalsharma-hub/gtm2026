@@ -340,20 +340,14 @@ body::before{
   background-color: #B42425 !important;
   border-radius: 50% !important;
   display: inline-block !important;
-  animation: dotWave 2.4s ease-in-out infinite !important;
+  animation: dotWave 2s ease-in-out infinite !important;
 }
-.aipan-dot-separator span:nth-child(12n+1) { animation-delay: 0.00s !important; }
-.aipan-dot-separator span:nth-child(12n+2) { animation-delay: 0.18s !important; }
-.aipan-dot-separator span:nth-child(12n+3) { animation-delay: 0.36s !important; }
-.aipan-dot-separator span:nth-child(12n+4) { animation-delay: 0.54s !important; }
-.aipan-dot-separator span:nth-child(12n+5) { animation-delay: 0.72s !important; }
-.aipan-dot-separator span:nth-child(12n+6) { animation-delay: 0.90s !important; }
-.aipan-dot-separator span:nth-child(12n+7) { animation-delay: 1.08s !important; }
-.aipan-dot-separator span:nth-child(12n+8) { animation-delay: 1.26s !important; }
-.aipan-dot-separator span:nth-child(12n+9) { animation-delay: 1.44s !important; }
-.aipan-dot-separator span:nth-child(12n+10) { animation-delay: 1.62s !important; }
-.aipan-dot-separator span:nth-child(12n+11) { animation-delay: 1.80s !important; }
-.aipan-dot-separator span:nth-child(12n+12) { animation-delay: 1.98s !important; }
+.aipan-dot-separator span:nth-child(6n+1) { animation-delay: 0.00s !important; }
+.aipan-dot-separator span:nth-child(6n+2) { animation-delay: 0.33s !important; }
+.aipan-dot-separator span:nth-child(6n+3) { animation-delay: 0.66s !important; }
+.aipan-dot-separator span:nth-child(6n+4) { animation-delay: 0.99s !important; }
+.aipan-dot-separator span:nth-child(6n+5) { animation-delay: 1.32s !important; }
+.aipan-dot-separator span:nth-child(6n+6) { animation-delay: 1.65s !important; }
 
 @keyframes dotWave {
   0%, 100% {
@@ -361,7 +355,7 @@ body::before{
     opacity: 0.7;
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-3px);
     opacity: 1;
   }
 }
