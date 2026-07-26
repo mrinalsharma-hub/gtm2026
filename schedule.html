@@ -190,9 +190,9 @@ body::before{
   box-sizing: border-box !important;
 }
 .figma-mandala-img {
-  width: 164px !important;
-  max-width: 164px !important;
-  min-width: 164px !important;
+  width: 200px !important;
+  max-width: 200px !important;
+  min-width: 200px !important;
   height: auto;
   display: block;
   margin: 0 !important;
@@ -711,18 +711,18 @@ body::before{
     } else if (cardW <= 1120) {
       // Category 3: MacBook Pro 16" Dedicated Category (cardW 841px - 1120px)
       S = 0.95 + ((cardW - 840) / 280) * 0.15;
-      S_title = 0.52; // ~28px title font size (Tailored for MacBook Pro 16")
+      S_title = 0.444; // Exact 24px title font size on MacBook Pro 16" (54 * 0.444 = 24px)
     } else {
       // Category 4: Large 4K Monitor / Ultra-Wide (cardW > 1120px)
       S = 1.10 + Math.min(0.25, ((cardW - 1120) / 800) * 0.20);
-      S_title = 0.66; // ~36px title font size on 4K
+      S_title = 0.56; // ~30px title font size on 4K
     }
 
-    // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (50%)
+    // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (70%)
     var cornerGap = Math.round(cardW * 0.14);
     var topMargin = cornerGap;
     var leftInset = cornerGap;
-    var contentW = Math.round(cardW * 0.50);
+    var contentW = Math.round(cardW * 0.70);
     var bodyColumn = document.querySelector('.figma-card-body-column');
 
     card.style.setProperty('padding-left', '0px', 'important');
@@ -752,10 +752,10 @@ body::before{
     });
     metaTexts.forEach(function(el) { el.style.fontSize = Math.round(13.5 * S) + 'px'; });
 
-    // 4. Exact Stem Geometry Equation: stem tip sits at 61.65% from left edge of flower image
+    // 4. Exact Stem Geometry Equation: Side Botanical Bouquet set to exact 55% of card width
     // Top of side bouquet aligned at exact topMargin (identical to leftInset and flowerWrap top margin)
     if (flowers) {
-      var flowerW = Math.round(cardW * 0.59);
+      var flowerW = Math.round(cardW * 0.55);
       flowers.style.width = flowerW + 'px';
       flowers.style.maxWidth = 'none';
       flowers.style.right = 'auto';
