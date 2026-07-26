@@ -717,14 +717,15 @@ body::before{
     });
     metaTexts.forEach(function(el) { el.style.fontSize = Math.round(13.5 * S) + 'px'; });
 
-    // 4. Mathematical Flower Stem Alignment to Right Card Rim
-    // In figma-side-flowers-flush-v3.svg, bottom green stem tip sits at 21.8% inside the width
+    // 4. Exact Stem Geometry Equation: stem tip sits at 61.65% from left edge of flower image
     if (flowers) {
       var flowerW = Math.round(cardW * 0.59);
       flowers.style.width = flowerW + 'px';
       flowers.style.maxWidth = 'none';
-      flowers.style.left = 'auto';
-      flowers.style.right = -Math.round(cardW * 0.22) + 'px';
+      flowers.style.right = 'auto';
+      var stemOffsetFromLeft = flowerW * 0.6165;
+      var flowersLeft = cardW - stemOffsetFromLeft;
+      flowers.style.left = Math.round(flowersLeft) + 'px';
       flowers.style.top = Math.round(cardW * 0.042) + 'px';
     }
 
