@@ -92,8 +92,8 @@ body::before{
 .figma-side-flowers{
   position:absolute !important;
   top:4% !important;
-  right:-31% !important;
-  width:60% !important;
+  right:-23% !important;
+  width:59% !important;
   max-width:580px !important;
   height:auto !important;
   pointer-events:none !important;
@@ -124,7 +124,7 @@ body::before{
   object-fit:cover !important;
   object-position:right top !important;
   filter:contrast(1.04) saturate(1.06) brightness(0.97) !important;
-  transform:scale(1.6) !important;
+  transform:scale(1.85) !important;
   transform-origin:top right !important;
 }
 
@@ -688,7 +688,7 @@ body::before{
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
     if (title && pichoda && window.innerWidth > 950) {
       var rect = title.getBoundingClientRect();
-      var w = Math.round(window.innerWidth - (rect.left - 200));
+      var w = Math.round(window.innerWidth - (rect.left - 250));
       pichoda.style.right = '0px';
       pichoda.style.left = 'auto';
       pichoda.style.width = w + 'px';
