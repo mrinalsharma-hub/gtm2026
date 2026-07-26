@@ -326,41 +326,54 @@ body::before{
   margin-right: 0 !important;
   margin-top: 102px !important;
   margin-bottom: 102px !important;
-  height: 18px !important;
-  background-image: radial-gradient(circle, #B42425 2px, transparent 2.4px) !important;
-  background-size: 11px 18px !important;
-  background-repeat: repeat-x !important;
-  background-position: 0px 9px !important;
+  height: 20px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  background: none !important;
   border: none !important;
-  display: block !important;
-  animation: aipanRipple 2.2s linear infinite !important;
+  padding: 0 !important;
 }
-@keyframes aipanRipple {
-  0% { background-position: 0px 9px; }
-  25% { background-position: 5.5px 3px; }
-  50% { background-position: 11px 9px; }
-  75% { background-position: 16.5px 15px; }
-  100% { background-position: 22px 9px; }
+.aipan-dot-separator span {
+  width: 3.6px !important;
+  height: 3.6px !important;
+  background-color: #B42425 !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  animation: dotWave 2.4s ease-in-out infinite !important;
+}
+.aipan-dot-separator span:nth-child(12n+1) { animation-delay: 0.00s !important; }
+.aipan-dot-separator span:nth-child(12n+2) { animation-delay: 0.18s !important; }
+.aipan-dot-separator span:nth-child(12n+3) { animation-delay: 0.36s !important; }
+.aipan-dot-separator span:nth-child(12n+4) { animation-delay: 0.54s !important; }
+.aipan-dot-separator span:nth-child(12n+5) { animation-delay: 0.72s !important; }
+.aipan-dot-separator span:nth-child(12n+6) { animation-delay: 0.90s !important; }
+.aipan-dot-separator span:nth-child(12n+7) { animation-delay: 1.08s !important; }
+.aipan-dot-separator span:nth-child(12n+8) { animation-delay: 1.26s !important; }
+.aipan-dot-separator span:nth-child(12n+9) { animation-delay: 1.44s !important; }
+.aipan-dot-separator span:nth-child(12n+10) { animation-delay: 1.62s !important; }
+.aipan-dot-separator span:nth-child(12n+11) { animation-delay: 1.80s !important; }
+.aipan-dot-separator span:nth-child(12n+12) { animation-delay: 1.98s !important; }
+
+@keyframes dotWave {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
 }
 @media (max-width: 550px) {
   .aipan-dot-separator {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
     margin-top: 64px !important;
     margin-bottom: 64px !important;
-    height: 14px !important;
-    background-image: radial-gradient(circle, #B42425 1.5px, transparent 1.9px) !important;
-    background-size: 9px 14px !important;
-    background-position: 0px 7px !important;
-    animation: aipanRippleMobile 2.2s linear infinite !important;
+    height: 16px !important;
   }
-  @keyframes aipanRippleMobile {
-    0% { background-position: 0px 7px; }
-    25% { background-position: 4.5px 2.5px; }
-    50% { background-position: 9px 7px; }
-    75% { background-position: 13.5px 11.5px; }
-    100% { background-position: 18px 7px; }
+  .aipan-dot-separator span {
+    width: 2.8px !important;
+    height: 2.8px !important;
   }
 }
 </style>
@@ -437,7 +450,15 @@ body::before{
           </div>
         </div>
 
-        <div class="aipan-dot-separator" aria-hidden="true"></div>
+        <div class="aipan-dot-separator" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
 
         <!-- Day 2: Nov 21 -->
         <div class="figma-timeline-row">
