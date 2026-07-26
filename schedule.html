@@ -693,32 +693,32 @@ body::before{
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
-    // Assign computed left padding directly onto card parent container
-    card.style.paddingLeft = leftInset + 'px';
-    card.style.paddingRight = '0px';
+    // Assign 0px padding onto card and override CSS !important rules using setProperty with priority 'important'
+    card.style.setProperty('padding-left', '0px', 'important');
+    card.style.setProperty('padding-right', '0px', 'important');
 
-    // All children align flush to card's computed padding-left with ZERO left margin or padding of their own
+    // Force exact identical margin-left (leftInset) on rotating mandala, wedding title, and dates with !important power
     if (flowerWrap) {
-      flowerWrap.style.maxWidth = 'none';
-      flowerWrap.style.width = contentW + 'px';
-      flowerWrap.style.marginLeft = '0px';
-      flowerWrap.style.marginRight = 'auto';
-      flowerWrap.style.paddingLeft = '0px';
+      flowerWrap.style.setProperty('max-width', 'none', 'important');
+      flowerWrap.style.setProperty('width', contentW + 'px', 'important');
+      flowerWrap.style.setProperty('margin-left', leftInset + 'px', 'important');
+      flowerWrap.style.setProperty('margin-right', 'auto', 'important');
+      flowerWrap.style.setProperty('padding-left', '0px', 'important');
       flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
     }
     if (weddingTitle) {
-      weddingTitle.style.maxWidth = 'none';
-      weddingTitle.style.width = contentW + 'px';
-      weddingTitle.style.marginLeft = '0px';
-      weddingTitle.style.marginRight = 'auto';
-      weddingTitle.style.paddingLeft = '0px';
+      weddingTitle.style.setProperty('max-width', 'none', 'important');
+      weddingTitle.style.setProperty('width', contentW + 'px', 'important');
+      weddingTitle.style.setProperty('margin-left', leftInset + 'px', 'important');
+      weddingTitle.style.setProperty('margin-right', 'auto', 'important');
+      weddingTitle.style.setProperty('padding-left', '0px', 'important');
     }
     timelineRows.forEach(function(row) {
-      row.style.maxWidth = 'none';
-      row.style.width = contentW + 'px';
-      row.style.marginLeft = '0px';
-      row.style.marginRight = 'auto';
-      row.style.paddingLeft = '0px';
+      row.style.setProperty('max-width', 'none', 'important');
+      row.style.setProperty('width', contentW + 'px', 'important');
+      row.style.setProperty('margin-left', leftInset + 'px', 'important');
+      row.style.setProperty('margin-right', 'auto', 'important');
+      row.style.setProperty('padding-left', '0px', 'important');
     });
 
     // 3. Fluid Proportional Typography Scaling
