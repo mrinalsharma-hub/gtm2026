@@ -698,8 +698,25 @@ body::before{
     var cardRect = card.getBoundingClientRect();
     var cardW = cardRect.width;
 
-    // 1. Proportional scale factor relative to golden MacBook reference width (740px)
-    var S = Math.min(1.16, Math.max(0.75, cardW / 760));
+    // 1. Resolution Categories: Dedicated Tier for MacBook Pro 16" between MacBook 13" and Large 4K Monitors
+    var S, S_title;
+    if (cardW <= 640) {
+      // Category 1: Tablet / Small Screen floor (cardW <= 640px)
+      S = 0.75;
+      S_title = 0.38; // ~20px title font size
+    } else if (cardW <= 840) {
+      // Category 2: MacBook Air / 13" - 14" (cardW 641px - 840px)
+      S = 0.75 + ((cardW - 640) / 200) * 0.20;
+      S_title = 0.44; // ~24px title font size
+    } else if (cardW <= 1120) {
+      // Category 3: MacBook Pro 16" Dedicated Category (cardW 841px - 1120px)
+      S = 0.95 + ((cardW - 840) / 280) * 0.15;
+      S_title = 0.52; // ~28px title font size (Tailored for MacBook Pro 16")
+    } else {
+      // Category 4: Large 4K Monitor / Ultra-Wide (cardW > 1120px)
+      S = 1.10 + Math.min(0.25, ((cardW - 1120) / 800) * 0.20);
+      S_title = 0.66; // ~36px title font size on 4K
+    }
 
     // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (45%)
     var cornerGap = Math.round(cardW * 0.14);
@@ -717,8 +734,7 @@ body::before{
       bodyColumn.style.setProperty('--card-content-width', contentW + 'px');
     }
 
-    // 3. Fluid Proportional Typography Scaling (WEDDING WEEKEND font size scale S - 0.5)
-    var S_title = Math.max(0.35, S - 0.5);
+    // 3. Fluid Proportional Typography Scaling
     if (weddingTitle) {
       weddingTitle.style.fontSize = Math.round(54 * S_title) + 'px';
       weddingTitle.style.lineHeight = '0.92';
