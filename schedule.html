@@ -749,6 +749,8 @@ body::before{
       weddingTitle.style.setProperty('font-size', titlePx + 'px', 'important');
       weddingTitle.style.setProperty('font-weight', '550', 'important');
       weddingTitle.style.setProperty('line-height', '0.88', 'important');
+      var titleBottomGap = (cardW > 1120) ? 67 : 52; // +15px only on 4K display (cardW > 1120px)
+      weddingTitle.style.setProperty('margin-bottom', titleBottomGap + 'px', 'important');
     }
     if (scriptThe) {
       scriptThe.style.fontSize = Math.round(42 * S) + 'px';
