@@ -167,7 +167,7 @@ body::before{
 .figma-card-body-column {
   position: relative !important;
   z-index: 20 !important;
-  width: var(--card-content-width, 45%) !important;
+  width: var(--card-content-width, 50%) !important;
   margin-left: var(--card-left-inset, 14%) !important;
   margin-top: var(--card-top-margin, 14%) !important;
   display: flex !important;
@@ -718,11 +718,11 @@ body::before{
       S_title = 0.66; // ~36px title font size on 4K
     }
 
-    // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (45%)
+    // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (50%)
     var cornerGap = Math.round(cardW * 0.14);
     var topMargin = cornerGap;
     var leftInset = cornerGap;
-    var contentW = Math.round(cardW * 0.45);
+    var contentW = Math.round(cardW * 0.50);
     var bodyColumn = document.querySelector('.figma-card-body-column');
 
     card.style.setProperty('padding-left', '0px', 'important');
