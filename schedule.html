@@ -171,11 +171,12 @@ body::before{
   justify-content:flex-start;
   align-items:center;
   width:100% !important;
-  margin-top:0 !important;
+  max-width:720px !important;
+  margin-top:112px !important;
   margin-left:auto !important;
   margin-right:auto !important;
   margin-bottom:60px !important;
-  padding-left:0 !important;
+  padding-left:40px !important;
   box-sizing:border-box !important;
 }
 .figma-mandala-img{
@@ -706,14 +707,6 @@ body::before{
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
-    if (flowerWrap) {
-      flowerWrap.style.maxWidth = 'none';
-      flowerWrap.style.width = contentW + 'px';
-      flowerWrap.style.marginLeft = leftInset + 'px';
-      flowerWrap.style.marginRight = 'auto';
-      flowerWrap.style.paddingLeft = '0px';
-      flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
-    }
     if (weddingTitle) {
       weddingTitle.style.maxWidth = 'none';
       weddingTitle.style.width = contentW + 'px';
