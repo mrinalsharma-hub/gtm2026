@@ -190,9 +190,9 @@ body::before{
   box-sizing: border-box !important;
 }
 .figma-mandala-img {
-  width: var(--mandala-width, 24%) !important;
-  max-width: none !important;
-  min-width: 0 !important;
+  width: 164px !important;
+  max-width: 164px !important;
+  min-width: 164px !important;
   height: auto;
   display: block;
   margin: 0 !important;
@@ -701,12 +701,11 @@ body::before{
     // 1. Proportional scale factor relative to golden MacBook reference width (740px)
     var S = Math.min(1.16, Math.max(0.75, cardW / 760));
 
-    // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (48%)
+    // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (14.0%), Content Width (45%)
     var cornerGap = Math.round(cardW * 0.14);
     var topMargin = cornerGap;
     var leftInset = cornerGap;
-    var contentW = Math.round(cardW * 0.48);
-    var mandalaW = Math.round(cardW * 0.24); // Fluid 24% overall size
+    var contentW = Math.round(cardW * 0.45);
     var bodyColumn = document.querySelector('.figma-card-body-column');
 
     card.style.setProperty('padding-left', '0px', 'important');
@@ -716,13 +715,11 @@ body::before{
       bodyColumn.style.setProperty('--card-left-inset', leftInset + 'px');
       bodyColumn.style.setProperty('--card-top-margin', topMargin + 'px');
       bodyColumn.style.setProperty('--card-content-width', contentW + 'px');
-      bodyColumn.style.setProperty('--mandala-width', mandalaW + 'px');
     }
 
-    // 3. Fluid Proportional Typography Scaling (WEDDING WEEKEND reduced scale factor by 0.4 across)
-    var S_title = Math.max(0.35, S - 0.4);
+    // 3. Fluid Proportional Typography Scaling
     if (weddingTitle) {
-      weddingTitle.style.fontSize = Math.round(54 * S_title) + 'px';
+      weddingTitle.style.fontSize = Math.round(54 * S) + 'px';
       weddingTitle.style.lineHeight = '0.92';
     }
     if (scriptThe) {
@@ -738,10 +735,10 @@ body::before{
     });
     metaTexts.forEach(function(el) { el.style.fontSize = Math.round(13.5 * S) + 'px'; });
 
-    // 4. Exact Stem Geometry Equation: Side Bouquet reduced to fluid 50% width
+    // 4. Exact Stem Geometry Equation: stem tip sits at 61.65% from left edge of flower image
     // Top of side bouquet aligned at exact topMargin (identical to leftInset and flowerWrap top margin)
     if (flowers) {
-      var flowerW = Math.round(cardW * 0.50); // Fluid 50% card width
+      var flowerW = Math.round(cardW * 0.59);
       flowers.style.width = flowerW + 'px';
       flowers.style.maxWidth = 'none';
       flowers.style.right = 'auto';
