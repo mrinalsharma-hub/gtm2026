@@ -69,8 +69,9 @@ body::before{
 .card{
   position:relative !important;z-index:100 !important;
   isolation:isolate !important;
+  opacity:1 !important;
   background-color:#E7DBAF !important;
-  background-image:linear-gradient(rgba(231, 219, 175, 0.5), rgba(231, 219, 175, 0.5)), url('images/card-bg-tile-3.png') !important;
+  background-image:linear-gradient(rgba(231, 219, 175, 0.95), rgba(231, 219, 175, 0.95)), url('images/card-bg-tile-3.png') !important;
   background-repeat:repeat !important;
   background-position:top left !important;
   background-size:25% 25% !important;
@@ -674,11 +675,11 @@ body::before{
 <script>
 (function() {
   function syncPichodaLeft() {
-    var title = document.querySelector('.figma-wedding-title');
+    var card = document.querySelector('.card');
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
-    if (title && pichoda && window.innerWidth > 950) {
-      var rect = title.getBoundingClientRect();
-      pichoda.style.left = rect.left + 'px';
+    if (card && pichoda && window.innerWidth > 950) {
+      var rect = card.getBoundingClientRect();
+      pichoda.style.left = Math.round(rect.left + rect.width * 0.62) + 'px';
     }
   }
   window.addEventListener('load', syncPichodaLeft);
