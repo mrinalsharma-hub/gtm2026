@@ -692,16 +692,16 @@ body::before{
     var cardW = cardRect.width;
 
     // 1. Proportional scale factor relative to golden MacBook reference width (740px)
-    var S = Math.min(1.42, Math.max(0.72, cardW / 740));
+    var S = Math.min(1.16, Math.max(0.75, cardW / 760));
 
     // 2. Proportional Left/Right Card Padding matching MacBook golden ratio (~6.4%)
     var padX = Math.round(cardW * 0.064);
     card.style.paddingLeft = padX + 'px';
     card.style.paddingRight = padX + 'px';
 
-    // 2.5 Proportional Left Inset (14%) & Active Content Column Width (42%) preventing flower text collisions
+    // 2.5 Proportional Left Inset (14%) & Active Content Column Width (35%) eliminating petal collisions
     var leftInset = Math.round(cardW * 0.14);
-    var contentW = Math.round(cardW * 0.42);
+    var contentW = Math.round(cardW * 0.35);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
