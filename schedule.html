@@ -376,6 +376,32 @@ body::before{
       padding-right: 40px !important;
   }
 }
+.aipan-dot-separator {
+  width: calc(100% + 80px) !important;
+  margin-left: -40px !important;
+  margin-right: -40px !important;
+  margin-top: 40px !important;
+  margin-bottom: 40px !important;
+  height: 6px !important;
+  background-image: radial-gradient(circle, #B42425 2.5px, transparent 3px) !important;
+  background-size: 14px 6px !important;
+  background-repeat: repeat-x !important;
+  background-position: center !important;
+  border: none !important;
+  display: block !important;
+}
+@media (max-width: 550px) {
+  .aipan-dot-separator {
+    width: calc(100% + 40px) !important;
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+    margin-top: 40px !important;
+    margin-bottom: 40px !important;
+    height: 5px !important;
+    background-image: radial-gradient(circle, #B42425 2px, transparent 2.5px) !important;
+    background-size: 12px 5px !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -450,6 +476,8 @@ body::before{
           </div>
         </div>
 
+        <div class="aipan-dot-separator" aria-hidden="true"></div>
+
         <!-- Day 2: Nov 21 -->
         <div class="figma-timeline-row">
           <div class="figma-timeline-date">
@@ -485,7 +513,7 @@ body::before{
   html body section.card img.figma-side-flowers {
     position: absolute !important;
     top: 12% !important;
-    right: calc(-32% + 9px) !important;
+    right: -31.5% !important;
     width: 62% !important;
     max-width: 580px !important;
     height: auto !important;
