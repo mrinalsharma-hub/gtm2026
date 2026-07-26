@@ -23,43 +23,42 @@ body{
 /* ═══ Kumaoni Aipan Wedding Procession (Right to Left Looping Background Parade) ═══ */
 .aipan-procession-track {
   position: fixed !important;
-  top: 82px !important;
+  top: 76px !important;
   left: 0 !important;
-  right: 0 !important;
-  height: 145px !important;
+  width: 100vw !important;
+  height: 155px !important;
   pointer-events: none !important;
-  z-index: 50 !important;
-  background-image: url('images/kumaoni-aipan-procession.svg?v=100') !important;
-  background-repeat: repeat-x !important;
-  background-position: 0 center !important;
-  background-size: 1200px 145px !important;
-  opacity: 0.85 !important;
-  -webkit-animation: aipanBgLoop 42s linear infinite !important;
-  animation: aipanBgLoop 42s linear infinite !important;
+  z-index: 40 !important;
+  overflow: hidden !important;
+  opacity: 0.82 !important;
 }
 .aipan-procession-track-bottom {
   position: fixed !important;
-  bottom: 16px !important;
+  bottom: 8px !important;
   left: 0 !important;
-  right: 0 !important;
-  height: 135px !important;
+  width: 100vw !important;
+  height: 140px !important;
   pointer-events: none !important;
-  z-index: 50 !important;
-  background-image: url('images/kumaoni-aipan-procession.svg?v=100') !important;
-  background-repeat: repeat-x !important;
-  background-position: 0 center !important;
-  background-size: 1120px 135px !important;
-  opacity: 0.78 !important;
-  -webkit-animation: aipanBgLoop 48s linear infinite !important;
-  animation: aipanBgLoop 48s linear infinite !important;
+  z-index: 40 !important;
+  overflow: hidden !important;
+  opacity: 0.76 !important;
 }
-@-webkit-keyframes aipanBgLoop {
-  0%   { background-position: 0 center; }
-  100% { background-position: -1200px center; }
+.aipan-svg-runner {
+  display: block !important;
+  width: 2400px !important;
+  min-width: 2400px !important;
+  height: 100% !important;
+  -webkit-animation: aipanSlideLeft 48s linear infinite !important;
+  animation: aipanSlideLeft 48s linear infinite !important;
+  will-change: transform;
 }
-@keyframes aipanBgLoop {
-  0%   { background-position: 0 center; }
-  100% { background-position: -1200px center; }
+@-webkit-keyframes aipanSlideLeft {
+  0%   { -webkit-transform: translateX(0); transform: translateX(0); }
+  100% { -webkit-transform: translateX(-1200px); transform: translateX(-1200px); }
+}
+@keyframes aipanSlideLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-1200px); }
 }
 body::before{
   content:"";position:fixed !important;inset:0;pointer-events:none;opacity:0.85;z-index:1;
@@ -425,8 +424,12 @@ body::before{
 <body>
 
 <!-- ═══ Kumaoni Aipan Wedding Procession (Right to Left Looping Background Parade) ═══ -->
-<div class="aipan-procession-track" aria-hidden="true"></div>
-<div class="aipan-procession-track-bottom" aria-hidden="true"></div>
+<div class="aipan-procession-track" aria-hidden="true">
+  <img src="images/kumaoni-aipan-procession.svg?v=500" class="aipan-svg-runner" alt="">
+</div>
+<div class="aipan-procession-track-bottom" aria-hidden="true">
+  <img src="images/kumaoni-aipan-procession.svg?v=500" class="aipan-svg-runner" alt="">
+</div>
 
 <header class="site">
   <a class="brand" href="index.html" aria-label="Garima &amp; Mrinal Home"><img src="images/gm-seal-logo.png?v=2" alt="G&amp;M" class="logo-img"></a>
