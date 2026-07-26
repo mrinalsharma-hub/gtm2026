@@ -208,9 +208,9 @@ body::before{
   position: relative !important;
   z-index: 10 !important;
   font-family: 'Cormorant', serif !important;
-  font-weight: 500 !important;
-  font-size: 48px !important;
-  line-height: 0.90 !important;
+  font-weight: 550 !important;
+  font-size: 56px !important;
+  line-height: 0.88 !important;
   color: #B42425 !important;
   text-transform: uppercase !important;
   letter-spacing: -0.02em !important;
@@ -703,19 +703,19 @@ body::before{
     if (cardW <= 640) {
       // Category 1: Tablet / Small Screen floor (cardW <= 640px)
       S = 0.75;
-      S_title = 0.65; // ~35px title font size
+      S_title = 0.76; // ~41px title font size
     } else if (cardW <= 840) {
       // Category 2: MacBook Air / 13" - 14" (cardW 641px - 840px)
       S = 0.75 + ((cardW - 640) / 200) * 0.20;
-      S_title = 0.78; // ~42px title font size
+      S_title = 0.91; // ~49px title font size
     } else if (cardW <= 1120) {
       // Category 3: MacBook Pro 16" Dedicated Category (cardW 841px - 1120px)
       S = 0.95 + ((cardW - 840) / 280) * 0.15;
-      S_title = 0.8889; // Exact 48px title font size on MacBook Pro 16" (54 * 0.8889 = 48px)
+      S_title = 1.037; // Exact 56px title font size on MacBook Pro 16" (54 * 1.037 = 56px)
     } else {
       // Category 4: Large 4K Monitor / Ultra-Wide (cardW > 1120px)
       S = 1.10 + Math.min(0.25, ((cardW - 1120) / 800) * 0.20);
-      S_title = 1.11; // ~60px title font size on 4K
+      S_title = 1.30; // ~70px title font size on 4K
     }
 
     // 2. Architectural Master Column Variables: Left Inset (14.0%), Top Margin (12.0% / 104px MacBook 16"), Content Width (70%)
@@ -743,11 +743,12 @@ body::before{
       sep.style.setProperty('padding-right', '0px', 'important');
     });
 
-    // 3. Fluid Proportional Typography Scaling (WEDDING WEEKEND prominent 38px on MacBook Pro 16")
+    // 3. Fluid Proportional Typography Scaling (WEDDING WEEKEND prominent 56px, weight 550 on MacBook Pro 16")
     if (weddingTitle) {
       var titlePx = Math.round(54 * S_title);
       weddingTitle.style.setProperty('font-size', titlePx + 'px', 'important');
-      weddingTitle.style.setProperty('line-height', '0.90', 'important');
+      weddingTitle.style.setProperty('font-weight', '550', 'important');
+      weddingTitle.style.setProperty('line-height', '0.88', 'important');
     }
     if (scriptThe) {
       scriptThe.style.fontSize = Math.round(42 * S) + 'px';
