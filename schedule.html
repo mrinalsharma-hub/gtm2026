@@ -111,6 +111,7 @@ body::before{
   top:72px !important;
   bottom:0 !important;
   right:0 !important;
+  left:auto !important;
   height:calc(100vh - 72px) !important;
   width:auto !important;
   max-width:none !important;
@@ -684,7 +685,10 @@ body::before{
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
     if (title && pichoda && window.innerWidth > 950) {
       var rect = title.getBoundingClientRect();
-      pichoda.style.left = Math.round(rect.left) + 'px';
+      var w = Math.round(window.innerWidth - rect.left);
+      pichoda.style.right = '0px';
+      pichoda.style.left = 'auto';
+      pichoda.style.width = w + 'px';
     }
   }
   window.addEventListener('load', syncPichodaLeft);
