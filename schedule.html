@@ -70,7 +70,8 @@ body::before{
   background-size:25% 25% !important;
   backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
   border-radius:3px !important;border:none !important;
-  padding:10px 0 64px 0 !important;
+  box-sizing:border-box !important;
+  padding:10px 32px 64px 32px !important;
   box-shadow: 12px 20px 48px -4px rgba(20, 5, 10, 0.4), 4px 8px 18px -2px rgba(20, 5, 10, 0.2) !important;
   filter:none !important;
   overflow:visible !important;
@@ -254,6 +255,10 @@ body::before{
     transform-origin: top left !important;
     left: 10px !important;
   }
+  .figma-side-flowers {
+    transform: scale(0.9) !important;
+    transform-origin: top right !important;
+  }
   .card {
      transform: scale(0.9) translateX(-25%) !important;
      transform-origin: top center !important;
@@ -270,6 +275,10 @@ body::before{
     transform: scale(0.7) !important;
     transform-origin: top left !important;
     left: 0px !important;
+  }
+  .figma-side-flowers {
+    transform: scale(0.75) !important;
+    transform-origin: top right !important;
   }
   .card {
      transform: scale(0.75) translateX(-20%) !important;
@@ -290,6 +299,10 @@ body::before{
     transform: scale(0.55) !important;
     transform-origin: top left !important;
     left: -20px !important;
+  }
+  .figma-side-flowers {
+    transform: scale(0.6) !important;
+    transform-origin: top right !important;
   }
   .card {
      transform: scale(0.6) translateX(-20%) !important;
