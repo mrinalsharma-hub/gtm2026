@@ -717,9 +717,10 @@ body::before{
       bodyColumn.style.setProperty('--card-content-width', contentW + 'px');
     }
 
-    // 3. Fluid Proportional Typography Scaling
+    // 3. Fluid Proportional Typography Scaling (WEDDING WEEKEND font size scale S - 0.3)
+    var S_title = Math.max(0.40, S - 0.3);
     if (weddingTitle) {
-      weddingTitle.style.fontSize = Math.round(54 * S) + 'px';
+      weddingTitle.style.fontSize = Math.round(54 * S_title) + 'px';
       weddingTitle.style.lineHeight = '0.92';
     }
     if (scriptThe) {
