@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 200" width="2400" height="200" fill="none">
+  <defs>
+    <!-- White-on-Red Aipan Biswar stroke styling -->
+    <style>
+      .aipan-stroke { stroke: #FFFFFF; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+      .aipan-thin   { stroke: #FFFFFF; stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+      .aipan-thick  { stroke: #FFFFFF; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+      .aipan-fill   { fill: #FFFFFF; }
+      .aipan-subtle { fill: #FFFFFF; opacity: 0.85; }
+    </style>
+  </defs>
+
+  <!-- =========================================================================
+       TILE 1 (0 to 1200px)
+       ========================================================================= -->
+  <g id="aipan-tile-1">
+    <!-- Ground Chevron Line & Sacred Dot Trail (Kinery & Bindu) -->
+    <path class="aipan-stroke" d="M 0 176 L 1200 176" />
+    <path class="aipan-thin" d="M 0 182 L 1200 182" />
+    <!-- Chevron Mountain Border along baseline -->
+    <path class="aipan-thin" d="M 0 176 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 L 340 176 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 L 570 176 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 L 760 176 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 L 940 176 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 L 1080 176 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 l 10 -8 l 10 8 L 1200 176" />
+
+    <!-- Continuous Bindu Dot Row -->
+    <g class="aipan-fill">
+      <circle cx="15" cy="190" r="1.8"/><circle cx="45" cy="190" r="1.8"/><circle cx="75" cy="190" r="1.8"/><circle cx="105" cy="190" r="1.8"/>
+      <circle cx="135" cy="190" r="1.8"/><circle cx="165" cy="190" r="1.8"/><circle cx="195" cy="190" r="1.8"/><circle cx="225" cy="190" r="1.8"/>
+      <circle cx="255" cy="190" r="1.8"/><circle cx="285" cy="190" r="1.8"/><circle cx="315" cy="190" r="1.8"/><circle cx="345" cy="190" r="1.8"/>
+      <circle cx="375" cy="190" r="1.8"/><circle cx="405" cy="190" r="1.8"/><circle cx="435" cy="190" r="1.8"/><circle cx="465" cy="190" r="1.8"/>
+      <circle cx="495" cy="190" r="1.8"/><circle cx="525" cy="190" r="1.8"/><circle cx="555" cy="190" r="1.8"/><circle cx="585" cy="190" r="1.8"/>
+      <circle cx="615" cy="190" r="1.8"/><circle cx="645" cy="190" r="1.8"/><circle cx="675" cy="190" r="1.8"/><circle cx="705" cy="190" r="1.8"/>
+      <circle cx="735" cy="190" r="1.8"/><circle cx="765" cy="190" r="1.8"/><circle cx="795" cy="190" r="1.8"/><circle cx="825" cy="190" r="1.8"/>
+      <circle cx="855" cy="190" r="1.8"/><circle cx="885" cy="190" r="1.8"/><circle cx="915" cy="190" r="1.8"/><circle cx="945" cy="190" r="1.8"/>
+      <circle cx="975" cy="190" r="1.8"/><circle cx="1005" cy="190" r="1.8"/><circle cx="1035" cy="190" r="1.8"/><circle cx="1065" cy="190" r="1.8"/>
+      <circle cx="1095" cy="190" r="1.8"/><circle cx="1125" cy="190" r="1.8"/><circle cx="1155" cy="190" r="1.8"/><circle cx="1185" cy="190" r="1.8"/>
+    </g>
+
+    <!-- -----------------------------------------------------------------------
+         1. RANSINGHA TRUMPETER (Leading Parade Leftward x ~ 90)
+         ----------------------------------------------------------------------- -->
+    <g id="figure-ransingha-1" transform="translate(60, 0)">
+      <!-- Player body -->
+      <path class="aipan-stroke" d="M 45 176 L 43 140 C 42 128 48 116 52 104 C 50 96 46 90 47 82 C 48 74 56 70 62 74 C 68 78 68 88 63 94 C 59 100 55 106 56 114 L 60 142 L 62 176" />
+      <!-- Angarkha Dhoti skirt hatch -->
+      <path class="aipan-thin" d="M 44 146 L 61 146 M 45 154 L 61 154 M 45 162 L 61 162 M 45 170 L 61 170" />
+      <!-- Turban dots -->
+      <circle class="aipan-fill" cx="54" cy="74" r="2"/>
+      <circle class="aipan-fill" cx="59" cy="72" r="1.8"/>
+      <!-- Giant Curved Brass Ransingha Horn sweeping upward over shoulder -->
+      <path class="aipan-thick" d="M 52 86 C 30 76 15 50 25 28 C 36 6 70 8 84 32 C 96 52 86 78 66 84" />
+      <path class="aipan-thin" d="M 54 84 C 33 74 19 52 28 32 C 38 12 68 14 80 35 C 90 53 82 74 66 80" />
+      <!-- Bell flare of trumpet -->
+      <ellipse class="aipan-stroke" cx="84" cy="30" rx="7" ry="4" transform="rotate(-15 84 30)" />
+      <!-- Sun rays / sound bursts from horn -->
+      <path class="aipan-thin" d="M 92 22 L 102 14 M 94 30 L 106 28 M 90 38 L 102 44" />
+      <circle class="aipan-fill" cx="106" cy="12" r="1.6"/>
+      <circle class="aipan-fill" cx="110" cy="27" r="1.6"/>
+      <circle class="aipan-fill" cx="105" cy="46" r="1.6"/>
+    </g>
+
+    <!-- -----------------------------------------------------------------------
+         2. DHOL-DAMAU DRUMMER (x ~ 210)
+         ----------------------------------------------------------------------- -->
+    <g id="figure-dhol-1" transform="translate(180, 0)">
+      <!-- Leg & Tunic -->
+      <path class="aipan-stroke" d="M 40 176 L 38 138 C 36 122 44 108 50 96 C 48 88 44 82 46 74 C 48 66 56 64 62 68 C 68 72 68 82 63 88 C 58 94 54 102 54 112 L 56 140 L 58 176" />
+      <path class="aipan-thin" d="M 39 144 L 57 144 M 39 154 L 57 154 M 39 164 L 57 164" />
+      <!-- Barrel Dhol Drum slung around neck -->
+      <ellipse class="aipan-stroke" cx="30" cy="118" rx="16" ry="24" transform="rotate(-20 30 118)" />
+      <ellipse class="aipan-thin" cx="30" cy="118" rx="11" ry="18" transform="rotate(-20 30 118)" />
+      <!-- Diamond hatch on drum skin -->
+      <path class="aipan-thin" d="M 20 102 L 40 134 M 22 132 L 38 102 M 28 98 L 32 138" />
+      <!-- Drumsticks curved strokes -->
+      <path class="aipan-stroke" d="M 48 102 C 38 98 24 106 18 114" />
+      <circle class="aipan-fill" cx="16" cy="115" r="2.4"/>
+    </g>
+
+    <!-- -----------------------------------------------------------------------
+         3. SECOND HURKA / BHANKORA MUSICIAN (x ~ 320)
+         ----------------------------------------------------------------------- -->
+    <g id="figure-hurka-1" transform="translate(290, 0)">
+      <path class="aipan-stroke" d="M 42 176 L 40 138 C 38 124 45 110 51 98 C 49 90 45 84 47 76 C 49 68 57 66 63 70 C 69 74 69 84 64 90 C 59 96 55 104 55 114 L 58 140 L 60 176" />
+      <path class="aipan-thin" d="M 41 146 L 59 146 M 41 156 L 59 156" />
+      <!-- Hourglass Hurka Drum -->
+      <path class="aipan-stroke" d="M 24 104 C 30 112 30 120 24 128 L 38 128 C 32 120 32 112 38 104 Z" />
+      <circle class="aipan-fill" cx="31" cy="116" r="2.2"/>
+    </g>
+
+    <!-- Aipan Kamal Lotus Floret Separator -->
+    <g transform="translate(425, 140)">
+      <circle class="aipan-stroke" cx="0" cy="0" r="10"/>
+      <circle class="aipan-fill" cx="0" cy="0" r="3"/>
+      <path class="aipan-stroke" d="M 0 -10 C -4 -16 0 -22 0 -22 C 0 -22 4 -16 0 -10 Z" />
+      <path class="aipan-stroke" d="M 10 0 C 16 -4 22 0 22 0 C 22 0 16 4 10 0 Z" />
+      <path class="aipan-stroke" d="M 0 10 C -4 16 0 22 0 22 C 0 22 4 16 0 10 Z" />
+      <path class="aipan-stroke" d="M -10 0 C -16 -4 -22 0 -22 0 C -22 0 -16 4 -10 0 Z" />
+      <circle class="aipan-fill" cx="-6" cy="-6" r="1.5"/><circle class="aipan-fill" cx="6" cy="-6" r="1.5"/>
+      <circle class="aipan-fill" cx="6" cy="6" r="1.5"/><circle class="aipan-fill" cx="-6" cy="6" r="1.5"/>
+    </g>
+
+    <!-- -----------------------------------------------------------------------
+         4. CAPARISONED KUMAONI WEDDING HORSE & DULHA (GROOM) (x ~ 520)
+         ----------------------------------------------------------------------- -->
+    <g id="figure-groom-horse-1" transform="translate(480, 0)">
+      <!-- Horse Legs -->
+      <path class="aipan-stroke" d="M 45 176 L 50 148 L 56 128 M 70 176 L 72 150 L 76 130 M 130 176 L 126 148 L 120 126 M 150 176 L 146 150 L 140 128" />
+      <!-- Horse Hooves -->
+      <path class="aipan-thick" d="M 41 176 L 49 176 M 66 176 L 74 176 M 126 176 L 134 176 M 146 176 L 154 176" />
+      <!-- Horse Body & Curved Neck -->
+      <path class="aipan-stroke" d="M 52 126 C 65 118 105 118 138 126 C 148 116 154 98 152 74 C 150 62 142 52 134 46 C 128 42 120 44 116 52 C 112 60 114 74 118 84 C 104 88 78 88 60 96 C 52 104 48 116 52 126 Z" />
+      <!-- Harness & Caparisoned Blanket dots -->
+      <path class="aipan-thin" d="M 72 100 L 72 124 M 86 100 L 86 124 M 100 100 L 100 124 M 114 100 L 114 124" />
+      <g class="aipan-fill">
+        <circle cx="79" cy="106" r="1.8"/><circle cx="93" cy="106" r="1.8"/><circle cx="107" cy="106" r="1.8"/>
+        <circle cx="79" cy="118" r="1.8"/><circle cx="93" cy="118" r="1.8"/><circle cx="107" cy="118" r="1.8"/>
+      </g>
+      <!-- Plumed Horse Crest / Headband -->
+      <path class="aipan-thin" d="M 126 44 C 122 32 126 22 132 16 M 130 42 C 130 28 136 18 142 14" />
+      <circle class="aipan-fill" cx="132" cy="14" r="2.2"/>
+      <circle class="aipan-fill" cx="143" cy="12" r="2.2"/>
+      <!-- Groom Sitting Tall on Saddle -->
+      <path class="aipan-stroke" d="M 94 98 L 92 72 C 90 62 96 52 102 44 C 100 36 94 30 96 22 C 98 14 108 12 114 16 C 120 20 118 30 112 36 C 106 42 102 50 102 60 L 104 80" />
+      <!-- Kumaoni Ceremonial Crown / Turban Mukut -->
+      <path class="aipan-stroke" d="M 96 22 L 114 16 L 112 8 L 104 4 L 96 12 Z" />
+      <path class="aipan-thin" d="M 100 18 L 108 12 M 104 16 L 110 10" />
+      <circle class="aipan-fill" cx="104" cy="2" r="2.5"/>
+      <!-- Ceremonial Chhatra (Royal Parasol) floating over Groom -->
+      <path class="aipan-stroke" d="M 102 46 L 102 -10" />
+      <path class="aipan-thick" d="M 72 -10 C 80 -26 124 -26 132 -10 Z" />
+      <path class="aipan-thin" d="M 76 -10 L 102 -22 L 128 -10" />
+      <circle class="aipan-fill" cx="74" cy="-8" r="1.8"/>
+      <circle class="aipan-fill" cx="88" cy="-6" r="1.8"/>
+      <circle class="aipan-fill" cx="102" cy="-5" r="1.8"/>
+      <circle class="aipan-fill" cx="116" cy="-6" r="1.8"/>
+      <circle class="aipan-fill" cx="130" cy="-8" r="1.8"/>
+    </g>
+
+    <!-- Kumaoni Sparrow (Gouriya) Flying overhead -->
+    <g transform="translate(685, 35)">
+      <path class="aipan-stroke" d="M 0 0 C 8 -10 18 -8 24 -2 C 30 -8 40 -10 48 0 C 34 2 24 10 24 10 C 24 10 14 2 0 0 Z" />
+      <circle class="aipan-fill" cx="24" cy="-1" r="1.6"/>
+    </g>
+
+    <!-- -----------------------------------------------------------------------
+         5. THE KUMAONI BRIDAL DOLI / PALKI & FOUR BEARERS (KAHARS) (x ~ 820)
+         ----------------------------------------------------------------------- -->
+    <g id="figure-palki-1" transform="translate(760, 0)">
+      <!-- Long Horizontal Bamboo Carrying Pole (Palki-Baans) slung over shoulders -->
+      <path class="aipan-thick" d="M 10 104 L 390 104" />
+      <path class="aipan-thin" d="M 10 108 L 390 108" />
+
+      <!-- FRONT BEARER 1 (Leftmost, x ~ 40) -->
+      <g transform="translate(25, 0)">
+        <path class="aipan-stroke" d="M 30 176 L 28 140 C 26 124 34 112 40 104 C 38 96 34 90 36 82 C 38 74 46 72 52 76 C 58 80 58 90 53 96 C 48 102 44 110 44 120 L 46 144 L 48 176" />
+        <path class="aipan-thin" d="M 29 146 L 47 146 M 29 156 L 47 156" />
+        <circle class="aipan-fill" cx="44" cy="76" r="2"/>
+      </g>
+
+      <!-- FRONT BEARER 2 (x ~ 85) -->
+      <g transform="translate(70, 0)">
+        <path class="aipan-stroke" d="M 30 176 L 28 140 C 26 124 34 112 40 104 C 38 96 34 90 36 82 C 38 74 46 72 52 76 C 58 80 58 90 53 96 C 48 102 44 110 44 120 L 46 144 L 48 176" />
+        <path class="aipan-thin" d="M 29 146 L 47 146 M 29 156 L 47 156" />
+        <circle class="aipan-fill" cx="44" cy="76" r="2"/>
+      </g>
+
+      <!-- =====================================================================
+           SACRED KUMAONI DOLI / PALKI CURVED DOME & BRIDAL CABIN (x ~ 140..260)
+           ===================================================================== -->
+      <g transform="translate(130, 0)">
+        <!-- Pagoda Tiered Roof of Doli -->
+        <path class="aipan-thick" d="M 10 94 C 30 62 110 62 130 94 Z" />
+        <path class="aipan-stroke" d="M 0 94 L 140 94 L 140 148 L 0 148 Z" />
+        <path class="aipan-thin" d="M 6 98 L 134 98 L 134 144 L 6 144 Z" />
+
+        <!-- Top Sacred Kalash Finial on Doli Roof -->
+        <path class="aipan-stroke" d="M 70 64 L 70 48 M 64 48 L 76 48 L 70 38 Z" />
+        <circle class="aipan-fill" cx="70" cy="35" r="3.2"/>
+        <circle class="aipan-fill" cx="54" cy="62" r="2"/>
+        <circle class="aipan-fill" cx="86" cy="62" r="2"/>
+
+        <!-- Aipan Geometric Chevron & Cross-Hatching on Doli Canopy -->
+        <path class="aipan-thin" d="M 25 86 L 35 70 L 45 86 L 55 70 L 65 86 L 75 70 L 85 86 L 95 70 L 105 86" />
+
+        <!-- Arched Window Frame with View of Bride (Dulhan) in Pichhaura Veil -->
+        <path class="aipan-stroke" d="M 42 108 C 42 98 98 98 98 108 L 98 138 L 42 138 Z" />
+        <!-- Profile Silhouette of Bride holding lotus blossom -->
+        <path class="aipan-stroke" d="M 60 138 C 58 126 64 116 70 110 C 74 106 80 108 82 114 C 84 120 78 128 74 138" />
+        <!-- Kumaoni Rangwali Pichhaura Dots on Bridal Veil -->
+        <circle class="aipan-fill" cx="66" cy="116" r="1.4"/>
+        <circle class="aipan-fill" cx="74" cy="118" r="1.4"/>
+        <circle class="aipan-fill" cx="70" cy="126" r="1.4"/>
+        <!-- Lotus in Bride's hand -->
+        <path class="aipan-thin" d="M 80 124 C 84 118 88 120 86 126 Z" />
+
+        <!-- Hanging Corner Bells & Lotus Tassels below Palanquin Base -->
+        <path class="aipan-thin" d="M 12 148 L 12 162 M 36 148 L 36 162 M 70 148 L 70 164 M 104 148 L 104 162 M 128 148 L 128 162" />
+        <circle class="aipan-fill" cx="12" cy="164" r="2.4"/>
+        <circle class="aipan-fill" cx="36" cy="164" r="2.4"/>
+        <circle class="aipan-fill" cx="70" cy="166" r="2.8"/>
+        <circle class="aipan-fill" cx="104" cy="164" r="2.4"/>
+        <circle class="aipan-fill" cx="128" cy="164" r="2.4"/>
+      </g> <!-- End Doli cabin -->
+
+      <!-- REAR BEARER 3 (x ~ 285) -->
+      <g transform="translate(270, 0)">
+        <path class="aipan-stroke" d="M 30 176 L 28 140 C 26 124 34 112 40 104 C 38 96 34 90 36 82 C 38 74 46 72 52 76 C 58 80 58 90 53 96 C 48 102 44 110 44 120 L 46 144 L 48 176" />
+        <path class="aipan-thin" d="M 29 146 L 47 146 M 29 156 L 47 156" />
+        <circle class="aipan-fill" cx="44" cy="76" r="2"/>
+      </g>
+
+      <!-- REAR BEARER 4 (x ~ 330) -->
+      <g transform="translate(315, 0)">
+        <path class="aipan-stroke" d="M 30 176 L 28 140 C 26 124 34 112 40 104 C 38 96 34 90 36 82 C 38 74 46 72 52 76 C 58 80 58 90 53 96 C 48 102 44 110 44 120 L 46 144 L 48 176" />
+        <path class="aipan-thin" d="M 29 146 L 47 146 M 29 156 L 47 156" />
+        <circle class="aipan-fill" cx="44" cy="76" r="2"/>
+      </g>
+    </g> <!-- End Palki group -->
+
+    <!-- Aipan Sacred Sun-and-Moon Diya Motif (x ~ 1130) -->
+    <g transform="translate(1130, 135)">
+      <circle class="aipan-stroke" cx="0" cy="0" r="14"/>
+      <circle class="aipan-thin" cx="0" cy="0" r="8"/>
+      <circle class="aipan-fill" cx="0" cy="0" r="2.8"/>
+      <path class="aipan-thin" d="M 0 -14 L 0 -22 M 14 0 L 22 0 M 0 14 L 0 22 M -14 0 L -22 0 M 10 -10 L 16 -16 M 10 10 L 16 16 M -10 10 L -16 16 M -10 -10 L -16 -16" />
+    </g>
+  </g> <!-- END TILE 1 -->
+
+
+  <!-- =========================================================================
+       TILE 2 (EXACT DUPLICATE SEAMLESS OFFSET AT x = 1200px)
+       Guarantees 100% infinite smooth CSS loop from translateX(0) to translateX(-1200px)
+       ========================================================================= -->
+  <use href="#aipan-tile-1" x="1200" y="0" />
+</svg>
