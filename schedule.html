@@ -699,9 +699,9 @@ body::before{
     card.style.paddingLeft = padX + 'px';
     card.style.paddingRight = padX + 'px';
 
-    // 2.5 Proportional Left Inset (12.5%) & Active Content Column Width (64.5%) matching MacBook Golden Ratios
-    var leftInset = Math.round(cardW * 0.125);
-    var contentW = Math.round(cardW * 0.645);
+    // 2.5 Proportional Left Inset (14%) & Active Content Column Width (63%) across all relevant resolutions
+    var leftInset = Math.round(cardW * 0.14);
+    var contentW = Math.round(cardW * 0.63);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
