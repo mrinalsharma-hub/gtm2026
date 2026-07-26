@@ -699,9 +699,9 @@ body::before{
     card.style.paddingLeft = padX + 'px';
     card.style.paddingRight = padX + 'px';
 
-    // 2.5 Proportional Left Inset (14%) & Active Content Column Width (63%) across all relevant resolutions
+    // 2.5 Proportional Left Inset (14%) & Active Content Column Width (42%) preventing flower text collisions
     var leftInset = Math.round(cardW * 0.14);
-    var contentW = Math.round(cardW * 0.63);
+    var contentW = Math.round(cardW * 0.42);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
