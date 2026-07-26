@@ -344,13 +344,11 @@ body::before{
     padding-right: 16px !important;
     margin-bottom: 24px !important;
   }
-  html body section.card .figma-schedule-timeline {
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-  }
   html body section.card .figma-timeline-row {
     flex-direction: column !important;
     gap: 16px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
   html body section.card .figma-timeline-date {
     width: 100% !important;
@@ -364,7 +362,7 @@ body::before{
   }
 }
 @media (min-width: 551px) {
-  html body section.card .figma-schedule-timeline {
+  html body section.card .figma-timeline-row {
       padding-left: 40px !important;
       padding-right: 40px !important;
   }
@@ -374,14 +372,14 @@ body::before{
   }
 }
 .aipan-dot-separator {
-  width: calc(100% + 80px) !important;
-  margin-left: -40px !important;
-  margin-right: -40px !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   margin-top: 40px !important;
   margin-bottom: 40px !important;
-  height: 6px !important;
-  background-image: radial-gradient(circle, #B42425 2.5px, transparent 3px) !important;
-  background-size: 14px 6px !important;
+  height: 5px !important;
+  background-image: radial-gradient(circle, #B42425 1.8px, transparent 2.2px) !important;
+  background-size: 11px 5px !important;
   background-repeat: repeat-x !important;
   background-position: center !important;
   border: none !important;
@@ -389,14 +387,14 @@ body::before{
 }
 @media (max-width: 550px) {
   .aipan-dot-separator {
-    width: calc(100% + 40px) !important;
-    margin-left: -20px !important;
-    margin-right: -20px !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
     margin-top: 40px !important;
     margin-bottom: 40px !important;
-    height: 5px !important;
-    background-image: radial-gradient(circle, #B42425 2px, transparent 2.5px) !important;
-    background-size: 12px 5px !important;
+    height: 4px !important;
+    background-image: radial-gradient(circle, #B42425 1.4px, transparent 1.8px) !important;
+    background-size: 9px 4px !important;
   }
 }
 </style>
@@ -525,12 +523,12 @@ body::before{
   
   html body section.card .figma-schedule-timeline {
     width: 100% !important;
-    max-width: 720px !important;
+    max-width: none !important;
     margin: 60px auto 0 auto !important;
     padding-bottom: 60px !important;
     display: flex !important;
     flex-direction: column !important;
-    gap: 88px !important;
+    gap: 0 !important;
     text-align: left !important;
     position: relative !important;
     z-index: 100 !important;
@@ -540,6 +538,10 @@ body::before{
     display: flex !important;
     gap: 44px !important;
     align-items: flex-start !important;
+    width: 100% !important;
+    max-width: 720px !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
   }
   
   html body section.card .figma-timeline-date {
