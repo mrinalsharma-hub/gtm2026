@@ -793,66 +793,6 @@ body::before{
   setTimeout(adaptScheduleCard, 400);
   setTimeout(adaptScheduleCard, 1000);
 
-  // Dynamic Time-of-Day Parallax Shadow Physics: Nudges shadow angle with mouse pointer & scroll position
-  (function initInteractiveShadowParallax() {
-    var flowers = document.querySelector('.figma-side-flowers');
-    var card = document.querySelector('section.card');
-    if (!flowers || !card) return;
-
-    var pointerX = window.innerWidth * 0.5;
-    var pointerY = window.innerHeight * 0.3;
-    var ticking = false;
-
-    function renderParallax() {
-      var normX = (pointerX / Math.max(1, window.innerWidth) - 0.5) * 2; // -1 to +1
-      var normY = (pointerY / Math.max(1, window.innerHeight) - 0.5) * 2; // -1 to +1
-
-      var fDx1 = Math.max(14, Math.round(18 + normX * 6));
-      var fDy1 = Math.round(12 + normY * 5);
-      var fDx2 = Math.max(22, Math.round(28 + normX * 8));
-      var fDy2 = Math.round(18 + normY * 6);
-      var fDx3 = Math.max(32, Math.round(40 + normX * 12));
-      var fDy3 = Math.round(26 + normY * 8);
-
-      flowers.style.setProperty(
-        'filter',
-        'drop-shadow(' + fDx1 + 'px ' + fDy1 + 'px 11px rgba(58, 18, 24, 0.46)) ' +
-        'drop-shadow(' + fDx2 + 'px ' + fDy2 + 'px 20px rgba(78, 32, 34, 0.36)) ' +
-        'drop-shadow(' + fDx3 + 'px ' + fDy3 + 'px 32px rgba(42, 14, 18, 0.24))',
-        'important'
-      );
-
-      var cDx = Math.round(16 + normX * 8);
-      var cDy = Math.round(26 + normY * 10);
-      card.style.setProperty(
-        'box-shadow',
-        '3px 6px 18px rgba(65, 12, 10, 0.14), ' +
-        cDx + 'px ' + cDy + 'px 48px -6px rgba(50, 8, 8, 0.22), ' +
-        (cDx + 12) + 'px ' + (cDy + 20) + 'px 78px -10px rgba(35, 5, 6, 0.10), ' +
-        'inset 1px 1px 0px rgba(255, 252, 242, 0.90)',
-        'important'
-      );
-
-      ticking = false;
-    }
-
-    function onPointerMove(e) {
-      pointerX = e.clientX;
-      pointerY = e.clientY;
-      if (!ticking) {
-        requestAnimationFrame(renderParallax);
-        ticking = true;
-      }
-    }
-
-    window.addEventListener('mousemove', onPointerMove, { passive: true });
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(renderParallax);
-        ticking = true;
-      }
-    }, { passive: true });
-  })();
 })();
 </script>
 </body>
