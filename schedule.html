@@ -694,37 +694,40 @@ body::before{
     // 1. Proportional scale factor relative to golden MacBook reference width (740px)
     var S = Math.min(1.16, Math.max(0.75, cardW / 760));
 
-    // 2. Card padding left/right zeroed so leftInset (14%) measures directly from paper border
-    card.style.paddingLeft = '0px';
-    card.style.paddingRight = '0px';
-
     // 2. Compute Corner Gap: Exact 15.1% of card width (112px on MacBook reference width 740px)
     var cornerGap = Math.round(cardW * 0.151);
     var topMargin = cornerGap; // Top margin of flower modules (Image 1 DevTools computed 112px)
-    var leftInset = cornerGap; // Left padding/inset of card contents (Image 2) — 100% IDENTICAL ALWAYS
+    var leftInset = cornerGap; // Left padding/inset assigned to card (.card)
     var contentW = Math.round(cardW * 0.44);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
+    // Assign computed left padding directly onto card parent container
+    card.style.paddingLeft = leftInset + 'px';
+    card.style.paddingRight = '0px';
+
+    // All children align flush to card's computed padding-left with ZERO left margin or padding of their own
     if (flowerWrap) {
       flowerWrap.style.maxWidth = 'none';
-      flowerWrap.style.width = '100%';
+      flowerWrap.style.width = contentW + 'px';
       flowerWrap.style.marginLeft = '0px';
-      flowerWrap.style.marginRight = '0px';
-      flowerWrap.style.setProperty('padding-left', leftInset + 'px', 'important');
+      flowerWrap.style.marginRight = 'auto';
+      flowerWrap.style.paddingLeft = '0px';
       flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
     }
     if (weddingTitle) {
       weddingTitle.style.maxWidth = 'none';
       weddingTitle.style.width = contentW + 'px';
-      weddingTitle.style.marginLeft = leftInset + 'px';
+      weddingTitle.style.marginLeft = '0px';
       weddingTitle.style.marginRight = 'auto';
+      weddingTitle.style.paddingLeft = '0px';
     }
     timelineRows.forEach(function(row) {
       row.style.maxWidth = 'none';
       row.style.width = contentW + 'px';
-      row.style.marginLeft = leftInset + 'px';
+      row.style.marginLeft = '0px';
       row.style.marginRight = 'auto';
+      row.style.paddingLeft = '0px';
     });
 
     // 3. Fluid Proportional Typography Scaling
