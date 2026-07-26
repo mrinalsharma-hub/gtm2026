@@ -108,15 +108,20 @@ body::before{
 /* Traditional Pichoda Background Pattern behind card & flowers, fixed top navbar to bottom viewport */
 .figma-pichoda-fixed-bg{
   position:fixed !important;
-  top:0 !important;
+  top:72px !important;
   bottom:0 !important;
-  height:100vh !important;
+  right:0 !important;
+  height:calc(100vh - 72px) !important;
   width:auto !important;
   max-width:none !important;
   z-index:10 !important;
   pointer-events:none !important;
   opacity:0.95 !important;
   mix-blend-mode:normal !important;
+  object-fit:cover !important;
+  object-position:right top !important;
+  transform:scale(1.25) !important;
+  transform-origin:top right !important;
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
@@ -675,11 +680,11 @@ body::before{
 <script>
 (function() {
   function syncPichodaLeft() {
-    var card = document.querySelector('.card');
+    var title = document.querySelector('.figma-wedding-title');
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
-    if (card && pichoda && window.innerWidth > 950) {
-      var rect = card.getBoundingClientRect();
-      pichoda.style.left = Math.round(rect.left + rect.width * 0.62) + 'px';
+    if (title && pichoda && window.innerWidth > 950) {
+      var rect = title.getBoundingClientRect();
+      pichoda.style.left = Math.round(rect.left) + 'px';
     }
   }
   window.addEventListener('load', syncPichodaLeft);
