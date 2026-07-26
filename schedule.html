@@ -163,54 +163,65 @@ body::before{
   100%{-webkit-transform:rotate(360deg);transform:rotate(360deg);}
 }
 
-/* Mandala Flower Centerpiece (Figma width: 319px / 1415px canvas = 22.54%; top gap from border end 179px / 1415px = 12.65%; bottom gap to title 65px / 1415px = 4.59%) */
-.figma-flower-wrap{
-  position:relative !important;
-  z-index:10 !important;
-  display:flex;
-  justify-content:flex-start;
-  align-items:center;
-  width:100% !important;
-  max-width:none !important;
-  margin-top:0 !important;
-  margin-left:auto !important;
-  margin-right:auto !important;
-  margin-bottom:60px !important;
-  padding-left:0 !important;
-  box-sizing:border-box !important;
-}
-.figma-mandala-img{
-  width:164px !important;
-  max-width:164px !important;
-  min-width:164px !important;
-  height:auto;
-  display:block;
-  margin:0 !important;
-  -webkit-transform-origin:center center;
-  transform-origin:center center;
-  -webkit-animation:mandalaSpinSlow 36s linear infinite !important;
-  animation:mandalaSpinSlow 36s linear infinite !important;
-  will-change:transform;
+/* Master Architectural Body Column: Single Container controlling Left Inset & Top Margin */
+.figma-card-body-column {
+  position: relative !important;
+  z-index: 20 !important;
+  width: var(--card-content-width, 44%) !important;
+  margin-left: var(--card-left-inset, 15.1%) !important;
+  margin-top: var(--card-top-margin, 15.1%) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
 }
 
-/* WEDDING WEEKEND Title (Figma node 327:2809 & 328:423: "The" calligraphic script overlay rotated -5.12deg, WEDDING WEEKEND Cormorant 64px) */
-.figma-wedding-title{
-  position:relative !important;
-  z-index:10 !important;
-  font-family:'Cormorant',serif !important;
-  font-weight:400 !important;
-  font-size:73.7px !important;
-  line-height:0.82 !important;
-  color:#B42425 !important;
-  text-transform:uppercase !important;
-  letter-spacing:-0.02em !important;
-  width:100% !important;
-  max-width:720px !important;
-  margin:0 auto 92px auto !important;
-  display:flex !important;
-  flex-direction:column !important;
-  align-items:flex-start !important;
-  text-align:left !important;
+.figma-flower-wrap {
+  position: relative !important;
+  z-index: 10 !important;
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 60px 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+.figma-mandala-img {
+  width: 164px !important;
+  max-width: 164px !important;
+  min-width: 164px !important;
+  height: auto;
+  display: block;
+  margin: 0 !important;
+  -webkit-transform-origin: center center;
+  transform-origin: center center;
+  -webkit-animation: mandalaSpinSlow 36s linear infinite !important;
+  animation: mandalaSpinSlow 36s linear infinite !important;
+  will-change: transform;
+}
+
+/* WEDDING WEEKEND Title */
+.figma-wedding-title {
+  position: relative !important;
+  z-index: 10 !important;
+  font-family: 'Cormorant', serif !important;
+  font-weight: 400 !important;
+  font-size: 73.7px !important;
+  line-height: 0.82 !important;
+  color: #B42425 !important;
+  text-transform: uppercase !important;
+  letter-spacing: -0.02em !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 0 92px 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  text-align: left !important;
 }
 .figma-title-script-the{
   position:absolute !important;
@@ -447,109 +458,114 @@ body::before{
         <img src="images/figma-top-border-final.png?v=4" alt="" class="figma-top-border-img">
       </div>
 
-      <div class="figma-flower-wrap">
-        <img src="images/figma-mandala-flower.svg?v=200" alt="" class="figma-mandala-img">
-      </div>
+      <!-- Unified Architectural Content Column -->
+      <div class="figma-card-body-column">
 
-      <h2 class="figma-wedding-title">
-        <span>WEDDING</span>
-        <span>WEEKEND</span>
-      </h2>
-
-      <!-- Events List from Figma-Agent -->
-      <div class="figma-schedule-timeline">
-        
-        <!-- Day 1: Nov 20 -->
-        <div class="figma-timeline-row">
-          <div class="figma-timeline-date">
-            <span class="figma-date-month">NOV</span>
-            <span class="figma-date-day">20</span>
-          </div>
-          <div class="figma-timeline-events">
-            <div class="figma-event-item">
-              <p class="figma-event-eyebrow">FRIDAY &nbsp;|&nbsp; BY 6 PM</p>
-              <h3 class="figma-event-title">Arrive in Nainital</h3>
-              <p class="figma-event-desc">Take the evening to settle in, refresh, and soak up the mountain air. We’ve kept tonight entirely free so you can unwind at your own pace after your journey.</p>
-            </div>
-            
-            <div class="figma-event-item">
-              <p class="figma-event-eyebrow">FRIDAY &nbsp;|&nbsp; BRIDE'S 5PM, GROOM'S 7:30PM</p>
-              <h3 class="figma-event-title">Mehndi</h3>
-              <p class="figma-event-desc">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet ceremonies, we couldn't resist!</p>
-              <p class="figma-event-desc"><strong>This is a completely optional event </strong>but if you are game, join us for a cozy, informal henna session—especially for the ladies!</p>
-              <p class="figma-event-desc" style="margin-top: 8px;"><strong style="color: #0B5978;">Venue:</strong>&nbsp;&nbsp;Bride's side: <a href="#" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Home address</a>, Groom's side: <a href="#" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>TBC</a></p>
-              <p class="figma-event-desc"><strong style="color: #0B5978;">Dress code:</strong>&nbsp;&nbsp;Dress casually and comfortably in whatever you like—and feel free to dress up if you wish—but do bring a warm layer as Nainital nights in November get quite chilly.</p>
-            </div>
-          </div>
+        <div class="figma-flower-wrap">
+          <img src="images/figma-mandala-flower.svg?v=200" alt="" class="figma-mandala-img">
         </div>
 
-        <div class="aipan-dot-separator" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
+        <h2 class="figma-wedding-title">
+          <span>WEDDING</span>
+          <span>WEEKEND</span>
+        </h2>
 
-        <!-- Day 2: Nov 21 -->
-        <div class="figma-timeline-row">
-          <div class="figma-timeline-date">
-            <span class="figma-date-month">NOV</span>
-            <span class="figma-date-day">21</span>
-          </div>
-          <div class="figma-timeline-events">
-            <div class="figma-event-item">
-              <p class="figma-event-eyebrow">SATURDAY &nbsp;|&nbsp; 10 AM ONWARDS</p>
-              <h3 class="figma-event-title" style="margin-bottom: 16px !important;">Day Wedding</h3>
-              <img src="images/day-wedding-venue.jpg?v=2" alt="Balrampur House Nainital" class="figma-event-image" style="margin-top: 8px !important; margin-bottom: 0px !important;">
-              <p class="figma-event-desc" style="margin-top: 8px;"><strong style="color: #0B5978;">Venue:</strong>&nbsp;&nbsp;<a href="https://www.google.com/maps/place/Balrampur+House+Nainital/@29.3951497,79.442385,17z/data=!3m1!4b1!4m9!3m8!1s0x39a0a1bed36f64eb:0xe5c48d29cb3cd498!5m2!4m1!1i2!8m2!3d29.3951497!4d79.442385!16s%2Fg%2F11hyp1vk_p!5m1!1e1?entry=ttu&amp;g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Balrampur House Nainital</a>, <a href="https://www.balrampurhousenainital.in/index.html" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;">About the venue</a></p>
-              <p class="figma-event-desc"><strong style="color: #0B5978;">Dress code:</strong>&nbsp;&nbsp;We’d love for you to join in the colorful spirit of our Kumaoni wedding! Guests are highly encouraged to wear traditional Indian wear (like a Kurta, Lehenga, or Salwar Suit) or the traditional attire of your own culture. If you prefer, colorful Western formal wear is also completely welcome. We just ask that you avoid wearing red (reserved for the bride), black, or white to the main ceremony. In case you have questions or need help, please reach out to us!</p>
+        <!-- Events List from Figma-Agent -->
+        <div class="figma-schedule-timeline">
+          
+          <!-- Day 1: Nov 20 -->
+          <div class="figma-timeline-row">
+            <div class="figma-timeline-date">
+              <span class="figma-date-month">NOV</span>
+              <span class="figma-date-day">20</span>
+            </div>
+            <div class="figma-timeline-events">
+              <div class="figma-event-item">
+                <p class="figma-event-eyebrow">FRIDAY &nbsp;|&nbsp; BY 6 PM</p>
+                <h3 class="figma-event-title">Arrive in Nainital</h3>
+                <p class="figma-event-desc">Take the evening to settle in, refresh, and soak up the mountain air. We’ve kept tonight entirely free so you can unwind at your own pace after your journey.</p>
+              </div>
               
-              <p class="figma-event-desc" style="margin-top: 10px !important; font-style: italic; opacity: 0.85;">Tentative plan:</p>
-              <div class="wedding-day-program" style="margin-top: 4px; display: flex; flex-direction: column; gap: 4px;">
-                <p class="figma-event-desc"><strong style="color: #0B5978;">10:00 AM Assembly of Baraat:</strong>&nbsp;&nbsp;Groom's wedding procession.</p>
-                <p class="figma-event-desc"><strong style="color: #0B5978;">11:30 AM Varmaala:</strong>&nbsp;&nbsp;Bride and groom exchange garlands.</p>
-                <p class="figma-event-desc"><strong style="color: #0B5978;">01:00 PM Pheras &amp; Saptapadi:</strong>&nbsp;&nbsp;Sacred vows and ceremonies.</p>
-                <p class="figma-event-desc"><strong style="color: #0B5978;">4:30 PM Vidaai:</strong>&nbsp;&nbsp;Heartfelt farewell of bride.</p>
+              <div class="figma-event-item">
+                <p class="figma-event-eyebrow">FRIDAY &nbsp;|&nbsp; BRIDE'S 5PM, GROOM'S 7:30PM</p>
+                <h3 class="figma-event-title">Mehndi</h3>
+                <p class="figma-event-desc">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet ceremonies, we couldn't resist!</p>
+                <p class="figma-event-desc"><strong>This is a completely optional event </strong>but if you are game, join us for a cozy, informal henna session—especially for the ladies!</p>
+                <p class="figma-event-desc" style="margin-top: 8px;"><strong style="color: #0B5978;">Venue:</strong>&nbsp;&nbsp;Bride's side: <a href="#" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Home address</a>, Groom's side: <a href="#" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>TBC</a></p>
+                <p class="figma-event-desc"><strong style="color: #0B5978;">Dress code:</strong>&nbsp;&nbsp;Dress casually and comfortably in whatever you like—and feel free to dress up if you wish—but do bring a warm layer as Nainital nights in November get quite chilly.</p>
               </div>
             </div>
-            
-            <div class="figma-event-item">
-              <p class="figma-event-eyebrow">SATURDAY &nbsp;|&nbsp; 7:00 PM ONWARDS AT TBC</p>
-              <h3 class="figma-event-title">Evening Party</h3>
-              <p class="figma-event-desc">Music, toast and a feast under the November sky.<br>Dress code: TBC</p>
+          </div>
+
+          <div class="aipan-dot-separator" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+
+          <!-- Day 2: Nov 21 -->
+          <div class="figma-timeline-row">
+            <div class="figma-timeline-date">
+              <span class="figma-date-month">NOV</span>
+              <span class="figma-date-day">21</span>
+            </div>
+            <div class="figma-timeline-events">
+              <div class="figma-event-item">
+                <p class="figma-event-eyebrow">SATURDAY &nbsp;|&nbsp; 10 AM ONWARDS</p>
+                <h3 class="figma-event-title" style="margin-bottom: 16px !important;">Day Wedding</h3>
+                <img src="images/day-wedding-venue.jpg?v=2" alt="Balrampur House Nainital" class="figma-event-image" style="margin-top: 8px !important; margin-bottom: 0px !important;">
+                <p class="figma-event-desc" style="margin-top: 8px;"><strong style="color: #0B5978;">Venue:</strong>&nbsp;&nbsp;<a href="https://www.google.com/maps/place/Balrampur+House+Nainital/@29.3951497,79.442385,17z/data=!3m1!4b1!4m9!3m8!1s0x39a0a1bed36f64eb:0xe5c48d29cb3cd498!5m2!4m1!1i2!8m2!3d29.3951497!4d79.442385!16s%2Fg%2F11hyp1vk_p!5m1!1e1?entry=ttu&amp;g_ep=EgoyMDI2MDcyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Balrampur House Nainital</a>, <a href="https://www.balrampurhousenainital.in/index.html" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline; display: inline-block; white-space: nowrap;">About the venue</a></p>
+                <p class="figma-event-desc"><strong style="color: #0B5978;">Dress code:</strong>&nbsp;&nbsp;We’d love for you to join in the colorful spirit of our Kumaoni wedding! Guests are highly encouraged to wear traditional Indian wear (like a Kurta, Lehenga, or Salwar Suit) or the traditional attire of your own culture. If you prefer, colorful Western formal wear is also completely welcome. We just ask that you avoid wearing red (reserved for the bride), black, or white to the main ceremony. In case you have questions or need help, please reach out to us!</p>
+                
+                <p class="figma-event-desc" style="margin-top: 10px !important; font-style: italic; opacity: 0.85;">Tentative plan:</p>
+                <div class="wedding-day-program" style="margin-top: 4px; display: flex; flex-direction: column; gap: 4px;">
+                  <p class="figma-event-desc"><strong style="color: #0B5978;">10:00 AM Assembly of Baraat:</strong>&nbsp;&nbsp;Groom's wedding procession.</p>
+                  <p class="figma-event-desc"><strong style="color: #0B5978;">11:30 AM Varmaala:</strong>&nbsp;&nbsp;Bride and groom exchange garlands.</p>
+                  <p class="figma-event-desc"><strong style="color: #0B5978;">01:00 PM Pheras &amp; Saptapadi:</strong>&nbsp;&nbsp;Sacred vows and ceremonies.</p>
+                  <p class="figma-event-desc"><strong style="color: #0B5978;">4:30 PM Vidaai:</strong>&nbsp;&nbsp;Heartfelt farewell of bride.</p>
+                </div>
+              </div>
+              
+              <div class="figma-event-item">
+                <p class="figma-event-eyebrow">SATURDAY &nbsp;|&nbsp; 7:00 PM ONWARDS AT TBC</p>
+                <h3 class="figma-event-title">Evening Party</h3>
+                <p class="figma-event-desc">Music, toast and a feast under the November sky.<br>Dress code: TBC</p>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="aipan-dot-separator" aria-hidden="true">
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-          <span></span><span></span><span></span><span></span><span></span>
-        </div>
-
-        <!-- Day 3: Nov 22 -->
-        <div class="figma-timeline-row">
-          <div class="figma-timeline-date">
-            <span class="figma-date-month">NOV</span>
-            <span class="figma-date-day">22</span>
+          <div class="aipan-dot-separator" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span><span></span>
           </div>
-          <div class="figma-timeline-events">
-            <div class="figma-event-item">
-              <p class="figma-event-eyebrow">SUNDAY &nbsp;|&nbsp; 10 AM ONWARDS</p>
-              <h3 class="figma-event-title">Farewell Breakfast</h3>
-              <p class="figma-event-desc">Join us for a cozy morning breakfast and warm cups of chai as we wind down our wedding weekend and bid each other farewell.</p>
+
+          <!-- Day 3: Nov 22 -->
+          <div class="figma-timeline-row">
+            <div class="figma-timeline-date">
+              <span class="figma-date-month">NOV</span>
+              <span class="figma-date-day">22</span>
+            </div>
+            <div class="figma-timeline-events">
+              <div class="figma-event-item">
+                <p class="figma-event-eyebrow">SUNDAY &nbsp;|&nbsp; 10 AM ONWARDS</p>
+                <h3 class="figma-event-title">Farewell Breakfast</h3>
+                <p class="figma-event-desc">Join us for a cozy morning breakfast and warm cups of chai as we wind down our wedding weekend and bid each other farewell.</p>
+              </div>
             </div>
           </div>
+
         </div>
 
-      </div>
+      </div><!-- /.figma-card-body-column -->
 
     </section>
 
@@ -562,7 +578,7 @@ body::before{
   html body section.card .figma-schedule-timeline {
     width: 100% !important;
     max-width: none !important;
-    margin: 60px auto 0 auto !important;
+    margin: 60px 0 0 0 !important;
     padding-bottom: 60px !important;
     display: flex !important;
     flex-direction: column !important;
@@ -577,8 +593,8 @@ body::before{
     gap: 36px !important;
     align-items: flex-start !important;
     width: 100% !important;
-    max-width: 720px !important;
-    margin: 0 auto !important;
+    max-width: none !important;
+    margin: 0 !important;
     box-sizing: border-box !important;
   }
   
@@ -685,41 +701,21 @@ body::before{
     // 1. Proportional scale factor relative to golden MacBook reference width (740px)
     var S = Math.min(1.16, Math.max(0.75, cardW / 760));
 
-    // 2. Compute Corner Gap: Exact 15.1% of card width (112px on MacBook reference width 740px)
+    // 2. Architectural Master Column Variables: Left Inset (15.1%), Top Margin (15.1%), Content Width (44%)
     var cornerGap = Math.round(cardW * 0.151);
-    var topMargin = cornerGap; // Top margin of flower modules (Image 1 DevTools computed 112px)
-    var leftInset = cornerGap; // Left padding/inset assigned to card (.card)
+    var topMargin = cornerGap;
+    var leftInset = cornerGap;
     var contentW = Math.round(cardW * 0.44);
-    var flowerWrap = document.querySelector('.figma-flower-wrap');
-    var timelineRows = document.querySelectorAll('.figma-timeline-row');
+    var bodyColumn = document.querySelector('.figma-card-body-column');
 
-    // Assign 0px padding onto card and override CSS !important rules using setProperty with priority 'important'
     card.style.setProperty('padding-left', '0px', 'important');
     card.style.setProperty('padding-right', '0px', 'important');
 
-    // Force exact identical margin-left (leftInset) on rotating mandala, wedding title, and dates with !important power
-    if (flowerWrap) {
-      flowerWrap.style.setProperty('max-width', 'none', 'important');
-      flowerWrap.style.setProperty('width', contentW + 'px', 'important');
-      flowerWrap.style.setProperty('margin-left', leftInset + 'px', 'important');
-      flowerWrap.style.setProperty('margin-right', 'auto', 'important');
-      flowerWrap.style.setProperty('padding-left', '0px', 'important');
-      flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
+    if (bodyColumn) {
+      bodyColumn.style.setProperty('--card-left-inset', leftInset + 'px');
+      bodyColumn.style.setProperty('--card-top-margin', topMargin + 'px');
+      bodyColumn.style.setProperty('--card-content-width', contentW + 'px');
     }
-    if (weddingTitle) {
-      weddingTitle.style.setProperty('max-width', 'none', 'important');
-      weddingTitle.style.setProperty('width', contentW + 'px', 'important');
-      weddingTitle.style.setProperty('margin-left', leftInset + 'px', 'important');
-      weddingTitle.style.setProperty('margin-right', 'auto', 'important');
-      weddingTitle.style.setProperty('padding-left', '0px', 'important');
-    }
-    timelineRows.forEach(function(row) {
-      row.style.setProperty('max-width', 'none', 'important');
-      row.style.setProperty('width', contentW + 'px', 'important');
-      row.style.setProperty('margin-left', leftInset + 'px', 'important');
-      row.style.setProperty('margin-right', 'auto', 'important');
-      row.style.setProperty('padding-left', '0px', 'important');
-    });
 
     // 3. Fluid Proportional Typography Scaling
     if (weddingTitle) {
