@@ -723,11 +723,9 @@ body::before{
       var flowerW = Math.round(cardW * 0.59);
       flowers.style.width = flowerW + 'px';
       flowers.style.maxWidth = 'none';
-      flowers.style.right = 'auto';
-      var stemOffsetWithinFlower = flowerW * 0.218;
-      var flowersLeftInCard = cardW - stemOffsetWithinFlower;
-      flowers.style.left = Math.round(flowersLeftInCard) + 'px';
-      flowers.style.top = Math.round(cardW * 0.038) + 'px';
+      flowers.style.left = 'auto';
+      flowers.style.right = -Math.round(cardW * 0.22) + 'px';
+      flowers.style.top = Math.round(cardW * 0.042) + 'px';
     }
 
     // 5. Dynamic Pichoda Background Stretch Alignment
