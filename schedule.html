@@ -121,7 +121,7 @@ body::before{
   mix-blend-mode:normal !important;
   object-fit:cover !important;
   object-position:right top !important;
-  transform:scale(1.4) !important;
+  transform:scale(1.6) !important;
   transform-origin:top right !important;
 }
 
@@ -685,7 +685,7 @@ body::before{
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
     if (title && pichoda && window.innerWidth > 950) {
       var rect = title.getBoundingClientRect();
-      var w = Math.round(window.innerWidth - (rect.left - 120));
+      var w = Math.round(window.innerWidth - (rect.left - 200));
       pichoda.style.right = '0px';
       pichoda.style.left = 'auto';
       pichoda.style.width = w + 'px';
