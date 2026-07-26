@@ -699,6 +699,32 @@ body::before{
     card.style.paddingLeft = padX + 'px';
     card.style.paddingRight = padX + 'px';
 
+    // 2.5 Proportional Left Inset (12.5%) & Active Content Column Width (64.5%) matching MacBook Golden Ratios
+    var leftInset = Math.round(cardW * 0.125);
+    var contentW = Math.round(cardW * 0.645);
+    var flowerWrap = document.querySelector('.figma-flower-wrap');
+    var timelineRows = document.querySelectorAll('.figma-timeline-row');
+
+    if (flowerWrap) {
+      flowerWrap.style.maxWidth = 'none';
+      flowerWrap.style.width = contentW + 'px';
+      flowerWrap.style.marginLeft = leftInset + 'px';
+      flowerWrap.style.marginRight = 'auto';
+      flowerWrap.style.paddingLeft = '0px';
+    }
+    if (weddingTitle) {
+      weddingTitle.style.maxWidth = 'none';
+      weddingTitle.style.width = contentW + 'px';
+      weddingTitle.style.marginLeft = leftInset + 'px';
+      weddingTitle.style.marginRight = 'auto';
+    }
+    timelineRows.forEach(function(row) {
+      row.style.maxWidth = 'none';
+      row.style.width = contentW + 'px';
+      row.style.marginLeft = leftInset + 'px';
+      row.style.marginRight = 'auto';
+    });
+
     // 3. Fluid Proportional Typography Scaling
     if (weddingTitle) {
       weddingTitle.style.fontSize = Math.round(54 * S) + 'px';
