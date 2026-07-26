@@ -242,13 +242,20 @@ body::before{
 .btn-rsvp-link:hover{background:#8E1E1E !important}
 
 /* responsive */
-@media (max-width: 1250px) and (min-width: 768px) {
+@media (max-width: 1550px) and (min-width: 1101px) {
+  .rsvp-wrap {
+    grid-template-columns: 22fr 78fr !important;
+    padding-right: 180px !important; /* Protects the protruding flowers on the right */
+    gap: 32px !important;
+  }
+}
+@media (max-width: 1100px) and (min-width: 768px) {
   .rsvp-wrap {
     grid-template-columns: 1fr !important;
-    padding: 64px 200px 104px 40px !important; /* extra padding right to fit the protruding flowers without scroll */
+    padding: 100px 180px 104px 40px !important; /* extra padding right to fit the protruding flowers without scroll */
   }
   .intro {
-    display: none !important; /* it is empty anyway */
+    display: none !important; /* hide kafaal tray layout entirely */
   }
   .card {
     -webkit-transform: none !important;
@@ -340,7 +347,7 @@ body::before{
               <h3 class="figma-event-title">Mehndi</h3>
               <p class="figma-event-desc">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet ceremonies, we couldn't resist!</p>
               <p class="figma-event-desc">This is completely optional but if you are game, join us for a cozy, informal henna session—especially for the ladies!</p>
-              <p class="figma-event-desc" style="margin-top: 8px;"><strong style="color: #0B5978;">Venue:</strong>&nbsp;&nbsp;Groom's side: TBC, Bride's side: Home address</p>
+              <p class="figma-event-desc" style="margin-top: 8px;"><strong style="color: #0B5978;">Venue:</strong>&nbsp;&nbsp;Groom's side: <a href="#" style="color: inherit; text-decoration: underline;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>TBC</a>, Bride's side: <a href="#" style="color: inherit; text-decoration: underline;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 2px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Home address</a></p>
               <p class="figma-event-desc"><strong style="color: #0B5978;">Dress code:</strong>&nbsp;&nbsp;Dress casually and comfortably in whatever you like—and feel free to dress up if you wish—but do bring a warm layer as Nainital nights in November get quite chilly.</p>
             </div>
           </div>
