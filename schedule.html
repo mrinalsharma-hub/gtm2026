@@ -171,12 +171,11 @@ body::before{
   justify-content:flex-start;
   align-items:center;
   width:100% !important;
-  max-width:720px !important;
-  margin-top:112px !important;
+  margin-top:0 !important;
   margin-left:auto !important;
   margin-right:auto !important;
   margin-bottom:60px !important;
-  padding-left:40px !important;
+  padding-left:0 !important;
   box-sizing:border-box !important;
 }
 .figma-mandala-img{
@@ -698,11 +697,12 @@ body::before{
     card.style.paddingLeft = '0px';
     card.style.paddingRight = '0px';
 
-    // 2.5 Invariant Symmetrical Corner Ratio: Left Inset & Flower Modules Top Margin are 100% IDENTICAL (14% of cardW)
-    var marginRatio = 0.14;
-    var leftInset = Math.round(cardW * marginRatio);
-    var topMargin = leftInset; // Top margin of flower modules == Left padding/inset of card
-    var contentW = Math.round(cardW * 0.46);
+    // 2. Step 1: First compute top margin of flower modules (10% of card width)
+    var topMargin = Math.round(cardW * 0.10);
+
+    // Step 2: Assign exact same value to the left padding/inset of card contents
+    var leftInset = topMargin;
+    var contentW = Math.round(cardW * 0.50);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
