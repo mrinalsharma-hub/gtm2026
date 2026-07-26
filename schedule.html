@@ -103,8 +103,9 @@ body::before{
   height:auto !important;
   pointer-events:none !important;
   z-index:500 !important;
-  filter: drop-shadow(4px 8px 16px rgba(95, 22, 12, 0.14))
-         drop-shadow(14px 24px 38px rgba(70, 14, 8, 0.10)) !important;
+  filter: drop-shadow(3px 5px 8px rgba(45, 4, 8, 0.35))
+         drop-shadow(18px 22px 28px rgba(58, 6, 12, 0.38))
+         drop-shadow(32px 42px 52px rgba(40, 4, 8, 0.22)) !important;
   clip-path:none !important;
   -webkit-clip-path:none !important;
   transform:none !important;
@@ -805,15 +806,18 @@ body::before{
       var normX = (pointerX / Math.max(1, window.innerWidth) - 0.5) * 2; // -1 to +1
       var normY = (pointerY / Math.max(1, window.innerHeight) - 0.5) * 2; // -1 to +1
 
-      var fDx1 = Math.round(4 + normX * 6);
-      var fDy1 = Math.round(8 + normY * 7);
-      var fDx2 = Math.round(14 + normX * 10);
-      var fDy2 = Math.round(24 + normY * 12);
+      var fDx1 = Math.round(3 + normX * 4);
+      var fDy1 = Math.round(5 + normY * 5);
+      var fDx2 = Math.round(18 + normX * 12);
+      var fDy2 = Math.round(22 + normY * 14);
+      var fDx3 = Math.round(32 + normX * 18);
+      var fDy3 = Math.round(42 + normY * 20);
 
       flowers.style.setProperty(
         'filter',
-        'drop-shadow(' + fDx1 + 'px ' + fDy1 + 'px 16px rgba(95, 22, 12, 0.14)) ' +
-        'drop-shadow(' + fDx2 + 'px ' + fDy2 + 'px 38px rgba(70, 14, 8, 0.10))',
+        'drop-shadow(' + fDx1 + 'px ' + fDy1 + 'px 8px rgba(45, 4, 8, 0.35)) ' +
+        'drop-shadow(' + fDx2 + 'px ' + fDy2 + 'px 28px rgba(58, 6, 12, 0.38)) ' +
+        'drop-shadow(' + fDx3 + 'px ' + fDy3 + 'px 52px rgba(40, 4, 8, 0.22))',
         'important'
       );
 
