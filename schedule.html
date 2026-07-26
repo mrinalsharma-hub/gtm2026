@@ -98,6 +98,18 @@ body::before{
   -webkit-transform:none !important;
 }
 
+/* Traditional Pichoda Background Pattern behind card & flowers, left edge aligned to titles grid */
+.figma-pichoda-bg{
+  position:absolute !important;
+  top:0 !important;
+  left:calc((100% - 720px) / 2 + 40px) !important;
+  height:100% !important;
+  width:auto !important;
+  z-index:-1 !important;
+  pointer-events:none !important;
+  opacity:0.75 !important;
+}
+
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
 /* Top Ornamental Band (Figma Master Node 298:106: real sRGB render crop sitting dead-flush at top paper card rim) */
 .figma-top-border-wrap{
@@ -284,7 +296,7 @@ body::before{
   .intro {
     display: none !important;
   }
-  .figma-side-flowers, .figma-kafaal-tray {
+  .figma-side-flowers, .figma-kafaal-tray, .figma-pichoda-bg {
     display: none !important;
   }
   .card {
@@ -410,6 +422,7 @@ body::before{
     </aside>
 
     <section class="card figma-card-design">
+      <img src="images/background-pichoda.svg?v=1" alt="" class="figma-pichoda-bg" aria-hidden="true">
       <img src="images/figma-side-flowers-flush-v3.svg?v=99200" alt="" class="figma-side-flowers" style="position: absolute !important; top: 4% !important; right: -23% !important; width: 59% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important;" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
