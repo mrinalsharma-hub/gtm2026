@@ -394,7 +394,6 @@ body::before{
 </div>
 
 <main class="paper">
-  <div class="naini-lake-gutter" aria-hidden="true"></div>
   <div class="rsvp-wrap">
 
     <aside class="intro" style="align-self: stretch; position: relative;">
@@ -422,7 +421,8 @@ body::before{
       <div class="figma-schedule-timeline">
         
         <!-- Day 1: Nov 20 -->
-        <div class="figma-timeline-row">
+        <div class="figma-timeline-row" style="position: relative;">
+          <div class="nov20-lake-gutter" aria-hidden="true"></div>
           <div class="figma-timeline-date">
             <span class="figma-date-month">NOV</span>
             <span class="figma-date-day">20</span>
@@ -640,30 +640,30 @@ body::before{
   }
 
   /* Ambient merged background illustration in red paper margins on wide displays */
-  .naini-lake-gutter {
+  .nov20-lake-gutter {
     display: none;
   }
   @media (min-width: 1320px) {
-    .naini-lake-gutter {
+    .nov20-lake-gutter {
       display: block;
-      position: fixed;
-      top: 180px;
-      right: 0;
-      width: calc((100vw - 970px) / 2 + 60px);
-      max-width: 500px;
-      height: 480px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: calc(100% + 28px);
+      width: calc((100vw - 960px) / 2 + 40px);
+      max-width: 520px;
       background-image: url('images/naini-lake-bg.jpg');
       background-size: cover;
-      background-position: center 35%;
+      background-position: center 30%;
       pointer-events: none;
       z-index: 1;
-      mix-blend-mode: luminosity;
-      opacity: 0.35;
-      filter: contrast(1.25) saturate(1.5) sepia(0.3);
-      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.45) 55%, transparent 98%),
-                          linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 82%, transparent 100%);
-      mask-image: linear-gradient(to left, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.45) 55%, transparent 98%),
-                  linear-gradient(to bottom, transparent 0%, rgba(0,0,0,1) 12%, rgba(0,0,0,1) 82%, transparent 100%);
+      mix-blend-mode: multiply;
+      opacity: 0.72;
+      filter: grayscale(100%) contrast(1.65) brightness(0.85);
+      -webkit-mask-image: linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 20px), transparent 100%),
+                          linear-gradient(to bottom, transparent 0px, black 18px, black calc(100% - 18px), transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0px, black 24px, black calc(100% - 20px), transparent 100%),
+                  linear-gradient(to bottom, transparent 0px, black 18px, black calc(100% - 18px), transparent 100%);
       -webkit-mask-composite: source-in;
       mask-composite: intersect;
     }
