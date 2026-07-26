@@ -242,19 +242,21 @@ body::before{
 .btn-rsvp-link:hover{background:#8E1E1E !important}
 
 /* responsive */
-@media (max-width: 1440px) and (min-width: 1101px) {
+@media (max-width: 1550px) and (min-width: 1101px) {
   .rsvp-wrap {
     grid-template-columns: 30fr 70fr !important;
     padding-left: 24px !important;
-    padding-right: 20vw !important; 
+    padding-right: 24px !important;
     gap: 0 !important;
   }
   .figma-kafaal-tray {
-    width: 400px !important;
-    left: -15px !important;
+    transform: scale(0.9) !important;
+    transform-origin: center left !important;
+    left: 10px !important;
   }
   .card {
-     max-width: 720px !important;
+     transform: scale(0.9) translateX(-25%) !important;
+     transform-origin: center center !important;
   }
 }
 @media (max-width: 1100px) and (min-width: 768px) {
