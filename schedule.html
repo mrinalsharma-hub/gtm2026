@@ -26,7 +26,8 @@ body::before{
   mix-blend-mode:multiply;
 }
 .paper{
-  position:relative;
+  position:relative !important;
+  z-index:100 !important;
   background:transparent !important;
   overflow:visible !important;
 }
@@ -39,6 +40,8 @@ body::before{
   grid-template-columns:30fr 70fr;
   gap:clamp(28px,3.8vw,64px);
   align-items:start;
+  position:relative !important;
+  z-index:100 !important;
 }
 .intro{
   color:#FFFFFF !important;
@@ -62,7 +65,7 @@ body::before{
 }
 
 .card{
-  position:relative;z-index:10 !important;
+  position:relative !important;z-index:100 !important;
   background-color:#E7DBAF !important;
   background-image:linear-gradient(rgba(231, 219, 175, 0.5), rgba(231, 219, 175, 0.5)), url('images/card-bg-tile-3.png') !important;
   background-repeat:repeat !important;
@@ -90,7 +93,7 @@ body::before{
   max-width:560px !important;
   height:auto !important;
   pointer-events:none !important;
-  z-index:30 !important;
+  z-index:500 !important;
   filter:drop-shadow(6px 12px 20px rgba(18, 2, 4, 0.26)) drop-shadow(2px 4px 6px rgba(18, 2, 4, 0.16)) !important;
   clip-path:none !important;
   -webkit-clip-path:none !important;
@@ -106,7 +109,7 @@ body::before{
   height:100vh !important;
   width:auto !important;
   max-width:none !important;
-  z-index:2 !important;
+  z-index:10 !important;
   pointer-events:none !important;
   opacity:0.95 !important;
   mix-blend-mode:normal !important;
@@ -428,7 +431,7 @@ body::before{
     </aside>
 
     <section class="card figma-card-design">
-      <img src="images/figma-side-flowers-flush-v3.svg?v=99200" alt="" class="figma-side-flowers" style="position: absolute !important; top: 4% !important; right: -23% !important; width: 59% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important;" aria-hidden="true">
+      <img src="images/figma-side-flowers-flush-v3.svg?v=99200" alt="" class="figma-side-flowers" style="position: absolute !important; top: 4% !important; right: -23% !important; width: 59% !important; max-width: 580px !important; z-index: 500 !important; pointer-events: none !important;" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
         <img src="images/figma-top-border-final.png?v=4" alt="" class="figma-top-border-img">
