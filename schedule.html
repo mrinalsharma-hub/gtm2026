@@ -673,22 +673,79 @@ body::before{
 
 <script>
 (function() {
-  function syncPichodaLeft() {
-    var title = document.querySelector('.figma-wedding-title');
+  function adaptScheduleCard() {
+    var card = document.querySelector('.card');
+    var flowers = document.querySelector('.figma-side-flowers');
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
-    if (title && pichoda && window.innerWidth > 950) {
-      var rect = title.getBoundingClientRect();
-      var w = Math.round(window.innerWidth - (rect.left - 230));
+    var weddingTitle = document.querySelector('.figma-wedding-title');
+    var scriptThe = document.querySelector('.figma-title-script-the');
+    var eventTitles = document.querySelectorAll('.figma-event-title');
+    var dayBadges = document.querySelectorAll('.figma-day-badge');
+    var dateNumbers = document.querySelectorAll('.figma-date-number');
+    var dateMonths = document.querySelectorAll('.figma-date-month');
+    var descTexts = document.querySelectorAll('.figma-event-desc');
+    var metaTexts = document.querySelectorAll('.figma-event-meta, .figma-event-meta span, .figma-event-meta a');
+
+    if (!card || window.innerWidth <= 767) return;
+
+    var cardRect = card.getBoundingClientRect();
+    var cardW = cardRect.width;
+
+    // 1. Proportional scale factor relative to golden MacBook reference width (740px)
+    var S = Math.min(1.42, Math.max(0.72, cardW / 740));
+
+    // 2. Proportional Left/Right Card Padding matching MacBook golden ratio (~6.4%)
+    var padX = Math.round(cardW * 0.064);
+    card.style.paddingLeft = padX + 'px';
+    card.style.paddingRight = padX + 'px';
+
+    // 3. Fluid Proportional Typography Scaling
+    if (weddingTitle) {
+      weddingTitle.style.fontSize = Math.round(54 * S) + 'px';
+      weddingTitle.style.lineHeight = '0.92';
+    }
+    if (scriptThe) {
+      scriptThe.style.fontSize = Math.round(42 * S) + 'px';
+    }
+    dateNumbers.forEach(function(el) { el.style.fontSize = Math.round(46 * S) + 'px'; });
+    dateMonths.forEach(function(el) { el.style.fontSize = Math.round(18 * S) + 'px'; });
+    dayBadges.forEach(function(el) { el.style.fontSize = Math.round(13.5 * S) + 'px'; });
+    eventTitles.forEach(function(el) { el.style.fontSize = Math.round(25 * S) + 'px'; });
+    descTexts.forEach(function(el) {
+      el.style.fontSize = Math.round(15.5 * S) + 'px';
+      el.style.lineHeight = '1.52';
+    });
+    metaTexts.forEach(function(el) { el.style.fontSize = Math.round(13.5 * S) + 'px'; });
+
+    // 4. Mathematical Flower Stem Alignment to Right Card Rim
+    // In figma-side-flowers-flush-v3.svg, bottom green stem tip sits at 21.8% inside the width
+    if (flowers) {
+      var flowerW = Math.round(cardW * 0.59);
+      flowers.style.width = flowerW + 'px';
+      flowers.style.maxWidth = 'none';
+      flowers.style.right = 'auto';
+      var stemOffsetWithinFlower = flowerW * 0.218;
+      var flowersLeftInCard = cardW - stemOffsetWithinFlower;
+      flowers.style.left = Math.round(flowersLeftInCard) + 'px';
+      flowers.style.top = Math.round(cardW * 0.038) + 'px';
+    }
+
+    // 5. Dynamic Pichoda Background Stretch Alignment
+    if (pichoda && weddingTitle) {
+      var titleRect = weddingTitle.getBoundingClientRect();
+      var w = Math.round(window.innerWidth - (titleRect.left - 230));
       pichoda.style.right = '0px';
       pichoda.style.left = 'auto';
       pichoda.style.width = w + 'px';
     }
   }
-  window.addEventListener('load', syncPichodaLeft);
-  window.addEventListener('resize', syncPichodaLeft);
-  syncPichodaLeft();
-  setTimeout(syncPichodaLeft, 100);
-  setTimeout(syncPichodaLeft, 500);
+
+  window.addEventListener('load', adaptScheduleCard);
+  window.addEventListener('resize', adaptScheduleCard);
+  adaptScheduleCard();
+  setTimeout(adaptScheduleCard, 100);
+  setTimeout(adaptScheduleCard, 400);
+  setTimeout(adaptScheduleCard, 1000);
 })();
 </script>
 </body>
