@@ -98,18 +98,18 @@ body::before{
   -webkit-transform:none !important;
 }
 
-/* Traditional Pichoda Background Pattern behind card & flowers, left edge aligned to titles grid */
-.figma-pichoda-bg{
-  position:absolute !important;
+/* Traditional Pichoda Background Pattern behind card & flowers, fixed top navbar to bottom viewport */
+.figma-pichoda-fixed-bg{
+  position:fixed !important;
   top:0 !important;
-  left:calc((100% - 720px) / 2 + 40px) !important;
-  width:1050px !important;
+  bottom:0 !important;
+  height:100vh !important;
+  width:auto !important;
   max-width:none !important;
-  height:auto !important;
   z-index:2 !important;
   pointer-events:none !important;
-  opacity:0.55 !important;
-  mix-blend-mode:multiply !important;
+  opacity:0.95 !important;
+  mix-blend-mode:normal !important;
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
@@ -301,7 +301,7 @@ body::before{
   .intro {
     display: none !important;
   }
-  .figma-side-flowers, .figma-kafaal-tray, .figma-pichoda-bg {
+  .figma-side-flowers, .figma-kafaal-tray, .figma-pichoda-fixed-bg {
     display: none !important;
   }
   .card {
@@ -399,6 +399,7 @@ body::before{
 </style>
 </head>
 <body>
+<img src="images/background-pichoda.svg?v=20" alt="" class="figma-pichoda-fixed-bg" aria-hidden="true">
 
 <header class="site">
   <a class="brand" href="index.html" aria-label="Garima &amp; Mrinal Home"><img src="images/gm-seal-logo.png?v=2" alt="G&amp;M" class="logo-img"></a>
@@ -427,7 +428,6 @@ body::before{
     </aside>
 
     <section class="card figma-card-design">
-      <img src="images/background-pichoda.svg?v=1" alt="" class="figma-pichoda-bg" aria-hidden="true">
       <img src="images/figma-side-flowers-flush-v3.svg?v=99200" alt="" class="figma-side-flowers" style="position: absolute !important; top: 4% !important; right: -23% !important; width: 59% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important;" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
@@ -665,5 +665,22 @@ body::before{
   }
 </style>
 
+<script>
+(function() {
+  function syncPichodaLeft() {
+    var title = document.querySelector('.figma-wedding-title');
+    var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
+    if (title && pichoda && window.innerWidth > 950) {
+      var rect = title.getBoundingClientRect();
+      pichoda.style.left = rect.left + 'px';
+    }
+  }
+  window.addEventListener('load', syncPichodaLeft);
+  window.addEventListener('resize', syncPichodaLeft);
+  syncPichodaLeft();
+  setTimeout(syncPichodaLeft, 100);
+  setTimeout(syncPichodaLeft, 500);
+})();
+</script>
 </body>
 </html>
