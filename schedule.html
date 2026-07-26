@@ -243,7 +243,7 @@ body::before{
 .btn-rsvp-link:hover{background:#8E1E1E !important}
 
 /* responsive */
-@media (max-width: 1850px) and (min-width: 1101px) {
+@media (max-width: 1850px) and (min-width: 951px) {
   .rsvp-wrap {
     grid-template-columns: 30fr 70fr !important;
     padding-left: 24px !important;
@@ -251,81 +251,29 @@ body::before{
     gap: 0 !important;
   }
   .figma-kafaal-tray {
-    transform: scale(0.9) !important;
+    transform: scale(0.88) !important;
     transform-origin: top left !important;
     left: 10px !important;
   }
   .card {
-     transform: scale(0.9) translateX(-20%) !important;
+     transform: scale(0.88) translateX(-18%) !important;
      transform-origin: top center !important;
   }
 }
-@media (max-width: 1100px) and (min-width: 801px) {
+@media (max-width: 950px) {
   .rsvp-wrap {
-    grid-template-columns: 30fr 70fr !important;
-    padding-left: 16px !important;
-    padding-right: 16px !important;
-    gap: 0 !important;
-  }
-  .figma-kafaal-tray {
-    transform: scale(0.7) !important;
-    transform-origin: top left !important;
-    left: 0px !important;
-  }
-  .card {
-     transform: scale(0.75) translateX(-15%) !important;
-     transform-origin: top center !important;
-  }
-  .intro {
-    display: flex !important; /* ensure Kafaal tray container stays visible */
-  }
-}
-@media (max-width: 800px) and (min-width: 551px) {
-  .rsvp-wrap {
-    grid-template-columns: 30fr 70fr !important;
-    padding-left: 8px !important;
-    padding-right: 8px !important;
-    gap: 0 !important;
-  }
-  .figma-kafaal-tray {
-    transform: scale(0.55) !important;
-    transform-origin: top left !important;
-    left: -20px !important;
-  }
-  .card {
-     transform: scale(0.6) translateX(-15%) !important;
-     transform-origin: top center !important;
-  }
-  .intro {
-    display: flex !important;
-  }
-}
-@media (max-width: 550px) {
-  .rsvp-wrap {
-    padding: 24px 0 64px !important;
+    padding: 32px 16px 64px !important;
     grid-template-columns: 1fr !important;
     gap: 32px !important;
     width: 100% !important;
+    max-width: 760px !important;
+    margin: 0 auto !important;
   }
   .intro, .card {
     grid-column: auto !important;
   }
   .intro {
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 0 16px !important;
-  }
-  .please {
-    margin: 0 auto -0.52em !important;
-    text-align: center !important;
-  }
-  .intro-lead, .intro-copy {
-    text-align: center !important;
-    padding-left: 0 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+    display: none !important;
   }
   .figma-side-flowers, .figma-kafaal-tray {
     display: none !important;
@@ -334,15 +282,16 @@ body::before{
     -webkit-transform: none !important;
     transform: none !important;
     width: 100% !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
+    max-width: 720px !important;
+    margin: 0 auto !important;
+    border-radius: 4px !important;
     padding: 10px 0 64px 0 !important;
   }
   .figma-wedding-title {
-    font-size: min(12vw, 52px) !important;
+    font-size: clamp(32px, 9vw, 64px) !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 28px !important;
   }
   html body section.card .figma-timeline-row {
     flex-direction: column !important;
@@ -361,7 +310,7 @@ body::before{
     gap: 40px !important;
   }
 }
-@media (min-width: 551px) {
+@media (min-width: 951px) {
   html body section.card .figma-timeline-row {
       padding-left: 40px !important;
       padding-right: 40px !important;
