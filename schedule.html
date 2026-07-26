@@ -259,34 +259,97 @@ body::before{
      transform-origin: top center !important;
   }
 }
-@media (max-width: 1100px) and (min-width: 768px) {
+@media (max-width: 1100px) and (min-width: 801px) {
   .rsvp-wrap {
-    grid-template-columns: 1fr !important;
-    padding: 100px 25vw 104px 5vw !important; 
+    grid-template-columns: 30fr 70fr !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    gap: 0 !important;
+  }
+  .figma-kafaal-tray {
+    transform: scale(0.7) !important;
+    transform-origin: top left !important;
+    left: 0px !important;
+  }
+  .card {
+     transform: scale(0.75) translateX(-20%) !important;
+     transform-origin: top center !important;
   }
   .intro {
-    display: none !important; 
+    display: flex !important; /* ensure Kafaal tray container stays visible */
+  }
+}
+@media (max-width: 800px) and (min-width: 551px) {
+  .rsvp-wrap {
+    grid-template-columns: 30fr 70fr !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+    gap: 0 !important;
+  }
+  .figma-kafaal-tray {
+    transform: scale(0.55) !important;
+    transform-origin: top left !important;
+    left: -20px !important;
+  }
+  .card {
+     transform: scale(0.6) translateX(-20%) !important;
+     transform-origin: top center !important;
+  }
+  .intro {
+    display: flex !important;
+  }
+}
+@media (max-width: 550px) {
+  .rsvp-wrap {
+    padding: 24px 0 64px !important;
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    width: 100% !important;
+  }
+  .intro, .card {
+    grid-column: auto !important;
+  }
+  .intro {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+  }
+  .please {
+    margin: 0 auto -0.52em !important;
+    text-align: center !important;
+  }
+  .intro-lead, .intro-copy {
+    text-align: center !important;
+    padding-left: 0 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .figma-side-flowers, .figma-kafaal-tray {
+    display: none !important;
   }
   .card {
     -webkit-transform: none !important;
     transform: none !important;
-    margin: 0 auto !important;
-    max-width: 720px !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 32px 24px 64px 24px !important; /* Fixed broken left paddings */
   }
-}
-@media (max-width:767px){
-  .rsvp-wrap{padding:24px 0 64px !important;grid-template-columns:1fr;gap:32px;width:100% !important;}
-  .intro, .card{grid-column:auto !important;}
-  .intro{text-align:center !important;display:flex;flex-direction:column;align-items:center;padding:0 16px;}
-  .please{margin:0 auto -.52em !important;text-align:center !important;}
-  .intro-lead, .intro-copy{text-align:center !important;padding-left:0 !important;margin-left:auto !important;margin-right:auto !important;}
-  .figma-side-flowers, .figma-kafaal-tray{display:none !important;}
-  .card{
-    -webkit-transform:none !important;
-    transform:none !important;
-    width:100% !important;
-    border-radius:0 !important;
-    margin:0 !important;
+  html body section.card .figma-timeline-row {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  html body section.card .figma-timeline-date {
+    width: 100% !important;
+    text-align: left !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    gap: 8px !important;
+  }
+  html body section.card .figma-timeline-events {
+    gap: 40px !important;
   }
 }
 </style>
