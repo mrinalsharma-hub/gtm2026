@@ -698,8 +698,10 @@ body::before{
     card.style.paddingLeft = '0px';
     card.style.paddingRight = '0px';
 
-    // 2.5 Proportional Left Inset (14%) & Active Content Column Width (46%)
-    var leftInset = Math.round(cardW * 0.14);
+    // 2.5 Invariant Symmetrical Corner Ratio: Left Inset & Flower Modules Top Margin are 100% IDENTICAL (14% of cardW)
+    var marginRatio = 0.14;
+    var leftInset = Math.round(cardW * marginRatio);
+    var topMargin = leftInset; // Top margin of flower modules == Left padding/inset of card
     var contentW = Math.round(cardW * 0.46);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
@@ -710,6 +712,7 @@ body::before{
       flowerWrap.style.marginLeft = leftInset + 'px';
       flowerWrap.style.marginRight = 'auto';
       flowerWrap.style.paddingLeft = '0px';
+      flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
     }
     if (weddingTitle) {
       weddingTitle.style.maxWidth = 'none';
@@ -723,12 +726,6 @@ body::before{
       row.style.marginLeft = leftInset + 'px';
       row.style.marginRight = 'auto';
     });
-
-    // 2.7 Proportional 10% Top Margin for Flower Modules (Rotating Mandala & Side Flowers aligned horizontally)
-    var topMargin = Math.round(cardW * 0.10);
-    if (flowerWrap) {
-      flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
-    }
 
     // 3. Fluid Proportional Typography Scaling
     if (weddingTitle) {
