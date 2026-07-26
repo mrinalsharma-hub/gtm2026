@@ -97,8 +97,8 @@ body::before{
 .figma-side-flowers{
   position:absolute !important;
   top:6% !important;
-  right:-22% !important;
-  width:59% !important;
+  right:auto !important;
+  width:auto !important;
   max-width:none !important;
   height:auto !important;
   pointer-events:none !important;
@@ -756,12 +756,12 @@ body::before{
     // Top of side bouquet aligned at exact topMargin (identical to leftInset and flowerWrap top margin)
     if (flowers) {
       var flowerW = Math.round(cardW * 0.55);
-      flowers.style.width = flowerW + 'px';
-      flowers.style.maxWidth = 'none';
-      flowers.style.right = 'auto';
+      flowers.style.setProperty('width', flowerW + 'px', 'important');
+      flowers.style.setProperty('max-width', 'none', 'important');
+      flowers.style.setProperty('right', 'auto', 'important');
       var stemOffsetFromLeft = flowerW * 0.6165;
       var flowersLeft = cardW - stemOffsetFromLeft;
-      flowers.style.left = Math.round(flowersLeft) + 'px';
+      flowers.style.setProperty('left', Math.round(flowersLeft) + 'px', 'important');
       flowers.style.setProperty('top', topMargin + 'px', 'important');
     }
 
