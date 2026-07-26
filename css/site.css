@@ -59,9 +59,9 @@ header.site{
   background:rgba(140, 22, 26, 0.95) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
-  border-bottom: 1px solid rgba(255, 246, 232, 0.1) !important;
+  border-bottom: none !important;
   outline:none !important;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+  box-shadow: none !important;
   display:flex;align-items:center !important;justify-content:space-between;
   padding:0 clamp(20px,4vw,48px) !important;color:var(--ivory);
   transition:none !important;
