@@ -242,26 +242,34 @@ body::before{
 .btn-rsvp-link:hover{background:#8E1E1E !important}
 
 /* responsive */
-@media (max-width: 1550px) and (min-width: 1101px) {
+@media (max-width: 1650px) and (min-width: 1101px) {
   .rsvp-wrap {
-    grid-template-columns: 22fr 78fr !important;
-    padding-right: 180px !important; /* Protects the protruding flowers on the right */
-    gap: 32px !important;
+    grid-template-columns: 20fr 80fr !important;
+    padding-left: 80px !important;
+    padding-right: 320px !important; 
+    gap: 0 !important;
+  }
+  .figma-kafaal-tray {
+    width: 450px !important;
+    left: -80px !important;
+  }
+  .card {
+     max-width: 720px !important;
   }
 }
 @media (max-width: 1100px) and (min-width: 768px) {
   .rsvp-wrap {
     grid-template-columns: 1fr !important;
-    padding: 100px 180px 104px 40px !important; /* extra padding right to fit the protruding flowers without scroll */
+    padding: 100px 25vw 104px 5vw !important; 
   }
   .intro {
-    display: none !important; /* hide kafaal tray layout entirely */
+    display: none !important; 
   }
   .card {
     -webkit-transform: none !important;
     transform: none !important;
     margin: 0 auto !important;
-    max-width: 800px !important;
+    max-width: 720px !important;
   }
 }
 @media (max-width:767px){
