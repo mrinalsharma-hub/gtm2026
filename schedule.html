@@ -20,46 +20,6 @@ body{
   background-image:linear-gradient(180deg, rgba(184,50,39,0.65) 0%, rgba(167,31,35,0.45) 45%, #A71F23 100%) !important;
   background-attachment:fixed !important;
 }
-/* ═══ Kumaoni Aipan Wedding Procession (Right to Left Looping Background Parade) ═══ */
-.aipan-procession-track {
-  position: fixed !important;
-  top: 74px !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 180px !important;
-  pointer-events: none !important;
-  z-index: 40 !important;
-  overflow: hidden !important;
-  opacity: 0.92 !important;
-}
-.aipan-procession-track-bottom {
-  position: fixed !important;
-  bottom: 6px !important;
-  left: 0 !important;
-  width: 100vw !important;
-  height: 165px !important;
-  pointer-events: none !important;
-  z-index: 40 !important;
-  overflow: hidden !important;
-  opacity: 0.88 !important;
-}
-.aipan-svg-runner {
-  display: block !important;
-  width: 2400px !important;
-  min-width: 2400px !important;
-  height: 100% !important;
-  -webkit-animation: aipanSlideLeft 48s linear infinite !important;
-  animation: aipanSlideLeft 48s linear infinite !important;
-  will-change: transform;
-}
-@-webkit-keyframes aipanSlideLeft {
-  0%   { -webkit-transform: translateX(0); transform: translateX(0); }
-  100% { -webkit-transform: translateX(-1200px); transform: translateX(-1200px); }
-}
-@keyframes aipanSlideLeft {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-1200px); }
-}
 body::before{
   content:"";position:fixed !important;inset:0;pointer-events:none;opacity:0.85;z-index:1;
   background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
@@ -422,14 +382,6 @@ body::before{
 </style>
 </head>
 <body>
-
-<!-- ═══ Kumaoni Aipan Wedding Procession (Right to Left Looping Background Parade) ═══ -->
-<div class="aipan-procession-track" aria-hidden="true">
-  <img src="images/kumaoni-aipan-procession.svg?v=999" class="aipan-svg-runner" alt="">
-</div>
-<div class="aipan-procession-track-bottom" aria-hidden="true">
-  <img src="images/kumaoni-aipan-procession.svg?v=999" class="aipan-svg-runner" alt="">
-</div>
 
 <header class="site">
   <a class="brand" href="index.html" aria-label="Garima &amp; Mrinal Home"><img src="images/gm-seal-logo.png?v=2" alt="G&amp;M" class="logo-img"></a>
