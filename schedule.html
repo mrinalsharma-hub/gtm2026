@@ -84,7 +84,7 @@ body::before{
   border-radius:3px !important;border:none !important;
   box-sizing:border-box !important;
   padding:10px 0 64px 0 !important;
-  box-shadow: 2px 4px 14px rgba(65, 12, 10, 0.12), 10px 18px 42px -6px rgba(50, 8, 8, 0.16), 20px 36px 64px -10px rgba(35, 5, 6, 0.08), inset 1px 1px 0px rgba(255, 252, 242, 0.90) !important;
+  box-shadow: 3px 6px 18px rgba(65, 12, 10, 0.14), 16px 26px 48px -6px rgba(50, 8, 8, 0.22), 28px 46px 78px -10px rgba(35, 5, 6, 0.10), inset 1px 1px 0px rgba(255, 252, 242, 0.90) !important;
   filter:none !important;
   overflow:visible !important;
   text-align:center !important;
@@ -103,7 +103,8 @@ body::before{
   height:auto !important;
   pointer-events:none !important;
   z-index:500 !important;
-  filter: drop-shadow(4px 8px 16px rgba(95, 22, 12, 0.14))
+  filter: drop-shadow(0px 0px 4px rgba(255, 248, 220, 0.44))
+         drop-shadow(4px 8px 16px rgba(95, 22, 12, 0.14))
          drop-shadow(14px 24px 38px rgba(70, 14, 8, 0.10)) !important;
   clip-path:none !important;
   -webkit-clip-path:none !important;
@@ -790,6 +791,65 @@ body::before{
   setTimeout(adaptScheduleCard, 100);
   setTimeout(adaptScheduleCard, 400);
   setTimeout(adaptScheduleCard, 1000);
+
+  // Dynamic Time-of-Day Parallax Shadow Physics: Nudges shadow angle with mouse pointer & scroll position
+  (function initInteractiveShadowParallax() {
+    var flowers = document.querySelector('.figma-side-flowers');
+    var card = document.querySelector('section.card');
+    if (!flowers || !card) return;
+
+    var pointerX = window.innerWidth * 0.5;
+    var pointerY = window.innerHeight * 0.3;
+    var ticking = false;
+
+    function renderParallax() {
+      var normX = (pointerX / Math.max(1, window.innerWidth) - 0.5) * 2; // -1 to +1
+      var normY = (pointerY / Math.max(1, window.innerHeight) - 0.5) * 2; // -1 to +1
+
+      var fDx1 = Math.round(4 + normX * 6);
+      var fDy1 = Math.round(8 + normY * 7);
+      var fDx2 = Math.round(14 + normX * 10);
+      var fDy2 = Math.round(24 + normY * 12);
+
+      flowers.style.setProperty(
+        'filter',
+        'drop-shadow(0px 0px 4px rgba(255, 248, 220, 0.44)) ' +
+        'drop-shadow(' + fDx1 + 'px ' + fDy1 + 'px 16px rgba(95, 22, 12, 0.14)) ' +
+        'drop-shadow(' + fDx2 + 'px ' + fDy2 + 'px 38px rgba(70, 14, 8, 0.10))',
+        'important'
+      );
+
+      var cDx = Math.round(16 + normX * 8);
+      var cDy = Math.round(26 + normY * 10);
+      card.style.setProperty(
+        'box-shadow',
+        '3px 6px 18px rgba(65, 12, 10, 0.14), ' +
+        cDx + 'px ' + cDy + 'px 48px -6px rgba(50, 8, 8, 0.22), ' +
+        (cDx + 12) + 'px ' + (cDy + 20) + 'px 78px -10px rgba(35, 5, 6, 0.10), ' +
+        'inset 1px 1px 0px rgba(255, 252, 242, 0.90)',
+        'important'
+      );
+
+      ticking = false;
+    }
+
+    function onPointerMove(e) {
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+      if (!ticking) {
+        requestAnimationFrame(renderParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('mousemove', onPointerMove, { passive: true });
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(renderParallax);
+        ticking = true;
+      }
+    }, { passive: true });
+  })();
 })();
 </script>
 </body>
