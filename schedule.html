@@ -256,7 +256,8 @@ body::before{
     left: 10px !important;
   }
   .card {
-     transform: scale(0.9) translateX(-25%) !important;
+     width: 680px !important;
+     transform: scale(0.9) translateX(-20%) !important;
      transform-origin: top center !important;
   }
 }
@@ -273,7 +274,8 @@ body::before{
     left: 0px !important;
   }
   .card {
-     transform: scale(0.75) translateX(-20%) !important;
+     width: 680px !important;
+     transform: scale(0.75) translateX(-15%) !important;
      transform-origin: top center !important;
   }
   .intro {
@@ -293,7 +295,8 @@ body::before{
     left: -20px !important;
   }
   .card {
-     transform: scale(0.6) translateX(-20%) !important;
+     width: 680px !important;
+     transform: scale(0.6) translateX(-15%) !important;
      transform-origin: top center !important;
   }
   .intro {
@@ -339,14 +342,14 @@ body::before{
     padding: 10px 0 64px 0 !important;
   }
   .figma-wedding-title {
-    font-size: min(15vw, 73.7px) !important;
+    font-size: min(12vw, 52px) !important;
     padding-left: 16px !important;
     padding-right: 16px !important;
-    margin-bottom: 40px !important;
+    margin-bottom: 24px !important;
   }
   html body section.card .figma-schedule-timeline {
-    padding-left: 16px !important;
-    padding-right: 16px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
   html body section.card .figma-timeline-row {
     flex-direction: column !important;
@@ -363,13 +366,15 @@ body::before{
     gap: 40px !important;
   }
 }
-html body section.card .figma-schedule-timeline {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
-}
-html body section.card .figma-wedding-title {
-    padding-left: 40px !important;
-    padding-right: 40px !important;
+@media (min-width: 551px) {
+  html body section.card .figma-schedule-timeline {
+      padding-left: 40px !important;
+      padding-right: 40px !important;
+  }
+  html body section.card .figma-wedding-title {
+      padding-left: 40px !important;
+      padding-right: 40px !important;
+  }
 }
 </style>
 </head>
@@ -402,7 +407,7 @@ html body section.card .figma-wedding-title {
     </aside>
 
     <section class="card figma-card-design">
-      <img src="images/figma-side-flowers-flush-v3.png?v=77777" alt="" class="figma-side-flowers" style="position: absolute !important; top: 12% !important; right: calc(-32% + 9px) !important; width: 62% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important; filter: drop-shadow(3px 8px 16px rgba(160, 15, 30, 0.25)) drop-shadow(8px 20px 36px rgba(25, 5, 10, 0.35)) !important;" aria-hidden="true">
+      <img src="images/figma-side-flowers-flush-v3.png?v=77777" alt="" class="figma-side-flowers" style="position: absolute !important; top: 12% !important; right: -31.5% !important; width: 62% !important; max-width: 580px !important; z-index: 50 !important; pointer-events: none !important; filter: drop-shadow(3px 8px 16px rgba(160, 15, 30, 0.25)) drop-shadow(8px 20px 36px rgba(25, 5, 10, 0.35)) !important;" aria-hidden="true">
 
       <div class="figma-top-border-wrap">
         <img src="images/figma-top-border-final.png?v=4" alt="" class="figma-top-border-img">
