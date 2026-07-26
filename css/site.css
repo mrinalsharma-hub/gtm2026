@@ -71,10 +71,13 @@ header.site::before{
   display:none !important;
 }
 .brand{
+  font-family:'Cormorant Upright','Cormorant Garamond',serif;
+  font-size:clamp(26px,2.5vw,36px);font-weight:400;letter-spacing:.03em;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   text-decoration:none;
+  color:#FFFFFF !important;
   line-height:1;
   pointer-events:all;
   position:relative;
@@ -87,7 +90,7 @@ header.site::before{
   user-select:none;
 }
 .brand .logo-img{
-  display:block;
+  display:none;
   width:56px;
   height:56px;
   object-fit:contain;
