@@ -36,17 +36,16 @@ body::before{
 
 .rsvp-wrap{
   max-width:1420px;margin:0 auto;
-  padding:120px 24px 104px !important;
-  display:grid;
-  grid-template-columns:30fr 70fr;
-  gap:clamp(28px,3.8vw,64px);
-  align-items:start;
+  padding:110px 24px 96px !important;
+  display:flex !important;
+  justify-content:center !important;
+  align-items:flex-start !important;
   position:relative !important;
   z-index:100 !important;
   isolation:isolate !important;
 }
 .intro{
-  color:#FFFFFF !important;
+  display:none !important;
 }
 .please{
   display:block;font-family:'Pinyon Script',cursive;font-weight:400;
@@ -70,6 +69,9 @@ body::before{
   position:relative !important;z-index:100 !important;
   isolation:isolate !important;
   opacity:1 !important;
+  width:100% !important;
+  max-width:780px !important;
+  margin:0 auto !important;
   background-color:#E7DBAF !important;
   background-image:linear-gradient(rgba(231, 219, 175, 0.5), rgba(231, 219, 175, 0.5)), url('images/card-bg-tile-3.png') !important;
   background-repeat:repeat !important;
@@ -83,8 +85,8 @@ body::before{
   filter:none !important;
   overflow:visible !important;
   text-align:center !important;
-  -webkit-transform:translateX(-40px) !important;
-  transform:translateX(-40px) !important;
+  -webkit-transform:none !important;
+  transform:none !important;
 }
 .card::before, .card::after{display:none !important;}
 
@@ -289,19 +291,18 @@ body::before{
 /* responsive */
 @media (max-width: 1850px) and (min-width: 951px) {
   .rsvp-wrap {
-    grid-template-columns: 30fr 70fr !important;
+    display: flex !important;
+    justify-content: center !important;
     padding-left: 24px !important;
     padding-right: 24px !important;
     gap: 0 !important;
   }
   .figma-kafaal-tray {
-    transform: scale(0.88) !important;
-    transform-origin: top left !important;
-    left: 10px !important;
+    display: none !important;
   }
   .card {
-     transform: scale(0.88) translateX(-18%) !important;
-     transform-origin: top center !important;
+     transform: none !important;
+     -webkit-transform: none !important;
   }
 }
 @media (max-width: 950px) {
