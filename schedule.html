@@ -171,12 +171,12 @@ body::before{
   justify-content:flex-start;
   align-items:center;
   width:100% !important;
-  max-width:720px !important;
-  margin-top:112px !important;
+  max-width:none !important;
+  margin-top:0 !important;
   margin-left:auto !important;
   margin-right:auto !important;
   margin-bottom:60px !important;
-  padding-left:40px !important;
+  padding-left:0 !important;
   box-sizing:border-box !important;
 }
 .figma-mandala-img{
@@ -698,15 +698,22 @@ body::before{
     card.style.paddingLeft = '0px';
     card.style.paddingRight = '0px';
 
-    // 2. Step 1: First compute top margin of flower modules (10% of card width)
-    var topMargin = Math.round(cardW * 0.10);
-
-    // Step 2: Assign exact same value to the left padding/inset of card contents
-    var leftInset = topMargin;
-    var contentW = Math.round(cardW * 0.50);
+    // 2. Compute Corner Gap: Exact 15.1% of card width (112px on MacBook reference width 740px)
+    var cornerGap = Math.round(cardW * 0.151);
+    var topMargin = cornerGap; // Top margin of flower modules (Image 1 DevTools computed 112px)
+    var leftInset = cornerGap; // Left padding/inset of card contents (Image 2) — 100% IDENTICAL ALWAYS
+    var contentW = Math.round(cardW * 0.44);
     var flowerWrap = document.querySelector('.figma-flower-wrap');
     var timelineRows = document.querySelectorAll('.figma-timeline-row');
 
+    if (flowerWrap) {
+      flowerWrap.style.maxWidth = 'none';
+      flowerWrap.style.width = contentW + 'px';
+      flowerWrap.style.marginLeft = leftInset + 'px';
+      flowerWrap.style.marginRight = 'auto';
+      flowerWrap.style.paddingLeft = '0px';
+      flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
+    }
     if (weddingTitle) {
       weddingTitle.style.maxWidth = 'none';
       weddingTitle.style.width = contentW + 'px';
@@ -739,7 +746,7 @@ body::before{
     metaTexts.forEach(function(el) { el.style.fontSize = Math.round(13.5 * S) + 'px'; });
 
     // 4. Exact Stem Geometry Equation: stem tip sits at 61.65% from left edge of flower image
-    // Both Flower Modules (Rotating Mandala & Bouquet) aligned at exact topMargin (20% of cardW)
+    // Top of side bouquet aligned at exact topMargin (identical to leftInset and flowerWrap top margin)
     if (flowers) {
       var flowerW = Math.round(cardW * 0.59);
       flowers.style.width = flowerW + 'px';
