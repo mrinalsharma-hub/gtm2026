@@ -91,7 +91,7 @@ body::before{
 /* Botanical Floral Illustration Bouquet from Figma node 328:392 (Stem exact 0px flush aligned to right card rim: right: -31%) */
 .figma-side-flowers{
   position:absolute !important;
-  top:4% !important;
+  top:0.8% !important;
   right:-23% !important;
   width:59% !important;
   max-width:580px !important;
@@ -123,7 +123,9 @@ body::before{
   mix-blend-mode:normal !important;
   object-fit:cover !important;
   object-position:right top !important;
-  filter:contrast(1.04) saturate(1.06) brightness(0.97) !important;
+  filter:contrast(1.1) saturate(1.08) brightness(0.98) !important;
+  image-rendering:-webkit-optimize-contrast !important;
+  image-rendering:crisp-edges !important;
   transform:scale(1.85) !important;
   transform-origin:top right !important;
 }
@@ -415,7 +417,7 @@ body::before{
 </style>
 </head>
 <body>
-<img src="images/pichoda-background.svg?v=100" alt="" class="figma-pichoda-fixed-bg" aria-hidden="true">
+<img src="images/pichoda-background.svg?v=110" alt="" class="figma-pichoda-fixed-bg" aria-hidden="true">
 
 <header class="site">
   <a class="brand" href="index.html" aria-label="Garima &amp; Mrinal Home">G&amp;M</a>
@@ -688,7 +690,7 @@ body::before{
     var pichoda = document.querySelector('.figma-pichoda-fixed-bg');
     if (title && pichoda && window.innerWidth > 950) {
       var rect = title.getBoundingClientRect();
-      var w = Math.round(window.innerWidth - (rect.left - 250));
+      var w = Math.round(window.innerWidth - (rect.left - 230));
       pichoda.style.right = '0px';
       pichoda.style.left = 'auto';
       pichoda.style.width = w + 'px';
