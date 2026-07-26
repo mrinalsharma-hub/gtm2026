@@ -734,6 +734,16 @@ body::before{
       bodyColumn.style.setProperty('--card-content-width', contentW + 'px');
     }
 
+    // Stretch Aipan Dot Separators Edge-to-Edge across full card paper sheet width
+    var dotSeparators = document.querySelectorAll('.aipan-dot-separator');
+    dotSeparators.forEach(function(sep) {
+      sep.style.setProperty('margin-left', '-' + leftInset + 'px', 'important');
+      sep.style.setProperty('width', cardW + 'px', 'important');
+      sep.style.setProperty('max-width', 'none', 'important');
+      sep.style.setProperty('padding-left', '0px', 'important');
+      sep.style.setProperty('padding-right', '0px', 'important');
+    });
+
     // 3. Fluid Proportional Typography Scaling
     if (weddingTitle) {
       weddingTitle.style.fontSize = Math.round(54 * S_title) + 'px';
