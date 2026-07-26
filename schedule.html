@@ -103,12 +103,27 @@ body::before{
   height:auto !important;
   pointer-events:none !important;
   z-index:500 !important;
-  filter: drop-shadow(20px 14px 11px rgba(48, 4, 10, 0.46))
-         drop-shadow(36px 24px 19px rgba(58, 5, 12, 0.34)) !important;
+  filter: none !important; /* ZERO shadows on top of paper card! */
   clip-path:none !important;
   -webkit-clip-path:none !important;
   transform:none !important;
   -webkit-transform:none !important;
+}
+
+/* Underlying Shadow-Only Layer placed behind .card (z-index 10) so shadow projects ONLY onto Pichoda cloth */
+.figma-side-flowers-shadow-bg {
+  position: absolute !important;
+  top: 6% !important;
+  right: auto !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  pointer-events: none !important;
+  z-index: 10 !important; /* Under .card (z-index 100) */
+  filter: drop-shadow(6px 10px 14px rgba(45, 4, 8, 0.44))
+         drop-shadow(20px 28px 36px rgba(58, 6, 14, 0.40))
+         drop-shadow(36px 48px 64px rgba(35, 3, 7, 0.24)) !important;
+  display: block !important;
 }
 
 /* Traditional Pichoda Background Pattern behind card & flowers, fixed top navbar to bottom viewport */
@@ -450,6 +465,9 @@ body::before{
       <img src="images/kafaal-tray.jpg" class="figma-kafaal-tray" alt="Kafaal tray" style="display: none !important;">
     </aside>
 
+    <!-- Shadow-Only Botanical Layer behind .card (pokes out exclusively over Pichoda fabric on right) -->
+    <img src="images/figma-side-flowers-flush-v3.svg?v=99200" alt="" class="figma-side-flowers-shadow-bg" aria-hidden="true">
+
     <section class="card figma-card-design">
       <img src="images/figma-side-flowers-flush-v3.svg?v=99200" alt="" class="figma-side-flowers" aria-hidden="true">
 
@@ -763,6 +781,7 @@ body::before{
 
     // 4. Exact Stem Geometry Equation: Side Botanical Bouquet set to exact 55% of card width
     // Top of side bouquet aligned at exact topMargin (identical to leftInset and flowerWrap top margin)
+    var flowersShadow = document.querySelector('.figma-side-flowers-shadow-bg');
     if (flowers) {
       var flowerW = Math.round(cardW * 0.55);
       flowers.style.setProperty('width', flowerW + 'px', 'important');
@@ -772,6 +791,21 @@ body::before{
       var flowersLeft = cardW - stemOffsetFromLeft;
       flowers.style.setProperty('left', Math.round(flowersLeft) + 'px', 'important');
       flowers.style.setProperty('top', topMargin + 'px', 'important');
+      flowers.style.setProperty('filter', 'none', 'important'); // ZERO SHADOW on top of card!
+
+      if (flowersShadow && card) {
+        var cardRect = card.getBoundingClientRect();
+        var rsvpWrap = document.querySelector('.rsvp-wrap');
+        var wrapRect = rsvpWrap ? rsvpWrap.getBoundingClientRect() : cardRect;
+        var shadowLeftInWrap = (cardRect.left - wrapRect.left) + flowersLeft;
+        var shadowTopInWrap = (cardRect.top - wrapRect.top) + topMargin;
+
+        flowersShadow.style.setProperty('width', flowerW + 'px', 'important');
+        flowersShadow.style.setProperty('max-width', 'none', 'important');
+        flowersShadow.style.setProperty('right', 'auto', 'important');
+        flowersShadow.style.setProperty('left', Math.round(shadowLeftInWrap) + 'px', 'important');
+        flowersShadow.style.setProperty('top', Math.round(shadowTopInWrap) + 'px', 'important');
+      }
     }
 
     // 5. Dynamic Pichoda Background Stretch Alignment
@@ -793,9 +827,9 @@ body::before{
 
   // Dynamic Time-of-Day Parallax Shadow Physics: Nudges shadow angle with mouse pointer & scroll position
   (function initInteractiveShadowParallax() {
-    var flowers = document.querySelector('.figma-side-flowers');
+    var flowersShadow = document.querySelector('.figma-side-flowers-shadow-bg');
     var card = document.querySelector('section.card');
-    if (!flowers || !card) return;
+    if (!flowersShadow || !card) return;
 
     var pointerX = window.innerWidth * 0.5;
     var pointerY = window.innerHeight * 0.3;
@@ -810,7 +844,7 @@ body::before{
       var fDx2 = Math.max(24, Math.round(36 + normX * 10));
       var fDy2 = Math.round(24 + normY * 8);
 
-      flowers.style.setProperty(
+      flowersShadow.style.setProperty(
         'filter',
         'drop-shadow(' + fDx1 + 'px ' + fDy1 + 'px 11px rgba(48, 4, 10, 0.46)) ' +
         'drop-shadow(' + fDx2 + 'px ' + fDy2 + 'px 19px rgba(58, 5, 12, 0.34))',
