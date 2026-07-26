@@ -28,7 +28,7 @@ body::before{
 .paper{
   position:relative;
   background:transparent !important;
-  overflow:hidden;
+  overflow:visible !important;
 }
 .dg-bg-mesh, .paper::after{display:none !important;}
 
@@ -103,11 +103,13 @@ body::before{
   position:absolute !important;
   top:0 !important;
   left:calc((100% - 720px) / 2 + 40px) !important;
-  height:100% !important;
-  width:auto !important;
-  z-index:-1 !important;
+  width:1050px !important;
+  max-width:none !important;
+  height:auto !important;
+  z-index:2 !important;
   pointer-events:none !important;
-  opacity:0.75 !important;
+  opacity:0.55 !important;
+  mix-blend-mode:multiply !important;
 }
 
 /* Top Ornamental Red Block-Print Pattern Band from Figma (1.7% Top Margin + Flush Side Edges) */
@@ -140,6 +142,8 @@ body::before{
 
 /* Mandala Flower Centerpiece (Figma width: 319px / 1415px canvas = 22.54%; top gap from border end 179px / 1415px = 12.65%; bottom gap to title 65px / 1415px = 4.59%) */
 .figma-flower-wrap{
+  position:relative !important;
+  z-index:10 !important;
   display:flex;
   justify-content:flex-start;
   align-items:center;
@@ -169,6 +173,7 @@ body::before{
 /* WEDDING WEEKEND Title (Figma node 327:2809 & 328:423: "The" calligraphic script overlay rotated -5.12deg, WEDDING WEEKEND Cormorant 64px) */
 .figma-wedding-title{
   position:relative !important;
+  z-index:10 !important;
   font-family:'Cormorant',serif !important;
   font-weight:400 !important;
   font-size:73.7px !important;
