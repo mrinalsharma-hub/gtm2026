@@ -708,10 +708,10 @@ body::before{
 
     if (flowerWrap) {
       flowerWrap.style.maxWidth = 'none';
-      flowerWrap.style.width = contentW + 'px';
-      flowerWrap.style.marginLeft = leftInset + 'px';
-      flowerWrap.style.marginRight = 'auto';
-      flowerWrap.style.paddingLeft = '0px';
+      flowerWrap.style.width = '100%';
+      flowerWrap.style.marginLeft = '0px';
+      flowerWrap.style.marginRight = '0px';
+      flowerWrap.style.setProperty('padding-left', leftInset + 'px', 'important');
       flowerWrap.style.setProperty('margin-top', topMargin + 'px', 'important');
     }
     if (weddingTitle) {
