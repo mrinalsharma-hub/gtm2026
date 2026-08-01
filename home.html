@@ -11,6 +11,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
+<script src="js/pjax.js"></script>
 <script>
 (function() {
   var isDesktop = window.innerWidth > 768 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -422,14 +423,75 @@ html, body {
 
 </main>
 
+<script src="js/pjax.js"></script>
 <script>
 // Preserve query parameters (e.g. guest name, passcodes) when navigating
 document.addEventListener('DOMContentLoaded', function() {
-  var btn = document.getElementById('btn-view-details');
-  if (btn && window.location.search) {
-    btn.href = 'schedule.html' + window.location.search + window.location.hash;
+  const btnViewDetails = document.getElementById('btn-view-details');
+  const pinModal = document.getElementById('pin-modal');
+  const btnPinCancel = document.getElementById('btn-pin-cancel');
+  const btnPinSubmit = document.getElementById('btn-pin-submit');
+  const pinInput = document.getElementById('pin-input');
+  const pinError = document.getElementById('pin-error');
+  const bgMusic = document.getElementById('bg-music');
+  
+  let hasStartedAudio = false;
+  
+  if (btnViewDetails && window.location.search) {
+    btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
+  }
+
+  btnViewDetails.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    if (!hasStartedAudio && bgMusic) {
+      bgMusic.play().then(() => {
+        hasStartedAudio = true;
+      }).catch(err => console.log("Audio autoplay prevented", err));
+    }
+
+    if (pinModal) {
+      pinModal.style.display = 'flex';
+      setTimeout(() => {
+        if(pinInput) pinInput.focus();
+      }, 100);
+    }
+  });
+
+  if (btnPinCancel) {
+    btnPinCancel.addEventListener('click', function() {
+      pinModal.style.display = 'none';
+      if(pinError) pinError.style.display = 'none';
+      if(pinInput) pinInput.value = '';
+    });
+  }
+
+  function submitPin() {
+    if (pinInput.value.trim() === '2026') {
+      // Correct! Navigate via PJAX simulated click to preserve audio
+      const hiddenLink = document.createElement('a');
+      hiddenLink.href = btnViewDetails.href || 'schedule.html';
+      hiddenLink.style.display = 'none';
+      document.body.appendChild(hiddenLink);
+      hiddenLink.click();
+    } else {
+      if(pinError) pinError.style.display = 'block';
+    }
+  }
+
+  if (btnPinSubmit) {
+    btnPinSubmit.addEventListener('click', submitPin);
+  }
+  
+  if (pinInput) {
+    pinInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        submitPin();
+      }
+    });
   }
 });
+
 </script>
 
 </body>
