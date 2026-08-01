@@ -1064,7 +1064,28 @@ document.addEventListener('DOMContentLoaded', function() {
       if (blurTimeout) clearTimeout(blurTimeout);
       sessionStorage.setItem('gtm2026_auth', 'true');
       sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
-      window.location.href = btnViewDetails.href || 'schedule.html';
+      
+      // 1. Immediately dismiss keyboard
+      pinInput.blur();
+
+      // 2. Fade out PIN modal content
+      pinModal.classList.remove('is-active');
+
+      // 3. Red background moves down and morphs back into the bottom rounded dome
+      if (bottomDome) {
+        bottomDome.classList.remove('expand-fullscreen');
+        bottomDome.classList.add('is-collapsed');
+      }
+
+      // 4. Butterfly flies down
+      if (butterflyWrap) {
+        butterflyWrap.classList.remove('fly-to-flowers');
+      }
+
+      // 5. Seamlessly navigate to schedule.html as the red dome reaches the bottom
+      setTimeout(() => {
+        window.location.href = btnViewDetails.href || 'schedule.html';
+      }, 900);
     } else {
       isSubmitting = false;
       if (pinError) pinError.style.display = 'block';
