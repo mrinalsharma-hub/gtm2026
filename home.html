@@ -276,6 +276,73 @@ html, body {
 }
 
 /* ── 4. Butterfly (Figma 340:174) ── */
+/* ── PIXAR-LEVEL BUTTERFLY ANIMATION ── */
+.flight-container {
+  /* Animate precisely ending at 0,0 so it sits perfectly where it belongs */
+  animation: swoop 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  transform-origin: center;
+}
+
+@keyframes bob {
+  0%, 20%, 40%, 60%, 80% { transform: translateY(-20px); }
+  10%, 30%, 50%, 70% { transform: translateY(20px); }
+  90%, 100% { transform: translateY(0); }
+}
+.bob-container {
+  /* overwrite old rule */
+  animation: bob 4s ease-in-out forwards !important;
+}
+
+.old-bob-container {
+  animation: bob 0.8s ease-in-out infinite alternate;
+}
+
+.wing-flap {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  /* rapid flapping */
+  animation: flap 0.15s ease-in-out forwards;
+  animation-iteration-count: 27; /* stops after 4 seconds to land! */
+  transform-origin: center;
+}
+
+@keyframes swoop {
+  0% {
+    transform: translate(300px, -800px) rotate(-45deg) scale(0.3);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  30% {
+    transform: translate(150px, -400px) rotate(-15deg) scale(0.6);
+  }
+  55% {
+    /* swoop over the names (middle left) */
+    transform: translate(-100px, -250px) rotate(20deg) scale(1.1);
+  }
+  75% {
+    /* dive down */
+    transform: translate(-50px, -50px) rotate(10deg) scale(0.9);
+  }
+  100% {
+    /* land perfectly at 0,0 with original scale */
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes bob {
+  0% { transform: translateY(-10px); }
+  100% { transform: translateY(10px); }
+}
+
+@keyframes flap {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.2); } /* pseudo 3D wing close */
+  100% { transform: scaleX(1); }
+}
+
 .home-butterfly-wrap {
   position: absolute;
   top: auto; bottom: 78px;
