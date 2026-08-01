@@ -86,26 +86,29 @@ html, body {
   pointer-events: none;
 }
 
-/* ── 2. Flowers Top (Exact Figma Placement Anchored Top-Right) ── */
+/* ── 2. Flowers Top (Figma 340:149: exact SVG, position, and height) ── */
 .home-flowers-top {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: min(290px, 66vw);
-  max-height: 38vh;
+  top: -2px;
+  left: calc(50% + 17.5px);
+  transform: translateX(-50%);
+  width: min(291px, 66.14vw);
+  max-height: 40.7vh;
+  aspect-ratio: 291 / 389;
   pointer-events: none;
   z-index: 3;
 }
 .home-flowers-top img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   display: block;
 }
 
-/* ── 3. Typography Group (Positioned Gracefully Below Flowers) ── */
+/* ── 3. Typography Group (Figma 340:176) ── */
 .home-hero-text {
   position: absolute;
-  top: 52%;
+  top: 51%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -255,7 +258,7 @@ html, body {
 
   <!-- ── 2. Flowers Top (Exact Figma Placement) ── -->
   <div class="home-flowers-top" aria-hidden="true">
-    <img src="images/home_flowers_top.png" alt="Orchids and Flowers">
+    <img src="images/home_flowers_top.svg" alt="Orchids and Flowers">
   </div>
 
   <!-- ── 3. Central Typography (Figma 340:176) ── -->
