@@ -103,10 +103,27 @@ html, body {
   display: block;
 }
 
-/* ── 3. Typography Group (Figma 340:176 - Vertically Centered) ── */
+@font-face {
+  font-family: 'WindSong';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/windsong/v13/KR1RBsyu-P-GFEW57oeNNPWy.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/windsong/v13/KR1WBsyu-P-GFEW57r95.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'WindSong';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('https://fonts.gstatic.com/s/windsong/v13/KR1RBsyu-P-GFEW57oeNNPWy.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/windsong/v13/KR1WBsyu-P-GFEW57r95.ttf') format('truetype');
+}
+
+/* ── 3. Typography Group (Vertically Centered between Top (0) and Butterfly) ── */
 .home-hero-text {
   position: absolute;
-  top: 50%;
+  top: calc((100% - 190px) / 2);
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -139,13 +156,14 @@ html, body {
 }
 
 .home-script {
-  font-family: 'WindSong', cursive;
+  font-family: 'WindSong', 'Brush Script MT', cursive !important;
   font-size: clamp(52px, 15.5vw, 70px);
   font-weight: 400;
   line-height: 1;
   color: #c81a1f;
   letter-spacing: 3.5px;
   display: block;
+  text-transform: none !important;
 }
 
 .home-date-location {
