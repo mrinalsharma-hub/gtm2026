@@ -1,0 +1,11 @@
+<svg width="440" height="956" viewBox="0 0 440 956" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Base Ivory Parchment -->
+  <rect width="440" height="956" fill="#F8F4EA"/>
+  
+  <!-- Subtle Soft Watermark Circle on Left (as in Figma) -->
+  <circle cx="10" cy="510" r="340" fill="#FFFFFF" fill-opacity="0.55"/>
+  <circle cx="10" cy="510" r="320" fill="#FAF6EE" fill-opacity="0.35"/>
+  
+  <!-- Diagonal Facet Light Line from Top-Right -->
+  <path d="M440 180L140 440L440 680" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="60" stroke-linecap="round" filter="blur(20px)"/>
+</svg>

@@ -53,97 +53,62 @@ html, body {
   min-height: 100svh;
   margin: 0 auto;
   overflow: hidden;
-  background: #FFFFFF;
+  background-color: #F8F4EA;
 }
 
-/* ── 1. Bg Layer (Figma 340:146) ── */
+/* ── 1. Background Texture & Watermark Arch Layer ── */
 .home-bg-layer {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 440px;
+  inset: 0;
+  width: 100%;
   height: 100%;
   pointer-events: none;
   z-index: 1;
+  overflow: hidden;
 }
-.home-bg-inner {
-  width: 100%;
-  height: 100%;
-  transform: rotate(180deg);
-  position: relative;
-}
-.home-img-bg {
+.home-img-texture {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: bottom;
-  opacity: 0.70;
+  object-position: center;
+  opacity: 0.75;
+  mix-blend-mode: multiply;
   pointer-events: none;
 }
-
-/* ── 2. Gradient Watermark Layer (Figma 340:147) ── */
-.home-gradient-layer {
-  position: absolute;
-  top: 121px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 440px;
-  height: 835px;
-  pointer-events: none;
-  z-index: 2;
-  overflow: hidden;
-}
-.home-gradient-inner {
-  width: 100%;
-  height: 100%;
-  transform: rotate(180deg) scaleY(-1);
-  position: relative;
-}
-.home-gradient-box {
+.home-img-watermark {
   position: absolute;
   inset: 0;
-  mix-blend-mode: soft-light;
-  opacity: 0.50;
-  overflow: hidden;
-  pointer-events: none;
-}
-.home-img-gradient {
-  position: absolute;
-  width: 274.9%;
-  height: 198.39%;
-  left: -140.81%;
-  top: -64.55%;
-  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.90;
   pointer-events: none;
 }
 
-/* ── 3. Flowers Top (Figma 340:149) ── */
+/* ── 2. Flowers Top (Exact Figma 340:149 Placement) ── */
 .home-flowers-top {
   position: absolute;
-  top: -2px;
-  left: calc(50% + 17.5px);
+  top: 0;
+  left: 54%;
   transform: translateX(-50%);
   width: 291px;
-  height: 389px;
+  max-width: 68vw;
+  height: auto;
   pointer-events: none;
   z-index: 3;
 }
 .home-flowers-top img {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  height: auto;
+  display: block;
 }
 
-/* ── 4. Typography Group (Figma 340:176) ── */
+/* ── 3. Typography Group (Figma 340:176) ── */
 .home-hero-text {
   position: absolute;
-  top: calc(50% + 30px);
+  top: 42.5%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -157,7 +122,7 @@ html, body {
   font-family: 'Cinzel', serif;
   font-size: clamp(48px, 14.5vw, 64px);
   font-weight: 400;
-  line-height: normal;
+  line-height: 1;
   letter-spacing: 1.28px;
   background: linear-gradient(180deg, #d03a3e 19.186%, #c81a1f 43.023%, #a71f23 79.651%);
   -webkit-background-clip: text;
@@ -168,25 +133,25 @@ html, body {
 }
 
 .home-script-wrap {
-  height: 84px;
+  height: 76px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: -16px 0 -14px;
+  margin: -14px 0 -10px;
 }
 
 .home-script {
   font-family: 'WindSong', cursive;
   font-size: clamp(54px, 16vw, 70px);
   font-weight: 400;
-  line-height: normal;
+  line-height: 1;
   color: #c81a1f;
   letter-spacing: 3.5px;
   display: block;
 }
 
 .home-date-location {
-  margin-top: 14px;
+  margin-top: 16px;
 }
 .home-date-location p {
   font-family: 'Cinzel', serif;
@@ -199,32 +164,30 @@ html, body {
   margin: 0;
 }
 
-/* ── 5. Butterfly (Figma 340:174) ── */
+/* ── 4. Butterfly (Figma 340:174) ── */
 .home-butterfly-wrap {
   position: absolute;
-  top: calc(100% - 201px);
+  bottom: 78px;
   left: 50%;
   transform: translateX(-50%);
   width: 164px;
-  height: 123px;
+  max-width: 38vw;
+  height: auto;
   z-index: 6;
   pointer-events: none;
   filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.25));
 }
 .home-butterfly-wrap img {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  height: auto;
+  display: block;
 }
 
-/* ── 6. Ellipse 52 Red Dome (Figma 340:183) ── */
+/* ── 5. Bottom Red Dome (Figma 340:183) ── */
 .home-bottom-dome {
   position: absolute;
-  top: calc(100% - 113px);
-  left: calc(50% - 0.5px);
+  bottom: -868px;
+  left: 50%;
   transform: translateX(-50%);
   width: 981px;
   height: 981px;
@@ -239,7 +202,7 @@ html, body {
   display: block;
 }
 
-/* ── 7. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── */
+/* ── 6. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── */
 .home-view-details-btn {
   position: absolute;
   bottom: max(22px, env(safe-area-inset-bottom, 22px));
@@ -287,28 +250,18 @@ html, body {
 
 <main class="home-mobile-canvas">
 
-  <!-- ── 1. Bg Layer (Figma 340:146) ── -->
+  <!-- ── 1. Background Texture & Watermark Arch ── -->
   <div class="home-bg-layer" aria-hidden="true">
-    <div class="home-bg-inner">
-      <img src="images/bg_texture.png" alt="" class="home-img-bg">
-    </div>
+    <img src="images/home_bg_exact.svg" alt="" class="home-img-watermark">
+    <img src="images/bg_texture.png" alt="" class="home-img-texture">
   </div>
 
-  <!-- ── 2. Gradient Watermark Layer (Figma 340:147) ── -->
-  <div class="home-gradient-layer" aria-hidden="true">
-    <div class="home-gradient-inner">
-      <div class="home-gradient-box">
-        <img src="images/bg_gradient.png" alt="" class="home-img-gradient">
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 3. Flowers Top (Figma 340:149) ── -->
+  <!-- ── 2. Flowers Top (Exact Figma Placement) ── -->
   <div class="home-flowers-top" aria-hidden="true">
     <img src="images/home_flowers_top.png" alt="Orchids and Flowers">
   </div>
 
-  <!-- ── 4. Central Typography (Figma 340:176) ── -->
+  <!-- ── 3. Central Typography (Figma 340:176) ── -->
   <div class="home-hero-text">
     <h1 class="home-name">GARIMA</h1>
     <div class="home-script-wrap">
@@ -322,17 +275,17 @@ html, body {
     </div>
   </div>
 
-  <!-- ── 5. Butterfly (Figma 340:174) ── -->
+  <!-- ── 4. Butterfly (Figma 340:174) ── -->
   <div class="home-butterfly-wrap" aria-hidden="true">
     <img src="images/home_butterfly.png" alt="Golden Butterfly">
   </div>
 
-  <!-- ── 6. Bottom Red Dome (Figma 340:183) ── -->
+  <!-- ── 5. Bottom Red Dome (Figma 340:183) ── -->
   <div class="home-bottom-dome" aria-hidden="true">
     <img src="images/home_bottom_dome.svg" alt="">
   </div>
 
-  <!-- ── 7. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── -->
+  <!-- ── 6. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── -->
   <a href="schedule.html" id="btn-view-details" class="home-view-details-btn" aria-label="View Details">
     <svg class="home-lock-icon" viewBox="0 0 24 24">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
