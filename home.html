@@ -65,6 +65,7 @@ html, body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
+  background-color: #FAF6F0;
 }
 .home-img-texture {
   position: absolute;
@@ -72,9 +73,9 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: bottom;
-  opacity: 0.70;
-  transform: rotate(180deg);
+  object-position: center;
+  opacity: 0.85;
+  mix-blend-mode: multiply;
 }
 .home-img-gradient {
   position: absolute;
@@ -82,18 +83,19 @@ html, body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: soft-light;
-  opacity: 0.50;
+  object-position: center 20%;
+  opacity: 0.95;
+  mix-blend-mode: multiply;
 }
 
 /* ── 2. Top Flower Cascade ── */
 .home-flowers-top {
   position: absolute;
-  top: -2px;
-  left: calc(50% + 17.5px);
+  top: -4px;
+  left: calc(50% + 24px);
   transform: translateX(-50%);
-  width: 291px;
-  height: 389px;
+  width: 295px;
+  height: 395px;
   max-width: 68vw;
   pointer-events: none;
   z-index: 3;
@@ -108,7 +110,7 @@ html, body {
 /* ── 3. Central Typography Group ── */
 .home-hero-text {
   position: absolute;
-  top: calc(50% + 22px);
+  top: 48%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
