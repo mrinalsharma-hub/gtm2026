@@ -674,9 +674,9 @@ html, body {
     <img src="images/Home_background_optimized.webp" alt="" class="home-img-watermark">
   </div>
 
-  <!-- ── 2. Flowers Top (Original SVG, Exact Figma specs) ── -->
+  <!-- ── 2. Flowers Top (High-Res Retina WebP, Exact Figma specs) ── -->
   <div class="home-flowers-top" aria-hidden="true">
-    <img src="images/Flowers_top.svg" alt="Orchids and Flowers">
+    <img src="images/Flowers_top.webp" alt="Orchids and Flowers">
   </div>
 
   <!-- ── 3. Central Typography ── -->
@@ -697,7 +697,7 @@ html, body {
   <div class="home-butterfly-wrap" aria-hidden="true">
     <div class="flight-container">
       <div class="bob-container">
-        <img src="images/home_butterfly.png" alt="Golden Butterfly" class="wing-flap">
+        <img src="images/home_butterfly.webp" alt="Golden Butterfly" class="wing-flap">
       </div>
     </div>
   </div>
@@ -762,15 +762,20 @@ document.addEventListener('DOMContentLoaded', function() {
   const pinError = document.getElementById('pin-error');
   const splashPreloader = document.getElementById('splash-preloader');
 
-  // ── 100% COMPLETE ASSET DECODING & PRELOADER ──
-  // Wait for all DOM images to be downloaded and decoded into memory
+  // ── 100% BULLETPROOF ASSET PRELOADER ──
+  // Wait for all DOM images to be downloaded and decoded in GPU memory
   const domImages = Array.from(document.querySelectorAll('.home-mobile-canvas img'));
 
-  const decodePromises = domImages.map(img => {
-    if (img.complete && img.naturalWidth !== 0) {
-      return img.decode ? img.decode().catch(() => {}) : Promise.resolve();
-    }
-    return new Promise(resolve => {
+  function waitForImage(img) {
+    return new Promise((resolve) => {
+      if (img.complete && img.naturalWidth > 0) {
+        if (img.decode) {
+          img.decode().then(resolve).catch(resolve);
+        } else {
+          resolve();
+        }
+        return;
+      }
       img.addEventListener('load', () => {
         if (img.decode) {
           img.decode().then(resolve).catch(resolve);
@@ -780,20 +785,24 @@ document.addEventListener('DOMContentLoaded', function() {
       }, { once: true });
       img.addEventListener('error', resolve, { once: true });
     });
-  });
+  }
 
   const startTime = Date.now();
 
-  Promise.all([
-    Promise.all(decodePromises),
-    document.fonts ? document.fonts.ready : Promise.resolve()
-  ]).then(() => {
+  const windowLoadPromise = (document.readyState === 'complete')
+    ? Promise.resolve()
+    : new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+
+  const fontPromise = document.fonts ? document.fonts.ready : Promise.resolve();
+  const imagesPromise = Promise.all(domImages.map(waitForImage));
+
+  Promise.all([windowLoadPromise, fontPromise, imagesPromise]).then(() => {
     const elapsed = Date.now() - startTime;
-    const minLoadingTime = 2200; // Complete the "takes" fill animation
+    const minLoadingTime = 2200; // Allow full 2.2s for "takes" bottom-to-top fill
     const remainingTime = Math.max(0, minLoadingTime - elapsed);
 
     setTimeout(() => {
-      // Step 1: Dismiss splash preloader (slides down to reveal the 100% loaded page)
+      // Step 1: All assets are 100% loaded and decoded. Dismiss splash screen!
       if (splashPreloader) {
         splashPreloader.classList.add('is-dismissed');
       }
