@@ -113,7 +113,89 @@ html, body {
   100% { transform: translateX(-50%) rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
 }
 
-/* ── 3. Central Typography ── */
+/* ── 0. Dedicated One-Time Red Splash Preloader ── */
+.splash-preloader {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100svh;
+  background: #7e1216;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  overflow: hidden;
+  transition: transform 2.0s cubic-bezier(0.25, 1, 0.35, 1), opacity 0.5s ease 1.6s;
+  will-change: transform;
+}
+
+.splash-preloader.is-dismissed {
+  transform: translateY(100svh);
+  pointer-events: none;
+  opacity: 0;
+}
+
+.splash-hero-text {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 274px;
+  text-align: center;
+  pointer-events: none;
+}
+
+.splash-name {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  font-family: 'Cinzel', serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1.28px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+.splash-script-wrap {
+  position: absolute;
+  top: 109px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.splash-script {
+  font-family: 'WindSong', cursive !important;
+  font-size: 70px;
+  font-weight: 400;
+  line-height: 1;
+  text-transform: none !important;
+  display: inline-block;
+  background: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
+  background-size: 100% 0%;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: rgba(255, 255, 255, 0.25);
+  animation: takesFill 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes takesFill {
+  0% { background-size: 100% 0%; }
+  100% { background-size: 100% 100%; }
+}
+
+/* ── 3. Central Typography (Main Page) ── */
 .home-hero-text {
   position: absolute;
   top: 50%;
@@ -122,13 +204,8 @@ html, body {
   width: 100% !important;
   max-width: 440px;
   height: 274px;
-  z-index: 60;
+  z-index: 2; /* Sits behind red dome when it expands on View Details click */
   pointer-events: none;
-  transition: z-index 0.3s;
-}
-
-.page-ready .home-hero-text {
-  z-index: 2; /* Sits behind the red dome when it expands on View Details click */
 }
 
 .home-name {
@@ -143,16 +220,11 @@ html, body {
   font-weight: 400;
   line-height: 1;
   letter-spacing: 1.28px;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  transition: color 1.8s ease, -webkit-text-fill-color 1.8s ease;
-}
-
-.page-ready .home-name {
   background: linear-gradient(180deg, #d03a3e 19.186%, #c81a1f 43.023%, #a71f23 79.651%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #c81a1f;
+  text-transform: uppercase;
 }
 
 .home-script-wrap {
@@ -172,30 +244,9 @@ html, body {
   font-size: 70px;
   font-weight: 400;
   line-height: 1;
+  color: #c81a1f;
   text-transform: none !important;
   display: inline-block;
-  background: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
-  background-size: 100% 0%;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: rgba(255, 255, 255, 0.25);
-  animation: takesFill 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-  transition: color 1.8s ease, -webkit-text-fill-color 1.8s ease;
-}
-
-@keyframes takesFill {
-  0% { background-size: 100% 0%; }
-  100% { background-size: 100% 100%; }
-}
-
-.page-ready .home-script {
-  animation: none;
-  background: none;
-  -webkit-background-clip: initial;
-  -webkit-text-fill-color: initial;
-  color: #c81a1f;
 }
 
 .home-date-location {
@@ -209,12 +260,6 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  opacity: 0;
-  transition: opacity 1.5s ease 0.6s;
-}
-
-.page-ready .home-date-location {
-  opacity: 1;
 }
 
 .home-date-location p {
@@ -324,28 +369,22 @@ html, body {
   90%, 100% { transform: translateY(0); }
 }
 
-/* ── 5. Bottom Red Dome (Initial Fullscreen Loading State -> Descends to Arch) ── */
+/* ── 5. Bottom Red Dome (Collapsed Arch -> Expands on View Details) ── */
 .home-bottom-dome {
   position: absolute;
   top: auto;
-  bottom: -40px;
+  bottom: -868px;
   left: 50% !important;
-  transform: translateX(-50%) scale(2.8) !important;
+  transform: translateX(-50%) !important;
   width: 981px;
   height: 981px;
-  z-index: 50;
+  z-index: 10;
   pointer-events: none;
-  transition: transform 2.2s cubic-bezier(0.25, 1, 0.35, 1), bottom 2.2s cubic-bezier(0.25, 1, 0.35, 1);
+  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1), bottom 2.5s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, bottom;
 }
 
-.page-ready .home-bottom-dome {
-  bottom: -868px;
-  transform: translateX(-50%) scale(1) !important;
-  z-index: 5;
-}
-
-.page-ready .home-bottom-dome.expand-fullscreen {
+.home-bottom-dome.expand-fullscreen {
   bottom: -40px !important;
   transform: translateX(-50%) scale(2.8) !important;
   z-index: 50 !important;
@@ -365,7 +404,7 @@ html, body {
   bottom: max(32px, env(safe-area-inset-bottom, 32px));
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10;
+  z-index: 20;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -375,14 +414,11 @@ html, body {
   border: none;
   cursor: default;
   pointer-events: none;
-  opacity: 0;
+  opacity: 0.4;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
   padding: 10px 24px;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
-}
-.page-ready .home-view-details-btn {
-  opacity: 0.4;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
 }
 .home-view-details-btn.is-ready {
   pointer-events: auto;
@@ -620,6 +656,17 @@ html, body {
 </head>
 <body>
 
+  <!-- ── 0. Dedicated One-Time Red Splash Preloader Layer ── -->
+  <div id="splash-preloader" class="splash-preloader" aria-hidden="true">
+    <div class="splash-hero-text">
+      <h1 class="splash-name" style="top: 43px;">GARIMA</h1>
+      <div class="splash-script-wrap">
+        <span class="splash-script">takes</span>
+      </div>
+      <h1 class="splash-name" style="top: 162px;">MRINAL</h1>
+    </div>
+  </div>
+
 <main class="home-mobile-canvas">
 
   <!-- ── 1. Background Texture ── -->
@@ -713,59 +760,59 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnPinSubmit = document.getElementById('btn-pin-submit');
   const pinInput = document.getElementById('pin-input');
   const pinError = document.getElementById('pin-error');
-  const canvas = document.querySelector('.home-mobile-canvas');
+  const splashPreloader = document.getElementById('splash-preloader');
 
-  // ── CINEMATIC LOADING LIFECYCLE ──
-  // Preload heavy background assets while "takes" fills up in pure white over red
-  const preloadImages = [
-    'images/Home_background_optimized.webp',
-    'images/Flowers_top.svg',
-    'images/home_butterfly.png',
-    'images/home_bottom_dome.svg'
-  ];
+  // ── 100% COMPLETE ASSET DECODING & PRELOADER ──
+  // Wait for all DOM images to be downloaded and decoded into memory
+  const domImages = Array.from(document.querySelectorAll('.home-mobile-canvas img'));
 
-  let loadedCount = 0;
+  const decodePromises = domImages.map(img => {
+    if (img.complete && img.naturalWidth !== 0) {
+      return img.decode ? img.decode().catch(() => {}) : Promise.resolve();
+    }
+    return new Promise(resolve => {
+      img.addEventListener('load', () => {
+        if (img.decode) {
+          img.decode().then(resolve).catch(resolve);
+        } else {
+          resolve();
+        }
+      }, { once: true });
+      img.addEventListener('error', resolve, { once: true });
+    });
+  });
+
   const startTime = Date.now();
 
-  function onAssetsReady() {
+  Promise.all([
+    Promise.all(decodePromises),
+    document.fonts ? document.fonts.ready : Promise.resolve()
+  ]).then(() => {
     const elapsed = Date.now() - startTime;
-    const minLoadingTime = 2200; // Allow full 2.2s for "takes" bottom-to-top fill
+    const minLoadingTime = 2200; // Complete the "takes" fill animation
     const remainingTime = Math.max(0, minLoadingTime - elapsed);
 
     setTimeout(() => {
-      // Step 1: Red background smoothly descends down into the arch (takes 2.2s) & text turns red
-      document.body.classList.add('page-ready');
-      if (canvas) canvas.classList.add('page-ready');
+      // Step 1: Dismiss splash preloader (slides down to reveal the 100% loaded page)
+      if (splashPreloader) {
+        splashPreloader.classList.add('is-dismissed');
+      }
 
-      // Step 2: Exactly 2 seconds after red background completes its transformation (2.2s + 2.0s = 4.2s), butterfly appears and swoops
+      // Step 2: Exactly 2 seconds after splash screen finishes moving away (2.0s transition + 2.0s delay = 4.0s)
       setTimeout(() => {
         if (butterflyWrap) {
           butterflyWrap.classList.add('start-flight');
         }
-      }, 4200);
+      }, 4000);
 
-      // Step 3: When butterfly lands at bottom perch over "View details" (4.2s + 4.0s = 8.2s), enable View Details button
+      // Step 3: When butterfly finishes swooping and perches over View details (4.0s flight = 8.0s), enable View details button
       setTimeout(() => {
         if (btnViewDetails) {
           btnViewDetails.classList.add('is-ready');
         }
-      }, 8200);
+      }, 8000);
     }, remainingTime);
-  }
-
-  preloadImages.forEach(src => {
-    const img = new Image();
-    img.onload = img.onerror = () => {
-      loadedCount++;
-      if (loadedCount === preloadImages.length) {
-        onAssetsReady();
-      }
-    };
-    img.src = src;
   });
-
-  // Fallback in case image callbacks are delayed
-  setTimeout(onAssetsReady, 3000);
 
   function updateMusicUI(isPlaying) {
     if (musicToggle) {
