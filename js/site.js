@@ -468,150 +468,38 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* ── 9. MOBILE FORTUNE WHEEL & FLIP ENGINE ─────────── */
-  function initMobileFortuneWheel() {
-    if (typeof window === 'undefined') return;
-
-    var inInvite = window.location.pathname.indexOf('/invite') !== -1;
-    var basePrefix = inInvite ? '../' : '';
-
-    var PAGES = [
-      { id: 'home', file: 'index.html', url: basePrefix + 'index.html', title: 'Home · G&M', icon: '🪔', label: 'Home' },
-      { id: 'invite', file: 'invite', url: inInvite ? './' : 'invite/', title: 'Invitation Film', icon: '💌', label: 'Invite' },
-      { id: 'schedule', file: 'schedule.html', url: basePrefix + 'schedule.html', title: 'Schedule · Nov 20–22', icon: '🗓️', label: 'Schedule' },
-      { id: 'travel', file: 'travel.html', url: basePrefix + 'travel.html', title: 'Travel & Stay · Nainital', icon: '✈️', label: 'Travel' },
-      { id: 'rsvp', file: 'rsvp2.html', url: basePrefix + 'rsvp2.html', title: 'RSVP Please', icon: '✍️', label: 'RSVP' }
-    ];
-
-    // Determine current active page index
+  /* ── 9. BOTTOM NAVIGATION CONTROLLER ────────────────── */
+  function initBottomNav() {
     var path = (window.location.pathname || '').toLowerCase();
-    var activeIdx = 0;
+    var tabs = document.querySelectorAll('.site-bottom-nav .nav-tab');
+    if (!tabs.length) return;
+
+    var activeKey = 'home';
     if (path.indexOf('schedule') !== -1) {
-      activeIdx = 2;
+      activeKey = 'schedule';
     } else if (path.indexOf('travel') !== -1) {
-      activeIdx = 3;
+      activeKey = 'travel';
     } else if (path.indexOf('rsvp') !== -1) {
-      activeIdx = 4;
+      activeKey = 'rsvp';
     } else if (path.indexOf('invite') !== -1) {
-      activeIdx = 1;
+      activeKey = 'invite';
     } else {
-      activeIdx = 0;
+      activeKey = 'home';
     }
 
-    var cur = PAGES[activeIdx];
-
-    // Build and inject bottom Fortune Wheel dock if not already present
-    if (!document.getElementById('mobile-wheel-nav')) {
-      var nav = document.createElement('nav');
-      nav.id = 'mobile-wheel-nav';
-      nav.className = 'mobile-wheel-nav';
-      nav.setAttribute('aria-label', 'Mobile Wedding Navigation Wheel');
-
-      var nodesHtml = '';
-      PAGES.forEach(function(p, i) {
-        var isAct = (i === activeIdx) ? ' active' : '';
-        nodesHtml +=
-          '<a href="' + p.url + '" class="wheel-nav-item' + isAct + '" data-idx="' + i + '" aria-label="' + p.title + '">' +
-            '<span class="item-icon">' + p.icon + '</span>' +
-            '<span class="item-label">' + p.label + '</span>' +
-          '</a>';
-      });
-
-      nav.innerHTML =
-        '<div class="wheel-active-badge" id="wheel-badge">' +
-          '<span class="wheel-badge-dot">✦</span>' +
-          '<span class="wheel-badge-title" id="wheel-badge-title">' + cur.title + '</span>' +
-        '</div>' +
-        '<div class="wheel-dock-bar">' +
-          '<button type="button" class="wheel-flip-btn prev" id="wheel-btn-prev" aria-label="Previous Page">‹</button>' +
-          '<div class="wheel-items-track" id="wheel-track">' +
-            nodesHtml +
-          '</div>' +
-          '<button type="button" class="wheel-flip-btn next" id="wheel-btn-next" aria-label="Next Page">›</button>' +
-        '</div>';
-
-      document.body.appendChild(nav);
-    }
-
-    function flipToPage(targetIdx) {
-      if (targetIdx < 0) targetIdx = PAGES.length - 1;
-      if (targetIdx >= PAGES.length) targetIdx = 0;
-      if (targetIdx === activeIdx) return;
-
-      var targetPage = PAGES[targetIdx];
-      var badgeTitle = document.getElementById('wheel-badge-title');
-      if (badgeTitle) {
-        badgeTitle.textContent = 'Flipping to ' + targetPage.label + '... 🪔';
+    tabs.forEach(function(tab) {
+      if (tab.getAttribute('data-page') === activeKey) {
+        tab.classList.add('active');
+      } else {
+        tab.classList.remove('active');
       }
-
-      // Add rotation pulse animation to dock
-      var dock = document.querySelector('.wheel-dock-bar');
-      if (dock) {
-        dock.style.transform = (targetIdx > activeIdx ? 'rotate(3deg) scale(0.97)' : 'rotate(-3deg) scale(0.97)');
-        dock.style.transition = 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)';
-      }
-
-      setTimeout(function() {
-        window.location.href = targetPage.url;
-      }, 160);
-    }
-
-    // Previous & Next buttons
-    var btnPrev = document.getElementById('wheel-btn-prev');
-    var btnNext = document.getElementById('wheel-btn-next');
-    if (btnPrev) {
-      btnPrev.addEventListener('click', function(e) {
-        e.preventDefault();
-        flipToPage(activeIdx - 1);
-      });
-    }
-    if (btnNext) {
-      btnNext.addEventListener('click', function(e) {
-        e.preventDefault();
-        flipToPage(activeIdx + 1);
-      });
-    }
-
-    // One-handed horizontal swipe gesture across the screen
-    var touchStartX = 0;
-    var touchStartY = 0;
-    var isSwiping = false;
-
-    window.addEventListener('touchstart', function(e) {
-      if (e.touches && e.touches.length === 1) {
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        isSwiping = true;
-      }
-    }, { passive: true });
-
-    window.addEventListener('touchend', function(e) {
-      if (!isSwiping) return;
-      isSwiping = false;
-
-      var touchEndX = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0].clientX : 0;
-      var touchEndY = e.changedTouches && e.changedTouches.length > 0 ? e.changedTouches[0].clientY : 0;
-
-      var diffX = touchEndX - touchStartX;
-      var diffY = touchEndY - touchStartY;
-
-      // Ensure horizontal swipe is dominant (diffX > 60px and diffX > 1.6 * diffY)
-      if (Math.abs(diffX) > 60 && Math.abs(diffX) > Math.abs(diffY) * 1.6) {
-        if (diffX < 0) {
-          // Swipe Left -> Next Page
-          flipToPage(activeIdx + 1);
-        } else {
-          // Swipe Right -> Prev Page
-          flipToPage(activeIdx - 1);
-        }
-      }
-    }, { passive: true });
+    });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileFortuneWheel);
+    document.addEventListener('DOMContentLoaded', initBottomNav);
   } else {
-    initMobileFortuneWheel();
+    initBottomNav();
   }
 
 })();
