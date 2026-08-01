@@ -396,27 +396,27 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── Butterfly Fly-to-Flowers Transition on View Details Click ── */
+/* ── Butterfly Fly-to-Flowers Transition on View Details Click (2.5s Flight) ── */
 .home-butterfly-wrap.fly-to-flowers {
-  transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transform: translate(calc(-50% + 20px), calc(-100svh + 220px)) !important;
+  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: translate(calc(-50% + 20px), calc(-100svh + 200px)) !important;
   z-index: 101 !important;
 }
 
-/* ── Invitation Code Dialog (Slow, Graceful Animation) ── */
+/* ── Invitation Code Dialog (White 60% Scrim, Stable Keyboard Positioning) ── */
 .home-pin-modal {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   z-index: 100;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 24px;
+  padding: max(85px, 13svh) 24px 24px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -428,14 +428,14 @@ html, body {
   pointer-events: auto;
 }
 .home-pin-content {
-  background: #fbf7ee;
-  padding: 34px 28px 28px;
-  border-radius: 16px;
+  background: #fdfbf7;
+  padding: 32px 26px 26px;
+  border-radius: 18px;
   width: 100%;
   max-width: 340px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(126, 18, 22, 0.12);
+  box-shadow: 0 16px 40px rgba(11, 76, 109, 0.1), 0 4px 14px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(126, 18, 22, 0.12);
   text-align: center;
-  transform: scale(0.92) translateY(24px);
+  transform: scale(0.92) translateY(20px);
   opacity: 0;
   transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -448,17 +448,19 @@ html, body {
   font-size: 26px;
   font-weight: 600;
   color: #7e1216;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   letter-spacing: 0.05em;
   line-height: 1.2;
 }
 .home-pin-subtitle {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif !important;
   font-size: 18px;
-  font-style: italic;
-  color: #555555;
+  font-weight: 500;
+  font-style: normal !important;
+  color: #0b4c6d !important;
   margin-bottom: 22px;
   line-height: 1.35;
+  letter-spacing: 0.02em;
 }
 .home-pin-input {
   width: 100%;
@@ -679,20 +681,15 @@ document.addEventListener('DOMContentLoaded', function() {
   if (btnViewDetails) {
     btnViewDetails.addEventListener('click', function(e) {
       e.preventDefault();
-      
-      // Also ensure audio is playing on user interaction
-      if (bgMusic && bgMusic.paused) {
-        bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
-      }
 
-      // Step 1: Butterfly moves to top towards the blue flowers and stops right over them
+      // Step 1: Butterfly moves to top towards the blue flowers (2.5s flight) and stops right over them
       if (butterflyWrap) {
         butterflyWrap.classList.add('fly-to-flowers');
         if (wing) {
           wing.style.animationDuration = '0.15s'; // active flapping during flight
           setTimeout(() => {
             wing.style.animationDuration = '0.25s'; // settle gracefully on flowers
-          }, 1500);
+          }, 2500);
         }
       }
 
@@ -701,7 +698,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (pinModal) {
           pinModal.classList.add('is-active');
         }
-      }, 400);
+      }, 500);
 
       // Step 3: Keyboard pops up after a second and not instantly
       setTimeout(() => {
