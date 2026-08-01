@@ -800,3 +800,50 @@ body.gateway-locked {
   font-size: 10px;
 }
 
+/* ── Fullscreen Mode & Button (Option A) ── */
+.fullscreen-toggle {
+  background: rgba(255, 246, 232, 0.12) !important;
+  border: 1px solid rgba(186, 140, 72, 0.45) !important;
+  border-radius: 20px !important;
+  color: var(--ivory) !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  padding: 6px 14px !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: background 0.3s, border-color 0.3s, transform 0.2s !important;
+  outline: none !important;
+}
+.fullscreen-toggle:hover {
+  background: rgba(255, 246, 232, 0.22) !important;
+  border-color: rgba(255, 223, 133, 0.75) !important;
+  transform: scale(1.04) !important;
+}
+.fullscreen-toggle.is-active {
+  background: rgba(186, 140, 72, 0.3) !important;
+  border-color: #FFDF85 !important;
+}
+.fullscreen-toggle .fs-icon {
+  font-size: 13px;
+  line-height: 1;
+  color: #FFDF85;
+}
+.menu-fs-link {
+  font-family: 'Cinzel', serif !important;
+  font-size: 13px !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: #FFDF85 !important;
+  border: 1px solid rgba(186, 140, 72, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  margin-top: 12px !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  text-align: center !important;
+  display: block !important;
+}
+
