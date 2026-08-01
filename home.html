@@ -271,7 +271,7 @@ html, body {
 .home-butterfly-wrap {
   position: absolute;
   top: auto;
-  bottom: 68px;
+  bottom: 78px;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 180px; /* +10% bigger (from 164px) */
@@ -296,17 +296,16 @@ html, body {
 }
 
 .home-butterfly-wrap.start-flight .flight-container {
-  animation: butterflyPath 4.8s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+  animation: swoop 4.4s cubic-bezier(0.25, 1, 0.5, 1) 0s forwards;
 }
 
 .bob-container {
   width: 100%;
   height: 100%;
-  transform-origin: center;
 }
 
 .home-butterfly-wrap.start-flight .bob-container {
-  animation: butterflyLift 4.8s ease-in-out 0s forwards;
+  animation: bob 4.4s ease-in-out 0s forwards;
 }
 
 .wing-flap {
@@ -319,62 +318,49 @@ html, body {
 
 .home-butterfly-wrap.start-flight .wing-flap {
   animation: 
-    flap-fast 0.14s ease-in-out 34 0s,
-    flap-slow 0.22s ease-in-out infinite 4.85s;
+    flap-fast 0.15s ease-in-out 29 0s,
+    flap-slow 0.21s ease-in-out infinite 4.45s;
 }
 
 @keyframes flap-fast {
-  0% { transform: perspective(400px) rotateY(0deg) scaleY(1); }
-  35% { transform: perspective(400px) rotateY(74deg) scaleY(0.95) skewY(-2deg); }
-  100% { transform: perspective(400px) rotateY(0deg) scaleY(1); }
+  0% { transform: perspective(400px) rotateY(0deg); }
+  50% { transform: perspective(400px) rotateY(70deg); }
+  100% { transform: perspective(400px) rotateY(0deg); }
 }
 
 @keyframes flap-slow {
-  0% { transform: perspective(400px) rotateY(0deg) scaleY(1); }
-  45% { transform: perspective(400px) rotateY(58deg) scaleY(0.97); }
-  100% { transform: perspective(400px) rotateY(0deg) scaleY(1); }
+  0% { transform: perspective(400px) rotateY(0deg); }
+  50% { transform: perspective(400px) rotateY(60deg); }
+  100% { transform: perspective(400px) rotateY(0deg); }
 }
 
-@keyframes butterflyPath {
+@keyframes swoop {
   0% {
-    transform: translate(160px, -680px) rotateZ(-16deg) rotateX(10deg) scale(0.92);
+    transform: translate(300px, -800px) rotate(-45deg);
     opacity: 0;
   }
-  8% {
+  10% {
     opacity: 1;
-    transform: translate(130px, -570px) rotateZ(-14deg) rotateX(8deg) scale(0.95);
   }
-  25% {
-    transform: translate(65px, -420px) rotateZ(-6deg) rotateX(6deg) scale(0.98);
+  30% {
+    transform: translate(150px, -400px) rotate(-15deg);
   }
-  45% {
-    transform: translate(-45px, -280px) rotateZ(10deg) rotateX(8deg) scale(1.01);
+  55% {
+    transform: translate(-100px, -250px) rotate(20deg);
   }
-  68% {
-    transform: translate(-30px, -150px) rotateZ(6deg) rotateX(4deg) scale(1.01);
-  }
-  85% {
-    transform: translate(12px, -50px) rotateZ(-4deg) rotateX(-2deg) scale(1);
-  }
-  95% {
-    transform: translate(2px, -8px) rotateZ(1deg) rotateX(-4deg) scale(1);
+  75% {
+    transform: translate(-50px, -50px) rotate(10deg);
   }
   100% {
-    transform: translate(0, 0) rotateZ(0deg) rotateX(0deg) scale(1);
+    transform: translate(0, 0) rotate(0deg);
     opacity: 1;
   }
 }
 
-@keyframes butterflyLift {
-  0%   { transform: translateY(0px) rotateX(0deg); }
-  12%  { transform: translateY(-6px) rotateX(4deg); }
-  25%  { transform: translateY(3px) rotateX(-3deg); }
-  37%  { transform: translateY(-5px) rotateX(3deg); }
-  50%  { transform: translateY(4px) rotateX(-3deg); }
-  62%  { transform: translateY(-5px) rotateX(4deg); }
-  75%  { transform: translateY(2px) rotateX(-2deg); }
-  88%  { transform: translateY(-3px) rotateX(2deg); }
-  100% { transform: translateY(0px) rotateX(0deg); }
+@keyframes bob {
+  0%, 20%, 40%, 60%, 80% { transform: translateY(-20px); }
+  10%, 30%, 50%, 70% { transform: translateY(20px); }
+  90%, 100% { transform: translateY(0); }
 }
 
 /* ── 5. Bottom Red Dome (Starts Fullscreen -> Morphs down into Bottom Circle Module) ── */
@@ -469,47 +455,44 @@ html, body {
 }
 
 /* ── Native Micro Music Player UI (Spotify / YouTube App Experience) ── */
-/* ── Native Micro Music Player UI (Always Fixed at Top-Right) ── */
 .music-toggle-btn {
-  position: fixed !important;
-  top: 16px !important;
-  right: 16px !important;
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 50% !important;
-  background: rgba(255, 255, 255, 0.92) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
-  z-index: 9999999 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  padding: 0 !important;
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
   outline: none !important;
-  border: none !important;
+  border: none;
   -webkit-tap-highlight-color: transparent !important;
   -webkit-touch-callout: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
-  visibility: visible !important;
-  opacity: 1 !important;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease, background-color 0.2s ease;
   will-change: transform;
 }
 .music-toggle-btn:hover {
   transform: scale(1.06);
-  background: rgba(255, 255, 255, 0.98) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18) !important;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 .music-toggle-btn:active {
   transform: scale(0.9);
   transition-duration: 0.08s;
 }
 .music-toggle-btn.is-playing {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 .music-toggle-btn svg {
   position: absolute;
@@ -534,27 +517,30 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── PIN Code Interface (Matching Figma 343:346 & Exact Screenshots) ── */
+/* ── Butterfly Fly-to-Flowers Transition on View Details Click (Exact Top Center, Fully in View) ── */
+.home-butterfly-wrap.fly-to-flowers {
+  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: translate(-50%, calc(-100svh + 230px)) !important;
+  z-index: 101 !important;
+}
+
+/* ── PIN Code Interface (Seamlessly over New Red Background, 20px Below Top Butterfly) ── */
 .home-pin-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100svh;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: max(45px, 6.5svh) 24px 20px;
-  box-sizing: border-box;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 175px 24px 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
-  overflow: hidden;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active {
   opacity: 1;
@@ -569,79 +555,52 @@ html, body {
   box-shadow: none !important;
   border: none !important;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-  transform: translateY(8px);
+  transform: translateY(12px);
   opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active .home-pin-content {
   transform: translateY(0);
   opacity: 1;
 }
-
-.home-modal-butterfly {
-  width: 154px; /* +10% bigger (from 140px) */
-  height: 116px; /* +10% bigger (from 105px) */
-  max-width: 46vw;
-  margin: 0 auto 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.35));
-}
-.home-modal-butterfly .wing-flap {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  animation: flap-slow 0.25s ease-in-out infinite alternate;
-  transform-origin: center;
-}
-
 .home-pin-title {
   font-family: 'Cinzel', serif;
-  font-size: 30px;
+  font-size: 32px;
   font-weight: 500;
   color: #FFFFFF;
-  margin-top: 4px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
   letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
 }
 .home-pin-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 18.5px;
+  font-size: 18px;
   font-weight: 400;
-  font-style: italic !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  margin-bottom: 18px;
+  font-style: normal !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin-bottom: 16px;
   line-height: 1.2;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 .home-pin-input {
   width: 100%;
-  height: 50px;
-  padding: 0 16px;
+  padding: 12px;
   font-size: 24px;
   text-align: center;
   letter-spacing: 6px;
-  border: 1.5px solid #FFFFFF;
+  border: 1px solid #FFFFFF;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
   transition: background-color 0.2s;
-  box-sizing: border-box;
 }
 .home-pin-input:focus {
-  border: 1.5px solid #FFFFFF;
-  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid #FFFFFF;
+  background: rgba(255, 255, 255, 0.22);
   box-shadow: none !important;
   outline: none !important;
 }
@@ -698,48 +657,19 @@ html, body {
   color: #7E1216;
   border: 1.5px solid #FFFFFF;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+  transition: opacity 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
 }
 .btn-open.is-enabled {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
   font-weight: 500 !important;
 }
-
-/* ── Keyboard Open State (home_2.html): Snug fit above keyboard, strictly 12px bottom padding ── */
-.home-pin-modal.keyboard-open {
-  justify-content: flex-end !important;
-  padding-top: 10px !important;
-  padding-bottom: 12px !important;
-}
-.home-pin-modal.keyboard-open .home-modal-butterfly {
-  width: 141px; /* +10% bigger (from 128px) */
-  height: 106px; /* +10% bigger (from 96px) */
-  margin-bottom: 2px;
-}
-.home-pin-modal.keyboard-open .home-pin-title {
-  font-size: 27px;
-  margin-top: 2px;
-  margin-bottom: 1px;
-}
-.home-pin-modal.keyboard-open .home-pin-subtitle {
-  font-size: 16.5px;
-  margin-bottom: 10px;
-}
-.home-pin-modal.keyboard-open .home-pin-input {
-  height: 46px;
-}
-.home-pin-modal.keyboard-open .home-pin-actions {
-  margin-top: 12px;
-}
-.home-pin-modal.keyboard-open .home-pin-btn {
-  height: 42px;
-}
-
-/* ── Hide bottom resting butterfly when modal is open ── */
-.home-butterfly-wrap.is-hidden-modal {
-  display: none !important;
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+.btn-open.is-enabled:hover {
+  background: #f4eee2;
 }
 </style>
 </head>
@@ -805,39 +735,36 @@ html, body {
     <span class="home-view-details-label">View details</span>
   </a>
 
-</main>
+  <!-- ── Native Micro Music Player Button ── -->
+  <button id="music-toggle" class="music-toggle-btn" aria-label="Toggle Music">
+    <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#7e1216">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#7e1216">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </button>
 
-<!-- ── Native Micro Music Player Button (Always Fixed at Top-Right) ── -->
-<button id="music-toggle" class="music-toggle-btn" aria-label="Toggle Music">
-  <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#7e1216">
-    <path d="M8 5v14l11-7z"/>
-  </svg>
-  <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#7e1216">
-    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-  </svg>
-</button>
+  <!-- ── AUDIO ── -->
+  <audio id="bg-music" loop preload="auto" playsinline>
+    <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- ── AUDIO ── -->
-<audio id="bg-music" loop preload="auto" playsinline>
-  <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
-</audio>
-
-<!-- ── PIN Code Interface ── -->
-<div id="pin-modal" class="home-pin-modal">
-  <div class="home-pin-content">
-    <div class="home-modal-butterfly" aria-hidden="true">
-      <img src="images/home_butterfly.webp" alt="Golden Butterfly" class="wing-flap">
-    </div>
-    <h2 class="home-pin-title">WELCOME!</h2>
-    <p class="home-pin-subtitle">Enter code for event details</p>
-    <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-    <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
-    <div class="home-pin-actions">
-      <button id="btn-pin-cancel" class="home-pin-btn btn-close">Close</button>
-      <button id="btn-pin-submit" class="home-pin-btn btn-open" disabled>Open</button>
+  <!-- ── PIN Code Interface (Seamlessly Over New Red Background) ── -->
+  <div id="pin-modal" class="home-pin-modal">
+    <div class="home-pin-content">
+      <h2 class="home-pin-title">WELCOME!</h2>
+      <p class="home-pin-subtitle">Enter code for event details</p>
+      <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
+      <div class="home-pin-actions">
+        <button id="btn-pin-cancel" class="home-pin-btn btn-close">CLOSE</button>
+        <button id="btn-pin-submit" class="home-pin-btn btn-open" disabled>OPEN</button>
+      </div>
     </div>
   </div>
-</div>
+
+</main>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -927,19 +854,19 @@ document.addEventListener('DOMContentLoaded', function() {
         splashPreloader.classList.add('is-dismissed');
       }
 
-      // Step 2: Exactly 1.5 seconds after red dome finishes morphing down (2.2s transition + 1.5s delay = 3.7s)
+      // Step 2: Exactly 2 seconds after red dome finishes morphing down (2.2s transition + 2.0s delay = 4.2s)
       setTimeout(() => {
         if (butterflyWrap) {
           butterflyWrap.classList.add('start-flight');
         }
-      }, 3700);
+      }, 4200);
 
-      // Step 3: When butterfly finishes swooping and perches over View details (4.8s flight = 8.5s), enable View details button
+      // Step 3: When butterfly finishes swooping and perches over View details (4.4s flight = 8.6s), enable View details button
       setTimeout(() => {
         if (btnViewDetails) {
           btnViewDetails.classList.add('is-ready');
         }
-      }, 8500);
+      }, 8600);
     }, remainingTime + 300);
   });
 
@@ -985,47 +912,25 @@ document.addEventListener('DOMContentLoaded', function() {
     btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
   }
 
-  // Dynamic Mobile Keyboard Alignment (Matching Image 1 when Keyboard Open, Image 2 when Keyboard Closed)
-  function updateModalPosition() {
-    if (!pinModal || !pinModal.classList.contains('is-active')) return;
-    if (window.visualViewport) {
-      const vv = window.visualViewport;
-      const isKeyboardOpen = (document.activeElement === pinInput) || (vv.height < window.innerHeight * 0.85);
-      if (isKeyboardOpen) {
-        pinModal.style.position = 'fixed';
-        pinModal.style.top = vv.offsetTop + 'px';
-        pinModal.style.left = vv.offsetLeft + 'px';
-        pinModal.style.width = vv.width + 'px';
-        pinModal.style.height = vv.height + 'px';
-        pinModal.style.justifyContent = 'flex-end';
-        pinModal.style.paddingTop = '10px';
-        pinModal.style.paddingBottom = '12px'; /* Strictly 12px above virtual keyboard (Image 1) */
-      } else {
-        pinModal.style.position = 'fixed';
-        pinModal.style.top = '0px';
-        pinModal.style.left = '0px';
-        pinModal.style.width = '100vw';
-        pinModal.style.height = '100svh';
-        pinModal.style.justifyContent = 'flex-start';
-        pinModal.style.paddingTop = 'max(50px, 7svh)'; /* Upper half layout (Image 2) */
-        pinModal.style.paddingBottom = '20px';
-      }
-    }
-  }
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateModalPosition);
-    window.visualViewport.addEventListener('scroll', updateModalPosition);
-  }
-  window.addEventListener('resize', updateModalPosition);
-
   function handleOpenDetails(e) {
     if (!btnViewDetails.classList.contains('is-ready')) return;
     e.preventDefault();
 
-    // Hide resting butterfly on view details
+    // Synchronously focus and select input immediately on touch/click to guarantee virtual keyboard activation
+    if (pinInput) {
+      pinInput.focus();
+      pinInput.select();
+    }
+
+    // Butterfly moves to exact top-center
     if (butterflyWrap) {
-      butterflyWrap.classList.add('is-hidden-modal');
+      butterflyWrap.classList.add('fly-to-flowers');
+      if (wing) {
+        wing.style.animationDuration = '0.15s';
+        setTimeout(() => {
+          wing.style.animationDuration = '0.25s';
+        }, 2500);
+      }
     }
 
     // Red dome expands upwards to cover fullscreen
@@ -1035,20 +940,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     btnViewDetails.classList.add('is-hidden');
 
-    // Activate PIN modal (matching Image 1 with keyboard / Image 2 without keyboard)
+    // Activate PIN modal (positioned 20px below butterfly)
     if (pinModal) {
       pinModal.classList.add('is-active');
     }
-    updateModalPosition();
     checkPinInput();
-
-    // Synchronously focus input to pop keyboard
-    if (pinInput) {
-      pinInput.focus();
-      setTimeout(updateModalPosition, 50);
-      setTimeout(updateModalPosition, 150);
-      setTimeout(updateModalPosition, 300);
-    }
   }
 
   if (btnViewDetails) {
@@ -1094,9 +990,6 @@ document.addEventListener('DOMContentLoaded', function() {
       blurTimeout = null;
     }
 
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-
     // 1. Immediately dismiss keyboard and clear input
     if (pinInput) {
       pinInput.blur();
@@ -1114,15 +1007,21 @@ document.addEventListener('DOMContentLoaded', function() {
       bottomDome.classList.add('is-collapsed');
     }
 
-    // 4. Reveal resting butterfly on view details button
+    // 4. Butterfly flies back down to resting position with active flapping
     if (butterflyWrap) {
-      butterflyWrap.classList.remove('is-hidden-modal');
+      butterflyWrap.classList.remove('fly-to-flowers');
+      if (wing) {
+        wing.style.animationDuration = '0.15s';
+        setTimeout(() => {
+          wing.style.animationDuration = '0.25s';
+        }, 2500);
+      }
     }
 
     // 5. Fade View details button back in
     setTimeout(() => {
       if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
-    }, 400);
+    }, 600);
   }
 
   // Close Action: Button Click
@@ -1142,15 +1041,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     pinInput.addEventListener('focus', function() {
       if (blurTimeout) clearTimeout(blurTimeout);
-      setTimeout(updateModalPosition, 50);
-      setTimeout(updateModalPosition, 150);
-      setTimeout(updateModalPosition, 300);
     });
     pinInput.addEventListener('blur', function() {
       if (isSubmitting) return;
-      setTimeout(updateModalPosition, 50);
-      setTimeout(updateModalPosition, 150);
-      setTimeout(updateModalPosition, 300);
+      blurTimeout = setTimeout(() => {
+        if (pinModal && pinModal.classList.contains('is-active') && !isSubmitting) {
+          handleCloseModal();
+        }
+      }, 160);
     });
     pinInput.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
