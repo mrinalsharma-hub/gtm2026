@@ -37,7 +37,7 @@ html, body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #A71F23;
+  background-color: #F8F4EA !important;
   font-family: 'Cinzel', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,11 +47,10 @@ html, body {
 
 .home-mobile-canvas {
   position: relative;
-  width: 100vw;
-  max-width: 440px;
+  width: 100%;
   height: 100svh;
   min-height: 100svh;
-  margin: 0 auto;
+  margin: 0;
   overflow: hidden;
   background-color: #F8F4EA;
 }
@@ -87,31 +86,26 @@ html, body {
   pointer-events: none;
 }
 
-/* ── 2. Flowers Top (Exact Figma 340:149 Placement) ── */
+/* ── 2. Flowers Top (Exact Figma Placement Anchored Top-Right) ── */
 .home-flowers-top {
   position: absolute;
-  top: -2px;
-  left: calc(50% + 17.5px);
-  transform: translateX(-50%);
-  width: 291px;
-  height: 389px;
-  overflow: hidden;
+  top: 0;
+  right: 0;
+  width: min(290px, 66vw);
+  max-height: 38vh;
   pointer-events: none;
   z-index: 3;
 }
 .home-flowers-top img {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  height: auto;
+  display: block;
 }
 
-/* ── 3. Typography Group (Figma 340:176) ── */
+/* ── 3. Typography Group (Positioned Gracefully Below Flowers) ── */
 .home-hero-text {
   position: absolute;
-  top: 42.5%;
+  top: 52%;
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -123,7 +117,7 @@ html, body {
 
 .home-name {
   font-family: 'Cinzel', serif;
-  font-size: clamp(48px, 14.5vw, 64px);
+  font-size: clamp(44px, 13.5vw, 64px);
   font-weight: 400;
   line-height: 1;
   letter-spacing: 1.28px;
@@ -136,7 +130,7 @@ html, body {
 }
 
 .home-script-wrap {
-  height: 76px;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,7 +139,7 @@ html, body {
 
 .home-script {
   font-family: 'WindSong', cursive;
-  font-size: clamp(54px, 16vw, 70px);
+  font-size: clamp(52px, 15.5vw, 70px);
   font-weight: 400;
   line-height: 1;
   color: #c81a1f;
@@ -154,13 +148,13 @@ html, body {
 }
 
 .home-date-location {
-  margin-top: 16px;
+  margin-top: 14px;
 }
 .home-date-location p {
   font-family: 'Cinzel', serif;
-  font-size: clamp(18px, 5.2vw, 24px);
+  font-size: clamp(17px, 4.8vw, 24px);
   font-weight: 400;
-  line-height: 28px;
+  line-height: 26px;
   color: #0b4c6d;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -170,11 +164,11 @@ html, body {
 /* ── 4. Butterfly (Figma 340:174) ── */
 .home-butterfly-wrap {
   position: absolute;
-  bottom: 78px;
+  bottom: 74px;
   left: 50%;
   transform: translateX(-50%);
-  width: 164px;
-  max-width: 38vw;
+  width: 155px;
+  max-width: 36vw;
   height: auto;
   z-index: 6;
   pointer-events: none;
