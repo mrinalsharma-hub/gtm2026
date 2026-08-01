@@ -298,3 +298,502 @@ footer.site{display:none !important}
   .ev-d{grid-column:2}
   .hero .cta .btn{width:100%;text-align:center}
 }
+
+/* ═══════════════════════════════════════════════════════
+   Garima & Mrinal · Royal Invitation Passcode Gateway
+   ═══════════════════════════════════════════════════════ */
+
+body.gateway-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  touch-action: none !important;
+}
+
+.wedding-gateway-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: radial-gradient(circle at 50% 35%, rgba(167, 31, 35, 0.96) 0%, rgba(126, 18, 22, 0.98) 55%, #420608 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.wedding-gateway-overlay.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wedding-gateway-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('../images/paper-bg-flawless-seamless.jpg') repeat center / auto;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gateway-bgmandala {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(140vw, 760px);
+  height: min(140vw, 760px);
+  opacity: 0.08;
+  animation: spin 100s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gateway-bgmandala circle,
+.gateway-bgmandala path {
+  stroke: var(--ivory);
+  fill: none;
+  stroke-width: 2.4;
+}
+.gateway-bgmandala .fill {
+  fill: var(--ivory);
+  stroke: none;
+}
+
+/* ── Modal Card ─────────────────────────────────────── */
+.gateway-modal-card {
+  position: relative;
+  z-index: 10;
+  max-width: 480px;
+  width: 100%;
+  margin: auto;
+  background: #FDF9F2;
+  background-image: url('../images/paper-bg-flawless-seamless.jpg');
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 360px auto;
+  border-radius: 4px;
+  padding: 42px 32px 36px;
+  text-align: center;
+  box-shadow: 0 24px 70px rgba(18, 2, 4, 0.65), 0 0 0 1px rgba(255, 246, 232, 0.25);
+  border: 1.5px solid rgba(186, 140, 72, 0.55);
+  transform: translateY(24px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), filter 0.55s ease;
+  overflow: hidden;
+}
+
+.wedding-gateway-overlay.active .gateway-modal-card {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.wedding-gateway-overlay.unlocking .gateway-modal-card {
+  transform: translateY(-20px) scale(1.04);
+  opacity: 0;
+  filter: blur(5px);
+  pointer-events: none;
+}
+
+.gateway-modal-card::after {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(186, 140, 72, 0.38);
+  outline: 1px solid rgba(186, 140, 72, 0.18);
+  outline-offset: -4px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gateway-modal-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Close Button (for authenticated switch mode) ── */
+.gateway-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(102, 17, 20, 0.6);
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 20;
+}
+.gateway-close-btn:hover {
+  color: #A71F23;
+  background: rgba(167, 31, 35, 0.08);
+}
+
+/* ── Shloka ─────────────────────────────────────────── */
+.gateway-shloka {
+  font-family: Georgia, 'Noto Serif Devanagari', serif;
+  font-size: 15px;
+  letter-spacing: 0.12em;
+  color: #8C161A;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* ── Diya SVG & Animation ───────────────────────────── */
+.gateway-diya-wrap {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.gateway-diya-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 4px 14px rgba(212, 160, 89, 0.5));
+}
+.flame-aura {
+  animation: diyaPulse 2.8s ease-in-out infinite alternate;
+}
+@keyframes diyaPulse {
+  0% { transform: scale(0.92); opacity: 0.75; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+/* ── Titles & Headings ──────────────────────────────── */
+.gateway-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #BA8C48;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.gateway-title {
+  font-family: 'Cormorant Upright', 'Cinzel', serif;
+  font-size: clamp(28px, 6vw, 36px);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #96181C;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.gateway-date {
+  font-family: 'Lustria', Georgia, serif;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: rgba(102, 17, 20, 0.75);
+  margin-bottom: 14px;
+}
+
+/* ── Divider ────────────────────────────────────────── */
+.gateway-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 10px auto 14px;
+  max-width: 220px;
+}
+.gateway-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(186, 140, 72, 0.45);
+}
+.gateway-gem {
+  color: #BA8C48;
+  font-size: 11px;
+  line-height: 1;
+}
+
+/* ── Prompt ─────────────────────────────────────────── */
+.gateway-prompt {
+  font-family: 'Lustria', Georgia, serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(25, 32, 47, 0.82);
+  margin-bottom: 20px;
+  padding: 0 6px;
+}
+
+/* ── Input & Form ───────────────────────────────────── */
+.gateway-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.gateway-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.gateway-key-icon {
+  position: absolute;
+  left: 16px;
+  font-size: 16px;
+  opacity: 0.65;
+  pointer-events: none;
+}
+.gateway-input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px 0 46px;
+  background: #FFFDF9;
+  border: 1.5px solid rgba(186, 140, 72, 0.48);
+  border-radius: 4px;
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-align: center;
+  text-transform: uppercase;
+  color: #661114;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.03);
+}
+.gateway-input::placeholder {
+  color: rgba(102, 17, 20, 0.35);
+  letter-spacing: 0.16em;
+  font-weight: 400;
+  font-size: 14px;
+}
+.gateway-input:focus {
+  background: #FFFFFF;
+  border-color: #BA8C48;
+  box-shadow: 0 0 0 3px rgba(186, 140, 72, 0.22), 0 4px 12px rgba(167, 31, 35, 0.08);
+}
+.gateway-input.error {
+  border-color: #C81A1F;
+  background: #FFF5F5;
+  box-shadow: 0 0 0 3px rgba(200, 26, 31, 0.18);
+}
+
+/* ── Error Message ──────────────────────────────────── */
+.gateway-error {
+  font-family: 'Lustria', serif;
+  font-size: 13px;
+  color: #C81A1F;
+  min-height: 18px;
+  margin: -4px 0 2px;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.gateway-error.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Unlock Button ──────────────────────────────────── */
+.gateway-btn-unlock {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #A71F23;
+  color: #FFF6E8;
+  border: 1.5px solid #BA8C48;
+  border-radius: 3px;
+  font-family: 'Cinzel', serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 16px rgba(167, 31, 35, 0.28);
+}
+.gateway-btn-unlock:hover {
+  background: #7E1216;
+  border-color: #D4A059;
+  box-shadow: 0 6px 22px rgba(167, 31, 35, 0.42);
+  transform: translateY(-1px);
+}
+.gateway-btn-unlock:active {
+  transform: translateY(1px);
+}
+.gateway-btn-unlock .btn-arrow {
+  transition: transform 0.25s ease;
+}
+.gateway-btn-unlock:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+/* ── Hint & Quick Pills ─────────────────────────────── */
+.gateway-keys-hint {
+  border-top: 1px solid rgba(186, 140, 72, 0.22);
+  padding-top: 14px;
+  margin-top: 6px;
+}
+.hint-label {
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: rgba(102, 17, 20, 0.6);
+  margin-bottom: 8px;
+}
+.hint-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.hint-pill {
+  background: rgba(186, 140, 72, 0.1);
+  border: 1px solid rgba(186, 140, 72, 0.35);
+  border-radius: 20px;
+  padding: 4px 11px;
+  font-family: 'Cinzel', serif;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7E1216;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hint-pill:hover {
+  background: #BA8C48;
+  color: #FFFFFF;
+  border-color: #BA8C48;
+  transform: scale(1.04);
+}
+
+/* ── Active / Authenticated Mode Status ─────────────── */
+.gateway-active-status {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(186, 140, 72, 0.35);
+}
+.status-current {
+  font-size: 12.5px;
+  color: rgba(25, 32, 47, 0.85);
+  margin-bottom: 8px;
+}
+.status-current strong {
+  color: #A71F23;
+  letter-spacing: 0.08em;
+}
+.gateway-btn-logout {
+  background: none;
+  border: none;
+  font-family: 'Lustria', serif;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #A71F23;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+.gateway-btn-logout:hover {
+  opacity: 1;
+}
+
+/* ── Shake Animation on Error ───────────────────────── */
+.gateway-shake {
+  animation: gatewayShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+@keyframes gatewayShake {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-7px); }
+  30%, 60%, 90% { transform: translateX(7px); }
+}
+
+/* ── Header / Nav Passcode Pill ─────────────────────── */
+.gateway-key-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 246, 232, 0.14);
+  border: 1px solid rgba(186, 140, 72, 0.45);
+  border-radius: 20px;
+  padding: 5px 12px;
+  color: #FFFFFF;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  margin-left: 4px;
+}
+.gateway-key-pill:hover {
+  background: rgba(186, 140, 72, 0.32);
+  border-color: #D4A059;
+  color: #FFF6E8;
+  transform: translateY(-1px);
+}
+.gateway-key-pill .pill-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #50E3C2;
+  box-shadow: 0 0 6px #50E3C2;
+}
+
+/* Mobile menu gateway link */
+.menu-gateway-link {
+  font-family: 'Cormorant Upright', 'Cormorant Garamond', serif !important;
+  font-size: 15px !important;
+  letter-spacing: 1.5px !important;
+  color: rgba(255, 246, 232, 0.85) !important;
+  border: 1px solid rgba(186, 140, 72, 0.4) !important;
+  border-radius: 20px !important;
+  padding: 6px 16px !important;
+  background: rgba(0, 0, 0, 0.15) !important;
+}
+.menu-gateway-link .pill-change {
+  font-size: 13px;
+  color: #FFDF85;
+  font-style: italic;
+}
+
+/* Hero Guest Badge on index.html */
+.hero-guest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 5px 18px;
+  border-radius: 20px;
+  background: rgba(255, 246, 232, 0.12);
+  border: 1px solid rgba(186, 140, 72, 0.4);
+  font-family: 'Cinzel', serif;
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  animation: fadeIn 0.6s ease;
+}
+.hero-guest-badge::before {
+  content: "✦";
+  color: #FFDF85;
+  font-size: 10px;
+}
+

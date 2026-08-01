@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>RSVP · Garima weds Mrinal</title>
+<meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400&family=Pinyon+Script&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/site.css?v=13">
+<style>
+/* ═══ RSVP page · GTM_RSVP_1 (Figma) ═══
+   Invite Red #C81A1F · Ink #19202F · parchment ground
+   Cormorant Upright display · Cormorant Garamond text
+   Burgues Script → Pinyon Script (web substitute)      */
+
+.paper{
+  position:relative;
+  background:#F9E7CF;
+  overflow:hidden;
+}
+.dg-bg-mesh{
+  position:absolute;inset:-20%;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(249, 231, 207, 0.95) 0%, transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(242, 218, 188, 0.85) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(224, 196, 162, 0.70) 0%, transparent 55%),
+    radial-gradient(circle at 75% 75%, rgba(255, 243, 224, 0.90) 0%, transparent 50%);
+  filter:blur(60px);
+  animation:dgVelvetShift 24s ease-in-out infinite alternate;
+  will-change:transform,opacity;
+  transition:opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+@keyframes dgVelvetShift{
+  0%{transform:scale(1) translate(0%,0%) rotate(0deg);opacity:0.90;}
+  33%{transform:scale(1.08) translate(3%,-4%) rotate(2deg);opacity:1.0;}
+  66%{transform:scale(1.04) translate(-3%,3%) rotate(-2deg);opacity:0.88;}
+  100%{transform:scale(1.12) translate(2%,-2%) rotate(1deg);opacity:0.95;}
+}
+.paper::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.48;z-index:1;
+  background:url('../images/paper-bg-flawless-seamless.jpg') repeat center top / 56% auto;
+  mix-blend-mode:multiply;
+  transition:opacity 0.8s ease;
+}
+.paper>*{position:relative;z-index:2}
+#bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;}
+
+.rsvp-wrap{
+  max-width:1240px;margin:0 auto;
+  padding:120px 20px 104px;
+  display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,640px);
+  gap:124px;align-items:start;
+}
+
+/* ── left · Please RSVP ─────────────────────────────── */
+.intro{color:#19202F}
+.please{
+  display:block;font-family:'Pinyon Script',cursive;font-weight:400;
+  font-size:clamp(32px,3.4vw,46px);color:#C81A1F;letter-spacing:.02em;
+  margin:0 0 -.52em .1em;position:relative;z-index:2;
+}
+.rsvp-word{
+  font-family:'Cormorant Upright',serif;font-weight:300;line-height:.95;
+  font-size:clamp(72px,9.5vw,124px);letter-spacing:.03em;color:#C81A1F;margin:0;
+}
+.intro-lead{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:24px;line-height:30px;color:#19202F;margin-top:48px;padding-left:60px !important;
+}
+.intro-copy{
+  font-family:'Cormorant Garamond',serif;font-weight:500;
+  font-size:24px;line-height:30px;color:#19202F;margin-top:1.2em;max-width:460px;padding-left:60px !important;
+}
+
+/* ── right · form card ──────────────────────────────── */
+.card{
+  background:rgba(255, 248, 238, 0.95) !important;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:28px;border:none;
+  padding:clamp(30px,4.2vw,56px);
+  box-shadow:0 24px 60px rgba(62,32,12,.10);
+}
+.card::before{display:none}
+.fgroup+.fgroup{margin-top:48px}
+.flabel{
+  display:block;font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:24px;line-height:30px;color:#C81A1F;
+}
+.fhint, p.fhint{
+  font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:13px !important;
+  line-height:1.45 !important;color:#19202F !important;letter-spacing:0.13px !important;margin:4px 0 0 !important;
+}
+input.finput, textarea.finput{
+  width:100% !important;height:52px !important;background:#FFF !important;color:#19202F !important;
+  border:1px solid transparent !important;border-radius:16px !important;padding:0 16px !important;
+  font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:16px !important;line-height:1.45 !important;
+  outline:none !important;box-shadow:none !important;transition:border-color .25s !important;margin-top:10px;
+}
+input.finput:focus, textarea.finput:focus,
+input.finput:not(:placeholder-shown), textarea.finput:not(:placeholder-shown){
+  border-color:#79747E !important;outline:none !important;box-shadow:none !important
+}
+.finput::placeholder, input::placeholder, textarea::placeholder{color:rgba(25, 32, 47, 0.40) !important;font-weight:400 !important}
+textarea.farea{height:auto !important;min-height:120px !important;padding:14px 16px !important;border-radius:16px !important;resize:vertical !important;font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:16px !important;line-height:1.45 !important}
+
+/* names */
+.name-row{position:relative}
+.name-row .rm{
+  position:absolute;right:10px;top:calc(50% + 7px);translate:0 -50%;
+  background:none;border:none;color:#C81A1F;font-size:17px;line-height:1;
+  cursor:pointer;padding:6px;font-family:'Cormorant Garamond',serif;
+}
+.add-link{
+  display:inline-block;background:none;border:none;cursor:pointer;padding:0;
+  margin-top:14px;color:#C81A1F;font-family:'Cormorant Garamond',serif;
+  font-weight:600;font-size:18px;text-decoration:underline;text-underline-offset:4px;
+}
+.add-link:hover{color:#A81318}
+
+/* option rows (radio / checkbox bars) */
+.opt-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+.opt-row{
+  display:flex;align-items:center;gap:14px;background:#FFF;
+  min-height:48px;border-radius:12px;padding:4px 14px;cursor:pointer;
+  font-family:'Roboto Flex',sans-serif;font-weight:400;font-size:17px;line-height:30px;
+  letter-spacing:0.17px;color:#19202F;
+  border:none;transition:border-color .25s;
+}
+.opt-row:hover{border-color:transparent}
+.opt-row input{position:absolute;opacity:0;pointer-events:none}
+.opt-row .opt-text strong{font-weight:600}
+.mark{flex:none;width:22px;height:22px;position:relative;transition:border-color .2s,background .2s}
+.mark.radio{border:1.5px solid rgba(25,32,47,.38);border-radius:50%}
+.opt-row input:checked+.mark.radio{border-color:#C81A1F}
+.opt-row input:checked+.mark.radio::after{
+  content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#C81A1F;transform:translate(-50%,-50%);
+}
+.mark.check{border:1.5px solid rgba(25,32,47,.38);border-radius:6px}
+.opt-row input:checked+.mark.check{background:#C81A1F;border-color:#C81A1F}
+.opt-row input:checked+.mark.check::after{
+  content:"";position:absolute;left:50%;top:44%;width:5px;height:10px;
+  border:solid #FFF;border-width:0 2px 2px 0;transform:translate(-50%,-50%) rotate(45deg);
+}
+.opt-row:has(input:checked){border-color:transparent}
+
+/* submit */
+.fsubmit{margin-top:44px}
+.send-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:64px;padding:0 48px;background:#C81A1F;color:#FFF;border:none;cursor:pointer;
+  border-radius:999px;
+  font-family:'Cormorant Garamond',serif;font-weight:600;font-size:24px;letter-spacing:.02em;
+  transition:background .3s;
+}
+.send-btn:hover{background:#A81318}
+#rsvp-status{
+  font-family:'Cormorant Garamond',serif;font-size:15px;
+  color:rgba(25,32,47,.72);margin-top:14px;min-height:1.3em;
+}
+footer.site{margin-top:0 !important;}
+
+/* thanks state */
+#rsvp-thanks{display:none;text-align:center;padding:6vh 0}
+#rsvp-thanks .big{
+  font-family:'Cormorant Upright',serif;font-weight:300;
+  font-size:clamp(40px,6vw,72px);letter-spacing:.04em;color:#C81A1F;
+}
+#rsvp-thanks .sub{
+  font-family:'Cormorant Garamond',serif;font-weight:600;
+  font-size:clamp(18px,2vw,22px);line-height:1.35;color:#19202F;margin-top:18px;
+}
+#rsvp-thanks .btn-red{margin-top:36px}
+
+/* responsive */
+@media (max-width:960px){
+  .rsvp-wrap{padding:48px 20px 64px;grid-template-columns:1fr;gap:44px}
+  .intro{text-align:left}
+  .please{margin-left:0}
+  .rsvp-header-img img{width:300px !important;}
+  .intro-lead, .intro-copy{text-align:left !important;padding-left:0 !important;margin-left:0 !important;}
+  .send-btn{width:100% !important;display:flex !important;}
+}
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="index.html" aria-label="Garima &amp; Mrinal Home">G&amp;M</a>
+  <nav class="primary">
+    <a href="invite/">Invitation</a>
+    <a href="schedule.html">Schedule</a>
+    <a href="travel.html">Travel &amp; Stay</a>
+    <a href="rsvp2.html">RSVP Please</a>
+  </nav>
+  <button id="menu-btn" aria-label="Open menu">Menu</button>
+</header>
+<div id="menu-panel">
+  <button id="menu-close" aria-label="Close menu">Close</button>
+  <a href="index.html">Home</a>
+  <a href="invite/">Invitation</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="travel.html">Travel &amp; Stay</a>
+  <a href="rsvp2.html">RSVP Please</a>
+</div>
+
+<main class="paper">
+  <div class="dg-bg-mesh"></div>
+  <canvas id="bg-anim"></canvas>
+  <div class="rsvp-wrap">
+
+    <aside class="intro">
+      <h1 class="rsvp-header-img" style="margin:0;">
+        <img src="../images/rsvp-header.png" alt="Please RSVP" width="400" height="auto" style="max-width:100%;width:400px;height:auto;display:block;">
+      </h1>
+      <p class="intro-lead">Help us finalize our celebration!</p>
+      <p class="intro-copy">
+        Please provide the full names of all attending guests in your party,
+        and let us know of any specific food allergies so we may accommodate you.
+      </p>
+    </aside>
+
+    <section class="card">
+      <div id="rsvp-thanks">
+        <p class="big">Thank you</p>
+        <p class="sub">Your response has reached us safely.<br>We can't wait to celebrate with you.</p>
+        <a class="btn btn-red" href="travel.html">Plan your trip</a>
+      </div>
+
+      <form id="rsvp-form" novalidate>
+        <div class="fgroup">
+          <label class="flabel" for="name-1">Name(s)</label>
+          <div id="name-list">
+            <div class="name-row">
+              <input type="text" class="finput name-input" id="name-1" placeholder="Please enter your full name" autocomplete="name">
+            </div>
+          </div>
+          <button type="button" id="add-person" class="add-link">+ Add another person</button>
+        </div>
+
+        <div class="fgroup">
+          <span class="flabel">Will you be joining us?</span>
+          <div class="opt-rows">
+            <label class="opt-row">
+              <input type="radio" name="attending" value="Joyfully accept">
+              <span class="mark radio"></span>
+              <span class="opt-text"><strong>Yes,</strong> can&rsquo;t wait!</span>
+            </label>
+            <label class="opt-row">
+              <input type="radio" name="attending" value="Regretfully decline">
+              <span class="mark radio"></span>
+              <span class="opt-text"><strong>Sorry,</strong> can&rsquo;t make it!</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <label class="flabel" for="f-contact">Phone or email</label>
+          <input type="text" id="f-contact" class="finput" placeholder="In case we want to reach you" autocomplete="email">
+        </div>
+
+        <div class="fgroup">
+          <span class="flabel">Which celebrations will you attend?</span>
+          <div class="opt-rows">
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Mehndi Night · Fri Nov 20, 2026 (optional)">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Mehndi Night</strong>&ensp;Fri Nov 20, 2026 (optional)</span>
+            </label>
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Day Wedding · Sat Nov 21, 2026">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Day Wedding</strong>&ensp;Sat Nov 21, 2026</span>
+            </label>
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Evening Party · Sat Nov 21, 2026">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Evening Party</strong>&ensp;Sat Nov 21, 2026</span>
+            </label>
+            <label class="opt-row">
+              <input type="checkbox" name="events" value="Reception in Delhi · Mon Nov 23, 2026 (optional)">
+              <span class="mark check"></span>
+              <span class="opt-text"><strong>Reception in Delhi</strong>&ensp;Mon Nov 23, 2026 (optional)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <label class="flabel" for="f-diet">Dietary preferences&ensp;(optional)</label>
+          <input type="text" id="f-diet" class="finput" placeholder="Vegetarian, Jain, Allergies ...">
+        </div>
+
+        <div class="fgroup">
+          <label class="flabel" for="f-msg">Note for us&ensp;(optional)</label>
+          <textarea id="f-msg" class="finput farea" placeholder="Any special notes or wishes for us ..."></textarea>
+        </div>
+
+        <div class="fsubmit">
+          <button type="submit" class="send-btn">Send RSVP</button>
+          <p id="rsvp-status" role="status"></p>
+        </div>
+      </form>
+    </section>
+
+  </div>
+</main>
+
+
+
+<script src="../js/site.js"></script>
+<script>
+/* ── RSVP → Google Form bridge ─────────────────────────────
+   Responses land in the Google Form (and its linked Sheet).
+   Checkbox values must match the Form's option strings exactly. */
+var RSVP_CONFIG={
+  formId:"1FAIpQLSfeO8PSZsK5uh-BZzMEa5SIlpMaKwp1fx9R5dhrdmgSYiibVg",
+  entries:{
+    name:"entry.874918285",
+    contact:"entry.2141331214",
+    attending:"entry.1260390804",
+    guests:"entry.530695183",
+    events:"entry.1296232095",
+    dietary:"entry.154148020",
+    message:"entry.1246319647"
+  }
+};
+
+(function(){
+  var form=document.getElementById('rsvp-form'),
+      status=document.getElementById('rsvp-status'),
+      thanks=document.getElementById('rsvp-thanks'),
+      list=document.getElementById('name-list'),
+      addBtn=document.getElementById('add-person'),
+      MAX_NAMES=8;
+
+  addBtn.addEventListener('click',function(){
+    var count=list.querySelectorAll('.name-input').length;
+    if(count>=MAX_NAMES)return;
+    var row=document.createElement('div');
+    row.className='name-row';
+    row.innerHTML='<input type="text" class="finput name-input" placeholder="Please enter their full name">'+
+                  '<button type="button" class="rm" aria-label="Remove this person">&#10005;</button>';
+    list.appendChild(row);
+    row.querySelector('.rm').addEventListener('click',function(){row.remove()});
+    row.querySelector('input').focus();
+    if(list.querySelectorAll('.name-input').length>=MAX_NAMES)addBtn.style.display='none';
+  });
+  list.addEventListener('click',function(){
+    if(list.querySelectorAll('.name-input').length<MAX_NAMES)addBtn.style.display='';
+  });
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var names=[].slice.call(form.querySelectorAll('.name-input'))
+                .map(function(i){return i.value.trim()})
+                .filter(Boolean),
+        contact=form.querySelector('#f-contact').value.trim(),
+        attending=form.querySelector('input[name=attending]:checked');
+    if(!names.length||!contact||!attending){
+      status.textContent='Please fill in your name, contact and whether you can join us.';
+      return;
+    }
+    var p=new URLSearchParams();
+    p.append(RSVP_CONFIG.entries.name,names.join(', '));
+    p.append(RSVP_CONFIG.entries.contact,contact);
+    p.append(RSVP_CONFIG.entries.attending,attending.value);
+    p.append(RSVP_CONFIG.entries.guests,String(names.length));
+    form.querySelectorAll('input[name=events]:checked').forEach(function(c){
+      p.append(RSVP_CONFIG.entries.events,c.value);
+    });
+    var diet=form.querySelector('#f-diet').value.trim(),
+        msg=form.querySelector('#f-msg').value.trim();
+    if(diet)p.append(RSVP_CONFIG.entries.dietary,diet);
+    if(msg)p.append(RSVP_CONFIG.entries.message,msg);
+
+    status.textContent='Sending…';
+    fetch('https://docs.google.com/forms/d/e/'+RSVP_CONFIG.formId+'/formResponse',{
+      method:'POST',
+      mode:'no-cors',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body:p.toString()
+    }).then(function(){
+      form.style.display='none';
+      thanks.style.display='block';
+      window.scrollTo({top:0,behavior:'smooth'});
+    }).catch(function(){
+      status.textContent='Something went wrong — please try again, or write to us directly.';
+    });
+  });
+})();
+</script>
+
+<script>
+(function() {
+  const canvas = document.getElementById('bg-anim');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let width, height, time = 0;
+  let scrollY = window.scrollY || 0;
+
+  window.addEventListener('scroll', () => {
+    scrollY = window.scrollY || 0;
+  }, { passive: true });
+
+  function resize() {
+    const parent = canvas.parentElement;
+    width = canvas.width = parent.clientWidth || window.innerWidth;
+    height = canvas.height = parent.clientHeight || window.innerHeight;
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  // 2 Extended Full-Width 3D Silk Satin Folds (#F9E7CF Champagne Gold Theme - Left to Right Spreading)
+  const silkFolds = [
+    {
+      amplitude: 100,
+      frequency: 0.0020,
+      speed: 0.0035,
+      angle: -Math.PI / 12,
+      offset: 0,
+      specular: 'rgba(255, 248, 238, 0.48)',
+      midtone: 'rgba(249, 231, 207, 0.32)',
+      shadow: 'rgba(215, 185, 145, 0.20)',
+      yRatio: 0.30
+    },
+    {
+      amplitude: 120,
+      frequency: 0.0016,
+      speed: 0.0028,
+      angle: -Math.PI / 10,
+      offset: Math.PI * 0.75,
+      specular: 'rgba(255, 252, 245, 0.52)',
+      midtone: 'rgba(242, 218, 188, 0.34)',
+      shadow: 'rgba(205, 172, 134, 0.22)',
+      yRatio: 0.65
+    }
+  ];
+
+  function drawSilkFold(fold, t) {
+    ctx.save();
+    
+    const cos = Math.cos(fold.angle);
+    const sin = Math.sin(fold.angle);
+    const scrollOffset = scrollY * 0.06;
+
+    const baseY = height * fold.yRatio + Math.sin(t * fold.speed * 0.8 + fold.offset) * 22 - scrollOffset;
+
+    const startX = -width * 0.6;
+    const endX = width * 1.8;
+    const step = 12;
+
+    ctx.beginPath();
+    ctx.moveTo(startX, height * 1.8);
+
+    for (let x = startX; x <= endX; x += step) {
+      // Left-to-Right spreading wave motion math
+      const normX = (x - startX) / (endX - startX); // 0.0 at left, 1.0 at right
+      const fanning = 0.6 + 0.8 * normX; // spreading factor expanding from left to right
+      
+      const wave1 = Math.sin(x * fold.frequency - t * fold.speed + fold.offset) * (fold.amplitude * fanning);
+      const wave2 = Math.cos(x * fold.frequency * 0.45 - t * fold.speed * 0.7 + fold.offset) * (fold.amplitude * 0.4 * fanning);
+      const y = baseY + wave1 + wave2;
+
+      const rx = x * cos - y * sin;
+      const ry = x * sin + y * cos;
+
+      if (x === startX) ctx.moveTo(rx, ry);
+      else ctx.lineTo(rx, ry);
+    }
+
+    ctx.lineTo(endX, height * 1.8);
+    ctx.closePath();
+
+    const grad = ctx.createLinearGradient(0, baseY - fold.amplitude, 0, baseY + fold.amplitude * 1.8);
+    grad.addColorStop(0, fold.specular);
+    grad.addColorStop(0.35, fold.midtone);
+    grad.addColorStop(1, fold.shadow);
+
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+    time += 1;
+
+    silkFolds.forEach(fold => drawSilkFold(fold, time));
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+})();
+</script>
+</body>
+</html>
