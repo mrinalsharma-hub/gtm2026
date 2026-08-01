@@ -90,19 +90,22 @@ html, body {
 /* ── 2. Flowers Top (Exact Figma 340:149 Placement) ── */
 .home-flowers-top {
   position: absolute;
-  top: 0;
-  left: 54%;
+  top: -2px;
+  left: calc(50% + 17.5px);
   transform: translateX(-50%);
   width: 291px;
-  max-width: 68vw;
-  height: auto;
+  height: 389px;
+  overflow: hidden;
   pointer-events: none;
   z-index: 3;
 }
 .home-flowers-top img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
 }
 
 /* ── 3. Typography Group (Figma 340:176) ── */

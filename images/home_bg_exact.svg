@@ -3,9 +3,10 @@
   <rect width="440" height="956" fill="#F8F4EA"/>
   
   <!-- Subtle Soft Watermark Circle on Left (as in Figma) -->
-  <circle cx="10" cy="510" r="340" fill="#FFFFFF" fill-opacity="0.55"/>
-  <circle cx="10" cy="510" r="320" fill="#FAF6EE" fill-opacity="0.35"/>
+  <circle cx="20" cy="490" r="330" fill="#FFFFFF" fill-opacity="0.65"/>
+  <circle cx="20" cy="490" r="310" fill="#FAF6EE" fill-opacity="0.45"/>
   
-  <!-- Diagonal Facet Light Line from Top-Right -->
-  <path d="M440 180L140 440L440 680" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="60" stroke-linecap="round" filter="blur(20px)"/>
+  <!-- Subtle Soft Diagonal Facet Arcs -->
+  <path d="M440 240L160 490L440 740" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="40" stroke-linecap="round" filter="blur(15px)"/>
+  <circle cx="440" cy="956" r="280" fill="#FFFFFF" fill-opacity="0.3"/>
 </svg>
