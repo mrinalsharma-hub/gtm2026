@@ -12,9 +12,9 @@
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <script>
 (function() {
-  var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-  if (isMobile && window.location.search.indexOf('desktop=1') === -1) {
-    var target = 'home.html' + window.location.search + window.location.hash;
+  var isDesktop = window.innerWidth > 768 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (isDesktop && window.location.search.indexOf('mobile=1') === -1) {
+    var target = 'index.html' + window.location.search + window.location.hash;
     window.location.replace(target);
   }
 })();
@@ -386,7 +386,7 @@ body::before{
   <div class="dock-pill">
     
     <!-- Tab 1: Home -->
-    <a href="index.html" class="dock-tab active" data-page="home" aria-label="Home">
+    <a href="home.html" class="dock-tab active" data-page="home" aria-label="Home">
       <div class="dock-icon-box">
         <svg class="dock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 10.5L12 3L21 10.5V20C21 20.6 20.6 21 20 21H15C14.4 21 14 20.6 14 20V15C14 14.4 13.6 14 13 14H11C10.4 14 10 14.4 10 15V20C10 20.6 9.6 21 9 21H4C3.4 21 3 20.6 3 20V10.5Z"/>
