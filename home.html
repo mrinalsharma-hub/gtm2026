@@ -156,7 +156,7 @@ html, body {
 
 /* ── 2. Flowers Top (Exact Figma 340:149 SVG with light breeze swaying) ── */
 .home-flowers-top {
-  filter: drop-shadow(8px 12px 18px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(4px 8px 12px rgba(90, 40, 20, 0.12));
   position: absolute;
   top: -12px;
   left: calc(50% + 17.5px);
@@ -192,7 +192,7 @@ html, body {
 
 @media (prefers-reduced-motion: reduce) {
   .home-flowers-top {
-  filter: drop-shadow(8px 12px 18px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(4px 8px 12px rgba(90, 40, 20, 0.12));
     animation: none;
   }
 }
@@ -303,9 +303,8 @@ html, body {
   width: 100%;
   height: auto;
   object-fit: contain;
-  /* rapid flapping */
-  animation: flap 0.15s ease-in-out forwards;
-  animation-iteration-count: 27; /* stops after 4 seconds to land! */
+  /* Natural graceful flapping forever */
+  animation: flap 0.7s ease-in-out infinite;
   transform-origin: center;
 }
 
