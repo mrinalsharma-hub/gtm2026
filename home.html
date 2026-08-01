@@ -414,14 +414,14 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── Butterfly Fly-to-Flowers Transition on View Details Click (Exact Top Center) ── */
+/* ── Butterfly Fly-to-Flowers Transition on View Details Click (Exact Top Center, Fully in View) ── */
 .home-butterfly-wrap.fly-to-flowers {
   transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transform: translate(-50%, calc(-100svh + 115px)) !important;
+  transform: translate(-50%, calc(-100svh + 230px)) !important;
   z-index: 101 !important;
 }
 
-/* ── PIN Code Interface (Seamlessly over New Red Background, No Dialog Card) ── */
+/* ── PIN Code Interface (Seamlessly over New Red Background, High Above Keyboard) ── */
 .home-pin-modal {
   position: absolute;
   inset: 0;
@@ -434,11 +434,11 @@ html, body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: max(145px, 22svh) 28px 24px;
+  padding: 70px 24px 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
 }
 .home-pin-modal.is-active {
   opacity: 1;
@@ -454,43 +454,43 @@ html, body {
   box-shadow: none !important;
   border: none !important;
   text-align: center;
-  transform: scale(0.94) translateY(16px);
+  transform: translateY(10px);
   opacity: 0;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active .home-pin-content {
-  transform: scale(1) translateY(0);
+  transform: translateY(0);
   opacity: 1;
 }
 .home-pin-title {
   font-family: 'Cinzel', serif;
-  font-size: 32px;
+  font-size: 28px;
   font-weight: 500;
   color: #FFFFFF;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
   letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
 }
 .home-pin-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   font-style: normal !important;
   color: rgba(255, 255, 255, 0.85) !important;
-  margin-bottom: 24px;
-  line-height: 1.3;
+  margin-bottom: 16px;
+  line-height: 1.2;
   letter-spacing: 0.03em;
 }
 .home-pin-input {
   width: 100%;
-  padding: 14px;
-  font-size: 24px;
+  padding: 12px;
+  font-size: 22px;
   text-align: center;
   letter-spacing: 8px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   font-family: 'Cinzel', serif;
   outline: none !important;
@@ -499,7 +499,7 @@ html, body {
 }
 .home-pin-input:focus {
   border-color: #FFFFFF;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.22);
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
 }
 .home-pin-input::placeholder {
@@ -508,19 +508,19 @@ html, body {
 .home-pin-error {
   color: #ffd2d2;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 16px;
-  margin-top: 10px;
+  font-size: 15px;
+  margin-top: 8px;
   display: none;
 }
 .home-pin-actions {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
+  margin-top: 16px;
   width: 100%;
 }
 .home-pin-btn {
   flex: 1;
-  padding: 13px 0;
+  padding: 12px 0;
   font-family: 'Cinzel', serif;
   font-weight: 600;
   font-size: 15px;
@@ -666,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 1. Autoplay music
+  // 1. Autoplay music (No window-level click listener!)
   if (bgMusic) {
     bgMusic.volume = 0.8;
     const playPromise = bgMusic.play();
@@ -675,20 +675,11 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMusicUI(true);
       }).catch(() => {
         updateMusicUI(false);
-        const startAudio = () => {
-          bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
-          window.removeEventListener('pointerdown', startAudio);
-          window.removeEventListener('click', startAudio);
-          window.removeEventListener('touchstart', startAudio);
-        };
-        window.addEventListener('pointerdown', startAudio, { once: true });
-        window.addEventListener('click', startAudio, { once: true });
-        window.addEventListener('touchstart', startAudio, { once: true });
       });
     }
   }
 
-  // 2. Music Toggle Button
+  // 2. Music Toggle Button (Only this button controls audio)
   if (musicToggle) {
     musicToggle.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -702,7 +693,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 3. View Details Click: Butterfly flies to top-center, red dome grows upwards to take over page, content appears
+  // 3. View Details Click:
+  // - Butterfly flies to top-center
+  // - Red background grows up & Keyboard pops up immediately together
+  // - Content fades in smoothly after 0.5s
   if (btnViewDetails && window.location.search) {
     btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
   }
@@ -722,31 +716,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
-      // Step 2: Red semi-circle dome grows upwards alongside butterfly to take over page
+      // Step 2: Red background expands & Keyboard pops up together right away
       if (bottomDome) {
         bottomDome.classList.add('expand-fullscreen');
       }
-
-      // Hide the View details button smoothly
       btnViewDetails.classList.add('is-hidden');
 
-      // Step 3: Text and input appear over the new red background
+      if (pinInput) {
+        pinInput.focus();
+      }
+
+      // Step 3: 0.5s pause, then bring in text content and fields
       setTimeout(() => {
         if (pinModal) {
           pinModal.classList.add('is-active');
         }
-      }, 700);
-
-      // Step 4: Keyboard pops up after a short delay
-      setTimeout(() => {
-        if (pinInput) {
-          pinInput.focus();
-        }
-      }, 1400);
+      }, 500);
     });
   }
 
-  // Close Dialog: Return red dome, butterfly, and View details button to original state
+  // Close Action: Return red dome, butterfly, and View details button to original state
   if (btnPinCancel) {
     btnPinCancel.addEventListener('click', function() {
       if (pinModal) pinModal.classList.remove('is-active');
