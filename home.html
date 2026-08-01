@@ -586,22 +586,24 @@ html, body {
 .home-pin-input {
   width: 100%;
   padding: 12px;
-  font-size: 22px;
+  font-size: 20px;
   text-align: center;
-  letter-spacing: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  letter-spacing: 4px;
+  border: 1px solid #FFFFFF;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   font-family: 'Cinzel', serif;
   outline: none !important;
+  box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  transition: border-color 0.2s, background-color 0.2s, box-shadow 0.2s;
+  transition: background-color 0.2s;
 }
 .home-pin-input:focus {
-  border-color: #FFFFFF;
+  border: 1px solid #FFFFFF;
   background: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+  box-shadow: none !important;
+  outline: none !important;
 }
 .home-pin-input::placeholder {
   color: rgba(255, 255, 255, 0.35);
@@ -616,7 +618,8 @@ html, body {
 .home-pin-actions {
   display: flex;
   gap: 12px;
-  margin-top: 16px;
+  margin-top: 21px;
+  padding-top: 5px;
   width: 100%;
 }
 .home-pin-btn {
@@ -650,8 +653,17 @@ html, body {
   color: #7e1216;
   border: none;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+  transition: opacity 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
 }
-.btn-open:hover {
+.btn-open.is-enabled {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+.btn-open.is-enabled:hover {
   background: #f4eee2;
 }
 </style>
@@ -738,11 +750,11 @@ html, body {
     <div class="home-pin-content">
       <h2 class="home-pin-title">Welcome</h2>
       <p class="home-pin-subtitle">enter code</p>
-      <input type="password" id="pin-input" placeholder="••••" maxlength="10" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+      <input type="text" id="pin-input" placeholder="gtm2026" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
       <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
       <div class="home-pin-actions">
         <button id="btn-pin-cancel" class="home-pin-btn btn-close">Close</button>
-        <button id="btn-pin-submit" class="home-pin-btn btn-open">Open</button>
+        <button id="btn-pin-submit" class="home-pin-btn btn-open" disabled>Open</button>
       </div>
     </div>
   </div>
@@ -927,6 +939,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (pinModal) {
       pinModal.classList.add('is-active');
     }
+    checkPinInput();
   }
 
   if (btnViewDetails) {
@@ -942,6 +955,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  function isCodeValid(val) {
+    return (val || '').trim().toLowerCase() === 'gtm2026';
+  }
+
+  function checkPinInput() {
+    if (!pinInput || !btnPinSubmit) return;
+    const isValid = isCodeValid(pinInput.value);
+    if (isValid) {
+      btnPinSubmit.classList.add('is-enabled');
+      btnPinSubmit.removeAttribute('disabled');
+      if (pinError) pinError.style.display = 'none';
+    } else {
+      btnPinSubmit.classList.remove('is-enabled');
+      btnPinSubmit.setAttribute('disabled', 'disabled');
+    }
+  }
+
+  if (pinInput) {
+    pinInput.addEventListener('input', checkPinInput);
+    pinInput.addEventListener('keyup', checkPinInput);
+    pinInput.addEventListener('paste', function() {
+      setTimeout(checkPinInput, 10);
+    });
+    pinInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter' && isCodeValid(pinInput.value)) {
+        submitPin();
+      }
+    });
+  }
+
   // Close Action: Return red dome, keyboard, butterfly, and View details button to original state
   if (btnPinCancel) {
     btnPinCancel.addEventListener('click', function(e) {
@@ -951,6 +994,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (pinInput) {
         pinInput.blur();
         pinInput.value = '';
+        checkPinInput();
       }
       if (pinError) pinError.style.display = 'none';
 
@@ -983,7 +1027,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Open / Submit PIN
   function submitPin() {
-    if (pinInput.value.trim() === '2026') {
+    if (pinInput && isCodeValid(pinInput.value)) {
       window.location.href = btnViewDetails.href || 'schedule.html';
     } else {
       if (pinError) pinError.style.display = 'block';
@@ -992,14 +1036,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (btnPinSubmit) {
     btnPinSubmit.addEventListener('click', submitPin);
-  }
-
-  if (pinInput) {
-    pinInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        submitPin();
-      }
-    });
   }
 });
 </script>
