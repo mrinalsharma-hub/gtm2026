@@ -86,7 +86,7 @@ html, body {
   pointer-events: none;
 }
 
-/* ── 2. Flowers Top (Exact Figma 340:149 SVG) ── */
+/* ── 2. Flowers Top (Exact Figma 340:149 SVG with light breeze swaying) ── */
 .home-flowers-top {
   position: absolute;
   top: 0;
@@ -96,11 +96,35 @@ html, body {
   height: auto;
   pointer-events: none;
   z-index: 3;
+  transform-origin: 75% 0%;
+  animation: gentleFloralBreeze 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  will-change: transform;
 }
 .home-flowers-top img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+@keyframes gentleFloralBreeze {
+  0% {
+    transform: translateX(-50%) rotate(0deg) translateY(0px);
+  }
+  30% {
+    transform: translateX(-50%) rotate(1.2deg) translateY(1.5px) skewX(-0.4deg);
+  }
+  70% {
+    transform: translateX(-50%) rotate(-0.8deg) translateY(-0.5px) skewX(0.3deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(1.4deg) translateY(2px) skewX(-0.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-flowers-top {
+    animation: none;
+  }
 }
 
 @font-face {
