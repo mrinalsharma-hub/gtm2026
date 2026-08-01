@@ -971,70 +971,103 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  let isSubmitting = false;
+  let blurTimeout = null;
+
+  // Symmetrical Close Flow (Triggered by CLOSE button, keyboard dismiss/down arrow, or tapping outside)
+  function handleCloseModal() {
+    if (!pinModal || !pinModal.classList.contains('is-active')) return;
+    if (isSubmitting) return;
+
+    if (blurTimeout) {
+      clearTimeout(blurTimeout);
+      blurTimeout = null;
+    }
+
+    // 1. Immediately dismiss keyboard and clear input
+    if (pinInput) {
+      pinInput.blur();
+      pinInput.value = '';
+      checkPinInput();
+    }
+    if (pinError) pinError.style.display = 'none';
+
+    // 2. Fade out PIN content
+    pinModal.classList.remove('is-active');
+
+    // 3. Red dome morphs back down into bottom circular module
+    if (bottomDome) {
+      bottomDome.classList.remove('expand-fullscreen');
+      bottomDome.classList.add('is-collapsed');
+    }
+
+    // 4. Butterfly flies back down to resting position with active flapping
+    if (butterflyWrap) {
+      butterflyWrap.classList.remove('fly-to-flowers');
+      if (wing) {
+        wing.style.animationDuration = '0.15s';
+        setTimeout(() => {
+          wing.style.animationDuration = '0.25s';
+        }, 2500);
+      }
+    }
+
+    // 5. Fade View details button back in
+    setTimeout(() => {
+      if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
+    }, 600);
+  }
+
+  // Close Action: Button Click
+  if (btnPinCancel) {
+    btnPinCancel.addEventListener('click', function(e) {
+      e.preventDefault();
+      handleCloseModal();
+    });
+  }
+
+  // Keyboard Dismiss / Down Arrow / Blur Detection
   if (pinInput) {
     pinInput.addEventListener('input', checkPinInput);
     pinInput.addEventListener('keyup', checkPinInput);
     pinInput.addEventListener('paste', function() {
       setTimeout(checkPinInput, 10);
     });
+    pinInput.addEventListener('focus', function() {
+      if (blurTimeout) clearTimeout(blurTimeout);
+    });
+    pinInput.addEventListener('blur', function() {
+      if (isSubmitting) return;
+      blurTimeout = setTimeout(() => {
+        if (pinModal && pinModal.classList.contains('is-active') && !isSubmitting) {
+          handleCloseModal();
+        }
+      }, 160);
+    });
     pinInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter' && isCodeValid(pinInput.value)) {
+      if (e.key === 'Enter') {
         submitPin();
       }
-    });
-  }
-
-  // Close Action: Return red dome, keyboard, butterfly, and View details button to original state
-  if (btnPinCancel) {
-    btnPinCancel.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      // 1. Immediately dismiss keyboard and clear input
-      if (pinInput) {
-        pinInput.blur();
-        pinInput.value = '';
-        checkPinInput();
-      }
-      if (pinError) pinError.style.display = 'none';
-
-      // 2. Fade out PIN content
-      if (pinModal) pinModal.classList.remove('is-active');
-
-      // 3. Red dome morphs back down into bottom circular module
-      if (bottomDome) {
-        bottomDome.classList.remove('expand-fullscreen');
-        bottomDome.classList.add('is-collapsed');
-      }
-
-      // 4. Butterfly flies back down to resting position with active flapping
-      if (butterflyWrap) {
-        butterflyWrap.classList.remove('fly-to-flowers');
-        if (wing) {
-          wing.style.animationDuration = '0.15s';
-          setTimeout(() => {
-            wing.style.animationDuration = '0.25s';
-          }, 2500);
-        }
-      }
-
-      // 5. Fade View details button back in
-      setTimeout(() => {
-        if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
-      }, 600);
     });
   }
 
   // Open / Submit PIN
   function submitPin() {
     if (pinInput && isCodeValid(pinInput.value)) {
+      isSubmitting = true;
+      if (blurTimeout) clearTimeout(blurTimeout);
       window.location.href = btnViewDetails.href || 'schedule.html';
     } else {
+      isSubmitting = false;
       if (pinError) pinError.style.display = 'block';
     }
   }
 
   if (btnPinSubmit) {
-    btnPinSubmit.addEventListener('click', submitPin);
+    btnPinSubmit.addEventListener('click', function(e) {
+      e.preventDefault();
+      submitPin();
+    });
   }
 });
 </script>
