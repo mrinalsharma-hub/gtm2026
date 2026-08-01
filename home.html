@@ -36,23 +36,27 @@
 html, body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  background-color: #F8F4EA !important;
+  overflow-x: hidden;
+  background-color: #eadfc8 !important; /* Fallback for desktop margins */
   font-family: 'Cinzel', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
   -webkit-user-select: none;
+  display: flex;
+  justify-content: center;
 }
 
 .home-mobile-canvas {
   position: relative;
   width: 100%;
+  max-width: 440px;
   height: 100svh;
   min-height: 100svh;
-  margin: 0;
+  margin: 0 auto;
   overflow: hidden;
   background-color: #F8F4EA;
+  box-shadow: 0 0 40px rgba(0,0,0,0.15);
 }
 
 /* ── 1. Background Texture & Watermark Arch Layer ── */
@@ -292,31 +296,31 @@ html, body {
   </div>
 
   <!-- ── 2. Flowers Top (Exact Figma SVG) ── -->
-  <div class="home-flowers-top" aria-hidden="true">
+  <div class="home-flowers-top" aria-hidden="true" style="left: calc(50% + 17.5px) !important;">
     <img src="images/Flowers_top.svg" alt="Orchids and Flowers">
   </div>
 
   <!-- ── 3. Central Typography (Figma 340:176) ── -->
-  <div class="home-hero-text">
-    <h1 class="home-name">GARIMA</h1>
-    <div class="home-script-wrap">
+  <div class="home-hero-text" style="position: absolute; top: calc(50% + 30px); left: 0 !important; width: 100% !important; transform: translateY(-50%) !important; text-align: center; z-index: 4; display: flex !important; flex-direction: column; align-items: center; justify-content: center;">
+    <h1 class="home-name" style="width: 100%; text-align: center;">GARIMA</h1>
+    <div class="home-script-wrap" style="width: 100%; text-align: center; display: flex; justify-content: center;">
       <span class="home-script">takes</span>
     </div>
-    <h1 class="home-name">MRINAL</h1>
+    <h1 class="home-name" style="width: 100%; text-align: center;">MRINAL</h1>
 
-    <div class="home-date-location">
+    <div class="home-date-location" style="width: 100%; text-align: center; display: flex; flex-direction: column; align-items: center;">
       <p>NOV 21, 2026</p>
       <p>NAINITAL, INDIA</p>
     </div>
   </div>
 
   <!-- ── 4. Butterfly (Figma 340:174) ── -->
-  <div class="home-butterfly-wrap" aria-hidden="true">
+  <div class="home-butterfly-wrap" aria-hidden="true" style="left: 50% !important; transform: translateX(-50%) !important;">
     <img src="images/home_butterfly.png" alt="Golden Butterfly">
   </div>
 
   <!-- ── 5. Bottom Red Dome (Figma 340:183) ── -->
-  <div class="home-bottom-dome" aria-hidden="true">
+  <div class="home-bottom-dome" aria-hidden="true" style="left: 50% !important; transform: translateX(-50%) !important;">
     <img src="images/home_bottom_dome.svg" alt="">
   </div>
 
