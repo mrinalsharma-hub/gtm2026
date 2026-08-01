@@ -31,7 +31,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=WindSong:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Upright:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ── CRITICAL ZERO-CACHE STYLES FOR FIGMA NODE 340:113 ── */
+/* ── CRITICAL EXACT STYLING FROM FIGMA NODE 340:113 ── */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   width: 100%;
@@ -56,61 +56,94 @@ html, body {
   background: #FFFFFF;
 }
 
-/* ── 1. Background Layers ── */
-.home-layer-bg {
+/* ── 1. Bg Layer (Figma 340:146) ── */
+.home-bg-layer {
   position: absolute;
-  inset: 0;
-  width: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;
   height: 100%;
   pointer-events: none;
   z-index: 1;
-  overflow: hidden;
-  background-color: #FAF6F0;
 }
-.home-img-texture {
+.home-bg-inner {
+  width: 100%;
+  height: 100%;
+  transform: rotate(180deg);
+  position: relative;
+}
+.home-img-bg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: 0.85;
-  mix-blend-mode: multiply;
+  object-position: bottom;
+  opacity: 0.70;
+  pointer-events: none;
+}
+
+/* ── 2. Gradient Watermark Layer (Figma 340:147) ── */
+.home-gradient-layer {
+  position: absolute;
+  top: 121px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;
+  height: 835px;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+.home-gradient-inner {
+  width: 100%;
+  height: 100%;
+  transform: rotate(180deg) scaleY(-1);
+  position: relative;
+}
+.home-gradient-box {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: soft-light;
+  opacity: 0.50;
+  overflow: hidden;
+  pointer-events: none;
 }
 .home-img-gradient {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  opacity: 0.95;
-  mix-blend-mode: multiply;
+  width: 274.9%;
+  height: 198.39%;
+  left: -140.81%;
+  top: -64.55%;
+  max-width: none;
+  pointer-events: none;
 }
 
-/* ── 2. Top Flower Cascade ── */
+/* ── 3. Flowers Top (Figma 340:149) ── */
 .home-flowers-top {
   position: absolute;
-  top: -4px;
-  left: calc(50% + 24px);
+  top: -2px;
+  left: calc(50% + 17.5px);
   transform: translateX(-50%);
-  width: 295px;
-  height: 395px;
-  max-width: 68vw;
+  width: 291px;
+  height: 389px;
   pointer-events: none;
   z-index: 3;
 }
 .home-flowers-top img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
+  object-fit: cover;
+  pointer-events: none;
 }
 
-/* ── 3. Central Typography Group ── */
+/* ── 4. Typography Group (Figma 340:176) ── */
 .home-hero-text {
   position: absolute;
-  top: 48%;
+  top: calc(50% + 30px);
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -122,9 +155,9 @@ html, body {
 
 .home-name {
   font-family: 'Cinzel', serif;
-  font-size: clamp(46px, 14vw, 64px);
+  font-size: clamp(48px, 14.5vw, 64px);
   font-weight: 400;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: 1.28px;
   background: linear-gradient(180deg, #d03a3e 19.186%, #c81a1f 43.023%, #a71f23 79.651%);
   -webkit-background-clip: text;
@@ -134,73 +167,79 @@ html, body {
   text-transform: uppercase;
 }
 
+.home-script-wrap {
+  height: 84px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: -16px 0 -14px;
+}
+
 .home-script {
   font-family: 'WindSong', cursive;
-  font-size: clamp(54px, 16.5vw, 70px);
+  font-size: clamp(54px, 16vw, 70px);
   font-weight: 400;
-  line-height: 0.9;
+  line-height: normal;
   color: #c81a1f;
   letter-spacing: 3.5px;
-  margin: -16px 0 -12px;
   display: block;
 }
 
 .home-date-location {
-  margin-top: 18px;
+  margin-top: 14px;
 }
 .home-date-location p {
   font-family: 'Cinzel', serif;
   font-size: clamp(18px, 5.2vw, 24px);
   font-weight: 400;
-  line-height: 1.25;
+  line-height: 28px;
   color: #0b4c6d;
   letter-spacing: 0.05em;
   text-transform: uppercase;
   margin: 0;
 }
 
-/* ── 4. Center Bottom Butterfly ── */
+/* ── 5. Butterfly (Figma 340:174) ── */
 .home-butterfly-wrap {
   position: absolute;
+  top: calc(100% - 201px);
   left: 50%;
   transform: translateX(-50%);
-  bottom: 74px;
   width: 164px;
   height: 123px;
   z-index: 6;
   pointer-events: none;
-  filter: drop-shadow(0px 6px 14px rgba(0, 0, 0, 0.25));
-  animation: butterflyFloat 4.5s ease-in-out infinite alternate;
+  filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.25));
 }
 .home-butterfly-wrap img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-@keyframes butterflyFloat {
-  0% { transform: translateX(-50%) translateY(0px) scale(1); }
-  50% { transform: translateX(-50%) translateY(-5px) scale(1.02); }
-  100% { transform: translateX(-50%) translateY(2px) scale(0.99); }
-}
-
-/* ── 5. Bottom Red Arch / Dome ── */
-.home-bottom-dome {
-  position: absolute;
-  bottom: -868px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 981px;
-  height: 981px;
-  border-radius: 50%;
-  background: #C81A1F;
-  box-shadow: inset 0 2px 21px rgba(255, 255, 255, 0.1);
-  z-index: 5;
+  object-fit: cover;
   pointer-events: none;
 }
 
-/* ── 6. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── */
+/* ── 6. Ellipse 52 Red Dome (Figma 340:183) ── */
+.home-bottom-dome {
+  position: absolute;
+  top: calc(100% - 113px);
+  left: calc(50% - 0.5px);
+  transform: translateX(-50%);
+  width: 981px;
+  height: 981px;
+  z-index: 5;
+  pointer-events: none;
+}
+.home-bottom-dome img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ── 7. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── */
 .home-view-details-btn {
   position: absolute;
   bottom: max(22px, env(safe-area-inset-bottom, 22px));
@@ -248,21 +287,33 @@ html, body {
 
 <main class="home-mobile-canvas">
 
-  <!-- ── 1. Background Layers ── -->
-  <div class="home-layer-bg" aria-hidden="true">
-    <img src="images/bg_texture.png" alt="" class="home-img-texture">
-    <img src="images/bg_gradient.png" alt="" class="home-img-gradient">
+  <!-- ── 1. Bg Layer (Figma 340:146) ── -->
+  <div class="home-bg-layer" aria-hidden="true">
+    <div class="home-bg-inner">
+      <img src="images/bg_texture.png" alt="" class="home-img-bg">
+    </div>
   </div>
 
-  <!-- ── 2. Top Flowers Cascade ── -->
+  <!-- ── 2. Gradient Watermark Layer (Figma 340:147) ── -->
+  <div class="home-gradient-layer" aria-hidden="true">
+    <div class="home-gradient-inner">
+      <div class="home-gradient-box">
+        <img src="images/bg_gradient.png" alt="" class="home-img-gradient">
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. Flowers Top (Figma 340:149) ── -->
   <div class="home-flowers-top" aria-hidden="true">
     <img src="images/home_flowers_top.png" alt="Orchids and Flowers">
   </div>
 
-  <!-- ── 3. Central Typography ── -->
+  <!-- ── 4. Central Typography (Figma 340:176) ── -->
   <div class="home-hero-text">
     <h1 class="home-name">GARIMA</h1>
-    <span class="home-script">takes</span>
+    <div class="home-script-wrap">
+      <span class="home-script">takes</span>
+    </div>
     <h1 class="home-name">MRINAL</h1>
 
     <div class="home-date-location">
@@ -271,15 +322,17 @@ html, body {
     </div>
   </div>
 
-  <!-- ── 4. Center Bottom Butterfly ── -->
+  <!-- ── 5. Butterfly (Figma 340:174) ── -->
   <div class="home-butterfly-wrap" aria-hidden="true">
     <img src="images/home_butterfly.png" alt="Golden Butterfly">
   </div>
 
-  <!-- ── 5. Bottom Red Dome ── -->
-  <div class="home-bottom-dome" aria-hidden="true"></div>
+  <!-- ── 6. Bottom Red Dome (Figma 340:183) ── -->
+  <div class="home-bottom-dome" aria-hidden="true">
+    <img src="images/home_bottom_dome.svg" alt="">
+  </div>
 
-  <!-- ── 6. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── -->
+  <!-- ── 7. ONLY CLICKABLE ELEMENT: "[🔒] View details" ── -->
   <a href="schedule.html" id="btn-view-details" class="home-view-details-btn" aria-label="View Details">
     <svg class="home-lock-icon" viewBox="0 0 24 24">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
