@@ -539,16 +539,15 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── Butterfly Fly-to-Flowers Transition on View Details Click (Exact Top Center, Fully in View) ── */
-.home-butterfly-wrap.fly-to-flowers {
-  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transform: translate(-50%, calc(-100svh + 240px)) !important;
-  z-index: 101 !important;
+.home-butterfly-wrap.is-hidden-modal {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
 }
 
-/* ── PIN Code Interface (Seamlessly over New Red Background, 20px Below Top Butterfly) ── */
+/* ── PIN Code Interface (Dynamically Sits 10px Above Mobile Keyboard) ── */
 .home-pin-modal {
-  position: absolute;
+  position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
@@ -557,12 +556,14 @@ html, body {
   -webkit-backdrop-filter: none !important;
   z-index: 100;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: 170px 24px 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 24px calc(var(--kb-offset, 0px) + 10px);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.15s ease-out;
+  box-sizing: border-box;
 }
 .home-pin-modal.is-active {
   opacity: 1;
@@ -577,13 +578,32 @@ html, body {
   box-shadow: none !important;
   border: none !important;
   text-align: center;
-  transform: translateY(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(8px);
   opacity: 0;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active .home-pin-content {
   transform: translateY(0);
   opacity: 1;
+}
+
+.home-modal-butterfly {
+  width: 88px;
+  height: 66px;
+  margin: 0 auto 6px;
+  display: block;
+  pointer-events: none;
+  filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+}
+.home-modal-butterfly .wing-flap {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: flap-slow 0.2s ease-in-out infinite alternate;
+  transform-origin: center;
 }
 .home-pin-title {
   font-family: 'Cinzel', serif;
@@ -772,6 +792,9 @@ html, body {
   <!-- ── PIN Code Interface (Seamlessly Over New Red Background) ── -->
   <div id="pin-modal" class="home-pin-modal">
     <div class="home-pin-content">
+      <div class="home-modal-butterfly" aria-hidden="true">
+        <img src="images/home_butterfly.webp" alt="Golden Butterfly" class="wing-flap">
+      </div>
       <h2 class="home-pin-title">WELCOME!</h2>
       <p class="home-pin-subtitle">Enter code for event details</p>
       <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
@@ -931,6 +954,23 @@ document.addEventListener('DOMContentLoaded', function() {
     btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
   }
 
+  // Dynamic Mobile Keyboard Inset Calculation (Sits 10px above virtual keyboard)
+  function updateModalKeyboardPosition() {
+    if (!pinModal) return;
+    if (window.visualViewport) {
+      const vv = window.visualViewport;
+      const windowH = window.innerHeight;
+      const kbOffset = Math.max(0, windowH - vv.height - vv.offsetTop);
+      pinModal.style.setProperty('--kb-offset', `${kbOffset}px`);
+    }
+  }
+
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', updateModalKeyboardPosition);
+    window.visualViewport.addEventListener('scroll', updateModalKeyboardPosition);
+  }
+  window.addEventListener('resize', updateModalKeyboardPosition);
+
   function handleOpenDetails(e) {
     if (!btnViewDetails.classList.contains('is-ready')) return;
     e.preventDefault();
@@ -941,15 +981,9 @@ document.addEventListener('DOMContentLoaded', function() {
       pinInput.select();
     }
 
-    // Butterfly moves to exact top-center
+    // Hide resting butterfly on view details so modal butterfly takes over seamlessly
     if (butterflyWrap) {
-      butterflyWrap.classList.add('fly-to-flowers');
-      if (wing) {
-        wing.style.animationDuration = '0.15s';
-        setTimeout(() => {
-          wing.style.animationDuration = '0.25s';
-        }, 2500);
-      }
+      butterflyWrap.classList.add('is-hidden-modal');
     }
 
     // Red dome expands upwards to cover fullscreen
@@ -959,10 +993,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     btnViewDetails.classList.add('is-hidden');
 
-    // Activate PIN modal (positioned 20px below butterfly)
+    // Activate PIN modal (positioned 10px above keyboard)
     if (pinModal) {
       pinModal.classList.add('is-active');
     }
+    updateModalKeyboardPosition();
     checkPinInput();
   }
 
@@ -1026,21 +1061,15 @@ document.addEventListener('DOMContentLoaded', function() {
       bottomDome.classList.add('is-collapsed');
     }
 
-    // 4. Butterfly flies back down to resting position with active flapping
+    // 4. Reveal resting butterfly on view details button
     if (butterflyWrap) {
-      butterflyWrap.classList.remove('fly-to-flowers');
-      if (wing) {
-        wing.style.animationDuration = '0.15s';
-        setTimeout(() => {
-          wing.style.animationDuration = '0.25s';
-        }, 2500);
-      }
+      butterflyWrap.classList.remove('is-hidden-modal');
     }
 
     // 5. Fade View details button back in
     setTimeout(() => {
       if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
-    }, 600);
+    }, 400);
   }
 
   // Close Action: Button Click
@@ -1081,6 +1110,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (pinInput && isCodeValid(pinInput.value)) {
       isSubmitting = true;
       if (blurTimeout) clearTimeout(blurTimeout);
+      sessionStorage.setItem('gtm2026_auth', 'true');
+      sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
       window.location.href = btnViewDetails.href || 'schedule.html';
     } else {
       isSubmitting = false;
