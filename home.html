@@ -156,6 +156,7 @@ html, body {
 
 /* ── 2. Flowers Top (Exact Figma 340:149 SVG with light breeze swaying) ── */
 .home-flowers-top {
+  filter: drop-shadow(8px 12px 18px rgba(0, 0, 0, 0.4));
   position: absolute;
   top: -12px;
   left: calc(50% + 17.5px);
@@ -191,6 +192,7 @@ html, body {
 
 @media (prefers-reduced-motion: reduce) {
   .home-flowers-top {
+  filter: drop-shadow(8px 12px 18px rgba(0, 0, 0, 0.4));
     animation: none;
   }
 }
@@ -454,7 +456,11 @@ html, body {
 
   <!-- ── 4. Butterfly (Figma 340:174) ── -->
   <div class="home-butterfly-wrap" aria-hidden="true" style="left: 50% !important; transform: translateX(-50%) !important;">
-    <img src="images/home_butterfly.png" alt="Golden Butterfly">
+    <div class="flight-container">
+      <div class="bob-container">
+        <img src="images/home_butterfly.png" alt="Golden Butterfly" class="wing-flap">
+      </div>
+    </div>
   </div>
 
   <!-- ── 5. Bottom Red Dome (Figma 340:183) ── -->
