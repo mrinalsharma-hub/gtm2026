@@ -623,11 +623,13 @@ html, body {
 }
 .home-pin-btn {
   flex: 1;
-  padding: 12px 0;
-  font-family: 'Cinzel', serif;
-  font-weight: 600;
-  font-size: 15px;
-  letter-spacing: 0.05em;
+  padding: 10px 0;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400;
+  font-style: normal !important;
+  font-size: 20px;
+  letter-spacing: 0.03em;
+  text-transform: none !important;
   border-radius: 8px;
   cursor: pointer;
   outline: none !important;
@@ -752,8 +754,8 @@ html, body {
       <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
       <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
       <div class="home-pin-actions">
-        <button id="btn-pin-cancel" class="home-pin-btn btn-close">CLOSE</button>
-        <button id="btn-pin-submit" class="home-pin-btn btn-open" disabled>OPEN</button>
+        <button id="btn-pin-cancel" class="home-pin-btn btn-close">Close</button>
+        <button id="btn-pin-submit" class="home-pin-btn btn-open" disabled>Open</button>
       </div>
     </div>
   </div>
