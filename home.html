@@ -534,32 +534,26 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── Butterfly Fly-to-Flowers Transition on View Details Click (Exact Top Center, Fully in View) ── */
-.home-butterfly-wrap.fly-to-flowers {
-  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transform: translate(-50%, calc(-100svh + 230px)) !important;
-  z-index: 101 !important;
-}
-
-/* ── PIN Code Interface (Seamlessly over New Red Background, Positioned Below Top Butterfly) ── */
+/* ── PIN Code Interface (Matching Figma 343:346 & Exact User Reference Images) ── */
 .home-pin-modal {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: calc(min(220px, 26svh)) 24px 10px;
+  padding: max(50px, 7svh) 24px 20px;
   box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease;
   overflow: hidden;
 }
 .home-pin-modal.is-active {
@@ -571,7 +565,7 @@ html, body {
   padding: 0 !important;
   border-radius: 0 !important;
   width: 100%;
-  max-width: 320px;
+  max-width: 325px;
   box-shadow: none !important;
   border: none !important;
   text-align: center;
@@ -579,52 +573,76 @@ html, body {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  transform: translateY(12px);
+  transform: translateY(10px);
   opacity: 0;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active .home-pin-content {
   transform: translateY(0);
   opacity: 1;
 }
+
+.home-modal-butterfly {
+  width: 142px;
+  height: 106px;
+  max-width: 44vw;
+  max-height: 110px;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  filter: drop-shadow(0px 6px 16px rgba(0, 0, 0, 0.35));
+}
+.home-modal-butterfly .wing-flap {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: flap-slow 0.25s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
 .home-pin-title {
   font-family: 'Cinzel', serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 500;
   color: #FFFFFF;
-  margin-bottom: 2px;
+  margin-top: 4px;
+  margin-bottom: 3px;
   letter-spacing: 0.08em;
   line-height: 1.2;
   text-transform: uppercase;
 }
 .home-pin-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 18px;
+  font-size: 18.5px;
   font-weight: 400;
-  font-style: normal !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  margin-bottom: 16px;
+  font-style: italic !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  margin-bottom: 18px;
   line-height: 1.2;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 .home-pin-input {
   width: 100%;
-  padding: 12px;
+  height: 50px;
+  padding: 0 16px;
   font-size: 24px;
   text-align: center;
   letter-spacing: 6px;
-  border: 1px solid #FFFFFF;
+  border: 1.5px solid #FFFFFF;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   color: #FFFFFF;
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
   transition: background-color 0.2s;
+  box-sizing: border-box;
 }
 .home-pin-input:focus {
-  border: 1px solid #FFFFFF;
-  background: rgba(255, 255, 255, 0.22);
+  border: 1.5px solid #FFFFFF;
+  background: rgba(255, 255, 255, 0.2);
   box-shadow: none !important;
   outline: none !important;
 }
@@ -776,6 +794,9 @@ html, body {
 <!-- ── PIN Code Interface ── -->
 <div id="pin-modal" class="home-pin-modal">
   <div class="home-pin-content">
+    <div class="home-modal-butterfly" aria-hidden="true">
+      <img src="images/home_butterfly.webp" alt="Golden Butterfly" class="wing-flap">
+    </div>
     <h2 class="home-pin-title">WELCOME!</h2>
     <p class="home-pin-subtitle">Enter code for event details</p>
     <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
@@ -933,7 +954,7 @@ document.addEventListener('DOMContentLoaded', function() {
     btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
   }
 
-  // Dynamic Mobile Keyboard Alignment (Always strictly 10px above virtual keyboard)
+  // Dynamic Mobile Keyboard Alignment (Matching Image 1 when Keyboard Open, Image 2 when Keyboard Closed)
   function updateModalPosition() {
     if (!pinModal || !pinModal.classList.contains('is-active')) return;
     if (window.visualViewport) {
@@ -947,16 +968,16 @@ document.addEventListener('DOMContentLoaded', function() {
         pinModal.style.height = vv.height + 'px';
         pinModal.style.justifyContent = 'flex-end';
         pinModal.style.paddingTop = '10px';
-        pinModal.style.paddingBottom = '10px';
+        pinModal.style.paddingBottom = '12px'; /* Strictly 12px above virtual keyboard (Image 1) */
       } else {
-        pinModal.style.position = 'absolute';
+        pinModal.style.position = 'fixed';
         pinModal.style.top = '0px';
         pinModal.style.left = '0px';
-        pinModal.style.width = '100%';
-        pinModal.style.height = '100%';
+        pinModal.style.width = '100vw';
+        pinModal.style.height = '100svh';
         pinModal.style.justifyContent = 'flex-start';
-        pinModal.style.paddingTop = 'calc(min(220px, 26svh))';
-        pinModal.style.paddingBottom = '10px';
+        pinModal.style.paddingTop = 'max(50px, 7svh)'; /* Upper half layout (Image 2) */
+        pinModal.style.paddingBottom = '20px';
       }
     }
   }
@@ -971,21 +992,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!btnViewDetails.classList.contains('is-ready')) return;
     e.preventDefault();
 
-    // Synchronously focus and select input immediately on touch/click to guarantee virtual keyboard activation
-    if (pinInput) {
-      pinInput.focus();
-      pinInput.select();
-    }
-
-    // Butterfly takes off and flies to top flowers
+    // Hide resting butterfly on view details
     if (butterflyWrap) {
-      butterflyWrap.classList.add('fly-to-flowers');
-      if (wing) {
-        wing.style.animationDuration = '0.15s';
-        setTimeout(() => {
-          wing.style.animationDuration = '0.25s';
-        }, 2500);
-      }
+      butterflyWrap.classList.add('is-hidden-modal');
     }
 
     // Red dome expands upwards to cover fullscreen
@@ -995,12 +1004,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     btnViewDetails.classList.add('is-hidden');
 
-    // Activate PIN modal
+    // Activate PIN modal (matching Image 1 with keyboard / Image 2 without keyboard)
     if (pinModal) {
       pinModal.classList.add('is-active');
     }
     updateModalPosition();
     checkPinInput();
+
+    // Synchronously focus input to pop keyboard
+    if (pinInput) {
+      pinInput.focus();
+      setTimeout(updateModalPosition, 50);
+      setTimeout(updateModalPosition, 150);
+      setTimeout(updateModalPosition, 300);
+    }
   }
 
   if (btnViewDetails) {
@@ -1066,15 +1083,9 @@ document.addEventListener('DOMContentLoaded', function() {
       bottomDome.classList.add('is-collapsed');
     }
 
-    // 4. Butterfly flies back down to resting position over View Details
+    // 4. Reveal resting butterfly on view details button
     if (butterflyWrap) {
-      butterflyWrap.classList.remove('fly-to-flowers');
-      if (wing) {
-        wing.style.animationDuration = '0.15s';
-        setTimeout(() => {
-          wing.style.animationDuration = '0.25s';
-        }, 2500);
-      }
+      butterflyWrap.classList.remove('is-hidden-modal');
     }
 
     // 5. Fade View details button back in
