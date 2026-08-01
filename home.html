@@ -119,7 +119,7 @@ html, body {
   inset: 0;
   width: 100vw;
   height: 100svh;
-  background: #7e1216;
+  background: #C81A1F;
   z-index: 999999;
   display: flex;
   align-items: center;
@@ -181,18 +181,14 @@ html, body {
   text-transform: none !important;
   display: inline-block;
   background: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
-  background-size: 100% 0%;
+  background-size: 100% var(--takes-progress, 0%);
   background-repeat: no-repeat;
   background-position: bottom;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: rgba(255, 255, 255, 0.25);
-  animation: takesFill 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-}
-
-@keyframes takesFill {
-  0% { background-size: 100% 0%; }
-  100% { background-size: 100% 100%; }
+  transition: background-size 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: background-size;
 }
 
 /* ── 3. Central Typography (Main Page) ── */
@@ -762,43 +758,71 @@ document.addEventListener('DOMContentLoaded', function() {
   const pinError = document.getElementById('pin-error');
   const splashPreloader = document.getElementById('splash-preloader');
 
-  // ── 100% BULLETPROOF ASSET PRELOADER ──
-  // Wait for all DOM images to be downloaded and decoded in GPU memory
+  // ── 100% BULLETPROOF ASSET PRELOADER WITH PROGRESS BAR "takes" ──
+  const splashPreloader = document.getElementById('splash-preloader');
+  const splashScript = document.querySelector('.splash-script');
   const domImages = Array.from(document.querySelectorAll('.home-mobile-canvas img'));
+
+  let totalItems = domImages.length + 2; // images + fonts + window load
+  let loadedItems = 0;
+
+  function updateProgress() {
+    loadedItems++;
+    // Nonlinear acceleration: starts slow, paces up as items stream in
+    const ratio = loadedItems / totalItems;
+    const progressPercent = Math.min(100, Math.round(Math.pow(ratio, 0.75) * 100));
+    if (splashScript) {
+      splashScript.style.setProperty('--takes-progress', `${progressPercent}%`);
+    }
+  }
+
+  // Initial slow start
+  if (splashScript) {
+    splashScript.style.setProperty('--takes-progress', '12%');
+  }
 
   function waitForImage(img) {
     return new Promise((resolve) => {
+      const onDone = () => {
+        updateProgress();
+        resolve();
+      };
       if (img.complete && img.naturalWidth > 0) {
         if (img.decode) {
-          img.decode().then(resolve).catch(resolve);
+          img.decode().then(onDone).catch(onDone);
         } else {
-          resolve();
+          onDone();
         }
         return;
       }
       img.addEventListener('load', () => {
         if (img.decode) {
-          img.decode().then(resolve).catch(resolve);
+          img.decode().then(onDone).catch(onDone);
         } else {
-          resolve();
+          onDone();
         }
       }, { once: true });
-      img.addEventListener('error', resolve, { once: true });
+      img.addEventListener('error', onDone, { once: true });
     });
   }
 
   const startTime = Date.now();
 
   const windowLoadPromise = (document.readyState === 'complete')
-    ? Promise.resolve()
-    : new Promise(resolve => window.addEventListener('load', resolve, { once: true }));
+    ? (updateProgress(), Promise.resolve())
+    : new Promise(resolve => window.addEventListener('load', () => { updateProgress(); resolve(); }, { once: true }));
 
-  const fontPromise = document.fonts ? document.fonts.ready : Promise.resolve();
+  const fontPromise = (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => updateProgress());
   const imagesPromise = Promise.all(domImages.map(waitForImage));
 
   Promise.all([windowLoadPromise, fontPromise, imagesPromise]).then(() => {
+    // Complete 100% fill
+    if (splashScript) {
+      splashScript.style.setProperty('--takes-progress', '100%');
+    }
+
     const elapsed = Date.now() - startTime;
-    const minLoadingTime = 2200; // Allow full 2.2s for "takes" bottom-to-top fill
+    const minLoadingTime = 1800; // Allow user to see the accelerated fill
     const remainingTime = Math.max(0, minLoadingTime - elapsed);
 
     setTimeout(() => {
@@ -820,7 +844,7 @@ document.addEventListener('DOMContentLoaded', function() {
           btnViewDetails.classList.add('is-ready');
         }
       }, 8400);
-    }, remainingTime);
+    }, remainingTime + 300);
   });
 
   function updateMusicUI(isPlaying) {
