@@ -202,6 +202,8 @@ html, body {
   z-index: 6;
   pointer-events: none;
   filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.25));
+  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
 }
 
 .flight-container {
@@ -735,18 +737,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Close Action: Return red dome, butterfly, and View details button to original state
+  // Close Action: Return red dome, keyboard, butterfly, and View details button to original state
   if (btnPinCancel) {
     btnPinCancel.addEventListener('click', function() {
-      if (pinModal) pinModal.classList.remove('is-active');
-      if (bottomDome) bottomDome.classList.remove('expand-fullscreen');
-      if (butterflyWrap) butterflyWrap.classList.remove('fly-to-flowers');
-      if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
-      if (pinError) pinError.style.display = 'none';
+      // 1. Immediately dismiss keyboard and clear input
       if (pinInput) {
-        pinInput.value = '';
         pinInput.blur();
+        pinInput.value = '';
       }
+      if (pinError) pinError.style.display = 'none';
+
+      // 2. Fade out PIN content
+      if (pinModal) pinModal.classList.remove('is-active');
+
+      // 3. Red background glides back down
+      if (bottomDome) bottomDome.classList.remove('expand-fullscreen');
+
+      // 4. Butterfly flies back down to resting position with active flapping
+      if (butterflyWrap) {
+        butterflyWrap.classList.remove('fly-to-flowers');
+        if (wing) {
+          wing.style.animationDuration = '0.15s'; // active flapping during flight down
+          setTimeout(() => {
+            wing.style.animationDuration = '0.25s'; // settle back into resting flap
+          }, 2500);
+        }
+      }
+
+      // 5. Fade View details button back in
+      setTimeout(() => {
+        if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
+      }, 600);
     });
   }
 
