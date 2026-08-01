@@ -25,27 +25,8 @@
   }
 
   // Create Toggle UI
-  const toggleBtn = document.createElement('div');
-  toggleBtn.id = 'global-music-toggle';
-  toggleBtn.style.cssText = `
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-  `;
-  document.body.appendChild(toggleBtn);
+  const toggleBtn = document.getElementById('global-music-toggle');
+  if(!toggleBtn) return;
 
   const svgPlay = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#A71F23"><path d="M8 5v14l11-7z"/></svg>';
   const svgPause = '<svg width="20" height="20" viewBox="0 0 24 24" fill="#A71F23"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';

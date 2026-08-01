@@ -14,7 +14,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
-<script src="js/pjax.js?v=444"></script>
+<script src="js/pjax.js?v=555"></script>
 <script>
 (function() {
   var isDesktop = window.innerWidth > 768 && !/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
@@ -325,9 +325,7 @@ html, body {
   height: auto;
   object-fit: contain;
   /* 2D Waggle instead of 3D flap. No size scaling, no Z-axis perspective. */
-  animation: 
-    wobble-fly 0.15s ease-in-out 27,
-    wobble-sit 0.21s ease-in-out infinite 4.05s;
+  animation: wobble-fly 0.15s ease-in-out infinite;
   transform-origin: center;
 }
 
@@ -499,6 +497,12 @@ html, body {
     <span class="home-view-details-label">View details</span>
   </a>
 
+  
+  <!-- ── GLOBAL AUDIO TOGGLE ── -->
+  <div id="global-music-toggle" style="position: fixed; top: 15px; right: 15px; width: 42px; height: 42px; border-radius: 50%; background: rgba(255,255,255,0.3); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); z-index: 999999; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+     <svg width="20" height="20" viewBox="0 0 24 24" fill="#A71F23" class="icon-play"><path d="M8 5v14l11-7z"/></svg>
+  </div>
+
   <!-- ── AUDIO ── -->
   <audio id="bg-music" loop preload="auto">
     <source src="media/Heer_Flute.mp3" type="audio/mpeg">
@@ -519,7 +523,7 @@ html, body {
 
 </main>
 
-<script src="js/pjax.js?v=444"></script>
+<script src="js/pjax.js?v=555"></script>
 <script>
 // Preserve query parameters (e.g. guest name, passcodes) when navigating
 document.addEventListener('DOMContentLoaded', function() {
@@ -532,6 +536,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const bgMusic = document.getElementById('bg-music');
   
   let hasStartedAudio = false;
+
+  setTimeout(() => {
+    const wing = document.querySelector('.wing-flap');
+    if(wing) wing.style.animationDuration = '0.25s';
+  }, 4000);
+
   
   if (btnViewDetails && window.location.search) {
     btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
