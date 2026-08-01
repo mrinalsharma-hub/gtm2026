@@ -396,62 +396,136 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── PIN Code Modal ── */
+/* ── Butterfly Fly-to-Flowers Transition on View Details Click ── */
+.home-butterfly-wrap.fly-to-flowers {
+  transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: translate(calc(-50% + 20px), calc(-100svh + 220px)) !important;
+  z-index: 101 !important;
+}
+
+/* ── Invitation Code Dialog (Slow, Graceful Animation) ── */
 .home-pin-modal {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: 100;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s;
+}
+.home-pin-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 .home-pin-content {
-  background: #eadfc8;
-  padding: 30px 20px;
-  border-radius: 12px;
+  background: #fbf7ee;
+  padding: 34px 28px 28px;
+  border-radius: 16px;
   width: 100%;
   max-width: 340px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22), 0 0 0 1px rgba(126, 18, 22, 0.12);
   text-align: center;
-  border: 1px solid rgba(126, 18, 22, 0.2);
+  transform: scale(0.92) translateY(24px);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.home-pin-modal.is-active .home-pin-content {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+.home-pin-title {
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: #7e1216;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+.home-pin-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-style: italic;
+  color: #555555;
+  margin-bottom: 22px;
+  line-height: 1.35;
 }
 .home-pin-input {
   width: 100%;
-  padding: 12px;
-  font-size: 18px;
+  padding: 13px;
+  font-size: 22px;
   text-align: center;
-  letter-spacing: 4px;
-  border: 1px solid #7e1216;
-  border-radius: 6px;
-  background: #F8F4EA;
+  letter-spacing: 6px;
+  border: 1px solid rgba(126, 18, 22, 0.3);
+  border-radius: 10px;
+  background: #ffffff;
   color: #7e1216;
   font-family: 'Cinzel', serif;
-  outline: none;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 .home-pin-input:focus {
-  box-shadow: 0 0 0 2px rgba(126, 18, 22, 0.3);
+  border-color: #7e1216;
+  box-shadow: 0 0 0 3px rgba(126, 18, 22, 0.15);
+}
+.home-pin-error {
+  color: #c81a1f;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  margin-top: 10px;
+  display: none;
+}
+.home-pin-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+  width: 100%;
 }
 .home-pin-btn {
   flex: 1;
-  padding: 12px 0;
+  padding: 13px 0;
   font-family: 'Cinzel', serif;
   font-weight: 600;
-  font-size: 16px;
-  border-radius: 6px;
-  border: none;
-  background: #7e1216;
-  color: white;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  border-radius: 8px;
   cursor: pointer;
-  transition: opacity 0.2s;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  user-select: none !important;
+  transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.2s ease;
 }
 .home-pin-btn:active {
-  opacity: 0.8;
+  transform: scale(0.95);
+}
+.btn-close {
+  background: transparent;
+  color: #7e1216;
+  border: 1px solid rgba(126, 18, 22, 0.4);
+}
+.btn-close:hover {
+  background: rgba(126, 18, 22, 0.05);
+}
+.btn-open {
+  background: #7e1216;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(126, 18, 22, 0.25);
+}
+.btn-open:hover {
+  background: #93171c;
 }
 </style>
 </head>
@@ -521,15 +595,16 @@ html, body {
     <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- ── PIN Code Modal ── -->
+  <!-- ── PIN Code Modal (Slow Animation Dialog) ── -->
   <div id="pin-modal" class="home-pin-modal">
     <div class="home-pin-content">
-      <h2 style="font-family: 'Cinzel', serif; font-size: 24px; color: #7e1216; margin-bottom: 20px;">Enter Invitation Code</h2>
-      <input type="password" id="pin-input" placeholder="Enter code" class="home-pin-input">
-      <p id="pin-error" style="color: red; font-size: 14px; margin-top: 10px; display: none;">Incorrect code. Please try again.</p>
-      <div style="display: flex; gap: 10px; margin-top: 20px; width: 100%;">
-        <button id="btn-pin-cancel" class="home-pin-btn" style="background: transparent; color: #7e1216; border: 1px solid #7e1216;">Cancel</button>
-        <button id="btn-pin-submit" class="home-pin-btn">Open Website</button>
+      <h2 class="home-pin-title">Welcome!</h2>
+      <p class="home-pin-subtitle">Enter the invitation code shared with you</p>
+      <input type="password" id="pin-input" placeholder="••••" maxlength="10" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off">
+      <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
+      <div class="home-pin-actions">
+        <button id="btn-pin-cancel" class="home-pin-btn btn-close">Close</button>
+        <button id="btn-pin-submit" class="home-pin-btn btn-open">Open</button>
       </div>
     </div>
   </div>
@@ -540,6 +615,8 @@ html, body {
 document.addEventListener('DOMContentLoaded', function() {
   const bgMusic = document.getElementById('bg-music');
   const musicToggle = document.getElementById('music-toggle');
+  const butterflyWrap = document.querySelector('.home-butterfly-wrap');
+  const wing = document.querySelector('.wing-flap');
 
   function updateMusicUI(isPlaying) {
     if (musicToggle) {
@@ -551,7 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 1. Force Autoplay as soon as page loads
+  // 1. Autoplay music
   if (bgMusic) {
     bgMusic.volume = 0.8;
     const playPromise = bgMusic.play();
@@ -560,7 +637,6 @@ document.addEventListener('DOMContentLoaded', function() {
         updateMusicUI(true);
       }).catch(() => {
         updateMusicUI(false);
-        // Fallback: Start immediately on the very first touch/click/scroll
         const startAudio = () => {
           bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
           window.removeEventListener('pointerdown', startAudio);
@@ -574,7 +650,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // 2. Smooth Interactive Toggle
+  // 2. Music Toggle Button
   if (musicToggle) {
     musicToggle.addEventListener('click', function(e) {
       e.stopPropagation();
@@ -588,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // 3. PIN Modal & Navigation
+  // 3. View Details Click: Butterfly flies to top blue flowers, dialog slowly animates in, keyboard pops up after 1s
   const btnViewDetails = document.getElementById('btn-view-details');
   const pinModal = document.getElementById('pin-modal');
   const btnPinCancel = document.getElementById('btn-pin-cancel');
@@ -603,26 +679,56 @@ document.addEventListener('DOMContentLoaded', function() {
   if (btnViewDetails) {
     btnViewDetails.addEventListener('click', function(e) {
       e.preventDefault();
+      
+      // Also ensure audio is playing on user interaction
       if (bgMusic && bgMusic.paused) {
         bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
       }
-      if (pinModal) {
-        pinModal.style.display = 'flex';
-        setTimeout(() => {
-          if (pinInput) pinInput.focus();
-        }, 100);
+
+      // Step 1: Butterfly moves to top towards the blue flowers and stops right over them
+      if (butterflyWrap) {
+        butterflyWrap.classList.add('fly-to-flowers');
+        if (wing) {
+          wing.style.animationDuration = '0.15s'; // active flapping during flight
+          setTimeout(() => {
+            wing.style.animationDuration = '0.25s'; // settle gracefully on flowers
+          }, 1500);
+        }
+      }
+
+      // Step 2: Dialog slowly animates in
+      setTimeout(() => {
+        if (pinModal) {
+          pinModal.classList.add('is-active');
+        }
+      }, 400);
+
+      // Step 3: Keyboard pops up after a second and not instantly
+      setTimeout(() => {
+        if (pinInput) {
+          pinInput.focus();
+        }
+      }, 1000);
+    });
+  }
+
+  // Close Dialog & Return Butterfly
+  if (btnPinCancel) {
+    btnPinCancel.addEventListener('click', function() {
+      if (pinModal) pinModal.classList.remove('is-active');
+      if (pinError) pinError.style.display = 'none';
+      if (pinInput) {
+        pinInput.value = '';
+        pinInput.blur();
+      }
+      // Butterfly flies back down to resting position
+      if (butterflyWrap) {
+        butterflyWrap.classList.remove('fly-to-flowers');
       }
     });
   }
 
-  if (btnPinCancel) {
-    btnPinCancel.addEventListener('click', function() {
-      pinModal.style.display = 'none';
-      if (pinError) pinError.style.display = 'none';
-      if (pinInput) pinInput.value = '';
-    });
-  }
-
+  // Open / Submit PIN
   function submitPin() {
     if (pinInput.value.trim() === '2026') {
       window.location.href = btnViewDetails.href || 'schedule.html';
