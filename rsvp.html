@@ -17,8 +17,92 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cormorant+Upright:wght@300;400&family=Pinyon+Script&family=Roboto+Flex:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=200">
+<link rel="stylesheet" href="css/site.css?v=601">
 <style>
+/* ── CRITICAL FLOATING DOCK CSS (ZERO-CACHE DEPENDENCY) ── */
+header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !important; }
+.floating-dock-nav {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 2147483647 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+.dock-pill {
+  pointer-events: auto !important;
+  width: calc(100% - 32px) !important;
+  max-width: 440px !important;
+  height: 64px !important;
+  background: linear-gradient(145deg, rgba(167, 31, 35, 0.96) 0%, rgba(95, 12, 16, 0.98) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border-radius: 36px !important;
+  border: 1.5px solid rgba(255, 223, 133, 0.35) !important;
+  box-shadow: 0 16px 36px rgba(25, 3, 5, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-around !important;
+  padding: 0 12px !important;
+  position: relative !important;
+}
+.dock-tab {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 100% !important;
+  text-decoration: none !important;
+  color: rgba(255, 246, 232, 0.65) !important;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  position: relative !important;
+  cursor: pointer !important;
+  -webkit-tap-highlight-color: transparent !important;
+  padding-top: 2px !important;
+}
+.dock-tab:active { transform: scale(0.92) !important; }
+.dock-icon-box {
+  width: 26px !important;
+  height: 26px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 2px !important;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+.dock-svg {
+  width: 22px !important;
+  height: 22px !important;
+  stroke: currentColor !important;
+  display: block !important;
+  transition: stroke 0.2s, filter 0.2s !important;
+}
+.dock-label {
+  font-family: 'Cinzel', serif !important;
+  font-size: 9.5px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  transition: color 0.2s, font-weight 0.2s !important;
+}
+.dock-tab.active { color: #FFDF85 !important; }
+.dock-tab.active .dock-icon-box { transform: translateY(-2px) scale(1.1) !important; }
+.dock-tab.active .dock-svg {
+  stroke: #FFDF85 !important;
+  filter: drop-shadow(0 2px 8px rgba(255, 223, 133, 0.75)) !important;
+}
+.dock-tab.active .dock-label { color: #FFDF85 !important; font-weight: 700 !important; }
+main { padding-bottom: calc(110px + env(safe-area-inset-bottom, 20px)) !important; }
+
 /* ═══ RSVP page · GTM_RSVP_1 (Figma) ═══
    Invite Red #C81A1F · Ink #19202F · parchment ground
    Cormorant Upright display · Cormorant Garamond text
