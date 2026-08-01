@@ -41,6 +41,63 @@
 }
 
 /* ── CRITICAL EXACT STYLING FROM FIGMA NODE 340:113 ── */
+.home-pin-modal {
+  position: absolute; /* absolute to home-mobile-canvas */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.home-pin-content {
+  background: #eadfc8;
+  padding: 30px 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 340px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
+  border: 1px solid rgba(126, 18, 22, 0.2);
+}
+.home-pin-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 4px;
+  border: 1px solid #7e1216;
+  border-radius: 6px;
+  background: #F8F4EA;
+  color: #7e1216;
+  font-family: 'Cinzel', serif;
+  outline: none;
+}
+.home-pin-input:focus {
+  box-shadow: 0 0 0 2px rgba(126, 18, 22, 0.3);
+}
+.home-pin-btn {
+  flex: 1;
+  padding: 12px 0;
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  background: #7e1216;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.home-pin-btn:active {
+  opacity: 0.8;
+}
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body {
   width: 100%;
@@ -344,6 +401,24 @@ html, body {
     </svg>
     <span class="home-view-details-label">View details</span>
   </a>
+
+  <!-- ── AUDIO ── -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="media/Heer_Flute.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- ── PIN CODE MODAL ── -->
+  <div id="pin-modal" class="home-pin-modal">
+    <div class="home-pin-content">
+      <h2 style="font-family: 'Cinzel', serif; font-size: 24px; color: #7e1216; margin-bottom: 20px;">Enter Invitation Code</h2>
+      <input type="password" id="pin-input" placeholder="Enter code" class="home-pin-input">
+      <p id="pin-error" style="color: red; font-size: 14px; margin-top: 10px; display: none;">Incorrect code. Please try again.</p>
+      <div style="display: flex; gap: 10px; margin-top: 20px; width: 100%;">
+        <button id="btn-pin-cancel" class="home-pin-btn" style="background: transparent; color: #7e1216; border: 1px solid #7e1216;">Cancel</button>
+        <button id="btn-pin-submit" class="home-pin-btn">Open Website</button>
+      </div>
+    </div>
+  </div>
 
 </main>
 
