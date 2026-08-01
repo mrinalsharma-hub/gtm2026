@@ -800,42 +800,53 @@ body.gateway-locked {
   font-size: 10px;
 }
 
-/* ── Premium YouTube / Pinterest-Style Bottom Navigation Bar ── */
+/* ── Luxury Floating Neumorphic / Glassmorphic Bottom Dock ── */
 header.site,
 #menu-panel,
-.mobile-wheel-nav {
+.mobile-wheel-nav,
+.site-bottom-nav {
   display: none !important;
 }
 
-.site-bottom-nav {
+.floating-dock-nav {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100% !important;
   z-index: 99999 !important;
-  background: rgba(126, 18, 22, 0.94) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
-  border-top: 1px solid rgba(255, 223, 133, 0.3) !important;
-  box-shadow: 0 -4px 24px rgba(25, 3, 5, 0.45) !important;
-  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  display: block !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
+  pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
 }
 
-.site-bottom-nav .nav-container {
+.dock-pill {
+  pointer-events: auto !important;
+  width: calc(100% - 32px) !important;
+  max-width: 440px !important;
+  height: 66px !important;
+  background: linear-gradient(145deg, rgba(167, 31, 35, 0.96) 0%, rgba(95, 12, 16, 0.98) 100%) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border-radius: 36px !important;
+  border: 1.5px solid rgba(255, 223, 133, 0.35) !important;
+  box-shadow: 
+    0 16px 36px rgba(25, 3, 5, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.35),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.4) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-around !important;
-  max-width: 600px !important;
-  margin: 0 auto !important;
-  height: 58px !important;
-  padding: 0 4px !important;
+  padding: 0 10px !important;
+  position: relative !important;
 }
 
-.site-bottom-nav .nav-tab {
+.dock-tab {
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
@@ -844,79 +855,129 @@ header.site,
   height: 100% !important;
   text-decoration: none !important;
   color: rgba(255, 246, 232, 0.65) !important;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
   position: relative !important;
   cursor: pointer !important;
   -webkit-tap-highlight-color: transparent !important;
+  padding-top: 2px !important;
 }
 
-.site-bottom-nav .nav-tab:active {
+.dock-tab:active {
   transform: scale(0.92) !important;
 }
 
-.site-bottom-nav .nav-icon-wrap {
+.dock-icon-box {
   width: 26px !important;
   height: 26px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  position: relative !important;
   margin-bottom: 2px !important;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
-.site-bottom-nav .nav-icon {
+.dock-svg {
   width: 22px !important;
   height: 22px !important;
-  display: block !important;
   stroke: currentColor !important;
-  transition: stroke 0.2s, transform 0.2s, filter 0.2s !important;
+  display: block !important;
+  transition: stroke 0.2s, filter 0.2s !important;
 }
 
-.site-bottom-nav .nav-label {
+.dock-label {
   font-family: 'Cinzel', serif !important;
-  font-size: 10px !important;
+  font-size: 9.5px !important;
   font-weight: 500 !important;
-  letter-spacing: 0.08em !important;
+  letter-spacing: 0.06em !important;
   text-transform: uppercase !important;
   line-height: 1 !important;
   transition: color 0.2s, font-weight 0.2s !important;
 }
 
-/* Active State (Gold illuminated, YouTube/Pinterest style) */
-.site-bottom-nav .nav-tab.active {
+/* Active State for Normal Tabs */
+.dock-tab.active {
   color: #FFDF85 !important;
 }
 
-.site-bottom-nav .nav-tab.active .nav-icon {
+.dock-tab.active .dock-icon-box {
+  transform: translateY(-2px) scale(1.1) !important;
+}
+
+.dock-tab.active .dock-svg {
   stroke: #FFDF85 !important;
-  transform: translateY(-1px) scale(1.08) !important;
-  filter: drop-shadow(0 2px 8px rgba(255, 223, 133, 0.65)) !important;
+  filter: drop-shadow(0 2px 8px rgba(255, 223, 133, 0.75)) !important;
 }
 
-.site-bottom-nav .nav-tab.active .flame-glow {
-  fill: rgba(255, 223, 133, 0.4) !important;
-}
-
-.site-bottom-nav .nav-tab.active .nav-label {
+.dock-tab.active .dock-label {
   color: #FFDF85 !important;
   font-weight: 700 !important;
 }
 
-/* Top Active Accent Pill Indicator */
-.site-bottom-nav .nav-tab.active::before {
-  content: "" !important;
-  position: absolute !important;
-  top: 0 !important;
-  width: 28px !important;
-  height: 2.5px !important;
-  border-radius: 0 0 3px 3px !important;
-  background: linear-gradient(90deg, #BA8C48 0%, #FFDF85 50%, #BA8C48 100%) !important;
-  box-shadow: 0 1px 8px rgba(255, 223, 133, 0.8) !important;
+/* ── CENTER HERO ELEVATED 3D ORB (Reference Image Style) ── */
+.dock-tab.center-hero {
+  position: relative !important;
+  overflow: visible !important;
 }
 
-/* ── Universal Viewport & Content Spacing ── */
+.center-orb {
+  width: 58px !important;
+  height: 58px !important;
+  border-radius: 50% !important;
+  position: absolute !important;
+  top: -24px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(145deg, #FFDF85 0%, #E6AF4B 50%, #B87B28 100%) !important;
+  padding: 3px !important;
+  box-shadow: 
+    0 10px 24px rgba(25, 3, 5, 0.7),
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 0 18px rgba(255, 223, 133, 0.5) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.center-orb-inner {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  background: radial-gradient(circle at 35% 30%, #FFF6E8 0%, #FFDF85 40%, #C48220 100%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #5C0B0F !important;
+  box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.8), inset 0 -2px 3px rgba(110, 14, 18, 0.4) !important;
+}
+
+.center-orb-svg {
+  width: 24px !important;
+  height: 24px !important;
+  stroke: #5C0B0F !important;
+  display: block !important;
+}
+
+.dock-tab.center-hero .center-label {
+  margin-top: 36px !important;
+  color: #FFDF85 !important;
+  font-weight: 700 !important;
+}
+
+.dock-tab.center-hero:active .center-orb {
+  transform: translateX(-50%) scale(0.92) !important;
+}
+
+.dock-tab.center-hero.active .center-orb {
+  box-shadow: 
+    0 12px 28px rgba(25, 3, 5, 0.8),
+    0 0 24px rgba(255, 223, 133, 0.9),
+    0 0 6px #FFFFFF !important;
+}
+
+/* ── Content Viewport Clearance ── */
 main {
-  padding-bottom: calc(84px + env(safe-area-inset-bottom, 20px)) !important;
+  padding-bottom: calc(105px + env(safe-area-inset-bottom, 20px)) !important;
 }
 
 @media screen and (max-width: 1024px) {

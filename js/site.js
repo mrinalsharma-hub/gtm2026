@@ -468,10 +468,10 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* ── 9. BOTTOM NAVIGATION CONTROLLER ────────────────── */
+  /* ── 9. FLOATING DOCK NAVIGATION CONTROLLER ─────────── */
   function initBottomNav() {
     var path = (window.location.pathname || '').toLowerCase();
-    var tabs = document.querySelectorAll('.site-bottom-nav .nav-tab');
+    var tabs = document.querySelectorAll('.dock-tab');
     if (!tabs.length) return;
 
     var activeKey = 'home';
