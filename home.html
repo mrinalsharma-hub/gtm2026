@@ -303,8 +303,10 @@ html, body {
   width: 100%;
   height: auto;
   object-fit: contain;
-  /* Natural graceful flapping forever */
-  animation: flap 0.7s ease-in-out infinite;
+  /* Dual-speed transmission: Fast for 4 seconds, then 40% slower infinitely */
+  animation: 
+    flap-fast 0.15s ease-in-out 27,
+    flap-slow 0.21s ease-in-out infinite 4.05s;
   transform-origin: center;
 }
 
@@ -338,10 +340,15 @@ html, body {
   100% { transform: translateY(10px); }
 }
 
-@keyframes flap {
-  0% { transform: scaleX(1); }
-  50% { transform: scaleX(0.2); } /* pseudo 3D wing close */
-  100% { transform: scaleX(1); }
+@keyframes flap-fast {
+  0% { transform: perspective(400px) rotateY(0deg); }
+  50% { transform: perspective(400px) rotateY(70deg); }
+  100% { transform: perspective(400px) rotateY(0deg); }
+}
+@keyframes flap-slow {
+  0% { transform: perspective(400px) rotateY(0deg); }
+  50% { transform: perspective(400px) rotateY(60deg); } /* Slightly softer flap when resting */
+  100% { transform: perspective(400px) rotateY(0deg); }
 }
 
 .home-butterfly-wrap {
