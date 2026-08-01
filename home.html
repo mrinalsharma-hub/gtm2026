@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=WindSong:wght@400;500&display=block" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#A71F23">
@@ -156,7 +159,7 @@ html, body {
 
 /* ── 2. Flowers Top (Exact Figma 340:149 SVG with light breeze swaying) ── */
 .home-flowers-top {
-  filter: drop-shadow(6px 12px 14px rgba(50, 20, 10, 0.35));
+  filter: drop-shadow(6px 12px 12px rgba(50, 20, 10, 0.35));
   position: absolute;
   top: -12px;
   left: calc(50% + 17.5px);
@@ -192,7 +195,7 @@ html, body {
 
 @media (prefers-reduced-motion: reduce) {
   .home-flowers-top {
-  filter: drop-shadow(6px 12px 14px rgba(50, 20, 10, 0.35));
+  filter: drop-shadow(6px 12px 12px rgba(50, 20, 10, 0.35));
     animation: none;
   }
 }
@@ -280,6 +283,9 @@ html, body {
 /* ── 4. Butterfly (Figma 340:174) ── */
 /* ── PIXAR-LEVEL BUTTERFLY ANIMATION ── */
 
+
+
+
 @keyframes wobble-fly {
   0% { transform: rotate(0deg); }
   25% { transform: rotate(12deg); }
@@ -293,6 +299,7 @@ html, body {
   100% { transform: rotate(0deg); }
 }
 
+.flight-container, .bob-container { width: 100%; height: 100%; }
 .flight-container {
   /* Animate precisely ending at 0,0 so it sits perfectly where it belongs */
   animation: swoop 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -458,7 +465,7 @@ html, body {
   <div class="home-hero-text" style="position: absolute; top: calc(50svh - 40px); left: 50% !important; transform: translate(-50%, -50%) !important; width: 100% !important; max-width: 440px; height: 274px; z-index: 4; pointer-events: none;">
     <h1 class="home-name" style="position: absolute; top: 43px; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; margin: 0;">GARIMA</h1>
     <div class="home-script-wrap" style="position: absolute; top: 109px; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; display: flex; justify-content: center; margin: 0;">
-      <img src="images/takes.png?v=9999" alt="takes" style="height: 85px; width: auto; object-fit: contain; margin: 0; padding: 0;">
+      <span class="home-script">takes</span>
     </div>
     <h1 class="home-name" style="position: absolute; top: 162px; left: 50%; transform: translate(-50%, -50%); width: 100%; text-align: center; margin: 0;">MRINAL</h1>
 
