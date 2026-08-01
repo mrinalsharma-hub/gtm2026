@@ -468,21 +468,55 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* ── 9. MOBILE ADDRESS BAR COLLAPSER ─────────────────── */
-  if (typeof window !== 'undefined' && 'ontouchstart' in window) {
+  /* ── 9. IMMERSIVE ADDRESS BAR PERSISTENCE SYSTEM ── */
+  function initImmersiveAppScroller() {
+    if (typeof window === 'undefined' || !('ontouchstart' in window) || window.innerWidth > 1024) return;
+
+    var main = document.querySelector('main');
+    if (!main) return;
+
+    document.documentElement.classList.add('app-scroller-active');
+    document.body.classList.add('app-scroller-active');
+
+    // Trigger initial 1px scroll on first touch to collapse address bar
     var hasTriggeredCollapse = false;
-    function collapseAddressBar() {
+    function collapseInitial() {
       if (hasTriggeredCollapse) return;
       hasTriggeredCollapse = true;
-      if (window.scrollY === 0 && document.documentElement.scrollHeight > window.innerHeight) {
+      if (window.scrollY === 0) {
         window.scrollBy({ top: 1, left: 0, behavior: 'smooth' });
       }
     }
-    window.addEventListener('touchstart', function(){
-      if (!hasTriggeredCollapse && window.scrollY === 0) {
-        setTimeout(collapseAddressBar, 80);
+    window.addEventListener('touchstart', collapseInitial, { passive: true, once: true });
+
+    // Manage overscroll: contain mid-page so address bar stays hidden on upward scroll
+    var touchStartY = 0;
+    main.addEventListener('touchstart', function(e) {
+      if (e.touches && e.touches.length > 0) {
+        touchStartY = e.touches[0].clientY;
       }
-    }, { passive: true, once: true });
+    }, { passive: true });
+
+    main.addEventListener('touchmove', function(e) {
+      if (main.scrollTop <= 0) {
+        var currentY = e.touches && e.touches.length > 0 ? e.touches[0].clientY : 0;
+        if (currentY > touchStartY) {
+          // User is at the absolute top and pulling DOWN -> allow natural bounce
+          main.style.overscrollBehaviorY = 'auto';
+        } else {
+          main.style.overscrollBehaviorY = 'contain';
+        }
+      } else {
+        // User is mid-page -> contain overscroll to keep address bar 100% hidden
+        main.style.overscrollBehaviorY = 'contain';
+      }
+    }, { passive: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initImmersiveAppScroller);
+  } else {
+    initImmersiveAppScroller();
   }
 
 })();
