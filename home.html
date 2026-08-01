@@ -85,18 +85,18 @@ html, body {
   pointer-events: none;
 }
 
-/* ── 2. Flowers Top (Exact Original Figma SVG Coordinates) ── */
+/* ── 2. Flowers Top (Scaled up by 20%, Anchored Top & Centered) ── */
 .home-flowers-top {
   filter: drop-shadow(6px 12px 12px rgba(50, 20, 10, 0.35));
   position: absolute;
-  top: -12px;
-  left: calc(50% + 17.5px) !important;
+  top: -10px;
+  left: 50% !important;
   transform: translateX(-50%);
-  width: min(291px, 66.14vw);
+  width: min(349px, 79.37vw);
   height: auto;
   pointer-events: none;
   z-index: 3;
-  transform-origin: 75% -10px;
+  transform-origin: center top;
   animation: gentleFloralBreeze 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
   will-change: transform;
 }
