@@ -534,32 +534,32 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-.home-butterfly-wrap.is-hidden-modal {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transition: opacity 0.3s ease !important;
+/* ── Butterfly Fly-to-Flowers Transition on View Details Click (Exact Top Center, Fully in View) ── */
+.home-butterfly-wrap.fly-to-flowers {
+  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform: translate(-50%, calc(-100svh + 230px)) !important;
+  z-index: 101 !important;
 }
 
-/* ── PIN Code Interface (Dynamically Sits 10px Above Mobile Keyboard) ── */
+/* ── PIN Code Interface (Seamlessly over New Red Background, Positioned Below Top Butterfly) ── */
 .home-pin-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100svh;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   background: transparent !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  padding: 12px 24px 10px; /* 10px padding above keyboard */
+  justify-content: flex-start;
+  padding: calc(min(220px, 26svh)) 24px 10px;
   box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
 }
 .home-pin-modal.is-active {
@@ -579,33 +579,13 @@ html, body {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  transform: translateY(8px);
+  transform: translateY(12px);
   opacity: 0;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active .home-pin-content {
   transform: translateY(0);
   opacity: 1;
-}
-
-.home-modal-butterfly {
-  width: 164px;
-  height: 123px;
-  max-width: 48vw;
-  max-height: 123px;
-  margin: 0 auto 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-  filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.25));
-}
-.home-modal-butterfly .wing-flap {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  animation: flap-slow 0.25s ease-in-out infinite alternate;
-  transform-origin: center;
 }
 .home-pin-title {
   font-family: 'Cinzel', serif;
@@ -793,12 +773,9 @@ html, body {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ── PIN Code Interface (Dynamically Sits 10px Above Mobile Keyboard) ── -->
+<!-- ── PIN Code Interface ── -->
 <div id="pin-modal" class="home-pin-modal">
   <div class="home-pin-content">
-    <div class="home-modal-butterfly" aria-hidden="true">
-      <img src="images/home_butterfly.webp" alt="Golden Butterfly" class="wing-flap">
-    </div>
     <h2 class="home-pin-title">WELCOME!</h2>
     <p class="home-pin-subtitle">Enter code for event details</p>
     <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
@@ -958,22 +935,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Dynamic Mobile Keyboard Alignment (Always strictly 10px above virtual keyboard)
   function updateModalPosition() {
-    if (!pinModal) return;
+    if (!pinModal || !pinModal.classList.contains('is-active')) return;
     if (window.visualViewport) {
       const vv = window.visualViewport;
-      pinModal.style.position = 'fixed';
-      pinModal.style.top = vv.offsetTop + 'px';
-      pinModal.style.left = vv.offsetLeft + 'px';
-      pinModal.style.width = vv.width + 'px';
-      pinModal.style.height = vv.height + 'px';
-      pinModal.style.paddingBottom = '10px';
-    } else {
-      pinModal.style.position = 'fixed';
-      pinModal.style.top = '0px';
-      pinModal.style.left = '0px';
-      pinModal.style.width = '100vw';
-      pinModal.style.height = '100svh';
-      pinModal.style.paddingBottom = '10px';
+      const isKeyboardOpen = (document.activeElement === pinInput) || (vv.height < window.innerHeight * 0.85);
+      if (isKeyboardOpen) {
+        pinModal.style.position = 'fixed';
+        pinModal.style.top = vv.offsetTop + 'px';
+        pinModal.style.left = vv.offsetLeft + 'px';
+        pinModal.style.width = vv.width + 'px';
+        pinModal.style.height = vv.height + 'px';
+        pinModal.style.justifyContent = 'flex-end';
+        pinModal.style.paddingTop = '10px';
+        pinModal.style.paddingBottom = '10px';
+      } else {
+        pinModal.style.position = 'absolute';
+        pinModal.style.top = '0px';
+        pinModal.style.left = '0px';
+        pinModal.style.width = '100%';
+        pinModal.style.height = '100%';
+        pinModal.style.justifyContent = 'flex-start';
+        pinModal.style.paddingTop = 'calc(min(220px, 26svh))';
+        pinModal.style.paddingBottom = '10px';
+      }
     }
   }
 
@@ -987,19 +971,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!btnViewDetails.classList.contains('is-ready')) return;
     e.preventDefault();
 
-    // Lock page background scroll so mobile keyboard doesn't displace layout
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-
     // Synchronously focus and select input immediately on touch/click to guarantee virtual keyboard activation
     if (pinInput) {
       pinInput.focus();
       pinInput.select();
     }
 
-    // Hide resting butterfly on view details so modal butterfly takes over seamlessly
+    // Butterfly takes off and flies to top flowers
     if (butterflyWrap) {
-      butterflyWrap.classList.add('is-hidden-modal');
+      butterflyWrap.classList.add('fly-to-flowers');
+      if (wing) {
+        wing.style.animationDuration = '0.15s';
+        setTimeout(() => {
+          wing.style.animationDuration = '0.25s';
+        }, 2500);
+      }
     }
 
     // Red dome expands upwards to cover fullscreen
@@ -1009,7 +995,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     btnViewDetails.classList.add('is-hidden');
 
-    // Activate PIN modal (positioned 10px above keyboard)
+    // Activate PIN modal
     if (pinModal) {
       pinModal.classList.add('is-active');
     }
@@ -1080,9 +1066,15 @@ document.addEventListener('DOMContentLoaded', function() {
       bottomDome.classList.add('is-collapsed');
     }
 
-    // 4. Reveal resting butterfly on view details button
+    // 4. Butterfly flies back down to resting position over View Details
     if (butterflyWrap) {
-      butterflyWrap.classList.remove('is-hidden-modal');
+      butterflyWrap.classList.remove('fly-to-flowers');
+      if (wing) {
+        wing.style.animationDuration = '0.15s';
+        setTimeout(() => {
+          wing.style.animationDuration = '0.25s';
+        }, 2500);
+      }
     }
 
     // 5. Fade View details button back in
