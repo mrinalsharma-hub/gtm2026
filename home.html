@@ -124,6 +124,11 @@ html, body {
   height: 274px;
   z-index: 60;
   pointer-events: none;
+  transition: z-index 0.3s;
+}
+
+.page-ready .home-hero-text {
+  z-index: 2; /* Sits behind the red dome when it expands on View Details click */
 }
 
 .home-name {
@@ -223,7 +228,7 @@ html, body {
   margin: 0;
 }
 
-/* ── 4. Butterfly (Original Beautiful 3D Wing Flap) ── */
+/* ── 4. Butterfly (Always on Top Z-Axis) ── */
 .home-butterfly-wrap {
   position: absolute;
   top: auto;
@@ -232,7 +237,7 @@ html, body {
   transform: translateX(-50%) !important;
   width: 164px;
   height: 123px;
-  z-index: 6;
+  z-index: 100 !important; /* Always above all content */
   pointer-events: none;
   filter: drop-shadow(0px 4px 14px rgba(0, 0, 0, 0.25));
   transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -728,23 +733,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const remainingTime = Math.max(0, minLoadingTime - elapsed);
 
     setTimeout(() => {
-      // Step 1: Red background smoothly descends down into the arch & text turns red
+      // Step 1: Red background smoothly descends down into the arch (takes 2.2s) & text turns red
       document.body.classList.add('page-ready');
       if (canvas) canvas.classList.add('page-ready');
 
-      // Step 2: 1 second after red background starts moving down, butterfly appears and swoops
+      // Step 2: Exactly 2 seconds after red background completes its transformation (2.2s + 2.0s = 4.2s), butterfly appears and swoops
       setTimeout(() => {
         if (butterflyWrap) {
           butterflyWrap.classList.add('start-flight');
         }
-      }, 1000);
+      }, 4200);
 
-      // Step 3: When butterfly lands at bottom perch (~5s total), enable View Details button
+      // Step 3: When butterfly lands at bottom perch over "View details" (4.2s + 4.0s = 8.2s), enable View Details button
       setTimeout(() => {
         if (btnViewDetails) {
           btnViewDetails.classList.add('is-ready');
         }
-      }, 5200);
+      }, 8200);
     }, remainingTime);
   }
 
