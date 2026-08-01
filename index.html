@@ -72,10 +72,6 @@ body::before{
     <a href="schedule.html">Schedule</a>
     <a href="travel.html">Travel &amp; Stay</a>
     <a href="rsvp2.html">RSVP Please</a>
-    <button id="gateway-key-pill" class="gateway-key-pill" aria-label="Wedding Invitation Passcode" title="Invitation Passcode (Click to change)">
-      <span class="pill-dot"></span>
-      <span class="pill-text" id="gateway-pill-label">KEY</span>
-    </button>
   </nav>
   <button id="menu-btn" aria-label="Open menu">Menu</button>
 </header>
@@ -86,7 +82,6 @@ body::before{
   <a href="schedule.html">Schedule</a>
   <a href="travel.html">Travel &amp; Stay</a>
   <a href="rsvp2.html">RSVP Please</a>
-  <a href="#" id="menu-switch-key" class="menu-gateway-link">🔑 Passcode: <span id="menu-pill-key">Enter Key</span> <span class="pill-change">(Change)</span></a>
 </div>
 
 <main>
@@ -303,22 +298,6 @@ body::before{
         <span class="btn-arrow">→</span>
       </button>
     </form>
-
-    <!-- Discreet Key Presets / Hints -->
-    <div class="gateway-keys-hint">
-      <p class="hint-label">Passcodes provided on your wedding invite card:</p>
-      <div class="hint-pills">
-        <button type="button" class="hint-pill" data-key="gtm2026">GTM2026</button>
-        <button type="button" class="hint-pill" data-key="mrinalgarima">MRINALGARIMA</button>
-        <button type="button" class="hint-pill" data-key="garimamrinal">GARIMAMRINAL</button>
-      </div>
-    </div>
-
-    <!-- Active Mode Status (Shown when already authenticated and switching) -->
-    <div class="gateway-active-status" id="gateway-active-status" style="display:none;">
-      <p class="status-current">Currently Unlocked: <strong id="gateway-current-key-name">GTM 2026</strong></p>
-      <button type="button" id="gateway-logout-btn" class="gateway-btn-logout">Lock / Switch Guest</button>
-    </div>
   </div>
 </div>
 

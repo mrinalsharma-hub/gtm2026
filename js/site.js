@@ -146,43 +146,8 @@
               '<span class="btn-arrow">→</span>' +
             '</button>' +
           '</form>' +
-          '<div class="gateway-keys-hint">' +
-            '<p class="hint-label">Passcodes provided on your wedding invite card:</p>' +
-            '<div class="hint-pills">' +
-              '<button type="button" class="hint-pill" data-key="gtm2026">GTM2026</button>' +
-              '<button type="button" class="hint-pill" data-key="mrinalgarima">MRINALGARIMA</button>' +
-              '<button type="button" class="hint-pill" data-key="garimamrinal">GARIMAMRINAL</button>' +
-            '</div>' +
-          '</div>' +
-          '<div class="gateway-active-status" id="gateway-active-status" style="display:none;">' +
-            '<p class="status-current">Currently Unlocked: <strong id="gateway-current-key-name">GTM 2026</strong></p>' +
-            '<button type="button" id="gateway-logout-btn" class="gateway-btn-logout">Lock / Switch Guest</button>' +
-          '</div>' +
         '</div>';
       document.body.appendChild(overlayDiv);
-    }
-
-    // Inject header pill into navbar if missing
-    var nav = document.querySelector('header.site nav.primary');
-    if (nav && !document.getElementById('gateway-key-pill')) {
-      var pillBtn = document.createElement('button');
-      pillBtn.id = 'gateway-key-pill';
-      pillBtn.className = 'gateway-key-pill';
-      pillBtn.setAttribute('aria-label', 'Wedding Invitation Passcode');
-      pillBtn.setAttribute('title', 'Invitation Passcode (Click to change)');
-      pillBtn.innerHTML = '<span class="pill-dot"></span><span class="pill-text" id="gateway-pill-label">KEY</span>';
-      nav.appendChild(pillBtn);
-    }
-
-    // Inject switch link into mobile menu panel if missing
-    var menuPanel = document.getElementById('menu-panel');
-    if (menuPanel && !document.getElementById('menu-switch-key')) {
-      var menuLink = document.createElement('a');
-      menuLink.href = '#';
-      menuLink.id = 'menu-switch-key';
-      menuLink.className = 'menu-gateway-link';
-      menuLink.innerHTML = '🔑 Passcode: <span id="menu-pill-key">Enter Key</span> <span class="pill-change">(Change)</span>';
-      menuPanel.appendChild(menuLink);
     }
   }
 
@@ -305,44 +270,6 @@
       clearError();
     }
 
-    function getVersionTargetUrl(targetVersion) {
-      var currentPath = window.location.pathname || '/';
-      var currentFile = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
-      if (!currentFile.endsWith('.html') && currentFile !== '') {
-        currentFile = 'index.html';
-      }
-
-      // Check if we are currently inside a subdirectory version
-      var inMrinalGarima = currentPath.indexOf('/mrinalgarima') !== -1;
-      var inGarimaMrinal = currentPath.indexOf('/garimamrinal') !== -1;
-      var currentVersion = inMrinalGarima ? 'mrinalgarima' : (inGarimaMrinal ? 'garimamrinal' : 'gtm2026');
-
-      if (currentVersion === targetVersion) {
-        return null; // Already in correct version
-      }
-
-      // Compute relative redirect destination
-      if (targetVersion === 'gtm2026') {
-        if (inMrinalGarima || inGarimaMrinal) {
-          return '../' + (currentFile || 'index.html');
-        }
-        return 'index.html';
-      } else if (targetVersion === 'mrinalgarima') {
-        if (inGarimaMrinal) {
-          return '../mrinalgarima/' + (currentFile || 'index.html');
-        } else if (!inMrinalGarima) {
-          return 'mrinalgarima/' + (currentFile || 'index.html');
-        }
-      } else if (targetVersion === 'garimamrinal') {
-        if (inMrinalGarima) {
-          return '../garimamrinal/' + (currentFile || 'index.html');
-        } else if (!inGarimaMrinal) {
-          return 'garimamrinal/' + (currentFile || 'index.html');
-        }
-      }
-      return null;
-    }
-
     function handleUnlock(versionId) {
       var v = WEDDING_VERSIONS[versionId];
       if (!v) return;
@@ -355,8 +282,6 @@
         submitBtn.innerHTML = '<span class="btn-text">Invitation Unlocked 🪔</span>';
       }
 
-      var targetUrl = getVersionTargetUrl(v.id);
-
       if (overlay) {
         overlay.classList.add('unlocking');
         setTimeout(function(){
@@ -366,15 +291,9 @@
           if (submitBtn) {
             submitBtn.innerHTML = '<span class="btn-text">Unlock Invitation</span><span class="btn-arrow">→</span>';
           }
-          if (targetUrl) {
-            window.location.href = targetUrl;
-          }
         }, 550);
       } else {
         document.body.classList.remove('gateway-locked');
-        if (targetUrl) {
-          window.location.href = targetUrl;
-        }
       }
     }
 
