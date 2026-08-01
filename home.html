@@ -336,20 +336,27 @@ html, body {
 
 @keyframes swoop {
   0% {
-    transform: translate(300px, -800px) rotate(-45deg);
+    transform: translate(220px, -750px) rotate(-28deg);
     opacity: 0;
   }
   10% {
     opacity: 1;
+    transform: translate(160px, -600px) rotate(-22deg);
   }
-  30% {
-    transform: translate(150px, -400px) rotate(-15deg);
+  25% {
+    transform: translate(70px, -450px) rotate(-8deg);
   }
-  55% {
-    transform: translate(-100px, -250px) rotate(20deg);
+  42% {
+    transform: translate(-50px, -320px) rotate(14deg);
   }
-  75% {
-    transform: translate(-50px, -50px) rotate(10deg);
+  60% {
+    transform: translate(-90px, -200px) rotate(8deg);
+  }
+  78% {
+    transform: translate(-30px, -80px) rotate(-6deg);
+  }
+  90% {
+    transform: translate(10px, -20px) rotate(2deg);
   }
   100% {
     transform: translate(0, 0) rotate(0deg);
@@ -358,9 +365,14 @@ html, body {
 }
 
 @keyframes bob {
-  0%, 20%, 40%, 60%, 80% { transform: translateY(-20px); }
-  10%, 30%, 50%, 70% { transform: translateY(20px); }
-  90%, 100% { transform: translateY(0); }
+  0%, 100% { transform: translateY(0); }
+  12% { transform: translateY(-8px); }
+  25% { transform: translateY(6px); }
+  37% { transform: translateY(-7px); }
+  50% { transform: translateY(5px); }
+  62% { transform: translateY(-8px); }
+  75% { transform: translateY(4px); }
+  88% { transform: translateY(-4px); }
 }
 
 /* ── 5. Bottom Red Dome (Starts Fullscreen -> Morphs down into Bottom Circle Module) ── */
@@ -851,19 +863,19 @@ document.addEventListener('DOMContentLoaded', function() {
         splashPreloader.classList.add('is-dismissed');
       }
 
-      // Step 2: Exactly 2 seconds after red dome finishes morphing down (2.2s transition + 2.0s delay = 4.2s)
+      // Step 2: Exactly 1.5 seconds after red dome finishes morphing down (2.2s transition + 1.5s delay = 3.7s)
       setTimeout(() => {
         if (butterflyWrap) {
           butterflyWrap.classList.add('start-flight');
         }
-      }, 4200);
+      }, 3700);
 
-      // Step 3: When butterfly finishes swooping and perches over View details (4.4s flight = 8.6s), enable View details button
+      // Step 3: When butterfly finishes swooping and perches over View details (4.4s flight = 8.1s), enable View details button
       setTimeout(() => {
         if (btnViewDetails) {
           btnViewDetails.classList.add('is-ready');
         }
-      }, 8600);
+      }, 8100);
     }, remainingTime + 300);
   });
 
