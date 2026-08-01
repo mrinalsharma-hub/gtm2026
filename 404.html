@@ -19,6 +19,18 @@ a{display:inline-block;margin-top:34px;padding:13px 42px;border:1.5px solid var(
   color:var(--ivory);text-decoration:none;transition:background .35s,color .35s}
 a:hover{background:var(--ivory);color:var(--red)}
 </style>
+<script>
+(function(){
+  var p = window.location.pathname || '';
+  if (p.indexOf('/mrinalgarima') !== -1) {
+    var sub = p.replace(/^\/mrinalgarima\/?/, '');
+    window.location.replace('https://www.mrinalgarima.com/' + (sub || ''));
+  } else if (p.indexOf('/garimamrinal') !== -1) {
+    var sub = p.replace(/^\/garimamrinal\/?/, '');
+    window.location.replace('https://www.garimamrinal.com/' + (sub || ''));
+  }
+})();
+</script>
 </head>
 <body>
 <h1>Lost in the hills</h1>
