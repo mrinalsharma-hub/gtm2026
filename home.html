@@ -179,7 +179,7 @@ html, body {
   text-transform: none !important;
   display: inline-block;
   background: linear-gradient(to top, #ffffff 0%, #ffffff 100%);
-  background-size: 100% var(--takes-progress, 0%);
+  background-size: 100% var(--takes-progress, 15%);
   background-repeat: no-repeat;
   background-position: bottom;
   -webkit-background-clip: text;
@@ -762,9 +762,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnPinSubmit = document.getElementById('btn-pin-submit');
   const pinInput = document.getElementById('pin-input');
   const pinError = document.getElementById('pin-error');
-  const splashPreloader = document.getElementById('splash-preloader');
-
-  // ── 100% BULLETPROOF ASSET PRELOADER WITH PROGRESS BAR "takes" ──
   const splashPreloader = document.getElementById('splash-preloader');
   const splashScript = document.querySelector('.splash-script');
   const domImages = Array.from(document.querySelectorAll('.home-mobile-canvas img'));
