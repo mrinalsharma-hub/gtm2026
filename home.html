@@ -302,7 +302,7 @@ html, body {
 }
 
 .home-butterfly-wrap.start-flight .flight-container {
-  animation: swoop 4s cubic-bezier(0.25, 1, 0.5, 1) 0s forwards;
+  animation: swoop 4.4s cubic-bezier(0.25, 1, 0.5, 1) 0s forwards;
 }
 
 .bob-container {
@@ -311,7 +311,7 @@ html, body {
 }
 
 .home-butterfly-wrap.start-flight .bob-container {
-  animation: bob 4s ease-in-out 0s forwards;
+  animation: bob 4.4s ease-in-out 0s forwards;
 }
 
 .wing-flap {
@@ -324,8 +324,8 @@ html, body {
 
 .home-butterfly-wrap.start-flight .wing-flap {
   animation: 
-    flap-fast 0.15s ease-in-out 27 0s,
-    flap-slow 0.21s ease-in-out infinite 4.05s;
+    flap-fast 0.15s ease-in-out 29 0s,
+    flap-slow 0.21s ease-in-out infinite 4.45s;
 }
 
 @keyframes flap-fast {
@@ -805,12 +805,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }, 4000);
 
-      // Step 3: When butterfly finishes swooping and perches over View details (4.0s flight = 8.0s), enable View details button
+      // Step 3: When butterfly finishes swooping and perches over View details (4.4s flight = 8.4s), enable View details button
       setTimeout(() => {
         if (btnViewDetails) {
           btnViewDetails.classList.add('is-ready');
         }
-      }, 8000);
+      }, 8400);
     }, remainingTime);
   });
 
