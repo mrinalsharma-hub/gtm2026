@@ -55,7 +55,10 @@ h1,h2,h3{font-family:'Cinzel',serif;font-weight:400;line-height:1.15}
 /* ── header / nav (Navbar) ──────────────────────────── */
 header.site{
   position:fixed !important;top:0;left:0;right:0;z-index:1000 !important;
-  height:72px !important;
+  height:calc(72px + env(safe-area-inset-top, 0px)) !important;
+  padding-top:env(safe-area-inset-top, 0px) !important;
+  padding-left:max(clamp(20px,4vw,48px), env(safe-area-inset-left, 0px)) !important;
+  padding-right:max(clamp(20px,4vw,48px), env(safe-area-inset-right, 0px)) !important;
   background:rgba(140, 22, 26, 0.95) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
@@ -63,7 +66,7 @@ header.site{
   outline:none !important;
   box-shadow: none !important;
   display:flex;align-items:center !important;justify-content:space-between;
-  padding:0 clamp(20px,4vw,48px) !important;color:var(--ivory);
+  color:var(--ivory);
   transition:none !important;
   overflow:visible !important;
 }

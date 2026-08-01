@@ -468,5 +468,22 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
+  /* ── 9. MOBILE ADDRESS BAR COLLAPSER ─────────────────── */
+  if (typeof window !== 'undefined' && 'ontouchstart' in window) {
+    var hasTriggeredCollapse = false;
+    function collapseAddressBar() {
+      if (hasTriggeredCollapse) return;
+      hasTriggeredCollapse = true;
+      if (window.scrollY === 0 && document.documentElement.scrollHeight > window.innerHeight) {
+        window.scrollBy({ top: 1, left: 0, behavior: 'smooth' });
+      }
+    }
+    window.addEventListener('touchstart', function(){
+      if (!hasTriggeredCollapse && window.scrollY === 0) {
+        setTimeout(collapseAddressBar, 80);
+      }
+    }, { passive: true, once: true });
+  }
+
 })();
 
