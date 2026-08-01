@@ -144,10 +144,10 @@ html, body {
        url('https://fonts.gstatic.com/s/windsong/v13/KR1WBsyu-P-GFEW57r95.ttf') format('truetype');
 }
 
-/* ── 3. Typography Group (Vertically Centered between Top (0) and Butterfly) ── */
+/* ── 3. Typography Group (Vertically Centered between Flowers Bottom and Butterfly Top) ── */
 .home-hero-text {
   position: absolute;
-  top: calc((100% - 190px) / 2);
+  top: calc(50% + 30px);
   left: 0;
   width: 100%;
   transform: translateY(-50%);
@@ -344,6 +344,26 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.href = 'schedule.html' + window.location.search + window.location.hash;
   }
 });
+
+// Mathematically place hero text block in the middle between flowers bottom and butterfly top
+function centerHeroTextBetweenFlowersAndButterfly() {
+  var flowers = document.querySelector('.home-flowers-top');
+  var butterfly = document.querySelector('.home-butterfly-wrap');
+  var heroText = document.querySelector('.home-hero-text');
+  if (flowers && butterfly && heroText) {
+    var fBottom = flowers.getBoundingClientRect().bottom;
+    var bTop = butterfly.getBoundingClientRect().top;
+    var midY = (fBottom + bTop) / 2;
+    heroText.style.top = midY + 'px';
+    heroText.style.transform = 'translateY(-50%)';
+  }
+}
+
+window.addEventListener('load', centerHeroTextBetweenFlowersAndButterfly);
+window.addEventListener('resize', centerHeroTextBetweenFlowersAndButterfly);
+if (document.fonts) {
+  document.fonts.ready.then(centerHeroTextBetweenFlowersAndButterfly);
+}
 </script>
 
 </body>
