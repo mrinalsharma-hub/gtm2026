@@ -113,27 +113,25 @@ html, body {
   100% { transform: translateX(-50%) rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
 }
 
-/* ── 0. Dedicated One-Time Red Splash Preloader ── */
+/* ── 0. Dedicated One-Time Red Splash Preloader Text ── */
 .splash-preloader {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100svh;
-  background: #C81A1F;
-  z-index: 999999;
+  background: transparent;
+  z-index: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: auto;
+  pointer-events: none;
   overflow: hidden;
-  transition: transform 2.0s cubic-bezier(0.25, 1, 0.35, 1), opacity 0.5s ease 1.6s;
-  will-change: transform;
+  transition: opacity 0.8s ease;
 }
 
 .splash-preloader.is-dismissed {
-  transform: translateY(100svh);
-  pointer-events: none;
   opacity: 0;
+  pointer-events: none;
 }
 
 .splash-hero-text {
@@ -365,21 +363,29 @@ html, body {
   90%, 100% { transform: translateY(0); }
 }
 
-/* ── 5. Bottom Red Dome (Collapsed Arch -> Expands on View Details) ── */
+/* ── 5. Bottom Red Dome (Starts Fullscreen -> Morphs down into Bottom Circle Module) ── */
 .home-bottom-dome {
   position: absolute;
   top: auto;
-  bottom: -868px;
+  bottom: -40px;
   left: 50% !important;
-  transform: translateX(-50%) !important;
+  transform: translateX(-50%) scale(2.8) !important;
   width: 981px;
   height: 981px;
-  z-index: 10;
+  z-index: 500;
   pointer-events: none;
-  transition: transform 2.5s cubic-bezier(0.22, 1, 0.36, 1), bottom 2.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1), bottom 2.2s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, bottom;
 }
 
+/* After loading, dome morphs down into the bottom circular arch */
+.home-bottom-dome.is-collapsed {
+  bottom: -868px !important;
+  transform: translateX(-50%) scale(1) !important;
+  z-index: 10 !important;
+}
+
+/* When View details is clicked, dome expands back up to fullscreen */
 .home-bottom-dome.expand-fullscreen {
   bottom: -40px !important;
   transform: translateX(-50%) scale(2.8) !important;
@@ -826,24 +832,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const remainingTime = Math.max(0, minLoadingTime - elapsed);
 
     setTimeout(() => {
-      // Step 1: All assets are 100% loaded and decoded. Dismiss splash screen!
+      // Step 1: Red background smoothly morphs down into the bottom circle module
+      if (bottomDome) {
+        bottomDome.classList.add('is-collapsed');
+      }
       if (splashPreloader) {
         splashPreloader.classList.add('is-dismissed');
       }
 
-      // Step 2: Exactly 2 seconds after splash screen finishes moving away (2.0s transition + 2.0s delay = 4.0s)
+      // Step 2: Exactly 2 seconds after red dome finishes morphing down (2.2s transition + 2.0s delay = 4.2s)
       setTimeout(() => {
         if (butterflyWrap) {
           butterflyWrap.classList.add('start-flight');
         }
-      }, 4000);
+      }, 4200);
 
-      // Step 3: When butterfly finishes swooping and perches over View details (4.4s flight = 8.4s), enable View details button
+      // Step 3: When butterfly finishes swooping and perches over View details (4.4s flight = 8.6s), enable View details button
       setTimeout(() => {
         if (btnViewDetails) {
           btnViewDetails.classList.add('is-ready');
         }
-      }, 8400);
+      }, 8600);
     }, remainingTime + 300);
   });
 
@@ -910,8 +919,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Red background expands upwards to cover fullscreen
+    // Red dome expands upwards to cover fullscreen
     if (bottomDome) {
+      bottomDome.classList.remove('is-collapsed');
       bottomDome.classList.add('expand-fullscreen');
     }
     btnViewDetails.classList.add('is-hidden');
@@ -950,8 +960,11 @@ document.addEventListener('DOMContentLoaded', function() {
       // 2. Fade out PIN content
       if (pinModal) pinModal.classList.remove('is-active');
 
-      // 3. Red background glides back down
-      if (bottomDome) bottomDome.classList.remove('expand-fullscreen');
+      // 3. Red dome morphs back down into bottom circular module
+      if (bottomDome) {
+        bottomDome.classList.remove('expand-fullscreen');
+        bottomDome.classList.add('is-collapsed');
+      }
 
       // 4. Butterfly flies back down to resting position with active flapping
       if (butterflyWrap) {
