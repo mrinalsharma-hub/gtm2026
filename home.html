@@ -86,21 +86,21 @@ html, body {
   pointer-events: none;
 }
 
-/* ── 2. Flowers Top (Figma 340:149: exact SVG, position, and height) ── */
+/* ── 2. Flowers Top (Figma 340:149: exact true aspect ratio) ── */
 .home-flowers-top {
   position: absolute;
   top: -2px;
   left: calc(50% + 17.5px);
   transform: translateX(-50%);
   width: min(291px, 66.14vw);
-  max-height: 40.7vh;
-  aspect-ratio: 291 / 389;
+  height: auto;
   pointer-events: none;
   z-index: 3;
 }
 .home-flowers-top img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 767 / 1024;
   object-fit: contain;
   display: block;
 }
