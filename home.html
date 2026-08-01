@@ -534,7 +534,7 @@ html, body {
   transform: scale(1) rotate(0deg);
 }
 
-/* ── PIN Code Interface (Matching Figma 343:346 & Exact User Reference Images) ── */
+/* ── PIN Code Interface (Matching Figma 343:346 & Exact Screenshots) ── */
 .home-pin-modal {
   position: fixed;
   top: 0;
@@ -549,11 +549,11 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: max(50px, 7svh) 24px 20px;
+  padding: max(45px, 6.5svh) 24px 20px;
   box-sizing: border-box;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.35s ease;
   overflow: hidden;
 }
 .home-pin-modal.is-active {
@@ -565,7 +565,7 @@ html, body {
   padding: 0 !important;
   border-radius: 0 !important;
   width: 100%;
-  max-width: 325px;
+  max-width: 320px;
   box-shadow: none !important;
   border: none !important;
   text-align: center;
@@ -573,9 +573,9 @@ html, body {
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  transform: translateY(10px);
+  transform: translateY(8px);
   opacity: 0;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .home-pin-modal.is-active .home-pin-content {
   transform: translateY(0);
@@ -583,10 +583,9 @@ html, body {
 }
 
 .home-modal-butterfly {
-  width: 142px;
-  height: 106px;
-  max-width: 44vw;
-  max-height: 110px;
+  width: 140px;
+  height: 105px;
+  max-width: 42vw;
   margin: 0 auto 6px;
   display: flex;
   align-items: center;
@@ -659,13 +658,16 @@ html, body {
 .home-pin-actions {
   display: flex;
   gap: 12px;
-  margin-top: 21px;
-  padding-top: 5px;
+  margin-top: 18px;
   width: 100%;
 }
 .home-pin-btn {
   flex: 1;
-  padding: 10px 0;
+  height: 46px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: 'Cormorant Garamond', serif !important;
   font-weight: 400;
   font-style: normal !important;
@@ -686,29 +688,58 @@ html, body {
 .btn-close {
   background: transparent;
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
 }
 .btn-close:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
 }
 .btn-open {
   background: #FFFFFF;
-  color: #7e1216;
-  border: none;
+  color: #7E1216;
+  border: 1.5px solid #FFFFFF;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: not-allowed;
-  transition: opacity 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+  cursor: pointer;
 }
 .btn-open.is-enabled {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
   font-weight: 500 !important;
 }
-.btn-open.is-enabled:hover {
-  background: #f4eee2;
+
+/* ── Keyboard Open State (home_2.html): Snug fit above keyboard, strictly 12px bottom padding ── */
+.home-pin-modal.keyboard-open {
+  justify-content: flex-end !important;
+  padding-top: 10px !important;
+  padding-bottom: 12px !important;
+}
+.home-pin-modal.keyboard-open .home-modal-butterfly {
+  width: 128px;
+  height: 96px;
+  margin-bottom: 2px;
+}
+.home-pin-modal.keyboard-open .home-pin-title {
+  font-size: 27px;
+  margin-top: 2px;
+  margin-bottom: 1px;
+}
+.home-pin-modal.keyboard-open .home-pin-subtitle {
+  font-size: 16.5px;
+  margin-bottom: 10px;
+}
+.home-pin-modal.keyboard-open .home-pin-input {
+  height: 46px;
+}
+.home-pin-modal.keyboard-open .home-pin-actions {
+  margin-top: 12px;
+}
+.home-pin-modal.keyboard-open .home-pin-btn {
+  height: 42px;
+}
+
+/* ── Hide bottom resting butterfly when modal is open ── */
+.home-butterfly-wrap.is-hidden-modal {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 </style>
 </head>
@@ -1111,19 +1142,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     pinInput.addEventListener('focus', function() {
       if (blurTimeout) clearTimeout(blurTimeout);
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
       setTimeout(updateModalPosition, 50);
       setTimeout(updateModalPosition, 150);
       setTimeout(updateModalPosition, 300);
     });
     pinInput.addEventListener('blur', function() {
       if (isSubmitting) return;
-      blurTimeout = setTimeout(() => {
-        if (pinModal && pinModal.classList.contains('is-active') && !isSubmitting) {
-          handleCloseModal();
-        }
-      }, 160);
+      setTimeout(updateModalPosition, 50);
+      setTimeout(updateModalPosition, 150);
+      setTimeout(updateModalPosition, 300);
     });
     pinInput.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
