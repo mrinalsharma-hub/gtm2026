@@ -63,7 +63,7 @@ html, body {
   height: 100%;
   object-fit: cover;
   transform: scale(1.2) translateX(-10px);
-  opacity: 1.0;
+  opacity: 0.90; /* Reduced by 10% */
   pointer-events: none;
 }
 
@@ -76,66 +76,64 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 180px; /* Ample scroll clearance above bottom circular wheel */
+  padding-bottom: 160px; /* Scroll clearance above fixed bottom nav */
 }
 
-/* ── 3. Top Flowers (Breeze Animation) ── */
+/* ── 3. Top Flowers (Fixed to top, zero flicker/bounce on scroll) ── */
 .schedule-flowers-top {
-  filter: drop-shadow(6px 12px 12px rgba(50, 20, 10, 0.35));
   position: relative;
-  margin-top: -10px;
+  margin-top: 0px;
   width: min(349px, 79.37vw);
   height: auto;
   pointer-events: none;
   z-index: 3;
-  transform-origin: center top;
-  animation: gentleFloralBreeze 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-  will-change: transform;
+  filter: drop-shadow(0px 8px 16px rgba(50, 20, 10, 0.2));
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .schedule-flowers-top img {
   width: 100%;
   height: auto;
   display: block;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
-@keyframes gentleFloralBreeze {
-  0% { transform: rotate(0deg) translateY(0px); }
-  30% { transform: rotate(1.2deg) translateY(-1px) skewX(-0.4deg); }
-  70% { transform: rotate(-0.8deg) translateY(-2px) skewX(0.3deg); }
-  100% { transform: rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
-}
-
-/* ── 4. Header: The Wedding Weekend (Matched to homepage typography) ── */
+/* ── 4. Header: The Wedding Weekend (Exact fonts & sizes as Garima takes Mrinal on home.html) ── */
 .schedule-header {
   text-align: center;
-  margin-top: 14px;
-  margin-bottom: 28px;
+  margin-top: 8px;
+  margin-bottom: 30px;
   position: relative;
   z-index: 3;
 }
 .schedule-script-the {
-  font-family: 'WindSong', cursive;
-  font-size: 52px;
+  font-family: 'WindSong', cursive !important;
+  font-size: clamp(54px, 14vw, 70px);
   font-weight: 400;
-  color: #8A141A;
-  line-height: 0.9;
+  line-height: 1;
+  color: #c81a1f;
   display: block;
-  margin-bottom: 2px;
-  transform: rotate(-3deg);
-  letter-spacing: 0.02em;
+  margin-bottom: -10px;
+  text-transform: none !important;
 }
 .schedule-title-main {
   font-family: 'Cinzel', serif;
-  font-size: clamp(34px, 8.8vw, 40px);
-  font-weight: 500;
-  color: #8A141A;
-  letter-spacing: 0.15em;
-  line-height: 1.12;
+  font-size: clamp(44px, 11vw, 64px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 1.28px;
+  background: linear-gradient(180deg, #d03a3e 19.186%, #c81a1f 43.023%, #a71f23 79.651%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #c81a1f;
   text-transform: uppercase;
   margin: 0;
 }
 
-/* ── 5. Schedule Events Timeline Feed (Matched to homepage typography) ── */
+/* ── 5. Schedule Events Timeline Feed (Figma 343:83 Specs) ── */
 .schedule-events-feed {
   width: 100%;
   max-width: 440px;
@@ -272,25 +270,25 @@ html, body {
   background-color: #9B1B20;
 }
 
-/* ── 6. Circular "Wheel of Fortune" Bottom Navigation ── */
+/* ── 6. Fixed Circular Bottom Navigation (Matching Image 2) ── */
 .wheel-nav-container {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 140px;
+  height: 95px;
   z-index: 1000;
   pointer-events: auto;
   touch-action: pan-y;
-  overflow: visible;
+  overflow: hidden;
   display: flex;
   justify-content: center;
 }
 
-/* The Rotating 981px Circular Dome Disk */
+/* The Fixed 981px Circular Dome Disk */
 .wheel-disk-wrap {
   position: absolute;
-  bottom: -845px;
+  bottom: -886px;
   left: 50%;
   width: 981px;
   height: 981px;
@@ -338,9 +336,9 @@ html, body {
   white-space: nowrap;
 }
 
-/* Left Item: RSVP Please (Tilted along left curvature -22deg) */
+/* Left Item: RSVP Please (Tilted along left curvature -18deg) */
 .wheel-item.item-rsvp {
-  transform: rotate(-22deg) translate(-50%, -468px);
+  transform: rotate(-18deg) translate(-50%, -468px);
   font-size: 22px;
   font-weight: 400;
 }
@@ -354,9 +352,9 @@ html, body {
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
-/* Right Item: Travel & Stay (Tilted along right curvature +22deg) */
+/* Right Item: Travel & Stay (Tilted along right curvature +18deg) */
 .wheel-item.item-travel {
-  transform: rotate(22deg) translate(-50%, -468px);
+  transform: rotate(18deg) translate(-50%, -468px);
   font-size: 22px;
   font-weight: 400;
 }
