@@ -45,7 +45,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   z-index: 2147483647 !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
+  justify-content: center !important;
   pointer-events: auto !important;
   user-select: none !important;
   -webkit-user-select: none !important;
@@ -53,24 +53,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
+  max-width: 480px !important;
   height: 58px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: flex-start !important;
-  padding: 0 16px !important;
-  overflow-x: auto !important;
-  overflow-y: hidden !important;
-  scroll-behavior: smooth !important;
-  -webkit-overflow-scrolling: touch !important;
-  scrollbar-width: none !important;
-}
-.fixed-bottom-nav .nav-container::-webkit-scrollbar {
-  display: none !important;
+  justify-content: space-around !important;
+  padding: 0 12px !important;
 }
 
 .fixed-bottom-nav .nav-tab {
-  flex: 0 0 calc((100vw - 32px) / 3.3) !important;
-  max-width: 130px !important;
+  flex: 1 !important;
   height: 100% !important;
   min-height: 48px !important;
   display: flex !important;
@@ -99,14 +91,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25) !important;
 }
 
-.fixed-bottom-nav .nav-tab.disabled,
-.fixed-bottom-nav .nav-tab[aria-disabled="true"] {
-  color: rgba(255, 255, 255, 0.55) !important;
-  pointer-events: none !important;
-  cursor: default !important;
-}
-
-.fixed-bottom-nav .nav-tab:not(.disabled):not([aria-disabled="true"]):active {
+.fixed-bottom-nav .nav-tab:active {
   opacity: 0.75 !important;
   transform: scale(0.96) !important;
 }
@@ -382,9 +367,6 @@ body::before{
 <!-- ── Material & Apple HIG Fixed Bottom Navigation ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container">
-    <a href="#" class="nav-tab disabled" tabindex="-1" aria-disabled="true" aria-label="Home (Disabled)">
-      <span class="nav-label">Home</span>
-    </a>
     <a href="schedule.html" class="nav-tab active" aria-label="Schedule (Current Page)">
       <span class="nav-label">Schedule</span>
     </a>

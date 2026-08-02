@@ -284,7 +284,7 @@ html, body {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   pointer-events: auto;
   user-select: none;
   -webkit-user-select: none;
@@ -292,24 +292,16 @@ html, body {
 
 .fixed-bottom-nav .nav-container {
   width: 100%;
+  max-width: 480px;
   height: 58px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding: 0 16px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-.fixed-bottom-nav .nav-container::-webkit-scrollbar {
-  display: none;
+  justify-content: space-around;
+  padding: 0 12px;
 }
 
 .fixed-bottom-nav .nav-tab {
-  flex: 0 0 calc((100vw - 32px) / 3.3);
-  max-width: 130px;
+  flex: 1;
   height: 100%;
   min-height: 48px;
   display: flex;
@@ -338,14 +330,7 @@ html, body {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
-.fixed-bottom-nav .nav-tab.disabled,
-.fixed-bottom-nav .nav-tab[aria-disabled="true"] {
-  color: rgba(255, 255, 255, 0.55) !important;
-  pointer-events: none !important;
-  cursor: default !important;
-}
-
-.fixed-bottom-nav .nav-tab:not(.disabled):not([aria-disabled="true"]):active {
+.fixed-bottom-nav .nav-tab:active {
   opacity: 0.75;
   transform: scale(0.96);
 }
@@ -528,9 +513,6 @@ html, body {
 <!-- ── 6. Material & Apple HIG Fixed Bottom Navigation ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container">
-    <a href="#" class="nav-tab disabled" tabindex="-1" aria-disabled="true" aria-label="Home (Disabled)">
-      <span class="nav-label">Home</span>
-    </a>
     <a href="schedule.html" class="nav-tab active" aria-label="Schedule (Current Page)">
       <span class="nav-label">Schedule</span>
     </a>
