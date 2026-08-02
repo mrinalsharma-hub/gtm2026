@@ -195,6 +195,25 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   background: transparent !important;
 }
 
+body {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: radial-gradient(ellipse 120% 80% at 75% 65%, rgba(222, 115, 63, 0.42) 0%, rgba(201, 86, 56, 0.22) 40%, transparent 75%),
+              radial-gradient(ellipse 100% 70% at 20% 30%, rgba(168, 46, 78, 0.38) 0%, rgba(107, 31, 52, 0.18) 45%, transparent 75%),
+              linear-gradient(180deg, #241219 0%, #3D1623 18%, #631B32 38%, #852241 58%, #5A172B 78%, #1A060D 100%) !important;
+  background-color: #241219 !important;
+  color: #FFFFFF !important;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  overflow: hidden !important;
+  overscroll-behavior: none !important;
+  touch-action: none !important;
+}
+
 main {
   position: absolute !important;
   top: 0 !important;
@@ -209,6 +228,25 @@ main {
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0) !important;
   -webkit-transform: translate3d(0, 0, 0) !important;
+  background: transparent !important;
+}
+
+.hero {
+  background: transparent !important;
+  color: #FFFFFF !important;
+}
+.hero h1.page-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.6) !important;
+}
+.hero .sub {
+  color: rgba(255, 255, 255, 0.88) !important;
+}
+.flourish path, .flourish circle {
+  stroke: #E5A93C !important;
+}
+.flourish .fill {
+  fill: #E5A93C !important;
 }
 </style>
 </head>

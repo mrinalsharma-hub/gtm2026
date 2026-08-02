@@ -53,9 +53,12 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background-color: #F8F4EA;
+  background: radial-gradient(ellipse 120% 80% at 75% 65%, rgba(222, 115, 63, 0.42) 0%, rgba(201, 86, 56, 0.22) 40%, transparent 75%),
+              radial-gradient(ellipse 100% 70% at 20% 30%, rgba(168, 46, 78, 0.38) 0%, rgba(107, 31, 52, 0.18) 45%, transparent 75%),
+              linear-gradient(180deg, #241219 0%, #3D1623 18%, #631B32 38%, #852241 58%, #5A172B 78%, #1A060D 100%) !important;
+  background-color: #241219 !important;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  color: #140100;
+  color: #FFFFFF;
   overflow: hidden !important;
   overscroll-behavior: none !important;
   touch-action: none !important;
@@ -71,7 +74,10 @@ body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  background-color: #F8F4EA;
+  background: radial-gradient(ellipse 120% 80% at 75% 65%, rgba(222, 115, 63, 0.42) 0%, rgba(201, 86, 56, 0.22) 40%, transparent 75%),
+              radial-gradient(ellipse 100% 70% at 20% 30%, rgba(168, 46, 78, 0.38) 0%, rgba(107, 31, 52, 0.18) 45%, transparent 75%),
+              linear-gradient(180deg, #241219 0%, #3D1623 18%, #631B32 38%, #852241 58%, #5A172B 78%, #1A060D 100%) !important;
+  background-color: #241219 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
@@ -82,7 +88,8 @@ body {
   height: 100%;
   object-fit: cover;
   transform: scale(1.2) translateX(-10px);
-  opacity: 0.90; /* Reduced by 10% */
+  opacity: 0.18;
+  mix-blend-mode: overlay;
   pointer-events: none;
 }
 
@@ -116,7 +123,7 @@ body {
   height: auto;
   pointer-events: none;
   z-index: 3;
-  filter: drop-shadow(0px 8px 16px rgba(50, 20, 10, 0.2));
+  filter: drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.4));
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   backface-visibility: hidden;
@@ -143,7 +150,8 @@ body {
   font-size: clamp(54px, 14vw, 70px);
   font-weight: 400;
   line-height: 1;
-  color: #c81a1f;
+  color: #FFD8A8;
+  text-shadow: 0 2px 12px rgba(222, 115, 63, 0.5);
   display: block;
   margin-bottom: -10px;
   text-transform: none !important;
@@ -154,10 +162,10 @@ body {
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 1.28px;
-  background: linear-gradient(180deg, #d03a3e 19.186%, #c81a1f 43.023%, #a71f23 79.651%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #c81a1f;
+  color: #FFFFFF;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.6);
+  background: none;
+  -webkit-text-fill-color: #FFFFFF;
   text-transform: uppercase;
   margin: 0;
 }
@@ -166,10 +174,10 @@ body {
 .schedule-events-feed {
   width: 100%;
   max-width: 440px;
-  padding: 0 24px;
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 24px;
   position: relative;
   z-index: 3;
 }
@@ -181,36 +189,45 @@ body {
   align-items: center;
   text-align: center;
   position: relative;
+  background: rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  padding: 24px 20px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
 }
 
 .event-eyebrow {
   font-family: 'Cinzel', serif;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: #0B4C6D;
-  letter-spacing: 0.16em;
+  color: #E5A93C;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   line-height: 1.4;
   margin-bottom: 8px;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 .event-title {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 32px;
   font-weight: 500;
-  color: #8A141A;
+  color: #FFFFFF;
   line-height: 1.15;
   letter-spacing: 0.02em;
   margin-bottom: 10px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
 .event-desc {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 18px;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: 0.02em;
-  color: #0B4C6D;
+  color: rgba(255, 255, 255, 0.9);
   max-width: 350px;
   margin: 0 auto;
 }
@@ -219,9 +236,10 @@ body {
   width: 100%;
   max-width: 345px;
   margin: 14px auto;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(45, 15, 10, 0.14);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 .event-image-container img {
   width: 100%;
@@ -243,10 +261,10 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 16.5px;
   line-height: 1.4;
-  color: #0B4C6D;
+  color: rgba(255, 255, 255, 0.9);
 }
 .program-item strong {
-  color: #8A141A;
+  color: #E5A93C;
   font-weight: 600;
 }
 
@@ -263,14 +281,14 @@ body {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: 16.5px;
   line-height: 1.4;
-  color: #0B4C6D;
+  color: rgba(255, 255, 255, 0.9);
 }
 .event-meta-row strong {
-  color: #8A141A;
+  color: #E5A93C;
   font-weight: 600;
 }
 .event-meta-row a {
-  color: inherit;
+  color: #FFD8A8;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
@@ -282,12 +300,12 @@ body {
   justify-content: center;
   gap: 8px;
   margin: 6px 0;
-  opacity: 0.55;
+  opacity: 0.75;
 }
 .schedule-separator span {
   width: 4px;
   height: 4px;
-  background-color: #9B1B20;
+  background-color: #E5A93C;
   border-radius: 50%;
   display: inline-block;
 }
@@ -296,7 +314,8 @@ body {
   height: 7px;
   border-radius: 1px;
   transform: rotate(45deg);
-  background-color: #9B1B20;
+  background-color: #E5A93C;
+  box-shadow: 0 0 6px rgba(229, 169, 60, 0.8);
 }
 
 /* ── 6. Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
