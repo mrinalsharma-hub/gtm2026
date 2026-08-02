@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=800">
+<link rel="stylesheet" href="css/site.css?v=850">
 <style>
 html {
   position: fixed !important;
@@ -95,10 +95,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   gap: 3px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  transition: color 0.2s ease, opacity 0.2s ease, transform 0.15s ease !important;
   box-sizing: border-box !important;
   padding: 6px 1px 4px 1px !important;
   color: rgba(255, 255, 255, 0.55) !important;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-touch-callout: none !important;
 }
 
 .fixed-bottom-nav .nav-tab .nav-icon {
@@ -107,7 +110,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   display: block !important;
   flex-shrink: 0 !important;
   color: rgba(255, 255, 255, 0.55) !important;
-  transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease !important;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .fixed-bottom-nav .nav-tab .nav-label {
@@ -124,7 +127,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: clip !important;
-  transition: color 0.2s ease, font-weight 0.2s ease !important;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), font-weight 0.25s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
@@ -133,20 +136,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 
 .fixed-bottom-nav .nav-tab.active .nav-icon {
   color: #FFFFFF !important;
-  transform: scale(1.08) !important;
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3)) !important;
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
-  font-weight: 500 !important;
-  font-variation-settings: 'wght' 500 !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3) !important;
+  font-weight: 600 !important;
+  font-variation-settings: 'wght' 600 !important;
 }
 
 .fixed-bottom-nav .nav-tab:active {
-  opacity: 0.75 !important;
-  transform: scale(0.94) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  background: transparent !important;
 }
 
 main {
@@ -154,7 +155,7 @@ main {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+  bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch !important;
@@ -316,5 +317,6 @@ main {
   }, { passive: false });
 })();
 </script>
+<script src="js/spa-nav.js?v=850"></script>
 </body>
 </html>

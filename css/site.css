@@ -1050,10 +1050,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   gap: 3px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  transition: color 0.2s ease, opacity 0.2s ease, transform 0.15s ease !important;
   box-sizing: border-box !important;
   padding: 6px 1px 4px 1px !important;
   color: rgba(255, 255, 255, 0.55) !important;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-touch-callout: none !important;
 }
 
 .fixed-bottom-nav .nav-tab .nav-icon {
@@ -1062,7 +1065,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: block !important;
   flex-shrink: 0 !important;
   color: rgba(255, 255, 255, 0.55) !important;
-  transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease !important;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
 .fixed-bottom-nav .nav-tab .nav-label {
@@ -1079,7 +1082,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: clip !important;
-  transition: color 0.2s ease, font-weight 0.2s ease !important;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), font-weight 0.25s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
@@ -1088,19 +1091,17 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .fixed-bottom-nav .nav-tab.active .nav-icon {
   color: #FFFFFF !important;
-  transform: scale(1.08) !important;
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3)) !important;
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
-  font-weight: 500 !important;
-  font-variation-settings: 'wght' 500 !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3) !important;
+  font-weight: 600 !important;
+  font-variation-settings: 'wght' 600 !important;
 }
 
 .fixed-bottom-nav .nav-tab:active {
-  opacity: 0.75 !important;
-  transform: scale(0.94) !important;
+  opacity: 1 !important;
+  transform: none !important;
+  background: transparent !important;
 }
 
