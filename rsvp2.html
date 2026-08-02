@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=950">
+<link rel="stylesheet" href="css/site.css?v=960">
 <style>
 :root {
   color-scheme: dark;
@@ -320,6 +320,18 @@ main {
   height: 100% !important;
   display: block !important;
   object-fit: contain !important;
+  transform-origin: center center !important;
+  animation: rsvpMandalaSpin 28s linear infinite !important;
+  will-change: transform !important;
+}
+
+@keyframes rsvpMandalaSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .rsvp-title {
@@ -349,36 +361,18 @@ main {
 .card.rsvp-card {
   position: relative !important;
   z-index: 10 !important;
-  background: #EFE0B8 !important;
-  background-color: #EFE0B8 !important;
+  background: #EFE2C2 url('images/figma-rsvp-card-texture.png') repeat center !important;
+  background-color: #EFE2C2 !important;
   border-radius: 4px !important;
   border: none !important;
   padding: 34px 20px 40px !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.38), 0 3px 12px rgba(0, 0, 0, 0.2) !important;
   overflow: hidden !important;
 }
 
-.card.rsvp-card::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  background: url('images/paper-bg-flawless-seamless.jpg') repeat center / 320px auto !important;
-  opacity: 0.42 !important;
-  mix-blend-mode: multiply !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
+.card.rsvp-card::before,
 .card.rsvp-card::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 10px !important;
-  border: 1px solid rgba(186, 140, 72, 0.4) !important;
-  outline: 1px solid rgba(186, 140, 72, 0.2) !important;
-  outline-offset: -4px !important;
-  border-radius: 2px !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
+  display: none !important;
 }
 
 .card.rsvp-card > * {
@@ -904,6 +898,6 @@ var RSVP_CONFIG={
 
 
 
-<script src="js/spa-nav.js?v=950"></script>
+<script src="js/spa-nav.js?v=960"></script>
 </body>
 </html>
