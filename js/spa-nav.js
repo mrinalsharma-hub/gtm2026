@@ -32,6 +32,9 @@
       var doc = parser.parseFromString(htmlString, 'text/html');
       var title = doc.title || 'GTM 2026';
       
+      // Extract in-page styles if any
+      var styles = Array.from(doc.head.querySelectorAll('style')).map(function(s) { return s.outerHTML; }).join('\n');
+
       // Extract everything in body except permanent elements (nav, samplers, scripts)
       var bodyChildren = Array.from(doc.body.children).filter(function(el) {
         return !isPermanentElement(el);
@@ -40,7 +43,7 @@
       if (bodyChildren.length > 0) {
         PAGE_CACHE[pageKey] = {
           title: title,
-          bodyHtml: bodyChildren.map(function(el) { return el.outerHTML; }).join('\n'),
+          bodyHtml: (styles ? styles + '\n' : '') + bodyChildren.map(function(el) { return el.outerHTML; }).join('\n'),
           html: htmlString
         };
       }
@@ -66,9 +69,10 @@
     return !isPermanentElement(el);
   });
   if (currentNonNav.length > 0) {
+    var curStyles = Array.from(document.head.querySelectorAll('style')).map(function(s) { return s.outerHTML; }).join('\n');
     PAGE_CACHE[currentNorm] = {
       title: document.title,
-      bodyHtml: currentNonNav.map(function(el) { return el.outerHTML; }).join('\n'),
+      bodyHtml: (curStyles ? curStyles + '\n' : '') + currentNonNav.map(function(el) { return el.outerHTML; }).join('\n'),
       html: document.documentElement.outerHTML
     };
   }
