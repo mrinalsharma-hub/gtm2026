@@ -1289,7 +1289,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-subtitle {
   font-family: 'Cormorant Garamond', Georgia, serif !important;
   font-size: clamp(18px, 4.5vw, 21px) !important;
-  font-weight: 400 !important;
+  font-weight: 300 !important;
   color: rgba(255, 255, 255, 0.95) !important;
   letter-spacing: 0.02em !important;
   margin-top: 10px !important;
