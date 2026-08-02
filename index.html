@@ -30,89 +30,68 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Upright:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=601">
 <style>
-/* ── CRITICAL FLOATING DOCK CSS (ZERO-CACHE DEPENDENCY) ── */
+/* ── Unified Material & Apple HIG Fixed Bottom Navigation ── */
 header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !important; }
-.floating-dock-nav {
+.fixed-bottom-nav {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  width: 100% !important;
+  width: 100vw !important;
+  height: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  background: #C81A1F !important;
+  box-shadow: 0 -2px 10px rgba(40, 10, 10, 0.18) !important;
   z-index: 2147483647 !important;
   display: flex !important;
+  align-items: center !important;
   justify-content: center !important;
-  align-items: flex-end !important;
-  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px)) !important;
-  pointer-events: none !important;
+  pointer-events: auto !important;
   user-select: none !important;
   -webkit-user-select: none !important;
 }
-.dock-pill {
-  pointer-events: auto !important;
-  width: calc(100% - 32px) !important;
-  max-width: 440px !important;
-  height: 64px !important;
-  background: linear-gradient(145deg, rgba(167, 31, 35, 0.96) 0%, rgba(95, 12, 16, 0.98) 100%) !important;
-  backdrop-filter: blur(28px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
-  border-radius: 36px !important;
-  border: 1.5px solid rgba(255, 223, 133, 0.35) !important;
-  box-shadow: 0 16px 36px rgba(25, 3, 5, 0.6), 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35) !important;
+
+.fixed-bottom-nav .nav-container {
+  width: 100% !important;
+  max-width: 540px !important;
+  height: 56px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-around !important;
   padding: 0 12px !important;
-  position: relative !important;
 }
-.dock-tab {
+
+.fixed-bottom-nav .nav-tab {
   flex: 1 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
   height: 100% !important;
-  text-decoration: none !important;
-  color: rgba(255, 246, 232, 0.65) !important;
-  transition: all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  position: relative !important;
-  cursor: pointer !important;
-  -webkit-tap-highlight-color: transparent !important;
-  padding-top: 2px !important;
-}
-.dock-tab:active { transform: scale(0.92) !important; }
-.dock-icon-box {
-  width: 26px !important;
-  height: 26px !important;
+  min-height: 48px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin-bottom: 2px !important;
-  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  text-decoration: none !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 21px !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  letter-spacing: 0.02em !important;
+  white-space: nowrap !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  transition: color 0.2s ease, transform 0.15s ease, opacity 0.15s ease !important;
 }
-.dock-svg {
-  width: 22px !important;
-  height: 22px !important;
-  stroke: currentColor !important;
-  display: block !important;
-  transition: stroke 0.2s, filter 0.2s !important;
+
+.fixed-bottom-nav .nav-tab.active {
+  color: #FFFFFF !important;
+  font-size: 23px !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25) !important;
 }
-.dock-label {
-  font-family: 'Cinzel', serif !important;
-  font-size: 9.5px !important;
-  font-weight: 500 !important;
-  letter-spacing: 0.06em !important;
-  text-transform: uppercase !important;
-  line-height: 1 !important;
-  transition: color 0.2s, font-weight 0.2s !important;
+
+.fixed-bottom-nav .nav-tab:active {
+  opacity: 0.75 !important;
+  transform: scale(0.96) !important;
 }
-.dock-tab.active { color: #FFDF85 !important; }
-.dock-tab.active .dock-icon-box { transform: translateY(-2px) scale(1.1) !important; }
-.dock-tab.active .dock-svg {
-  stroke: #FFDF85 !important;
-  filter: drop-shadow(0 2px 8px rgba(255, 223, 133, 0.75)) !important;
-}
-.dock-tab.active .dock-label { color: #FFDF85 !important; font-weight: 700 !important; }
-main { padding-bottom: calc(110px + env(safe-area-inset-bottom, 20px)) !important; }
+main { padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px)) !important; }
 
 /* ═══ Home page · Matched to RSVP 2 (rsvp2.html) Background System ═══ */
 body{
@@ -381,58 +360,18 @@ body::before{
   </div>
 </div>
 
-<!-- ══ LUXURY FLOATING NEUMORPHIC DOCK ══ -->
-<nav class="floating-dock-nav" id="floating-dock-nav" aria-label="Main Navigation">
-  <div class="dock-pill">
-    
-    <!-- Tab 1: Home -->
-    <a href="index.html" class="dock-tab active" data-page="home" aria-label="Home">
-      <div class="dock-icon-box">
-        <svg class="dock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 10.5L12 3L21 10.5V20C21 20.6 20.6 21 20 21H15C14.4 21 14 20.6 14 20V15C14 14.4 13.6 14 13 14H11C10.4 14 10 14.4 10 15V20C10 20.6 9.6 21 9 21H4C3.4 21 3 20.6 3 20V10.5Z"/>
-        </svg>
-      </div>
-      <span class="dock-label">Home</span>
+<!-- ── Material & Apple HIG Fixed Bottom Navigation ── -->
+<nav class="fixed-bottom-nav" aria-label="Main Navigation">
+  <div class="nav-container">
+    <a href="rsvp.html" class="nav-tab" aria-label="RSVP Please">
+      <span class="nav-label">RSVP Please</span>
     </a>
-
-    <!-- Tab 2: Schedule -->
-    <a href="schedule.html" class="dock-tab" data-page="schedule" aria-label="Schedule">
-      <div class="dock-icon-box">
-        <svg class="dock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="4" width="18" height="18" rx="3"/>
-          <line x1="16" y1="2" x2="16" y2="6"/>
-          <line x1="8" y1="2" x2="8" y2="6"/>
-          <line x1="3" y1="10" x2="21" y2="10"/>
-          <circle cx="8" cy="15" r="1" fill="currentColor"/>
-          <circle cx="12" cy="15" r="1" fill="currentColor"/>
-          <circle cx="16" cy="15" r="1" fill="currentColor"/>
-        </svg>
-      </div>
-      <span class="dock-label">Schedule</span>
+    <a href="schedule.html" class="nav-tab active" aria-label="Schedule (Current Page)">
+      <span class="nav-label">Schedule</span>
     </a>
-
-    <!-- Tab 3: Travel -->
-    <a href="travel.html" class="dock-tab" data-page="travel" aria-label="Travel & Stay">
-      <div class="dock-icon-box">
-        <svg class="dock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 20L9 10L14 17L17 13L21 20H3Z"/>
-          <circle cx="17" cy="7" r="2.5"/>
-        </svg>
-      </div>
-      <span class="dock-label">Travel</span>
+    <a href="travel.html" class="nav-tab" aria-label="Travel &amp; Stay">
+      <span class="nav-label">Travel &amp; Stay</span>
     </a>
-
-    <!-- Tab 4: RSVP -->
-    <a href="rsvp2.html" class="dock-tab" data-page="rsvp" aria-label="RSVP">
-      <div class="dock-icon-box">
-        <svg class="dock-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 20H21"/>
-          <path d="M16.5 3.5C17.3 2.7 18.7 2.7 19.5 3.5C20.3 4.3 20.3 5.7 19.5 6.5L7 19L3 20L4 16L16.5 3.5Z"/>
-        </svg>
-      </div>
-      <span class="dock-label">RSVP</span>
-    </a>
-
   </div>
 </nav>
 

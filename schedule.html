@@ -270,97 +270,65 @@ html, body {
   background-color: #9B1B20;
 }
 
-/* ── 6. Fixed Circular Bottom Navigation (Matching Image 2) ── */
-.wheel-nav-container {
+/* ── 6. Material & Apple HIG Fixed Bottom Navigation (Matching media_1785634184823.png) ── */
+.fixed-bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100vw;
-  height: 95px;
+  height: calc(56px + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: #C81A1F;
+  box-shadow: 0 -2px 10px rgba(40, 10, 10, 0.18);
   z-index: 1000;
-  pointer-events: auto;
-  touch-action: pan-y;
-  overflow: hidden;
   display: flex;
+  align-items: center;
   justify-content: center;
-}
-
-/* The Fixed 981px Circular Dome Disk */
-.wheel-disk-wrap {
-  position: absolute;
-  bottom: -886px;
-  left: 50%;
-  width: 981px;
-  height: 981px;
-  transform: translateX(-50%) rotate(0deg);
-  transform-origin: 490.5px 490.5px;
-  transition: transform 0.65s cubic-bezier(0.34, 1.45, 0.64, 1);
-  pointer-events: none;
-  will-change: transform;
-}
-
-.wheel-svg-dome {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* Nav Item Placement Along Radius with Tangential Curvature */
-.wheel-items-track {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.wheel-item {
-  position: absolute;
-  top: 490.5px;
-  left: 490.5px;
-  transform-origin: 0 0;
-  text-decoration: none;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  color: rgba(255, 255, 255, 0.78);
-  letter-spacing: 0.02em;
   pointer-events: auto;
-  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.fixed-bottom-nav .nav-container {
+  width: 100%;
+  max-width: 540px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 12px;
+}
+
+.fixed-bottom-nav .nav-tab {
+  flex: 1;
+  height: 100%;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.75);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.15s ease, opacity 0.15s ease;
 }
 
-/* Left Item: RSVP Please (Tilted along left curvature -18deg) */
-.wheel-item.item-rsvp {
-  transform: rotate(-18deg) translate(-50%, -468px);
-  font-size: 22px;
-  font-weight: 400;
-}
-
-/* Center Active Item: Schedule (Upright at peak 0deg) */
-.wheel-item.item-schedule {
-  transform: rotate(0deg) translate(-50%, -468px);
-  font-size: 24px;
-  font-weight: 500;
+.fixed-bottom-nav .nav-tab.active {
   color: #FFFFFF !important;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  font-size: 23px;
+  font-weight: 600;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
-/* Right Item: Travel & Stay (Tilted along right curvature +18deg) */
-.wheel-item.item-travel {
-  transform: rotate(18deg) translate(-50%, -468px);
-  font-size: 22px;
-  font-weight: 400;
-}
-
-.wheel-item:active {
-  color: #FFE6A0 !important;
+.fixed-bottom-nav .nav-tab:active {
+  opacity: 0.75;
+  transform: scale(0.96);
 }
 
 /* ── 7. Native Micro Music Player Button (Always Fixed Top-Right) ── */
@@ -538,42 +506,18 @@ html, body {
 
 </main>
 
-<!-- ── 6. Circular "Wheel of Fortune" Bottom Navigation ── -->
-<nav class="wheel-nav-container" aria-label="Main Navigation">
-  <div class="wheel-disk-wrap" id="wheel-disk">
-    
-    <!-- Exact Signature Red Dome SVG Circle -->
-    <svg class="wheel-svg-dome" preserveAspectRatio="none" overflow="visible" width="981" height="981" viewBox="0 0 981 981" fill="none">
-      <g filter="url(#filter0_i_dome)">
-        <circle cx="490.5" cy="490.5" r="490.5" fill="#C81A1F"/>
-      </g>
-      <defs>
-        <filter id="filter0_i_dome" x="0" y="0" width="981" height="983" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-          <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
-          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-          <feOffset dy="2"/>
-          <feGaussianBlur stdDeviation="10.5"/>
-          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
-          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.12 0"/>
-          <feBlend mode="lighten" in2="shape" result="effect1_innerShadow"/>
-        </filter>
-      </defs>
-    </svg>
-
-    <!-- Circular Wheel Links -->
-    <div class="wheel-items-track">
-      <a href="rsvp.html" class="wheel-item item-rsvp" data-spin="22" aria-label="RSVP Please">
-        <span class="wheel-item-text">RSVP Please</span>
-      </a>
-      <a href="schedule.html" class="wheel-item item-schedule active" data-spin="0" aria-label="Schedule (Current Page)">
-        <span class="wheel-item-text">Schedule</span>
-      </a>
-      <a href="travel.html" class="wheel-item item-travel" data-spin="-22" aria-label="Travel &amp; Stay">
-        <span class="wheel-item-text">Travel &amp; Stay</span>
-      </a>
-    </div>
-
+<!-- ── 6. Material & Apple HIG Fixed Bottom Navigation ── -->
+<nav class="fixed-bottom-nav" aria-label="Main Navigation">
+  <div class="nav-container">
+    <a href="rsvp.html" class="nav-tab" aria-label="RSVP Please">
+      <span class="nav-label">RSVP Please</span>
+    </a>
+    <a href="schedule.html" class="nav-tab active" aria-label="Schedule (Current Page)">
+      <span class="nav-label">Schedule</span>
+    </a>
+    <a href="travel.html" class="nav-tab" aria-label="Travel &amp; Stay">
+      <span class="nav-label">Travel &amp; Stay</span>
+    </a>
   </div>
 </nav>
 
@@ -595,9 +539,6 @@ html, body {
 document.addEventListener("DOMContentLoaded", function() {
   const bgMusic = document.getElementById("bg-music");
   const musicToggle = document.getElementById("music-toggle");
-  const wheelDisk = document.getElementById("wheel-disk");
-  const wheelItems = document.querySelectorAll(".wheel-item");
-  const wheelContainer = document.querySelector(".wheel-nav-container");
 
   // 1. Music Continuity
   function updateMusicUI(isPlaying) {

@@ -912,59 +912,17 @@ document.addEventListener('DOMContentLoaded', function() {
     btnViewDetails.href = 'schedule.html' + window.location.search + window.location.hash;
   }
 
-  // Dynamic Responsive Alignment: Guarantees Pixel 9 Pro layout on all devices (Pixel 10 Pro XL, iPhone Pro Max, etc.)
-  function updateModalPosition() {
-    if (!pinModal || !pinModal.classList.contains('is-active')) return;
-    const vv = window.visualViewport;
-    const isKeyboardOpen = (document.activeElement === pinInput) || (vv && vv.height < window.innerHeight * 0.85);
-
-    if (vv && isKeyboardOpen) {
-      pinModal.style.position = 'fixed';
-      pinModal.style.top = vv.offsetTop + 'px';
-      pinModal.style.left = vv.offsetLeft + 'px';
-      pinModal.style.width = vv.width + 'px';
-      pinModal.style.height = vv.height + 'px';
-      pinModal.style.display = 'flex';
-      pinModal.style.alignItems = 'center';
-      pinModal.style.justifyContent = 'flex-end';
-      pinModal.style.paddingTop = '10px';
-      pinModal.style.paddingBottom = '18px'; /* Strictly 18px above virtual keyboard */
-    } else {
-      pinModal.style.position = 'fixed';
-      pinModal.style.top = '0px';
-      pinModal.style.left = '0px';
-      pinModal.style.width = '100vw';
-      pinModal.style.height = '100svh';
-      pinModal.style.display = 'flex';
-      pinModal.style.alignItems = 'center';
-      pinModal.style.justifyContent = 'flex-start';
-      pinModal.style.paddingTop = 'max(55px, 8svh)';
-      pinModal.style.paddingBottom = '20px';
-    }
-
-    // Position the single butterfly perched right above WELCOME!
-    const pinContent = document.querySelector('.home-pin-content');
-    if (butterflyWrap && pinContent) {
-      const contentRect = pinContent.getBoundingClientRect();
-      const targetY = contentRect.top - 82;
-      const currentRestingY = window.innerHeight - 78;
-      const deltaY = targetY - currentRestingY;
-      butterflyWrap.style.transition = 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
-      butterflyWrap.style.transform = `translate(-50%, ${deltaY}px)`;
-    }
-  }
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateModalPosition);
-    window.visualViewport.addEventListener('scroll', updateModalPosition);
-  }
-  window.addEventListener('resize', updateModalPosition);
-
   function handleOpenDetails(e) {
     if (!btnViewDetails.classList.contains('is-ready')) return;
     e.preventDefault();
 
-    // Butterfly moves to top
+    // Synchronously focus and select input immediately on touch/click to guarantee virtual keyboard activation
+    if (pinInput) {
+      pinInput.focus();
+      pinInput.select();
+    }
+
+    // Butterfly moves to exact top-center
     if (butterflyWrap) {
       butterflyWrap.classList.add('fly-to-flowers');
       if (wing) {
@@ -982,21 +940,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     btnViewDetails.classList.add('is-hidden');
 
-    // Activate PIN modal
+    // Activate PIN modal (positioned 20px below butterfly)
     if (pinModal) {
       pinModal.classList.add('is-active');
     }
-    updateModalPosition();
     checkPinInput();
-
-    // Synchronously focus and select input immediately
-    if (pinInput) {
-      pinInput.focus();
-      pinInput.select();
-      setTimeout(updateModalPosition, 50);
-      setTimeout(updateModalPosition, 150);
-      setTimeout(updateModalPosition, 300);
-    }
   }
 
   if (btnViewDetails) {
@@ -1052,7 +1000,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 2. Fade out PIN content
     pinModal.classList.remove('is-active');
-    pinModal.style.cssText = '';
 
     // 3. Red dome morphs back down into bottom circular module
     if (bottomDome) {
@@ -1062,7 +1009,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 4. Butterfly flies back down to resting position with active flapping
     if (butterflyWrap) {
-      butterflyWrap.style.transform = '';
       butterflyWrap.classList.remove('fly-to-flowers');
       if (wing) {
         wing.style.animationDuration = '0.15s';
@@ -1086,7 +1032,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Keyboard Dismiss / Down Arrow / Focus / Blur Detection
+  // Keyboard Dismiss / Down Arrow / Blur Detection
   if (pinInput) {
     pinInput.addEventListener('input', checkPinInput);
     pinInput.addEventListener('keyup', checkPinInput);
@@ -1095,15 +1041,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     pinInput.addEventListener('focus', function() {
       if (blurTimeout) clearTimeout(blurTimeout);
-      setTimeout(updateModalPosition, 50);
-      setTimeout(updateModalPosition, 150);
-      setTimeout(updateModalPosition, 300);
     });
     pinInput.addEventListener('blur', function() {
       if (isSubmitting) return;
-      setTimeout(updateModalPosition, 50);
-      setTimeout(updateModalPosition, 150);
-      setTimeout(updateModalPosition, 300);
+      blurTimeout = setTimeout(() => {
+        if (pinModal && pinModal.classList.contains('is-active') && !isSubmitting) {
+          handleCloseModal();
+        }
+      }, 160);
     });
     pinInput.addEventListener('keypress', function(e) {
       if (e.key === 'Enter') {
