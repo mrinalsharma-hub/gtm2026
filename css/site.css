@@ -1064,7 +1064,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   height: 18px !important;
   display: block !important;
   flex-shrink: 0 !important;
-  color: rgba(255, 255, 255, 0.55) !important;
+  color: inherit !important;
+  fill: currentColor !important;
   transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
@@ -1078,7 +1079,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-variation-settings: 'wght' 450 !important;
   letter-spacing: 0.01em !important;
   line-height: 1.1 !important;
-  color: rgba(255, 255, 255, 0.55) !important;
+  color: inherit !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: clip !important;
@@ -1091,6 +1092,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .fixed-bottom-nav .nav-tab.active .nav-icon {
   color: #FFFFFF !important;
+  fill: #FFFFFF !important;
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
