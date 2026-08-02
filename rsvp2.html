@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#A71F23">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#7E1216">
+<meta name="theme-color" content="#981C1E">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#981C1E">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#981C1E">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="msapplication-navbutton-color" content="#A71F23">
+<meta name="msapplication-navbutton-color" content="#981C1E">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>RSVP · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
@@ -37,9 +37,31 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #620E0B !important;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #FFFFFF;
   overflow: hidden !important;
   overscroll-behavior: none !important;
   touch-action: none !important;
+}
+
+main.paper, main {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  padding-bottom: 60px !important;
+  touch-action: pan-y !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  background: transparent !important;
+  z-index: 2 !important;
 }
 
 /* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
@@ -216,19 +238,6 @@ main {
    Cormorant Upright display · Cormorant Garamond text
    Burgues Script → Pinyon Script (web substitute)      */
 
-body{
-  position:relative;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
-}
-body::before{
-  display: none !important;
-}
-.paper{
-  position:relative;
-  background:transparent !important;
-  overflow:hidden;
-}
 .dg-bg-mesh, .paper::after{display:none !important;}
 #bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;mix-blend-mode:soft-light;opacity:0.35;}
 
