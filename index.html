@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#A71F23">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#7E1216">
@@ -30,6 +30,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&family=Cormorant+Upright:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=601">
 <style>
+html, body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+}
+
 /* ── Unified Material & Apple HIG Fixed Bottom Navigation ── */
 header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !important; }
 .fixed-bottom-nav {
@@ -49,6 +61,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   pointer-events: auto !important;
   user-select: none !important;
   -webkit-user-select: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  will-change: transform !important;
+  contain: layout paint !important;
 }
 
 .fixed-bottom-nav .nav-container {
@@ -95,7 +113,22 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   opacity: 0.75 !important;
   transform: scale(0.96) !important;
 }
-main { padding-bottom: calc(75px + env(safe-area-inset-bottom, 16px)) !important; }
+
+main {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  padding-bottom: 40px !important;
+  touch-action: pan-y !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
 
 /* ═══ Home page · Matched to RSVP 2 (rsvp2.html) Background System ═══ */
 body{
