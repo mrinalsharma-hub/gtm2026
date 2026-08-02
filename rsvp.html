@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=900">
+<link rel="stylesheet" href="css/site.css?v=950">
 <style>
 :root {
   color-scheme: dark;
@@ -253,164 +253,395 @@ main {
   -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
-/* ═══ RSVP page · GTM_RSVP_1 (Figma) ═══
-   Invite Red #C81A1F · Ink #19202F · parchment ground
-   Cormorant Upright display · Cormorant Garamond text
-   Burgues Script → Pinyon Script (web substitute)      */
+/* ═══════════════════════════════════════════════════════
+   RSVP / Join Us Form Styling (Figma Node 359-173 Match)
+   ═══════════════════════════════════════════════════════ */
 
-.dg-bg-mesh, .paper::after{display:none !important;}
-#bg-anim{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;mix-blend-mode:soft-light;opacity:0.35;}
-
-.rsvp-wrap{
-  max-width:1340px;margin:0 auto;
-  padding:40px 20px 120px !important;
-  display:grid;grid-template-columns:minmax(280px,1fr) minmax(0,720px);
-  gap:100px;align-items:start;
-}
-
-/* ── left · Please RSVP ─────────────────────────────── */
-.intro{color:#FFFFFF !important}
-.rsvp-header-img img{filter:brightness(0) invert(1) !important;}
-.please{
-  display:block;font-family:'Pinyon Script',cursive;font-weight:400;
-  font-size:clamp(32px,3.4vw,46px);color:#FFFFFF !important;letter-spacing:.02em;
-  margin:0 0 -.52em .1em;position:relative;z-index:2;
-}
-.rsvp-word{
-  font-family:'Cormorant Upright',serif;font-weight:300;line-height:.95;
-  font-size:clamp(72px,9.5vw,124px);letter-spacing:.03em;color:#FFFFFF !important;margin:0;
-}
-.intro-lead{
-  font-family:'Cormorant Garamond',serif;font-weight:500;
-  font-size:24px;line-height:30px;color:#FFFFFF !important;margin-top:48px;padding-left:60px !important;
-}
-.intro-copy{
-  font-family:'Cormorant Garamond',serif;font-weight:500;
-  font-size:24px;line-height:30px;color:#FFFFFF !important;margin-top:1.2em;max-width:460px;padding-left:60px !important;
+.rsvp-page-wrap {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+  width: 100% !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  padding-bottom: 50px !important;
+  touch-action: pan-y !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
-.card{
-  position:relative;z-index:10 !important;
-  background:#F8F3E8 !important;
-  backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
-  border-radius:3px !important;border:none !important;
-  padding:clamp(52px, 6.5vw, 84px) clamp(44px, 6.5vw, 92px) !important;
-  box-shadow:0 28px 72px rgba(18,4,2,0.38), 0 6px 20px rgba(18,4,2,0.22) !important;
-  filter:none !important;
-  overflow:hidden;
+/* ── 1. Top Toran Lace Border ── */
+.rsvp-top-toran {
+  position: relative !important;
+  width: 100% !important;
+  height: 24px !important;
+  background: url('images/figma-rsvp-top-border.png') repeat-x top left !important;
+  background-size: auto 24px !important;
+  pointer-events: none !important;
+  flex-shrink: 0 !important;
+  z-index: 3 !important;
+  margin-bottom: 16px !important;
 }
-.card::before{
-  content:"";position:absolute;inset:0;
-  background:url('images/paper-bg-flawless-seamless.jpg') repeat center / 360px auto;
-  opacity:0.38;mix-blend-mode:multiply;pointer-events:none;z-index:0;
+
+/* ── 2. Centered Mandala & RSVP Header ── */
+.rsvp-hero-header {
+  text-align: center !important;
+  margin-top: 4px !important;
+  margin-bottom: 28px !important;
+  position: relative !important;
+  z-index: 3 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
 }
-.card::after{
-  content:"";position:absolute;inset:16px;
-  border:1px solid rgba(186,140,72,0.52);
-  outline:1px solid rgba(186,140,72,0.25);
-  outline-offset:-6px;
-  border-radius:2px;pointer-events:none;z-index:1;
+
+.rsvp-mandala-wrap {
+  width: min(136px, 34vw) !important;
+  height: min(136px, 34vw) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45)) !important;
 }
-.card>*{position:relative;z-index:2;}
-.fgroup+.fgroup{margin-top:48px}
-.flabel{
-  display:block !important;font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;
-  font-size:24px !important;line-height:30px !important;color:#C81A1F !important;
+
+.rsvp-mandala-img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
 }
-.fhint, p.fhint{
-  font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:13px !important;
-  line-height:1.45 !important;color:#19202F !important;letter-spacing:0.13px !important;margin:4px 0 0 !important;
+
+.rsvp-title {
+  font-family: 'Cinzel', Georgia, serif !important;
+  font-size: clamp(32px, 8.5vw, 42px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.16em !important;
+  color: #F3D28A !important;
+  text-transform: uppercase !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5) !important;
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.1 !important;
 }
-input.finput, textarea.finput{
-  width:100% !important;height:52px !important;background:#FFF !important;color:#19202F !important;
-  border:1px solid transparent !important;border-radius:16px !important;padding:0 16px !important;
-  font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:16px !important;line-height:1.45 !important;
-  outline:none !important;box-shadow:none !important;transition:border-color .25s !important;margin-top:10px;
+
+/* ── 3. Parchment Card ── */
+.rsvp-card-container {
+  width: 100% !important;
+  max-width: 480px !important;
+  padding: 0 14px !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  z-index: 3 !important;
 }
+
+.card.rsvp-card {
+  position: relative !important;
+  z-index: 10 !important;
+  background: #EFE0B8 !important;
+  background-color: #EFE0B8 !important;
+  border-radius: 4px !important;
+  border: none !important;
+  padding: 34px 20px 40px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45), 0 4px 14px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden !important;
+}
+
+.card.rsvp-card::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: url('images/paper-bg-flawless-seamless.jpg') repeat center / 320px auto !important;
+  opacity: 0.42 !important;
+  mix-blend-mode: multiply !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.card.rsvp-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 10px !important;
+  border: 1px solid rgba(186, 140, 72, 0.4) !important;
+  outline: 1px solid rgba(186, 140, 72, 0.2) !important;
+  outline-offset: -4px !important;
+  border-radius: 2px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.card.rsvp-card > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.fgroup + .fgroup {
+  margin-top: 26px !important;
+}
+
+.flabel {
+  display: block !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 21px !important;
+  line-height: 1.25 !important;
+  color: #981C1E !important;
+  margin-bottom: 8px !important;
+}
+
+.fhint, p.fhint {
+  font-family: 'Roboto Flex', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 13px !important;
+  line-height: 1.45 !important;
+  color: #19202F !important;
+  letter-spacing: 0.13px !important;
+  margin: 4px 0 0 !important;
+}
+
+input.finput, textarea.finput {
+  width: 100% !important;
+  height: 48px !important;
+  background: #FFFFFF !important;
+  color: #19202F !important;
+  border: 1px solid transparent !important;
+  border-radius: 12px !important;
+  padding: 0 14px !important;
+  font-family: 'Roboto Flex', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  transition: border-color .25s !important;
+  margin-top: 4px !important;
+}
+
 input.finput:focus, textarea.finput:focus,
-input.finput:not(:placeholder-shown), textarea.finput:not(:placeholder-shown){
-  border-color:#79747E !important;outline:none !important;box-shadow:none !important
+input.finput:not(:placeholder-shown), textarea.finput:not(:placeholder-shown) {
+  border-color: #981C1E !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(152, 28, 30, 0.15) !important;
 }
-.finput::placeholder, input::placeholder, textarea::placeholder{color:rgba(25, 32, 47, 0.40) !important;font-weight:400 !important}
-textarea.farea{height:auto !important;min-height:120px !important;padding:14px 16px !important;border-radius:16px !important;resize:vertical !important;font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:16px !important;line-height:1.45 !important}
+
+.finput::placeholder, input::placeholder, textarea::placeholder {
+  color: rgba(25, 32, 47, 0.40) !important;
+  font-weight: 400 !important;
+}
+
+textarea.farea {
+  height: auto !important;
+  min-height: 90px !important;
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  resize: vertical !important;
+  font-family: 'Roboto Flex', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 1.45 !important;
+}
 
 /* names */
-.name-row{position:relative}
-.name-row .rm{
-  position:absolute;right:10px;top:calc(50% + 7px);translate:0 -50%;
-  background:none;border:none;color:#C81A1F !important;font-size:17px;line-height:1;
-  cursor:pointer;padding:6px;font-family:'Cormorant Garamond',serif !important;
+.name-row {
+  position: relative !important;
 }
-.add-link{
-  display:inline-block;background:none;border:none;cursor:pointer;padding:0;
-  margin-top:14px;color:#C81A1F !important;font-family:'Cormorant Garamond',serif !important;
-  font-weight:600 !important;font-size:18px !important;text-decoration:underline !important;text-underline-offset:4px !important;
+.name-row .rm {
+  position: absolute !important;
+  right: 10px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  background: none !important;
+  border: none !important;
+  color: #981C1E !important;
+  font-size: 17px !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  padding: 6px !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
-.add-link:hover{color:#A81318 !important}
+
+.add-link {
+  display: inline-block !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  margin-top: 10px !important;
+  color: #981C1E !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 17px !important;
+  text-decoration: underline !important;
+  text-underline-offset: 4px !important;
+}
+.add-link:hover {
+  color: #7E1216 !important;
+}
 
 /* option rows (radio / checkbox bars) */
-.opt-rows{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-.opt-row{
-  display:flex;align-items:center;gap:14px;background:#FFF !important;
-  min-height:48px;border-radius:12px;padding:4px 14px;cursor:pointer;
-  font-family:'Roboto Flex',sans-serif !important;font-weight:400 !important;font-size:17px !important;line-height:30px !important;
-  letter-spacing:0.17px !important;color:#19202F !important;
-  border:none;transition:border-color .25s;
+.opt-rows {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+  margin-top: 8px !important;
 }
-.opt-row:hover{border-color:transparent}
-.opt-row input{position:absolute;opacity:0;pointer-events:none}
-.opt-row .opt-text strong{font-weight:600 !important}
-.mark{flex:none;width:22px;height:22px;position:relative;transition:border-color .2s,background .2s}
-.mark.radio{border:1.5px solid rgba(25,32,47,.38);border-radius:50%}
-.opt-row input:checked+.mark.radio{border-color:#C81A1F !important}
-.opt-row input:checked+.mark.radio::after{
-  content:"";position:absolute;left:50%;top:50%;width:10px;height:10px;border-radius:50%;background:#C81A1F !important;transform:translate(-50%,-50%);
+
+.opt-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  background: #FFFFFF !important;
+  min-height: 46px !important;
+  border-radius: 10px !important;
+  padding: 4px 14px !important;
+  cursor: pointer !important;
+  font-family: 'Roboto Flex', sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.1px !important;
+  color: #19202F !important;
+  border: 1px solid transparent !important;
+  transition: border-color .25s !important;
 }
-.mark.check{border:1.5px solid rgba(25,32,47,.38);border-radius:6px}
-.opt-row input:checked+.mark.check{background:#C81A1F !important;border-color:#C81A1F !important}
-.opt-row input:checked+.mark.check::after{
-  content:"";position:absolute;left:50%;top:44%;width:5px;height:10px;
-  border:solid #FFF;border-width:0 2px 2px 0;transform:translate(-50%,-50%) rotate(45deg);
+.opt-row input {
+  position: absolute !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
-.opt-row:has(input:checked){border-color:transparent}
+.opt-row .opt-text strong {
+  font-weight: 600 !important;
+}
+
+.mark {
+  flex: none !important;
+  width: 20px !important;
+  height: 20px !important;
+  position: relative !important;
+  transition: border-color .2s, background .2s !important;
+}
+.mark.radio {
+  border: 1.5px solid rgba(25, 32, 47, .38) !important;
+  border-radius: 50% !important;
+}
+.opt-row input:checked + .mark.radio {
+  border-color: #981C1E !important;
+}
+.opt-row input:checked + .mark.radio::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  width: 9px !important;
+  height: 9px !important;
+  border-radius: 50% !important;
+  background: #981C1E !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+.mark.check {
+  border: 1.5px solid rgba(25, 32, 47, .38) !important;
+  border-radius: 5px !important;
+}
+.opt-row input:checked + .mark.check {
+  background: #981C1E !important;
+  border-color: #981C1E !important;
+}
+.opt-row input:checked + .mark.check::after {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 44% !important;
+  width: 5px !important;
+  height: 9px !important;
+  border: solid #FFFFFF !important;
+  border-width: 0 2px 2px 0 !important;
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
 
 /* submit */
-.fsubmit{margin-top:44px}
-.send-btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  height:64px;padding:0 48px;background:#C81A1F !important;color:#FFF !important;border:none;cursor:pointer;
-  border-radius:999px;
-  font-family:'Cormorant Garamond',serif !important;font-weight:600 !important;font-size:24px !important;letter-spacing:.02em !important;
-  transition:background .3s;
+.fsubmit {
+  margin-top: 32px !important;
 }
-.send-btn:hover{background:#A81318 !important}
-#rsvp-status{
-  font-family:'Cormorant Garamond',serif !important;font-size:15px !important;
-  color:rgba(25,32,47,.72) !important;margin-top:14px;min-height:1.3em;
+
+.send-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 54px !important;
+  width: 100% !important;
+  background: #981C1E !important;
+  color: #FFFFFF !important;
+  border: none !important;
+  cursor: pointer !important;
+  border-radius: 999px !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 600 !important;
+  font-size: 22px !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 6px 18px rgba(152, 28, 30, 0.35) !important;
+  transition: background-color .2s ease, transform .15s ease !important;
 }
-footer.site{margin-top:0 !important;}
+.send-btn:hover {
+  background: #7E1216 !important;
+}
+
+#rsvp-status {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 15px !important;
+  color: rgba(25, 32, 47, .72) !important;
+  margin-top: 12px !important;
+  text-align: center !important;
+  min-height: 1.3em !important;
+}
 
 /* thanks state */
-#rsvp-thanks{display:none;text-align:center;padding:6vh 0}
-#rsvp-thanks .big{
-  font-family:'Cormorant Upright',serif;font-weight:300;
-  font-size:clamp(40px,6vw,72px);letter-spacing:.04em;color:#C81A1F;
+#rsvp-thanks {
+  display: none;
+  text-align: center;
+  padding: 4vh 0;
 }
-#rsvp-thanks .sub{
-  font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(18px,2vw,22px);line-height:1.35;color:#19202F;margin-top:18px;
+#rsvp-thanks .big {
+  font-family: 'Cinzel', 'Cormorant Upright', Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(36px, 7vw, 54px);
+  letter-spacing: .06em;
+  color: #981C1E;
 }
-#rsvp-thanks .btn-red{margin-top:36px}
-
-/* responsive */
-@media (max-width:960px){
-  .rsvp-wrap{padding:48px 20px 64px;grid-template-columns:1fr;gap:44px}
-  .intro{text-align:center !important;display:flex;flex-direction:column;align-items:center;}
-  .rsvp-header-img{margin:0 auto !important;}
-  .rsvp-header-img img{width:300px !important;margin:0 auto !important;}
-  .please{margin:0 auto -.52em !important;text-align:center !important;}
-  .intro-lead, .intro-copy{text-align:center !important;padding-left:0 !important;margin-left:auto !important;margin-right:auto !important;}
-  .send-btn{width:100% !important;display:flex !important;}
+#rsvp-thanks .sub {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(17px, 2vw, 20px);
+  line-height: 1.35;
+  color: #19202F;
+  margin-top: 14px;
+}
+#rsvp-thanks .btn-red {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 0 32px;
+  background: #981C1E;
+  color: #FFFFFF;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+  margin-top: 24px;
 }
 </style>
 </head>
@@ -419,22 +650,22 @@ footer.site{margin-top:0 !important;}
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true"></div>
 
-<main class="paper">
-  <div class="dg-bg-mesh"></div>
-  <div class="rsvp-wrap">
+<!-- ── 2. RSVP Main Scrollable Wrapper ── -->
+<main class="rsvp-page-wrap">
+  <!-- Top Toran Lace Border -->
+  <div class="rsvp-top-toran" aria-hidden="true"></div>
 
-    <aside class="intro">
-      <h1 class="rsvp-header-img" style="margin:0;">
-        <img src="images/rsvp-header.png" alt="Please RSVP" width="400" height="auto" style="max-width:100%;width:400px;height:auto;display:block;">
-      </h1>
-      <p class="intro-lead">Help us finalize our celebration!</p>
-      <p class="intro-copy">
-        Please provide the full names of all attending guests in your party,
-        and let us know of any specific food allergies so we may accommodate you.
-      </p>
-    </aside>
+  <!-- Centered Hero Header -->
+  <header class="rsvp-hero-header">
+    <div class="rsvp-mandala-wrap">
+      <img src="images/figma-rsvp-mandala-gold.svg" alt="Mandala" class="rsvp-mandala-img" width="130" height="130">
+    </div>
+    <h1 class="rsvp-title">RSVP</h1>
+  </header>
 
-    <section class="card">
+  <!-- Parchment Card Container -->
+  <div class="rsvp-card-container">
+    <section class="card rsvp-card">
       <div id="rsvp-thanks">
         <p class="big">Thank you</p>
         <p class="sub">Your response has reached us safely.<br>We can't wait to celebrate with you.</p>
@@ -515,7 +746,6 @@ footer.site{margin-top:0 !important;}
         </div>
       </form>
     </section>
-
   </div>
 </main>
 
@@ -674,6 +904,6 @@ var RSVP_CONFIG={
 
 
 
-<script src="js/spa-nav.js?v=900"></script>
+<script src="js/spa-nav.js?v=950"></script>
 </body>
 </html>
