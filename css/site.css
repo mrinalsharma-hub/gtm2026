@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Enhanced Ambient Diya & Raw Silk Texture System ── */
+/* ── Velvet Watercolor Maroon & Smoky Wine Background System ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -81,13 +81,13 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background: radial-gradient(ellipse 130% 85% at 50% 12%, #981C1E 0%, #870334 32%, #680224 65%, #4A0016 100%) !important;
   background-color: #981C1E !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* 1. Diya & Silk Breathing Ambient Motion Mesh */
+/* 1. Smoky Maroon & Ruby Wine Watercolor Clouds (Organic Atmospheric Drift) */
 .us-bg-layer::before,
 .schedule-bg-layer::before,
 .stay-bg-layer::before,
@@ -96,39 +96,44 @@ a{color:inherit}
 .fluid-bg-layer::before {
   content: "" !important;
   position: absolute !important;
-  inset: -30% !important;
-  width: 160% !important;
-  height: 160% !important;
+  inset: -25% !important;
+  width: 150% !important;
+  height: 150% !important;
   background: 
-    radial-gradient(circle 380px at 30% 25%, rgba(240, 168, 60, 0.35) 0%, rgba(200, 40, 45, 0.20) 40%, transparent 68%),
-    radial-gradient(circle 420px at 70% 75%, rgba(225, 38, 46, 0.40) 0%, rgba(138, 16, 20, 0.25) 50%, transparent 75%),
-    radial-gradient(circle 320px at 80% 20%, rgba(255, 195, 90, 0.25) 0%, rgba(180, 25, 30, 0.15) 45%, transparent 65%) !important;
+    /* Luminous Ruby-Maroon Cloud (Top Right) */
+    radial-gradient(ellipse 65% 55% at 78% 22%, rgba(185, 35, 65, 0.48) 0%, rgba(140, 10, 40, 0.22) 48%, transparent 72%),
+    /* Deep Smoky Plum / Wine Shadow Cloud (Mid Left) */
+    radial-gradient(ellipse 70% 60% at 18% 48%, rgba(65, 0, 20, 0.58) 0%, rgba(95, 2, 32, 0.28) 50%, transparent 80%),
+    /* Soft Velvety Maroon Mist (Bottom Center-Right) */
+    radial-gradient(ellipse 60% 50% at 68% 78%, rgba(175, 25, 55, 0.42) 0%, rgba(125, 5, 35, 0.20) 45%, transparent 75%),
+    /* Upper-Left Rose-Wine Glow */
+    radial-gradient(ellipse 50% 45% at 28% 18%, rgba(165, 20, 48, 0.32) 0%, transparent 68%) !important;
   pointer-events: none !important;
-  animation: diyaSilkAmbient 14s ease-in-out infinite alternate !important;
+  animation: velvetMaroonDrift 18s ease-in-out infinite alternate !important;
   transform-origin: center center !important;
   will-change: transform, opacity !important;
 }
 
-@keyframes diyaSilkAmbient {
+@keyframes velvetMaroonDrift {
   0% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-    opacity: 0.8;
+    opacity: 0.88;
   }
   33% {
-    transform: translate3d(-6%, 5%, 0) scale(1.15) rotate(5deg);
+    transform: translate3d(-4%, 3%, 0) scale(1.10) rotate(3deg);
     opacity: 1;
   }
   66% {
-    transform: translate3d(6%, -4%, 0) scale(1.22) rotate(-4deg);
-    opacity: 0.9;
+    transform: translate3d(4%, -3%, 0) scale(1.16) rotate(-3deg);
+    opacity: 0.92;
   }
   100% {
-    transform: translate3d(-3%, -6%, 0) scale(1.05) rotate(3deg);
+    transform: translate3d(-2%, -4%, 0) scale(1.04) rotate(2deg);
     opacity: 1;
   }
 }
 
-/* 2. Raw Silk & Linen Tactile Grain Texture Overlay */
+/* 2. Artisanal Watercolor Paper & Raw Velvet Fiber Grain Overlay */
 .us-bg-layer::after,
 .schedule-bg-layer::after,
 .stay-bg-layer::after,
@@ -140,12 +145,12 @@ a{color:inherit}
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silkGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silkGrain)'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='velvetGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23velvetGrain)'/%3E%3C/svg%3E") !important;
   background-repeat: repeat !important;
-  background-size: 160px 160px !important;
+  background-size: 180px 180px !important;
   mix-blend-mode: overlay !important;
   pointer-events: none !important;
-  opacity: 0.7 !important;
+  opacity: 0.75 !important;
 }
 
 /* ── typography ─────────────────────────────────────── */
