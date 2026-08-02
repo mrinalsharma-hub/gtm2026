@@ -324,8 +324,10 @@ html, body {
   left: 490.5px;
   transform-origin: 0 0;
   text-decoration: none;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.02em;
   pointer-events: auto;
   cursor: pointer;
   outline: none !important;
@@ -336,30 +338,27 @@ html, body {
   white-space: nowrap;
 }
 
-/* Left Item: RSVP (Tilted along left curvature -22deg) */
+/* Left Item: RSVP Please (Tilted along left curvature -22deg) */
 .wheel-item.item-rsvp {
   transform: rotate(-22deg) translate(-50%, -468px);
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 400;
-  letter-spacing: 0.04em;
 }
 
 /* Center Active Item: Schedule (Upright at peak 0deg) */
 .wheel-item.item-schedule {
   transform: rotate(0deg) translate(-50%, -468px);
-  font-size: 34px;
+  font-size: 24px;
   font-weight: 500;
   color: #FFFFFF !important;
-  letter-spacing: 0.02em;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 /* Right Item: Travel & Stay (Tilted along right curvature +22deg) */
 .wheel-item.item-travel {
   transform: rotate(22deg) translate(-50%, -468px);
-  font-size: 27px;
+  font-size: 22px;
   font-weight: 400;
-  letter-spacing: 0.02em;
 }
 
 .wheel-item:active {
@@ -435,7 +434,7 @@ html, body {
 
   <!-- ── Top Flowers ── -->
   <div class="schedule-flowers-top">
-    <img src="images/Flowers_top.svg" alt="Botanical Floral Bouquet">
+    <img src="images/schedule_bouquet.webp" alt="Botanical Floral Bouquet">
   </div>
 
   <!-- ── Header: The Wedding Weekend ── -->
@@ -566,8 +565,8 @@ html, body {
 
     <!-- Circular Wheel Links -->
     <div class="wheel-items-track">
-      <a href="rsvp.html" class="wheel-item item-rsvp" data-spin="22" aria-label="RSVP">
-        <span class="wheel-item-text">RSVP</span>
+      <a href="rsvp.html" class="wheel-item item-rsvp" data-spin="22" aria-label="RSVP Please">
+        <span class="wheel-item-text">RSVP Please</span>
       </a>
       <a href="schedule.html" class="wheel-item item-schedule active" data-spin="0" aria-label="Schedule (Current Page)">
         <span class="wheel-item-text">Schedule</span>

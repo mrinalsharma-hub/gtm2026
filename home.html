@@ -1071,21 +1071,18 @@ document.addEventListener('DOMContentLoaded', function() {
       // 2. Fade out PIN modal content
       pinModal.classList.remove('is-active');
 
-      // 3. Red background moves down and morphs back into the bottom rounded dome
+      // 3. Red background moves down with its top being a semi-circle arch
       if (bottomDome) {
         bottomDome.classList.remove('expand-fullscreen');
         bottomDome.classList.add('is-collapsed');
       }
 
-      // 4. Butterfly flies down
-      if (butterflyWrap) {
-        butterflyWrap.classList.remove('fly-to-flowers');
-      }
+      // 4. Butterfly stays at the same position flapping gracefully
 
       // 5. Seamlessly navigate to schedule.html as the red dome reaches the bottom
       setTimeout(() => {
         window.location.href = btnViewDetails.href || 'schedule.html';
-      }, 900);
+      }, 1000);
     } else {
       isSubmitting = false;
       if (pinError) pinError.style.display = 'block';
