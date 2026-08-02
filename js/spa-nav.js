@@ -50,6 +50,23 @@
     } catch(e) {}
   }
 
+  function ensureThemeColor() {
+    var themeColor = '#981C1E';
+    var metaTags = document.querySelectorAll('meta[name="theme-color"]');
+    if (!metaTags || metaTags.length === 0) {
+      var meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      meta.content = themeColor;
+      document.head.appendChild(meta);
+    } else {
+      metaTags.forEach(function(m) {
+        m.setAttribute('content', themeColor);
+      });
+    }
+    var msNav = document.querySelector('meta[name="msapplication-navbutton-color"]');
+    if (msNav) msNav.setAttribute('content', themeColor);
+  }
+
   // Pre-fetch all pages on startup
   var TABS = ['gm.html', 'celebrations.html', 'stay.html', 'joinus.html'];
   function prefetchPages() {
@@ -101,6 +118,9 @@
   }
 
   function initPageScripts() {
+    // 0. Ensure Red Theme Color for browser address bar
+    ensureThemeColor();
+
     // 1. Re-init Scroll Clamping on the active scroller
     var scroller = document.querySelector('main, .schedule-page-wrap, .us-page-wrap, .rsvp-page-wrap');
     if (scroller) {
