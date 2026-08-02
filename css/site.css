@@ -4,8 +4,8 @@
    ═══════════════════════════════════════════════════════ */
 
 :root{
-  --bg-gradient: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%);
-  --bg-color: #620E0B;
+  --bg-gradient: radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%);
+  --bg-color: #981C1E;
   --gold: #FFDF85;
   --gold-glow: rgba(255, 223, 133, 0.6);
   --red:#A71F23;
@@ -26,10 +26,15 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;overscroll-behavior-y:none;background:var(--bg-color)}
+html{
+  scroll-behavior:smooth;
+  overscroll-behavior-y:none;
+  background:#981C1E !important;
+  background-color:#981C1E !important;
+}
 body{
   background:var(--bg-gradient) !important;
-  background-color:var(--bg-color) !important;
+  background-color:#981C1E !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
   font-family:'Cormorant Garamond','Lustria',Georgia,serif;

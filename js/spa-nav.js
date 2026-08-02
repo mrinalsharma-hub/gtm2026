@@ -8,62 +8,63 @@
   function normalizePath(url) {
     if (!url) return 'gm.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
-    if (!path || path === '' || path === 'index.html' || path === 'us.html') return 'gm.html';
+    if (!path || path === '' || path === 'index.html' || path === 'us.html' || path === 'home.html') return 'gm.html';
     if (path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
     if (path === 'travel.html') return 'stay.html';
     if (path === 'rsvp.html' || path === 'rsvp2.html') return 'joinus.html';
     return path;
   }
 
+  function parseAndCache(pageKey, htmlString) {
+    if (!htmlString) return;
+    try {
+      var parser = new DOMParser();
+      var doc = parser.parseFromString(htmlString, 'text/html');
+      var title = doc.title || 'GTM 2026';
+      
+      // Extract everything in body except the fixed navbar and scripts
+      var bodyChildren = Array.from(doc.body.children).filter(function(el) {
+        return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
+      });
+
+      if (bodyChildren.length > 0) {
+        PAGE_CACHE[pageKey] = {
+          title: title,
+          bodyHtml: bodyChildren.map(function(el) { return el.outerHTML; }).join('\n'),
+          html: htmlString
+        };
+      }
+    } catch(e) {}
+  }
+
   // Pre-fetch all pages on startup
   var TABS = ['gm.html', 'celebrations.html', 'stay.html', 'joinus.html'];
   function prefetchPages() {
     TABS.forEach(function(page) {
-      if (!PAGE_CACHE[page]) {
-        fetch(page)
-          .then(function(res) { return res.text(); })
-          .then(function(html) {
-            parseAndCache(page, html);
-          })
-          .catch(function() {});
-      }
+      fetch(page)
+        .then(function(res) { return res.text(); })
+        .then(function(html) {
+          parseAndCache(page, html);
+        })
+        .catch(function() {});
     });
   }
 
-  function parseAndCache(pageKey, htmlString) {
-    var parser = new DOMParser();
-    var doc = parser.parseFromString(htmlString, 'text/html');
-    var title = doc.title;
-    
-    // Extract everything in body except the fixed navbar and scripts
-    var bodyChildren = Array.from(doc.body.children).filter(function(el) {
-      return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
-    });
-
-    PAGE_CACHE[pageKey] = {
-      title: title,
-      bodyHtml: bodyChildren.map(function(el) { return el.outerHTML; }).join('\n'),
-      html: htmlString
-    };
-  }
-
-  // Cache current page immediately
+  // Cache current page immediately from DOM
   var currentNorm = normalizePath(window.location.pathname);
   var currentNonNav = Array.from(document.body.children).filter(function(el) {
     return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
   });
-  PAGE_CACHE[currentNorm] = {
-    title: document.title,
-    bodyHtml: currentNonNav.map(function(el) { return el.outerHTML; }).join('\n'),
-    html: document.documentElement.outerHTML
-  };
-
-  // Pre-fetch remaining pages
-  if (document.readyState === 'complete') {
-    prefetchPages();
-  } else {
-    window.addEventListener('load', prefetchPages);
+  if (currentNonNav.length > 0) {
+    PAGE_CACHE[currentNorm] = {
+      title: document.title,
+      bodyHtml: currentNonNav.map(function(el) { return el.outerHTML; }).join('\n'),
+      html: document.documentElement.outerHTML
+    };
   }
+
+  // Start prefetching
+  prefetchPages();
 
   // Update navbar active state
   function updateNav(targetNorm) {
@@ -222,36 +223,45 @@
     };
   }
 
-  function renderPage(pageData, targetNorm, targetUrl, updateHistory) {
-    document.title = pageData.title;
-
-    var containerWrapper = document.getElementById('spa-content-host');
-    if (!containerWrapper) {
-      containerWrapper = document.createElement('div');
-      containerWrapper.id = 'spa-content-host';
-      containerWrapper.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;overflow:hidden;transition:opacity 0.15s ease;';
+  function getHost() {
+    var host = document.getElementById('spa-content-host');
+    if (!host) {
+      host = document.createElement('div');
+      host.id = 'spa-content-host';
+      host.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;overflow:hidden;transition:opacity 0.15s ease;';
       
       var nonNavElements = Array.from(document.body.children).filter(function(el) {
         return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
       });
       
       nonNavElements.forEach(function(el) {
-        containerWrapper.appendChild(el);
+        host.appendChild(el);
       });
       
       var nav = document.querySelector('.fixed-bottom-nav');
       if (nav) {
-        document.body.insertBefore(containerWrapper, nav);
+        document.body.insertBefore(host, nav);
       } else {
-        document.body.appendChild(containerWrapper);
+        document.body.appendChild(host);
       }
     }
+    return host;
+  }
+
+  function renderPage(pageData, targetNorm, targetUrl, updateHistory) {
+    if (!pageData || !pageData.bodyHtml) {
+      window.location.href = targetUrl;
+      return;
+    }
+
+    document.title = pageData.title;
+    var host = getHost();
 
     // Smooth subtle fade out
-    containerWrapper.style.opacity = '0';
+    host.style.opacity = '0';
 
     setTimeout(function() {
-      containerWrapper.innerHTML = pageData.bodyHtml;
+      host.innerHTML = pageData.bodyHtml;
       
       if (updateHistory) {
         history.pushState({ path: targetNorm }, '', targetUrl);
@@ -259,12 +269,11 @@
 
       initPageScripts();
 
-      // Smooth fade in
       requestAnimationFrame(function() {
-        containerWrapper.style.opacity = '1';
+        host.style.opacity = '1';
         isTransitioning = false;
       });
-    }, 90);
+    }, 70);
   }
 
   function navigateTo(url, updateHistory) {
@@ -275,20 +284,29 @@
     if (isTransitioning) return;
     isTransitioning = true;
 
+    // Safety timeout
+    setTimeout(function() { isTransitioning = false; }, 600);
+
     // 1. Instantly transition typography/icon color in bottom nav
     updateNav(targetNorm);
 
     // 2. Fetch or load from cache
-    if (PAGE_CACHE[targetNorm]) {
+    if (PAGE_CACHE[targetNorm] && PAGE_CACHE[targetNorm].bodyHtml) {
       renderPage(PAGE_CACHE[targetNorm], targetNorm, url, updateHistory);
     } else {
       fetch(targetNorm)
         .then(function(res) { return res.text(); })
         .then(function(html) {
           parseAndCache(targetNorm, html);
-          renderPage(PAGE_CACHE[targetNorm], targetNorm, url, updateHistory);
+          if (PAGE_CACHE[targetNorm] && PAGE_CACHE[targetNorm].bodyHtml) {
+            renderPage(PAGE_CACHE[targetNorm], targetNorm, url, updateHistory);
+          } else {
+            isTransitioning = false;
+            window.location.href = url;
+          }
         })
         .catch(function() {
+          isTransitioning = false;
           window.location.href = url;
         });
     }
