@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Sole Attached Gradient Background Layer ── */
+/* ── Enhanced Ambient Diya & Raw Silk Texture System ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -85,6 +85,61 @@ a{color:inherit}
   background-color: #981C1E !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* 1. Diya & Silk Breathing Ambient Motion Orbs */
+.us-bg-layer::before,
+.schedule-bg-layer::before,
+.stay-bg-layer::before,
+.rsvp-bg-layer::before,
+.home-bg-layer::before,
+.fluid-bg-layer::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: -20% !important;
+  width: 140% !important;
+  height: 140% !important;
+  background: 
+    radial-gradient(ellipse 55% 45% at 50% 25%, rgba(225, 155, 60, 0.16) 0%, rgba(180, 35, 40, 0.08) 45%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 55% 75%, rgba(215, 40, 45, 0.22) 0%, rgba(136, 24, 24, 0.1) 50%, transparent 75%) !important;
+  pointer-events: none !important;
+  animation: diyaSilkAmbient 22s ease-in-out infinite alternate !important;
+  transform-origin: center center !important;
+  will-change: transform, opacity !important;
+}
+
+@keyframes diyaSilkAmbient {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate3d(-2%, 3%, 0) scale(1.08) rotate(3deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(2%, -2%, 0) scale(0.96) rotate(-2deg);
+    opacity: 0.9;
+  }
+}
+
+/* 2. Raw Silk Micro-Grain Texture Overlay */
+.us-bg-layer::after,
+.schedule-bg-layer::after,
+.stay-bg-layer::after,
+.rsvp-bg-layer::after,
+.home-bg-layer::after,
+.fluid-bg-layer::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E") !important;
+  background-repeat: repeat !important;
+  mix-blend-mode: overlay !important;
+  pointer-events: none !important;
+  opacity: 0.6 !important;
 }
 
 /* ── typography ─────────────────────────────────────── */
