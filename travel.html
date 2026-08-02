@@ -75,12 +75,15 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   height: 58px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-around !important;
-  padding: 0 12px !important;
+  justify-content: space-between !important;
+  padding: 0 4px !important;
+  margin: 0 auto !important;
 }
 
 .fixed-bottom-nav .nav-tab {
-  flex: 1 !important;
+  flex: 1 1 0% !important;
+  width: 25% !important;
+  max-width: 25% !important;
   height: 100% !important;
   min-height: 48px !important;
   display: flex !important;
@@ -99,6 +102,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   transition: color 0.2s ease, opacity 0.2s ease !important;
+  box-sizing: border-box !important;
+}
+
+.fixed-bottom-nav .nav-tab .nav-label {
+  display: inline-block !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
@@ -209,14 +219,17 @@ main {
   </section>
 </main>
 
-<!-- ── Material & Apple HIG Fixed Bottom Navigation ── -->
+<!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs) ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container">
-    <a href="schedule.html" class="nav-tab" aria-label="Schedule">
-      <span class="nav-label">Schedule</span>
+    <a href="us.html" class="nav-tab" aria-label="Us">
+      <span class="nav-label">Us</span>
     </a>
-    <a href="stay.html" class="nav-tab active" aria-label="Travel &amp; Stay (Current Page)">
-      <span class="nav-label">Travel &amp; Stay</span>
+    <a href="stay.html" class="nav-tab active" aria-label="Stay (Current Page)">
+      <span class="nav-label">Stay</span>
+    </a>
+    <a href="events.html" class="nav-tab" aria-label="Events">
+      <span class="nav-label">Events</span>
     </a>
     <a href="rsvp.html" class="nav-tab" aria-label="RSVP">
       <span class="nav-label">RSVP</span>
