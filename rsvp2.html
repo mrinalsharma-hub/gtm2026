@@ -42,11 +42,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
-  max-width: 540px !important;
+  max-width: 480px !important;
   height: 56px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-around !important;
+  justify-content: space-between !important;
   padding: 0 12px !important;
 }
 
@@ -59,24 +59,32 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   justify-content: center !important;
   text-decoration: none !important;
   font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 21px !important;
-  font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.75) !important;
+  font-size: clamp(16px, 4.4vw, 20px) !important;
+  font-weight: 400 !important; /* Same font weight throughout */
+  line-height: 1 !important; /* Same font height throughout */
   letter-spacing: 0.02em !important;
+  color: rgba(255, 255, 255, 0.45) !important; /* Disabled / unselected look */
   white-space: nowrap !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  transition: color 0.2s ease, transform 0.15s ease, opacity 0.15s ease !important;
+  transition: color 0.2s ease, opacity 0.2s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
-  color: #FFFFFF !important;
-  font-size: 23px !important;
-  font-weight: 600 !important;
+  color: #FFFFFF !important; /* Complete white #FFF */
+  font-weight: 400 !important; /* Same font weight as View Details */
+  font-size: clamp(16px, 4.4vw, 20px) !important; /* Same font height throughout */
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25) !important;
 }
 
-.fixed-bottom-nav .nav-tab:active {
+.fixed-bottom-nav .nav-tab.disabled,
+.fixed-bottom-nav .nav-tab[aria-disabled="true"] {
+  color: rgba(255, 255, 255, 0.40) !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+.fixed-bottom-nav .nav-tab:not(.disabled):not([aria-disabled="true"]):active {
   opacity: 0.75 !important;
   transform: scale(0.96) !important;
 }
@@ -363,14 +371,17 @@ footer.site{margin-top:0 !important;}
 <!-- ── Material & Apple HIG Fixed Bottom Navigation ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container">
-    <a href="rsvp.html" class="nav-tab active" aria-label="RSVP Please (Current Page)">
-      <span class="nav-label">RSVP Please</span>
+    <a href="#" class="nav-tab disabled" tabindex="-1" aria-disabled="true" aria-label="Home (Disabled)">
+      <span class="nav-label">Home</span>
     </a>
     <a href="schedule.html" class="nav-tab" aria-label="Schedule">
       <span class="nav-label">Schedule</span>
     </a>
-    <a href="travel.html" class="nav-tab" aria-label="Travel &amp; Stay">
+    <a href="stay.html" class="nav-tab" aria-label="Travel &amp; Stay">
       <span class="nav-label">Travel &amp; Stay</span>
+    </a>
+    <a href="rsvp.html" class="nav-tab active" aria-label="RSVP (Current Page)">
+      <span class="nav-label">RSVP</span>
     </a>
   </div>
 </nav>

@@ -270,7 +270,7 @@ html, body {
   background-color: #9B1B20;
 }
 
-/* ── 6. Material & Apple HIG Fixed Bottom Navigation (Matching media_1785634184823.png) ── */
+/* ── 6. Material & Apple HIG Fixed Bottom Navigation ── */
 .fixed-bottom-nav {
   position: fixed;
   bottom: 0;
@@ -292,11 +292,11 @@ html, body {
 
 .fixed-bottom-nav .nav-container {
   width: 100%;
-  max-width: 540px;
+  max-width: 480px;
   height: 56px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0 12px;
 }
 
@@ -309,24 +309,32 @@ html, body {
   justify-content: center;
   text-decoration: none;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: 21px;
-  font-weight: 400;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(16px, 4.4vw, 20px);
+  font-weight: 400; /* Same font weight throughout */
+  line-height: 1; /* Same font height throughout */
   letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.45); /* Disabled / unselected look */
   white-space: nowrap;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  transition: color 0.2s ease, transform 0.15s ease, opacity 0.15s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .fixed-bottom-nav .nav-tab.active {
-  color: #FFFFFF !important;
-  font-size: 23px;
-  font-weight: 600;
+  color: #FFFFFF !important; /* Complete white #FFF */
+  font-weight: 400 !important; /* Same font weight as View Details */
+  font-size: clamp(16px, 4.4vw, 20px) !important; /* Same font height throughout */
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
-.fixed-bottom-nav .nav-tab:active {
+.fixed-bottom-nav .nav-tab.disabled,
+.fixed-bottom-nav .nav-tab[aria-disabled="true"] {
+  color: rgba(255, 255, 255, 0.40) !important;
+  pointer-events: none !important;
+  cursor: default !important;
+}
+
+.fixed-bottom-nav .nav-tab:not(.disabled):not([aria-disabled="true"]):active {
   opacity: 0.75;
   transform: scale(0.96);
 }
@@ -509,14 +517,17 @@ html, body {
 <!-- ── 6. Material & Apple HIG Fixed Bottom Navigation ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container">
-    <a href="rsvp.html" class="nav-tab" aria-label="RSVP Please">
-      <span class="nav-label">RSVP Please</span>
+    <a href="#" class="nav-tab disabled" tabindex="-1" aria-disabled="true" aria-label="Home (Disabled)">
+      <span class="nav-label">Home</span>
     </a>
     <a href="schedule.html" class="nav-tab active" aria-label="Schedule (Current Page)">
       <span class="nav-label">Schedule</span>
     </a>
-    <a href="travel.html" class="nav-tab" aria-label="Travel &amp; Stay">
+    <a href="stay.html" class="nav-tab" aria-label="Travel &amp; Stay">
       <span class="nav-label">Travel &amp; Stay</span>
+    </a>
+    <a href="rsvp.html" class="nav-tab" aria-label="RSVP">
+      <span class="nav-label">RSVP</span>
     </a>
   </div>
 </nav>
