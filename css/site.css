@@ -4,6 +4,7 @@
    ═══════════════════════════════════════════════════════ */
 
 :root{
+  color-scheme: dark;
   --bg-gradient: radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%);
   --bg-color: #981C1E;
   --gold: #FFDF85;
@@ -60,8 +61,8 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #981C1E !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }

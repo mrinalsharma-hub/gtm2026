@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#981C1E">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#981C1E">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#981C1E">
+<meta name="color-scheme" content="dark">
 <meta name="msapplication-navbutton-color" content="#981C1E">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Travel &amp; Stay · Garima weds Mrinal</title>
@@ -14,6 +17,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=WindSong&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=850">
 <style>
+:root {
+  color-scheme: dark;
+}
 html {
   width: 100% !important;
   height: 100% !important;
@@ -247,6 +253,9 @@ main {
 </style>
 </head>
 <body>
+
+<!-- ── 0. Top Status Bar & Address Bar Sampler Element ── -->
+<div class="top-status-sampler" style="position:fixed;top:0;left:0;right:0;width:100%;height:max(48px, env(safe-area-inset-top, 20px));background-color:#981C1E;background:#981C1E;z-index:0;pointer-events:none;" aria-hidden="true"></div>
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="stay-bg-layer" aria-hidden="true"></div>
