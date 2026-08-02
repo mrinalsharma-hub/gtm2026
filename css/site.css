@@ -1227,7 +1227,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  padding-top: 32px !important;
+  padding-top: 0 !important;
   padding-bottom: 50px !important;
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0);
