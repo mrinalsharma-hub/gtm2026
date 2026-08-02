@@ -277,14 +277,14 @@ html, body {
   left: 0;
   right: 0;
   width: 100vw;
-  height: calc(56px + env(safe-area-inset-bottom, 0px));
+  height: calc(58px + env(safe-area-inset-bottom, 0px));
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: #C81A1F;
   box-shadow: 0 -2px 10px rgba(40, 10, 10, 0.18);
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   pointer-events: auto;
   user-select: none;
   -webkit-user-select: none;
@@ -292,28 +292,38 @@ html, body {
 
 .fixed-bottom-nav .nav-container {
   width: 100%;
-  max-width: 480px;
-  height: 56px;
+  height: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 12px;
+  justify-content: flex-start;
+  padding: 0 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.fixed-bottom-nav .nav-container::-webkit-scrollbar {
+  display: none;
 }
 
 .fixed-bottom-nav .nav-tab {
-  flex: 1;
+  flex: 0 0 calc((100vw - 32px) / 3.3);
+  max-width: 130px;
   height: 100%;
   min-height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   text-decoration: none;
   font-family: 'Cormorant Garamond', Georgia, serif;
-  font-size: clamp(16px, 4.4vw, 20px);
-  font-weight: 400; /* Same font weight throughout */
+  font-size: 20px; /* 20px on Pixel/iPhone */
+  font-weight: 450; /* 450 weight */
+  font-variation-settings: 'wght' 450;
   line-height: 1; /* Same font height throughout */
   letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.45); /* Disabled / unselected look */
+  color: rgba(255, 255, 255, 0.55); /* 55% white blush */
   white-space: nowrap;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
@@ -322,14 +332,15 @@ html, body {
 
 .fixed-bottom-nav .nav-tab.active {
   color: #FFFFFF !important; /* Complete white #FFF */
-  font-weight: 400 !important; /* Same font weight as View Details */
-  font-size: clamp(16px, 4.4vw, 20px) !important; /* Same font height throughout */
+  font-weight: 450 !important; /* Same font weight */
+  font-size: 20px !important; /* Same font height */
+  font-variation-settings: 'wght' 450 !important;
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
 
 .fixed-bottom-nav .nav-tab.disabled,
 .fixed-bottom-nav .nav-tab[aria-disabled="true"] {
-  color: rgba(255, 255, 255, 0.40) !important;
+  color: rgba(255, 255, 255, 0.55) !important;
   pointer-events: none !important;
   cursor: default !important;
 }
