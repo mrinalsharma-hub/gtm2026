@@ -1333,7 +1333,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-family: 'Cinzel', Georgia, serif !important;
   font-size: clamp(42px, 10.5vw, 50px) !important;
   font-weight: 400 !important;
-  letter-spacing: 0.14em !important;
+  letter-spacing: 2px !important;
   color: #FFFFFF !important;
   text-transform: uppercase !important;
   margin-top: 40px !important;
