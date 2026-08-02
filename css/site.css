@@ -1247,8 +1247,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-mandala-wrap {
-  width: min(324px, 72vw) !important;
-  height: min(324px, 72vw) !important;
+  width: 120px !important;
+  height: 120px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
