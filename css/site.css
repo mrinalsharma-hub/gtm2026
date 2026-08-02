@@ -4,8 +4,8 @@
    ═══════════════════════════════════════════════════════ */
 
 :root{
-  --bg-gradient: linear-gradient(180deg, #A21D21 0%, #91191B 20%, #801515 42%, #741311 64%, #68100D 82%, #630E0B 100%);
-  --bg-color: #630E0B;
+  --bg-gradient: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%);
+  --bg-color: #620E0B;
   --gold: #FFDF85;
   --gold-glow: rgba(255, 223, 133, 0.6);
   --red:#A71F23;
@@ -40,13 +40,13 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Radiant Moving Fluid Mesh Gradient Background ── */
-.fluid-bg-layer,
+/* ── Sole Attached Gradient Background Layer ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
 .rsvp-bg-layer,
-.home-bg-layer {
+.home-bg-layer,
+.fluid-bg-layer {
   position: fixed !important;
   inset: 0 !important;
   width: 100vw !important;
@@ -55,88 +55,10 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: linear-gradient(180deg, #A21D21 0%, #8A1518 30%, #721113 60%, #560C0A 85%, #420807 100%) !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #620E0B !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
-}
-
-.fluid-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  -webkit-filter: blur(60px);
-  pointer-events: none;
-  will-change: transform, opacity;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
-/* Orb 1: Radiant Rose & Ruby Core - Top Right to Center Flow */
-.fluid-orb-1 {
-  width: min(420px, 110vw);
-  height: min(420px, 110vw);
-  top: -60px;
-  right: -60px;
-  background: radial-gradient(circle, rgba(255, 45, 85, 0.85) 0%, rgba(216, 28, 62, 0.55) 45%, rgba(162, 29, 33, 0) 75%);
-  animation: floatFluidOrb1 20s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-}
-
-/* Orb 2: Glowing Sunset Amber & Coral - Mid Left to Center Drift */
-.fluid-orb-2 {
-  width: min(460px, 120vw);
-  height: min(460px, 120vw);
-  top: 28%;
-  left: -100px;
-  background: radial-gradient(circle, rgba(255, 107, 74, 0.75) 0%, rgba(230, 57, 70, 0.45) 50%, rgba(126, 20, 23, 0) 75%);
-  animation: floatFluidOrb2 26s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-}
-
-/* Orb 3: Deep Imperial Crimson & Wine - Lower Viewport Swell */
-.fluid-orb-3 {
-  width: min(500px, 130vw);
-  height: min(500px, 130vw);
-  bottom: -100px;
-  right: -80px;
-  background: radial-gradient(circle, rgba(200, 26, 36, 0.9) 0%, rgba(138, 18, 24, 0.6) 55%, rgba(66, 8, 7, 0) 80%);
-  animation: floatFluidOrb3 22s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-}
-
-/* Orb 4: Luminous Golden Champagne Shimmer - Floating Aura */
-.fluid-orb-4 {
-  width: min(340px, 90vw);
-  height: min(340px, 90vw);
-  top: 10%;
-  left: 15%;
-  background: radial-gradient(circle, rgba(255, 200, 110, 0.55) 0%, rgba(255, 75, 90, 0.25) 50%, rgba(162, 29, 33, 0) 75%);
-  animation: floatFluidOrb4 32s cubic-bezier(0.42, 0, 0.58, 1) infinite alternate;
-}
-
-@keyframes floatFluidOrb1 {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); opacity: 0.8; }
-  33% { transform: translate3d(-70px, 90px, 0) scale(1.15) rotate(45deg); opacity: 0.95; }
-  66% { transform: translate3d(-130px, 40px, 0) scale(0.92) rotate(90deg); opacity: 0.75; }
-  100% { transform: translate3d(-50px, 140px, 0) scale(1.08) rotate(135deg); opacity: 0.9; }
-}
-
-@keyframes floatFluidOrb2 {
-  0% { transform: translate3d(0, 0, 0) scale(0.95); opacity: 0.7; }
-  33% { transform: translate3d(120px, -70px, 0) scale(1.2); opacity: 0.88; }
-  66% { transform: translate3d(80px, 110px, 0) scale(1.05); opacity: 0.65; }
-  100% { transform: translate3d(140px, 40px, 0) scale(1.18); opacity: 0.85; }
-}
-
-@keyframes floatFluidOrb3 {
-  0% { transform: translate3d(0, 0, 0) scale(1.05); opacity: 0.85; }
-  33% { transform: translate3d(-90px, -110px, 0) scale(0.9); opacity: 0.7; }
-  66% { transform: translate3d(50px, -60px, 0) scale(1.22); opacity: 0.95; }
-  100% { transform: translate3d(-40px, -130px, 0) scale(1.02); opacity: 0.8; }
-}
-
-@keyframes floatFluidOrb4 {
-  0% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.45; }
-  33% { transform: translate3d(90px, 130px, 0) scale(1.25); opacity: 0.75; }
-  66% { transform: translate3d(-60px, 80px, 0) scale(0.9); opacity: 0.4; }
-  100% { transform: translate3d(40px, 160px, 0) scale(1.15); opacity: 0.7; }
 }
 
 /* ── typography ─────────────────────────────────────── */

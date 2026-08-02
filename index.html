@@ -225,13 +225,11 @@ main {
 /* ═══ Home page · Matched to RSVP 2 (rsvp2.html) Background System ═══ */
 body{
   position:relative;
-  background: linear-gradient(180deg, #A21D21 0%, #91191B 20%, #801515 42%, #741311 64%, #68100D 82%, #630E0B 100%) !important;
-  background-color: #630E0B !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #620E0B !important;
 }
 body::before{
-  content:"";position:absolute;inset:0;pointer-events:none;opacity:0.18;z-index:1;
-  background:url('images/paper-bg-flawless-seamless.jpg') repeat center top / auto;
-  mix-blend-mode:overlay;
+  display: none !important;
 }
 .hero{
   background:transparent !important;
@@ -273,13 +271,8 @@ body::before{
 </head>
 <body>
 
-<!-- ── 1. Radiant Fluid Moving Gradient Layer ── -->
-<div class="home-bg-layer" aria-hidden="true">
-  <div class="fluid-orb fluid-orb-1"></div>
-  <div class="fluid-orb fluid-orb-2"></div>
-  <div class="fluid-orb fluid-orb-3"></div>
-  <div class="fluid-orb fluid-orb-4"></div>
-</div>
+<!-- ── 1. Sole Attached Gradient Background Layer ── -->
+<div class="home-bg-layer" aria-hidden="true"></div>
 
 <main>
   <!-- ══ HERO ══ -->

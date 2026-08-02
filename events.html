@@ -53,8 +53,8 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: linear-gradient(180deg, #A21D21 0%, #91191B 20%, #801515 42%, #741311 64%, #68100D 82%, #630E0B 100%) !important;
-  background-color: #630E0B !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #620E0B !important;
   font-family: 'Cormorant Garamond', Georgia, serif;
   color: #FFFFFF;
   overflow: hidden !important;
@@ -62,7 +62,7 @@ body {
   touch-action: none !important;
 }
 
-/* ── 1. Edge-to-Edge Parchment Texture Background Layer (Identical to home.html) ── */
+/* ── 1. Sole Attached Gradient Background Layer ── */
 .schedule-bg-layer {
   position: fixed;
   inset: 0;
@@ -72,21 +72,10 @@ body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  background: linear-gradient(180deg, #A21D21 0%, #91191B 20%, #801515 42%, #741311 64%, #68100D 82%, #630E0B 100%) !important;
-  background-color: #630E0B !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #620E0B !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
-}
-.schedule-img-watermark {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.2) translateX(-10px);
-  opacity: 0.18;
-  mix-blend-mode: overlay;
-  pointer-events: none;
 }
 
 /* ── 2. Edge-to-Edge Content Container (Smooth Native App Scroll Viewport) ── */
@@ -525,14 +514,8 @@ body {
 </head>
 <body>
 
-<!-- ── 1. Edge-to-Edge Parchment Texture Background Layer (Same as home.html) ── -->
-<div class="schedule-bg-layer" aria-hidden="true">
-  <div class="fluid-orb fluid-orb-1"></div>
-  <div class="fluid-orb fluid-orb-2"></div>
-  <div class="fluid-orb fluid-orb-3"></div>
-  <div class="fluid-orb fluid-orb-4"></div>
-  <img src="images/Home_background_optimized.webp" alt="" class="schedule-img-watermark">
-</div>
+<!-- ── 1. Sole Attached Gradient Background Layer ── -->
+<div class="schedule-bg-layer" aria-hidden="true"></div>
 
 <!-- ── 2. Main Page Content Wrapper ── -->
 <main class="schedule-page-wrap">
