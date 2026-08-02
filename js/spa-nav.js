@@ -237,23 +237,7 @@
     };
   }
 
-  function ensureSamplers() {
-    if (!document.querySelector('.top-status-sampler')) {
-      var topSampler = document.createElement('div');
-      topSampler.className = 'top-status-sampler';
-      topSampler.setAttribute('aria-hidden', 'true');
-      document.body.prepend(topSampler);
-    }
-    if (!document.querySelector('.bottom-status-sampler')) {
-      var bottomSampler = document.createElement('div');
-      bottomSampler.className = 'bottom-status-sampler';
-      bottomSampler.setAttribute('aria-hidden', 'true');
-      document.body.appendChild(bottomSampler);
-    }
-  }
-
   function getHost() {
-    ensureSamplers();
     var host = document.getElementById('spa-content-host');
     if (!host) {
       host = document.createElement('div');
