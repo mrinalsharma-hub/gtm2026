@@ -133,7 +133,7 @@ a{color:inherit}
   }
 }
 
-/* 2. Artisanal Watercolor Paper & Raw Velvet Fiber Grain Overlay */
+/* 2. Artisanal Watercolor Paper & Raw Velvet Fiber Grain Overlay (Preset A) */
 .us-bg-layer::after,
 .schedule-bg-layer::after,
 .stay-bg-layer::after,
@@ -145,12 +145,12 @@ a{color:inherit}
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='velvetGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23velvetGrain)'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='velvetGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.50' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.38 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23velvetGrain)'/%3E%3C/svg%3E") !important;
   background-repeat: repeat !important;
-  background-size: 180px 180px !important;
+  background-size: 220px 220px !important;
   mix-blend-mode: overlay !important;
   pointer-events: none !important;
-  opacity: 0.75 !important;
+  opacity: 0.95 !important;
 }
 
 /* ── typography ─────────────────────────────────────── */
