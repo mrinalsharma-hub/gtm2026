@@ -4,26 +4,24 @@
    ═══════════════════════════════════════════════════════ */
 
 :root{
-  --bg-gradient: radial-gradient(ellipse 120% 80% at 75% 65%, rgba(222, 115, 63, 0.42) 0%, rgba(201, 86, 56, 0.22) 40%, transparent 75%),
-                 radial-gradient(ellipse 100% 70% at 20% 30%, rgba(168, 46, 78, 0.38) 0%, rgba(107, 31, 52, 0.18) 45%, transparent 75%),
-                 linear-gradient(180deg, #241219 0%, #3D1623 18%, #631B32 38%, #852241 58%, #5A172B 78%, #1A060D 100%);
-  --bg-color: #241219;
-  --gold: #E5A93C;
-  --gold-glow: rgba(229, 169, 60, 0.6);
+  --bg-gradient: radial-gradient(130% 90% at 85% 10%, #D8455C 0%, #C82B46 30%, #C81A24 60%, #C81A1F 100%);
+  --bg-color: #C81A1F;
+  --gold: #FFDF85;
+  --gold-glow: rgba(255, 223, 133, 0.6);
   --red:#A71F23;
   --red-hi:#B22429;
   --red-lo:#7E1216;
   --ivory:#FFF6E8;
-  --ivory-dim:rgba(255,246,232,.85);
-  --ivory-faint:rgba(255,246,232,.65);
+  --ivory-dim:rgba(255,246,232,.9);
+  --ivory-faint:rgba(255,246,232,.7);
   --ink:#FFFFFF;
-  --ink-soft:rgba(255,255,255,.88);
-  --ink-faint:rgba(255,255,255,.65);
-  --line:rgba(255,255,255,.2);
-  --line-soft:rgba(255,255,255,.12);
-  --card-bg:rgba(255, 255, 255, 0.10);
-  --card-border:rgba(255, 255, 255, 0.18);
-  --card-shadow:0 10px 32px rgba(0, 0, 0, 0.25);
+  --ink-soft:rgba(255,255,255,.9);
+  --ink-faint:rgba(255,255,255,.7);
+  --line:rgba(255,255,255,.22);
+  --line-soft:rgba(255,255,255,.14);
+  --card-bg:rgba(255, 255, 255, 0.12);
+  --card-border:rgba(255, 255, 255, 0.22);
+  --card-shadow:0 12px 36px rgba(0, 0, 0, 0.25);
   --header-h:74px;
 }
 
@@ -1019,11 +1017,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
   background: linear-gradient(
     to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(10, 6, 10, 0.35) 20%,
-    rgba(10, 6, 10, 0.72) 50%,
-    rgba(10, 6, 10, 0.92) 80%,
-    rgba(10, 6, 10, 0.98) 100%
+    rgba(200, 26, 31, 0) 0%,
+    rgba(140, 15, 20, 0.4) 20%,
+    rgba(100, 10, 15, 0.78) 55%,
+    rgba(60, 6, 10, 0.94) 85%,
+    rgba(40, 4, 8, 0.98) 100%
   ) !important;
   backdrop-filter: blur(14px) !important;
   -webkit-backdrop-filter: blur(14px) !important;
