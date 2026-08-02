@@ -20,6 +20,20 @@
 :root {
   color-scheme: dark;
 }
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+main::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
 html {
   width: 100% !important;
   height: 100% !important;
@@ -27,6 +41,8 @@ html {
   background: #981C1E !important;
   background-color: #981C1E !important;
   overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 body {
@@ -44,6 +60,8 @@ body {
   overflow: hidden !important;
   overscroll-behavior: none !important;
   touch-action: none !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 /* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
@@ -224,6 +242,8 @@ main {
   bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior-y: contain !important;
   padding-bottom: 40px !important;
@@ -254,8 +274,9 @@ main {
 </head>
 <body>
 
-<!-- ── 0. Top Status Bar & Address Bar Sampler Element ── -->
-<div class="top-status-sampler" style="position:fixed;top:0;left:0;right:0;width:100%;height:max(48px, env(safe-area-inset-top, 20px));background-color:#981C1E;background:#981C1E;z-index:0;pointer-events:none;" aria-hidden="true"></div>
+<!-- ── 0. Top & Bottom Status / Address Bar Sampler Elements ── -->
+<div class="top-status-sampler" aria-hidden="true"></div>
+<div class="bottom-status-sampler" aria-hidden="true"></div>
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="stay-bg-layer" aria-hidden="true"></div>

@@ -15,6 +15,16 @@
     return path;
   }
 
+  function isPermanentElement(el) {
+    if (!el || !el.classList) return false;
+    return el.classList.contains('fixed-bottom-nav') ||
+           el.classList.contains('top-status-sampler') ||
+           el.classList.contains('bottom-status-sampler') ||
+           el.tagName === 'SCRIPT' ||
+           el.id === 'spa-content-host' ||
+           el.id === 'wedding-gateway';
+  }
+
   function parseAndCache(pageKey, htmlString) {
     if (!htmlString) return;
     try {
@@ -22,9 +32,9 @@
       var doc = parser.parseFromString(htmlString, 'text/html');
       var title = doc.title || 'GTM 2026';
       
-      // Extract everything in body except the fixed navbar and scripts
+      // Extract everything in body except permanent elements (nav, samplers, scripts)
       var bodyChildren = Array.from(doc.body.children).filter(function(el) {
-        return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
+        return !isPermanentElement(el);
       });
 
       if (bodyChildren.length > 0) {
@@ -53,7 +63,7 @@
   // Cache current page immediately from DOM
   var currentNorm = normalizePath(window.location.pathname);
   var currentNonNav = Array.from(document.body.children).filter(function(el) {
-    return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
+    return !isPermanentElement(el);
   });
   if (currentNonNav.length > 0) {
     PAGE_CACHE[currentNorm] = {
@@ -223,15 +233,31 @@
     };
   }
 
+  function ensureSamplers() {
+    if (!document.querySelector('.top-status-sampler')) {
+      var topSampler = document.createElement('div');
+      topSampler.className = 'top-status-sampler';
+      topSampler.setAttribute('aria-hidden', 'true');
+      document.body.prepend(topSampler);
+    }
+    if (!document.querySelector('.bottom-status-sampler')) {
+      var bottomSampler = document.createElement('div');
+      bottomSampler.className = 'bottom-status-sampler';
+      bottomSampler.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(bottomSampler);
+    }
+  }
+
   function getHost() {
+    ensureSamplers();
     var host = document.getElementById('spa-content-host');
     if (!host) {
       host = document.createElement('div');
       host.id = 'spa-content-host';
-      host.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;overflow:hidden;transition:opacity 0.15s ease;';
+      host.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;background-color:#981C1E;background:radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%);overflow:hidden;transition:opacity 0.15s ease;scrollbar-width:none;-ms-overflow-style:none;';
       
       var nonNavElements = Array.from(document.body.children).filter(function(el) {
-        return !el.classList.contains('fixed-bottom-nav') && el.tagName !== 'SCRIPT' && el.id !== 'spa-content-host';
+        return !isPermanentElement(el);
       });
       
       nonNavElements.forEach(function(el) {

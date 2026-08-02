@@ -26,12 +26,30 @@
   --header-h:74px;
 }
 
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+main::-webkit-scrollbar,
+div::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+}
 html{
   scroll-behavior:smooth;
   overscroll-behavior-y:none;
   background:#981C1E !important;
   background-color:#981C1E !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 body{
   background:var(--bg-gradient) !important;
@@ -42,6 +60,8 @@ body{
   line-height:1.65;
   -webkit-font-smoothing:antialiased;
   overscroll-behavior-y:none;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 img,svg{max-width:100%;display:block}
 a{color:inherit}
@@ -65,6 +85,39 @@ a{color:inherit}
   background-color: #981C1E !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* ── Mobile Browser Address Bar & Status Bar Color Samplers ── */
+.top-status-sampler {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  height: max(24px, env(safe-area-inset-top, 24px)) !important;
+  min-height: 16px !important;
+  background-color: #981C1E !important;
+  background: #981C1E !important;
+  z-index: 2147483640 !important;
+  pointer-events: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+}
+
+.bottom-status-sampler {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  height: max(24px, env(safe-area-inset-bottom, 24px)) !important;
+  min-height: 16px !important;
+  background-color: #620E0B !important;
+  background: #620E0B !important;
+  z-index: 2147483640 !important;
+  pointer-events: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 /* ── typography ─────────────────────────────────────── */
@@ -351,7 +404,7 @@ body.gateway-locked {
   position: fixed;
   inset: 0;
   z-index: 999999;
-  display: flex;
+  display: none !important;
   align-items: center;
   justify-content: center;
   padding: 20px;
@@ -367,6 +420,7 @@ body.gateway-locked {
 }
 
 .wedding-gateway-overlay.active {
+  display: flex !important;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;

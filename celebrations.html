@@ -34,6 +34,19 @@
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+div::-webkit-scrollbar,
+main::-webkit-scrollbar,
+.schedule-page-wrap::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
 }
 
 html {
@@ -43,6 +56,8 @@ html {
   background: #981C1E !important;
   background-color: #981C1E !important;
   overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 body {
@@ -60,6 +75,8 @@ body {
   overflow: hidden !important;
   overscroll-behavior: none !important;
   touch-action: none !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
 /* ── 1. Sole Attached Gradient Background Layer ── */
@@ -72,8 +89,8 @@ body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
+  background: radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #981C1E !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
@@ -88,6 +105,8 @@ body {
   width: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain; /* Zero bounce on root */
   z-index: 2;
@@ -514,8 +533,9 @@ body {
 </head>
 <body>
 
-<!-- ── 0. Top Status Bar & Address Bar Sampler Element ── -->
-<div class="top-status-sampler" style="position:fixed;top:0;left:0;right:0;width:100%;height:max(48px, env(safe-area-inset-top, 20px));background-color:#981C1E;background:#981C1E;z-index:0;pointer-events:none;" aria-hidden="true"></div>
+<!-- ── 0. Top & Bottom Status / Address Bar Sampler Elements ── -->
+<div class="top-status-sampler" aria-hidden="true"></div>
+<div class="bottom-status-sampler" aria-hidden="true"></div>
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="schedule-bg-layer" aria-hidden="true"></div>
