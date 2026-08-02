@@ -1005,10 +1005,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+  height: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  background: #C81A1F !important;
-  box-shadow: 0 -2px 14px rgba(40, 10, 10, 0.25) !important;
+  background: rgba(28, 12, 16, 0.85) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  border-top: 1px solid rgba(212, 175, 55, 0.25) !important;
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.35) !important;
   z-index: 2147483647 !important;
   display: flex !important;
   align-items: center !important;
@@ -1027,10 +1030,10 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
   max-width: 480px !important;
-  height: 74px !important;
+  height: 80px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: space-around !important;
   padding: 0 4px !important;
   margin: 0 auto !important;
 }
@@ -1040,65 +1043,99 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   width: 25% !important;
   max-width: 25% !important;
   height: 100% !important;
-  min-height: 52px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
   text-decoration: none !important;
-  gap: 8px !important;
+  gap: 4px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   box-sizing: border-box !important;
-  padding: 8px 1px 6px 1px !important;
-  color: rgba(255, 255, 255, 0.55) !important;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  padding: 6px 1px 4px 1px !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   -webkit-touch-callout: none !important;
 }
 
-.fixed-bottom-nav .nav-tab .nav-icon {
-  width: 32px !important;
+/* M3 Active Indicator Pill Wrapper */
+.fixed-bottom-nav .nav-tab .nav-pill-wrapper {
+  position: relative !important;
+  width: 60px !important;
   height: 32px !important;
-  display: block !important;
+  border-radius: 16px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   flex-shrink: 0 !important;
-  color: inherit !important;
-  fill: currentColor !important;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
+/* The Animated Pill Capsule */
+.fixed-bottom-nav .nav-tab .nav-pill {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  border-radius: 16px !important;
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 2px 10px rgba(212, 175, 55, 0.25) !important;
+  opacity: 0 !important;
+  transform: scaleX(0.4) scaleY(0.7) !important;
+  transition: transform 250ms cubic-bezier(0.2, 0, 0, 1), opacity 180ms ease, background-color 180ms ease !important;
+  z-index: 1 !important;
+  will-change: transform, opacity !important;
+}
+
+.fixed-bottom-nav .nav-tab.active .nav-pill {
+  opacity: 1 !important;
+  transform: scaleX(1) scaleY(1) !important;
+}
+
+/* Icon */
+.fixed-bottom-nav .nav-tab .nav-icon {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  fill: currentColor !important;
+  transition: color 250ms cubic-bezier(0.2, 0, 0, 1), transform 250ms cubic-bezier(0.2, 0, 0, 1) !important;
+}
+
+/* When active, icon inside pill turns deep royal maroon for maximum M3 contrast! */
+.fixed-bottom-nav .nav-tab.active .nav-icon {
+  color: #4A0E17 !important;
+  fill: #4A0E17 !important;
+  transform: scale(1.05) !important;
+}
+
+/* Label below pill */
 .fixed-bottom-nav .nav-tab .nav-label {
   display: block !important;
   text-align: center !important;
   width: 100% !important;
   font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: clamp(16px, 4.3vw, 19px) !important;
-  font-weight: 450 !important;
-  font-variation-settings: 'wght' 450 !important;
-  letter-spacing: 0.01em !important;
+  font-size: clamp(15px, 4vw, 17px) !important;
+  font-weight: 500 !important;
+  font-variation-settings: 'wght' 500 !important;
+  letter-spacing: 0.02em !important;
   line-height: 1.1 !important;
-  color: inherit !important;
+  color: rgba(255, 255, 255, 0.65) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: clip !important;
-  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1), font-weight 0.25s ease !important;
-}
-
-.fixed-bottom-nav .nav-tab.active {
-  color: #FFFFFF !important;
-}
-
-.fixed-bottom-nav .nav-tab.active .nav-icon {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
+  transition: color 250ms cubic-bezier(0.2, 0, 0, 1), font-weight 180ms ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
   font-weight: 600 !important;
   font-variation-settings: 'wght' 600 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4) !important;
 }
 
 .fixed-bottom-nav .nav-tab:active {
