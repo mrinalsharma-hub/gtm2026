@@ -11,7 +11,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
-<title>RSVP 2 · Garima weds Mrinal</title>
+<title>RSVP · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@ body {
   touch-action: none !important;
 }
 
-/* ── Unified Material & Apple HIG Fixed Bottom Navigation ── */
+/* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
 header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !important; }
 .fixed-bottom-nav {
   position: fixed !important;
@@ -50,10 +50,10 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+  height: calc(62px + env(safe-area-inset-bottom, 0px)) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
   background: #C81A1F !important;
-  box-shadow: 0 -2px 10px rgba(40, 10, 10, 0.18) !important;
+  box-shadow: 0 -2px 12px rgba(40, 10, 10, 0.22) !important;
   z-index: 2147483647 !important;
   display: flex !important;
   align-items: center !important;
@@ -72,7 +72,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
   max-width: 480px !important;
-  height: 58px !important;
+  height: 62px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -87,41 +87,64 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   height: 100% !important;
   min-height: 48px !important;
   display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
   text-decoration: none !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 20px !important; /* 20px on Pixel/iPhone */
-  font-weight: 450 !important; /* 450 weight */
-  font-variation-settings: 'wght' 450 !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-  color: rgba(255, 255, 255, 0.55) !important; /* 55% white blush */
-  white-space: nowrap !important;
+  gap: 3px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  transition: color 0.2s ease, opacity 0.2s ease !important;
+  transition: color 0.2s ease, opacity 0.2s ease, transform 0.15s ease !important;
   box-sizing: border-box !important;
+  padding: 4px 1px !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+}
+
+.fixed-bottom-nav .nav-tab .nav-icon {
+  width: 22px !important;
+  height: 22px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  transition: color 0.2s ease, transform 0.2s ease, filter 0.2s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab .nav-label {
-  display: inline-block !important;
+  display: block !important;
   text-align: center !important;
   width: 100% !important;
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.03em !important;
+  line-height: 1 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: clip !important;
+  transition: color 0.2s ease, font-weight 0.2s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
-  color: #FFFFFF !important; /* Complete white #FFF */
-  font-size: 20px !important;
-  font-weight: 450 !important;
-  font-variation-settings: 'wght' 450 !important;
-  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+.fixed-bottom-nav .nav-tab.active .nav-icon {
+  color: #FFFFFF !important;
+  transform: scale(1.06) !important;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.fixed-bottom-nav .nav-tab.active .nav-label {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
 }
 
 .fixed-bottom-nav .nav-tab:active {
   opacity: 0.75 !important;
-  transform: scale(0.96) !important;
+  transform: scale(0.94) !important;
 }
 
 main {
@@ -418,19 +441,45 @@ footer.site{margin-top:0 !important;}
   </div>
 </main>
 
-<!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs) ── -->
+<!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container">
-    <a href="us.html" class="nav-tab" aria-label="Us">
-      <span class="nav-label">Us</span>
+    <a href="gm.html" class="nav-tab" aria-label="G&amp;M">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3c-1 2-2 3.5-2 5a2 2 0 0 0 4 0c0-1.5-1-3-2-5z" fill="currentColor"/>
+        <path d="M4 14c0 3.3 3.6 6 8 6s8-2.7 8-6H4z"/>
+        <path d="M12 20v2m-5-2-1 2m11-2 1 2"/>
+        <circle cx="12" cy="16.5" r="1" fill="currentColor"/>
+        <circle cx="8" cy="15.5" r="0.8" fill="currentColor"/>
+        <circle cx="16" cy="15.5" r="0.8" fill="currentColor"/>
+      </svg>
+      <span class="nav-label">G&amp;M</span>
+    </a>
+    <a href="celebrations.html" class="nav-tab" aria-label="Celebrations">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 2.5c-1.5 1.5-2 3-2 4h4c0-1-0.5-2.5-2-4z" fill="currentColor"/>
+        <path d="M8 6.5c-2-1.5-4-1-5 .5 1.5 1 3.5 1 5-.5zm8 0c2-1.5 4-1 5 .5-1.5 1-3.5 1-5-.5z"/>
+        <path d="M7 10h10c.5 3 2.5 5 2.5 7.5a4 4 0 0 1-4 4H8.5a4 4 0 0 1-4-4C4.5 15 6.5 13 7 10z"/>
+        <circle cx="12" cy="17.5" r="1.2" fill="currentColor"/>
+      </svg>
+      <span class="nav-label">Celebrations</span>
     </a>
     <a href="stay.html" class="nav-tab" aria-label="Stay">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 11l4.5-5.5L12 10l4.5-5.5L21 11"/>
+        <path d="M5 21V12h14v9"/>
+        <path d="M9 21v-4a3 3 0 0 1 6 0v4"/>
+        <circle cx="12" cy="7" r="1" fill="currentColor"/>
+      </svg>
       <span class="nav-label">Stay</span>
     </a>
-    <a href="events.html" class="nav-tab" aria-label="Events">
-      <span class="nav-label">Events</span>
-    </a>
-    <a href="rsvp.html" class="nav-tab active" aria-label="RSVP (Current Page)">
+    <a href="joinus.html" class="nav-tab active" aria-label="RSVP (Current Page)">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3.5" y="4.5" width="17" height="15" rx="2" stroke-width="1.5"/>
+        <path d="M3.5 7l8.5 6 8.5-6" stroke-width="1.5"/>
+        <circle cx="12" cy="13" r="1.8" fill="currentColor"/>
+        <path d="M12 16.5v1.5m-2.5-.5 1-1m4 1-1-1" stroke-width="1.2"/>
+      </svg>
       <span class="nav-label">RSVP</span>
     </a>
   </div>

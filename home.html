@@ -727,7 +727,7 @@ html, body {
   </div>
 
   <!-- ── 6. View Details Button ── -->
-  <a href="us.html" id="btn-view-details" class="home-view-details-btn" aria-label="View Details">
+  <a href="gm.html" id="btn-view-details" class="home-view-details-btn" aria-label="View Details">
     <svg class="home-lock-icon" viewBox="0 0 24 24">
       <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
       <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
@@ -909,7 +909,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // 3. View Details Open Flow:
   if (btnViewDetails && window.location.search) {
-    btnViewDetails.href = 'us.html' + window.location.search + window.location.hash;
+    btnViewDetails.href = 'gm.html' + window.location.search + window.location.hash;
   }
 
   function handleOpenDetails(e) {
@@ -1079,9 +1079,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // 4. Butterfly stays at the same position flapping gracefully
 
-      // 5. Seamlessly navigate to us.html as the red dome reaches the bottom
+      // 5. Seamlessly navigate to gm.html as the red dome reaches the bottom
       setTimeout(() => {
-        window.location.href = btnViewDetails.href || 'us.html';
+        window.location.href = btnViewDetails.href || 'gm.html';
       }, 1000);
     } else {
       isSubmitting = false;
