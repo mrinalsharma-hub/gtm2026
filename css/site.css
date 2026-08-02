@@ -998,6 +998,7 @@ main {
 }
 
 /* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
+header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-nav { display: none !important; }
 .fixed-bottom-nav {
   position: fixed !important;
   bottom: 0 !important;
