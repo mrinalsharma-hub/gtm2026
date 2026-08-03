@@ -1653,7 +1653,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background: #FFFFFF !important;
   color: #19202F !important;
   border: 1.5px solid transparent !important;
-  border-radius: 18px !important;
+  border-radius: 8px !important;
   padding: 0 20px !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 300 !important;
@@ -1857,7 +1857,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background: #FFFFFF !important;
   color: #19202F !important;
   border: 1.5px solid transparent !important;
-  border-radius: 18px !important;
+  border-radius: 8px !important;
   padding: 16px 20px !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 300 !important;
