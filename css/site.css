@@ -1497,8 +1497,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-size: clamp(16.5px, 4.1vw, 18px) !important;
   color: rgba(255, 255, 255, 0.95) !important;
   text-shadow: none !important;
-  letter-spacing: 0.015em !important;
-  line-height: 1.55 !important;
+  letter-spacing: 0.010em !important;
+  line-height: 1.4 !important;
   margin-top: 24px !important;
   margin-bottom: 24px !important;
   text-align: center !important;
