@@ -1648,7 +1648,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 /* Rounded Text Inputs */
 .rsvp-pill-input {
   width: 100% !important;
-  height: 52px !important;
+  height: 54px !important;
   background: #FFFFFF !important;
   color: #19202F !important;
   border: 1.5px solid transparent !important;
@@ -1656,7 +1656,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 20px !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 400 !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   text-align: center !important;
   outline: none !important;
   box-sizing: border-box !important;
@@ -1674,7 +1674,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   color: rgba(0, 0, 0, 0.40) !important;
   text-align: center !important;
   font-family: 'Spectral', Georgia, serif !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-style: normal !important;
   font-weight: 300 !important;
   line-height: normal !important;
@@ -1701,7 +1701,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background: none !important;
   border: none !important;
   color: #8B1E22 !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   line-height: 1 !important;
   cursor: pointer !important;
   padding: 6px !important;
@@ -1714,16 +1714,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   cursor: pointer !important;
   padding: 0 !important;
   margin-top: 14px !important;
-  color: rgba(255, 255, 255, 0.90) !important;
-  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 400 !important;
-  font-size: 16px !important;
+  color: #FFFFFF !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  font-size: 20px !important;
+  line-height: normal !important;
   text-align: center !important;
-  transition: color 0.2s ease !important;
+  transition: opacity 0.2s ease !important;
 }
 
 .add-person-btn:hover {
-  color: #FFFFFF !important;
+  opacity: 0.85 !important;
 }
 
 /* Custom Radio & Checkbox Rows (Stacked Vertically, Left-Aligned content with centered container) */
@@ -1826,11 +1828,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-event-name {
   font-weight: 600 !important;
+  font-size: 20px !important;
   color: #FFFFFF !important;
 }
 
 .rsvp-event-date {
   font-weight: 300 !important;
+  font-size: 20px !important;
   color: rgba(255, 255, 255, 0.78) !important;
   margin-left: 8px !important;
 }
@@ -1846,7 +1850,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 16px 20px !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 400 !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   line-height: normal !important;
   text-align: center !important;
   outline: none !important;
@@ -1866,7 +1870,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   color: rgba(0, 0, 0, 0.40) !important;
   text-align: center !important;
   font-family: 'Spectral', Georgia, serif !important;
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-style: normal !important;
   font-weight: 300 !important;
   line-height: normal !important;
