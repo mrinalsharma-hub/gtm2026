@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1780">
+<link rel="stylesheet" href="css/site.css?v=1790">
 
 <style>
 :root {
@@ -332,20 +332,18 @@ body {
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+  height: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
   background: linear-gradient(
-    to bottom,
-    rgba(99, 14, 11, 0) 0%,
-    rgba(60, 8, 7, 0.4) 20%,
-    rgba(40, 5, 4, 0.78) 55%,
-    rgba(25, 3, 3, 0.94) 85%,
-    rgba(15, 2, 2, 0.98) 100%
+    180deg,
+    rgba(40, 5, 8, 0.78) 0%,
+    rgba(24, 3, 5, 0.92) 50%,
+    rgba(14, 2, 3, 0.98) 100%
   ) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-top: none !important;
-  box-shadow: none !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border-top: 1px solid rgba(255, 223, 133, 0.18) !important;
+  box-shadow: 0 -8px 32px rgba(18, 2, 4, 0.50) !important;
   z-index: 2147483647 !important;
   display: flex !important;
   align-items: center !important;
@@ -357,14 +355,13 @@ body {
   -webkit-transform: translate3d(0, 0, 0) !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
-  will-change: transform !important;
   contain: layout paint !important;
 }
 
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
   max-width: 480px !important;
-  height: 74px !important;
+  height: 72px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-around !important;
@@ -380,18 +377,19 @@ body {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  justify-content: center !important;
+  justify-content: flex-start !important;
   text-align: center !important;
   text-decoration: none !important;
-  gap: 3px !important;
+  gap: 5px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   box-sizing: border-box !important;
-  padding: 8px 1px 4px 1px !important;
+  padding: 12px 2px 4px 2px !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   -webkit-touch-callout: none !important;
   position: relative !important;
+  transition: transform 0.2s ease !important;
 }
 
 /* Nav Pill Container */
@@ -409,13 +407,13 @@ body {
 
 /* Icon */
 .fixed-bottom-nav .nav-tab .nav-icon {
-  width: 24px !important;
-  height: 24px !important;
+  width: 23px !important;
+  height: 23px !important;
   display: block !important;
   flex-shrink: 0 !important;
-  color: rgba(255, 255, 255, 0.5) !important;
+  color: rgba(255, 255, 255, 0.55) !important;
   fill: currentColor !important;
-  transition: color 0.25s cubic-bezier(0.2, 0, 0, 1), transform 0.25s cubic-bezier(0.2, 0, 0, 1) !important;
+  transition: color 0.25s cubic-bezier(0.2, 0, 0, 1), transform 0.25s cubic-bezier(0.2, 0, 0, 1), filter 0.25s ease !important;
 }
 
 /* Active Icon */
@@ -423,6 +421,7 @@ body {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   transform: scale(1.08) !important;
+  filter: drop-shadow(0 0 10px rgba(255, 223, 133, 0.40)) !important;
 }
 
 /* Label below icon */
@@ -430,50 +429,38 @@ body {
   display: block !important;
   text-align: center !important;
   width: 100% !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: clamp(14px, 3.8vw, 16px) !important;
-  font-weight: 450 !important;
-  font-variation-settings: 'wght' 450 !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1.1 !important;
-  color: rgba(255, 255, 255, 0.5) !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13.5px !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.025em !important;
+  line-height: 1.15 !important;
+  color: rgba(255, 255, 255, 0.55) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: clip !important;
-  transition: color 0.25s cubic-bezier(0.2, 0, 0, 1), font-weight 0.25s ease !important;
+  transition: color 0.25s cubic-bezier(0.2, 0, 0, 1), font-weight 0.25s ease, text-shadow 0.25s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
-  font-weight: 600 !important;
-  font-variation-settings: 'wght' 600 !important;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
+  font-weight: 500 !important;
+  text-shadow: 0 0 12px rgba(255, 223, 133, 0.35) !important;
 }
 
-/* Active Indicator Dot */
+/* Completely Remove Active Indicator Dot */
 .fixed-bottom-nav .nav-tab::after {
-  content: '' !important;
-  display: block !important;
-  width: 4px !important;
-  height: 4px !important;
-  border-radius: 50% !important;
-  background: #E5A93C !important;
-  box-shadow: 0 0 6px rgba(229, 169, 60, 0.8) !important;
-  margin-top: 2px !important;
-  opacity: 0 !important;
-  transform: scale(0) !important;
-  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease !important;
-  flex-shrink: 0 !important;
+  display: none !important;
+  content: none !important;
 }
 
 .fixed-bottom-nav .nav-tab.active::after {
-  opacity: 1 !important;
-  transform: scale(1) !important;
+  display: none !important;
+  content: none !important;
 }
 
 .fixed-bottom-nav .nav-tab:active {
   opacity: 1 !important;
-  transform: none !important;
+  transform: scale(0.96) !important;
   background: transparent !important;
 }
 
@@ -865,6 +852,6 @@ document.addEventListener("DOMContentLoaded", function() {
 })();
 </script>
 
-<script src="js/spa-nav.js?v=1780"></script>
+<script src="js/spa-nav.js?v=1790"></script>
 </body>
 </html>
