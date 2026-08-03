@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1710">
+<link rel="stylesheet" href="css/site.css?v=1720">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -186,6 +186,33 @@ main.paper, main {
   -webkit-transform: translate3d(0, 0, 0) !important;
   background: transparent !important;
   z-index: 2 !important;
+}
+
+/* ── Scroll-Aware Top Frosted Glass Status Bar Shield ── */
+.top-frosted-bar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  height: calc(env(safe-area-inset-top, 24px) + 10px) !important;
+  min-height: 36px !important;
+  background: rgba(180, 36, 37, 0.72) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-bottom: 1px solid rgba(255, 223, 133, 0.22) !important;
+  box-shadow: 0 4px 20px rgba(60, 5, 8, 0.25) !important;
+  z-index: 9999 !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  will-change: opacity;
+}
+
+.top-frosted-bar.visible {
+  opacity: 1 !important;
 }
 
 /* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
@@ -854,6 +881,9 @@ textarea.farea {
 </head>
 <body>
 
+<!-- ── Scroll-Aware Top Frosted Glass Status Bar Shield ── -->
+<div class="top-frosted-bar" id="top-frosted-bar" aria-hidden="true"></div>
+
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true"></div>
 
@@ -1130,6 +1160,6 @@ var RSVP_CONFIG={
 
 
 
-<script src="js/spa-nav.js?v=1710"></script>
+<script src="js/spa-nav.js?v=1720"></script>
 </body>
 </html>

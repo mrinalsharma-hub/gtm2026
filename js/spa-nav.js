@@ -150,6 +150,40 @@
     if (musicBtn && audio) {
       initMusicBtn(musicBtn, audio);
     }
+
+    // 4. Re-init Top Frosted Glass Shield
+    initTopFrostedBar();
+  }
+
+  function initTopFrostedBar() {
+    var bar = document.getElementById('top-frosted-bar');
+    if (!bar) {
+      bar = document.createElement('div');
+      bar.className = 'top-frosted-bar';
+      bar.id = 'top-frosted-bar';
+      bar.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(bar, document.body.firstChild);
+    }
+
+    function checkScroll(st) {
+      if (st > 18) {
+        bar.classList.add('visible');
+      } else {
+        bar.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', function() {
+      checkScroll(window.scrollY || document.documentElement.scrollTop || 0);
+    }, { passive: true });
+
+    var scrollers = document.querySelectorAll('main, .rsvp-page-wrap, .us-page-wrap, .schedule-page-wrap, .stay-page-wrap, .page-wrap');
+    scrollers.forEach(function(s) {
+      s.addEventListener('scroll', function() {
+        checkScroll(s.scrollTop);
+      }, { passive: true });
+      checkScroll(s.scrollTop);
+    });
   }
 
   function initMusicBtn(btn, audio) {
