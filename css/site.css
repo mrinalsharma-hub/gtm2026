@@ -153,6 +153,35 @@ a{color:inherit}
   will-change: transform, opacity !important;
 }
 
+/* ── Mobile Portrait Screen Gradient Optimization (Bringing Desktop Depth & Drama to Mobile) ── */
+@media (max-width: 768px) {
+  :root {
+    --bg-gradient: radial-gradient(ellipse 95% 65% at 50% 18%, #D82835 0%, #B42425 20%, #AC2525 42%, #680E15 72%, #380408 100%);
+  }
+
+  body {
+    background: radial-gradient(ellipse 95% 65% at 50% 18%, #D82835 0%, #B42425 20%, #AC2525 42%, #680E15 72%, #380408 100%) !important;
+  }
+
+  .us-bg-layer,
+  .schedule-bg-layer,
+  .stay-bg-layer,
+  .rsvp-bg-layer,
+  .home-bg-layer,
+  .fluid-bg-layer {
+    background: radial-gradient(ellipse 95% 65% at 50% 18%, #D82835 0%, #B42425 20%, #AC2525 42%, #680E15 72%, #380408 100%) !important;
+  }
+
+  .us-bg-layer::before,
+  .schedule-bg-layer::before,
+  .stay-bg-layer::before,
+  .rsvp-bg-layer::before,
+  .home-bg-layer::before,
+  .fluid-bg-layer::before {
+    background: radial-gradient(circle 280px at 50% 18%, rgba(216, 40, 53, 0.45) 0%, rgba(202, 39, 56, 0.25) 50%, transparent 80%) !important;
+  }
+}
+
 @keyframes diyaHearthGlow {
   0% {
     transform: translate3d(0, 0, 0) scale(1);
