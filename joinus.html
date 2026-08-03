@@ -23,6 +23,19 @@
 <link rel="stylesheet" href="css/site.css?v=2440">
 <style>
 @font-face {
+  font-family: 'Chintaron';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('CHINTARON Regular'),
+       local('CHINTARON'),
+       local('Chintaron-Regular'),
+       local('Chintaron'),
+       url('fonts/chintaron-regular.woff') format('woff'),
+       url('fonts/chintaron-regular.ttf') format('truetype');
+}
+
+@font-face {
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 400;
@@ -205,6 +218,123 @@ body {
   }
 }
 
+/* ── Fluid Gradients in Motion (Dribbble Inspired Liquid Ambient Mesh) ── */
+.fluid-motion-bg {
+  position: absolute !important;
+  inset: -20% !important;
+  width: 140% !important;
+  height: 140% !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  filter: blur(75px) saturate(140%) !important;
+  -webkit-filter: blur(75px) saturate(140%) !important;
+  opacity: 0.95 !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  z-index: 1 !important;
+}
+
+.fluid-orb {
+  position: absolute !important;
+  border-radius: 50% !important;
+  will-change: transform !important;
+  pointer-events: none !important;
+}
+
+/* Warm Sunset Saffron Amber Glow */
+.fluid-orb-1 {
+  width: 65vw !important;
+  height: 65vw !important;
+  min-width: 440px !important;
+  min-height: 440px !important;
+  top: -5% !important;
+  right: 5% !important;
+  background: radial-gradient(circle, rgba(245, 140, 50, 0.70) 0%, rgba(225, 75, 45, 0.40) 45%, rgba(167, 31, 35, 0) 70%) !important;
+  animation: fluidMove1 22s ease-in-out infinite alternate !important;
+}
+
+/* Radiant Vermillion & Ruby Crimson */
+.fluid-orb-2 {
+  width: 70vw !important;
+  height: 70vw !important;
+  min-width: 480px !important;
+  min-height: 480px !important;
+  bottom: 0% !important;
+  left: -5% !important;
+  background: radial-gradient(circle, rgba(230, 45, 65, 0.75) 0%, rgba(185, 25, 35, 0.45) 48%, rgba(120, 15, 20, 0) 72%) !important;
+  animation: fluidMove2 27s ease-in-out infinite alternate !important;
+}
+
+/* Deep Velvet Wine & Burgundy Contrast Anchor */
+.fluid-orb-3 {
+  width: 55vw !important;
+  height: 55vw !important;
+  min-width: 400px !important;
+  min-height: 400px !important;
+  bottom: 15% !important;
+  right: 0% !important;
+  background: radial-gradient(circle, rgba(85, 8, 16, 0.90) 0%, rgba(55, 5, 10, 0.55) 50%, rgba(110, 15, 20, 0) 75%) !important;
+  mix-blend-mode: multiply !important;
+  animation: fluidMove3 33s ease-in-out infinite alternate !important;
+}
+
+/* Ethereal Golden Peach Aura */
+.fluid-orb-4 {
+  width: 50vw !important;
+  height: 50vw !important;
+  min-width: 380px !important;
+  min-height: 380px !important;
+  top: 15% !important;
+  left: 5% !important;
+  background: radial-gradient(circle, rgba(255, 185, 90, 0.65) 0%, rgba(235, 115, 55, 0.32) 45%, rgba(167, 31, 35, 0) 70%) !important;
+  animation: fluidMove4 25s ease-in-out infinite alternate !important;
+}
+
+/* Soft Rose Quartz / Coral warmth */
+.fluid-orb-5 {
+  width: 48vw !important;
+  height: 48vw !important;
+  min-width: 350px !important;
+  min-height: 350px !important;
+  top: 45% !important;
+  left: 30% !important;
+  background: radial-gradient(circle, rgba(240, 90, 110, 0.58) 0%, rgba(195, 40, 55, 0.30) 50%, rgba(140, 20, 25, 0) 75%) !important;
+  animation: fluidMove5 29s ease-in-out infinite alternate !important;
+}
+
+@keyframes fluidMove1 {
+  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate3d(-15vw, 10vh, 0) scale(1.15) rotate(45deg); }
+  66% { transform: translate3d(-8vw, -6vh, 0) scale(0.92) rotate(-30deg); }
+  100% { transform: translate3d(10vw, 12vh, 0) scale(1.10) rotate(60deg); }
+}
+
+@keyframes fluidMove2 {
+  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate3d(18vw, -12vh, 0) scale(1.12) rotate(-40deg); }
+  66% { transform: translate3d(6vw, 8vh, 0) scale(0.88) rotate(35deg); }
+  100% { transform: translate3d(-12vw, -15vh, 0) scale(1.18) rotate(-70deg); }
+}
+
+@keyframes fluidMove3 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-18vw, -12vh, 0) scale(1.20); }
+  100% { transform: translate3d(12vw, -6vh, 0) scale(0.92); }
+}
+
+@keyframes fluidMove4 {
+  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate3d(12vw, 15vh, 0) scale(1.16) rotate(50deg); }
+  66% { transform: translate3d(-10vw, 8vh, 0) scale(0.85) rotate(-45deg); }
+  100% { transform: translate3d(6vw, -10vh, 0) scale(1.06) rotate(30deg); }
+}
+
+@keyframes fluidMove5 {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-12vw, 10vh, 0) scale(1.22); }
+  100% { transform: translate3d(15vw, -10vh, 0) scale(0.88); }
+}
+
 /* 2. Raw Silk Fiber Weave Grain Overlay (Soft-Light Anisotropic) */
 .rsvp-bg-layer::after {
   content: "" !important;
@@ -219,6 +349,7 @@ body {
   mix-blend-mode: soft-light !important;
   pointer-events: none !important;
   opacity: 0.85 !important;
+  z-index: 2 !important;
 }
 
 main.paper, main, .rsvp-page-wrap {
@@ -419,10 +550,10 @@ main.paper, main, .rsvp-page-wrap {
 }
 
 .rsvp-title {
-  font-family: 'Cinzel', serif !important;
-  font-size: clamp(30px, 7.5vw, 38px) !important;
-  font-weight: 450 !important;
-  letter-spacing: 0.02em !important;
+  font-family: 'Chintaron', 'CHINTARON', 'Cinzel', serif !important;
+  font-size: clamp(34px, 8.5vw, 44px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
   color: #FFFFFF !important;
   text-shadow: 0 4px 24px rgba(50, 5, 8, 0.20) !important;
   text-transform: uppercase !important;
@@ -462,8 +593,16 @@ main.paper, main, .rsvp-page-wrap {
 </head>
 <body>
 
-<!-- ── 1. Sole Attached Gradient Background Layer ── -->
-<div class="rsvp-bg-layer" aria-hidden="true"></div>
+<!-- ── 1. Attached Gradient Background Layer with Fluid Gradients in Motion ── -->
+<div class="rsvp-bg-layer" aria-hidden="true">
+  <div class="fluid-motion-bg">
+    <div class="fluid-orb fluid-orb-1"></div>
+    <div class="fluid-orb fluid-orb-2"></div>
+    <div class="fluid-orb fluid-orb-3"></div>
+    <div class="fluid-orb fluid-orb-4"></div>
+    <div class="fluid-orb fluid-orb-5"></div>
+  </div>
+</div>
 
 <!-- ── 2. RSVP Main Scrollable Wrapper ── -->
 <main class="rsvp-page-wrap">
