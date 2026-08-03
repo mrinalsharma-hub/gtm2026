@@ -1308,7 +1308,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   max-width: 100% !important;
   display: block !important;
   margin-top: 0 !important;
-  margin-bottom: 36px !important;
+  margin-bottom: 48px !important;
   position: relative !important;
   z-index: 2 !important;
   pointer-events: none !important;
