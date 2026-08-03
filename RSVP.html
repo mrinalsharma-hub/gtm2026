@@ -35,7 +35,6 @@
        url('fonts/chintaron-regular.woff') format('woff'),
        url('fonts/chintaron-regular.ttf') format('truetype');
 }
-
 @font-face {
   font-family: 'Cormorant';
   font-style: normal;
@@ -119,7 +118,7 @@ body {
   -ms-overflow-style: none !important;
 }
 
-/* ── Fluid Motion Gradient Canvas ── */
+/* ── Anchored Static Gradient Background Layer (Sticks solidly to top, zero bounce) ── */
 .rsvp-bg-layer {
   position: fixed !important;
   inset: 0 !important;
@@ -133,127 +132,90 @@ body {
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background-color: #6E0F14 !important;
-  background: radial-gradient(circle at 50% 50%, #8C171E 0%, #6E0F14 60%, #4D070B 100%) !important;
+  background: 
+    radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
+    radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
+  background-color: #A71F23 !important;
   transform: none !important;
   -webkit-transform: none !important;
 }
 
-/* ── Fluid Gradients in Motion (Dribbble Inspired Liquid Ambient Mesh) ── */
-.fluid-motion-bg {
+/* Plane 1: Floating Diya Splatter Mist Atmosphere */
+.rsvp-bg-layer::before {
+  display: block !important;
+  content: "" !important;
   position: absolute !important;
-  inset: -15% !important;
-  width: 130% !important;
-  height: 130% !important;
-  overflow: hidden !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: 
+    radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
+    radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.07) 0%, rgba(232, 60, 85, 0.09) 50%, transparent 85%),
+    radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.11) 0%, rgba(242, 120, 55, 0.03) 60%, transparent 90%),
+    radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.06) 0%, transparent 85%),
+    radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
+    radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
   pointer-events: none !important;
-  filter: blur(60px) saturate(160%) !important;
-  -webkit-filter: blur(60px) saturate(160%) !important;
-  opacity: 0.95 !important;
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  z-index: 1 !important;
+  opacity: 1 !important;
+  animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
 }
 
-.fluid-orb {
-  position: absolute !important;
-  border-radius: 50% !important;
-  will-change: transform !important;
-  pointer-events: none !important;
+/* ── Mobile Portrait Screen Gradient Optimization ── */
+@media (max-width: 768px) {
+  body {
+    background-color: #A71F23 !important;
+  }
+
+  .rsvp-bg-layer {
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    background: 
+      radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
+      radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
+    background-color: #A71F23 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
+  }
+
+  .rsvp-bg-layer::before {
+    display: block !important;
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: 
+      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
+      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
+      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.07) 0%, rgba(232, 60, 85, 0.09) 50%, transparent 85%),
+      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.11) 0%, rgba(242, 120, 55, 0.03) 60%, transparent 90%),
+      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.06) 0%, transparent 85%),
+      radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
+      radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
+    pointer-events: none !important;
+    opacity: 1 !important;
+    animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
+  }
 }
 
-/* 1. Electric Sunset Saffron & Orange Glow */
-.fluid-orb-1 {
-  width: 75vw !important;
-  height: 75vw !important;
-  min-width: 500px !important;
-  min-height: 500px !important;
-  top: -10% !important;
-  right: -5% !important;
-  background: radial-gradient(circle at center, #FF7B25 0%, #E64C1E 40%, rgba(200, 40, 20, 0) 70%) !important;
-  animation: fluidMove1 18s ease-in-out infinite alternate !important;
-}
-
-/* 2. Vivid Imperial Magenta & Crimson Rose */
-.fluid-orb-2 {
-  width: 80vw !important;
-  height: 80vw !important;
-  min-width: 540px !important;
-  min-height: 540px !important;
-  bottom: -10% !important;
-  left: -10% !important;
-  background: radial-gradient(circle at center, #E82958 0%, #C41635 45%, rgba(160, 15, 30, 0) 70%) !important;
-  animation: fluidMove2 23s ease-in-out infinite alternate !important;
-}
-
-/* 3. Deep Velvet Wine / Midnight Plum Contrast Anchor */
-.fluid-orb-3 {
-  width: 70vw !important;
-  height: 70vw !important;
-  min-width: 460px !important;
-  min-height: 460px !important;
-  bottom: 10% !important;
-  right: -5% !important;
-  background: radial-gradient(circle at center, #380209 0%, #200104 55%, rgba(32, 1, 4, 0) 75%) !important;
-  mix-blend-mode: multiply !important;
-  animation: fluidMove3 28s ease-in-out infinite alternate !important;
-}
-
-/* 4. Luminous Sun Gold & Warm Ochre */
-.fluid-orb-4 {
-  width: 60vw !important;
-  height: 60vw !important;
-  min-width: 420px !important;
-  min-height: 420px !important;
-  top: 15% !important;
-  left: 0% !important;
-  background: radial-gradient(circle at center, #FFB830 0%, #FF8C00 45%, rgba(220, 90, 0, 0) 70%) !important;
-  animation: fluidMove4 20s ease-in-out infinite alternate !important;
-}
-
-/* 5. Vibrant Coral / Flamingo Flame */
-.fluid-orb-5 {
-  width: 65vw !important;
-  height: 65vw !important;
-  min-width: 440px !important;
-  min-height: 440px !important;
-  top: 40% !important;
-  left: 25% !important;
-  background: radial-gradient(circle at center, #FF4D6D 0%, #D61A46 45%, rgba(180, 20, 40, 0) 70%) !important;
-  animation: fluidMove5 25s ease-in-out infinite alternate !important;
-}
-
-@keyframes fluidMove1 {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  33% { transform: translate3d(-18vw, 12vh, 0) scale(1.18) rotate(45deg); }
-  66% { transform: translate3d(-10vw, -8vh, 0) scale(0.92) rotate(-30deg); }
-  100% { transform: translate3d(12vw, 15vh, 0) scale(1.12) rotate(60deg); }
-}
-
-@keyframes fluidMove2 {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  33% { transform: translate3d(20vw, -15vh, 0) scale(1.15) rotate(-40deg); }
-  66% { transform: translate3d(8vw, 10vh, 0) scale(0.88) rotate(35deg); }
-  100% { transform: translate3d(-15vw, -18vh, 0) scale(1.22) rotate(-70deg); }
-}
-
-@keyframes fluidMove3 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-22vw, -16vh, 0) scale(1.25); }
-  100% { transform: translate3d(15vw, -8vh, 0) scale(0.9); }
-}
-
-@keyframes fluidMove4 {
-  0% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  33% { transform: translate3d(15vw, 18vh, 0) scale(1.2) rotate(50deg); }
-  66% { transform: translate3d(-12vw, 10vh, 0) scale(0.85) rotate(-45deg); }
-  100% { transform: translate3d(6vw, -10vh, 0) scale(1.06) rotate(30deg); }
-}
-
-@keyframes fluidMove5 {
-  0% { transform: translate3d(0, 0, 0) scale(1); }
-  50% { transform: translate3d(-12vw, 10vh, 0) scale(1.22); }
-  100% { transform: translate3d(15vw, -10vh, 0) scale(0.88); }
+@keyframes diyaHearthGlow {
+  0% {
+    filter: brightness(0.97);
+  }
+  50% {
+    filter: brightness(1.05);
+  }
+  100% {
+    filter: brightness(0.99);
+  }
 }
 
 /* 2. Raw Silk Fiber Weave Grain Overlay (Soft-Light Anisotropic) */
@@ -270,7 +232,6 @@ body {
   mix-blend-mode: soft-light !important;
   pointer-events: none !important;
   opacity: 0.85 !important;
-  z-index: 2 !important;
 }
 
 main.paper, main, .rsvp-page-wrap {
@@ -514,16 +475,8 @@ main.paper, main, .rsvp-page-wrap {
 </head>
 <body>
 
-<!-- ── 1. Attached Gradient Background Layer with Fluid Gradients in Motion ── -->
-<div class="rsvp-bg-layer" aria-hidden="true">
-  <div class="fluid-motion-bg">
-    <div class="fluid-orb fluid-orb-1"></div>
-    <div class="fluid-orb fluid-orb-2"></div>
-    <div class="fluid-orb fluid-orb-3"></div>
-    <div class="fluid-orb fluid-orb-4"></div>
-    <div class="fluid-orb fluid-orb-5"></div>
-  </div>
-</div>
+<!-- ── 1. Sole Attached Gradient Background Layer ── -->
+<div class="rsvp-bg-layer" aria-hidden="true"></div>
 
 <!-- ── 2. RSVP Main Scrollable Wrapper ── -->
 <main class="rsvp-page-wrap">
