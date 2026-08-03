@@ -1926,9 +1926,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   justify-content: center !important;
   text-align: center !important;
   width: 100% !important;
-  padding: 8px 24px !important;
-  height: auto !important;
-  min-height: 48px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  padding: 0 24px !important;
   background: #FFF6E8 !important;
   color: #7B181B !important;
   border: none !important;
@@ -1938,7 +1938,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-weight: 600 !important;
   font-size: 18px !important;
   letter-spacing: 0.08em !important;
-  line-height: normal !important;
+  line-height: 1 !important;
   text-transform: uppercase !important;
   box-shadow: 0 6px 20px rgba(20, 2, 4, 0.25) !important;
   transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
