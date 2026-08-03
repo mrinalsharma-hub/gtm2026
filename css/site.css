@@ -1372,9 +1372,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-title {
   font-family: 'Cormorant Upright', 'Cormorant Garamond', Georgia, serif !important;
-  font-size: clamp(34px, 8.5vw, 42px) !important;
+  font-size: clamp(38px, 9.5vw, 46px) !important;
   font-weight: 600 !important;
-  letter-spacing: 0.02em !important;
+  letter-spacing: normal !important;
   color: #FFFFFF !important;
   text-shadow: none !important;
   text-transform: none !important;
@@ -1389,9 +1389,10 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-weight: 300 !important;
   color: rgba(255, 255, 255, 0.95) !important;
   text-shadow: none !important;
-  letter-spacing: 0.02em !important;
-  margin-top: 10px !important;
-  margin-bottom: 0 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.4 !important;
+  margin-top: 12px !important;
+  margin-bottom: 20px !important;
   text-align: center !important;
 }
 
