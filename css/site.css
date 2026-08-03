@@ -1481,6 +1481,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   width: 100% !important;
   text-align: center !important;
   margin-top: 0 !important;
+  padding-top: calc(25.2px + 40px) !important;
   margin-bottom: 48px !important;
   position: relative !important;
   z-index: 3 !important;
@@ -1490,15 +1491,21 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .aipan-top-border-wrap {
-  width: 100% !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
   max-width: 100% !important;
+  height: 25.2px !important;
   overflow: hidden !important;
   display: block !important;
-  margin-top: 0 !important;
-  margin-bottom: 64px !important;
-  position: relative !important;
-  z-index: 2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 100 !important;
   pointer-events: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .aipan-top-border-svg,
@@ -1506,6 +1513,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   width: 100% !important;
   height: 25.2px !important;
   display: block !important;
+  object-fit: cover !important;
 }
 
 .rsvp-mandala-wrap {

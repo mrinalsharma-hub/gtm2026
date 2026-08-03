@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2360">
+<link rel="stylesheet" href="css/site.css?v=2370">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -223,7 +223,7 @@ body {
   opacity: 0.85 !important;
 }
 
-main.paper, main {
+main.paper, main, .rsvp-page-wrap {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -236,7 +236,7 @@ main.paper, main {
   -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior-y: contain !important;
-  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 32px) !important;
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0) !important;
   -webkit-transform: translate3d(0, 0, 0) !important;
@@ -257,20 +257,22 @@ main.paper, main {
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+  bottom: 0 !important;
+  height: 100% !important;
   width: 100% !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-y: contain !important;
+  overscroll-behavior: none !important;
+  overscroll-behavior-y: none !important;
   z-index: 2 !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   padding-top: 0 !important;
-  padding-bottom: 50px !important;
+  padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px) + 32px) !important;
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
@@ -281,6 +283,7 @@ main.paper, main {
   width: 100% !important;
   text-align: center !important;
   margin-top: 0 !important;
+  padding-top: calc(25.2px + 40px) !important;
   margin-bottom: 48px !important;
   position: relative !important;
   z-index: 3 !important;
@@ -290,15 +293,21 @@ main.paper, main {
 }
 
 .aipan-top-border-wrap {
-  width: 100% !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
   max-width: 100% !important;
+  height: 25.2px !important;
   overflow: hidden !important;
   display: block !important;
-  margin-top: 0 !important;
-  margin-bottom: 64px !important;
-  position: relative !important;
-  z-index: 2 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 100 !important;
   pointer-events: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .aipan-top-border-svg,
@@ -306,6 +315,7 @@ main.paper, main {
   width: 100% !important;
   height: 25.2px !important;
   display: block !important;
+  object-fit: cover !important;
 }
 
 .rsvp-mandala-wrap {
@@ -443,6 +453,19 @@ main.paper, main {
   text-align: center !important;
 }
 
+#rsvp-status {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  color: rgba(255, 255, 255, 0.90) !important;
+  margin-top: 14px !important;
+  margin-bottom: 0 !important;
+  text-align: center !important;
+  min-height: 1.3em !important;
+  transition: opacity 0.25s ease !important;
+}
+
 </style>
 </head>
 <body>
@@ -450,15 +473,15 @@ main.paper, main {
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true"></div>
 
-  <!-- ── 2. RSVP Main Scrollable Wrapper ── -->
-<main class="rsvp-page-wrap">
-  <!-- Centered Hero Header with Top Aipan Border & Lakshmi Pada Mandala Centerpiece -->
-  <header class="rsvp-hero-header">
-    <!-- Authentic Kumaoni Aipan Top Border (Pearl Dots & Vasudhara Bands) -->
-    <div class="aipan-top-border-wrap" aria-hidden="true">
-      <img src="images/aipan-top-border.svg" alt="Aipan Border" class="aipan-top-border-img" width="480" height="25.2">
-    </div>
+<!-- ── 2. Fixed Aipan Top Border Frame (Never moves on scroll/swipe) ── -->
+<div class="aipan-top-border-wrap" aria-hidden="true">
+  <img src="images/aipan-top-border.svg" alt="Aipan Border" class="aipan-top-border-img" width="480" height="25.2">
+</div>
 
+<!-- ── 3. RSVP Main Scrollable Wrapper ── -->
+<main class="rsvp-page-wrap">
+  <!-- Centered Hero Header with Lakshmi Pada Mandala Centerpiece -->
+  <header class="rsvp-hero-header">
     <!-- Rotating Mandala Flower with Anti-Clockwise Dots Ring & Centerpiece -->
     <div class="rsvp-mandala-wrap">
       <img src="images/mandala-dots-ring.svg" alt="" class="rsvp-dots-ring" width="230" height="230" aria-hidden="true">
@@ -712,6 +735,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2360"></script>
+<script src="js/spa-nav.js?v=2370"></script>
 </body>
 </html>
