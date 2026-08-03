@@ -98,11 +98,11 @@ html{
 }
 body{
   background: 
-    radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
-    radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
-    radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
-    radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
-    radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
+    radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
+    radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
+    radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
+    radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
     #A71F23 !important;
   background-color:#A71F23 !important;
   background-attachment:fixed !important;
@@ -133,11 +133,11 @@ a{color:inherit}
   pointer-events: none !important;
   z-index: 1 !important;
   background: 
-    radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
-    radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
-    radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
-    radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
-    radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
+    radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
+    radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
+    radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
+    radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
     #A71F23 !important;
   background-color: #A71F23 !important;
   transform: translate3d(0, 0, 0);
@@ -158,8 +158,8 @@ a{color:inherit}
   width: 120% !important;
   height: 120% !important;
   background: 
-    radial-gradient(circle 320px at 40% 15%, rgba(240, 70, 105, 0.25) 0%, transparent 70%),
-    radial-gradient(circle 340px at 60% 19%, rgba(248, 148, 50, 0.24) 0%, transparent 70%) !important;
+    radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.22) 0%, transparent 80%),
+    radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.21) 0%, transparent 80%) !important;
   pointer-events: none !important;
   animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
   transform-origin: 50% 18% !important;
@@ -170,21 +170,21 @@ a{color:inherit}
 @media (max-width: 768px) {
   :root {
     --bg-gradient: 
-      radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
-      radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
-      radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
-      radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
-      radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
+      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
+      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
+      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
+      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
+      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
       #A71F23;
   }
 
   body {
     background: 
-      radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
-      radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
-      radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
-      radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
-      radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
+      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
+      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
+      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
+      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
+      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
       #A71F23 !important;
     background-color: #A71F23 !important;
   }
@@ -196,11 +196,11 @@ a{color:inherit}
   .home-bg-layer,
   .fluid-bg-layer {
     background: 
-      radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
-      radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
-      radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
-      radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
-      radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
+      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
+      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
+      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
+      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
+      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
       #A71F23 !important;
     background-color: #A71F23 !important;
   }
@@ -218,8 +218,8 @@ a{color:inherit}
     width: 120% !important;
     height: 120% !important;
     background: 
-      radial-gradient(circle 320px at 40% 15%, rgba(240, 70, 105, 0.25) 0%, transparent 70%),
-      radial-gradient(circle 340px at 60% 19%, rgba(248, 148, 50, 0.24) 0%, transparent 70%) !important;
+      radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.22) 0%, transparent 80%),
+      radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.21) 0%, transparent 80%) !important;
     pointer-events: none !important;
     animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
     transform-origin: 50% 18% !important;
