@@ -153,14 +153,14 @@ a{color:inherit}
   will-change: transform, opacity !important;
 }
 
-/* ── Mobile Portrait Screen Gradient Optimization (Bringing Desktop Depth & Drama to Mobile) ── */
+/* ── Mobile Portrait Screen Gradient Optimization (10% Softened Intensity) ── */
 @media (max-width: 768px) {
   :root {
-    --bg-gradient: radial-gradient(ellipse 95% 65% at 50% 18%, #D82835 0%, #B42425 20%, #AC2525 42%, #680E15 72%, #380408 100%);
+    --bg-gradient: radial-gradient(ellipse 102% 70% at 50% 18%, #C6242F 0%, #B02325 22%, #AC2525 44%, #6E1017 74%, #3C0509 100%);
   }
 
   body {
-    background: radial-gradient(ellipse 95% 65% at 50% 18%, #D82835 0%, #B42425 20%, #AC2525 42%, #680E15 72%, #380408 100%) !important;
+    background: radial-gradient(ellipse 102% 70% at 50% 18%, #C6242F 0%, #B02325 22%, #AC2525 44%, #6E1017 74%, #3C0509 100%) !important;
   }
 
   .us-bg-layer,
@@ -169,7 +169,7 @@ a{color:inherit}
   .rsvp-bg-layer,
   .home-bg-layer,
   .fluid-bg-layer {
-    background: radial-gradient(ellipse 95% 65% at 50% 18%, #D82835 0%, #B42425 20%, #AC2525 42%, #680E15 72%, #380408 100%) !important;
+    background: radial-gradient(ellipse 102% 70% at 50% 18%, #C6242F 0%, #B02325 22%, #AC2525 44%, #6E1017 74%, #3C0509 100%) !important;
   }
 
   .us-bg-layer::before,
@@ -178,7 +178,7 @@ a{color:inherit}
   .rsvp-bg-layer::before,
   .home-bg-layer::before,
   .fluid-bg-layer::before {
-    background: radial-gradient(circle 280px at 50% 18%, rgba(216, 40, 53, 0.45) 0%, rgba(202, 39, 56, 0.25) 50%, transparent 80%) !important;
+    background: radial-gradient(circle 290px at 50% 18%, rgba(202, 38, 50, 0.38) 0%, rgba(186, 35, 39, 0.20) 52%, transparent 80%) !important;
   }
 }
 
