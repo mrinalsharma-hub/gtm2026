@@ -5,13 +5,13 @@
 
 :root{
   color-scheme: dark;
-  --bg-gradient: linear-gradient(180deg, #B42425 0%, #AC2525 22%, #85161E 52%, #5E0C13 80%, #420509 100%);
+  --bg-gradient: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%);
   --bg-color: #AC2525;
   --gold: #FFDF85;
   --gold-glow: rgba(255, 223, 133, 0.6);
   --red:#AC2525;
   --red-hi:#B42425;
-  --red-lo:#5E0C13;
+  --red-lo:#761219;
   --ivory:#FFF6E8;
   --ivory-dim:rgba(255,246,232,.9);
   --ivory-faint:rgba(255,246,232,.7);
@@ -46,13 +46,13 @@ div::-webkit-scrollbar {
 html{
   scroll-behavior:smooth;
   overscroll-behavior-y:none;
-  background:#B42425 !important;
-  background-color:#B42425 !important;
+  background:#AC2525 !important;
+  background-color:#AC2525 !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 body{
-  background: linear-gradient(180deg, #B42425 0%, #AC2525 22%, #85161E 52%, #5E0C13 80%, #420509 100%) !important;
+  background: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%) !important;
   background-color:#AC2525 !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Pure Aipan & Gerua Gradient Background Layer (Variation 3: Himalayan Silk Horizon) ── */
+/* ── Pure Aipan & Gerua Gradient Background Layer (Variation 4: Royal Kumaon Twilight) ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -81,7 +81,7 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: linear-gradient(180deg, #B42425 0%, #AC2525 22%, #85161E 52%, #5E0C13 80%, #420509 100%) !important;
+  background: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%) !important;
   background-color: #AC2525 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
