@@ -153,17 +153,15 @@ a{color:inherit}
   will-change: transform, opacity !important;
 }
 
-/* ── Mobile Portrait Screen Gradient Optimization (Option 2: Diffused Sacred Diya Hearth) ── */
+/* ── Mobile Portrait Screen Gradient Optimization (Option 3: Imperial Ruby & Mulled Wine) ── */
 @media (max-width: 768px) {
   :root {
-    --bg-gradient: radial-gradient(ellipse 140% 55% at 50% 12%, rgba(240, 140, 48, 0.28) 0%, rgba(225, 95, 42, 0.16) 45%, rgba(198, 36, 47, 0.05) 75%, transparent 100%),
-                   radial-gradient(ellipse 115% 75% at 50% 18%, #C6242F 0%, #981921 32%, #4E080D 62%, #1E0205 100%);
+    --bg-gradient: radial-gradient(ellipse 110% 72% at 50% 16%, #E02A38 0%, #941820 30%, #4A070B 62%, #140102 100%);
   }
 
   body {
-    background: radial-gradient(ellipse 140% 55% at 50% 12%, rgba(240, 140, 48, 0.28) 0%, rgba(225, 95, 42, 0.16) 45%, rgba(198, 36, 47, 0.05) 75%, transparent 100%),
-                radial-gradient(ellipse 115% 75% at 50% 18%, #C6242F 0%, #981921 32%, #4E080D 62%, #1E0205 100%) !important;
-    background-color: #1E0205 !important;
+    background: radial-gradient(ellipse 110% 72% at 50% 16%, #E02A38 0%, #941820 30%, #4A070B 62%, #140102 100%) !important;
+    background-color: #140102 !important;
   }
 
   .us-bg-layer,
@@ -172,9 +170,8 @@ a{color:inherit}
   .rsvp-bg-layer,
   .home-bg-layer,
   .fluid-bg-layer {
-    background: radial-gradient(ellipse 140% 55% at 50% 12%, rgba(240, 140, 48, 0.28) 0%, rgba(225, 95, 42, 0.16) 45%, rgba(198, 36, 47, 0.05) 75%, transparent 100%),
-                radial-gradient(ellipse 115% 75% at 50% 18%, #C6242F 0%, #981921 32%, #4E080D 62%, #1E0205 100%) !important;
-    background-color: #1E0205 !important;
+    background: radial-gradient(ellipse 110% 72% at 50% 16%, #E02A38 0%, #941820 30%, #4A070B 62%, #140102 100%) !important;
+    background-color: #140102 !important;
   }
 
   .us-bg-layer::before,
@@ -183,7 +180,7 @@ a{color:inherit}
   .rsvp-bg-layer::before,
   .home-bg-layer::before,
   .fluid-bg-layer::before {
-    background: radial-gradient(ellipse 130% 60% at 50% 14%, rgba(245, 150, 55, 0.25) 0%, rgba(216, 40, 53, 0.18) 55%, transparent 85%) !important;
+    background: radial-gradient(circle 350px at 50% 16%, rgba(240, 48, 65, 0.48) 0%, rgba(195, 25, 38, 0.22) 50%, transparent 80%) !important;
   }
 }
 
