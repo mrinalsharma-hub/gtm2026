@@ -6,7 +6,7 @@
     if (!url) return 'gm.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
     if (!path || path === '' || path === 'index.html' || path === 'us.html' || path === 'home.html') return 'gm.html';
-    if (path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
+    if (path === 'celebrations.html' || path === 'schedule.html') return 'events.html';
     if (path === 'travel.html') return 'stay.html';
     if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
     return path;
@@ -50,7 +50,7 @@
   }
 
   // Pre-fetch tabs into browser cache for instant transitions
-  var TABS = ['gm.html', 'celebrations.html', 'stay.html', 'joinus.html'];
+  var TABS = ['gm.html', 'events.html', 'stay.html', 'joinus.html'];
   function prefetchTabs() {
     TABS.forEach(function(page) {
       var link = document.createElement('link');
