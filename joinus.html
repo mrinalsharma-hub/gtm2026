@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2320">
+<link rel="stylesheet" href="css/site.css?v=2330">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -112,7 +112,7 @@ body {
   -ms-overflow-style: none !important;
 }
 
-/* ── Concept 2: Two-Layer 3D Depth Parallax (Floating Diya Mist + Grounded Base) ── */
+/* ── Concept 2: Two-Layer 3D Depth Parallax (Floating Diya Mist + Grounded #7E1216 Base) ── */
 .rsvp-bg-layer {
   position: fixed !important;
   inset: -10vh 0 -35vh 0 !important;
@@ -123,9 +123,9 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   background: 
-    radial-gradient(ellipse 140% 55% at 50% 100%, rgba(167, 31, 35, 0.85) 0%, rgba(167, 31, 35, 0.40) 45%, transparent 80%),
-    radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
+    radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
+    radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
+  background-color: #6E0F12 !important;
   transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
   -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
   will-change: transform !important;
@@ -140,13 +140,13 @@ body {
   width: 120% !important;
   height: 135% !important;
   background: 
-    radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
-    radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
-    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
-    radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
-    radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-    radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.22) 0%, transparent 80%),
-    radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.21) 0%, transparent 80%) !important;
+    radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
+    radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.07) 0%, rgba(232, 60, 85, 0.09) 50%, transparent 85%),
+    radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.11) 0%, rgba(242, 120, 55, 0.03) 60%, transparent 90%),
+    radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.06) 0%, transparent 85%),
+    radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
+    radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
   pointer-events: none !important;
   transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
   -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
@@ -159,7 +159,7 @@ body {
 /* ── Mobile Portrait Screen Gradient Optimization ── */
 @media (max-width: 768px) {
   body {
-    background-color: #620E0B !important;
+    background-color: #6E0F12 !important;
   }
 
   .rsvp-bg-layer {
@@ -169,9 +169,9 @@ body {
     height: 145vh !important;
     height: 145dvh !important;
     background: 
-      radial-gradient(ellipse 140% 55% at 50% 100%, rgba(167, 31, 35, 0.85) 0%, rgba(167, 31, 35, 0.40) 45%, transparent 80%),
-      radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-    background-color: #620E0B !important;
+      radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
+      radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
+    background-color: #6E0F12 !important;
     transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
     -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
     will-change: transform !important;
@@ -185,13 +185,13 @@ body {
     width: 120% !important;
     height: 135% !important;
     background: 
-      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
-      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
-      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
-      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
-      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-      radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.22) 0%, transparent 80%),
-      radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.21) 0%, transparent 80%) !important;
+      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
+      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
+      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.07) 0%, rgba(232, 60, 85, 0.09) 50%, transparent 85%),
+      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.11) 0%, rgba(242, 120, 55, 0.03) 60%, transparent 90%),
+      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.06) 0%, transparent 85%),
+      radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
+      radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
     pointer-events: none !important;
     transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
     -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
@@ -719,6 +719,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2320"></script>
+<script src="js/spa-nav.js?v=2330"></script>
 </body>
 </html>
