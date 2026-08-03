@@ -1598,298 +1598,361 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   text-align: center !important;
 }
 
-/* ── 2. Parchment Card ── */
-.rsvp-card-container {
+/* ── 2. RSVP / Join Us Dark Translucent Cards Form Styling (Figma Node 358-107 Match) ── */
+.rsvp-form-container {
   width: 100% !important;
   max-width: 440px !important;
-  padding: 0 12px !important;
+  padding: 0 16px !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
   position: relative !important;
   z-index: 3 !important;
 }
 
-.card.rsvp-card {
-  position: relative !important;
-  z-index: 10 !important;
-  background: #EBE0BD url('../images/figma-paper-exact.png') repeat center !important;
-  background-color: #EBE0BD !important;
-  border-radius: 2px !important;
-  border: none !important;
-  padding: 32px 18px 40px !important;
-  box-shadow: 
-    0 2px 8px rgba(60, 8, 12, 0.06),
-    0 8px 24px -4px rgba(60, 8, 12, 0.09),
-    0 20px 48px -12px rgba(40, 5, 8, 0.12) !important;
-  overflow: hidden !important;
-}
-
-.card.rsvp-card::before,
-.card.rsvp-card::after {
-  display: none !important;
-}
-
-.card.rsvp-card > * {
-  position: relative !important;
-  z-index: 2 !important;
-}
-
-.fgroup + .fgroup {
-  margin-top: 26px !important;
-}
-
-.flabel {
-  display: block !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 600 !important;
-  font-size: 21px !important;
-  line-height: 1.25 !important;
-  color: #981C1E !important;
-  margin-bottom: 8px !important;
-}
-
-.fhint, p.fhint {
-  font-family: 'Roboto Flex', sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 13px !important;
-  line-height: 1.45 !important;
-  color: #19202F !important;
-  letter-spacing: 0.13px !important;
-  margin: 4px 0 0 !important;
-}
-
-input.finput, textarea.finput {
+.rsvp-form {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
   width: 100% !important;
-  height: 48px !important;
-  background: #FFFFFF !important;
+}
+
+/* Individual Field Card */
+.rsvp-card-section {
+  background: rgba(85, 12, 18, 0.55) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  padding: 22px 20px 22px !important;
+  box-shadow: 0 4px 20px rgba(30, 3, 6, 0.20) !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  text-align: center !important;
+  transition: transform 0.2s ease, border-color 0.2s ease !important;
+}
+
+.rsvp-card-title {
+  display: block !important;
+  font-family: 'Cinzel', 'Spectral', Georgia, serif !important;
+  font-weight: 500 !important;
+  font-size: 17px !important;
+  line-height: 1.2 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.07em !important;
+  color: #FFFFFF !important;
+  text-align: center !important;
+  margin: 0 0 18px 0 !important;
+}
+
+/* Rounded Pill Text Inputs */
+.rsvp-pill-input {
+  width: 100% !important;
+  height: 50px !important;
+  background: #F7F4F0 !important;
   color: #19202F !important;
-  border: 1px solid transparent !important;
-  border-radius: 12px !important;
-  padding: 0 14px !important;
-  font-family: 'Roboto Flex', sans-serif !important;
+  border: 1.5px solid transparent !important;
+  border-radius: 9999px !important;
+  padding: 0 20px !important;
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
   font-weight: 400 !important;
-  font-size: 15px !important;
-  line-height: 1.45 !important;
+  font-size: 16px !important;
+  text-align: center !important;
   outline: none !important;
-  box-shadow: none !important;
-  transition: border-color .25s !important;
-  margin-top: 4px !important;
+  box-sizing: border-box !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
-input.finput:focus, textarea.finput:focus,
-input.finput:not(:placeholder-shown), textarea.finput:not(:placeholder-shown) {
-  border-color: #981C1E !important;
-  outline: none !important;
-  box-shadow: 0 0 0 2px rgba(152, 28, 30, 0.15) !important;
+.rsvp-pill-input:focus {
+  background: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25) !important;
 }
 
-.finput::placeholder, input::placeholder, textarea::placeholder {
-  color: rgba(25, 32, 47, 0.40) !important;
-  font-weight: 400 !important;
+.rsvp-pill-input::placeholder {
+  color: rgba(25, 32, 47, 0.45) !important;
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: 15.5px !important;
+  text-align: center !important;
 }
 
-textarea.farea {
-  height: auto !important;
-  min-height: 90px !important;
-  padding: 12px 14px !important;
-  border-radius: 12px !important;
-  resize: vertical !important;
-  font-family: 'Roboto Flex', sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 15px !important;
-  line-height: 1.45 !important;
+/* Name Row & Add Person Button */
+.name-row-wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  width: 100% !important;
 }
 
-/* names */
-.name-row {
+.name-input-row {
   position: relative !important;
+  width: 100% !important;
 }
-.name-row .rm {
+
+.name-input-row .rm-person-btn {
   position: absolute !important;
-  right: 10px !important;
+  right: 14px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   background: none !important;
   border: none !important;
-  color: #981C1E !important;
-  font-size: 17px !important;
+  color: #8B1E22 !important;
+  font-size: 18px !important;
   line-height: 1 !important;
   cursor: pointer !important;
   padding: 6px !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 
-.add-link {
+.add-person-btn {
   display: inline-block !important;
   background: none !important;
   border: none !important;
   cursor: pointer !important;
   padding: 0 !important;
-  margin-top: 10px !important;
-  color: #981C1E !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 600 !important;
-  font-size: 17px !important;
-  text-decoration: underline !important;
-  text-underline-offset: 4px !important;
-}
-.add-link:hover {
-  color: #7E1216 !important;
+  margin-top: 14px !important;
+  color: rgba(255, 255, 255, 0.90) !important;
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  font-size: 15.5px !important;
+  text-align: center !important;
+  transition: color 0.2s ease !important;
 }
 
-/* option rows (radio / checkbox bars) */
-.opt-rows {
+.add-person-btn:hover {
+  color: #FFFFFF !important;
+}
+
+/* Custom Radio & Checkbox Rows (Stacked Vertically, Left-Aligned content with centered container) */
+.rsvp-options-list {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
-  margin-top: 8px !important;
+  gap: 14px !important;
+  width: 100% !important;
+  text-align: left !important;
+  box-sizing: border-box !important;
+  padding: 0 4px !important;
 }
 
-.opt-row {
+.rsvp-option-label {
   display: flex !important;
   align-items: center !important;
-  gap: 12px !important;
-  background: #FFFFFF !important;
-  min-height: 46px !important;
-  border-radius: 10px !important;
-  padding: 4px 14px !important;
+  gap: 14px !important;
   cursor: pointer !important;
-  font-family: 'Roboto Flex', sans-serif !important;
-  font-weight: 400 !important;
-  font-size: 15px !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.1px !important;
-  color: #19202F !important;
-  border: 1px solid transparent !important;
-  transition: border-color .25s !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  margin: 0 !important;
 }
-.opt-row input {
+
+.rsvp-option-label input {
   position: absolute !important;
   opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
   pointer-events: none !important;
 }
-.opt-row .opt-text strong {
-  font-weight: 600 !important;
+
+/* Custom Radio Circle */
+.rsvp-radio-mark {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease !important;
 }
 
-.mark {
-  flex: none !important;
-  width: 20px !important;
-  height: 20px !important;
-  position: relative !important;
-  transition: border-color .2s, background .2s !important;
+.rsvp-option-label input:checked + .rsvp-radio-mark {
+  border-color: #FFFFFF !important;
 }
-.mark.radio {
-  border: 1.5px solid rgba(25, 32, 47, .38) !important;
-  border-radius: 50% !important;
-}
-.opt-row input:checked + .mark.radio {
-  border-color: #981C1E !important;
-}
-.opt-row input:checked + .mark.radio::after {
+
+.rsvp-option-label input:checked + .rsvp-radio-mark::after {
   content: "" !important;
   position: absolute !important;
-  left: 50% !important;
   top: 50% !important;
-  width: 9px !important;
-  height: 9px !important;
-  border-radius: 50% !important;
-  background: #981C1E !important;
+  left: 50% !important;
   transform: translate(-50%, -50%) !important;
+  width: 11px !important;
+  height: 11px !important;
+  border-radius: 50% !important;
+  background: #FFFFFF !important;
 }
 
-.mark.check {
-  border: 1.5px solid rgba(25, 32, 47, .38) !important;
+/* Custom Checkbox Square */
+.rsvp-check-mark {
+  width: 22px !important;
+  height: 22px !important;
+  min-width: 22px !important;
   border-radius: 5px !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  background: transparent !important;
+  position: relative !important;
+  box-sizing: border-box !important;
+  transition: border-color 0.2s ease, background-color 0.2s ease !important;
 }
-.opt-row input:checked + .mark.check {
-  background: #981C1E !important;
-  border-color: #981C1E !important;
+
+.rsvp-option-label input:checked + .rsvp-check-mark {
+  background: #FFFFFF !important;
+  border-color: #FFFFFF !important;
 }
-.opt-row input:checked + .mark.check::after {
+
+.rsvp-option-label input:checked + .rsvp-check-mark::after {
   content: "" !important;
   position: absolute !important;
   left: 50% !important;
   top: 44% !important;
   width: 5px !important;
-  height: 9px !important;
-  border: solid #FFFFFF !important;
-  border-width: 0 2px 2px 0 !important;
+  height: 10px !important;
+  border: solid #8B1E22 !important;
+  border-width: 0 2.2px 2.2px 0 !important;
   transform: translate(-50%, -50%) rotate(45deg) !important;
 }
 
-/* submit */
-.fsubmit {
-  margin-top: 32px !important;
+/* Option Typography */
+.rsvp-option-text {
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: rgba(255, 255, 255, 0.95) !important;
+  line-height: 1.35 !important;
 }
 
-.send-btn {
+.rsvp-event-name {
+  font-weight: 600 !important;
+  color: #FFFFFF !important;
+}
+
+.rsvp-event-date {
+  font-weight: 300 !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  margin-left: 6px !important;
+}
+
+/* Rounded Textarea */
+.rsvp-textarea-card {
+  width: 100% !important;
+  height: 110px !important;
+  background: #F7F4F0 !important;
+  color: #19202F !important;
+  border: 1.5px solid transparent !important;
+  border-radius: 18px !important;
+  padding: 14px 18px !important;
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 400 !important;
+  font-size: 15.5px !important;
+  line-height: 1.4 !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+  resize: none !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.rsvp-textarea-card:focus {
+  background: #FFFFFF !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25) !important;
+}
+
+.rsvp-textarea-card::placeholder {
+  color: rgba(25, 32, 47, 0.45) !important;
+  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: 15.5px !important;
+}
+
+/* Submit Button */
+.rsvp-submit-wrap {
+  margin-top: 14px !important;
+  margin-bottom: 24px !important;
+  width: 100% !important;
+  text-align: center !important;
+}
+
+.rsvp-submit-btn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  height: 54px !important;
   width: 100% !important;
-  background: #981C1E !important;
-  color: #FFFFFF !important;
+  height: 54px !important;
+  background: #FFF6E8 !important;
+  color: #7B181B !important;
   border: none !important;
   cursor: pointer !important;
-  border-radius: 999px !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  border-radius: 9999px !important;
+  font-family: 'Cinzel', 'Spectral', serif !important;
   font-weight: 600 !important;
-  font-size: 22px !important;
-  letter-spacing: 0.04em !important;
-  box-shadow: 0 4px 14px rgba(90, 10, 14, 0.16) !important;
-  transition: background-color .2s ease, transform .15s ease !important;
+  font-size: 17px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 6px 20px rgba(20, 2, 4, 0.25) !important;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease !important;
 }
-.send-btn:hover {
-  background: #7E1216 !important;
+
+.rsvp-submit-btn:hover {
+  background: #FFFFFF !important;
+  transform: scale(1.01) !important;
+  box-shadow: 0 8px 24px rgba(20, 2, 4, 0.30) !important;
+}
+
+.rsvp-submit-btn:active {
+  transform: scale(0.98) !important;
 }
 
 #rsvp-status {
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
+  font-family: 'Spectral', Georgia, serif !important;
   font-size: 15px !important;
-  color: rgba(25, 32, 47, .72) !important;
-  margin-top: 12px !important;
+  color: rgba(255, 255, 255, 0.90) !important;
+  margin-top: 14px !important;
   text-align: center !important;
   min-height: 1.3em !important;
 }
 
-/* thanks state */
+/* Thanks Success Screen */
 #rsvp-thanks {
   display: none;
   text-align: center;
-  padding: 4vh 0;
+  padding: 40px 20px !important;
+  background: rgba(85, 12, 18, 0.55) !important;
+  border-radius: 22px !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(30, 3, 6, 0.20) !important;
+  backdrop-filter: blur(12px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
 }
 #rsvp-thanks .big {
-  font-family: 'Cinzel', 'Cormorant Upright', Georgia, serif;
-  font-weight: 400;
-  font-size: clamp(36px, 7vw, 54px);
-  letter-spacing: .06em;
-  color: #981C1E;
+  font-family: 'Cinzel', serif !important;
+  font-weight: 500 !important;
+  font-size: clamp(32px, 7vw, 42px) !important;
+  letter-spacing: .06em !important;
+  color: #FFFFFF !important;
+  margin-bottom: 12px !important;
 }
 #rsvp-thanks .sub {
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 600;
-  font-size: clamp(17px, 2vw, 20px);
-  line-height: 1.35;
-  color: #19202F;
-  margin-top: 14px;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(16px, 3.8vw, 18px) !important;
+  line-height: 1.4 !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+  margin-top: 10px !important;
+  margin-bottom: 24px !important;
 }
 #rsvp-thanks .btn-red {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 48px;
-  padding: 0 32px;
-  background: #981C1E;
-  color: #FFFFFF;
-  border-radius: 999px;
-  text-decoration: none;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: 0.03em;
-  margin-top: 24px;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 48px !important;
+  padding: 0 36px !important;
+  background: #FFF6E8 !important;
+  color: #7B181B !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  font-family: 'Cinzel', 'Spectral', serif !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
 }
 
 
