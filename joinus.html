@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1820">
+<link rel="stylesheet" href="css/site.css?v=1830">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -204,29 +204,28 @@ main.paper, main {
   z-index: 2 !important;
 }
 
-/* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
+/* ── Unified Seamless Ambient Glass Fixed Bottom Navigation with Aipan Icons ── */
 header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !important; }
 .fixed-bottom-nav {
   position: fixed !important;
-  bottom: calc(14px + env(safe-area-inset-bottom, 0px)) !important;
-  left: 50% !important;
-  transform: translateX(-50%) translate3d(0, 0, 0) !important;
-  -webkit-transform: translateX(-50%) translate3d(0, 0, 0) !important;
-  width: calc(100vw - 28px) !important;
-  max-width: 410px !important;
-  height: 64px !important;
-  padding: 0 !important;
-  border-radius: 32px !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100vw !important;
+  height: calc(70px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
+  padding-top: 4px !important;
   background: linear-gradient(
-    135deg,
-    rgba(164, 28, 32, 0.82) 0%,
-    rgba(132, 20, 24, 0.88) 100%
+    to bottom,
+    rgba(50, 6, 9, 0.02) 0%,
+    rgba(35, 4, 6, 0.35) 45%,
+    rgba(20, 2, 4, 0.70) 100%
   ) !important;
-  backdrop-filter: blur(24px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
   border: none !important;
-  box-shadow: 0 10px 32px rgba(45, 4, 7, 0.40),
-              inset 0 1px 1px rgba(255, 255, 255, 0.20) !important;
+  border-top: none !important;
+  box-shadow: none !important;
   z-index: 2147483647 !important;
   display: flex !important;
   align-items: center !important;
@@ -234,6 +233,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   pointer-events: auto !important;
   user-select: none !important;
   -webkit-user-select: none !important;
+  transform: translate3d(0, 0, 0) !important;
+  -webkit-transform: translate3d(0, 0, 0) !important;
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
   contain: layout paint !important;
@@ -241,11 +242,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
-  max-width: 100% !important;
-  height: 64px !important;
+  max-width: 440px !important;
+  height: 70px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: space-around !important;
   padding: 0 8px !important;
   margin: 0 auto !important;
 }
@@ -254,28 +255,29 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   flex: 1 1 0% !important;
   width: 25% !important;
   max-width: 25% !important;
-  height: 52px !important;
+  height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
   text-decoration: none !important;
-  gap: 3px !important;
+  gap: 4px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   box-sizing: border-box !important;
-  padding: 4px 2px !important;
+  padding: 4px 2px 2px 2px !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   -webkit-touch-callout: none !important;
   position: relative !important;
-  border-radius: 26px !important;
-  transition: transform 0.2s ease, background-color 0.2s ease !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
-  background: rgba(255, 255, 255, 0.12) !important;
+  background: transparent !important;
 }
 
 /* Nav Pill Container */
@@ -293,8 +295,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 
 /* Icon */
 .fixed-bottom-nav .nav-tab .nav-icon {
-  width: 22px !important;
-  height: 22px !important;
+  width: 24px !important;
+  height: 24px !important;
   display: block !important;
   flex-shrink: 0 !important;
   color: rgba(255, 255, 255, 0.65) !important;
@@ -306,8 +308,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 .fixed-bottom-nav .nav-tab.active .nav-icon {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
-  transform: scale(1.06) !important;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.40)) !important;
+  transform: scale(1.08) !important;
+  filter: drop-shadow(0 0 10px rgba(255, 223, 133, 0.50)) !important;
 }
 
 /* Label below icon */
@@ -316,10 +318,10 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
   text-align: center !important;
   width: 100% !important;
   font-family: 'Spectral', Georgia, serif !important;
-  font-size: 12.5px !important;
+  font-size: 13px !important;
   font-weight: 300 !important;
   letter-spacing: 0.025em !important;
-  line-height: 1.1 !important;
+  line-height: 1.15 !important;
   color: rgba(255, 255, 255, 0.65) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
@@ -330,7 +332,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
   font-weight: 500 !important;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.30) !important;
+  text-shadow: 0 0 10px rgba(255, 223, 133, 0.40) !important;
 }
 
 /* Completely Remove Active Indicator Dot */
@@ -345,9 +347,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !i
 }
 
 .fixed-bottom-nav .nav-tab:active {
-  opacity: 1 !important;
-  transform: scale(0.96) !important;
-  background: rgba(255, 255, 255, 0.16) !important;
+  opacity: 0.8 !important;
+  transform: scale(0.95) !important;
+  background: transparent !important;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1121,6 +1123,6 @@ var RSVP_CONFIG={
 
 
 
-<script src="js/spa-nav.js?v=1820"></script>
+<script src="js/spa-nav.js?v=1830"></script>
 </body>
 </html>
