@@ -5,13 +5,13 @@
 
 :root{
   color-scheme: dark;
-  --bg-gradient: radial-gradient(ellipse 110% 75% at 50% 15%, #B42425 0%, #AC2525 35%, #6E0F16 70%, #3D0408 100%);
+  --bg-gradient: radial-gradient(circle 500px at 50% 25%, #B42425 0%, #AC2525 40%, #50080F 75%, #2A0307 100%);
   --bg-color: #AC2525;
   --gold: #FFDF85;
   --gold-glow: rgba(255, 223, 133, 0.6);
   --red:#AC2525;
   --red-hi:#B42425;
-  --red-lo:#6E0F16;
+  --red-lo:#50080F;
   --ivory:#FFF6E8;
   --ivory-dim:rgba(255,246,232,.9);
   --ivory-faint:rgba(255,246,232,.7);
@@ -52,7 +52,7 @@ html{
   -ms-overflow-style: none !important;
 }
 body{
-  background: radial-gradient(ellipse 110% 75% at 50% 15%, #B42425 0%, #AC2525 35%, #6E0F16 70%, #3D0408 100%) !important;
+  background: radial-gradient(circle 500px at 50% 25%, #B42425 0%, #AC2525 40%, #50080F 75%, #2A0307 100%) !important;
   background-color:#AC2525 !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Pure Aipan & Gerua Gradient Background Layer (Variation 2: Burgundy Vignette) ── */
+/* ── Pure Aipan & Gerua Gradient Background Layer (Option B: Radial Spotlight Vignette) ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -81,7 +81,7 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: radial-gradient(ellipse 110% 75% at 50% 15%, #B42425 0%, #AC2525 35%, #6E0F16 70%, #3D0408 100%) !important;
+  background: radial-gradient(circle 500px at 50% 25%, #B42425 0%, #AC2525 40%, #50080F 75%, #2A0307 100%) !important;
   background-color: #AC2525 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
