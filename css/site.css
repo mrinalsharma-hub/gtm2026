@@ -1618,7 +1618,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-title {
   font-family: 'Cinzel', serif !important;
-  font-size: clamp(34px, 8.5vw, 42px) !important;
+  font-size: clamp(30px, 7.5vw, 38px) !important;
   font-weight: 450 !important;
   letter-spacing: 0.02em !important;
   color: #FFFFFF !important;
