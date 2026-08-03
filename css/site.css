@@ -4,19 +4,6 @@
    ═══════════════════════════════════════════════════════ */
 
 @font-face {
-  font-family: 'Chintaron';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('CHINTARON Regular'),
-       local('CHINTARON'),
-       local('Chintaron-Regular'),
-       local('Chintaron'),
-       url('../fonts/chintaron-regular.woff') format('woff'),
-       url('../fonts/chintaron-regular.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'Cormorant';
   font-style: normal;
   font-weight: 400;
@@ -1630,13 +1617,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-title {
-  font-family: 'Chintaron', 'CHINTARON', 'Cinzel', serif !important;
-  font-size: clamp(38px, 9.5vw, 48px) !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.03em !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: clamp(30px, 7.5vw, 38px) !important;
+  font-weight: 450 !important;
+  letter-spacing: 0.02em !important;
   color: #FFFFFF !important;
   text-shadow: 0 4px 24px rgba(50, 5, 8, 0.20) !important;
-  text-transform: none !important;
+  text-transform: uppercase !important;
   margin-top: 42px !important;
   margin-bottom: 4px !important;
   line-height: 1.15 !important;
