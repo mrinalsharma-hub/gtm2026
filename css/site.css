@@ -1603,7 +1603,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-form-container {
   width: 100% !important;
   max-width: 440px !important;
-  padding: 0 8px !important;
+  padding: 0 16px !important;
   margin: 0 auto !important;
   box-sizing: border-box !important;
   position: relative !important;
