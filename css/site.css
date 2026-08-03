@@ -1618,13 +1618,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Individual Field Card */
 .rsvp-card-section {
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-radius: 32px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
   border: none !important;
   box-shadow: none !important;
   -webkit-filter: none !important;
   filter: none !important;
-  padding: 24px 20px 24px !important;
+  padding: 24px !important;
   box-sizing: border-box !important;
   width: 100% !important;
   text-align: center !important;
@@ -1633,15 +1633,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-card-title {
   display: block !important;
-  font-family: 'Cinzel', 'Spectral', Georgia, serif !important;
-  font-weight: 500 !important;
-  font-size: 17px !important;
-  line-height: 1.2 !important;
+  font-family: 'Cinzel', 'Spectral', serif !important;
+  font-size: 20px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.07em !important;
+  letter-spacing: 0.04em !important;
+  line-height: normal !important;
   color: #FFFFFF !important;
   text-align: center !important;
-  margin: 0 0 18px 0 !important;
+  margin: 0 0 24px 0 !important;
 }
 
 /* Rounded Text Inputs */
@@ -1716,7 +1717,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   color: rgba(255, 255, 255, 0.90) !important;
   font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
   font-weight: 400 !important;
-  font-size: 15.5px !important;
+  font-size: 16px !important;
   text-align: center !important;
   transition: color 0.2s ease !important;
 }
@@ -1729,7 +1730,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-options-list {
   display: flex !important;
   flex-direction: column !important;
-  gap: 14px !important;
+  gap: 16px !important;
   width: 100% !important;
   text-align: left !important;
   box-sizing: border-box !important;
@@ -1756,11 +1757,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Custom Radio Circle */
 .rsvp-radio-mark {
-  width: 22px !important;
-  height: 22px !important;
-  min-width: 22px !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
   border-radius: 50% !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  border: 2px solid #FFFFFF !important;
   background: transparent !important;
   position: relative !important;
   box-sizing: border-box !important;
@@ -1777,19 +1778,19 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 11px !important;
-  height: 11px !important;
+  width: 12px !important;
+  height: 12px !important;
   border-radius: 50% !important;
   background: #FFFFFF !important;
 }
 
 /* Custom Checkbox Square */
 .rsvp-check-mark {
-  width: 22px !important;
-  height: 22px !important;
-  min-width: 22px !important;
-  border-radius: 5px !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  border-radius: 6px !important;
+  border: 2px solid #FFFFFF !important;
   background: transparent !important;
   position: relative !important;
   box-sizing: border-box !important;
@@ -1806,20 +1807,21 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   position: absolute !important;
   left: 50% !important;
   top: 44% !important;
-  width: 5px !important;
-  height: 10px !important;
+  width: 6px !important;
+  height: 11px !important;
   border: solid #8B1E22 !important;
-  border-width: 0 2.2px 2.2px 0 !important;
+  border-width: 0 2.4px 2.4px 0 !important;
   transform: translate(-50%, -50%) rotate(45deg) !important;
 }
 
 /* Option Typography */
 .rsvp-option-text {
-  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
-  font-size: 16px !important;
-  font-weight: 400 !important;
-  color: rgba(255, 255, 255, 0.95) !important;
-  line-height: 1.35 !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 20px !important;
+  font-weight: 300 !important;
+  font-style: normal !important;
+  line-height: normal !important;
+  color: #FFFFFF !important;
 }
 
 .rsvp-event-name {
@@ -1829,8 +1831,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-event-date {
   font-weight: 300 !important;
-  color: rgba(255, 255, 255, 0.72) !important;
-  margin-left: 6px !important;
+  color: rgba(255, 255, 255, 0.78) !important;
+  margin-left: 8px !important;
 }
 
 /* Rounded Textarea */
@@ -1921,9 +1923,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 #rsvp-thanks {
   display: none;
   text-align: center;
-  padding: 40px 20px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
-  border-radius: 32px !important;
+  padding: 40px 24px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border-radius: 12px !important;
   border: none !important;
   box-shadow: none !important;
   -webkit-filter: none !important;
