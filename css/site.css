@@ -153,15 +153,19 @@ a{color:inherit}
   will-change: transform, opacity !important;
 }
 
-/* ── Mobile Portrait Screen Gradient Optimization (Option 4: Dual-Radial Studio Lighting) ── */
+/* ── Mobile Portrait Screen Gradient Optimization (Seamless Diffused Amber-Rose & Garnet) ── */
 @media (max-width: 768px) {
   :root {
-    --bg-gradient: radial-gradient(circle 500px at 50% 8%, #CC2430 0%, #701017 45%, #200305 75%, #100102 100%);
+    --bg-gradient: radial-gradient(ellipse 140% 50% at 50% 12%, rgba(244, 146, 48, 0.26) 0%, rgba(230, 85, 45, 0.14) 45%, transparent 75%),
+                   radial-gradient(ellipse 110% 45% at 50% 18%, rgba(232, 58, 80, 0.22) 0%, rgba(200, 32, 45, 0.10) 50%, transparent 80%),
+                   radial-gradient(ellipse 120% 85% at 50% 15%, #BA2428 0%, #AA2226 26%, #88181D 55%, #560E13 82%, #3E080C 100%);
   }
 
   body {
-    background: radial-gradient(circle 500px at 50% 8%, #CC2430 0%, #701017 45%, #200305 75%, #100102 100%) !important;
-    background-color: #100102 !important;
+    background: radial-gradient(ellipse 140% 50% at 50% 12%, rgba(244, 146, 48, 0.26) 0%, rgba(230, 85, 45, 0.14) 45%, transparent 75%),
+                radial-gradient(ellipse 110% 45% at 50% 18%, rgba(232, 58, 80, 0.22) 0%, rgba(200, 32, 45, 0.10) 50%, transparent 80%),
+                radial-gradient(ellipse 120% 85% at 50% 15%, #BA2428 0%, #AA2226 26%, #88181D 55%, #560E13 82%, #3E080C 100%) !important;
+    background-color: #B42425 !important;
   }
 
   .us-bg-layer,
@@ -170,8 +174,10 @@ a{color:inherit}
   .rsvp-bg-layer,
   .home-bg-layer,
   .fluid-bg-layer {
-    background: radial-gradient(circle 500px at 50% 8%, #CC2430 0%, #701017 45%, #200305 75%, #100102 100%) !important;
-    background-color: #100102 !important;
+    background: radial-gradient(ellipse 140% 50% at 50% 12%, rgba(244, 146, 48, 0.26) 0%, rgba(230, 85, 45, 0.14) 45%, transparent 75%),
+                radial-gradient(ellipse 110% 45% at 50% 18%, rgba(232, 58, 80, 0.22) 0%, rgba(200, 32, 45, 0.10) 50%, transparent 80%),
+                radial-gradient(ellipse 120% 85% at 50% 15%, #BA2428 0%, #AA2226 26%, #88181D 55%, #560E13 82%, #3E080C 100%) !important;
+    background-color: #B42425 !important;
   }
 
   .us-bg-layer::before,
@@ -180,7 +186,7 @@ a{color:inherit}
   .rsvp-bg-layer::before,
   .home-bg-layer::before,
   .fluid-bg-layer::before {
-    background: radial-gradient(circle 380px at 50% 10%, rgba(225, 45, 58, 0.42) 0%, rgba(160, 20, 30, 0.20) 50%, transparent 80%) !important;
+    background: radial-gradient(ellipse 130% 55% at 50% 14%, rgba(248, 155, 55, 0.22) 0%, rgba(235, 60, 80, 0.18) 45%, transparent 80%) !important;
   }
 }
 
