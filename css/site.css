@@ -1092,12 +1092,15 @@ header.site,
 
 .dock-tab.active .dock-svg {
   stroke: #FFDF85 !important;
-  filter: drop-shadow(0 2px 8px rgba(255, 223, 133, 0.75)) !important;
+  -webkit-filter: none !important;
+  filter: none !important;
 }
 
 .dock-tab.active .dock-label {
   color: #FFDF85 !important;
   font-weight: 700 !important;
+  -webkit-text-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* ── CENTER HERO ELEVATED 3D ORB (Reference Image Style) ── */
@@ -1187,14 +1190,17 @@ main {
 /* ── Unified Seamless Ambient Glass Fixed Bottom Navigation with Aipan Icons ── */
 header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-nav { display: none !important; }
 .fixed-bottom-nav {
+  box-sizing: border-box !important;
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   width: 100vw !important;
-  height: calc(76px + env(safe-area-inset-bottom, 0px)) !important;
+  height: auto !important;
+  min-height: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+  padding: 0 !important;
+  padding-bottom: constant(safe-area-inset-bottom) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  padding-top: 6px !important;
   background: linear-gradient(
     to bottom,
     rgba(180, 36, 37, 0.90) 0%,
@@ -1208,9 +1214,19 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   border-top: 1px solid rgba(255, 246, 232, 0.12) !important;
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25) !important;
   z-index: 2147483647 !important;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
   display: flex !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: column !important;
+  flex-direction: column !important;
+  -webkit-box-pack: start !important;
+  -webkit-justify-content: flex-start !important;
+  justify-content: flex-start !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
   align-items: center !important;
-  justify-content: center !important;
   pointer-events: auto !important;
   user-select: none !important;
   -webkit-user-select: none !important;
@@ -1222,32 +1238,56 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .fixed-bottom-nav .nav-container {
+  box-sizing: border-box !important;
   width: 100% !important;
   max-width: 460px !important;
-  height: 72px !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  max-height: 68px !important;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
   display: flex !important;
-  align-items: center !important;
+  -webkit-box-orient: horizontal !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: row !important;
+  flex-direction: row !important;
+  -webkit-box-align: stretch !important;
+  -webkit-align-items: stretch !important;
+  align-items: stretch !important;
+  -webkit-box-pack: justify !important;
+  -webkit-justify-content: space-around !important;
   justify-content: space-around !important;
-  padding: 0 4px !important;
+  padding: 0 !important;
   margin: 0 auto !important;
 }
 
 .fixed-bottom-nav .nav-tab {
+  box-sizing: border-box !important;
   flex: 1 1 0% !important;
   width: 25% !important;
   max-width: 25% !important;
-  height: 100% !important;
+  height: 68px !important;
+  min-height: 68px !important;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
   display: flex !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-box-direction: normal !important;
+  -webkit-flex-direction: column !important;
   flex-direction: column !important;
-  align-items: center !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
   justify-content: center !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  align-items: center !important;
   text-align: center !important;
   text-decoration: none !important;
-  gap: 6px !important;
+  gap: 5px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  box-sizing: border-box !important;
-  padding: 4px 1px 2px 1px !important;
+  padding: 0 !important;
+  margin: 0 !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   -webkit-touch-callout: none !important;
@@ -1263,10 +1303,22 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Nav Pill Container */
 .fixed-bottom-nav .nav-tab .nav-pill-wrapper {
+  box-sizing: border-box !important;
   position: relative !important;
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
   display: flex !important;
-  align-items: center !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: center !important;
   justify-content: center !important;
+  -webkit-box-align: center !important;
+  -webkit-align-items: center !important;
+  align-items: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-height: 24px !important;
+  margin: 0 !important;
+  padding: 0 !important;
   flex-shrink: 0 !important;
 }
 
@@ -1276,13 +1328,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Icon (24px x 24px) */
 .fixed-bottom-nav .nav-tab .nav-icon {
+  box-sizing: border-box !important;
   width: 24px !important;
   height: 24px !important;
   display: block !important;
   flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
   color: rgba(255, 255, 255, 0.50) !important;
   opacity: 0.50 !important;
   fill: currentColor !important;
+  -webkit-filter: none !important;
+  filter: none !important;
   transition: color 0.2s ease, opacity 0.2s ease, transform 0.2s ease !important;
 }
 
@@ -1292,25 +1349,33 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   opacity: 1 !important;
   fill: #FFFFFF !important;
   transform: scale(1.08) !important;
-  filter: drop-shadow(0 0 8px rgba(255, 223, 133, 0.50)) !important;
+  -webkit-filter: none !important;
+  filter: none !important;
 }
 
-/* Label below icon (14px, regular for unselected, bold for active, 0.01em tracking) */
+/* Label below icon (13.5px, regular for unselected, bold for active, 0.01em tracking, perfect vertical centering) */
 .fixed-bottom-nav .nav-tab .nav-label {
+  box-sizing: border-box !important;
   display: block !important;
   text-align: center !important;
   width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   font-family: 'Spectral', 'Cinzel', Georgia, serif !important;
-  font-size: 14px !important;
+  font-size: 13.5px !important;
   font-weight: 400 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.01em !important;
-  line-height: 1.2 !important;
+  line-height: 1 !important;
+  height: auto !important;
   color: rgba(255, 255, 255, 0.50) !important;
   opacity: 0.95 !important;
+  -webkit-text-shadow: none !important;
+  text-shadow: none !important;
   white-space: nowrap !important;
   overflow: visible !important;
   text-overflow: clip !important;
+  -webkit-font-smoothing: antialiased !important;
   transition: color 0.2s ease, opacity 0.2s ease, font-weight 0.2s ease !important;
 }
 
@@ -1318,7 +1383,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   color: #FFFFFF !important;
   opacity: 1 !important;
   font-weight: 700 !important;
-  text-shadow: 0 0 8px rgba(255, 223, 133, 0.45) !important;
+  -webkit-text-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* Completely Remove Active Indicator Dot */
