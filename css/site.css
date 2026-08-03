@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Velvet Watercolor Maroon & Smoky Wine Background System ── */
+/* ── Velvet Watercolor Maroon & Smoky Ruby Drama Background System ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -81,13 +81,13 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: radial-gradient(ellipse 130% 85% at 50% 12%, #981C1E 0%, #870334 32%, #680224 65%, #4A0016 100%) !important;
+  background: radial-gradient(ellipse 130% 85% at 50% 12%, #981C1E 0%, #870334 32%, #680224 65%, #38000C 100%) !important;
   background-color: #981C1E !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* 1. Smoky Maroon & Ruby Wine Watercolor Clouds (Preset 1: High-Contrast Ruby Drama) */
+/* 1. Smoky Maroon & Ruby Wine Watercolor Clouds (High-Contrast Ruby Drama - Vivid 9s Flow) */
 .us-bg-layer::before,
 .schedule-bg-layer::before,
 .stay-bg-layer::before,
@@ -96,20 +96,20 @@ a{color:inherit}
 .fluid-bg-layer::before {
   content: "" !important;
   position: absolute !important;
-  inset: -25% !important;
-  width: 150% !important;
-  height: 150% !important;
+  inset: -30% !important;
+  width: 160% !important;
+  height: 160% !important;
   background: 
-    /* Radiant Ruby-Wine Highlight Cloud (Top Right) */
-    radial-gradient(ellipse 70% 60% at 76% 20%, rgba(215, 30, 75, 0.65) 0%, rgba(160, 15, 45, 0.28) 48%, transparent 75%),
-    /* Deep Smoky Plum / Wine Shadow Cloud (Mid Left) */
-    radial-gradient(ellipse 75% 65% at 16% 46%, rgba(50, 0, 15, 0.72) 0%, rgba(80, 2, 25, 0.35) 52%, transparent 82%),
-    /* Luminous Crimson-Wine Mist (Bottom Right) */
-    radial-gradient(ellipse 65% 55% at 70% 80%, rgba(200, 25, 65, 0.55) 0%, rgba(135, 8, 38, 0.25) 48%, transparent 78%),
-    /* Upper-Left Radiant Wine Bloom */
-    radial-gradient(ellipse 55% 50% at 26% 16%, rgba(190, 22, 58, 0.45) 0%, transparent 70%) !important;
+    /* Radiant Luminous Ruby-Wine Cloud (Top Right) */
+    radial-gradient(ellipse 65% 55% at 75% 20%, rgba(240, 35, 85, 0.78) 0%, rgba(170, 15, 50, 0.35) 45%, transparent 72%),
+    /* Deep Smoky Plum / Midnight Wine Shadow Cloud (Mid Left) */
+    radial-gradient(ellipse 75% 65% at 15% 45%, rgba(32, 0, 10, 0.85) 0%, rgba(70, 2, 22, 0.45) 50%, transparent 80%),
+    /* Luminous Crimson-Wine Mist (Bottom Center-Right) */
+    radial-gradient(ellipse 65% 55% at 72% 78%, rgba(225, 25, 75, 0.68) 0%, rgba(145, 10, 42, 0.30) 45%, transparent 75%),
+    /* Upper-Left Radiant Rose-Wine Bloom */
+    radial-gradient(ellipse 55% 50% at 25% 15%, rgba(210, 25, 65, 0.55) 0%, transparent 68%) !important;
   pointer-events: none !important;
-  animation: velvetMaroonDrift 16s ease-in-out infinite alternate !important;
+  animation: velvetMaroonDrift 9s ease-in-out infinite alternate !important;
   transform-origin: center center !important;
   will-change: transform, opacity !important;
 }
@@ -117,19 +117,15 @@ a{color:inherit}
 @keyframes velvetMaroonDrift {
   0% {
     transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-    opacity: 0.88;
+    opacity: 0.85;
   }
-  33% {
-    transform: translate3d(-5%, 4%, 0) scale(1.12) rotate(4deg);
+  50% {
+    transform: translate3d(-8%, 6%, 0) scale(1.18) rotate(5deg);
     opacity: 1;
-  }
-  66% {
-    transform: translate3d(5%, -4%, 0) scale(1.20) rotate(-4deg);
-    opacity: 0.92;
   }
   100% {
-    transform: translate3d(-3%, -5%, 0) scale(1.06) rotate(3deg);
-    opacity: 1;
+    transform: translate3d(8%, -6%, 0) scale(1.24) rotate(-5deg);
+    opacity: 0.90;
   }
 }
 
