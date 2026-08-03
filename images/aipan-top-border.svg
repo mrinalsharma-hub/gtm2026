@@ -1,25 +1,40 @@
-<svg width="100%" height="25.2" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="100%" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <pattern id="aipan-dots-band" width="25.2" height="25.2" patternUnits="userSpaceOnUse">
+    <pattern id="aipan-top-border-pattern" width="42" height="46" patternUnits="userSpaceOnUse">
       <!-- 1. Top Horizontal Line (y = 1.6) -->
-      <line x1="0" y1="1.6" x2="25.2" y2="1.6" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.95"/>
+      <line x1="0" y1="1.6" x2="42" y2="1.6" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.95"/>
 
-      <!-- 2. Row of Large Pearl Dots (Bindus) - 2 per 25.2px unit (spaced every 12.6px) -->
-      <circle cx="6.3" cy="7.9" r="3.36" fill="#FFFFFF" fill-opacity="0.95"/>
-      <circle cx="18.9" cy="7.9" r="3.36" fill="#FFFFFF" fill-opacity="0.95"/>
+      <!-- 2. Row of Large Pearl Dots (Bindus) - 2 per 42px unit (spaced every 21px) -->
+      <circle cx="10.5" cy="7.9" r="3.36" fill="#FFFFFF" fill-opacity="0.95"/>
+      <circle cx="31.5" cy="7.9" r="3.36" fill="#FFFFFF" fill-opacity="0.95"/>
 
       <!-- 3. Double Horizontal Guideline Rule Lines -->
-      <line x1="0" y1="14.2" x2="25.2" y2="14.2" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.95"/>
-      <line x1="0" y1="17.3" x2="25.2" y2="17.3" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.95"/>
+      <line x1="0" y1="14.2" x2="42" y2="14.2" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.95"/>
+      <line x1="0" y1="17.4" x2="42" y2="17.4" stroke="#FFFFFF" stroke-width="1.2" stroke-opacity="0.95"/>
 
-      <!-- 4. Bottom Row of Fine Micro-Dots - 6 per 25.2px unit (spaced every 4.2px) -->
-      <circle cx="2.1" cy="21.5" r="1.05" fill="#FFFFFF" fill-opacity="0.95"/>
-      <circle cx="6.3" cy="21.5" r="1.05" fill="#FFFFFF" fill-opacity="0.95"/>
-      <circle cx="10.5" cy="21.5" r="1.05" fill="#FFFFFF" fill-opacity="0.95"/>
-      <circle cx="14.7" cy="21.5" r="1.05" fill="#FFFFFF" fill-opacity="0.95"/>
-      <circle cx="18.9" cy="21.5" r="1.05" fill="#FFFFFF" fill-opacity="0.95"/>
-      <circle cx="23.1" cy="21.5" r="1.05" fill="#FFFFFF" fill-opacity="0.95"/>
+      <!-- 4. Lower Attached Hanging Motif: 5-Stroke Cascading Vasudhara Fingers -->
+      <!-- Stroke 1 (Left Outer) -->
+      <path d="M 9.00 17.40 C 7.56 21.02, 7.40 23.92, 7.46 26.10 C 7.72 28.71, 8.52 30.74, 9.00 31.90 C 9.48 30.74, 10.28 28.71, 10.54 26.10 C 10.60 23.92, 10.44 21.02, 9.00 17.40 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+      
+      <!-- Stroke 2 (Left Inner) -->
+      <path d="M 15.00 17.40 C 13.56 21.78, 13.40 25.28, 13.46 27.90 C 13.72 31.05, 14.52 33.50, 15.00 34.90 C 15.48 33.50, 16.28 31.05, 16.54 27.90 C 16.60 25.28, 16.44 21.78, 15.00 17.40 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+      
+      <!-- Stroke 3 (Center Apex Finger) -->
+      <path d="M 21.00 17.40 C 19.47 22.52, 19.30 26.63, 19.37 29.70 C 19.64 33.39, 20.49 36.26, 21.00 37.90 C 21.51 36.26, 22.36 33.39, 22.63 29.70 C 22.70 26.63, 22.53 22.52, 21.00 17.40 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+      
+      <!-- Stroke 4 (Right Inner) -->
+      <path d="M 27.00 17.40 C 25.56 21.78, 25.40 25.28, 25.46 27.90 C 25.72 31.05, 26.52 33.50, 27.00 34.90 C 27.48 33.50, 28.28 31.05, 28.54 27.90 C 28.60 25.28, 28.44 21.78, 27.00 17.40 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+      
+      <!-- Stroke 5 (Right Outer) -->
+      <path d="M 33.00 17.40 C 31.56 21.02, 31.40 23.92, 31.46 26.10 C 31.72 28.71, 32.52 30.74, 33.00 31.90 C 33.48 30.74, 34.28 28.71, 34.54 26.10 C 34.60 23.92, 34.44 21.02, 33.00 17.40 Z" fill="#FFFFFF" fill-opacity="0.95"/>
+
+      <!-- 5. Five Chevron Pearl Dots (Bindus) in Descending V-Formation -->
+      <circle cx="9.00" cy="35.50" r="1.60" fill="#FFFFFF" fill-opacity="0.95"/>
+      <circle cx="15.00" cy="38.50" r="1.60" fill="#FFFFFF" fill-opacity="0.95"/>
+      <circle cx="21.00" cy="41.50" r="1.60" fill="#FFFFFF" fill-opacity="0.95"/>
+      <circle cx="27.00" cy="38.50" r="1.60" fill="#FFFFFF" fill-opacity="0.95"/>
+      <circle cx="33.00" cy="35.50" r="1.60" fill="#FFFFFF" fill-opacity="0.95"/>
     </pattern>
   </defs>
-  <rect width="100%" height="100%" fill="url(#aipan-dots-band)"/>
+  <rect width="100%" height="100%" fill="url(#aipan-top-border-pattern)"/>
 </svg>

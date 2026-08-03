@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="30" viewBox="0 0 1024 30" fill="none">
+<defs>
+  <pattern id="motif" width="41" height="30" patternUnits="userSpaceOnUse">
+    <!-- 5 vertical tapered strokes -->
+    <!-- Stroke 1 -->
+    <path d="M 5.5 0 C 4.2 4, 3.8 8, 3.8 9.5 C 3.8 11.5, 4.2 14.5, 5.5 17.5 C 6.8 14.5, 7.2 11.5, 7.2 9.5 C 7.2 8, 6.8 4, 5.5 0 Z" fill="#FFFFFF"/>
+    <!-- Stroke 2 -->
+    <path d="M 12.0 0 C 10.7 4, 10.3 8, 10.3 9.5 C 10.3 11.5, 10.7 14.5, 12.0 18.0 C 13.3 14.5, 13.7 11.5, 13.7 9.5 C 13.7 8, 13.3 4, 12.0 0 Z" fill="#FFFFFF"/>
+    <!-- Stroke 3 (Center) -->
+    <path d="M 18.5 0 C 17.2 4, 16.8 8, 16.8 10.0 C 16.8 12.5, 17.2 16.0, 18.5 22.0 C 19.8 16.0, 20.2 12.5, 20.2 10.0 C 20.2 8, 19.8 4, 18.5 0 Z" fill="#FFFFFF"/>
+    <!-- Stroke 4 -->
+    <path d="M 25.0 0 C 23.7 4, 23.3 8, 23.3 9.5 C 23.3 11.5, 23.7 14.5, 25.0 18.0 C 26.3 14.5, 26.7 11.5, 26.7 9.5 C 26.7 8, 26.3 4, 25.0 0 Z" fill="#FFFFFF"/>
+    <!-- Stroke 5 -->
+    <path d="M 31.5 0 C 30.2 4, 29.8 8, 29.8 9.5 C 29.8 11.5, 30.2 14.5, 31.5 17.5 C 32.8 14.5, 33.2 11.5, 33.2 9.5 C 33.2 8, 32.8 4, 31.5 0 Z" fill="#FFFFFF"/>
+
+    <!-- 5 Chevron Dots (Bindus) -->
+    <circle cx="5.5" cy="21.5" r="1.9" fill="#FFFFFF"/>
+    <circle cx="12.0" cy="25.0" r="1.9" fill="#FFFFFF"/>
+    <circle cx="18.5" cy="28.5" r="1.9" fill="#FFFFFF"/>
+    <circle cx="25.0" cy="25.0" r="1.9" fill="#FFFFFF"/>
+    <circle cx="31.5" cy="21.5" r="1.9" fill="#FFFFFF"/>
+  </pattern>
+</defs>
+<rect width="1024" height="30" fill="url(#motif)"/>
+</svg>
