@@ -1379,6 +1379,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
+  animation: mandalaGentleHover 7s ease-in-out infinite alternate !important;
+  will-change: transform !important;
 }
 
 .rsvp-dots-ring {
@@ -1391,11 +1393,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   pointer-events: none !important;
   z-index: 1 !important;
   transform-origin: center center !important;
-  animation: rsvpDotsAntiClockwiseSpin 36s linear infinite !important;
+  animation: rsvpDotsAntiClockwiseSpin 42s linear infinite !important;
   will-change: transform !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+  filter: drop-shadow(0 0 5px rgba(255, 235, 175, 0.40)) !important;
 }
 
 .rsvp-mandala-img {
@@ -1404,7 +1407,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: block !important;
   object-fit: contain !important;
   transform-origin: center center !important;
-  animation: rsvpMandalaSpin 28s linear infinite !important;
+  animation: rsvpMandalaSpin 32s linear infinite !important;
   will-change: transform !important;
   position: relative !important;
   z-index: 2 !important;
@@ -1412,6 +1415,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
+  filter: drop-shadow(0 4px 14px rgba(65, 6, 10, 0.32))
+          drop-shadow(0 0 20px rgba(255, 220, 130, 0.22)) !important;
 }
 
 .mandala-center-hands {
@@ -1430,6 +1435,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
+  filter: drop-shadow(0 3px 10px rgba(70, 8, 12, 0.32))
+          drop-shadow(0 0 12px rgba(255, 223, 133, 0.35)) !important;
 }
 
 .mandala-hands-svg {
@@ -1439,6 +1446,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
+}
+
+@keyframes mandalaGentleHover {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -2px, 0) scale(1.015);
+  }
+  100% {
+    transform: translate3d(0, 1.5px, 0) scale(1);
+  }
 }
 
 @keyframes rsvpMandalaSpin {
