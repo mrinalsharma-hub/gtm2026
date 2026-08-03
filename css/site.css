@@ -1961,6 +1961,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-style: normal !important;
   color: rgba(255, 255, 255, 0.90) !important;
   margin-top: 14px !important;
+  margin-bottom: 40px !important;
   text-align: center !important;
   min-height: 1.3em !important;
 }
