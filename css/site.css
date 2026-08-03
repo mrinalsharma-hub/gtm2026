@@ -111,7 +111,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Pure Aipan & Gerua Gradient Background Layer (Edition I: Sabyasachi Crimson Velvet) ── */
+/* ── Pure Aipan & Gerua Gradient Background Layer (Exact Reference Match) ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -126,46 +126,21 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%) !important;
-  background-color: #AC2525 !important;
+  background: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%) !important;
+  background-color: #A71F23 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* 1. Ambient Diya Hearth Glow Motion (Option 1: Top-Crown Vermilion & Rose-Pink Halo) */
-.us-bg-layer::before,
-.schedule-bg-layer::before,
-.stay-bg-layer::before,
-.rsvp-bg-layer::before,
-.home-bg-layer::before,
-.fluid-bg-layer::before {
-  content: "" !important;
-  display: block !important;
-  position: absolute !important;
-  inset: -15% !important;
-  width: 130% !important;
-  height: 130% !important;
-  background: radial-gradient(circle 550px at 45% 10%, rgba(216, 40, 53, 0.55) 0%, rgba(202, 39, 56, 0.35) 40%, rgba(172, 37, 37, 0.15) 65%, transparent 80%),
-              radial-gradient(circle 450px at 75% 8%, rgba(202, 39, 56, 0.35) 0%, transparent 60%) !important;
-  pointer-events: none !important;
-  animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-  transform-origin: 50% 25% !important;
-  will-change: transform, opacity !important;
-}
-
-/* ── Mobile Portrait Screen Gradient Optimization (Seamless Diffused Amber-Rose & Garnet) ── */
+/* ── Mobile Portrait Screen Gradient (Pixel-Exact to User Reference) ── */
 @media (max-width: 768px) {
   :root {
-    --bg-gradient: radial-gradient(ellipse 140% 50% at 50% 12%, rgba(244, 146, 48, 0.26) 0%, rgba(230, 85, 45, 0.14) 45%, transparent 75%),
-                   radial-gradient(ellipse 110% 45% at 50% 18%, rgba(232, 58, 80, 0.22) 0%, rgba(200, 32, 45, 0.10) 50%, transparent 80%),
-                   radial-gradient(ellipse 120% 85% at 50% 15%, #BA2428 0%, #AA2226 26%, #88181D 55%, #560E13 82%, #3E080C 100%);
+    --bg-gradient: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%);
   }
 
   body {
-    background: radial-gradient(ellipse 140% 50% at 50% 12%, rgba(244, 146, 48, 0.26) 0%, rgba(230, 85, 45, 0.14) 45%, transparent 75%),
-                radial-gradient(ellipse 110% 45% at 50% 18%, rgba(232, 58, 80, 0.22) 0%, rgba(200, 32, 45, 0.10) 50%, transparent 80%),
-                radial-gradient(ellipse 120% 85% at 50% 15%, #BA2428 0%, #AA2226 26%, #88181D 55%, #560E13 82%, #3E080C 100%) !important;
-    background-color: #B42425 !important;
+    background: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%) !important;
+    background-color: #A71F23 !important;
   }
 
   .us-bg-layer,
@@ -174,10 +149,8 @@ a{color:inherit}
   .rsvp-bg-layer,
   .home-bg-layer,
   .fluid-bg-layer {
-    background: radial-gradient(ellipse 140% 50% at 50% 12%, rgba(244, 146, 48, 0.26) 0%, rgba(230, 85, 45, 0.14) 45%, transparent 75%),
-                radial-gradient(ellipse 110% 45% at 50% 18%, rgba(232, 58, 80, 0.22) 0%, rgba(200, 32, 45, 0.10) 50%, transparent 80%),
-                radial-gradient(ellipse 120% 85% at 50% 15%, #BA2428 0%, #AA2226 26%, #88181D 55%, #560E13 82%, #3E080C 100%) !important;
-    background-color: #B42425 !important;
+    background: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%) !important;
+    background-color: #A71F23 !important;
   }
 
   .us-bg-layer::before,
@@ -186,7 +159,7 @@ a{color:inherit}
   .rsvp-bg-layer::before,
   .home-bg-layer::before,
   .fluid-bg-layer::before {
-    background: radial-gradient(ellipse 130% 55% at 50% 14%, rgba(248, 155, 55, 0.22) 0%, rgba(235, 60, 80, 0.18) 45%, transparent 80%) !important;
+    display: none !important;
   }
 }
 
@@ -1211,11 +1184,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
   background: linear-gradient(
     to bottom,
-    rgba(180, 36, 37, 0.90) 0%,
-    rgba(160, 28, 30, 0.95) 45%,
-    rgba(136, 24, 24, 0.98) 100%
+    rgba(167, 31, 35, 0.90) 0%,
+    rgba(155, 28, 32, 0.95) 45%,
+    rgba(142, 24, 28, 0.98) 100%
   ) !important;
-  background-color: #B42425 !important;
+  background-color: #A71F23 !important;
   backdrop-filter: blur(16px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
   border: none !important;
