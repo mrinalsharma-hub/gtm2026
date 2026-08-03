@@ -2144,30 +2144,5 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   text-transform: uppercase !important;
 }
 
-/* Authentic Kumaoni Himalayan Landscape Footer Artwork */
-.rsvp-landscape-footer-wrap {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 36px auto -16px !important;
-  padding: 0 !important;
-  position: relative !important;
-  display: block !important;
-  pointer-events: none !important;
-  overflow: hidden !important;
-  border-radius: 0 0 16px 16px !important;
-  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 8%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%) !important;
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 8%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%) !important;
-}
-
-.rsvp-landscape-footer-img {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: auto !important;
-  display: block !important;
-  margin: 0 auto !important;
-  opacity: 0.94 !important;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.12)) !important;
-}
-
 
 
