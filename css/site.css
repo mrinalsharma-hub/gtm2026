@@ -1333,8 +1333,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-mandala-wrap {
   position: relative !important;
-  width: 240px !important;
-  height: 240px !important;
+  width: 230px !important;
+  height: 230px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1406,10 +1406,10 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-title {
-  font-family: 'Cormorant', serif !important;
-  font-size: clamp(38px, 9.5vw, 46px) !important;
-  font-weight: 400 !important;
-  letter-spacing: 0.03em !important;
+  font-family: 'Cinzel', serif !important;
+  font-size: clamp(34px, 8.5vw, 42px) !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.04em !important;
   color: #FFFFFF !important;
   text-shadow: none !important;
   text-transform: uppercase !important;
