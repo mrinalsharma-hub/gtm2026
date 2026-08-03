@@ -1658,8 +1658,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-pill-input {
   width: 100% !important;
   height: 54px !important;
-  background: #FFFFFF !important;
-  color: #19202F !important;
+  background: rgba(255, 255, 255, 0.24) !important;
+  color: #FFFFFF !important;
   border: 1.5px solid transparent !important;
   border-radius: 8px !important;
   padding: 0 18px !important;
@@ -1671,24 +1671,31 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   text-align: left !important;
   outline: none !important;
   box-sizing: border-box !important;
-  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .rsvp-pill-input:focus {
   background: #FFFFFF !important;
+  color: #19202F !important;
   border-color: rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35) !important;
 }
 
 .rsvp-pill-input::placeholder,
 .rsvp-pill-input:disabled {
-  color: rgba(0, 0, 0, 0.40) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   text-align: left !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 20px !important;
   font-style: normal !important;
   font-weight: 300 !important;
   line-height: normal !important;
+  transition: opacity 0.15s ease, color 0.15s ease !important;
+}
+
+.rsvp-pill-input:focus::placeholder {
+  color: transparent !important;
+  opacity: 0 !important;
 }
 
 /* Name Row & Add Person Button */
@@ -1863,8 +1870,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-textarea-card {
   width: 100% !important;
   height: 110px !important;
-  background: #FFFFFF !important;
-  color: #19202F !important;
+  background: rgba(255, 255, 255, 0.24) !important;
+  color: #FFFFFF !important;
   border: 1.5px solid transparent !important;
   border-radius: 8px !important;
   padding: 16px 18px !important;
@@ -1877,25 +1884,32 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   outline: none !important;
   box-sizing: border-box !important;
   resize: none !important;
-  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease !important;
 }
 
 .rsvp-textarea-card:focus {
   background: #FFFFFF !important;
+  color: #19202F !important;
   border-color: rgba(255, 255, 255, 0.9) !important;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35) !important;
 }
 
-/* 4. Disabled/Educational text in light field (60% lower opacity = rgba(0,0,0,0.40)) */
+/* 4. Disabled/Educational text in light field */
 .rsvp-textarea-card::placeholder,
 .rsvp-textarea-card:disabled {
-  color: rgba(0, 0, 0, 0.40) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
   text-align: left !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 20px !important;
   font-style: normal !important;
   font-weight: 300 !important;
   line-height: normal !important;
+  transition: opacity 0.15s ease, color 0.15s ease !important;
+}
+
+.rsvp-textarea-card:focus::placeholder {
+  color: transparent !important;
+  opacity: 0 !important;
 }
 
 /* 5. Button Text */
