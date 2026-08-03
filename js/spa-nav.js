@@ -51,7 +51,7 @@
   }
 
   function ensureThemeColor() {
-    var themeColor = '#AC2525';
+    var themeColor = '#B42425';
     var metaTags = document.querySelectorAll('meta[name="theme-color"]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
@@ -69,9 +69,10 @@
 
   // Pre-fetch all pages on startup
   var TABS = ['gm.html', 'celebrations.html', 'stay.html', 'joinus.html'];
+  var SPA_CACHE_VER = '1700';
   function prefetchPages() {
     TABS.forEach(function(page) {
-      fetch(page)
+      fetch(page + '?v=' + SPA_CACHE_VER)
         .then(function(res) { return res.text(); })
         .then(function(html) {
           parseAndCache(page, html);
