@@ -1309,12 +1309,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .aipan-top-border-wrap {
   width: 100% !important;
   max-width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: flex-start !important;
+  display: block !important;
   margin-top: 0 !important;
-  margin-bottom: -6px !important;
+  margin-bottom: 24px !important;
   position: relative !important;
   z-index: 2 !important;
   pointer-events: none !important;
@@ -1322,17 +1319,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .aipan-top-border-svg {
   width: 100% !important;
-  height: 32px !important;
+  height: 44px !important;
   display: block !important;
-}
-
-.aipan-center-drop-svg {
-  width: 36px !important;
-  height: 40px !important;
-  display: block !important;
-  margin: -6px auto 0 !important;
-  flex-shrink: 0 !important;
-  filter: drop-shadow(0 2px 5px rgba(40, 5, 8, 0.35));
 }
 
 .rsvp-mandala-wrap {
@@ -1342,7 +1330,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin: -8px auto 0 !important;
+  margin: 0 auto !important;
 }
 
 .rsvp-mandala-img {
@@ -1360,8 +1348,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 44px !important;
-  height: 44px !important;
+  width: 52px !important;
+  height: 52px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
