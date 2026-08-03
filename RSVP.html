@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2300">
+<link rel="stylesheet" href="css/site.css?v=2310">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -112,100 +112,105 @@ body {
   -ms-overflow-style: none !important;
 }
 
-/* ── Pure Aipan Vermilion with Top Watercolor Splatter + Bottom #A71F23 Hearth Glow ── */
+/* ── Concept 2: Two-Layer 3D Depth Parallax (Floating Diya Mist + Grounded Base) ── */
 .rsvp-bg-layer {
   position: fixed !important;
-  inset: 0 !important;
+  inset: -10vh 0 -35vh 0 !important;
   width: 100vw !important;
-  height: 100vh !important;
-  height: 100dvh !important;
+  height: 145vh !important;
+  height: 145dvh !important;
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
+  background: 
+    radial-gradient(ellipse 140% 55% at 50% 100%, rgba(167, 31, 35, 0.85) 0%, rgba(167, 31, 35, 0.40) 45%, transparent 80%),
+    radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background-color: #620E0B !important;
+  transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
+  -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
+  will-change: transform !important;
+}
+
+/* Plane 1: Floating Diya Splatter Mist Atmosphere (0.45x Parallax Speed) */
+.rsvp-bg-layer::before {
+  display: block !important;
+  content: "" !important;
+  position: absolute !important;
+  inset: -10% -10% -25% -10% !important;
+  width: 120% !important;
+  height: 135% !important;
   background: 
     radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
     radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
     radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
     radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
     radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-    radial-gradient(ellipse 140% 55% at 50% 100%, rgba(167, 31, 35, 0.85) 0%, rgba(167, 31, 35, 0.40) 45%, transparent 80%),
-    radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
-.rsvp-bg-layer::before {
-  display: block !important;
-  content: "" !important;
-  position: absolute !important;
-  inset: -10% !important;
-  width: 120% !important;
-  height: 120% !important;
-  background: 
     radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.22) 0%, transparent 80%),
     radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.21) 0%, transparent 80%) !important;
   pointer-events: none !important;
+  transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
+  -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
+  opacity: var(--parallax-mist-opacity, 1) !important;
+  transform-origin: 50% 15% !important;
   animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-  transform-origin: 50% 18% !important;
   will-change: transform, opacity !important;
 }
 
 /* ── Mobile Portrait Screen Gradient Optimization ── */
 @media (max-width: 768px) {
   body {
-    background: 
-      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
-      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
-      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
-      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
-      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-      radial-gradient(ellipse 140% 55% at 50% 100%, rgba(167, 31, 35, 0.85) 0%, rgba(167, 31, 35, 0.40) 45%, transparent 80%),
-      radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
     background-color: #620E0B !important;
   }
 
   .rsvp-bg-layer {
+    position: fixed !important;
+    inset: -10vh 0 -35vh 0 !important;
+    width: 100vw !important;
+    height: 145vh !important;
+    height: 145dvh !important;
     background: 
-      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
-      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
-      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
-      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
-      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
       radial-gradient(ellipse 140% 55% at 50% 100%, rgba(167, 31, 35, 0.85) 0%, rgba(167, 31, 35, 0.40) 45%, transparent 80%),
       radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
     background-color: #620E0B !important;
+    transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
+    -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
+    will-change: transform !important;
   }
 
   .rsvp-bg-layer::before {
     display: block !important;
     content: "" !important;
     position: absolute !important;
-    inset: -10% !important;
+    inset: -10% -10% -25% -10% !important;
     width: 120% !important;
-    height: 120% !important;
+    height: 135% !important;
     background: 
+      radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.22) 0%, rgba(220, 50, 85, 0.10) 55%, transparent 85%),
+      radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.19) 0%, rgba(235, 100, 45, 0.08) 55%, transparent 85%),
+      radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
+      radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
+      radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
       radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.22) 0%, transparent 80%),
       radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.21) 0%, transparent 80%) !important;
     pointer-events: none !important;
+    transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
+    -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
+    opacity: var(--parallax-mist-opacity, 1) !important;
+    transform-origin: 50% 15% !important;
     animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-    transform-origin: 50% 18% !important;
     will-change: transform, opacity !important;
   }
 }
 
 @keyframes diyaHearthGlow {
   0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.85;
+    filter: brightness(0.97);
   }
   50% {
-    transform: translate3d(0, -2%, 0) scale(1.15);
-    opacity: 1.0;
+    filter: brightness(1.05);
   }
   100% {
-    transform: translate3d(0, 1.5%, 0) scale(1.08);
-    opacity: 0.90;
+    filter: brightness(0.99);
   }
 }
 
@@ -714,6 +719,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2300"></script>
+<script src="js/spa-nav.js?v=2310"></script>
 </body>
 </html>
