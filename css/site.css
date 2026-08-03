@@ -1223,19 +1223,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .fixed-bottom-nav .nav-container {
   width: 100% !important;
-  max-width: 440px !important;
+  max-width: 480px !important;
   height: 70px !important;
   display: flex !important;
   align-items: center !important;
-  justify-content: space-around !important;
-  padding: 0 8px !important;
+  justify-content: space-between !important;
+  padding: 0 6px !important;
   margin: 0 auto !important;
 }
 
 .fixed-bottom-nav .nav-tab {
-  flex: 1 1 0% !important;
-  width: 25% !important;
-  max-width: 25% !important;
+  flex: 0.85 1 0% !important;
+  min-width: 0 !important;
   height: 100% !important;
   display: flex !important;
   flex-direction: column !important;
@@ -1247,7 +1246,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
   box-sizing: border-box !important;
-  padding: 4px 2px 2px 2px !important;
+  padding: 4px 1px 2px 1px !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   -webkit-touch-callout: none !important;
@@ -1255,6 +1254,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background: transparent !important;
   border-radius: 0 !important;
   transition: transform 0.2s ease, opacity 0.2s ease !important;
+}
+
+/* Give Celebrations tab extra width share (36% vs 21%) to prevent truncation */
+.fixed-bottom-nav .nav-tab[href*="celebration"],
+.fixed-bottom-nav .nav-tab[href*="schedule"],
+.fixed-bottom-nav .nav-tab[href*="events"] {
+  flex: 1.45 1 0% !important;
 }
 
 .fixed-bottom-nav .nav-tab.active {
@@ -1293,20 +1299,21 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   filter: drop-shadow(0 0 8px rgba(255, 223, 133, 0.50)) !important;
 }
 
-/* Label below icon (14px, uppercase, white) */
+/* Label below icon (14px, uppercase, letter-spacing 0.01em, never truncate) */
 .fixed-bottom-nav .nav-tab .nav-label {
   display: block !important;
   text-align: center !important;
-  width: 100% !important;
+  width: auto !important;
+  max-width: 100% !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 14px !important;
   font-weight: 300 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.06em !important;
+  letter-spacing: 0.01em !important;
   line-height: 1.1 !important;
   color: rgba(255, 255, 255, 0.70) !important;
   white-space: nowrap !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   text-overflow: clip !important;
   transition: color 0.2s ease, font-weight 0.2s ease !important;
 }
