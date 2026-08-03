@@ -40,6 +40,15 @@
 @font-face {
   font-family: 'Lora';
   font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('fonts/Lora-Light.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwX7I-NP.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Lora';
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url('fonts/Lora-Regular.woff2') format('woff2'),
@@ -496,13 +505,13 @@ main {
 }
 
 .rsvp-subtitle {
-  font-family: 'Lora', Georgia, serif !important;
-  font-weight: 400 !important;
-  font-size: clamp(14px, 3.6vw, 16px) !important;
+  font-family: 'Lora', 'Quattrocento', 'Montserrat', Georgia, serif !important;
+  font-weight: 300 !important;
+  font-size: clamp(16px, 4vw, 18px) !important;
   color: rgba(255, 255, 255, 0.95) !important;
   text-shadow: none !important;
-  letter-spacing: 0.015em !important;
-  line-height: 1.55 !important;
+  letter-spacing: 0.020em !important;
+  line-height: 1.6 !important;
   margin-top: 24px !important;
   margin-bottom: 24px !important;
   text-align: center !important;
