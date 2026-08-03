@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2420">
+<link rel="stylesheet" href="css/site.css?v=2430">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -458,6 +458,30 @@ main.paper, main, .rsvp-page-wrap {
   transition: opacity 0.25s ease !important;
 }
 
+.rsvp-landscape-footer-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 36px auto -16px !important;
+  padding: 0 !important;
+  position: relative !important;
+  display: block !important;
+  pointer-events: none !important;
+  overflow: hidden !important;
+  border-radius: 0 0 16px 16px !important;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 8%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%) !important;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 8%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 100%) !important;
+}
+
+.rsvp-landscape-footer-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+  opacity: 0.94 !important;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.12)) !important;
+}
+
 </style>
 </head>
 <body>
@@ -575,6 +599,11 @@ main.paper, main, .rsvp-page-wrap {
       <div class="rsvp-submit-wrap">
         <button type="submit" class="rsvp-submit-btn">SEND RSVP</button>
         <p id="rsvp-status" role="status"></p>
+      </div>
+
+      <!-- Authentic Kumaoni Himalayan Landscape Footer Artwork -->
+      <div class="rsvp-landscape-footer-wrap" aria-hidden="true">
+        <img src="images/himalayan-landscape-footer.svg" alt="Himalayan Landscape" class="rsvp-landscape-footer-img" width="1024" height="640" loading="lazy">
       </div>
     </form>
   </div>
@@ -727,6 +756,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2420"></script>
+<script src="js/spa-nav.js?v=2430"></script>
 </body>
 </html>
