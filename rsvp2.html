@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2370">
+<link rel="stylesheet" href="css/site.css?v=2380">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -105,33 +105,36 @@ body {
   -ms-overflow-style: none !important;
 }
 
-/* ── Concept 2: Two-Layer 3D Depth Parallax (Floating Diya Mist + Grounded #7E1216 Base) ── */
+/* ── Anchored Static Gradient Background Layer (Sticks solidly to top, zero bounce) ── */
 .rsvp-bg-layer {
   position: fixed !important;
-  inset: -10vh 0 -35vh 0 !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   width: 100vw !important;
-  height: 145vh !important;
-  height: 145dvh !important;
+  height: 100vh !important;
+  height: 100dvh !important;
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
   background: 
     radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
     radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
-  background-color: #6E0F12 !important;
-  transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-  -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-  will-change: transform !important;
+  background-color: #A71F23 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 
-/* Plane 1: Floating Diya Splatter Mist Atmosphere (0.45x Parallax Speed) */
+/* Plane 1: Floating Diya Splatter Mist Atmosphere */
 .rsvp-bg-layer::before {
   display: block !important;
   content: "" !important;
   position: absolute !important;
-  inset: -10% -10% -25% -10% !important;
-  width: 120% !important;
-  height: 135% !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   background: 
     radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
     radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
@@ -141,42 +144,41 @@ body {
     radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
     radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
   pointer-events: none !important;
-  transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-  -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-  opacity: var(--parallax-mist-opacity, 1) !important;
-  transform-origin: 50% 15% !important;
+  opacity: 1 !important;
   animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-  will-change: transform, opacity !important;
 }
 
 /* ── Mobile Portrait Screen Gradient Optimization ── */
 @media (max-width: 768px) {
   body {
-    background-color: #6E0F12 !important;
+    background-color: #A71F23 !important;
   }
 
   .rsvp-bg-layer {
     position: fixed !important;
-    inset: -10vh 0 -35vh 0 !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: 100vw !important;
-    height: 145vh !important;
-    height: 145dvh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
     background: 
       radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
       radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
-    background-color: #6E0F12 !important;
-    transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-    -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-    will-change: transform !important;
+    background-color: #A71F23 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
   }
 
   .rsvp-bg-layer::before {
     display: block !important;
     content: "" !important;
     position: absolute !important;
-    inset: -10% -10% -25% -10% !important;
-    width: 120% !important;
-    height: 135% !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     background: 
       radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
       radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
@@ -186,12 +188,8 @@ body {
       radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
       radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
     pointer-events: none !important;
-    transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-    -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-    opacity: var(--parallax-mist-opacity, 1) !important;
-    transform-origin: 50% 15% !important;
+    opacity: 1 !important;
     animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-    will-change: transform, opacity !important;
   }
 }
 
@@ -283,7 +281,7 @@ main.paper, main, .rsvp-page-wrap {
   width: 100% !important;
   text-align: center !important;
   margin-top: 0 !important;
-  padding-top: calc(25.2px + 40px) !important;
+  padding-top: 0 !important;
   margin-bottom: 48px !important;
   position: relative !important;
   z-index: 3 !important;
@@ -293,21 +291,16 @@ main.paper, main, .rsvp-page-wrap {
 }
 
 .aipan-top-border-wrap {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100vw !important;
+  width: 100% !important;
   max-width: 100% !important;
   height: 25.2px !important;
   overflow: hidden !important;
   display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  z-index: 100 !important;
+  margin-top: 0 !important;
+  margin-bottom: 64px !important;
+  position: relative !important;
+  z-index: 2 !important;
   pointer-events: none !important;
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .aipan-top-border-svg,
@@ -315,7 +308,6 @@ main.paper, main, .rsvp-page-wrap {
   width: 100% !important;
   height: 25.2px !important;
   display: block !important;
-  object-fit: cover !important;
 }
 
 .rsvp-mandala-wrap {
@@ -473,15 +465,15 @@ main.paper, main, .rsvp-page-wrap {
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true"></div>
 
-<!-- ── 2. Fixed Aipan Top Border Frame (Never moves on scroll/swipe) ── -->
-<div class="aipan-top-border-wrap" aria-hidden="true">
-  <img src="images/aipan-top-border.svg" alt="Aipan Border" class="aipan-top-border-img" width="480" height="25.2">
-</div>
-
-<!-- ── 3. RSVP Main Scrollable Wrapper ── -->
+<!-- ── 2. RSVP Main Scrollable Wrapper ── -->
 <main class="rsvp-page-wrap">
-  <!-- Centered Hero Header with Lakshmi Pada Mandala Centerpiece -->
+  <!-- Centered Hero Header with Top Aipan Border & Lakshmi Pada Mandala Centerpiece -->
   <header class="rsvp-hero-header">
+    <!-- Authentic Kumaoni Aipan Top Border (Pearl Dots & Vasudhara Bands) -->
+    <div class="aipan-top-border-wrap" aria-hidden="true">
+      <img src="images/aipan-top-border.svg" alt="Aipan Border" class="aipan-top-border-img" width="480" height="25.2">
+    </div>
+
     <!-- Rotating Mandala Flower with Anti-Clockwise Dots Ring & Centerpiece -->
     <div class="rsvp-mandala-wrap">
       <img src="images/mandala-dots-ring.svg" alt="" class="rsvp-dots-ring" width="230" height="230" aria-hidden="true">
@@ -735,6 +727,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2370"></script>
+<script src="js/spa-nav.js?v=2380"></script>
 </body>
 </html>

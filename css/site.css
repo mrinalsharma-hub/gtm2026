@@ -126,23 +126,26 @@ a{color:inherit}
 .home-bg-layer,
 .fluid-bg-layer {
   position: fixed !important;
-  inset: -10vh 0 -35vh 0 !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   width: 100vw !important;
-  height: 145vh !important;
-  height: 145dvh !important;
+  height: 100vh !important;
+  height: 100dvh !important;
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
   background: 
     radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
     radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
-  background-color: #6E0F12 !important;
-  transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-  -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-  will-change: transform !important;
+  background-color: #A71F23 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
 }
 
-/* Plane 1: Floating Diya Splatter Mist Atmosphere (0.45x Parallax Speed) */
+/* Plane 1: Floating Diya Splatter Mist Atmosphere */
 .us-bg-layer::before,
 .schedule-bg-layer::before,
 .stay-bg-layer::before,
@@ -152,9 +155,9 @@ a{color:inherit}
   content: "" !important;
   display: block !important;
   position: absolute !important;
-  inset: -10% -10% -25% -10% !important;
-  width: 120% !important;
-  height: 135% !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   background: 
     radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
     radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
@@ -164,12 +167,8 @@ a{color:inherit}
     radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
     radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
   pointer-events: none !important;
-  transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-  -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-  opacity: var(--parallax-mist-opacity, 1) !important;
-  transform-origin: 50% 15% !important;
+  opacity: 1 !important;
   animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-  will-change: transform, opacity !important;
 }
 
 /* ── Mobile Portrait Screen Parallax Layer Optimization ── */
@@ -181,7 +180,7 @@ a{color:inherit}
   }
 
   body {
-    background-color: #6E0F12 !important;
+    background-color: #A71F23 !important;
   }
 
   .us-bg-layer,
@@ -191,17 +190,20 @@ a{color:inherit}
   .home-bg-layer,
   .fluid-bg-layer {
     position: fixed !important;
-    inset: -10vh 0 -35vh 0 !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
     width: 100vw !important;
-    height: 145vh !important;
-    height: 145dvh !important;
+    height: 100vh !important;
+    height: 100dvh !important;
     background: 
       radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
       radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
-    background-color: #6E0F12 !important;
-    transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-    -webkit-transform: translate3d(0, var(--parallax-base-y, 0px), 0) !important;
-    will-change: transform !important;
+    background-color: #A71F23 !important;
+    transform: none !important;
+    -webkit-transform: none !important;
   }
 
   .us-bg-layer::before,
@@ -213,9 +215,9 @@ a{color:inherit}
     display: block !important;
     content: "" !important;
     position: absolute !important;
-    inset: -10% -10% -25% -10% !important;
-    width: 120% !important;
-    height: 135% !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
     background: 
       radial-gradient(circle 340px at 36% 12%, rgba(238, 72, 108, 0.15) 0%, rgba(220, 50, 85, 0.06) 55%, transparent 85%),
       radial-gradient(circle 360px at 64% 14%, rgba(246, 138, 48, 0.08) 0%, rgba(235, 100, 45, 0.03) 55%, transparent 85%),
@@ -225,12 +227,8 @@ a{color:inherit}
       radial-gradient(circle 385px at 40% 15%, rgba(240, 70, 105, 0.14) 0%, transparent 80%),
       radial-gradient(circle 410px at 60% 19%, rgba(248, 148, 50, 0.07) 0%, transparent 80%) !important;
     pointer-events: none !important;
-    transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-    -webkit-transform: translate3d(0, var(--parallax-mist-y, 0px), 0) scale(var(--parallax-mist-scale, 1)) !important;
-    opacity: var(--parallax-mist-opacity, 1) !important;
-    transform-origin: 50% 15% !important;
+    opacity: 1 !important;
     animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-    will-change: transform, opacity !important;
   }
 }
 
@@ -1481,7 +1479,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   width: 100% !important;
   text-align: center !important;
   margin-top: 0 !important;
-  padding-top: calc(25.2px + 40px) !important;
+  padding-top: 0 !important;
   margin-bottom: 48px !important;
   position: relative !important;
   z-index: 3 !important;
@@ -1491,21 +1489,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .aipan-top-border-wrap {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100vw !important;
+  width: 100% !important;
   max-width: 100% !important;
   height: 25.2px !important;
   overflow: hidden !important;
   display: block !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  z-index: 100 !important;
+  margin-top: 0 !important;
+  margin-bottom: 64px !important;
+  position: relative !important;
+  z-index: 2 !important;
   pointer-events: none !important;
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
 }
 
 .aipan-top-border-svg,
@@ -1513,7 +1506,6 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   width: 100% !important;
   height: 25.2px !important;
   display: block !important;
-  object-fit: cover !important;
 }
 
 .rsvp-mandala-wrap {
