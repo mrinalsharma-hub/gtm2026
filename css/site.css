@@ -3,6 +3,15 @@
    Ivory line-art on geru red, ported from the invite film
    ═══════════════════════════════════════════════════════ */
 
+@font-face {
+  font-family: 'Cormorant';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Cormorant-Regular.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/cormorant/v24/H4clBXOCl9bbnla_nHIq4Zu9uqc.woff2') format('woff2');
+}
+
 :root{
   color-scheme: dark;
   --bg-gradient: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%);
@@ -1324,8 +1333,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-mandala-wrap {
   position: relative !important;
-  width: 228px !important;
-  height: 228px !important;
+  width: 240px !important;
+  height: 240px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
