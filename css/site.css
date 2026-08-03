@@ -39,6 +39,15 @@
        url('https://fonts.gstatic.com/s/lora/v37/0QIvMX1D_JOuMwT7I-NP.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Spectral';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('../fonts/Spectral-Light.woff2') format('woff2'),
+       url('https://fonts.gstatic.com/s/spectral/v15/rnCr-xNNww_2s0amA9M2knj-SA.woff2') format('woff2');
+}
+
 :root{
   color-scheme: dark;
   --bg-gradient: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%);
@@ -1463,12 +1472,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-subtitle {
-  font-family: 'Lora', Georgia, serif !important;
-  font-weight: 400 !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-weight: 300 !important;
   font-size: clamp(16px, 4vw, 17.5px) !important;
   color: rgba(255, 255, 255, 0.95) !important;
   text-shadow: none !important;
-  letter-spacing: 0.012em !important;
+  letter-spacing: 0.015em !important;
   line-height: 1.55 !important;
   margin-top: 24px !important;
   margin-bottom: 24px !important;
