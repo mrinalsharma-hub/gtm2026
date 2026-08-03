@@ -1491,11 +1491,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .aipan-top-border-wrap {
   width: 100% !important;
   max-width: 100% !important;
-  height: 54px !important;
+  height: 50.4px !important;
   overflow: hidden !important;
   display: block !important;
   margin-top: 0 !important;
-  margin-bottom: 52px !important;
+  margin-bottom: 56px !important;
   position: relative !important;
   z-index: 2 !important;
   pointer-events: none !important;
@@ -1504,7 +1504,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .aipan-top-border-svg,
 .aipan-top-border-img {
   width: 100% !important;
-  height: 54px !important;
+  height: 50.4px !important;
   display: block !important;
 }
 
