@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2250">
+<link rel="stylesheet" href="css/site.css?v=2260">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -95,8 +95,11 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   background: 
-    radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
-    radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
+    radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
+    radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
+    radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
+    radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
+    radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
     #A71F23 !important;
   background-color: #A71F23 !important;
   font-family: 'Cormorant Garamond', Georgia, serif;
@@ -108,7 +111,7 @@ body {
   -ms-overflow-style: none !important;
 }
 
-/* ── Pure Aipan Vermilion Background Layer with Sacred Diya Lighting ── */
+/* ── Pure Aipan Vermilion with Organic Orange & Rose-Pink Mist Splatter ── */
 .rsvp-bg-layer {
   position: fixed !important;
   inset: 0 !important;
@@ -119,8 +122,11 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   background: 
-    radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
-    radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
+    radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
+    radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
+    radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
+    radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
+    radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
     #A71F23 !important;
   background-color: #A71F23 !important;
   transform: translate3d(0, 0, 0);
@@ -134,10 +140,12 @@ body {
   inset: -10% !important;
   width: 120% !important;
   height: 120% !important;
-  background: radial-gradient(ellipse 125% 55% at 50% 18%, rgba(248, 150, 45, 0.32) 0%, rgba(238, 45, 65, 0.45) 38%, rgba(195, 25, 38, 0.22) 65%, transparent 85%) !important;
+  background: 
+    radial-gradient(circle 320px at 40% 15%, rgba(240, 70, 105, 0.25) 0%, transparent 70%),
+    radial-gradient(circle 340px at 60% 19%, rgba(248, 148, 50, 0.24) 0%, transparent 70%) !important;
   pointer-events: none !important;
-  animation: diyaHearthGlow 10s ease-in-out infinite alternate !important;
-  transform-origin: 50% 20% !important;
+  animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
+  transform-origin: 50% 18% !important;
   will-change: transform, opacity !important;
 }
 
@@ -145,16 +153,22 @@ body {
 @media (max-width: 768px) {
   body {
     background: 
-      radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
-      radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
+      radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
+      radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
+      radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
+      radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
+      radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
       #A71F23 !important;
     background-color: #A71F23 !important;
   }
 
   .rsvp-bg-layer {
     background: 
-      radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
-      radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
+      radial-gradient(circle 280px at 36% 12%, rgba(238, 72, 108, 0.25) 0%, rgba(220, 50, 85, 0.12) 45%, transparent 75%),
+      radial-gradient(circle 300px at 64% 14%, rgba(246, 138, 48, 0.22) 0%, rgba(235, 100, 45, 0.10) 45%, transparent 75%),
+      radial-gradient(ellipse 110% 45% at 50% 18%, rgba(248, 155, 65, 0.20) 0%, rgba(232, 60, 85, 0.16) 40%, transparent 75%),
+      radial-gradient(circle 340px at 46% 23%, rgba(235, 65, 95, 0.20) 0%, rgba(242, 120, 55, 0.10) 50%, transparent 80%),
+      radial-gradient(circle 280px at 58% 27%, rgba(244, 142, 50, 0.18) 0%, transparent 70%),
       #A71F23 !important;
     background-color: #A71F23 !important;
   }
@@ -166,10 +180,12 @@ body {
     inset: -10% !important;
     width: 120% !important;
     height: 120% !important;
-    background: radial-gradient(ellipse 125% 55% at 50% 18%, rgba(248, 150, 45, 0.32) 0%, rgba(238, 45, 65, 0.45) 38%, rgba(195, 25, 38, 0.22) 65%, transparent 85%) !important;
+    background: 
+      radial-gradient(circle 320px at 40% 15%, rgba(240, 70, 105, 0.25) 0%, transparent 70%),
+      radial-gradient(circle 340px at 60% 19%, rgba(248, 148, 50, 0.24) 0%, transparent 70%) !important;
     pointer-events: none !important;
-    animation: diyaHearthGlow 10s ease-in-out infinite alternate !important;
-    transform-origin: 50% 20% !important;
+    animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
+    transform-origin: 50% 18% !important;
     will-change: transform, opacity !important;
   }
 }
@@ -694,6 +710,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2250"></script>
+<script src="js/spa-nav.js?v=2260"></script>
 </body>
 </html>
