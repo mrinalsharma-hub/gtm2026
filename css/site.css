@@ -1646,6 +1646,14 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   margin: 0 0 24px 0 !important;
 }
 
+.req-star {
+  color: #FFFFFF !important;
+  font-family: inherit !important;
+  font-weight: 400 !important;
+  margin-left: 2px !important;
+  display: inline-block !important;
+}
+
 /* Rounded Text Inputs */
 .rsvp-pill-input {
   width: 100% !important;

@@ -20,7 +20,7 @@
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2060">
+<link rel="stylesheet" href="css/site.css?v=2070">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -444,7 +444,7 @@ main.paper, main {
     <form id="rsvp-form" class="rsvp-form" novalidate>
       <!-- 1. Are you joining us? -->
       <section class="rsvp-card-section">
-        <h2 class="rsvp-card-title">ARE YOU JOINING US?</h2>
+        <h2 class="rsvp-card-title">ARE YOU JOINING US? <span class="req-star">*</span></h2>
         <div class="rsvp-options-list">
           <label class="rsvp-option-label">
             <input type="radio" name="attending" value="Joyfully accept" checked>
@@ -461,7 +461,7 @@ main.paper, main {
 
       <!-- 2. Name -->
       <section class="rsvp-card-section">
-        <h2 class="rsvp-card-title">NAME</h2>
+        <h2 class="rsvp-card-title">NAME <span class="req-star conditional-star">*</span></h2>
         <div id="name-list" class="name-row-wrap">
           <div class="name-input-row">
             <input type="text" class="rsvp-pill-input name-input" id="name-1" placeholder="Enter full name" autocomplete="name">
@@ -472,13 +472,13 @@ main.paper, main {
 
       <!-- 3. Phone or email -->
       <section class="rsvp-card-section">
-        <h2 class="rsvp-card-title">PHONE OR EMAIL</h2>
+        <h2 class="rsvp-card-title">PHONE OR EMAIL <span class="req-star conditional-star">*</span></h2>
         <input type="text" id="f-contact" class="rsvp-pill-input" placeholder="In case we want to reach you" autocomplete="email">
       </section>
 
       <!-- 4. Events you will attend -->
       <section class="rsvp-card-section">
-        <h2 class="rsvp-card-title">EVENTS YOU WILL ATTEND</h2>
+        <h2 class="rsvp-card-title">EVENTS YOU WILL ATTEND <span class="req-star conditional-star">*</span></h2>
         <div class="rsvp-options-list">
           <label class="rsvp-option-label">
             <input type="checkbox" name="events" value="Mehndi Night · Fri Nov 20, 2026 (optional)">
@@ -592,6 +592,18 @@ var RSVP_CONFIG={
       addBtn=document.getElementById('add-person'),
       MAX_NAMES=8;
 
+  function updateRequiredStars(){
+    var checked=form.querySelector('input[name=attending]:checked');
+    var isYes=checked && checked.value==='Joyfully accept';
+    form.querySelectorAll('.conditional-star').forEach(function(star){
+      star.style.display=isYes?'inline':'none';
+    });
+  }
+  form.querySelectorAll('input[name=attending]').forEach(function(radio){
+    radio.addEventListener('change',updateRequiredStars);
+  });
+  updateRequiredStars();
+
   addBtn.addEventListener('click',function(){
     var count=list.querySelectorAll('.name-input').length;
     if(count>=MAX_NAMES)return;
@@ -610,21 +622,31 @@ var RSVP_CONFIG={
 
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    var names=[].slice.call(form.querySelectorAll('.name-input'))
-                .map(function(i){return i.value.trim()})
-                .filter(Boolean),
-        contact=form.querySelector('#f-contact').value.trim(),
-        attending=form.querySelector('input[name=attending]:checked');
-    if(!names.length||!contact||!attending){
+    var attending=form.querySelector('input[name=attending]:checked');
+    if(!attending){
       status.textContent='Please fill in the required info above';
       return;
     }
+    var isYes=attending.value==='Joyfully accept',
+        names=[].slice.call(form.querySelectorAll('.name-input'))
+                .map(function(i){return i.value.trim()})
+                .filter(Boolean),
+        contact=form.querySelector('#f-contact').value.trim(),
+        events=form.querySelectorAll('input[name=events]:checked');
+
+    if(isYes){
+      if(!names.length||!contact||!events.length){
+        status.textContent='Please fill in the required info above';
+        return;
+      }
+    }
+
     var p=new URLSearchParams();
-    p.append(RSVP_CONFIG.entries.name,names.join(', '));
-    p.append(RSVP_CONFIG.entries.contact,contact);
+    p.append(RSVP_CONFIG.entries.name,names.length?names.join(', '):'Declined');
+    if(contact)p.append(RSVP_CONFIG.entries.contact,contact);
     p.append(RSVP_CONFIG.entries.attending,attending.value);
-    p.append(RSVP_CONFIG.entries.guests,String(names.length));
-    form.querySelectorAll('input[name=events]:checked').forEach(function(c){
+    p.append(RSVP_CONFIG.entries.guests,String(names.length||0));
+    events.forEach(function(c){
       p.append(RSVP_CONFIG.entries.events,c.value);
     });
     var diet=form.querySelector('#f-diet').value.trim(),
@@ -649,6 +671,6 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=2060"></script>
+<script src="js/spa-nav.js?v=2070"></script>
 </body>
 </html>
