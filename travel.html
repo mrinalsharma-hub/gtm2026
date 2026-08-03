@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1860">
+<link rel="stylesheet" href="css/site.css?v=1870">
 <style>
 :root {
   color-scheme: dark;
@@ -245,34 +245,7 @@ main {
   </div>
 </nav>
 
-<script src="js/site.js?v=200"></script>
-<script>
-// Native app scroll clamp to prevent browser address bar auto-hiding
-(function() {
-  var scroller = document.querySelector('main');
-  if (!scroller) return;
-
-  // 1. Boundary Clamping on touchstart:
-  // When at top (0px) or bottom (max), offset by 1px so the drag gesture is always consumed internally by the scroller
-  scroller.addEventListener('touchstart', function() {
-    var top = scroller.scrollTop;
-    var totalScroll = scroller.scrollHeight;
-    var currentScroll = top + scroller.offsetHeight;
-    if (top <= 0) {
-      scroller.scrollTop = 1;
-    } else if (currentScroll >= totalScroll) {
-      scroller.scrollTop = top - 1;
-    }
-  }, { passive: true });
-
-  // 2. Intercept any touch moves outside the scroller (e.g. navbar, background, document boundaries)
-  document.addEventListener('touchmove', function(e) {
-    if (!scroller.contains(e.target)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-})();
-</script>
-<script src="js/spa-nav.js?v=1860"></script>
+<script src="js/site.js?v=1870"></script>
+<script src="js/spa-nav.js?v=1870"></script>
 </body>
 </html>

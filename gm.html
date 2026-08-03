@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1860">
+<link rel="stylesheet" href="css/site.css?v=1870">
 <style>
 :root {
   color-scheme: dark;
@@ -459,30 +459,7 @@ body {
     }
   });
 })();
-
-// Native App Scroll Clamp & Toolbar Lock
-(function() {
-  var scroller = document.querySelector(".us-page-wrap");
-  if (!scroller) return;
-
-  scroller.addEventListener("touchstart", function() {
-    var top = scroller.scrollTop;
-    var totalScroll = scroller.scrollHeight;
-    var currentScroll = top + scroller.offsetHeight;
-    if (top <= 0) {
-      scroller.scrollTop = 1;
-    } else if (currentScroll >= totalScroll) {
-      scroller.scrollTop = top - 1;
-    }
-  }, { passive: true });
-
-  document.addEventListener("touchmove", function(e) {
-    if (!scroller.contains(e.target)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-})();
 </script>
-<script src="js/spa-nav.js?v=1860"></script>
+<script src="js/spa-nav.js?v=1870"></script>
 </body>
 </html>

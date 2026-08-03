@@ -468,57 +468,5 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* ── 9. DYNAMIC NAVBAR SCROLL CONTRAST DETECTOR ─── */
-  var contrastCheckScheduled = false;
-  function updateNavContrast() {
-    var nav = document.querySelector('.fixed-bottom-nav');
-    if (!nav) return;
-    var navRect = nav.getBoundingClientRect();
-    if (!navRect || navRect.height === 0) return;
-
-    var lightCards = document.querySelectorAll(
-      '.card, .schedule-event-card, .rsvp-card, .paper, .cards, .rsvp-card-container, .gal figure, .fcard'
-    );
-    var isOverLight = false;
-
-    for (var i = 0; i < lightCards.length; i++) {
-      var rect = lightCards[i].getBoundingClientRect();
-      if (rect.top < (navRect.bottom - 12) && rect.bottom > (navRect.top + 12)) {
-        isOverLight = true;
-        break;
-      }
-    }
-
-    if (isOverLight) {
-      nav.classList.add('nav-on-light');
-    } else {
-      nav.classList.remove('nav-on-light');
-    }
-  }
-
-  function scheduleNavContrastCheck() {
-    if (!contrastCheckScheduled) {
-      contrastCheckScheduled = true;
-      requestAnimationFrame(function() {
-        updateNavContrast();
-        contrastCheckScheduled = false;
-      });
-    }
-  }
-
-  window.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
-  document.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
-
-  var scroller = document.querySelector('main, .schedule-page-wrap, .us-page-wrap, .rsvp-page-wrap');
-  if (scroller) {
-    scroller.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', scheduleNavContrastCheck);
-  } else {
-    scheduleNavContrastCheck();
-  }
-
 })();
 
