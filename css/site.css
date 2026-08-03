@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Pure Aipan & Gerua Gradient Background Layer (Edition I: Sabyasachi Crimson Velvet) ── */
+/* ── Pure Aipan & Gerua Gradient Background Layer (Edition II: The Royal Kumaon Manuscript) ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -87,7 +87,7 @@ a{color:inherit}
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* 1. Ambient Diya Hearth Glow Motion (11s Breathing Pulse) */
+/* 1. Smoky Watercolor Bloom Drift (9.5s Flow) */
 .us-bg-layer::before,
 .schedule-bg-layer::before,
 .stay-bg-layer::before,
@@ -97,32 +97,35 @@ a{color:inherit}
   content: "" !important;
   display: block !important;
   position: absolute !important;
-  inset: -15% !important;
-  width: 130% !important;
-  height: 130% !important;
-  background: radial-gradient(circle 600px at 50% 25%, rgba(200, 40, 45, 0.45) 0%, rgba(180, 36, 37, 0.25) 40%, transparent 70%) !important;
+  inset: -25% !important;
+  width: 150% !important;
+  height: 150% !important;
+  background: 
+    radial-gradient(ellipse 65% 55% at 70% 22%, rgba(200, 35, 45, 0.48) 0%, rgba(180, 25, 35, 0.20) 45%, transparent 70%),
+    radial-gradient(ellipse 70% 60% at 20% 50%, rgba(45, 3, 9, 0.65) 0%, rgba(70, 6, 15, 0.30) 50%, transparent 75%),
+    radial-gradient(ellipse 60% 50% at 65% 75%, rgba(190, 30, 40, 0.35) 0%, transparent 68%) !important;
   pointer-events: none !important;
-  animation: diyaHearthGlow 11s ease-in-out infinite alternate !important;
-  transform-origin: 50% 25% !important;
+  animation: watercolorBloomDrift 9.5s ease-in-out infinite alternate !important;
+  transform-origin: center center !important;
   will-change: transform, opacity !important;
 }
 
-@keyframes diyaHearthGlow {
+@keyframes watercolorBloomDrift {
   0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.82;
+    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
+    opacity: 0.85;
   }
   50% {
-    transform: translate3d(0, -2.5%, 0) scale(1.14);
+    transform: translate3d(-5%, 4%, 0) scale(1.12) rotate(3deg);
     opacity: 1;
   }
   100% {
-    transform: translate3d(0, 2%, 0) scale(1.07);
+    transform: translate3d(5%, -4%, 0) scale(1.16) rotate(-3deg);
     opacity: 0.88;
   }
 }
 
-/* 2. Raw Silk Fiber Weave Grain Overlay (Soft-Light Anisotropic) */
+/* 2. 300gsm Cold-Pressed Rag Paper Grain Overlay (Overlay Clean Tooth) */
 .us-bg-layer::after,
 .schedule-bg-layer::after,
 .stay-bg-layer::after,
@@ -135,10 +138,10 @@ a{color:inherit}
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='silkWeave'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.48 0.32' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.32 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23silkWeave)'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='ragPaper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.52' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ragPaper)'/%3E%3C/svg%3E") !important;
   background-repeat: repeat !important;
-  background-size: 200px 200px !important;
-  mix-blend-mode: soft-light !important;
+  background-size: 160px 160px !important;
+  mix-blend-mode: overlay !important;
   pointer-events: none !important;
   opacity: 0.85 !important;
 }
