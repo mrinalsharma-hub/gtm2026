@@ -1644,18 +1644,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   margin: 0 0 18px 0 !important;
 }
 
-/* Rounded Pill Text Inputs */
+/* Rounded Text Inputs */
 .rsvp-pill-input {
   width: 100% !important;
-  height: 50px !important;
-  background: #F7F4F0 !important;
+  height: 52px !important;
+  background: #FFFFFF !important;
   color: #19202F !important;
   border: 1.5px solid transparent !important;
-  border-radius: 9999px !important;
+  border-radius: 18px !important;
   padding: 0 20px !important;
-  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  font-family: 'Spectral', Georgia, serif !important;
   font-weight: 400 !important;
-  font-size: 16px !important;
+  font-size: 18px !important;
   text-align: center !important;
   outline: none !important;
   box-sizing: border-box !important;
@@ -1665,15 +1665,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-pill-input:focus {
   background: #FFFFFF !important;
   border-color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35) !important;
 }
 
-.rsvp-pill-input::placeholder {
-  color: rgba(25, 32, 47, 0.45) !important;
-  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
-  font-weight: 300 !important;
-  font-size: 15.5px !important;
+.rsvp-pill-input::placeholder,
+.rsvp-pill-input:disabled {
+  color: rgba(0, 0, 0, 0.40) !important;
   text-align: center !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 18px !important;
+  font-style: normal !important;
+  font-weight: 300 !important;
+  line-height: normal !important;
 }
 
 /* Name Row & Add Person Button */
@@ -1834,15 +1837,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-textarea-card {
   width: 100% !important;
   height: 110px !important;
-  background: #F7F4F0 !important;
+  background: #FFFFFF !important;
   color: #19202F !important;
   border: 1.5px solid transparent !important;
   border-radius: 18px !important;
-  padding: 14px 18px !important;
-  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+  padding: 16px 20px !important;
+  font-family: 'Spectral', Georgia, serif !important;
   font-weight: 400 !important;
-  font-size: 15.5px !important;
-  line-height: 1.4 !important;
+  font-size: 18px !important;
+  line-height: normal !important;
+  text-align: center !important;
   outline: none !important;
   box-sizing: border-box !important;
   resize: none !important;
@@ -1852,14 +1856,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-textarea-card:focus {
   background: #FFFFFF !important;
   border-color: rgba(255, 255, 255, 0.9) !important;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35) !important;
 }
 
-.rsvp-textarea-card::placeholder {
-  color: rgba(25, 32, 47, 0.45) !important;
-  font-family: 'Spectral', 'Cormorant Garamond', Georgia, serif !important;
+.rsvp-textarea-card::placeholder,
+.rsvp-textarea-card:disabled {
+  color: rgba(0, 0, 0, 0.40) !important;
+  text-align: center !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 18px !important;
+  font-style: normal !important;
   font-weight: 300 !important;
-  font-size: 15.5px !important;
+  line-height: normal !important;
 }
 
 /* Submit Button */
