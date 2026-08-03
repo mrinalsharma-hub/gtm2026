@@ -1444,8 +1444,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
-  filter: drop-shadow(0 4px 14px rgba(65, 6, 10, 0.32))
-          drop-shadow(0 0 20px rgba(255, 220, 130, 0.22)) !important;
+  filter: drop-shadow(0 6px 16px rgba(50, 4, 7, 0.38))
+          drop-shadow(0 0 18px rgba(255, 215, 120, 0.22)) !important;
 }
 
 .mandala-center-hands {
@@ -1464,8 +1464,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
-  filter: drop-shadow(0 3px 10px rgba(70, 8, 12, 0.32))
-          drop-shadow(0 0 12px rgba(255, 223, 133, 0.35)) !important;
+  filter: drop-shadow(0 3px 8px rgba(50, 4, 7, 0.35))
+          drop-shadow(0 0 10px rgba(255, 223, 133, 0.30)) !important;
 }
 
 .mandala-hands-svg {
@@ -1513,7 +1513,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-weight: 450 !important;
   letter-spacing: 0.02em !important;
   color: #FFFFFF !important;
-  text-shadow: none !important;
+  text-shadow: 0 2px 10px rgba(50, 4, 7, 0.52), 0 0 18px rgba(255, 223, 133, 0.22) !important;
   text-transform: uppercase !important;
   margin-top: 42px !important;
   margin-bottom: 4px !important;
@@ -1525,7 +1525,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-weight: 300 !important;
   font-size: clamp(16.5px, 4.1vw, 18px) !important;
   color: rgba(255, 255, 255, 0.95) !important;
-  text-shadow: none !important;
+  text-shadow: 0 1px 5px rgba(50, 4, 7, 0.45) !important;
   letter-spacing: 0.010em !important;
   line-height: 1.4 !important;
   margin-top: 24px !important;
