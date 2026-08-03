@@ -1371,16 +1371,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-title {
-  font-family: 'Cinzel', Georgia, serif !important;
-  font-size: clamp(42px, 10.5vw, 50px) !important;
-  font-weight: 400 !important;
-  letter-spacing: 2px !important;
+  font-family: 'Cormorant Upright', 'Cormorant Garamond', Georgia, serif !important;
+  font-size: clamp(34px, 8.5vw, 42px) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
   color: #FFFFFF !important;
   text-shadow: none !important;
-  text-transform: uppercase !important;
+  text-transform: none !important;
   margin-top: 40px !important;
   margin-bottom: 0 !important;
-  line-height: 1.1 !important;
+  line-height: 1.15 !important;
 }
 
 .rsvp-subtitle {
