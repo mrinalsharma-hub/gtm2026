@@ -1324,8 +1324,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-mandala-wrap {
   position: relative !important;
-  width: 190px !important;
-  height: 190px !important;
+  width: 209px !important;
+  height: 209px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1347,8 +1347,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 58px !important;
-  height: 58px !important;
+  width: 64px !important;
+  height: 64px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1379,7 +1379,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   color: #FFFFFF !important;
   text-shadow: none !important;
   text-transform: uppercase !important;
-  margin-top: 40px !important;
+  margin-top: 42px !important;
   margin-bottom: 0 !important;
   line-height: 1.15 !important;
 }
