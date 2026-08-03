@@ -91,8 +91,8 @@ div::-webkit-scrollbar {
 html{
   scroll-behavior:smooth;
   overscroll-behavior-y:none;
-  background:#B82428 !important;
-  background-color:#B82428 !important;
+  background:#A71F23 !important;
+  background-color:#A71F23 !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
@@ -100,7 +100,7 @@ body{
   background: 
     radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
     radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
-    linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
+    #A71F23 !important;
   background-color:#A71F23 !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
@@ -132,7 +132,7 @@ a{color:inherit}
   background: 
     radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
     radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
-    linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
+    #A71F23 !important;
   background-color: #A71F23 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
@@ -164,14 +164,14 @@ a{color:inherit}
     --bg-gradient: 
       radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
       radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
-      linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%);
+      #A71F23;
   }
 
   body {
     background: 
       radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
       radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
-      linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
+      #A71F23 !important;
     background-color: #A71F23 !important;
   }
 
@@ -184,7 +184,7 @@ a{color:inherit}
     background: 
       radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.12) 0%, rgba(230, 75, 45, 0.06) 40%, transparent 75%),
       radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.36) 0%, rgba(195, 28, 38, 0.18) 50%, transparent 80%),
-      linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
+      #A71F23 !important;
     background-color: #A71F23 !important;
   }
 
@@ -1227,12 +1227,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   padding-bottom: constant(safe-area-inset-bottom) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(167, 31, 35, 0.90) 0%,
-    rgba(155, 28, 32, 0.95) 45%,
-    rgba(142, 24, 28, 0.98) 100%
-  ) !important;
+  background: #A71F23 !important;
   background-color: #A71F23 !important;
   backdrop-filter: blur(16px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
