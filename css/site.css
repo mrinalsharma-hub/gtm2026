@@ -103,8 +103,8 @@ body{
     radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
     radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
     radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-    radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color:#620E0B !important;
+    radial-gradient(ellipse 160% 120% at 50% 10%, #A71F23 0%, #A71F23 45%, #941B1E 75%, #7B1416 100%) !important;
+  background-color:#7B1416 !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
   font-family:'Cormorant Garamond','Lustria',Georgia,serif;
@@ -117,7 +117,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Pure Aipan Vermilion with Organic Orange & Rose-Pink Mist Splatter + GeM/Events Depth ── */
+/* ── Pure Aipan Vermilion with Organic Orange & Rose-Pink Mist Splatter + Extended #A71F23 Depth ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -138,8 +138,8 @@ a{color:inherit}
     radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
     radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
     radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-    radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
+    radial-gradient(ellipse 160% 120% at 50% 10%, #A71F23 0%, #A71F23 45%, #941B1E 75%, #7B1416 100%) !important;
+  background-color: #7B1416 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
@@ -175,7 +175,7 @@ a{color:inherit}
       radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
       radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
       radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-      radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%);
+      radial-gradient(ellipse 160% 120% at 50% 10%, #A71F23 0%, #A71F23 45%, #941B1E 75%, #7B1416 100%);
   }
 
   body {
@@ -185,8 +185,8 @@ a{color:inherit}
       radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
       radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
       radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-      radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-    background-color: #620E0B !important;
+      radial-gradient(ellipse 160% 120% at 50% 10%, #A71F23 0%, #A71F23 45%, #941B1E 75%, #7B1416 100%) !important;
+    background-color: #7B1416 !important;
   }
 
   .us-bg-layer,
@@ -201,8 +201,8 @@ a{color:inherit}
       radial-gradient(ellipse 135% 55% at 50% 18%, rgba(248, 155, 65, 0.17) 0%, rgba(232, 60, 85, 0.14) 50%, transparent 85%),
       radial-gradient(circle 410px at 46% 23%, rgba(235, 65, 95, 0.17) 0%, rgba(242, 120, 55, 0.08) 60%, transparent 90%),
       radial-gradient(circle 340px at 58% 27%, rgba(244, 142, 50, 0.15) 0%, transparent 85%),
-      radial-gradient(ellipse 120% 70% at 50% 0%, #A71F23 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-    background-color: #620E0B !important;
+      radial-gradient(ellipse 160% 120% at 50% 10%, #A71F23 0%, #A71F23 45%, #941B1E 75%, #7B1416 100%) !important;
+    background-color: #7B1416 !important;
   }
 
   .us-bg-layer::before,
@@ -1246,8 +1246,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   padding-bottom: constant(safe-area-inset-bottom) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  background: #620E0B !important;
-  background-color: #620E0B !important;
+  background: #7B1416 !important;
+  background-color: #7B1416 !important;
   backdrop-filter: blur(16px) saturate(160%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(160%) !important;
   border: none !important;
