@@ -69,7 +69,7 @@
 
   // Pre-fetch all pages on startup
   var TABS = ['gm.html', 'celebrations.html', 'stay.html', 'joinus.html'];
-  var SPA_CACHE_VER = '1700';
+  var SPA_CACHE_VER = '1840';
   function prefetchPages() {
     TABS.forEach(function(page) {
       fetch(page + '?v=' + SPA_CACHE_VER)
@@ -329,7 +329,7 @@
     if (PAGE_CACHE[targetNorm] && PAGE_CACHE[targetNorm].bodyHtml) {
       renderPage(PAGE_CACHE[targetNorm], targetNorm, url, updateHistory);
     } else {
-      fetch(targetNorm)
+      fetch(targetNorm + '?v=' + SPA_CACHE_VER)
         .then(function(res) { return res.text(); })
         .then(function(html) {
           parseAndCache(targetNorm, html);

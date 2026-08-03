@@ -29,7 +29,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=1830">
+<link rel="stylesheet" href="css/site.css?v=1840">
 <style>
 :root {
   color-scheme: dark;
@@ -79,170 +79,20 @@ body {
   -ms-overflow-style: none !important;
 }
 
-/* ── Unified Material & Apple HIG Fixed Bottom Navigation with Aipan Icons ── */
-header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav { display: none !important; }
-.fixed-bottom-nav {
-  position: fixed !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  width: 100vw !important;
-  height: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
-  padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(99, 14, 11, 0) 0%,
-    rgba(60, 8, 7, 0.4) 20%,
-    rgba(40, 5, 4, 0.78) 55%,
-    rgba(25, 3, 3, 0.94) 85%,
-    rgba(15, 2, 2, 0.98) 100%
-  ) !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  border-top: none !important;
-  box-shadow: none !important;
-  z-index: 2147483647 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  pointer-events: auto !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  backface-visibility: hidden !important;
-  -webkit-backface-visibility: hidden !important;
-  will-change: transform !important;
-  contain: layout paint !important;
-}
-
-.fixed-bottom-nav .nav-container {
-  width: 100% !important;
-  max-width: 480px !important;
-  height: 74px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-around !important;
-  padding: 0 4px !important;
-  margin: 0 auto !important;
-}
-
-.fixed-bottom-nav .nav-tab {
-  flex: 1 1 0% !important;
-  width: 25% !important;
-  max-width: 25% !important;
-  height: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  text-align: center !important;
-  text-decoration: none !important;
-  gap: 3px !important;
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  box-sizing: border-box !important;
-  padding: 8px 1px 4px 1px !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  -webkit-touch-callout: none !important;
-  position: relative !important;
-}
-
-/* Nav Pill Container */
-.fixed-bottom-nav .nav-tab .nav-pill-wrapper {
-  position: relative !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex-shrink: 0 !important;
-}
-
-.fixed-bottom-nav .nav-tab .nav-pill {
-  display: none !important;
-}
-
-/* Icon */
-.fixed-bottom-nav .nav-tab .nav-icon {
-  width: 24px !important;
-  height: 24px !important;
-  display: block !important;
-  flex-shrink: 0 !important;
-  color: rgba(255, 255, 255, 0.5) !important;
-  fill: currentColor !important;
-  transition: color 0.25s cubic-bezier(0.2, 0, 0, 1), transform 0.25s cubic-bezier(0.2, 0, 0, 1) !important;
-}
-
-/* Active Icon */
-.fixed-bottom-nav .nav-tab.active .nav-icon {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
-  transform: scale(1.08) !important;
-}
-
-/* Label below icon */
-.fixed-bottom-nav .nav-tab .nav-label {
-  display: block !important;
-  text-align: center !important;
-  width: 100% !important;
-  font-family: 'Cormorant Garamond', Georgia, serif !important;
-  font-size: clamp(14px, 3.8vw, 16px) !important;
-  font-weight: 450 !important;
-  font-variation-settings: 'wght' 450 !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1.1 !important;
-  color: rgba(255, 255, 255, 0.5) !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: clip !important;
-  transition: color 0.25s cubic-bezier(0.2, 0, 0, 1), font-weight 0.25s ease !important;
-}
-
-.fixed-bottom-nav .nav-tab.active .nav-label {
-  color: #FFFFFF !important;
-  font-weight: 600 !important;
-  font-variation-settings: 'wght' 600 !important;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6) !important;
-}
-
-/* Active Indicator Dot */
-.fixed-bottom-nav .nav-tab::after {
-  content: '' !important;
-  display: block !important;
-  width: 4px !important;
-  height: 4px !important;
-  border-radius: 50% !important;
-  background: #E5A93C !important;
-  box-shadow: 0 0 6px rgba(229, 169, 60, 0.8) !important;
-  margin-top: 2px !important;
-  opacity: 0 !important;
-  transform: scale(0) !important;
-  transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease !important;
-  flex-shrink: 0 !important;
-}
-
-.fixed-bottom-nav .nav-tab.active::after {
-  opacity: 1 !important;
-  transform: scale(1) !important;
-}
-
-.fixed-bottom-nav .nav-tab:active {
-  opacity: 1 !important;
-  transform: none !important;
-  background: transparent !important;
-}
-
 main {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
+  bottom: 0 !important;
+  height: 100% !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior-y: contain !important;
-  padding-bottom: 40px !important;
+  padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0) !important;
   -webkit-transform: translate3d(0, 0, 0) !important;
@@ -560,33 +410,7 @@ body::before{
   </div>
 </nav>
 
-<script src="js/site.js?v=200"></script>
-<script>
-// Native app scroll clamp to prevent browser address bar auto-hiding
-(function() {
-  var scroller = document.querySelector('main');
-  if (!scroller) return;
-
-  // 1. Boundary Clamping on touchstart:
-  // When at top (0px) or bottom (max), offset by 1px so the drag gesture is always consumed internally by the scroller
-  scroller.addEventListener('touchstart', function() {
-    var top = scroller.scrollTop;
-    var totalScroll = scroller.scrollHeight;
-    var currentScroll = top + scroller.offsetHeight;
-    if (top <= 0) {
-      scroller.scrollTop = 1;
-    } else if (currentScroll >= totalScroll) {
-      scroller.scrollTop = top - 1;
-    }
-  }, { passive: true });
-
-  // 2. Intercept any touch moves outside the scroller (e.g. navbar, background, document boundaries)
-  document.addEventListener('touchmove', function(e) {
-    if (!scroller.contains(e.target)) {
-      e.preventDefault();
-    }
-  }, { passive: false });
-})();
-</script>
+<script src="js/site.js?v=1840"></script>
+<script src="js/spa-nav.js?v=1840"></script>
 </body>
 </html>
