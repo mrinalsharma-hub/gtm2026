@@ -1639,7 +1639,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   letter-spacing: 0.010em !important;
   line-height: 1.4 !important;
   margin-top: 24px !important;
-  margin-bottom: 24px !important;
+  margin-bottom: 0 !important;
   text-align: center !important;
 }
 
