@@ -5,13 +5,13 @@
 
 :root{
   color-scheme: dark;
-  --bg-gradient: radial-gradient(ellipse 120% 70% at 50% 0%, #981C1E 0%, #881818 35%, #701210 65%, #620E0B 100%);
-  --bg-color: #981C1E;
+  --bg-gradient: radial-gradient(ellipse 130% 90% at 50% 0%, #B42425 0%, #AC2525 28%, #7C141C 62%, #4A060C 100%);
+  --bg-color: #AC2525;
   --gold: #FFDF85;
   --gold-glow: rgba(255, 223, 133, 0.6);
-  --red:#A71F23;
-  --red-hi:#B22429;
-  --red-lo:#7E1216;
+  --red:#AC2525;
+  --red-hi:#B42425;
+  --red-lo:#7C141C;
   --ivory:#FFF6E8;
   --ivory-dim:rgba(255,246,232,.9);
   --ivory-faint:rgba(255,246,232,.7);
@@ -46,14 +46,14 @@ div::-webkit-scrollbar {
 html{
   scroll-behavior:smooth;
   overscroll-behavior-y:none;
-  background:#981C1E !important;
-  background-color:#981C1E !important;
+  background:#B42425 !important;
+  background-color:#B42425 !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 body{
-  background:var(--bg-gradient) !important;
-  background-color:#981C1E !important;
+  background: radial-gradient(ellipse 130% 90% at 50% 0%, #B42425 0%, #AC2525 28%, #7C141C 62%, #4A060C 100%) !important;
+  background-color:#AC2525 !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
   font-family:'Cormorant Garamond','Lustria',Georgia,serif;
@@ -66,7 +66,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Velvet Watercolor Maroon & Smoky Ruby Drama Background System ── */
+/* ── Pure Aipan & Gerua Gradient Background Layer (Variation 1: Temple Sanctum) ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -81,72 +81,19 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: radial-gradient(ellipse 130% 85% at 50% 12%, #981C1E 0%, #870334 32%, #680224 65%, #38000C 100%) !important;
-  background-color: #981C1E !important;
+  background: radial-gradient(ellipse 130% 90% at 50% 0%, #B42425 0%, #AC2525 28%, #7C141C 62%, #4A060C 100%) !important;
+  background-color: #AC2525 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* 1. Smoky Maroon & Ruby Wine Watercolor Clouds (High-Contrast Ruby Drama - Vivid 9s Flow) */
-.us-bg-layer::before,
-.schedule-bg-layer::before,
-.stay-bg-layer::before,
-.rsvp-bg-layer::before,
-.home-bg-layer::before,
-.fluid-bg-layer::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: -30% !important;
-  width: 160% !important;
-  height: 160% !important;
-  background: 
-    /* Radiant Luminous Ruby-Wine Cloud (Top Right) */
-    radial-gradient(ellipse 65% 55% at 75% 20%, rgba(240, 35, 85, 0.78) 0%, rgba(170, 15, 50, 0.35) 45%, transparent 72%),
-    /* Deep Smoky Plum / Midnight Wine Shadow Cloud (Mid Left) */
-    radial-gradient(ellipse 75% 65% at 15% 45%, rgba(32, 0, 10, 0.85) 0%, rgba(70, 2, 22, 0.45) 50%, transparent 80%),
-    /* Luminous Crimson-Wine Mist (Bottom Center-Right) */
-    radial-gradient(ellipse 65% 55% at 72% 78%, rgba(225, 25, 75, 0.68) 0%, rgba(145, 10, 42, 0.30) 45%, transparent 75%),
-    /* Upper-Left Radiant Rose-Wine Bloom */
-    radial-gradient(ellipse 55% 50% at 25% 15%, rgba(210, 25, 65, 0.55) 0%, transparent 68%) !important;
-  pointer-events: none !important;
-  animation: velvetMaroonDrift 9s ease-in-out infinite alternate !important;
-  transform-origin: center center !important;
-  will-change: transform, opacity !important;
-}
-
-@keyframes velvetMaroonDrift {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1) rotate(0deg);
-    opacity: 0.85;
-  }
-  50% {
-    transform: translate3d(-8%, 6%, 0) scale(1.18) rotate(5deg);
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(8%, -6%, 0) scale(1.24) rotate(-5deg);
-    opacity: 0.90;
-  }
-}
-
-/* 2. Artisanal Watercolor Paper & Raw Velvet Fiber Grain Overlay (Preset A) */
-.us-bg-layer::after,
-.schedule-bg-layer::after,
-.stay-bg-layer::after,
-.rsvp-bg-layer::after,
-.home-bg-layer::after,
-.fluid-bg-layer::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='velvetGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.50' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.38 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23velvetGrain)'/%3E%3C/svg%3E") !important;
-  background-repeat: repeat !important;
-  background-size: 220px 220px !important;
-  mix-blend-mode: overlay !important;
-  pointer-events: none !important;
-  opacity: 0.95 !important;
+.us-bg-layer::before, .us-bg-layer::after,
+.schedule-bg-layer::before, .schedule-bg-layer::after,
+.stay-bg-layer::before, .stay-bg-layer::after,
+.rsvp-bg-layer::before, .rsvp-bg-layer::after,
+.home-bg-layer::before, .home-bg-layer::after,
+.fluid-bg-layer::before, .fluid-bg-layer::after {
+  display: none !important;
 }
 
 /* ── typography ─────────────────────────────────────── */

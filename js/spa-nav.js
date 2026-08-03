@@ -51,7 +51,7 @@
   }
 
   function ensureThemeColor() {
-    var themeColor = '#981C1E';
+    var themeColor = '#B42425';
     var metaTags = document.querySelectorAll('meta[name="theme-color"]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
