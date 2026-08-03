@@ -1618,17 +1618,17 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Individual Field Card */
 .rsvp-card-section {
-  background: rgba(85, 12, 18, 0.55) !important;
-  backdrop-filter: blur(12px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
-  border-radius: 22px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  padding: 22px 20px 22px !important;
-  box-shadow: 0 4px 20px rgba(30, 3, 6, 0.20) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 32px !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-filter: none !important;
+  filter: none !important;
+  padding: 24px 20px 24px !important;
   box-sizing: border-box !important;
   width: 100% !important;
   text-align: center !important;
-  transition: transform 0.2s ease, border-color 0.2s ease !important;
+  transition: transform 0.2s ease !important;
 }
 
 .rsvp-card-title {
@@ -1914,12 +1914,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: none;
   text-align: center;
   padding: 40px 20px !important;
-  background: rgba(85, 12, 18, 0.55) !important;
-  border-radius: 22px !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 4px 20px rgba(30, 3, 6, 0.20) !important;
-  backdrop-filter: blur(12px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(12px) saturate(140%) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border-radius: 32px !important;
+  border: none !important;
+  box-shadow: none !important;
+  -webkit-filter: none !important;
+  filter: none !important;
 }
 #rsvp-thanks .big {
   font-family: 'Cinzel', serif !important;
