@@ -118,11 +118,50 @@
     });
   }
 
+  var contrastCheckScheduled = false;
+  function updateNavContrast() {
+    var nav = document.querySelector('.fixed-bottom-nav');
+    if (!nav) return;
+    var navRect = nav.getBoundingClientRect();
+    if (!navRect || navRect.height === 0) return;
+
+    // Elements with light / ivory backgrounds (e.g. cards, paper sheets)
+    var lightCards = document.querySelectorAll(
+      '.card, .schedule-event-card, .rsvp-card, .paper, .cards, .rsvp-card-container, .gal figure, .fcard'
+    );
+    var isOverLight = false;
+
+    for (var i = 0; i < lightCards.length; i++) {
+      var rect = lightCards[i].getBoundingClientRect();
+      // If the light card overlaps vertically with the bottom navigation area
+      if (rect.top < (navRect.bottom - 12) && rect.bottom > (navRect.top + 12)) {
+        isOverLight = true;
+        break;
+      }
+    }
+
+    if (isOverLight) {
+      nav.classList.add('nav-on-light');
+    } else {
+      nav.classList.remove('nav-on-light');
+    }
+  }
+
+  function scheduleNavContrastCheck() {
+    if (!contrastCheckScheduled) {
+      contrastCheckScheduled = true;
+      requestAnimationFrame(function() {
+        updateNavContrast();
+        contrastCheckScheduled = false;
+      });
+    }
+  }
+
   function initPageScripts() {
     // 0. Ensure Red Theme Color for browser address bar
     ensureThemeColor();
 
-    // 1. Re-init Scroll Clamping on the active scroller
+    // 1. Re-init Scroll Clamping on the active scroller & contrast tracking
     var scroller = document.querySelector('main, .schedule-page-wrap, .us-page-wrap, .rsvp-page-wrap');
     if (scroller) {
       scroller.scrollTop = 0;
@@ -136,7 +175,15 @@
           scroller.scrollTop = top - 1;
         }
       }, { passive: true });
+
+      scroller.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
     }
+
+    window.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
+    document.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
+
+    // Initial contrast check
+    scheduleNavContrastCheck();
 
     // 2. Re-init RSVP Form if present
     var rsvpForm = document.getElementById('rsvp-form');

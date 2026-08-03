@@ -468,38 +468,56 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* ── 9. FLOATING DOCK NAVIGATION CONTROLLER ─────────── */
-  function initBottomNav() {
-    var path = (window.location.pathname || '').toLowerCase();
-    var tabs = document.querySelectorAll('.dock-tab');
-    if (!tabs.length) return;
+  /* ── 9. DYNAMIC NAVBAR SCROLL CONTRAST DETECTOR ─── */
+  var contrastCheckScheduled = false;
+  function updateNavContrast() {
+    var nav = document.querySelector('.fixed-bottom-nav');
+    if (!nav) return;
+    var navRect = nav.getBoundingClientRect();
+    if (!navRect || navRect.height === 0) return;
 
-    var activeKey = 'home';
-    if (path.indexOf('schedule') !== -1) {
-      activeKey = 'schedule';
-    } else if (path.indexOf('travel') !== -1) {
-      activeKey = 'travel';
-    } else if (path.indexOf('rsvp') !== -1) {
-      activeKey = 'rsvp';
-    } else if (path.indexOf('invite') !== -1) {
-      activeKey = 'invite';
-    } else {
-      activeKey = 'home';
+    var lightCards = document.querySelectorAll(
+      '.card, .schedule-event-card, .rsvp-card, .paper, .cards, .rsvp-card-container, .gal figure, .fcard'
+    );
+    var isOverLight = false;
+
+    for (var i = 0; i < lightCards.length; i++) {
+      var rect = lightCards[i].getBoundingClientRect();
+      if (rect.top < (navRect.bottom - 12) && rect.bottom > (navRect.top + 12)) {
+        isOverLight = true;
+        break;
+      }
     }
 
-    tabs.forEach(function(tab) {
-      if (tab.getAttribute('data-page') === activeKey) {
-        tab.classList.add('active');
-      } else {
-        tab.classList.remove('active');
-      }
-    });
+    if (isOverLight) {
+      nav.classList.add('nav-on-light');
+    } else {
+      nav.classList.remove('nav-on-light');
+    }
+  }
+
+  function scheduleNavContrastCheck() {
+    if (!contrastCheckScheduled) {
+      contrastCheckScheduled = true;
+      requestAnimationFrame(function() {
+        updateNavContrast();
+        contrastCheckScheduled = false;
+      });
+    }
+  }
+
+  window.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
+  document.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
+
+  var scroller = document.querySelector('main, .schedule-page-wrap, .us-page-wrap, .rsvp-page-wrap');
+  if (scroller) {
+    scroller.addEventListener('scroll', scheduleNavContrastCheck, { passive: true });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initBottomNav);
+    document.addEventListener('DOMContentLoaded', scheduleNavContrastCheck);
   } else {
-    initBottomNav();
+    scheduleNavContrastCheck();
   }
 
 })();
