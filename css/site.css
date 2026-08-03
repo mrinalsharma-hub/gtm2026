@@ -1926,8 +1926,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   justify-content: center !important;
   text-align: center !important;
   width: 100% !important;
-  height: 40px !important;
-  min-height: 40px !important;
+  height: 64px !important;
+  min-height: 64px !important;
   padding: 0 24px !important;
   background: #FFF6E8 !important;
   color: #7B181B !important;
