@@ -1324,22 +1324,38 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-mandala-wrap {
   position: relative !important;
-  width: 209px !important;
-  height: 209px !important;
+  width: 228px !important;
+  height: 228px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   margin: 0 auto !important;
 }
 
-.rsvp-mandala-img {
+.rsvp-dots-ring {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 100% !important;
   height: 100% !important;
+  display: block !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transform-origin: center center !important;
+  animation: rsvpDotsAntiClockwiseSpin 36s linear infinite !important;
+  will-change: transform !important;
+}
+
+.rsvp-mandala-img {
+  width: 209px !important;
+  height: 209px !important;
   display: block !important;
   object-fit: contain !important;
   transform-origin: center center !important;
   animation: rsvpMandalaSpin 28s linear infinite !important;
   will-change: transform !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 .mandala-center-hands {
@@ -1368,6 +1384,15 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rsvpDotsAntiClockwiseSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
   }
 }
 
