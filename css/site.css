@@ -91,14 +91,17 @@ div::-webkit-scrollbar {
 html{
   scroll-behavior:smooth;
   overscroll-behavior-y:none;
-  background:#B42425 !important;
-  background-color:#B42425 !important;
+  background:#B82428 !important;
+  background-color:#B82428 !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
 body{
-  background: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%) !important;
-  background-color:#AC2525 !important;
+  background: 
+    radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.28) 0%, rgba(230, 75, 45, 0.14) 40%, transparent 75%),
+    radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.24) 0%, rgba(195, 28, 38, 0.10) 50%, transparent 80%),
+    linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
+  background-color:#A71F23 !important;
   background-attachment:fixed !important;
   color:#FFFFFF !important;
   font-family:'Cormorant Garamond','Lustria',Georgia,serif;
@@ -111,7 +114,7 @@ body{
 img,svg{max-width:100%;display:block}
 a{color:inherit}
 
-/* ── Pure Aipan & Gerua Gradient Background Layer (Exact Reference Match) ── */
+/* ── Pure Aipan Vermilion Background Layer with Sacred Diya Lighting ── */
 .us-bg-layer,
 .schedule-bg-layer,
 .stay-bg-layer,
@@ -126,20 +129,49 @@ a{color:inherit}
   overflow: hidden !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  background: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%) !important;
+  background: 
+    radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.28) 0%, rgba(230, 75, 45, 0.14) 40%, transparent 75%),
+    radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.24) 0%, rgba(195, 28, 38, 0.10) 50%, transparent 80%),
+    linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
   background-color: #A71F23 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* ── Mobile Portrait Screen Gradient (Pixel-Exact to User Reference) ── */
+/* 1. Ambient Diya Hearth Glow Motion */
+.us-bg-layer::before,
+.schedule-bg-layer::before,
+.stay-bg-layer::before,
+.rsvp-bg-layer::before,
+.home-bg-layer::before,
+.fluid-bg-layer::before {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  inset: -10% !important;
+  width: 120% !important;
+  height: 120% !important;
+  background: radial-gradient(ellipse 125% 55% at 50% 17%, rgba(248, 158, 52, 0.22) 0%, rgba(228, 48, 65, 0.16) 45%, transparent 75%) !important;
+  pointer-events: none !important;
+  animation: diyaHearthGlow 12s ease-in-out infinite alternate !important;
+  transform-origin: 50% 20% !important;
+  will-change: transform, opacity !important;
+}
+
+/* ── Mobile Portrait Screen Gradient Optimization ── */
 @media (max-width: 768px) {
   :root {
-    --bg-gradient: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%);
+    --bg-gradient: 
+      radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.28) 0%, rgba(230, 75, 45, 0.14) 40%, transparent 75%),
+      radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.24) 0%, rgba(195, 28, 38, 0.10) 50%, transparent 80%),
+      linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%);
   }
 
   body {
-    background: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%) !important;
+    background: 
+      radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.28) 0%, rgba(230, 75, 45, 0.14) 40%, transparent 75%),
+      radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.24) 0%, rgba(195, 28, 38, 0.10) 50%, transparent 80%),
+      linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
     background-color: #A71F23 !important;
   }
 
@@ -149,7 +181,10 @@ a{color:inherit}
   .rsvp-bg-layer,
   .home-bg-layer,
   .fluid-bg-layer {
-    background: linear-gradient(180deg, #B33034 0%, #B02B2F 10%, #AD272B 20%, #AA2327 30%, #A71F23 40%, #A71F23 100%) !important;
+    background: 
+      radial-gradient(ellipse 135% 55% at 50% 16%, rgba(246, 155, 50, 0.28) 0%, rgba(230, 75, 45, 0.14) 40%, transparent 75%),
+      radial-gradient(ellipse 105% 48% at 50% 20%, rgba(235, 45, 65, 0.24) 0%, rgba(195, 28, 38, 0.10) 50%, transparent 80%),
+      linear-gradient(180deg, #B82428 0%, #B82428 10%, #B02327 24%, #A92024 45%, #A71F23 70%, #A71F23 100%) !important;
     background-color: #A71F23 !important;
   }
 
@@ -159,7 +194,17 @@ a{color:inherit}
   .rsvp-bg-layer::before,
   .home-bg-layer::before,
   .fluid-bg-layer::before {
-    display: none !important;
+    display: block !important;
+    content: "" !important;
+    position: absolute !important;
+    inset: -10% !important;
+    width: 120% !important;
+    height: 120% !important;
+    background: radial-gradient(ellipse 125% 55% at 50% 17%, rgba(248, 158, 52, 0.22) 0%, rgba(228, 48, 65, 0.16) 45%, transparent 75%) !important;
+    pointer-events: none !important;
+    animation: diyaHearthGlow 12s ease-in-out infinite alternate !important;
+    transform-origin: 50% 20% !important;
+    will-change: transform, opacity !important;
   }
 }
 
