@@ -1,53 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#AC2525">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#AC2525">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#AC2525">
-<meta name="color-scheme" content="dark">
-<meta name="msapplication-navbutton-color" content="#AC2525">
-<meta name="apple-mobile-web-app-title" content="GTM 2026">
-<title>Page not found · Garima weds Mrinal</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪔</text></svg>">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Lustria&display=swap" rel="stylesheet">
-<style>
-:root{
-  color-scheme: dark;
-  --red:#A71F23;--red-hi:#B22429;--red-lo:#7E1216;--ivory:#FFF6E8;--ivory-dim:rgba(255,246,232,.82)
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html, body {
-  background: #AC2525 !important;
-  background-color: #AC2525 !important;
-}
-body{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
-  padding:6vh 26px;color:var(--ivory);font-family:'Lustria',Georgia,serif;
-  background:radial-gradient(130% 100% at 50% 28%,var(--red-hi) 0%,var(--red) 46%,var(--red-lo) 100%)}
-h1{font-family:'Cinzel',serif;font-weight:400;font-size:clamp(24px,6vw,36px);letter-spacing:.2em;text-transform:uppercase}
-p{color:var(--ivory-dim);margin-top:14px;letter-spacing:.06em}
-a{display:inline-block;margin-top:34px;padding:13px 42px;border:1.5px solid var(--ivory);border-radius:2px;
-  font-family:'Cinzel',serif;font-size:14px;letter-spacing:.34em;text-indent:.34em;text-transform:uppercase;
-  color:var(--ivory);text-decoration:none;transition:background .35s,color .35s}
-a:hover{background:var(--ivory);color:var(--red)}
-</style>
-<script>
-(function(){
-  var p = window.location.pathname || '';
-  if (p.indexOf('/mrinalgarima') !== -1) {
-    var sub = p.replace(/^\/mrinalgarima\/?/, '');
-    window.location.replace('https://www.mrinalgarima.com/' + (sub || ''));
-  } else if (p.indexOf('/garimamrinal') !== -1) {
-    var sub = p.replace(/^\/garimamrinal\/?/, '');
-    window.location.replace('https://www.garimamrinal.com/' + (sub || ''));
-  }
-})();
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garima weds Mrinal · Nainital 2026</title>
+  <script>
+    (function() {
+      var path = window.location.pathname.split('/').pop().toLowerCase();
+      try { path = decodeURIComponent(path); } catch(e) {}
+      
+      var target = 'index.html';
+      if (path === 'schedule.html' || path === 'celebrations.html' || path === 'events.html') {
+        target = 'events.html';
+      } else if (path === 'travel.html' || path === 'stay.html') {
+        target = 'stay.html';
+      } else if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'rsvp.html' || path === 'joinus.html') {
+        target = 'joinus.html';
+      } else {
+        target = 'index.html';
+      }
+      window.location.replace(target);
+    })();
+  </script>
 </head>
-<body>
-<h1>Lost in the hills</h1>
-<p>This page seems to have wandered off the trail.</p>
-<a href="/">Back home</a>
+<body style="background-color:#F8F4EA; font-family:serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;">
+  <p>Redirecting to <a href="index.html">GTM 2026</a>...</p>
 </body>
 </html>

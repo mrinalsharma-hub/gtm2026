@@ -1,13 +1,13 @@
-/* ── GTM2026 Native Navigation & Auth Controller ── */
+/* ── GTM2026 Canonical 4-Tab Navigation & Auth Controller ── */
 (function() {
   'use strict';
 
   function normalizePath(url) {
-    if (!url) return 'gm.html';
+    if (!url) return 'index.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
     try { path = decodeURIComponent(path); } catch(e) {}
     if (!path || path === '' || path === 'index.html' || path === 'us.html' || path === 'home.html' || path === 'gm.html' || path === 'g&m.html' || path === 'g%26m.html') {
-      return 'gm.html';
+      return 'index.html';
     }
     if (path === 'celebrations.html' || path === 'schedule.html') return 'events.html';
     if (path === 'travel.html') return 'stay.html';
@@ -21,9 +21,8 @@
 
   function checkAuthGuard() {
     var currentNorm = normalizePath(window.location.pathname);
-    // Only redirect if visiting an internal gated tab without authentication
-    if (currentNorm !== 'gm.html' && !isAuthenticated()) {
-      window.location.replace('gm.html');
+    if (currentNorm !== 'index.html' && !isAuthenticated()) {
+      window.location.replace('index.html');
       return false;
     }
     return true;
@@ -69,7 +68,7 @@
       }
 
       // Lock state
-      if (tabNorm !== 'gm.html') {
+      if (tabNorm !== 'index.html') {
         if (!authed) {
           tab.classList.add('is-locked');
           tab.onclick = function(e) {
@@ -79,7 +78,7 @@
               if (window.handleOpenDetails) {
                 window.handleOpenDetails(e);
               } else {
-                window.location.href = 'gm.html';
+                window.location.href = 'index.html';
               }
             }
           };
@@ -93,8 +92,8 @@
     });
   }
 
-  // Pre-fetch tabs into browser cache for instant transitions
-  var TABS = ['gm.html', 'events.html', 'stay.html', 'joinus.html'];
+  // Pre-fetch canonical tabs into browser cache for instant transitions
+  var TABS = ['index.html', 'events.html', 'stay.html', 'joinus.html'];
   function prefetchTabs() {
     if (!isAuthenticated()) return;
     TABS.forEach(function(page) {
