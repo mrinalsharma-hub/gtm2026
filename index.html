@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=3100">
+<link rel="stylesheet" href="css/site.css?v=3120">
 <style>
 @font-face {
   font-family: 'WindSong';
@@ -126,12 +126,12 @@ html, body {
 /* ── 3. Central Typography (Grand 80px Display + WindSong Script + Spectral Date) ── */
 .home-hero-text {
   position: absolute;
-  top: 45%;
+  top: 44%;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   width: 100% !important;
   max-width: 440px;
-  height: 235px;
+  height: 310px;
   display: block;
   z-index: 3;
   pointer-events: none;
@@ -156,7 +156,7 @@ html, body {
 
 .home-script-wrap {
   position: absolute;
-  top: 86px;
+  top: 110px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -167,7 +167,7 @@ html, body {
 
 .home-script {
   font-family: 'WindSong', cursive;
-  font-size: clamp(54px, 14.5vw, 66px) !important;
+  font-size: clamp(64px, 17vw, 76px) !important;
   font-weight: 400;
   line-height: 0.88 !important;
   color: #a52d25;
@@ -177,7 +177,7 @@ html, body {
 
 .home-date-location {
   position: absolute;
-  top: 174px;
+  top: 250px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -186,12 +186,12 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
 }
 
 .home-date-location p {
   font-family: 'Spectral', Georgia, serif !important;
-  font-size: clamp(20px, 5.2vw, 24px) !important;
+  font-size: clamp(19px, 5.0vw, 23px) !important;
   font-weight: 400 !important;
   line-height: 1.28 !important;
   color: #0b4c6d;
@@ -579,10 +579,10 @@ html, body {
         <!-- ── 3. Central Typography ── -->
   <div class="home-hero-text">
     <h1 class="home-name" style="top: 40px; font-size: clamp(68px, 18.5vw, 80px) !important; font-weight: 300 !important; line-height: 0.95 !important;">GARIMA</h1>
-    <div class="home-script-wrap" style="top: 86px;"><span class="home-script" style="font-size: clamp(54px, 14.5vw, 66px) !important; line-height: 0.88 !important;">takes</span></div>
-    <h1 class="home-name" style="top: 134px; font-size: clamp(68px, 18.5vw, 80px) !important; font-weight: 300 !important; line-height: 0.95 !important;">MRINAL</h1>
+    <div class="home-script-wrap" style="top: 110px;"><span class="home-script" style="font-size: clamp(64px, 17vw, 76px) !important; line-height: 0.88 !important;">takes</span></div>
+    <h1 class="home-name" style="top: 180px; font-size: clamp(68px, 18.5vw, 80px) !important; font-weight: 300 !important; line-height: 0.95 !important;">MRINAL</h1>
 
-    <div class="home-date-location" style="top: 174px;">
+    <div class="home-date-location" style="top: 250px;">
       <p>NOV 21, 2026</p>
       <p>NAINITAL, INDIA</p>
     </div>
@@ -889,7 +889,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=3100"></script>
-<script src="js/global-audio.js?v=3100"></script>
+<script src="js/spa-nav.js?v=3120"></script>
+<script src="js/global-audio.js?v=3120"></script>
 </body>
 </html>
