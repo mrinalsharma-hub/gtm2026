@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2580">
+<link rel="stylesheet" href="css/site.css?v=2600">
 <style>
 @font-face {
   font-family: 'WindSong';
@@ -169,7 +169,7 @@ html, body {
 
 .home-script {
   font-family: 'WindSong', cursive !important;
-  font-size: clamp(88px, 23vw, 108px) !important;
+  font-size: clamp(84px, 22vw, 104px) !important;
   font-weight: 400 !important;
   line-height: 0.85 !important;
   color: #c81a1f !important;
@@ -193,7 +193,7 @@ html, body {
 
 .home-date-location p {
   font-family: 'Cinzel', serif;
-  font-size: clamp(22px, 5.6vw, 26px) !important;
+  font-size: clamp(20px, 5.1vw, 24px) !important;
   font-weight: 400;
   line-height: 26px;
   color: #0b4c6d;
@@ -548,10 +548,10 @@ html, body {
   <!-- ── 3. Central Typography ── -->
   <div class="home-hero-text">
     <h1 class="home-name" style="top: 40px; font-size: clamp(68px, 18.5vw, 80px) !important; font-weight: 300 !important; line-height: 0.95 !important;">GARIMA</h1>
-    <div class="home-script-wrap" style="top: 112px;"><span class="home-script" style="font-size: clamp(88px, 23vw, 108px) !important; line-height: 0.88 !important;">takes</span></div>
+    <div class="home-script-wrap" style="top: 112px;"><span class="home-script" style="font-size: clamp(84px, 22vw, 104px) !important; line-height: 0.88 !important;">takes</span></div>
     <h1 class="home-name" style="top: 184px; font-size: clamp(68px, 18.5vw, 80px) !important; font-weight: 300 !important; line-height: 0.95 !important;">MRINAL</h1>
 
-    <div class="home-date-location" style="top: 216px; font-size: clamp(22px, 5.6vw, 26px) !important;">
+    <div class="home-date-location" style="top: 216px; font-size: clamp(20px, 5.1vw, 24px) !important;">
       <p>NOVEMBER 21, 2026</p>
       <p>NAINITAL, INDIA</p>
     </div>
@@ -578,15 +578,22 @@ html, body {
     <span class="home-unlock-details-label">Unlock for details</span>
   </button>
 
-  <!-- ── Native Micro Music Player Button ── -->
-  <button id="music-toggle" class="music-toggle-btn" aria-label="Toggle Music">
-    <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#7e1216">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#7e1216">
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-    </svg>
-  </button>
+    <!-- ── Global Horizontal Music Player Pill ── -->
+  <div id="global-music-player" class="global-audio-pill" role="button" aria-label="Toggle Music">
+    <div class="audio-icon-wrap">
+      <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#7E1216">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+      <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#7E1216">
+        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+      </svg>
+    </div>
+    <div class="audio-wave-bars">
+      <span class="bar bar-1"></span>
+      <span class="bar bar-2"></span>
+      <span class="bar bar-3"></span>
+    </div>
+  </div>
 
   <!-- ── AUDIO ── -->
   <audio id="bg-music" loop preload="auto" playsinline>
@@ -677,55 +684,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (isAuthed()) {
     unlockAllTabs();
-  }
-
-  // 1. Audio Control
-  function updateMusicUI(isPlaying) {
-    if (musicToggle) {
-      if (isPlaying) {
-        musicToggle.classList.add('is-playing');
-      } else {
-        musicToggle.classList.remove('is-playing');
-      }
-    }
-  }
-
-  const wasPlaying = sessionStorage.getItem('gtm2026_music_playing') !== 'false';
-  if (bgMusic && wasPlaying) {
-    bgMusic.volume = 0.8;
-    const p = bgMusic.play();
-    if (p !== undefined) {
-      p.then(() => updateMusicUI(true)).catch(() => updateMusicUI(false));
-    }
-  }
-
-  function unlockAudio() {
-    if (bgMusic && bgMusic.paused && wasPlaying) {
-      bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
-    }
-    window.removeEventListener('touchstart', unlockAudio, { capture: true });
-    window.removeEventListener('pointerdown', unlockAudio, { capture: true });
-    window.removeEventListener('click', unlockAudio, { capture: true });
-  }
-  window.addEventListener('touchstart', unlockAudio, { capture: true, once: true });
-  window.addEventListener('pointerdown', unlockAudio, { capture: true, once: true });
-  window.addEventListener('click', unlockAudio, { capture: true, once: true });
-
-  if (musicToggle) {
-    musicToggle.addEventListener('click', function(e) {
-      e.stopPropagation();
-      if (!bgMusic) return;
-      if (bgMusic.paused) {
-        bgMusic.play().then(() => {
-          updateMusicUI(true);
-          sessionStorage.setItem('gtm2026_music_playing', 'true');
-        }).catch(() => {});
-      } else {
-        bgMusic.pause();
-        updateMusicUI(false);
-        sessionStorage.setItem('gtm2026_music_playing', 'false');
-      }
-    });
   }
 
   // 2. Open Passcode Interface Modal Flow
@@ -890,6 +848,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=2580"></script>
+<script src="js/spa-nav.js?v=2600"></script>
+<script src="js/global-audio.js?v=2600"></script>
 </body>
 </html>

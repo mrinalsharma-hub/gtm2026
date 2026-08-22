@@ -547,18 +547,27 @@ body {
 </nav>
 
 <!-- ── 7. Music Player Toggle Button ── -->
-<button id="music-toggle" class="music-toggle-btn" aria-label="Toggle Music">
-  <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#7E1216">
-    <path d="M8 5v14l11-7z"/>
-  </svg>
-  <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#7E1216">
-    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-  </svg>
-</button>
+<!-- ── Global Horizontal Music Player Pill ── -->
+<div id="global-music-player" class="global-audio-pill" role="button" aria-label="Toggle Music">
+  <div class="audio-icon-wrap">
+    <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#7E1216">
+      <path d="M8 5v14l11-7z"/>
+    </svg>
+    <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#7E1216">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+    </svg>
+  </div>
+  <div class="audio-wave-bars">
+    <span class="bar bar-1"></span>
+    <span class="bar bar-2"></span>
+    <span class="bar bar-3"></span>
+  </div>
+</div>
 
 <audio id="bg-music" loop preload="auto" playsinline>
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
+
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
@@ -692,5 +701,6 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <script src="js/spa-nav.js?v=2440"></script>
+<script src="js/global-audio.js?v=2600"></script>
 </body>
 </html>
