@@ -1,4 +1,4 @@
-/* ── GTM2026 Native Navigation & Tab Controller ── */
+/* ── GTM2026 Native Navigation & Auth Controller ── */
 (function() {
   'use strict';
 
@@ -12,9 +12,22 @@
     return path;
   }
 
+  function isAuthenticated() {
+    return sessionStorage.getItem('gtm2026_auth') === 'true' || localStorage.getItem('gtm2026_auth') === 'true';
+  }
+
+  function checkAuthGuard() {
+    var currentNorm = normalizePath(window.location.pathname);
+    if (currentNorm !== 'gm.html' && !isAuthenticated()) {
+      window.location.replace('index.html');
+      return false;
+    }
+    return true;
+  }
+
   function ensureThemeColor() {
     var themeColor = '#A71F23';
-    var metaTags = document.querySelectorAll('meta[name="theme-color"]');
+    var metaTags = document.querySelectorAll('meta[name=theme-color]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
       meta.name = 'theme-color';
@@ -25,16 +38,20 @@
         m.setAttribute('content', themeColor);
       });
     }
-    var msNav = document.querySelector('meta[name="msapplication-navbutton-color"]');
+    var msNav = document.querySelector('meta[name=msapplication-navbutton-color]');
     if (msNav) msNav.setAttribute('content', themeColor);
   }
 
   function updateNav() {
     var currentNorm = normalizePath(window.location.pathname);
+    var authed = isAuthenticated();
     var tabs = document.querySelectorAll('.fixed-bottom-nav .nav-tab');
+
     tabs.forEach(function(tab) {
       var href = tab.getAttribute('href');
       var tabNorm = normalizePath(href);
+
+      // Active indicator
       if (tabNorm === currentNorm) {
         tab.classList.add('active');
         var label = tab.querySelector('.nav-label');
@@ -46,12 +63,36 @@
         var text = label ? label.textContent.trim() : '';
         tab.setAttribute('aria-label', text);
       }
+
+      // Lock state
+      if (tabNorm !== 'gm.html') {
+        if (!authed) {
+          tab.classList.add('is-locked');
+          tab.onclick = function(e) {
+            if (!isAuthenticated()) {
+              e.preventDefault();
+              e.stopPropagation();
+              if (window.handleOpenDetails) {
+                window.handleOpenDetails(e);
+              } else {
+                window.location.href = 'index.html';
+              }
+            }
+          };
+        } else {
+          tab.classList.remove('is-locked');
+          tab.onclick = null;
+        }
+      } else {
+        tab.classList.remove('is-locked');
+      }
     });
   }
 
   // Pre-fetch tabs into browser cache for instant transitions
   var TABS = ['gm.html', 'events.html', 'stay.html', 'joinus.html'];
   function prefetchTabs() {
+    if (!isAuthenticated()) return;
     TABS.forEach(function(page) {
       var link = document.createElement('link');
       link.rel = 'prefetch';
@@ -61,6 +102,7 @@
   }
 
   function init() {
+    if (!checkAuthGuard()) return;
     ensureThemeColor();
     updateNav();
     prefetchTabs();

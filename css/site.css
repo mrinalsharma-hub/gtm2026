@@ -2146,3 +2146,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 
 
+
+
+/* ── Locked Bottom Nav Tabs State ── */
+.fixed-bottom-nav .nav-tab.is-locked {
+  opacity: 0.35 !important;
+  cursor: pointer !important;
+}
+.fixed-bottom-nav .nav-tab.is-locked .nav-icon {
+  opacity: 0.35 !important;
+}
+.fixed-bottom-nav .nav-tab.is-locked .nav-label {
+  opacity: 0.35 !important;
+}

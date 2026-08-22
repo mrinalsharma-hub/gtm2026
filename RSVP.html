@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+if (sessionStorage.getItem('gtm2026_auth') !== 'true' && localStorage.getItem('gtm2026_auth') !== 'true') {
+  window.location.replace('index.html');
+}
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#A71F23">
@@ -728,5 +733,73 @@ var RSVP_CONFIG={
 </script>
 
 <script src="js/spa-nav.js?v=2440"></script>
+
+<!-- ── Native Micro Music Player Button (Always Fixed Top-Right) ── -->
+<button id="music-toggle" class="music-toggle-btn" aria-label="Toggle Music">
+  <svg class="icon-play" width="18" height="18" viewBox="0 0 24 24" fill="#7E1216">
+    <path d="M8 5v14l11-7z"/>
+  </svg>
+  <svg class="icon-pause" width="18" height="18" viewBox="0 0 24 24" fill="#7E1216">
+    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+  </svg>
+</button>
+
+<audio id="bg-music" loop preload="auto" playsinline>
+  <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const bgMusic = document.getElementById("bg-music");
+  const musicToggle = document.getElementById("music-toggle");
+
+  function updateMusicUI(isPlaying) {
+    if (musicToggle) {
+      if (isPlaying) {
+        musicToggle.classList.add("is-playing");
+      } else {
+        musicToggle.classList.remove("is-playing");
+      }
+    }
+  }
+
+  const wasPlaying = sessionStorage.getItem("gtm2026_music_playing") !== "false";
+  if (bgMusic && wasPlaying) {
+    bgMusic.volume = 0.8;
+    const p = bgMusic.play();
+    if (p !== undefined) {
+      p.then(() => updateMusicUI(true)).catch(() => updateMusicUI(false));
+    }
+  }
+
+  function unlockAudio() {
+    if (bgMusic && bgMusic.paused && wasPlaying) {
+      bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
+    }
+    window.removeEventListener("touchstart", unlockAudio, { capture: true });
+    window.removeEventListener("pointerdown", unlockAudio, { capture: true });
+  }
+  window.addEventListener("touchstart", unlockAudio, { capture: true, once: true });
+  window.addEventListener("pointerdown", unlockAudio, { capture: true, once: true });
+
+  if (musicToggle) {
+    musicToggle.addEventListener("click", function(e) {
+      e.stopPropagation();
+      if (!bgMusic) return;
+      if (bgMusic.paused) {
+        bgMusic.play().then(() => {
+          updateMusicUI(true);
+          sessionStorage.setItem("gtm2026_music_playing", "true");
+        }).catch(() => {});
+      } else {
+        bgMusic.pause();
+        updateMusicUI(false);
+        sessionStorage.setItem("gtm2026_music_playing", "false");
+      }
+    });
+  }
+});
+</script>
+
 </body>
 </html>
