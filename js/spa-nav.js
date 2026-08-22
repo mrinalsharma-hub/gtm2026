@@ -3,12 +3,12 @@
   'use strict';
 
   function normalizePath(url) {
-    if (!url) return 'g&m.html';
+    if (!url) return 'gm.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
-    try {
-      path = decodeURIComponent(path);
-    } catch(e) {}
-    if (!path || path === '' || path === 'index.html' || path === 'us.html' || path === 'home.html' || path === 'gm.html' || path === 'g&m.html' || path === 'g%26m.html') return 'g&m.html';
+    try { path = decodeURIComponent(path); } catch(e) {}
+    if (!path || path === '' || path === 'index.html' || path === 'us.html' || path === 'home.html' || path === 'gm.html' || path === 'g&m.html' || path === 'g%26m.html') {
+      return 'gm.html';
+    }
     if (path === 'celebrations.html' || path === 'schedule.html') return 'events.html';
     if (path === 'travel.html') return 'stay.html';
     if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
@@ -21,8 +21,9 @@
 
   function checkAuthGuard() {
     var currentNorm = normalizePath(window.location.pathname);
-    if (currentNorm !== 'g&m.html' && !isAuthenticated()) {
-      window.location.replace('g&m.html');
+    // Only redirect if visiting an internal gated tab without authentication
+    if (currentNorm !== 'gm.html' && !isAuthenticated()) {
+      window.location.replace('gm.html');
       return false;
     }
     return true;
@@ -68,7 +69,7 @@
       }
 
       // Lock state
-      if (tabNorm !== 'g&m.html') {
+      if (tabNorm !== 'gm.html') {
         if (!authed) {
           tab.classList.add('is-locked');
           tab.onclick = function(e) {
@@ -78,7 +79,7 @@
               if (window.handleOpenDetails) {
                 window.handleOpenDetails(e);
               } else {
-                window.location.href = 'g&m.html';
+                window.location.href = 'gm.html';
               }
             }
           };
@@ -93,7 +94,7 @@
   }
 
   // Pre-fetch tabs into browser cache for instant transitions
-  var TABS = ['g&m.html', 'events.html', 'stay.html', 'joinus.html'];
+  var TABS = ['gm.html', 'events.html', 'stay.html', 'joinus.html'];
   function prefetchTabs() {
     if (!isAuthenticated()) return;
     TABS.forEach(function(page) {

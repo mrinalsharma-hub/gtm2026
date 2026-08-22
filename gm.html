@@ -619,7 +619,7 @@ html, body {
 <!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container" role="tablist">
-    <a href="g&m.html" class="nav-tab active" role="tab" aria-selected="true" aria-label="G&amp;M (Current Page)">
+    <a href="gm.html" class="nav-tab active" role="tab" aria-selected="true" aria-label="G&amp;M (Current Page)">
       <div class="nav-pill-wrapper">
         <div class="nav-pill"></div>
         <svg class="nav-icon" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -733,7 +733,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.fixed-bottom-nav .nav-tab').forEach(function(tab) {
     tab.addEventListener('click', function(e) {
       var href = tab.getAttribute('href');
-      if (href && href !== 'g&m.html' && href !== 'gm.html' && href !== 'index.html' && !isAuthed()) {
+      if (href && href !== 'gm.html' && href !== 'index.html' && href !== 'index.html' && !isAuthed()) {
         e.preventDefault();
         e.stopPropagation();
         window.handleOpenDetails(e);
