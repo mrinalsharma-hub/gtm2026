@@ -4,6 +4,7 @@
 
   var STORAGE_KEY_STATE = 'gtm2026_music_state';
   var STORAGE_KEY_TIME = 'gtm2026_music_time';
+  var STORAGE_KEY_SESSION_INIT = 'gtm2026_session_audio_initialized';
   var AUDIO_SRC = 'media/Samne_Yeh_Kaun_Aaya.mp3';
 
   var audio = document.getElementById('bg-music');
@@ -15,6 +16,22 @@
     audio.playsInline = true;
     audio.innerHTML = '<source src="' + AUDIO_SRC + '" type="audio/mpeg">';
     document.body.appendChild(audio);
+  }
+
+  // 1. Audio resets ONLY when index.html is loaded for the first time in a session
+  var path = window.location.pathname.split('/').pop().toLowerCase();
+  try { path = decodeURIComponent(path); } catch(e) {}
+  var isIndexPage = (!path || path === '' || path === 'index.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html');
+
+  if (isIndexPage && !sessionStorage.getItem(STORAGE_KEY_SESSION_INIT)) {
+    try {
+      localStorage.removeItem(STORAGE_KEY_TIME);
+      sessionStorage.removeItem(STORAGE_KEY_TIME);
+      sessionStorage.setItem(STORAGE_KEY_SESSION_INIT, 'true');
+    } catch(e) {}
+    if (audio) {
+      audio.currentTime = 0;
+    }
   }
 
   function getPlayerElement() {
