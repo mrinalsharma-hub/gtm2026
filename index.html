@@ -85,18 +85,25 @@ html, body {
 
 /* ── 2. Flowers Top (Scaled & Anchored Top Center) ── */
 .home-flowers-top {
-  filter: drop-shadow(6px 12px 12px rgba(50, 20, 10, 0.30));
+  filter: drop-shadow(6px 12px 14px rgba(50, 20, 10, 0.28));
   position: absolute;
-  top: -12px;
+  top: -8px;
   left: 50% !important;
   transform: translateX(-50%);
-  width: min(340px, 78vw);
+  width: min(280px, 66vw);
   height: auto;
   pointer-events: none;
   z-index: 3;
   transform-origin: center top;
   animation: gentleFloralBreeze 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
   will-change: transform;
+}
+.home-flowers-top img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  aspect-ratio: 767 / 1024;
 }
 .home-flowers-top img {
   width: 100%;
@@ -529,7 +536,7 @@ html, body {
 
   <!-- ── 2. Flowers Top (Floral Bouquet) ── -->
   <div class="home-flowers-top" aria-hidden="true">
-    <img src="images/Flowers_top.svg" alt="Botanical Floral Bouquet">
+    <img src="images/Flowers_top.webp" alt="Botanical Floral Bouquet">
   </div>
 
   <!-- ── 3. Central Typography ── -->
