@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2460">
+<link rel="stylesheet" href="css/site.css?v=2480">
 <style>
 @font-face {
   font-family: 'WindSong';
@@ -118,7 +118,7 @@ html, body {
   100% { transform: translateX(-50%) rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
 }
 
-/* ── 3. Central Typography (Doubled Scale, Bold Impact, Elegant Thin Strokes) ── */
+/* ── 3. Central Typography (Truly Doubled: 120px+ Scale, Bold Presence, Thin Hairline Serifs) ── */
 .home-hero-text {
   position: absolute;
   top: 48%;
@@ -126,7 +126,7 @@ html, body {
   transform: translate(-50%, -50%) !important;
   width: 100% !important;
   max-width: 440px;
-  height: 380px;
+  height: 420px;
   z-index: 2;
   pointer-events: none;
 }
@@ -139,20 +139,21 @@ html, body {
   text-align: center;
   margin: 0;
   font-family: 'Cinzel', serif;
-  font-size: clamp(86px, 21.5vw, 106px);
-  font-weight: 300;
-  line-height: 0.95;
-  letter-spacing: 0.04em;
+  font-size: clamp(96px, 25vw, 128px) !important;
+  font-weight: 300 !important;
+  line-height: 0.9 !important;
+  letter-spacing: 0.05em !important;
   background: linear-gradient(180deg, #d03a3e 19.186%, #c81a1f 43.023%, #a71f23 79.651%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   color: #c81a1f;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .home-script-wrap {
   position: absolute;
-  top: 130px;
+  top: 145px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -165,17 +166,18 @@ html, body {
 
 .home-script {
   font-family: 'WindSong', cursive !important;
-  font-size: clamp(112px, 28vw, 138px);
-  font-weight: 400;
-  line-height: 0.9;
-  color: #c81a1f;
+  font-size: clamp(130px, 34vw, 160px) !important;
+  font-weight: 400 !important;
+  line-height: 0.85 !important;
+  color: #c81a1f !important;
   text-transform: none !important;
   display: inline-block;
+  white-space: nowrap;
 }
 
 .home-date-location {
   position: absolute;
-  top: 314px;
+  top: 355px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -192,7 +194,7 @@ html, body {
   font-weight: 400;
   line-height: 26px;
   color: #0b4c6d;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   margin: 0;
 }
@@ -542,11 +544,11 @@ html, body {
 
   <!-- ── 3. Central Typography ── -->
   <div class="home-hero-text">
-    <h1 class="home-name" style="top: 42px;">GARIMA</h1>
+    <h1 class="home-name" style="top: 48px;">GARIMA</h1>
     <div class="home-script-wrap">
       <span class="home-script">takes</span>
     </div>
-    <h1 class="home-name" style="top: 226px;">MRINAL</h1>
+    <h1 class="home-name" style="top: 252px;">MRINAL</h1>
 
     <div class="home-date-location">
       <p>NOV 21, 2026</p>
@@ -887,6 +889,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=2460"></script>
+<script src="js/spa-nav.js?v=2480"></script>
 </body>
 </html>
