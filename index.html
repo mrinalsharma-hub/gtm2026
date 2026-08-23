@@ -18,7 +18,7 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#A71F23">
 <meta name="color-scheme" content="dark">
-<link rel="manifest" href="site.webmanifest?v=7900">
+<link rel="manifest" href="site.webmanifest?v=8000">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,15 +26,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7900">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7900">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=7900">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8000">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8000">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=8000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=7900">
+<link rel="stylesheet" href="css/site.css?v=8000">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7900" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=8000" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -256,7 +256,7 @@ body {
 /* Butterfly Fly-to-Flowers Transition on Unlock Click */
 .home-butterfly-wrap.fly-to-flowers {
   transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transform: translate(-50%, calc(-100svh + 230px)) !important;
+  transform: translate3d(-50%, calc(-1 * var(--app-height, 100lvh) + 335px), 0) !important;
   z-index: 101 !important;
 }
 
@@ -361,7 +361,7 @@ body {
   display: inline-block !important;
 }
 
-/* ── PIN Code Modal Interface ── */
+/* ── PIN Code Modal Interface (Generous Keyboard Clearance & Visual Hierarchy) ── */
 .home-pin-modal {
   position: absolute;
   inset: 0;
@@ -374,10 +374,11 @@ body {
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 175px 24px 0;
+  padding: clamp(170px, 22vh, 195px) 24px 0;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
 }
 .home-pin-modal.is-active {
   opacity: 1;
@@ -388,7 +389,7 @@ body {
   padding: 0 !important;
   border-radius: 0 !important;
   width: 100%;
-  max-width: 320px;
+  max-width: 290px;
   box-shadow: none !important;
   border: none !important;
   text-align: center;
@@ -402,7 +403,7 @@ body {
 }
 .home-pin-title {
   font-family: 'Cinzel', serif;
-  font-size: 32px;
+  font-size: clamp(24px, 6vw, 28px);
   font-weight: 500;
   color: #FFFFFF;
   margin-bottom: 2px;
@@ -412,28 +413,29 @@ body {
 }
 .home-pin-subtitle {
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   font-style: normal !important;
   color: rgba(255, 255, 255, 0.85) !important;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   line-height: 1.2;
   letter-spacing: 0.03em;
 }
 .home-pin-input {
   width: 100%;
-  padding: 12px;
-  font-size: 24px;
+  padding: 9px 12px;
+  font-size: 20px;
   text-align: center;
-  letter-spacing: 6px;
-  border: 1px solid #FFFFFF;
-  border-radius: 10px;
+  letter-spacing: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.15);
   color: #FFFFFF;
   outline: none !important;
   box-shadow: none !important;
   -webkit-tap-highlight-color: transparent !important;
   transition: background-color 0.2s;
+  box-sizing: border-box;
 }
 .home-pin-input:focus {
   background: rgba(255, 255, 255, 0.25);
@@ -442,21 +444,21 @@ body {
 .home-pin-error {
   color: #FFD8A8;
   font-family: 'Cormorant Garamond', serif !important;
-  font-size: 16px;
-  margin-top: 8px;
-  margin-bottom: 4px;
+  font-size: 14px;
+  margin-top: 6px;
+  margin-bottom: 2px;
   display: none;
   font-style: italic;
   text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 .home-pin-actions {
   display: flex;
-  gap: 12px;
-  margin-top: 18px;
+  gap: 10px;
+  margin-top: 14px;
 }
 .home-pin-btn {
   flex: 1;
-  height: 46px;
+  height: 42px;
   padding: 0;
   display: flex;
   align-items: center;
@@ -464,10 +466,10 @@ body {
   font-family: 'Cormorant Garamond', serif !important;
   font-weight: 400;
   font-style: normal !important;
-  font-size: 20px;
+  font-size: 17px;
   letter-spacing: 0.03em;
   text-transform: uppercase !important;
-  border-radius: 28px;
+  border-radius: 24px;
   cursor: pointer;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
@@ -555,8 +557,8 @@ body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=7900" type="image/webp">
-        <img src="images/home_centerpiece.png?v=7900" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=8000" type="image/webp">
+        <img src="images/home_centerpiece.png?v=8000" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -958,7 +960,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=7900" defer></script>
-<script src="js/global-audio.js?v=7900" defer></script>
+<script src="js/spa-nav.js?v=8000" defer></script>
+<script src="js/global-audio.js?v=8000" defer></script>
 </body>
 </html>
