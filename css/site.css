@@ -2203,6 +2203,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 .global-audio-pill .icon-play,
 .global-audio-pill .icon-pause {
+  fill: #0b4c6d !important;
   position: absolute;
   transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -2231,7 +2232,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .global-audio-pill .bar {
   width: 2.5px;
   height: 4px;
-  background-color: #7E1216;
+  background-color: #0b4c6d;
   border-radius: 2px;
   transition: height 0.2s ease;
 }
