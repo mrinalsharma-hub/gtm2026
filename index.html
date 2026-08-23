@@ -39,7 +39,7 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#A71F23">
 <meta name="color-scheme" content="dark">
-<link rel="manifest" href="site.webmanifest?v=8200">
+<link rel="manifest" href="site.webmanifest?v=8300">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -47,15 +47,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8200">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8200">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=8200">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8300">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8300">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=8300">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=8200">
+<link rel="stylesheet" href="css/site.css?v=8300">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=8200" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=8300" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -457,6 +457,8 @@ body {
   -webkit-tap-highlight-color: transparent !important;
   transition: background-color 0.2s;
   box-sizing: border-box;
+  -webkit-text-security: disc !important;
+  text-security: disc !important;
 }
 .home-pin-input:focus {
   background: rgba(255, 255, 255, 0.25);
@@ -578,8 +580,8 @@ body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=8200" type="image/webp">
-        <img src="images/home_centerpiece.png?v=8200" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=8300" type="image/webp">
+        <img src="images/home_centerpiece.png?v=8300" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -640,7 +642,7 @@ body {
     <div class="home-pin-content">
       <h2 class="home-pin-title">WELCOME!</h2>
       <p class="home-pin-subtitle">Enter code for event details</p>
-      <input type="password" id="pin-input" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <input type="text" id="pin-input" name="wedding-access-code" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text" data-lpignore="true" data-form-type="other" data-1p-ignore="true">
       <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
       <div class="home-pin-actions">
         <button type="button" id="btn-pin-cancel" class="home-pin-btn btn-close">CLOSE</button>
@@ -940,7 +942,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=8200" defer></script>
-<script src="js/global-audio.js?v=8200" defer></script>
+<script src="js/spa-nav.js?v=8300" defer></script>
+<script src="js/global-audio.js?v=8300" defer></script>
 </body>
 </html>
