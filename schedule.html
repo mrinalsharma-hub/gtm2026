@@ -34,14 +34,14 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Events · Garima &amp; Mrinal — Nainital 2026</title>
 <meta name="description" content="Schedule of events for Garima and Mrinal's wedding weekend in Nainital, 20–22 November 2026.">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=8700">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8800">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8800">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=8800">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/Event_Flowers.webp" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="css/site.css?v=8700">
+<link rel="stylesheet" href="css/site.css?v=8800">
 
 <style>
 :root {
@@ -208,41 +208,74 @@ body {
   100% { transform: rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
 }
 
-/* ── 4. Header: The Wedding Weekend (135° Imperial Velvet Lustre Gradient) ── */
+/* ── 4. Header: The Wedding Weekend (Exact Typography Lockup matching G&M.html) ── */
 .schedule-header {
   text-align: center;
-  margin-top: 4px;
-  margin-bottom: 28px;
+  margin-top: 8px;
+  margin-bottom: 32px;
   position: relative;
   z-index: 3;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-title-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
 }
 
 .schedule-script-the {
   font-family: 'WindSong', cursive !important;
-  font-size: clamp(52px, 14vw, 68px);
+  font-size: clamp(58px, 14.5vw, 74px);
   font-weight: 400;
-  line-height: 1;
+  line-height: 0.85;
   background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.15));
+  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.12));
   display: block;
-  margin-bottom: -12px;
-  text-transform: none !important;
+  margin-bottom: -16px;
+  text-transform: lowercase !important;
+  z-index: 2;
 }
 
-.schedule-title-main {
+.schedule-name-top,
+.schedule-name-bottom {
   font-family: 'Cinzel', serif;
-  font-size: clamp(38px, 9.5vw, 54px);
+  font-size: clamp(38px, 9.6vw, 50px);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.05;
   letter-spacing: 0.08em;
   background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(167, 31, 35, 0.18));
+  filter: drop-shadow(0 2px 10px rgba(167, 31, 35, 0.15));
   text-transform: uppercase;
   margin: 0;
+}
+
+.schedule-name-bottom {
+  margin-top: 2px;
+}
+
+.schedule-date-location {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: clamp(12px, 3.2vw, 14px);
+  font-weight: 600;
+  color: #0b4c6d;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 14px;
+  line-height: 1.4;
+  opacity: 0.95;
 }
 
 /* ── 5. Schedule Events Timeline Feed (Luxury Editorial Cards) ── */
@@ -435,8 +468,12 @@ body {
 
   <!-- ── Header: The Wedding Weekend ── -->
   <header class="schedule-header">
-    <span class="schedule-script-the">The</span>
-    <h1 class="schedule-title-main">WEDDING<br>WEEKEND</h1>
+    <div class="schedule-title-lockup">
+      <span class="schedule-script-the">the</span>
+      <h1 class="schedule-name-top">WEDDING</h1>
+      <h1 class="schedule-name-bottom">WEEKEND</h1>
+      <p class="schedule-date-location">20–22 NOVEMBER 2026 · NAINITAL</p>
+    </div>
   </header>
 
   <!-- ── Events Feed ── -->
@@ -600,7 +637,7 @@ body {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<script src="js/spa-nav.js?v=8700"></script>
-<script src="js/global-audio.js?v=8700"></script>
+<script src="js/spa-nav.js?v=8800"></script>
+<script src="js/global-audio.js?v=8800"></script>
 </body>
 </html>
