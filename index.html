@@ -15,7 +15,7 @@
   })();
 </script>
 <meta name="theme-color" content="#A71F23" id="meta-theme-color">
-<link rel="manifest" href="site.webmanifest?v=7100">
+<link rel="manifest" href="site.webmanifest?v=7200">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -23,15 +23,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7100">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7100">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=7100">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7200">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7200">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=7200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=7100">
+<link rel="stylesheet" href="css/site.css?v=7200">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7100" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7200" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -58,8 +58,8 @@ body {
   height: 100%;
   min-height: 100%;
   overflow: hidden !important;
-  background: #FAF6ED !important;
-  background-color: #FAF6ED !important;
+  background: #A71F23 !important;
+  background-color: #A71F23 !important;
   font-family: 'Cinzel', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -533,7 +533,7 @@ body {
 
 </style>
 </head>
-<body>
+<body style="background-color: #A71F23 !important; background: #A71F23 !important;">
 
 <main class="home-mobile-canvas">
 
@@ -549,8 +549,8 @@ body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=7100" type="image/webp">
-        <img src="images/home_centerpiece.png?v=7100" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=7200" type="image/webp">
+        <img src="images/home_centerpiece.png?v=7200" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -672,7 +672,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (themeMeta) {
       themeMeta.setAttribute('content', '#A71F23');
     }
+    if (document.documentElement) {
+      document.documentElement.style.backgroundColor = '#A71F23';
+    }
+    if (document.body) {
+      document.body.style.backgroundColor = '#A71F23';
+    }
   }
+  setInterval(enforceThemeColor, 250);
   window.addEventListener('focus', enforceThemeColor, { passive: true });
   window.addEventListener('blur', enforceThemeColor, { passive: true });
   window.addEventListener('visibilitychange', enforceThemeColor, { passive: true });
@@ -958,7 +965,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=7100" defer></script>
-<script src="js/global-audio.js?v=7100" defer></script>
+<script src="js/spa-nav.js?v=7200" defer></script>
+<script src="js/global-audio.js?v=7200" defer></script>
 </body>
 </html>
