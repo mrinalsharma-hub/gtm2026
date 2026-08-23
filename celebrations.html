@@ -34,13 +34,14 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Events · Garima &amp; Mrinal — Nainital 2026</title>
 <meta name="description" content="Schedule of events for Garima and Mrinal's wedding weekend in Nainital, 20–22 November 2026.">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8600">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8600">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=8600">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8700">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8700">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=8700">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=8600">
+<link rel="preload" as="image" href="images/Event_Flowers.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="css/site.css?v=8700">
 
 <style>
 :root {
@@ -173,30 +174,35 @@ body {
   -webkit-transform: translate3d(0, 0, 0);
 }
 
-/* ── 3. Top Flowers (Anchored Top Center with Sunlit Botanical Drop Shadows) ── */
+/* ── 3. Top Flowers (Exact Event_Flowers Arrangement & Botanical Sunlight Shadows) ── */
 .schedule-flowers-top {
-  filter: drop-shadow(-18px 24px 22px rgba(60, 40, 25, 0.26)) drop-shadow(-6px 10px 10px rgba(80, 50, 30, 0.18)) drop-shadow(-2px 3px 4px rgba(50, 30, 15, 0.12));
+  filter: drop-shadow(-16px 22px 20px rgba(60, 40, 25, 0.22)) drop-shadow(-6px 10px 10px rgba(80, 50, 30, 0.15)) drop-shadow(-2px 3px 4px rgba(50, 30, 15, 0.10));
   position: relative;
-  margin-top: -6px;
-  width: min(290px, 72vw);
+  margin-top: -10px;
+  width: min(320px, 80vw);
   height: auto;
   pointer-events: none;
   z-index: 3;
-  transform-origin: center top;
-  animation: gentleFloralBreeze 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  transform-origin: 58% top;
+  animation: gentleFloralBreeze 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
   will-change: transform;
 }
 
-.schedule-flowers-top img {
+.schedule-flowers-top img,
+.schedule-flowers-top picture {
   width: 100%;
   height: auto;
   display: block;
   object-fit: contain;
-  aspect-ratio: 247 / 266;
+  aspect-ratio: 2115 / 2559;
 }
 
 @keyframes gentleFloralBreeze {
   0% { transform: rotate(0deg) translateY(0px); }
+  30% { transform: rotate(1.2deg) translateY(-1px) skewX(-0.4deg); }
+  70% { transform: rotate(-0.8deg) translateY(-2px) skewX(0.3deg); }
+  100% { transform: rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
+}
   30% { transform: rotate(1.2deg) translateY(-1px) skewX(-0.4deg); }
   70% { transform: rotate(-0.8deg) translateY(-2px) skewX(0.3deg); }
   100% { transform: rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
@@ -421,7 +427,10 @@ body {
 
   <!-- ── Top Flowers ── -->
   <div class="schedule-flowers-top">
-    <img src="images/Welcome_Flowers.png" alt="Botanical Floral Bouquet">
+    <picture>
+      <source srcset="images/Event_Flowers.webp" type="image/webp">
+      <img src="images/Event_Flowers.png" alt="Botanical Wedding Flowers" width="2115" height="2559">
+    </picture>
   </div>
 
   <!-- ── Header: The Wedding Weekend ── -->
@@ -591,7 +600,7 @@ body {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<script src="js/spa-nav.js?v=8600"></script>
-<script src="js/global-audio.js?v=8600"></script>
+<script src="js/spa-nav.js?v=8700"></script>
+<script src="js/global-audio.js?v=8700"></script>
 </body>
 </html>
