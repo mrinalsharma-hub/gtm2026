@@ -18,7 +18,7 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#A71F23">
 <meta name="color-scheme" content="dark">
-<link rel="manifest" href="site.webmanifest?v=7600">
+<link rel="manifest" href="site.webmanifest?v=7700">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,15 +26,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7600">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7600">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=7600">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7700">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7700">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=7700">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=7600">
+<link rel="stylesheet" href="css/site.css?v=7700">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7600" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -555,8 +555,8 @@ body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=7600" type="image/webp">
-        <img src="images/home_centerpiece.png?v=7600" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=7700" type="image/webp">
+        <img src="images/home_centerpiece.png?v=7700" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -672,7 +672,18 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // ── Persistent Theme Color Lock (#A71F23) ──
+  const bgMusic = document.getElementById('bg-music');
+  const butterflyWrap = document.querySelector('.home-butterfly-wrap');
+  const authBackdrop = document.getElementById('auth-backdrop');
+  const btnViewDetails = document.getElementById('btn-view-details');
+  const pinModal = document.getElementById('pin-modal');
+  const btnPinCancel = document.getElementById('btn-pin-cancel');
+  const btnPinSubmit = document.getElementById('btn-pin-submit');
+  const pinInput = document.getElementById('pin-input');
+  const pinError = document.getElementById('pin-error');
+  const bottomArch = document.getElementById('bottom-arch');
+
+  // ── Persistent Theme Color Lock (#A71F23) ──
   function enforceThemeColor() {
     var metas = document.querySelectorAll('meta[name="theme-color"]');
     metas.forEach(function(m) {
@@ -693,28 +704,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.visualViewport.addEventListener('resize', enforceThemeColor, { passive: true });
   }
   enforceThemeColor();
-  }, { passive: true });
-  window.addEventListener('blur', enforceThemeColor, { passive: true });
-  window.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') {
-      if (pinInput && document.activeElement === pinInput && !isCodeValid(pinInput.value)) {
-        pinInput.blur();
-      }
-    }
-    enforceThemeColor();
-  }, { passive: true });
-  enforceThemeColor();
-  // Zero-Shift Pure CSS Fluid Layout Active
-  const bgMusic = document.getElementById('bg-music');
-  const butterflyWrap = document.querySelector('.home-butterfly-wrap');
-  const authBackdrop = document.getElementById('auth-backdrop');
-  const btnViewDetails = document.getElementById('btn-view-details');
-  const pinModal = document.getElementById('pin-modal');
-  const btnPinCancel = document.getElementById('btn-pin-cancel');
-  const btnPinSubmit = document.getElementById('btn-pin-submit');
-  const pinInput = document.getElementById('pin-input');
-  const pinError = document.getElementById('pin-error');
-  const bottomArch = document.getElementById('bottom-arch');
 
   function getCookie(name) {
     var value = '; ' + document.cookie;
@@ -738,29 +727,11 @@ document.addEventListener('DOMContentLoaded', function() {
     );
   }
 
-  function isReturningUser() {
-    return (
-      isAuthed() ||
-      localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
-      localStorage.getItem('gtm2026_device_seen') === 'true' ||
-      getCookie('gtm2026_has_authenticated') === 'true' ||
-      getCookie('gtm2026_device_seen') === 'true'
-    );
-  }
-
-  function markDeviceAsSeen() {
-    try {
-      localStorage.setItem('gtm2026_device_seen', 'true');
-      setCookie('gtm2026_device_seen', 'true');
-    } catch(e) {}
-  }
-
   function setPersistentAuth() {
     try {
       sessionStorage.setItem('gtm2026_auth', 'true');
       localStorage.setItem('gtm2026_auth', 'true');
       localStorage.setItem('gtm2026_has_authenticated', 'true');
-      markDeviceAsSeen();
       setCookie('gtm2026_auth', 'true');
       setCookie('gtm2026_has_authenticated', 'true');
     } catch(e) {}
@@ -771,10 +742,6 @@ document.addEventListener('DOMContentLoaded', function() {
       tab.classList.remove('is-locked');
     });
   }
-
-  // Check on load
-  var wasReturningOnLoad = isReturningUser();
-  markDeviceAsSeen();
 
   if (isAuthed()) {
     unlockAllTabs();
@@ -817,33 +784,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  function triggerScenario1Cinematic() {
-    // Scenario 1: First-time manual entry
-    if (isAuthed() || isSubmitting) return;
-
-    if (butterflyWrap) {
-      butterflyWrap.classList.add('fly-to-flowers');
-    }
-    if (authBackdrop) {
-      authBackdrop.classList.add('expand-fullscreen');
-    }
-    if (btnViewDetails) {
-      btnViewDetails.classList.add('is-hidden');
-    }
-    if (bottomArch) {
-      bottomArch.classList.add('is-hidden');
-    }
-    if (pinModal) {
-      pinModal.classList.add('is-active');
-    }
-    if (pinInput) {
-      pinInput.focus();
-      pinInput.select();
-    }
-    checkPinInput();
-  }
-
-  // ── Robust Unified Unlock Controller ──
+  // ── Guaranteed Responsive Unlock Controller ──
   window.handleOpenDetails = function(e, destination) {
     if (e && e.preventDefault) e.preventDefault();
 
@@ -982,7 +923,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=7600" defer></script>
-<script src="js/global-audio.js?v=7600" defer></script>
+<script src="js/spa-nav.js?v=7700" defer></script>
+<script src="js/global-audio.js?v=7700" defer></script>
 </body>
 </html>
