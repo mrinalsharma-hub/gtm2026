@@ -17,15 +17,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6300">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6300">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=6300">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6400">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6400">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=6400">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=6300">
+<link rel="stylesheet" href="css/site.css?v=6400">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6300" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6400" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -524,8 +524,8 @@ html, body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=6300" type="image/webp">
-        <img src="images/home_centerpiece.png?v=6300" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=6400" type="image/webp">
+        <img src="images/home_centerpiece.png?v=6400" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -651,6 +651,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const btnPinSubmit = document.getElementById('btn-pin-submit');
   const pinInput = document.getElementById('pin-input');
   const pinError = document.getElementById('pin-error');
+  const bottomArch = document.getElementById('bottom-arch');
 
   function getCookie(name) {
     var value = '; ' + document.cookie;
@@ -718,11 +719,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let isSubmitting = false;
   let blurTimeout = null;
+  let cinematicTimeout = null;
 
   function submitPin() {
     if (pinInput && isCodeValid(pinInput.value)) {
       isSubmitting = true;
       if (blurTimeout) clearTimeout(blurTimeout);
+      if (cinematicTimeout) clearTimeout(cinematicTimeout);
       setPersistentAuth();
       sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
       unlockAllTabs();
@@ -733,20 +736,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // ── Unlock Details Handler: Strict Scenario 1 vs Scenario 2 ──
+  function triggerScenario1Cinematic() {
+    // Only executed for first-time manual entry
+    if (isAuthed() || isSubmitting) return;
+
+    if (butterflyWrap) {
+      butterflyWrap.classList.add('fly-to-flowers');
+    }
+    if (authBackdrop) {
+      authBackdrop.classList.add('expand-fullscreen');
+    }
+    if (btnViewDetails) {
+      btnViewDetails.classList.add('is-hidden');
+    }
+    if (bottomArch) {
+      bottomArch.classList.add('is-hidden');
+    }
+    if (pinModal) {
+      pinModal.classList.add('is-active');
+    }
+    if (pinInput) {
+      pinInput.focus();
+      pinInput.select();
+    }
+    checkPinInput();
+  }
+
+  // ── Strict Scenario 1 vs Scenario 2 Unlock Controller ──
   window.handleOpenDetails = function(e) {
     if (e && e.preventDefault) e.preventDefault();
 
-    // SCENARIO 2A: Actively Authenticated -> Instant direct navigation
+    // 1. Actively Authenticated -> Immediate direct navigation
     if (isAuthed()) {
       window.location.href = 'events.html';
       return;
     }
 
-    // SCENARIO 2B: Returning User with Saved OS Password Manager Credentials
-    // Zero visual changes: No butterfly flight, no backdrop expansion, no layout shifts
+    // 2. Returning Device / Saved Password in OS
     if (hasSavedCredentials()) {
-      // Trigger native OS Password Manager bottom sheet / Credential API
+      // Scenario 2: Zero visual changes
+      // Do NOT fly butterfly, do NOT expand backdrop, do NOT hide button or arch
       if (window.PasswordCredential && navigator.credentials && navigator.credentials.get) {
         navigator.credentials.get({ password: true, mediation: 'conditional' })
           .then(function(cred) {
@@ -757,38 +786,30 @@ document.addEventListener('DOMContentLoaded', function() {
             }
           }).catch(function() {});
       }
-      
-      // Quietly trigger OS native autofill prompt without disturbing layout
       if (pinInput) {
         pinInput.focus({ preventScroll: true });
       }
       return;
     }
 
-    // SCENARIO 1: First-Time User (Never authenticated on this device)
-    // Full intended cinematic unlock experience:
-    if (butterflyWrap) {
-      butterflyWrap.classList.add('fly-to-flowers');
-    }
-
-    if (authBackdrop) {
-      authBackdrop.classList.add('expand-fullscreen');
-    }
-
-    if (btnViewDetails) btnViewDetails.classList.add('is-hidden');
-    var bottomArch = document.getElementById('bottom-arch');
-    if (bottomArch) bottomArch.classList.add('is-hidden');
-
-    if (pinModal) {
-      pinModal.classList.add('is-active');
-    }
-
+    // 3. First-time or Unknown OS state: Focus input silently first
+    // If the OS presents a saved password sheet (Scenario 2 on clean storage),
+    // it will autofill immediately WITHOUT flying the butterfly.
     if (pinInput) {
-      pinInput.focus();
-      pinInput.select();
+      pinInput.focus({ preventScroll: true });
     }
 
-    checkPinInput();
+    // If no OS autofill arrives within 320ms, user is confirmed Scenario 1 (first-time manual entry)
+    if (cinematicTimeout) clearTimeout(cinematicTimeout);
+    cinematicTimeout = setTimeout(function() {
+      if (!isSubmitting && !isAuthed()) {
+        if (pinInput && isCodeValid(pinInput.value)) {
+          submitPin();
+        } else {
+          triggerScenario1Cinematic();
+        }
+      }
+    }, 320);
   };
 
   if (btnViewDetails) {
@@ -837,7 +858,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setTimeout(() => {
       if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
-      var bottomArch = document.getElementById('bottom-arch');
       if (bottomArch) bottomArch.classList.remove('is-hidden');
     }, 400);
   }
@@ -897,7 +917,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=6300" defer></script>
-<script src="js/global-audio.js?v=6300" defer></script>
+<script src="js/spa-nav.js?v=6400" defer></script>
+<script src="js/global-audio.js?v=6400" defer></script>
 </body>
 </html>
