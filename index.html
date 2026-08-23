@@ -17,15 +17,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6200">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6200">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=6200">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6300">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6300">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=6300">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=6200">
+<link rel="stylesheet" href="css/site.css?v=6300">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6200" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6300" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -524,8 +524,8 @@ html, body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=6200" type="image/webp">
-        <img src="images/home_centerpiece.png?v=6200" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=6300" type="image/webp">
+        <img src="images/home_centerpiece.png?v=6300" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -643,10 +643,8 @@ html, body {
 document.addEventListener('DOMContentLoaded', function() {
   // Zero-Shift Pure CSS Fluid Layout Active
   const bgMusic = document.getElementById('bg-music');
-  const musicToggle = document.getElementById('music-toggle');
   const butterflyWrap = document.querySelector('.home-butterfly-wrap');
   const authBackdrop = document.getElementById('auth-backdrop');
-  const wing = document.querySelector('.wing-flap');
   const btnViewDetails = document.getElementById('btn-view-details');
   const pinModal = document.getElementById('pin-modal');
   const btnPinCancel = document.getElementById('btn-pin-cancel');
@@ -654,8 +652,38 @@ document.addEventListener('DOMContentLoaded', function() {
   const pinInput = document.getElementById('pin-input');
   const pinError = document.getElementById('pin-error');
 
+  function getCookie(name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
+  function setPersistentAuth() {
+    try {
+      sessionStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_has_authenticated', 'true');
+      var maxAge = 365 * 24 * 60 * 60; // 1 year
+      document.cookie = 'gtm2026_auth=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+      document.cookie = 'gtm2026_has_authenticated=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+    } catch(e) {}
+  }
+
   function isAuthed() {
-    return sessionStorage.getItem('gtm2026_auth') === 'true' || localStorage.getItem('gtm2026_auth') === 'true';
+    return (
+      sessionStorage.getItem('gtm2026_auth') === 'true' ||
+      localStorage.getItem('gtm2026_auth') === 'true' ||
+      getCookie('gtm2026_auth') === 'true'
+    );
+  }
+
+  function hasSavedCredentials() {
+    return (
+      isAuthed() ||
+      localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
+      getCookie('gtm2026_has_authenticated') === 'true'
+    );
   }
 
   function unlockAllTabs() {
@@ -666,64 +694,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (isAuthed()) {
     unlockAllTabs();
+    setPersistentAuth();
   }
 
-  // 2. Open Passcode Interface Modal Flow
-  window.handleOpenDetails = function(e) {
-    if (e && e.preventDefault) e.preventDefault();
-
-    if (isAuthed()) {
-      window.location.href = 'events.html';
-      return;
-    }
-
-    if (pinInput) {
-      pinInput.focus();
-      pinInput.select();
-    }
-
-    if (butterflyWrap) {
-      butterflyWrap.classList.add('fly-to-flowers');
-    }
-
-    if (authBackdrop) {
-      authBackdrop.classList.add('expand-fullscreen');
-    }
-
-    if (btnViewDetails) btnViewDetails.classList.add('is-hidden');
-    var bottomArch = document.getElementById('bottom-arch');
-    if (bottomArch) bottomArch.classList.add('is-hidden');
-
-    if (pinModal) {
-      pinModal.classList.add('is-active');
-    }
-
-    checkPinInput();
-  };
-
-  if (btnViewDetails) {
-    btnViewDetails.addEventListener('click', function(e) {
-      if (isAuthed()) {
-        window.location.href = 'events.html';
-      } else {
-        window.handleOpenDetails(e);
-      }
-    });
-  }
-
-  // Intercept locked tab clicks
-  document.querySelectorAll('.fixed-bottom-nav .nav-tab').forEach(function(tab) {
-    tab.addEventListener('click', function(e) {
-      var href = tab.getAttribute('href');
-      if (href && href !== 'index.html' && href !== 'index.html' && !isAuthed()) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.handleOpenDetails(e);
-      }
-    });
-  });
-
-  // 3. Password Verification Logic
+  // ── Password Verification Logic ──
   function isCodeValid(val) {
     var clean = (val || '').trim().toLowerCase();
     return clean === 'gtm2026' || clean === 'gtm';
@@ -744,6 +718,96 @@ document.addEventListener('DOMContentLoaded', function() {
 
   let isSubmitting = false;
   let blurTimeout = null;
+
+  function submitPin() {
+    if (pinInput && isCodeValid(pinInput.value)) {
+      isSubmitting = true;
+      if (blurTimeout) clearTimeout(blurTimeout);
+      setPersistentAuth();
+      sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
+      unlockAllTabs();
+      window.location.href = 'events.html';
+    } else {
+      isSubmitting = false;
+      if (pinError) pinError.style.display = 'block';
+    }
+  }
+
+  // ── Unlock Details Handler: Strict Scenario 1 vs Scenario 2 ──
+  window.handleOpenDetails = function(e) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    // SCENARIO 2A: Actively Authenticated -> Instant direct navigation
+    if (isAuthed()) {
+      window.location.href = 'events.html';
+      return;
+    }
+
+    // SCENARIO 2B: Returning User with Saved OS Password Manager Credentials
+    // Zero visual changes: No butterfly flight, no backdrop expansion, no layout shifts
+    if (hasSavedCredentials()) {
+      // Trigger native OS Password Manager bottom sheet / Credential API
+      if (window.PasswordCredential && navigator.credentials && navigator.credentials.get) {
+        navigator.credentials.get({ password: true, mediation: 'conditional' })
+          .then(function(cred) {
+            if (cred && cred.password && isCodeValid(cred.password)) {
+              setPersistentAuth();
+              window.location.href = 'events.html';
+              return;
+            }
+          }).catch(function() {});
+      }
+      
+      // Quietly trigger OS native autofill prompt without disturbing layout
+      if (pinInput) {
+        pinInput.focus({ preventScroll: true });
+      }
+      return;
+    }
+
+    // SCENARIO 1: First-Time User (Never authenticated on this device)
+    // Full intended cinematic unlock experience:
+    if (butterflyWrap) {
+      butterflyWrap.classList.add('fly-to-flowers');
+    }
+
+    if (authBackdrop) {
+      authBackdrop.classList.add('expand-fullscreen');
+    }
+
+    if (btnViewDetails) btnViewDetails.classList.add('is-hidden');
+    var bottomArch = document.getElementById('bottom-arch');
+    if (bottomArch) bottomArch.classList.add('is-hidden');
+
+    if (pinModal) {
+      pinModal.classList.add('is-active');
+    }
+
+    if (pinInput) {
+      pinInput.focus();
+      pinInput.select();
+    }
+
+    checkPinInput();
+  };
+
+  if (btnViewDetails) {
+    btnViewDetails.addEventListener('click', function(e) {
+      window.handleOpenDetails(e);
+    });
+  }
+
+  // Intercept locked tab clicks
+  document.querySelectorAll('.fixed-bottom-nav .nav-tab').forEach(function(tab) {
+    tab.addEventListener('click', function(e) {
+      var href = tab.getAttribute('href');
+      if (href && href !== 'index.html' && !isAuthed()) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.handleOpenDetails(e);
+      }
+    });
+  });
 
   function handleCloseModal() {
     if (!pinModal || !pinModal.classList.contains('is-active')) return;
@@ -786,10 +850,26 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (pinInput) {
-    pinInput.addEventListener('input', checkPinInput);
+    pinInput.addEventListener('input', function() {
+      checkPinInput();
+      if (isCodeValid(pinInput.value)) {
+        submitPin();
+      }
+    });
+    pinInput.addEventListener('change', function() {
+      checkPinInput();
+      if (isCodeValid(pinInput.value)) {
+        submitPin();
+      }
+    });
     pinInput.addEventListener('keyup', checkPinInput);
     pinInput.addEventListener('paste', function() {
-      setTimeout(checkPinInput, 10);
+      setTimeout(function() {
+        checkPinInput();
+        if (isCodeValid(pinInput.value)) {
+          submitPin();
+        }
+      }, 10);
     });
     pinInput.addEventListener('focus', function() {
       if (blurTimeout) clearTimeout(blurTimeout);
@@ -809,21 +889,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  function submitPin() {
-    if (pinInput && isCodeValid(pinInput.value)) {
-      isSubmitting = true;
-      if (blurTimeout) clearTimeout(blurTimeout);
-      sessionStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_auth', 'true');
-      sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
-      unlockAllTabs();
-      window.location.href = 'events.html';
-    } else {
-      isSubmitting = false;
-      if (pinError) pinError.style.display = 'block';
-    }
-  }
-
   if (btnPinSubmit) {
     btnPinSubmit.addEventListener('click', function(e) {
       e.preventDefault();
@@ -832,7 +897,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=6200" defer></script>
-<script src="js/global-audio.js?v=6200" defer></script>
+<script src="js/spa-nav.js?v=6300" defer></script>
+<script src="js/global-audio.js?v=6300" defer></script>
 </body>
 </html>

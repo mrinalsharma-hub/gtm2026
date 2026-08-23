@@ -15,8 +15,35 @@
     return path;
   }
 
+  function getCookie(name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+
   function isAuthenticated() {
-    return sessionStorage.getItem('gtm2026_auth') === 'true' || localStorage.getItem('gtm2026_auth') === 'true';
+    return (
+      sessionStorage.getItem('gtm2026_auth') === 'true' ||
+      localStorage.getItem('gtm2026_auth') === 'true' ||
+      getCookie('gtm2026_auth') === 'true'
+    );
+  }
+
+  function setPersistentAuth() {
+    try {
+      sessionStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_has_authenticated', 'true');
+      var maxAge = 365 * 24 * 60 * 60;
+      document.cookie = 'gtm2026_auth=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+      document.cookie = 'gtm2026_has_authenticated=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+    } catch(e) {}
+  }
+
+  // Ensure persistent storage synchronization
+  if (isAuthenticated()) {
+    setPersistentAuth();
   }
 
   function checkAuthGuard() {
