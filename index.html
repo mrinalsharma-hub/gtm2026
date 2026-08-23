@@ -17,15 +17,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6500">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6500">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=6500">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6600">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6600">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=6600">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=6500">
+<link rel="stylesheet" href="css/site.css?v=6600">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6500" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6600" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -524,8 +524,8 @@ html, body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=6500" type="image/webp">
-        <img src="images/home_centerpiece.png?v=6500" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=6600" type="image/webp">
+        <img src="images/home_centerpiece.png?v=6600" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -660,14 +660,10 @@ document.addEventListener('DOMContentLoaded', function() {
     return null;
   }
 
-  function setPersistentAuth() {
+  function setCookie(name, val) {
     try {
-      sessionStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_has_authenticated', 'true');
       var maxAge = 365 * 24 * 60 * 60; // 1 year
-      document.cookie = 'gtm2026_auth=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
-      document.cookie = 'gtm2026_has_authenticated=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+      document.cookie = name + '=' + val + '; max-age=' + maxAge + '; path=/; SameSite=Lax';
     } catch(e) {}
   }
 
@@ -679,14 +675,32 @@ document.addEventListener('DOMContentLoaded', function() {
     );
   }
 
-  function hasSavedCredentials() {
+  function isReturningUser() {
     return (
       isAuthed() ||
       localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
-      localStorage.getItem('gtm2026_auth') === 'true' ||
+      localStorage.getItem('gtm2026_device_seen') === 'true' ||
       getCookie('gtm2026_has_authenticated') === 'true' ||
-      getCookie('gtm2026_auth') === 'true'
+      getCookie('gtm2026_device_seen') === 'true'
     );
+  }
+
+  function markDeviceAsSeen() {
+    try {
+      localStorage.setItem('gtm2026_device_seen', 'true');
+      setCookie('gtm2026_device_seen', 'true');
+    } catch(e) {}
+  }
+
+  function setPersistentAuth() {
+    try {
+      sessionStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_has_authenticated', 'true');
+      markDeviceAsSeen();
+      setCookie('gtm2026_auth', 'true');
+      setCookie('gtm2026_has_authenticated', 'true');
+    } catch(e) {}
   }
 
   function unlockAllTabs() {
@@ -694,6 +708,10 @@ document.addEventListener('DOMContentLoaded', function() {
       tab.classList.remove('is-locked');
     });
   }
+
+  // Check on load
+  var wasReturningOnLoad = isReturningUser();
+  markDeviceAsSeen();
 
   if (isAuthed()) {
     unlockAllTabs();
@@ -772,9 +790,9 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
 
-    // 2. SCENARIO 2: Returning User with Saved OS Password Manager Credentials
-    // ZERO visual changes: Absolutely NO butterfly flight, NO backdrop expansion, NO layout shifts, NO flashes
-    if (hasSavedCredentials()) {
+    // 2. SCENARIO 2: Returning User (Saved password in OS Password Manager or visited before)
+    // PAUSE ALL EFFECTS: Absolutely NO butterfly flight, NO backdrop expansion, NO layout shifts, NO flashes
+    if (wasReturningOnLoad || isReturningUser()) {
       // Trigger native OS Password Manager bottom sheet / Credential API
       if (window.PasswordCredential && navigator.credentials && navigator.credentials.get) {
         navigator.credentials.get({ password: true, mediation: 'conditional' })
@@ -787,14 +805,14 @@ document.addEventListener('DOMContentLoaded', function() {
           }).catch(function() {});
       }
 
-      // Quietly trigger OS native autofill bottom-sheet without touching page DOM
+      // Focus input silently so OS autofill bottom-sheet appears cleanly over untouched page
       if (pinInput) {
         pinInput.focus({ preventScroll: true });
       }
       return;
     }
 
-    // 3. SCENARIO 1: First-Time User (Never authenticated before on this device)
+    // 3. SCENARIO 1: First-Time User (Never visited or entered password before)
     triggerScenario1Cinematic();
   };
 
@@ -904,7 +922,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=6500" defer></script>
-<script src="js/global-audio.js?v=6500" defer></script>
+<script src="js/spa-nav.js?v=6600" defer></script>
+<script src="js/global-audio.js?v=6600" defer></script>
 </body>
 </html>
