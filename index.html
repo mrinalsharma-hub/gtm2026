@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=3420">
+<link rel="stylesheet" href="css/site.css?v=3440">
 <style>
 @font-face {
   font-family: 'WindSong';
@@ -251,7 +251,8 @@ html, body {
   position: absolute;
   bottom: calc(88px + env(safe-area-inset-bottom, 0px));
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) scale(0.85);
+  transform-origin: bottom center;
   z-index: 20;
   display: inline-flex !important;
   flex-direction: row !important;
@@ -278,7 +279,7 @@ html, body {
   pointer-events: none !important;
 }
 .home-unlock-details-btn:active {
-  transform: translateX(-50%) scale(0.94);
+  transform: translateX(-50%) scale(0.80);
   opacity: 0.8;
 }
 .home-lock-icon {
@@ -536,7 +537,7 @@ html, body {
           <!-- ── 3. Central Typography Centerpiece (Pixel-by-Pixel Master Design Lockup) ── -->
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
-      <img src="images/home_centerpiece.png?v=3420" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img">
+      <img src="images/home_centerpiece.png?v=3440" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img">
     </div>
   </div>
 
@@ -871,7 +872,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=3420"></script>
-<script src="js/global-audio.js?v=3420"></script>
+<script src="js/spa-nav.js?v=3440"></script>
+<script src="js/global-audio.js?v=3440"></script>
 </body>
 </html>
