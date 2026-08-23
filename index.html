@@ -18,7 +18,7 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#A71F23">
 <meta name="color-scheme" content="dark">
-<link rel="manifest" href="site.webmanifest?v=7700">
+<link rel="manifest" href="site.webmanifest?v=7800">
 <meta name="msapplication-navbutton-color" content="#A71F23">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -26,15 +26,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=7700">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=7800">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=7800">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=7800">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=7700">
+<link rel="stylesheet" href="css/site.css?v=7800">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=7800" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -555,8 +555,8 @@ body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=7700" type="image/webp">
-        <img src="images/home_centerpiece.png?v=7700" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=7800" type="image/webp">
+        <img src="images/home_centerpiece.png?v=7800" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -727,6 +727,16 @@ document.addEventListener('DOMContentLoaded', function() {
     );
   }
 
+  function isReturningUser() {
+    return (
+      isAuthed() ||
+      localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
+      localStorage.getItem('gtm2026_auth') === 'true' ||
+      getCookie('gtm2026_has_authenticated') === 'true' ||
+      getCookie('gtm2026_auth') === 'true'
+    );
+  }
+
   function setPersistentAuth() {
     try {
       sessionStorage.setItem('gtm2026_auth', 'true');
@@ -784,17 +794,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
-  // ── Guaranteed Responsive Unlock Controller ──
-  window.handleOpenDetails = function(e, destination) {
-    if (e && e.preventDefault) e.preventDefault();
+  function openManualPinModal() {
+    if (isAuthed() || isSubmitting) return;
 
-    // 1. If actively authenticated -> instant direct navigation
-    if (isAuthed()) {
-      window.location.href = destination || 'events.html';
-      return;
-    }
-
-    // 2. Open PIN Modal and trigger cinematic flow
     if (butterflyWrap) {
       butterflyWrap.classList.add('fly-to-flowers');
     }
@@ -815,6 +817,51 @@ document.addEventListener('DOMContentLoaded', function() {
       pinInput.select();
     }
     checkPinInput();
+  }
+
+  let tapCount = 0;
+
+  // ── Intelligent Zero-Disruption Unlock Controller ──
+  window.handleOpenDetails = function(e, destination) {
+    if (e && e.preventDefault) e.preventDefault();
+
+    // 1. If actively authenticated -> instant direct navigation
+    if (isAuthed()) {
+      window.location.href = destination || 'events.html';
+      return;
+    }
+
+    // 2. Returning Device / Saved Password Flow:
+    // First tap: Silently focus password input. ZERO animation, ZERO backdrop change, ZERO layout shift.
+    // Native OS Google Password Manager Dialog 1 ("Use saved password?") appears over pristine page.
+    if (isReturningUser() && tapCount === 0) {
+      tapCount++;
+
+      // Trigger Web Credential API if available
+      if (window.PasswordCredential && navigator.credentials && navigator.credentials.get) {
+        navigator.credentials.get({ password: true, mediation: 'conditional' })
+          .then(function(cred) {
+            if (cred && cred.password && isCodeValid(cred.password)) {
+              setPersistentAuth();
+              window.location.href = destination || 'events.html';
+              return;
+            }
+          }).catch(function() {});
+      }
+
+      if (pinInput) {
+        pinInput.focus({ preventScroll: true });
+      }
+
+      // If user taps again or after dismissal, allow manual modal
+      setTimeout(function() {
+        tapCount = 1;
+      }, 500);
+      return;
+    }
+
+    // 3. Manual Entry Mode: If no autofill occurs or on second tap / first-time visitor
+    openManualPinModal();
   };
 
   if (btnViewDetails) {
@@ -860,6 +907,8 @@ document.addEventListener('DOMContentLoaded', function() {
     if (butterflyWrap) {
       butterflyWrap.classList.remove('fly-to-flowers');
     }
+
+    tapCount = 0;
 
     setTimeout(() => {
       if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
@@ -923,7 +972,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=7700" defer></script>
-<script src="js/global-audio.js?v=7700" defer></script>
+<script src="js/spa-nav.js?v=7800" defer></script>
+<script src="js/global-audio.js?v=7800" defer></script>
 </body>
 </html>
