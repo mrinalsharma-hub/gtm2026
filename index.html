@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=3220">
+<link rel="stylesheet" href="css/site.css?v=3240">
 <style>
 @font-face {
   font-family: 'WindSong';
@@ -123,14 +123,14 @@ html, body {
   100% { transform: translateX(-50%) rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
 }
 
-/* ── 3. Central Typography Centerpiece (Realtime Calibrated Center Alignment) ── */
+/* ── 3. Central Typography Centerpiece (Extra Large +20% Calibrated Center Alignment) ── */
 .home-hero-text {
   position: absolute;
   top: 48%;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: min(88vw, 560px);
-  max-width: 90vw;
+  width: min(96vw, 720px);
+  max-width: 96vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -155,7 +155,7 @@ html, body {
 .home-centerpiece-img {
   width: 100%;
   height: auto;
-  max-height: 48vh;
+  max-height: 54vh;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -541,7 +541,7 @@ html, body {
           <!-- ── 3. Central Typography Centerpiece (Pixel-by-Pixel Master Design Lockup) ── -->
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
-      <img src="images/home_centerpiece.png?v=3220" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img">
+      <img src="images/home_centerpiece.png?v=3240" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img">
     </div>
   </div>
 
@@ -667,11 +667,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     let targetWidth;
     if (availableWidth <= 480) {
-      targetWidth = Math.min(availableWidth * 0.88, 420);
+      targetWidth = Math.min(availableWidth * 0.96, 480);
     } else if (availableWidth <= 768) {
-      targetWidth = Math.min(availableWidth * 0.78, 520);
+      targetWidth = Math.min(availableWidth * 0.88, 600);
     } else {
-      targetWidth = Math.min(availableWidth * 0.65, 600);
+      targetWidth = Math.min(availableWidth * 0.75, 720);
     }
 
     centerpieceWrap.style.width = Math.round(targetWidth) + "px";
@@ -876,7 +876,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=3220"></script>
-<script src="js/global-audio.js?v=3220"></script>
+<script src="js/spa-nav.js?v=3240"></script>
+<script src="js/global-audio.js?v=3240"></script>
 </body>
 </html>
