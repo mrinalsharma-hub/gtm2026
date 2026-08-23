@@ -17,15 +17,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=5700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=5700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=5700">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=5800">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=5800">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=5800">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=5700">
+<link rel="stylesheet" href="css/site.css?v=5800">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=5700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=5800" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -68,7 +68,7 @@ html, body {
   }
 }
 
-/* ── 1. Direction 1: Architectural Cotton-Rag Paper (CSS Multi-Radial Mesh + Procedural SVG Micro-Fibers) ── */
+/* ── 1. Option 2: Ambient Breathing CSS Mesh Gradients on Cotton-Rag Paper ── */
 .home-bg-layer {
   position: absolute !important;
   inset: 0 !important;
@@ -77,23 +77,44 @@ html, body {
   pointer-events: none !important;
   z-index: 1 !important;
   overflow: hidden !important;
-  background: 
-    radial-gradient(circle at 50% 44%, #FFFDF9 0%, #FAF6ED 48%, #F3ECE0 100%) !important;
+  background: radial-gradient(circle at 50% 44%, #FFFDF9 0%, #FAF6ED 48%, #F3ECE0 100%) !important;
   background-color: #FAF6ED !important;
 }
 .home-bg-layer::before {
   display: block !important;
   content: "" !important;
   position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  inset: -15% !important;
+  width: 130% !important;
+  height: 130% !important;
   background: 
-    radial-gradient(ellipse 90% 60% at 50% 15%, rgba(255, 255, 255, 0.45) 0%, transparent 70%),
-    radial-gradient(ellipse 120% 80% at 50% 85%, rgba(235, 222, 205, 0.35) 0%, transparent 65%) !important;
+    radial-gradient(ellipse 65% 55% at 30% 25%, rgba(255, 250, 240, 0.70) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 60% at 75% 40%, rgba(254, 242, 230, 0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 70% at 45% 85%, rgba(243, 230, 215, 0.40) 0%, transparent 70%) !important;
   pointer-events: none !important;
-  opacity: 1 !important;
-  animation: none !important;
+  opacity: 0.88 !important;
+  transform: translate3d(0, 0, 0);
+  animation: ambientMeshBreathe 24s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate !important;
+  will-change: transform, opacity;
+}
+
+@keyframes ambientMeshBreathe {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.80;
+  }
+  33% {
+    transform: translate3d(-3%, 2%, 0) scale(1.04);
+    opacity: 0.95;
+  }
+  66% {
+    transform: translate3d(2%, -2%, 0) scale(0.98);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(1%, 3%, 0) scale(1.03);
+    opacity: 0.90;
+  }
 }
 .home-bg-layer::after {
   display: block !important;
@@ -524,8 +545,8 @@ html, body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=5700" type="image/webp">
-        <img src="images/home_centerpiece.png?v=5700" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=5800" type="image/webp">
+        <img src="images/home_centerpiece.png?v=5800" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -832,7 +853,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=5700" defer></script>
-<script src="js/global-audio.js?v=5700" defer></script>
+<script src="js/spa-nav.js?v=5800" defer></script>
+<script src="js/global-audio.js?v=5800" defer></script>
 </body>
 </html>
