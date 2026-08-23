@@ -2,16 +2,17 @@
 (function() {
   'use strict';
 
-  function normalizePath(url) {
+    function normalizePath(url) {
     if (!url) return 'index.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
     try { path = decodeURIComponent(path); } catch(e) {}
-    if (!path || path === '' || path === 'index.html' || path === 'us.html' || path === 'home.html' || path === 'gm.html' || path === 'g&m.html' || path === 'g%26m.html') {
+    if (!path || path === '' || path === 'index.html') {
       return 'index.html';
     }
-    if (path === 'celebrations.html' || path === 'schedule.html') return 'events.html';
-    if (path === 'travel.html') return 'stay.html';
-    if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
+    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html') return 'G&M.html';
+    if (path === 'events.html' || path === 'celebrations.html' || path === 'schedule.html') return 'events.html';
+    if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
+    if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
     return path;
   }
 
@@ -74,7 +75,7 @@
     if (msNav) msNav.setAttribute('content', themeColor);
   }
 
-  function updateNav() {
+    function updateNav() {
     var currentNorm = normalizePath(window.location.pathname);
     var authed = isAuthenticated();
     var tabs = document.querySelectorAll('.fixed-bottom-nav .nav-tab');
@@ -84,7 +85,7 @@
       var tabNorm = normalizePath(href);
 
       // Active indicator
-      if (tabNorm === currentNorm) {
+      if (tabNorm === currentNorm && (authed || currentNorm !== 'index.html')) {
         tab.classList.add('active');
         var label = tab.querySelector('.nav-label');
         var text = label ? label.textContent.trim() : '';
@@ -96,27 +97,23 @@
         tab.setAttribute('aria-label', text);
       }
 
-      // Lock state
-      if (tabNorm !== 'index.html') {
-        if (!authed) {
-          tab.classList.add('is-locked');
-          tab.onclick = function(e) {
-            if (!isAuthenticated()) {
-              e.preventDefault();
-              e.stopPropagation();
-              if (window.handleOpenDetails) {
-                window.handleOpenDetails(e);
-              } else {
-                window.location.href = 'index.html';
-              }
+      // Lock state: If unauthenticated, all tabs are locked
+      if (!authed) {
+        tab.classList.add('is-locked');
+        tab.onclick = function(e) {
+          if (!isAuthenticated()) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (window.handleOpenDetails) {
+              window.handleOpenDetails(e);
+            } else {
+              window.location.href = 'index.html';
             }
-          };
-        } else {
-          tab.classList.remove('is-locked');
-          tab.onclick = null;
-        }
+          }
+        };
       } else {
         tab.classList.remove('is-locked');
+        tab.onclick = null;
       }
     });
   }

@@ -17,9 +17,8 @@
     getCookie('gtm2026_auth') === 'true' ||
     getCookie('gtm2026_has_authenticated') === 'true'
   );
-  var urlParams = new URLSearchParams(window.location.search);
-  if (isReturning && !urlParams.has('home')) {
-    window.location.replace('events.html');
+  if (isReturning) {
+    window.location.replace('G&M.html');
   }
 })();
 </script>
@@ -656,7 +655,7 @@ body {
 <!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container" role="tablist">
-    <a href="index.html" class="nav-tab active" role="tab" aria-selected="true" aria-label="G&amp;M (Current Page)">
+    <a href="G&M.html" class="nav-tab is-locked" role="tab" aria-selected="false" aria-label="G&amp;M">
       <div class="nav-pill-wrapper">
         <div class="nav-pill"></div>
         <svg class="nav-icon" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -808,7 +807,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setPersistentAuth();
       sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
       unlockAllTabs();
-      window.location.href = targetUrl || 'events.html';
+      window.location.href = targetUrl || 'G&M.html';
     } else {
       isSubmitting = false;
       if (pinError) pinError.style.display = 'block';
