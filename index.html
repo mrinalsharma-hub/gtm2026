@@ -17,15 +17,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=5900">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=5900">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=5900">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=6000">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=6000">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=6000">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=5900">
+<link rel="stylesheet" href="css/site.css?v=6000">
 <!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=5900" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home_centerpiece.webp?v=6000" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
 <link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
 <style>
@@ -68,7 +68,7 @@ html, body {
   }
 }
 
-/* ── 1. Option 2: Ambient Breathing CSS Mesh Gradients on Cotton-Rag Paper ── */
+/* ── 1. Direction 1: Architectural Cotton-Rag Paper (CSS Multi-Radial Mesh + Procedural SVG Micro-Fibers) ── */
 .home-bg-layer {
   position: absolute !important;
   inset: 0 !important;
@@ -77,44 +77,23 @@ html, body {
   pointer-events: none !important;
   z-index: 1 !important;
   overflow: hidden !important;
-  background: radial-gradient(circle at 50% 44%, #FFFDF9 0%, #FAF6ED 48%, #F3ECE0 100%) !important;
+  background: 
+    radial-gradient(circle at 50% 44%, #FFFDF9 0%, #FAF6ED 48%, #F3ECE0 100%) !important;
   background-color: #FAF6ED !important;
 }
 .home-bg-layer::before {
   display: block !important;
   content: "" !important;
   position: absolute !important;
-  inset: -15% !important;
-  width: 130% !important;
-  height: 130% !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   background: 
-    radial-gradient(ellipse 65% 55% at 30% 25%, rgba(255, 250, 240, 0.70) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 60% at 75% 40%, rgba(254, 242, 230, 0.45) 0%, transparent 65%),
-    radial-gradient(ellipse 80% 70% at 45% 85%, rgba(243, 230, 215, 0.40) 0%, transparent 70%) !important;
+    radial-gradient(ellipse 90% 60% at 50% 15%, rgba(255, 255, 255, 0.45) 0%, transparent 70%),
+    radial-gradient(ellipse 120% 80% at 50% 85%, rgba(235, 222, 205, 0.35) 0%, transparent 65%) !important;
   pointer-events: none !important;
-  opacity: 0.88 !important;
-  transform: translate3d(0, 0, 0);
-  animation: ambientMeshBreathe 24s cubic-bezier(0.4, 0, 0.6, 1) infinite alternate !important;
-  will-change: transform, opacity;
-}
-
-@keyframes ambientMeshBreathe {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 0.80;
-  }
-  33% {
-    transform: translate3d(-3%, 2%, 0) scale(1.04);
-    opacity: 0.95;
-  }
-  66% {
-    transform: translate3d(2%, -2%, 0) scale(0.98);
-    opacity: 0.75;
-  }
-  100% {
-    transform: translate3d(1%, 3%, 0) scale(1.03);
-    opacity: 0.90;
-  }
+  opacity: 1 !important;
+  animation: none !important;
 }
 .home-bg-layer::after {
   display: block !important;
@@ -123,11 +102,11 @@ html, body {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url("images/paper_texture.webp?v=5900") !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='cottonRagNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23cottonRagNoise)'/%3E%3C/svg%3E") !important;
   background-repeat: repeat !important;
-  background-size: 280px 280px !important;
+  background-size: 240px 240px !important;
   mix-blend-mode: multiply !important;
-  opacity: 0.70 !important;
+  opacity: 0.85 !important;
   pointer-events: none !important;
 }
 
@@ -545,8 +524,8 @@ html, body {
   <div class="home-hero-text">
     <div class="home-centerpiece-wrap">
       <picture>
-        <source srcset="images/home_centerpiece.webp?v=5900" type="image/webp">
-        <img src="images/home_centerpiece.png?v=5900" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
+        <source srcset="images/home_centerpiece.webp?v=6000" type="image/webp">
+        <img src="images/home_centerpiece.png?v=6000" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
       </picture>
     </div>
   </div>
@@ -853,7 +832,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-<script src="js/spa-nav.js?v=5900" defer></script>
-<script src="js/global-audio.js?v=5900" defer></script>
+<script src="js/spa-nav.js?v=6000" defer></script>
+<script src="js/global-audio.js?v=6000" defer></script>
 </body>
 </html>
