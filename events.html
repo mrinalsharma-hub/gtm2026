@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
 <script>
-if (sessionStorage.getItem('gtm2026_auth') !== 'true' && localStorage.getItem('gtm2026_auth') !== 'true') {
-  window.location.replace('index.html');
-}
+(function() {
+  function getCookie(name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+  var authed = (
+    sessionStorage.getItem('gtm2026_auth') === 'true' ||
+    localStorage.getItem('gtm2026_auth') === 'true' ||
+    localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
+    getCookie('gtm2026_auth') === 'true' ||
+    getCookie('gtm2026_has_authenticated') === 'true'
+  );
+  if (!authed) {
+    window.location.replace('index.html');
+  }
+})();
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -19,13 +34,13 @@ if (sessionStorage.getItem('gtm2026_auth') !== 'true' && localStorage.getItem('g
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Events · Garima &amp; Mrinal — Nainital 2026</title>
 <meta name="description" content="Schedule of events for Garima and Mrinal's wedding weekend in Nainital, 20–22 November 2026.">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=2640">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=2640">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=2640">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8200">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8200">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=8200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=2440">
+<link rel="stylesheet" href="css/site.css?v=8200">
 
 <style>
 :root {
@@ -702,7 +717,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<script src="js/spa-nav.js?v=2440"></script>
-<script src="js/global-audio.js?v=2600"></script>
+<script src="js/spa-nav.js?v=8200"></script>
+<script src="js/global-audio.js?v=8200"></script>
 </body>
 </html>

@@ -26,7 +26,9 @@
     return (
       sessionStorage.getItem('gtm2026_auth') === 'true' ||
       localStorage.getItem('gtm2026_auth') === 'true' ||
-      getCookie('gtm2026_auth') === 'true'
+      localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
+      getCookie('gtm2026_auth') === 'true' ||
+      getCookie('gtm2026_has_authenticated') === 'true'
     );
   }
 
