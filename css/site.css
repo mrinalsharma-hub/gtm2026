@@ -1948,8 +1948,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* 2. Subtext / Normal text */
 .rsvp-option-text {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 20px !important;
+  font-family: 'Cormorant Garamond', 'Spectral', Georgia, serif !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
   font-weight: 300 !important;
   font-style: normal !important;
   line-height: normal !important;
