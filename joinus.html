@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=12700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=12700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=12700">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=12800">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=12800">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=12800">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=12700">
+<link rel="stylesheet" href="css/site.css?v=12800">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -480,6 +480,28 @@ main.paper, main, .rsvp-page-wrap {
   transition: opacity 0.25s ease !important;
 }
 
+
+/* Prevent all checkbox and radio jumping */
+.rsvp-option-label,
+.rsvp-option-label:active,
+.rsvp-radio-mark,
+.rsvp-check-mark,
+.rsvp-option-label:active .rsvp-radio-mark,
+.rsvp-option-label:active .rsvp-check-mark,
+.rsvp-option-label input:checked + .rsvp-radio-mark,
+.rsvp-option-label input:checked + .rsvp-check-mark {
+  transform: none !important;
+  animation: none !important;
+}
+.rsvp-option-label input:checked + .rsvp-radio-mark::after {
+  transform: translate(-50%, -50%) !important;
+  animation: none !important;
+}
+.rsvp-option-label input:checked + .rsvp-check-mark::after {
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+  animation: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -644,7 +666,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=12700"></script>
+<script src="js/site.js?v=12800"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -775,7 +797,7 @@ var RSVP_CONFIG={
 
 
 
-<script src="js/spa-nav.js?v=12700"></script>
-<script src="js/global-audio.js?v=12700"></script>
+<script src="js/spa-nav.js?v=12800"></script>
+<script src="js/global-audio.js?v=12800"></script>
 </body>
 </html>

@@ -1833,6 +1833,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
 }
 
+/* ── Completely Static Radio & Checkbox Controls (No Jumping / Scaling) ── */
 .rsvp-option-label {
   display: flex !important;
   align-items: center !important;
@@ -1845,12 +1846,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   border-radius: 8px !important;
   -webkit-tap-highlight-color: transparent !important;
   touch-action: manipulation !important;
-  transition: opacity 0.15s ease, transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+  transform: none !important;
+  transition: opacity 0.15s ease !important;
 }
 
 .rsvp-option-label:active {
-  opacity: 0.72 !important;
-  transform: scale(0.985) !important;
+  opacity: 0.85 !important;
+  transform: none !important;
 }
 
 .rsvp-option-label input {
@@ -1872,16 +1874,20 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   position: relative !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
-  transition: border-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease !important;
+  transform: none !important;
+  animation: none !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
 }
 
 .rsvp-option-label:active .rsvp-radio-mark {
-  transform: scale(0.92) !important;
+  transform: none !important;
 }
 
 .rsvp-option-label input:checked + .rsvp-radio-mark {
   border-color: #FFFFFF !important;
-  animation: nativeControlPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  background: transparent !important;
+  transform: none !important;
+  animation: none !important;
 }
 
 .rsvp-option-label input:checked + .rsvp-radio-mark::after {
@@ -1894,7 +1900,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   height: 12px !important;
   border-radius: 50% !important;
   background: #FFFFFF !important;
-  animation: nativeSpringDot 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  animation: none !important;
 }
 
 /* Custom Checkbox Square */
@@ -1908,17 +1914,20 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   position: relative !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
-  transition: background-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  transform: none !important;
+  animation: none !important;
+  transition: background-color 0.15s ease, border-color 0.15s ease !important;
 }
 
 .rsvp-option-label:active .rsvp-check-mark {
-  transform: scale(0.92) !important;
+  transform: none !important;
 }
 
 .rsvp-option-label input:checked + .rsvp-check-mark {
   background: #FFFFFF !important;
   border-color: #FFFFFF !important;
-  animation: nativeControlPop 0.28s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  transform: none !important;
+  animation: none !important;
 }
 
 .rsvp-option-label input:checked + .rsvp-check-mark::after {
@@ -1931,23 +1940,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   border: solid #8B1E22 !important;
   border-width: 0 2.4px 2.4px 0 !important;
   transform: translate(-50%, -50%) rotate(45deg) !important;
-  animation: nativeCheckSpring 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  animation: none !important;
 }
-
-@keyframes nativeControlPop {
-  0% { transform: scale(0.90); }
-  55% { transform: scale(1.12); }
-  100% { transform: scale(1); }
-}
-
-@keyframes nativeSpringDot {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
-  60% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-}
-
-@keyframes nativeCheckSpring {
-  0% { transform: translate(-50%, -50%) rotate(45deg) scale(0); opacity: 0; }
   60% { transform: translate(-50%, -50%) rotate(45deg) scale(1.25); opacity: 1; }
   100% { transform: translate(-50%, -50%) rotate(45deg) scale(1); opacity: 1; }
 }
