@@ -1736,7 +1736,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-pill-input::placeholder,
 .rsvp-pill-input:disabled {
-  color: rgba(255, 255, 255, 0.20) !important;
+  color: rgba(255, 255, 255, 0.40) !important;
   opacity: 1 !important;
   text-align: left !important;
   font-family: 'Spectral', Georgia, serif !important;
@@ -2020,7 +2020,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 /* 4. Disabled/Educational text in light field */
 .rsvp-textarea-card::placeholder,
 .rsvp-textarea-card:disabled {
-  color: rgba(255, 255, 255, 0.20) !important;
+  color: rgba(255, 255, 255, 0.40) !important;
   opacity: 1 !important;
   text-align: left !important;
   font-family: 'Spectral', Georgia, serif !important;
