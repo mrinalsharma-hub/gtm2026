@@ -2299,19 +2299,79 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 
-/* ── Letterpress & Engraving Variations for Deep Red / Burgundy (#6B121C / #7A1B27) ── */
 
-/* Variation 1: Tone-on-Tone Debossed Cardstock */
-.text-deboss-tone {
+
+
+/* ── Deep Letterpress Deboss & Engraving Variations (#6B121C / #7A1B27) ── */
+
+/* ── Variation 1: Tone-on-Tone Debossed Cardstock ── */
+.text-deboss-tone,
+body.theme-deboss-tone .rsvp-title,
+body.theme-deboss-tone .rsvp-subtitle,
+body.theme-deboss-tone .rsvp-card-title,
+body.theme-deboss-tone .rsvp-option-text,
+body.theme-deboss-tone .rsvp-event-name,
+body.theme-deboss-tone .rsvp-event-date {
   color: #3D070D !important;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.60), 1px 1px 1px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.75), 1px 1px 0px rgba(255, 255, 255, 0.30) !important;
 }
 
-/* Variation 2: Engraved White / Cream Lettering */
-.text-engraved-cream {
+body.theme-deboss-tone .rsvp-event-date {
+  opacity: 0.65 !important;
+}
+
+/* ── Variation 2: Engraved White / Cream Lettering (Default) ── */
+.text-engraved-cream,
+body.theme-engraved-cream .rsvp-title,
+body.theme-engraved-cream .rsvp-subtitle,
+body.theme-engraved-cream .rsvp-card-title,
+body.theme-engraved-cream .rsvp-option-text,
+body.theme-engraved-cream .rsvp-event-name,
+.rsvp-title,
+.rsvp-subtitle,
+.rsvp-card-title,
+.rsvp-option-text,
+.rsvp-event-name {
   color: #FFF5EE !important;
   text-shadow: 
-    -0.8px -1px 1px rgba(35, 4, 7, 0.70),
-     0.8px  1px 1px rgba(255, 245, 238, 0.22),
-     0      4px 12px rgba(20, 2, 4, 0.30) !important;
+    -0.8px -1px 0px rgba(35, 4, 7, 0.85),
+     0.8px  1px 0px rgba(255, 245, 238, 0.30),
+     0      3px 8px rgba(20, 2, 4, 0.40) !important;
+}
+
+.rsvp-event-date {
+  color: rgba(255, 245, 238, 0.50) !important;
+  text-shadow: -0.5px -0.8px 0px rgba(35, 4, 7, 0.60), 0.5px 0.8px 0px rgba(255, 245, 238, 0.20) !important;
+}
+
+/* Variation Style Switcher UI */
+.variation-toggle-bar {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 18px auto 8px auto !important;
+  z-index: 10 !important;
+  position: relative !important;
+}
+
+.variation-pill-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  color: #FFF5EE !important;
+  padding: 6px 14px !important;
+  border-radius: 20px !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+}
+
+.variation-pill-btn.active {
+  background: #FFF5EE !important;
+  color: #19202F !important;
+  border-color: #FFF5EE !important;
+  font-weight: 600 !important;
 }
