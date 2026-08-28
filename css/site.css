@@ -2269,12 +2269,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('../images/rsvp_botanical_gold_lines.webp?v=15000') !important;
+  background-image: url('../images/rsvp_botanical_gold_lines.webp?v=15100') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 380px 380px !important;
   mix-blend-mode: soft-light !important;
-  opacity: 0.18 !important;
+  opacity: 0.24 !important;
   pointer-events: none !important;
   z-index: 2 !important;
 }
