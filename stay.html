@@ -268,7 +268,7 @@ main {
 </nav>
 
 <script src="js/site.js?v=8500"></script>
-<script src="js/spa-nav.js?v=8500"></script>
+
 
 <!-- ── Native Micro Music Player Button (Always Fixed Top-Right) ── -->
 <!-- ── Global Horizontal Music Player Pill ── -->
@@ -293,59 +293,8 @@ main {
 </audio>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const bgMusic = document.getElementById("bg-music");
-  const musicToggle = document.getElementById("music-toggle");
 
-  function updateMusicUI(isPlaying) {
-    if (musicToggle) {
-      if (isPlaying) {
-        musicToggle.classList.add("is-playing");
-      } else {
-        musicToggle.classList.remove("is-playing");
-      }
-    }
-  }
-
-  const wasPlaying = sessionStorage.getItem("gtm2026_music_playing") !== "false";
-  if (bgMusic && wasPlaying) {
-    bgMusic.volume = 0.8;
-    const p = bgMusic.play();
-    if (p !== undefined) {
-      p.then(() => updateMusicUI(true)).catch(() => updateMusicUI(false));
-    }
-  }
-
-  function unlockAudio() {
-    if (bgMusic && bgMusic.paused && wasPlaying) {
-      bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
-    }
-    window.removeEventListener("touchstart", unlockAudio, { capture: true });
-    window.removeEventListener("pointerdown", unlockAudio, { capture: true });
-  }
-  window.addEventListener("touchstart", unlockAudio, { capture: true, once: true });
-  window.addEventListener("pointerdown", unlockAudio, { capture: true, once: true });
-
-  if (musicToggle) {
-    musicToggle.addEventListener("click", function(e) {
-      e.stopPropagation();
-      if (!bgMusic) return;
-      if (bgMusic.paused) {
-        bgMusic.play().then(() => {
-          updateMusicUI(true);
-          sessionStorage.setItem("gtm2026_music_playing", "true");
-        }).catch(() => {});
-      } else {
-        bgMusic.pause();
-        updateMusicUI(false);
-        sessionStorage.setItem("gtm2026_music_playing", "false");
-      }
-    });
-  }
-});
-</script>
-
-<script src="js/global-audio.js?v=8500"></script>
+<script src="js/spa-nav.js?v=12000"></script>
+<script src="js/global-audio.js?v=12000"></script>
 </body>
 </html>

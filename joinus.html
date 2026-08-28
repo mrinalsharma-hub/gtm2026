@@ -32,7 +32,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
-<title>JOIN US! · Garima weds Mrinal</title>
+<title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=8500">
 <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=8500">
@@ -507,8 +507,8 @@ main.paper, main, .rsvp-page-wrap {
         </svg>
       </div>
     </div>
-    <h1 class="rsvp-title">JOIN US</h1>
-    <p class="rsvp-subtitle">We will be honoured to have you!<br>Help us finalise our celebrations</p>
+    <h1 class="rsvp-title">CELEBRATE WITH US</h1>
+    <p class="rsvp-subtitle">Your presence would mean the world to us as we begin this new chapter.<br>Please let us know if you can make it!</p>
   </header>
 
   <!-- ── 3. Translucent Cards Container (Figma Match) ── -->
@@ -749,7 +749,7 @@ var RSVP_CONFIG={
 })();
 </script>
 
-<script src="js/spa-nav.js?v=8500"></script>
+
 
 <!-- ── Native Micro Music Player Button (Always Fixed Top-Right) ── -->
 <!-- ── Global Horizontal Music Player Pill ── -->
@@ -774,59 +774,8 @@ var RSVP_CONFIG={
 </audio>
 
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  const bgMusic = document.getElementById("bg-music");
-  const musicToggle = document.getElementById("music-toggle");
 
-  function updateMusicUI(isPlaying) {
-    if (musicToggle) {
-      if (isPlaying) {
-        musicToggle.classList.add("is-playing");
-      } else {
-        musicToggle.classList.remove("is-playing");
-      }
-    }
-  }
-
-  const wasPlaying = sessionStorage.getItem("gtm2026_music_playing") !== "false";
-  if (bgMusic && wasPlaying) {
-    bgMusic.volume = 0.8;
-    const p = bgMusic.play();
-    if (p !== undefined) {
-      p.then(() => updateMusicUI(true)).catch(() => updateMusicUI(false));
-    }
-  }
-
-  function unlockAudio() {
-    if (bgMusic && bgMusic.paused && wasPlaying) {
-      bgMusic.play().then(() => updateMusicUI(true)).catch(() => {});
-    }
-    window.removeEventListener("touchstart", unlockAudio, { capture: true });
-    window.removeEventListener("pointerdown", unlockAudio, { capture: true });
-  }
-  window.addEventListener("touchstart", unlockAudio, { capture: true, once: true });
-  window.addEventListener("pointerdown", unlockAudio, { capture: true, once: true });
-
-  if (musicToggle) {
-    musicToggle.addEventListener("click", function(e) {
-      e.stopPropagation();
-      if (!bgMusic) return;
-      if (bgMusic.paused) {
-        bgMusic.play().then(() => {
-          updateMusicUI(true);
-          sessionStorage.setItem("gtm2026_music_playing", "true");
-        }).catch(() => {});
-      } else {
-        bgMusic.pause();
-        updateMusicUI(false);
-        sessionStorage.setItem("gtm2026_music_playing", "false");
-      }
-    });
-  }
-});
-</script>
-
-<script src="js/global-audio.js?v=8500"></script>
+<script src="js/spa-nav.js?v=12000"></script>
+<script src="js/global-audio.js?v=12000"></script>
 </body>
 </html>

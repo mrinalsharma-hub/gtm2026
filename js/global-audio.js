@@ -1,78 +1,60 @@
-/* ── GTM2026 Global Continuous Audio Controller ── */
+/* ── GTM2026 Universal Continuous Audio Controller ── */
 (function() {
   'use strict';
 
-  var STORAGE_KEY_STATE = 'gtm2026_music_state';
-  var STORAGE_KEY_TIME = 'gtm2026_music_time';
-  var STORAGE_KEY_SESSION_INIT = 'gtm2026_session_audio_initialized';
   var AUDIO_SRC = 'media/Samne_Yeh_Kaun_Aaya.mp3';
+  var STORAGE_KEY_PLAYING = 'gtm2026_music_playing';
+  var STORAGE_KEY_TIME = 'gtm2026_music_time';
 
-  var audio = document.getElementById('bg-music');
-  if (!audio) {
-    audio = document.createElement('audio');
-    audio.id = 'bg-music';
-    audio.loop = true;
-    audio.preload = 'auto';
-    audio.playsInline = true;
-    audio.innerHTML = '<source src="' + AUDIO_SRC + '" type="audio/mpeg">';
-    document.body.appendChild(audio);
-  }
-
-  // 1. Audio resets ONLY when index.html is loaded for the first time in a session
-  var path = window.location.pathname.split('/').pop().toLowerCase();
-  try { path = decodeURIComponent(path); } catch(e) {}
-  var isIndexPage = (!path || path === '' || path === 'index.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html');
-
-  if (isIndexPage && !sessionStorage.getItem(STORAGE_KEY_SESSION_INIT)) {
-    try {
-      localStorage.removeItem(STORAGE_KEY_TIME);
-      sessionStorage.removeItem(STORAGE_KEY_TIME);
-      sessionStorage.setItem(STORAGE_KEY_SESSION_INIT, 'true');
-    } catch(e) {}
-    if (audio) {
-      audio.currentTime = 0;
+  // Singleton Audio Object attached to window so SPA navigation never destroys or resets it
+  if (!window.__GTM_AUDIO__) {
+    var existingAudio = document.getElementById('bg-music');
+    if (existingAudio) {
+      window.__GTM_AUDIO__ = existingAudio;
+    } else {
+      var audioEl = document.createElement('audio');
+      audioEl.id = 'bg-music';
+      audioEl.loop = true;
+      audioEl.preload = 'auto';
+      audioEl.playsInline = true;
+      audioEl.innerHTML = '<source src="' + AUDIO_SRC + '" type="audio/mpeg">';
+      document.body.appendChild(audioEl);
+      window.__GTM_AUDIO__ = audioEl;
     }
   }
 
-  function getPlayerElement() {
-    return document.getElementById('global-music-player') || document.getElementById('music-toggle');
+  var audio = window.__GTM_AUDIO__;
+  audio.volume = 0.85;
+
+  function getPlayerElements() {
+    return document.querySelectorAll('#global-music-player, #music-toggle, .global-audio-pill');
   }
 
-  function updateUI(isPlaying) {
-    var player = getPlayerElement();
-    if (player) {
-      if (isPlaying) {
+  function updateUI(playing) {
+    var isCurrentlyPlaying = (playing !== undefined) ? playing : !audio.paused;
+    var players = getPlayerElements();
+    players.forEach(function(player) {
+      if (isCurrentlyPlaying) {
         player.classList.add('is-playing');
         player.setAttribute('aria-label', 'Pause Music');
       } else {
         player.classList.remove('is-playing');
         player.setAttribute('aria-label', 'Play Music');
       }
-    }
-  }
-
-  function getSavedState() {
-    return localStorage.getItem(STORAGE_KEY_STATE) || sessionStorage.getItem(STORAGE_KEY_STATE);
-  }
-
-  function setSavedState(state) {
-    try {
-      localStorage.setItem(STORAGE_KEY_STATE, state);
-      sessionStorage.setItem(STORAGE_KEY_STATE, state);
-    } catch(e) {}
+    });
   }
 
   function saveTime() {
     if (audio && !isNaN(audio.currentTime) && audio.currentTime > 0) {
       try {
-        localStorage.setItem(STORAGE_KEY_TIME, audio.currentTime.toString());
+        sessionStorage.setItem(STORAGE_KEY_TIME, audio.currentTime.toString());
       } catch(e) {}
     }
   }
 
   function restoreTime() {
     try {
-      var saved = localStorage.getItem(STORAGE_KEY_TIME);
+      var saved = sessionStorage.getItem(STORAGE_KEY_TIME);
       if (saved) {
         var t = parseFloat(saved);
         if (!isNaN(t) && t > 0) {
@@ -85,13 +67,14 @@
   function playAudio() {
     restoreTime();
     audio.volume = 0.85;
-    var promise = audio.play();
-    if (promise !== undefined) {
-      promise.then(function() {
-        setSavedState('playing');
+    var p = audio.play();
+    if (p !== undefined) {
+      p.then(function() {
+        sessionStorage.setItem(STORAGE_KEY_PLAYING, 'true');
         updateUI(true);
       }).catch(function(err) {
-        // Handled via gesture
+        console.warn('Audio play prevented:', err);
+        updateUI(false);
       });
     }
   }
@@ -99,7 +82,7 @@
   function pauseAudio() {
     audio.pause();
     saveTime();
-    setSavedState('paused');
+    sessionStorage.setItem(STORAGE_KEY_PLAYING, 'false');
     updateUI(false);
   }
 
@@ -115,54 +98,39 @@
     }
   }
 
-  // First tap anywhere on the site starts the audio automatically
-  function onFirstUserGesture() {
-    var state = getSavedState();
-    if (state !== 'paused') {
-      if (audio.paused) {
-        playAudio();
-      }
-    }
-    window.removeEventListener('touchstart', onFirstUserGesture, { capture: true });
-    window.removeEventListener('pointerdown', onFirstUserGesture, { capture: true });
-    window.removeEventListener('click', onFirstUserGesture, { capture: true });
-    window.removeEventListener('keydown', onFirstUserGesture, { capture: true });
+  function bindPlayer() {
+    var players = getPlayerElements();
+    players.forEach(function(player) {
+      player.onclick = toggleAudio;
+    });
+    updateUI(!audio.paused);
   }
 
-  window.addEventListener('touchstart', onFirstUserGesture, { capture: true, passive: true });
-  window.addEventListener('pointerdown', onFirstUserGesture, { capture: true, passive: true });
-  window.addEventListener('click', onFirstUserGesture, { capture: true });
-  window.addEventListener('keydown', onFirstUserGesture, { capture: true });
-
+  audio.addEventListener('play', function() { updateUI(true); });
+  audio.addEventListener('pause', function() { updateUI(false); });
   audio.addEventListener('timeupdate', function() {
-    if (!audio.paused) {
-      saveTime();
-    }
+    if (!audio.paused) saveTime();
   });
 
   window.addEventListener('pagehide', saveTime);
   window.addEventListener('beforeunload', saveTime);
 
-  function bindButton() {
-    var player = getPlayerElement();
-    if (player) {
-      player.onclick = toggleAudio;
-    }
-    var currentState = getSavedState();
-    if (currentState === 'playing') {
-      restoreTime();
-      var p = audio.play();
-      if (p !== undefined) {
-        p.then(function() { updateUI(true); }).catch(function() { updateUI(false); });
-      }
-    } else if (currentState === 'paused') {
-      updateUI(false);
-    }
-  }
+  // Expose global controller
+  window.GTM_AUDIO = {
+    play: playAudio,
+    pause: pauseAudio,
+    toggle: toggleAudio,
+    updateUI: updateUI,
+    bindPlayer: bindPlayer,
+    get audio() { return audio; },
+    get isPlaying() { return !audio.paused; }
+  };
 
+  // NEVER AUTOPLAY ON LOAD OR GESTURE.
+  // ONLY bind the explicit button click handler and sync the current playing/paused UI state.
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindButton);
+    document.addEventListener('DOMContentLoaded', bindPlayer);
   } else {
-    bindButton();
+    bindPlayer();
   }
 })();
