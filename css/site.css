@@ -1622,7 +1622,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-weight: 450 !important;
   letter-spacing: 0.02em !important;
   color: #FFFFFF !important;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.60), 1px 1px 1px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   text-transform: uppercase !important;
   margin-top: 40px !important;
   margin-bottom: 4px !important;
@@ -1635,7 +1637,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-style: normal !important;
   font-size: 20px !important;
   color: #FFFFFF !important;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.60), 1px 1px 1px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   letter-spacing: 0.010em !important;
   line-height: 1.4 !important;
   margin-top: 24px !important;
@@ -1685,7 +1689,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   letter-spacing: 0.04em !important;
   line-height: normal !important;
   color: #FFFFFF !important;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.60), 1px 1px 1px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   text-align: left !important;
   text-transform: uppercase !important;
   margin: 0 0 24px 0 !important;
@@ -1967,7 +1973,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   letter-spacing: 0.010em !important;
   line-height: normal !important;
   color: #FFFFFF !important;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.60), 1px 1px 1px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   text-align: left !important;
   transition: opacity 0.15s ease !important;
 }
@@ -1981,7 +1989,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   letter-spacing: 0.010em !important;
   line-height: normal !important;
   color: #FFFFFF !important;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.60), 1px 1px 1px rgba(255, 255, 255, 0.25) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
 }
 
 /* 4. Disabled/Educational text */
@@ -1993,6 +2003,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   letter-spacing: 0.010em !important;
   line-height: normal !important;
   color: rgba(255, 255, 255, 0.40) !important;
+  text-shadow: none !important;
+  filter: none !important;
+  -webkit-filter: none !important;
   margin-left: 8px !important;
 }
 
