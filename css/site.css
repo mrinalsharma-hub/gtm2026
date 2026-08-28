@@ -1818,6 +1818,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   opacity: 0.85 !important;
 }
 
+.add-person-btn:disabled,
+.add-person-btn.is-disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
 .add-person-btn:active {
   opacity: 0.65 !important;
   transform: scale(0.96) !important;

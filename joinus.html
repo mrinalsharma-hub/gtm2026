@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=13500">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=13500">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=13500">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=13600">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=13600">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=13600">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=13500">
+<link rel="stylesheet" href="css/site.css?v=13600">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -557,6 +557,14 @@ main.paper, main, .rsvp-page-wrap {
   color: rgba(255, 255, 255, 0.40) !important;
 }
 
+
+.add-person-btn:disabled,
+.add-person-btn.is-disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
 </style>
 </head>
 <body>
@@ -721,7 +729,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=13500"></script>
+<script src="js/site.js?v=13600"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -759,23 +767,52 @@ var RSVP_CONFIG={
   });
   updateRequiredStars();
 
-  addBtn.addEventListener('click',function(){
-    var count=list.querySelectorAll('.name-input').length;
-    if(count>=MAX_NAMES)return;
-    var row=document.createElement('div');
-    row.className='name-input-row';
-    row.innerHTML='<input type="text" class="rsvp-pill-input name-input" placeholder="Enter full name">'+
+    function updateAddButtonState() {
+    var inputs = list.querySelectorAll('.name-input');
+    var count = inputs.length;
+    if (count >= MAX_NAMES) {
+      addBtn.style.display = 'none';
+      return;
+    }
+    addBtn.style.display = '';
+    var lastInput = inputs[count - 1];
+    var hasName = lastInput && lastInput.value.trim().length > 0;
+    if (hasName) {
+      addBtn.disabled = false;
+      addBtn.classList.remove('is-disabled');
+    } else {
+      addBtn.disabled = true;
+      addBtn.classList.add('is-disabled');
+    }
+  }
+
+  list.addEventListener('input', updateAddButtonState);
+  list.addEventListener('keyup', updateAddButtonState);
+  list.addEventListener('change', updateAddButtonState);
+
+  addBtn.addEventListener('click', function() {
+    var inputs = list.querySelectorAll('.name-input');
+    var count = inputs.length;
+    if (count >= MAX_NAMES) return;
+    var lastInput = inputs[count - 1];
+    if (!lastInput || lastInput.value.trim().length === 0) return;
+
+    var row = document.createElement('div');
+    row.className = 'name-input-row';
+    row.innerHTML = '<input type="text" class="rsvp-pill-input name-input" placeholder="Enter full name">' +
                   '<button type="button" class="rm-person-btn" aria-label="Remove this person">&#10005;</button>';
     list.appendChild(row);
-    row.querySelector('.rm-person-btn').addEventListener('click',function(){row.remove()});
-    row.querySelector('input').focus();
-    if(list.querySelectorAll('.name-input').length>=MAX_NAMES)addBtn.style.display='none';
-  });
-  list.addEventListener('click',function(){
-    if(list.querySelectorAll('.name-input').length<MAX_NAMES)addBtn.style.display='';
+    row.querySelector('.rm-person-btn').addEventListener('click', function() {
+      row.remove();
+      updateAddButtonState();
+    });
+    var newInput = row.querySelector('input');
+    newInput.focus();
+    updateAddButtonState();
   });
 
-  form.addEventListener('submit',function(e){
+  updateAddButtonState();
+form.addEventListener('submit',function(e){
     e.preventDefault();
     var attending=form.querySelector('input[name=attending]:checked');
     if(!attending){
@@ -852,7 +889,7 @@ var RSVP_CONFIG={
 
 
 
-<script src="js/spa-nav.js?v=13500"></script>
-<script src="js/global-audio.js?v=13500"></script>
+<script src="js/spa-nav.js?v=13600"></script>
+<script src="js/global-audio.js?v=13600"></script>
 </body>
 </html>
