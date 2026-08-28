@@ -2280,3 +2280,20 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   pointer-events: none !important;
   z-index: 2 !important;
 }
+
+
+/* ── Events Page Botanical Background Art Layer ── */
+.events-botanical-art-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('../images/events_botanical_geru_lines.webp?v=11800') !important;
+  background-repeat: repeat !important;
+  background-position: top center !important;
+  background-size: 418px 418px !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.12 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
