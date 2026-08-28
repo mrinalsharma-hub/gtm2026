@@ -2302,11 +2302,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('../images/events_botanical_tonal_lines.webp?v=12100') !important;
+  background-image: url('../images/events_botanical_tonal_lines.webp?v=12200') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 418px 418px !important;
-  opacity: 0.65 !important;
+  opacity: 0.32 !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
