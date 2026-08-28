@@ -1706,7 +1706,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background-color: transparent !important;
   background: transparent !important;
   color: #FFFFFF !important;
-  border: 0.5px solid #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
   border-radius: 8px !important;
   padding: 0 18px !important;
   font-family: 'Spectral', Georgia, serif !important;
@@ -1719,11 +1719,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   box-sizing: border-box !important;
   -webkit-tap-highlight-color: transparent !important;
   touch-action: manipulation !important;
-  transition: background-color 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.2s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+  transform: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
 }
 
-.rsvp-pill-input:active {
-  transform: scale(0.992) !important;
+.rsvp-pill-input:active,
+.rsvp-pill-input:focus {
+  transform: none !important;
 }
 
 .rsvp-pill-input:focus {
@@ -1750,7 +1752,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-pill-input:focus::placeholder {
   color: transparent !important;
   opacity: 0 !important;
-  transform: translateX(4px) !important;
+  transform: none !important;
 }
 
 /* Name Row & Add Person Button */
@@ -1996,7 +1998,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background-color: transparent !important;
   background: transparent !important;
   color: #FFFFFF !important;
-  border: 0.5px solid #FFFFFF !important;
+  border: 1px solid #FFFFFF !important;
   border-radius: 8px !important;
   padding: 16px 18px !important;
   font-family: 'Spectral', Georgia, serif !important;
@@ -2010,11 +2012,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   resize: none !important;
   -webkit-tap-highlight-color: transparent !important;
   touch-action: manipulation !important;
-  transition: background-color 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.2s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+  transform: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
 }
 
-.rsvp-textarea-card:active {
-  transform: scale(0.992) !important;
+.rsvp-textarea-card:active,
+.rsvp-textarea-card:focus {
+  transform: none !important;
 }
 
 .rsvp-textarea-card:focus {
@@ -2042,7 +2046,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-textarea-card:focus::placeholder {
   color: transparent !important;
   opacity: 0 !important;
-  transform: translateX(4px) !important;
+  transform: none !important;
 }
 
 /* 5. Button Text — Tactile Spring Response */
