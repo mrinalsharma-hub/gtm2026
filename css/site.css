@@ -1961,11 +1961,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* 2. Subtext / Normal text */
 .rsvp-option-text {
-  font-family: 'Cormorant Garamond', 'Spectral', Georgia, serif !important;
-  font-size: 22px !important;
-  font-weight: 400 !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 20px !important;
   font-weight: 300 !important;
   font-style: normal !important;
+  letter-spacing: 0.010em !important;
   line-height: normal !important;
   color: #FFFFFF !important;
   text-align: left !important;
@@ -1978,16 +1978,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   font-size: 20px !important;
   font-weight: 500 !important;
   font-style: normal !important;
+  letter-spacing: 0.010em !important;
   line-height: normal !important;
   color: #FFFFFF !important;
 }
 
-/* 4. Disabled/Educational text (60% lower opacity = 40% on dark background) */
+/* 4. Disabled/Educational text */
 .rsvp-event-date {
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 20px !important;
   font-weight: 300 !important;
   font-style: normal !important;
+  letter-spacing: 0.010em !important;
   line-height: normal !important;
   color: rgba(255, 255, 255, 0.40) !important;
   margin-left: 8px !important;
