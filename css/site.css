@@ -2269,12 +2269,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('../images/rsvp_botanical_jacquard.webp?v=14600') !important;
+  background-image: url('../images/rsvp_aipan_lotus_pattern.svg?v=14700') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
-  background-size: 412px 412px !important;
+  background-size: 280px 280px !important;
   mix-blend-mode: soft-light !important;
-  opacity: 0.38 !important;
+  opacity: 0.40 !important;
   pointer-events: none !important;
   z-index: 2 !important;
 }
