@@ -1691,7 +1691,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .req-star {
-  color: #FFFFFF !important;
+  color: #FFB800 !important;
   font-family: inherit !important;
   font-weight: 400 !important;
   margin-left: 2px !important;
@@ -1703,7 +1703,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-pill-input {
   width: 100% !important;
   height: 54px !important;
-  background-color: rgba(255, 255, 255, 0.24) !important;
+  background-color: rgba(0, 0, 0, 0.22) !important;
   color: #FFFFFF !important;
   border: 1.5px solid transparent !important;
   border-radius: 8px !important;
@@ -1735,7 +1735,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-pill-input::placeholder,
 .rsvp-pill-input:disabled {
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
   text-align: left !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 20px !important;
@@ -1984,7 +1984,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-textarea-card {
   width: 100% !important;
   height: 110px !important;
-  background-color: rgba(255, 255, 255, 0.24) !important;
+  background-color: rgba(0, 0, 0, 0.22) !important;
   color: #FFFFFF !important;
   border: 1.5px solid transparent !important;
   border-radius: 8px !important;
@@ -2018,7 +2018,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 /* 4. Disabled/Educational text in light field */
 .rsvp-textarea-card::placeholder,
 .rsvp-textarea-card:disabled {
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: rgba(255, 255, 255, 0.65) !important;
   text-align: left !important;
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 20px !important;
