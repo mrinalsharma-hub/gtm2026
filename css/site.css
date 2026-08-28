@@ -2259,3 +2259,20 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   0% { height: 4px; }
   100% { height: 14px; }
 }
+
+
+/* ── Full-Canvas Tonal Botanical Jacquard Pattern (Option 1) ── */
+.rsvp-botanical-art-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('../images/rsvp_botanical_jacquard.webp?v=14300') !important;
+  background-repeat: repeat !important;
+  background-position: top center !important;
+  background-size: 340px 340px !important;
+  mix-blend-mode: soft-light !important;
+  opacity: 0.35 !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
