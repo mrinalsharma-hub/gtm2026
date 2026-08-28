@@ -1728,10 +1728,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-pill-input:focus {
   background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
   color: #19202F !important;
-  border-color: rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 0 0 3.5px rgba(255, 255, 255, 0.35) !important;
-  transform: scale(1) !important;
+  border: 1px solid #FFFFFF !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 .rsvp-pill-input::placeholder,
@@ -2018,10 +2019,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-textarea-card:focus {
   background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
   color: #19202F !important;
-  border-color: rgba(255, 255, 255, 0.95) !important;
-  box-shadow: 0 0 0 3.5px rgba(255, 255, 255, 0.35) !important;
-  transform: scale(1) !important;
+  border: 1px solid #FFFFFF !important;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 /* 4. Disabled/Educational text in light field */
