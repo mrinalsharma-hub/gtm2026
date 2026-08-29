@@ -2318,84 +2318,82 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 
 
-/* ── Live Emboss Style Variations ── */
 
-/* Default / Option 1: Micro-Stationery Blind Emboss */
-body.emboss-opt1 .rsvp-title,
-body.emboss-opt1 .rsvp-card-title,
-body.emboss-opt1 .rsvp-subtitle,
-body.emboss-opt1 .rsvp-option-text,
-body.emboss-opt1 .rsvp-event-name,
+
+
+/* ── Handmade Paper Engraved Letterpress Variations ── */
+
+/* Default / Option A: Natural Cotton-Rag (Bone White Bite) */
+body.emboss-handmade-a .rsvp-title,
+body.emboss-handmade-a .rsvp-card-title,
+body.emboss-handmade-a .rsvp-subtitle,
+body.emboss-handmade-a .rsvp-option-text,
+body.emboss-handmade-a .rsvp-event-name,
 .rsvp-title,
 .rsvp-card-title,
 .rsvp-subtitle,
 .rsvp-option-text,
 .rsvp-event-name {
-  color: #FFFFFF !important;
+  color: #FAF4EB !important;
   text-shadow: 
-    0 -0.6px 0.5px rgba(255, 255, 255, 0.30),
-    0  1.0px 1.5px rgba(30, 2, 5, 0.45) !important;
+    -0.5px -0.5px 0.8px rgba(20, 2, 4, 0.48),
+     0.5px  0.6px 0.8px rgba(255, 245, 230, 0.16) !important;
 }
-
-body.emboss-opt1 .rsvp-event-date,
+body.emboss-handmade-a .rsvp-event-date,
 .rsvp-event-date {
+  color: rgba(250, 244, 235, 0.42) !important;
   text-shadow: 
-    0 -0.4px 0.4px rgba(255, 255, 255, 0.18),
-    0  0.8px 1.0px rgba(30, 2, 5, 0.30) !important;
+    -0.4px -0.4px 0.6px rgba(20, 2, 4, 0.35),
+     0.4px  0.4px 0.6px rgba(255, 245, 230, 0.12) !important;
 }
 
-/* Option 2: Tiered Hierarchical Emboss */
-body.emboss-opt2 .rsvp-title {
-  color: #FFFFFF !important;
+/* Option B: Deep Plate Press (Heavyweight 450gsm Paper) */
+body.emboss-handmade-b .rsvp-title,
+body.emboss-handmade-b .rsvp-card-title,
+body.emboss-handmade-b .rsvp-subtitle,
+body.emboss-handmade-b .rsvp-option-text,
+body.emboss-handmade-b .rsvp-event-name {
+  color: #FFFDF8 !important;
   text-shadow: 
-    0 -0.8px 0.5px rgba(255, 255, 255, 0.35),
-    0  1.5px 2.5px rgba(30, 2, 5, 0.50) !important;
+    -0.75px -0.75px 1.0px rgba(18, 2, 3, 0.55),
+     0.75px  0.85px 1.0px rgba(255, 248, 235, 0.20) !important;
 }
-body.emboss-opt2 .rsvp-card-title {
-  color: #FFFFFF !important;
+body.emboss-handmade-b .rsvp-event-date {
+  color: rgba(255, 253, 248, 0.45) !important;
   text-shadow: 
-    0 -0.6px 0.5px rgba(255, 255, 255, 0.30),
-    0  1.0px 1.5px rgba(30, 2, 5, 0.40) !important;
-}
-body.emboss-opt2 .rsvp-subtitle,
-body.emboss-opt2 .rsvp-option-text,
-body.emboss-opt2 .rsvp-event-name {
-  color: #FFFFFF !important;
-  text-shadow: 
-    0 -0.5px 0.5px rgba(255, 255, 255, 0.25),
-    0  0.8px 1.2px rgba(30, 2, 5, 0.35) !important;
-}
-body.emboss-opt2 .rsvp-event-date {
-  text-shadow: 
-    0 -0.4px 0.4px rgba(255, 255, 255, 0.15),
-    0  0.6px 0.8px rgba(30, 2, 5, 0.25) !important;
+    -0.5px -0.5px 0.8px rgba(18, 2, 3, 0.40),
+     0.5px  0.6px 0.8px rgba(255, 248, 235, 0.15) !important;
 }
 
-/* Option 3: Top-Lit Micro Crest */
-body.emboss-opt3 .rsvp-title,
-body.emboss-opt3 .rsvp-card-title,
-body.emboss-opt3 .rsvp-subtitle,
-body.emboss-opt3 .rsvp-option-text,
-body.emboss-opt3 .rsvp-event-name {
-  color: #FFFFFF !important;
+/* Option C: Soft Matte Ink Sink (Whisper Subtle) */
+body.emboss-handmade-c .rsvp-title,
+body.emboss-handmade-c .rsvp-card-title,
+body.emboss-handmade-c .rsvp-subtitle,
+body.emboss-handmade-c .rsvp-option-text,
+body.emboss-handmade-c .rsvp-event-name {
+  color: rgba(250, 244, 235, 0.94) !important;
   text-shadow: 
-    0 -0.8px 0.5px rgba(255, 255, 255, 0.28),
-    0  0.8px 1.0px rgba(25, 2, 4, 0.25) !important;
+    -0.4px -0.4px 0.5px rgba(25, 3, 5, 0.38),
+     0.4px  0.5px 0.5px rgba(255, 250, 242, 0.12) !important;
 }
-body.emboss-opt3 .rsvp-event-date {
+body.emboss-handmade-c .rsvp-event-date {
+  color: rgba(250, 244, 235, 0.40) !important;
   text-shadow: 
-    0 -0.5px 0.4px rgba(255, 255, 255, 0.18),
-    0  0.6px 0.8px rgba(25, 2, 4, 0.20) !important;
+    -0.3px -0.3px 0.4px rgba(25, 3, 5, 0.30),
+     0.3px  0.4px 0.4px rgba(255, 250, 242, 0.10) !important;
 }
 
-/* None: Clean (Off) */
+/* Option None: Flat Pure White */
 body.emboss-none .rsvp-title,
 body.emboss-none .rsvp-card-title,
 body.emboss-none .rsvp-subtitle,
 body.emboss-none .rsvp-option-text,
-body.emboss-none .rsvp-event-name,
-body.emboss-none .rsvp-event-date {
+body.emboss-none .rsvp-event-name {
   color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+body.emboss-none .rsvp-event-date {
+  color: rgba(255, 255, 255, 0.40) !important;
   text-shadow: none !important;
 }
 
@@ -2407,10 +2405,10 @@ body.emboss-none .rsvp-event-date {
   gap: 8px !important;
   margin: 16px auto 10px auto !important;
   width: 100% !important;
-  max-width: 420px !important;
+  max-width: 440px !important;
   padding: 10px 14px !important;
-  background: rgba(0, 0, 0, 0.22) !important;
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
   border-radius: 16px !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -2438,7 +2436,7 @@ body.emboss-none .rsvp-event-date {
 .emboss-btn {
   background: rgba(255, 255, 255, 0.08) !important;
   border: 1px solid rgba(255, 255, 255, 0.20) !important;
-  color: #FFFFFF !important;
+  color: #FAF4EB !important;
   padding: 6px 12px !important;
   border-radius: 14px !important;
   font-family: 'Spectral', Georgia, serif !important;
@@ -2455,9 +2453,9 @@ body.emboss-none .rsvp-event-date {
 }
 
 .emboss-btn.active {
-  background: #FFFFFF !important;
+  background: #FAF4EB !important;
   color: #19202F !important;
-  border-color: #FFFFFF !important;
+  border-color: #FAF4EB !important;
   font-weight: 600 !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
 }
