@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=19000">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=19000">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=19000">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=19100">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=19100">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=19100">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=19000">
+<link rel="stylesheet" href="css/site.css?v=19100">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -635,7 +635,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=19000') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=19100') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -670,65 +670,70 @@ main.paper, main, .rsvp-page-wrap {
   top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
 }
 
-/* ── Subtle Background Gradient Variations (Progressive Intensity) ── */
+/* ── Balanced Richness (20% Uplift) Hue Variations ── */
 
-/* Option 1: Subtle Warm Glow (+10% Intensity) */
-body.grad-opt1 .rsvp-bg-layer,
-body.grad-opt1 {
-  background-color: #AB2125 !important;
-}
-body.grad-opt1 .rsvp-bg-layer {
-  background: 
-    radial-gradient(ellipse 140% 60% at 50% 100%, rgba(110, 14, 18, 0.94) 0%, rgba(110, 14, 18, 0.50) 50%, transparent 80%),
-    radial-gradient(ellipse 120% 75% at 50% 0%, #AB2125 0%, #90171B 25%, #7D1216 50%, #680D10 75%, #54090C 100%) !important;
-}
-body.grad-opt1 .rsvp-bg-layer::before {
-  background: 
-    radial-gradient(circle 350px at 42% 14%, rgba(245, 120, 60, 0.08) 0%, rgba(230, 50, 80, 0.04) 55%, transparent 85%),
-    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(245, 130, 60, 0.06) 0%, transparent 80%) !important;
-}
-
-/* Option 2: Balanced Richness (+20% Intensity - Active Default) */
-body.grad-opt2 .rsvp-bg-layer,
-body.grad-opt2 {
+/* Hue 1: Royal Carmine (Pure Classic Red-Crimson) */
+body.hue-carmine .rsvp-bg-layer,
+body.hue-carmine {
   background-color: #B02428 !important;
 }
-body.grad-opt2 .rsvp-bg-layer {
+body.hue-carmine .rsvp-bg-layer {
   background: 
     radial-gradient(ellipse 135% 60% at 50% 100%, rgba(98, 10, 14, 0.95) 0%, rgba(98, 10, 14, 0.55) 50%, transparent 80%),
     radial-gradient(ellipse 118% 75% at 50% 0%, #B02428 0%, #94181C 25%, #7B1115 50%, #620B0E 75%, #4C070A 100%) !important;
 }
-body.grad-opt2 .rsvp-bg-layer::before {
+body.hue-carmine .rsvp-bg-layer::before {
   background: 
     radial-gradient(circle 380px at 45% 15%, rgba(248, 130, 50, 0.11) 0%, rgba(235, 60, 85, 0.05) 55%, transparent 85%),
     radial-gradient(ellipse 135% 60% at 50% 18%, rgba(248, 140, 55, 0.08) 0%, transparent 80%) !important;
 }
 
-/* Option 3: Velvet Crimson (+30% Intensity) */
-body.grad-opt3 .rsvp-bg-layer,
-body.grad-opt3 {
-  background-color: #B6272C !important;
+/* Hue 2: Saffron Sindoori (Warm Amber / Vermilion Spiced Red) */
+body.hue-saffron .rsvp-bg-layer,
+body.hue-saffron {
+  background-color: #B62C1E !important;
 }
-body.grad-opt3 .rsvp-bg-layer {
+body.hue-saffron .rsvp-bg-layer {
   background: 
-    radial-gradient(ellipse 130% 60% at 50% 100%, rgba(85, 8, 11, 0.96) 0%, rgba(85, 8, 11, 0.60) 50%, transparent 80%),
-    radial-gradient(ellipse 115% 75% at 50% 0%, #B6272C 0%, #98191E 25%, #781014 50%, #5B090C 75%, #420508 100%) !important;
+    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(98, 12, 14, 0.95) 0%, rgba(98, 12, 14, 0.55) 50%, transparent 80%),
+    radial-gradient(ellipse 118% 75% at 50% 0%, #B62C1E 0%, #9A2016 25%, #7F1512 50%, #640F0E 75%, #4C090B 100%) !important;
 }
-body.grad-opt3 .rsvp-bg-layer::before {
+body.hue-saffron .rsvp-bg-layer::before {
   background: 
-    radial-gradient(circle 400px at 48% 16%, rgba(250, 140, 50, 0.14) 0%, rgba(238, 65, 85, 0.07) 55%, transparent 85%),
-    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(250, 150, 60, 0.10) 0%, transparent 80%) !important;
+    radial-gradient(circle 380px at 45% 15%, rgba(255, 155, 45, 0.13) 0%, rgba(242, 80, 40, 0.07) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(255, 150, 40, 0.09) 0%, transparent 80%) !important;
 }
 
-/* Option 0: Current Baseline (0% Intensity) */
-body.grad-opt0 .rsvp-bg-layer,
-body.grad-opt0 {
-  background-color: #A71F23 !important;
+/* Hue 3: Deep Wine Bordeaux (Jewel-Tone Ruby / Cool Plum-Burgundy) */
+body.hue-bordeaux .rsvp-bg-layer,
+body.hue-bordeaux {
+  background-color: #A82034 !important;
 }
-body.grad-opt0 .rsvp-bg-layer {
+body.hue-bordeaux .rsvp-bg-layer {
   background: 
-    radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
-    radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
+    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(90, 8, 18, 0.95) 0%, rgba(90, 8, 18, 0.55) 50%, transparent 80%),
+    radial-gradient(ellipse 118% 75% at 50% 0%, #A82034 0%, #8F1628 25%, #760F1F 50%, #5D0916 75%, #46050F 100%) !important;
+}
+body.hue-bordeaux .rsvp-bg-layer::before {
+  background: 
+    radial-gradient(circle 380px at 45% 15%, rgba(240, 70, 110, 0.11) 0%, rgba(215, 40, 80, 0.06) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(235, 60, 95, 0.08) 0%, transparent 80%) !important;
+}
+
+/* Hue 4: Imperial Kumkum (Earthy Ochre-Crimson / Heritage Lacquer) */
+body.hue-kumkum .rsvp-bg-layer,
+body.hue-kumkum {
+  background-color: #AC2A22 !important;
+}
+body.hue-kumkum .rsvp-bg-layer {
+  background: 
+    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(94, 10, 12, 0.95) 0%, rgba(94, 10, 12, 0.55) 50%, transparent 80%),
+    radial-gradient(ellipse 118% 75% at 50% 0%, #AC2A22 0%, #90201A 25%, #771714 50%, #5F100D 75%, #4A0808 100%) !important;
+}
+body.hue-kumkum .rsvp-bg-layer::before {
+  background: 
+    radial-gradient(circle 380px at 45% 15%, rgba(250, 135, 45, 0.10) 0%, rgba(230, 60, 50, 0.06) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(245, 130, 45, 0.08) 0%, transparent 80%) !important;
 }
 
 /* Tester UI styling */
@@ -739,7 +744,7 @@ body.grad-opt0 .rsvp-bg-layer {
   gap: 8px !important;
   margin: 16px auto 12px auto !important;
   width: 100% !important;
-  max-width: 480px !important;
+  max-width: 520px !important;
   padding: 12px 16px !important;
   background: rgba(0, 0, 0, 0.40) !important;
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
@@ -795,7 +800,7 @@ body.grad-opt0 .rsvp-bg-layer {
 }
 </style>
 </head>
-<body class="grad-opt2">
+<body class="hue-carmine">
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true">
@@ -806,13 +811,14 @@ body.grad-opt0 .rsvp-bg-layer {
 <main class="rsvp-page-wrap">
   <!-- Live Dramatic Background Gradient Tester -->
     <!-- Live Subtle Background Gradient Tester -->
-  <div class="grad-tester-panel" aria-label="Subtle Gradient Tester">
-    <span class="grad-tester-title">Test Subtle Gradient Uplift:</span>
+    <!-- Live Balanced Richness Hue Tester -->
+  <div class="grad-tester-panel" aria-label="Hue Variations Tester">
+    <span class="grad-tester-title">Test Hues (Same 20% Balanced Richness):</span>
     <div class="grad-tester-buttons">
-      <button type="button" class="grad-btn" id="btn-grad-0" onclick="setSubtleGrad(0)">0: Baseline (Current)</button>
-      <button type="button" class="grad-btn" id="btn-grad-1" onclick="setSubtleGrad(1)">1: Subtle Warm (+10%)</button>
-      <button type="button" class="grad-btn active" id="btn-grad-2" onclick="setSubtleGrad(2)">2: Balanced Richness (+20%)</button>
-      <button type="button" class="grad-btn" id="btn-grad-3" onclick="setSubtleGrad(3)">3: Velvet Depth (+30%)</button>
+      <button type="button" class="grad-btn active" id="btn-hue-1" onclick="setHueOption('carmine')">1: Royal Carmine (Pure Red)</button>
+      <button type="button" class="grad-btn" id="btn-hue-2" onclick="setHueOption('saffron')">2: Saffron Sindoori (Warm)</button>
+      <button type="button" class="grad-btn" id="btn-hue-3" onclick="setHueOption('bordeaux')">3: Wine Bordeaux (Jewel Plum)</button>
+      <button type="button" class="grad-btn" id="btn-hue-4" onclick="setHueOption('kumkum')">4: Imperial Kumkum (Earthy)</button>
     </div>
   </div>
 
@@ -979,7 +985,7 @@ body.grad-opt0 .rsvp-bg-layer {
   </div>
 </nav>
 
-<script src="js/site.js?v=19000"></script>
+<script src="js/site.js?v=19100"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1139,33 +1145,33 @@ form.addEventListener('submit',function(e){
 
 
 
-<script src="js/spa-nav.js?v=19000"></script>
-<script src="js/global-audio.js?v=19000"></script>
+<script src="js/spa-nav.js?v=19100"></script>
+<script src="js/global-audio.js?v=19100"></script>
 
 
 
 
 <script>
-function setSubtleGrad(opt) {
-  document.body.classList.remove('grad-opt0', 'grad-opt1', 'grad-opt2', 'grad-opt3');
+function setHueOption(opt) {
+  document.body.classList.remove('hue-carmine', 'hue-saffron', 'hue-bordeaux', 'hue-kumkum');
   var btns = document.querySelectorAll('.grad-btn');
   btns.forEach(function(b) { b.classList.remove('active'); });
 
-  if (opt === 0) {
-    document.body.classList.add('grad-opt0');
-    var b = document.getElementById('btn-grad-0');
+  if (opt === 'saffron') {
+    document.body.classList.add('hue-saffron');
+    var b = document.getElementById('btn-hue-2');
     if (b) b.classList.add('active');
-  } else if (opt === 1) {
-    document.body.classList.add('grad-opt1');
-    var b = document.getElementById('btn-grad-1');
+  } else if (opt === 'bordeaux') {
+    document.body.classList.add('hue-bordeaux');
+    var b = document.getElementById('btn-hue-3');
     if (b) b.classList.add('active');
-  } else if (opt === 3) {
-    document.body.classList.add('grad-opt3');
-    var b = document.getElementById('btn-grad-3');
+  } else if (opt === 'kumkum') {
+    document.body.classList.add('hue-kumkum');
+    var b = document.getElementById('btn-hue-4');
     if (b) b.classList.add('active');
   } else {
-    document.body.classList.add('grad-opt2');
-    var b = document.getElementById('btn-grad-2');
+    document.body.classList.add('hue-carmine');
+    var b = document.getElementById('btn-hue-1');
     if (b) b.classList.add('active');
   }
 }
