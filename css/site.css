@@ -2286,9 +2286,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background-image: url('../images/rsvp_botanical_gold_lines.webp?v=16600') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
-  background-size: 552px 552px !important;
+  background-size: 662px 662px !important;
   mix-blend-mode: soft-light !important;
-  opacity: 0.28 !important;
+  opacity: 0.36 !important;
   pointer-events: none !important;
   z-index: 2 !important;
 }
