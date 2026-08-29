@@ -2484,3 +2484,20 @@ body.rsvp-confirmed .rsvp-subtitle {
 .rsvp-hero-header.is-confirmed {
   margin-bottom: 36px !important;
 }
+
+
+/* ── Disabled Card Sections when Declining RSVP ── */
+.rsvp-card-section.is-disabled-section {
+  opacity: 0.30 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  cursor: not-allowed !important;
+  filter: grayscale(0.6) !important;
+  transition: opacity 0.3s ease, filter 0.3s ease !important;
+}
+
+.rsvp-card-section.is-disabled-section input,
+.rsvp-card-section.is-disabled-section textarea {
+  pointer-events: none !important;
+  cursor: not-allowed !important;
+}
