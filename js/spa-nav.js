@@ -58,7 +58,8 @@
   }
 
   function ensureThemeColor() {
-    var themeColor = '#A71F23';
+    var currentNorm = normalizePath(window.location.pathname);
+    var themeColor = (currentNorm === 'joinus.html') ? '#B02428' : '#A71F23';
     var metaTags = document.querySelectorAll('meta[name="theme-color"]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
