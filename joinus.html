@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20000">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20000">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=20000">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20100">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20100">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=20100">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20000">
+<link rel="stylesheet" href="css/site.css?v=20100">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20000') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20100') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -693,71 +693,6 @@ main.paper, main, .rsvp-page-wrap {
   background-color: #7B1115 !important;
 }
 
-/* Live Submission & Success Screen Tester */
-.submit-tester-panel {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 8px !important;
-  margin: 16px auto 12px auto !important;
-  width: 100% !important;
-  max-width: 520px !important;
-  padding: 12px 16px !important;
-  background: rgba(0, 0, 0, 0.45) !important;
-  border: 1px solid rgba(234, 199, 134, 0.30) !important;
-  border-radius: 16px !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  z-index: 20 !important;
-  position: relative !important;
-}
-
-.submit-tester-title {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  color: rgba(255, 255, 255, 0.95) !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-}
-
-.submit-tester-buttons {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 8px !important;
-  width: 100% !important;
-}
-
-.tester-btn {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  color: #FFFFFF !important;
-  padding: 6px 14px !important;
-  border-radius: 14px !important;
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease !important;
-  user-select: none !important;
-}
-
-.tester-btn:hover {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border-color: rgba(234, 199, 134, 0.50) !important;
-}
-
-.tester-btn.primary {
-  background: #A71F23 !important;
-  border-color: rgba(255, 255, 255, 0.40) !important;
-  font-weight: 600 !important;
-}
-
-.tester-btn.primary:hover {
-  background: #B02428 !important;
-}
-
 </style>
 </head>
 <body>
@@ -769,16 +704,6 @@ main.paper, main, .rsvp-page-wrap {
 
 <!-- ── 2. RSVP Main Scrollable Wrapper ── -->
 <main class="rsvp-page-wrap">
-    <!-- Live Submission & Confirmation Flow Tester -->
-  <div class="submit-tester-panel" aria-label="Submission Tester">
-    <span class="submit-tester-title">Test Confirmation &amp; Edit Flow:</span>
-    <div class="submit-tester-buttons">
-      <button type="button" class="tester-btn primary" onclick="testTriggerSuccessScreen()">▶ 1. Preview "Thank You" Screen</button>
-      <button type="button" class="tester-btn" onclick="handleEditRSVP()">✏️ 2. Test "Edit RSVP" Click</button>
-      <button type="button" class="tester-btn" onclick="testAutoFillForm()">✍️ 3. Auto-Fill Sample Data</button>
-      <button type="button" class="tester-btn" onclick="testResetFreshForm()">↺ 4. Reset to Fresh Form ("SEND RSVP")</button>
-    </div>
-  </div>
 <header class="rsvp-hero-header">
     <!-- Authentic Kumaoni Aipan Top Border (Pearl Dots & Vasudhara Bands) -->
     <div class="aipan-top-border-wrap" aria-hidden="true">
@@ -946,7 +871,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=20000"></script>
+<script src="js/site.js?v=20100"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1013,65 +938,12 @@ function handleEditRSVP() {
   if (status) status.textContent = '';
   if (btn) btn.textContent = 'SAVE RSVP';
 
-  // Smooth scroll to top of form
   var hero = document.querySelector('.rsvp-hero-header');
   if (hero) {
     hero.scrollIntoView({ behavior: 'smooth' });
   } else {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-}
-
-/* Tester functions */
-function testTriggerSuccessScreen() {
-  var status = document.getElementById('rsvp-status'),
-      btn = document.getElementById('btn-submit');
-
-  if (btn) btn.textContent = 'Sending…';
-  if (status) status.textContent = 'Sending…';
-
-  setTimeout(function() {
-    showConfirmationScreen();
-  }, 600);
-}
-
-function testShowRSVPForm() {
-  isEditMode = false;
-  var form = document.getElementById('rsvp-form'),
-      thanks = document.getElementById('rsvp-thanks'),
-      status = document.getElementById('rsvp-status'),
-      btn = document.getElementById('btn-submit');
-
-  if (thanks) {
-    thanks.classList.remove('is-visible');
-    thanks.style.setProperty('display', 'none', 'important');
-  }
-  if (form) {
-    form.classList.remove('is-hidden');
-    form.style.setProperty('display', 'flex', 'important');
-  }
-  if (status) status.textContent = '';
-  if (btn) btn.textContent = 'SEND RSVP';
-}
-
-function testAutoFillForm() {
-  testShowRSVPForm();
-  var name1 = document.getElementById('name-1');
-  if (name1) name1.value = 'Rohan & Ananya Sharma';
-  var row1 = name1 ? name1.closest(".name-input-row") : null;
-  if (row1) row1.classList.remove("is-empty");
-  var ab = document.getElementById("add-person");
-  if (ab) { ab.disabled = false; ab.classList.remove("is-disabled"); }
-  var contact = document.getElementById('f-contact');
-  if (contact) contact.value = '+91 98765 43210';
-  var diet = document.getElementById('f-diet');
-  if (diet) diet.value = 'Vegetarian';
-  var msg = document.getElementById('f-msg');
-  if (msg) msg.value = 'So thrilled to celebrate with you both! See you in Nainital!';
-  
-  document.querySelectorAll('input[name=events]').forEach(function(cb) {
-    cb.checked = true;
-  });
 }
 
 (function(){
@@ -1117,7 +989,7 @@ function testAutoFillForm() {
   list.addEventListener('keyup', updateAddButtonState);
   list.addEventListener('change', updateAddButtonState);
 
-    function createNameRow(initialValue, autoFocus) {
+  function createNameRow(initialValue, autoFocus) {
     var row = document.createElement('div');
     row.className = 'name-input-row' + (initialValue ? '' : ' is-empty');
     row.innerHTML = '<input type="text" class="rsvp-pill-input name-input" placeholder="Enter full name" value="' + (initialValue || '') + '">' +
@@ -1316,8 +1188,8 @@ function testAutoFillForm() {
 
 
 
-<script src="js/spa-nav.js?v=20000"></script>
-<script src="js/global-audio.js?v=20000"></script>
+<script src="js/spa-nav.js?v=20100"></script>
+<script src="js/global-audio.js?v=20100"></script>
 
 
 
