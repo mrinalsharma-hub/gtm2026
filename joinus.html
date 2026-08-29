@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20500">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20500">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=20500">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20600">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20600">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=20600">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20500">
+<link rel="stylesheet" href="css/site.css?v=20600">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20500') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20600') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -888,7 +888,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=20500"></script>
+<script src="js/site.js?v=20600"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1203,7 +1203,7 @@ function handleEditRSVP() {
       }
     }
 
-    var p=new URLSearchParams();
+        var p=new URLSearchParams();
     p.append(RSVP_CONFIG.entries.name,names.length?names.join(', '):'Declined');
     if(contact)p.append(RSVP_CONFIG.entries.contact,contact);
     var attendingVal = ATTENDING_FORM_MAP[attending.value] || attending.value;
@@ -1221,17 +1221,60 @@ function handleEditRSVP() {
     if (submitBtn) submitBtn.textContent = 'Sending…';
     status.textContent='Sending…';
 
-    fetch('https://docs.google.com/forms/d/e/'+RSVP_CONFIG.formId+'/formResponse',{
-      method:'POST',
-      mode:'no-cors',
-      headers:{'Content-Type':'application/x-www-form-urlencoded'},
-      body:p.toString()
-    }).then(function(){
+    var formUrl = 'https://docs.google.com/forms/d/e/' + RSVP_CONFIG.formId + '/formResponse';
+
+    // ── 1. Guaranteed Native Hidden Iframe Form POST ──
+    try {
+      var iframeName = 'gform_sink_' + Date.now();
+      var iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.id = iframeName;
+      iframe.style.display = 'none';
+      iframe.style.position = 'absolute';
+      iframe.style.width = '0';
+      iframe.style.height = '0';
+      iframe.style.border = 'none';
+      document.body.appendChild(iframe);
+
+      var hiddenForm = document.createElement('form');
+      hiddenForm.target = iframeName;
+      hiddenForm.action = formUrl;
+      hiddenForm.method = 'POST';
+      hiddenForm.style.display = 'none';
+
+      Array.from(p.entries()).forEach(function(pair) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = pair[0];
+        input.value = pair[1];
+        hiddenForm.appendChild(input);
+      });
+
+      document.body.appendChild(hiddenForm);
+      hiddenForm.submit();
+
+      setTimeout(function() {
+        try { hiddenForm.remove(); } catch(e) {}
+        try { iframe.remove(); } catch(e) {}
+      }, 4000);
+    } catch(err) {
+      console.warn('Iframe submit error:', err);
+    }
+
+    // ── 2. Parallel No-Cors Fetch Dispatch ──
+    try {
+      fetch(formUrl, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: p.toString()
+      }).catch(function(e) { console.warn('Fetch notice:', e); });
+    } catch(e) {}
+
+    // Show Confirmation screen
+    setTimeout(function() {
       showConfirmationScreen();
-    }).catch(function(){
-      if (submitBtn) submitBtn.textContent = isEditMode ? 'SAVE RSVP' : 'SEND RSVP';
-      status.textContent='Something went wrong — please try again, or write to us directly.';
-    });
+    }, 450);
   });
 })();
 </script>
@@ -1246,8 +1289,8 @@ function handleEditRSVP() {
 
 
 
-<script src="js/spa-nav.js?v=20500"></script>
-<script src="js/global-audio.js?v=20500"></script>
+<script src="js/spa-nav.js?v=20600"></script>
+<script src="js/global-audio.js?v=20600"></script>
 
 
 

@@ -108,7 +108,7 @@
 
   function prefetchPage(url) {
     if (!url || pageCache[url]) return;
-    fetch(url)
+    fetch(url + (url.indexOf("?") !== -1 ? "&" : "?") + "_spa=" + Date.now())
       .then(function(res) { return res.text(); })
       .then(function(html) { pageCache[url] = html; })
       .catch(function() {});
@@ -250,7 +250,7 @@
     if (pageCache[targetUrl]) {
       applyHTML(pageCache[targetUrl]);
     } else {
-      fetch(targetUrl)
+      fetch(targetUrl + (targetUrl.indexOf("?") !== -1 ? "&" : "?") + "_spa=" + Date.now())
         .then(function(res) {
           if (!res.ok) throw new Error('Page fetch failed');
           return res.text();
