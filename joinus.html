@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20300">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20300">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=20300">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20400">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20400">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=20400">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20300">
+<link rel="stylesheet" href="css/site.css?v=20400">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20300') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20400') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -871,25 +871,32 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=20300"></script>
+<script src="js/site.js?v=20400"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
    Checkbox values are mapped to match the Form's option strings exactly. */
 var RSVP_CONFIG={
-  formId:"1FAIpQLSfeO8PSZsK5uh-BZzMEa5SIlpMaKwp1fx9R5dhrdmgSYiibVg",
+  formId:"1FAIpQLSdhC4wl6KT7sh4t64caDBOr_hPhlprHNQsQI3R1huuCSIpz5w",
   entries:{
-    name:"entry.874918285",
-    contact:"entry.2141331214",
-    attending:"entry.1260390804",
-    guests:"entry.530695183",
-    events:"entry.1296232095",
-    dietary:"entry.154148020",
-    message:"entry.1246319647"
+    name:"entry.1220123806",
+    contact:"entry.1196748619",
+    attending:"entry.1202466939",
+    guests:"entry.2026040272",
+    events:"entry.491624501",
+    dietary:"entry.1705884968",
+    message:"entry.1360374264"
   }
 };
 
-/* Exact option strings expected by Google Form checkboxes */
+/* Exact option strings expected by Google Form radio and checkboxes */
+var ATTENDING_FORM_MAP = {
+  'Joyfully accept': "Yes, can't wait",
+  'Regretfully decline': "Sorry, we can't make it",
+  "Yes, can't wait": "Yes, can't wait",
+  "Sorry, we can't make it": "Sorry, we can't make it"
+};
+
 var EVENT_FORM_MAP = {
   'Mehndi Night • Fri, Nov 20': 'Mehndi Night · Friday Nov 20, 2026',
   'Day Wedding • Sat, Nov 21': 'Day Wedding · Saturday Nov 21, 2026',
@@ -1182,7 +1189,8 @@ function handleEditRSVP() {
     var p=new URLSearchParams();
     p.append(RSVP_CONFIG.entries.name,names.length?names.join(', '):'Declined');
     if(contact)p.append(RSVP_CONFIG.entries.contact,contact);
-    p.append(RSVP_CONFIG.entries.attending,attending.value);
+    var attendingVal = ATTENDING_FORM_MAP[attending.value] || attending.value;
+    p.append(RSVP_CONFIG.entries.attending, attendingVal);
     p.append(RSVP_CONFIG.entries.guests,String(names.length||0));
     events.forEach(function(c){
       var formVal = EVENT_FORM_MAP[c.value] || c.value;
@@ -1237,8 +1245,8 @@ function handleEditRSVP() {
 
 
 
-<script src="js/spa-nav.js?v=20300"></script>
-<script src="js/global-audio.js?v=20300"></script>
+<script src="js/spa-nav.js?v=20400"></script>
+<script src="js/global-audio.js?v=20400"></script>
 
 
 
