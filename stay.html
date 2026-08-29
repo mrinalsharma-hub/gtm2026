@@ -32,38 +32,52 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
-<title>Travel &amp; Stay · Garima weds Mrinal</title>
-<meta name="description" content="How to reach Nainital by rail, air and road — and what to pack for the hills in November">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=21000">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=21000">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=21000">
+<title>Travel &amp; Stay · Garima &amp; Mrinal — Nainital 2026</title>
+<meta name="description" content="How to reach Nainital by rail, air, and road — accommodation and packing guide for November 2026.">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=21100">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=21100">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=21100">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lustria&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=21000">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="images/Event_Flowers.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="css/site.css?v=21100">
+
 <style>
 :root {
   color-scheme: dark;
+  --theme-color: #A71F23;
 }
-* {
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
 }
+
 *::-webkit-scrollbar,
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
+div::-webkit-scrollbar,
 main::-webkit-scrollbar,
-div::-webkit-scrollbar {
+.schedule-page-wrap::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
   background: transparent !important;
 }
+
 html {
   width: 100% !important;
   height: 100% !important;
   height: 100dvh !important;
-  background: #AC2525 !important;
+  background: #A71F23 !important;
   background-color: #A71F23 !important;
   overflow: hidden !important;
   scrollbar-width: none !important;
@@ -78,157 +92,493 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #AC2525 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
+  background: #A71F23 !important;
   background-color: #A71F23 !important;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  color: #FFFFFF;
+  font-family: 'Cinzel', serif;
   overflow: hidden !important;
   overscroll-behavior: none !important;
   touch-action: none !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
+  display: flex;
+  justify-content: center;
 }
 
-body {
-  position: fixed !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  height: 100dvh !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #A11E21 0%, #881818 35%, #701210 65%, #620E0B 100%) !important;
-  background-color: #620E0B !important;
-  color: #FFFFFF !important;
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  overflow: hidden !important;
-  overscroll-behavior: none !important;
-  touch-action: none !important;
+/* ── 1. Page Background Canvas (#FFF5DF + Subtle Linen Grain + Botanical Lines) ── */
+.schedule-bg-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  background: #FFF5DF !important;
+  background-color: #FFF5DF !important;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
 }
 
-main {
+.schedule-bg-layer::before {
+  display: none !important;
+}
+
+.schedule-bg-layer::after {
+  display: block !important;
+  content: "" !important;
   position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-  bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-y: contain !important;
-  padding-bottom: 40px !important;
-  touch-action: pan-y !important;
-  transform: translate3d(0, 0, 0) !important;
-  -webkit-transform: translate3d(0, 0, 0) !important;
-  background: transparent !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='finePaperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.25  0 0 0 0 0.20  0 0 0 0 0.15  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23finePaperGrain)'/%3E%3C/svg%3E") !important;
+  background-repeat: repeat !important;
+  background-size: 180px 180px !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.7 !important;
+  pointer-events: none !important;
 }
 
-.hero {
-  background: transparent !important;
+.events-botanical-art-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('images/events_botanical_tonal_lines.webp?v=21100') !important;
+  background-repeat: repeat !important;
+  background-position: top center !important;
+  background-size: 418px 418px !important;
+  opacity: 0.32 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* ── 2. Edge-to-Edge Content Container (Smooth Native App Scroll Viewport) ── */
+.schedule-page-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: calc(100px + env(safe-area-inset-bottom, 20px));
+  touch-action: pan-y;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+/* ── 3. Top Flowers (Zero Top Truncation & Botanical Sunlight Shadows) ── */
+.schedule-flowers-top {
+  filter: drop-shadow(-6px 14px 28px rgba(145, 95, 45, 0.18)) drop-shadow(-3px 7px 14px rgba(165, 110, 55, 0.12)) drop-shadow(-1px 2px 4px rgba(130, 80, 40, 0.08));
+  position: relative;
+  margin-top: 0;
+  width: min(340px, 85vw);
+  height: auto;
+  pointer-events: none;
+  z-index: 3;
+  transform-origin: 58% top;
+  animation: gentleFloralBreeze 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+  will-change: transform;
+}
+
+.schedule-flowers-top img,
+.schedule-flowers-top picture {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  aspect-ratio: 2115 / 2559;
+}
+
+@keyframes gentleFloralBreeze {
+  0% { transform: rotate(0deg) translateY(0px); }
+  30% { transform: rotate(1.2deg) translateY(-1px) skewX(-0.4deg); }
+  70% { transform: rotate(-0.8deg) translateY(-2px) skewX(0.3deg); }
+  100% { transform: rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
+}
+
+/* ── 4. Header: The Travel & Stay ── */
+.schedule-header {
+  text-align: center;
+  margin-top: -100px;
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  max-width: 440px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule-title-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.schedule-script-the {
+  font-family: 'WindSong', cursive !important;
+  font-size: clamp(64px, 16vw, 78px);
+  font-weight: 400;
+  line-height: 1.2 !important;
+  padding: 16px 36px 8px 24px !important;
+  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.12));
+  display: inline-block !important;
+  margin-bottom: -30px;
+  text-transform: lowercase !important;
+  z-index: 2;
+  overflow: visible !important;
+  box-sizing: content-box !important;
+}
+
+.schedule-name-top {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(50px, 12.5vw, 62px);
+  font-weight: 400;
+  line-height: 0.86 !important;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(167, 31, 35, 0.15));
+  text-transform: uppercase;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.schedule-name-bottom {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(50px, 12.5vw, 62px);
+  font-weight: 400;
+  line-height: 0.86 !important;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(167, 31, 35, 0.15));
+  text-transform: uppercase;
+  margin-top: -4px !important;
+  padding: 0 !important;
+}
+
+.stay-hero-sub {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: 0.010em;
+  color: #3D2E26;
+  max-width: 360px;
+  margin: 18px auto 0;
+  text-align: center;
+}
+
+/* ── 5. Travel & Stay Cards Feed (Luxury Editorial Cards) ── */
+.schedule-events-feed {
+  width: 100%;
+  max-width: 440px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: relative;
+  z-index: 3;
+}
+
+.schedule-event-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(167, 31, 35, 0.12);
+  border-radius: 24px;
+  padding: 26px 22px;
+  box-shadow: 0 10px 30px rgba(110, 15, 18, 0.06), 0 2px 8px rgba(60, 40, 25, 0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.event-eyebrow {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #0b4c6d;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  background: rgba(11, 76, 109, 0.07);
+  border: 1px solid rgba(11, 76, 109, 0.15);
+  padding: 4px 14px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.event-title {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.event-desc {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.45;
+  letter-spacing: 0.010em;
+  color: #3D2E26;
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.event-meta-wrap {
+  width: 100%;
+  max-width: 340px;
+  margin: 14px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.event-meta-row {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.45;
+  color: #3D2E26;
+}
+
+.event-meta-row strong {
+  font-family: 'Spectral', Georgia, serif;
+  color: #0b4c6d;
+  font-weight: 600;
+}
+
+.event-meta-row a {
+  color: #0b4c6d;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease;
+}
+
+.event-meta-row a:hover {
+  color: #A71F23;
+}
+
+.stay-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: #FFFFFF !important;
+  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%) !important;
+  border: none;
+  border-radius: 28px;
+  padding: 12px 28px;
+  margin-top: 16px;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(167, 31, 35, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  cursor: pointer;
 }
-.hero h1.page-title {
-  color: #FFFFFF !important;
-  text-shadow: 0 2px 14px rgba(0,0,0,0.6) !important;
+
+.stay-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(167, 31, 35, 0.35);
+  opacity: 0.95;
 }
-.hero .sub {
-  color: rgba(255, 255, 255, 0.88) !important;
+
+.stay-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(167, 31, 35, 0.20);
 }
-.flourish path, .flourish circle {
-  stroke: #E5A93C !important;
+
+.schedule-separator {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 4px 0;
 }
-.flourish .fill {
-  fill: #E5A93C !important;
+
+.schedule-separator span {
+  width: 4px;
+  height: 4px;
+  background-color: #A71F23;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.45;
+}
+
+.schedule-separator .sep-diamond {
+  width: 7px;
+  height: 7px;
+  border-radius: 1px;
+  transform: rotate(45deg);
+  background-color: #A71F23;
+  opacity: 0.75;
+  box-shadow: 0 0 6px rgba(167, 31, 35, 0.35);
 }
 </style>
 </head>
 <body>
 
-<!-- ── 1. Sole Attached Gradient Background Layer ── -->
-<div class="stay-bg-layer" aria-hidden="true"></div>
+<!-- ── 1. Architectural Cotton-Rag Paper Background Layer ── -->
+<div class="schedule-bg-layer" aria-hidden="true">
+  <div class="events-botanical-art-layer" aria-hidden="true"></div>
+</div>
 
-<main>
-  <section class="hero on-red">
-    <h1 class="page-title">Travel &amp; Stay</h1>
-    <p class="sub">Nainital sits at 2,084 meters, nested around a pear-shaped, natural freshwater lake.<br>Here is the easiest way to reach us.</p>
-    <svg class="flourish" viewBox="0 0 270 40" aria-hidden="true">
-      <path d="M10,20 C60,20 90,20 125,20"/>
-      <path d="M260,20 C210,20 180,20 145,20"/>
-      <path d="M135,28 C129,22 129,12 135,6 C141,12 141,22 135,28 Z"/>
-      <circle class="fill" cx="10" cy="20" r="2.6"/>
-      <circle class="fill" cx="260" cy="20" r="2.6"/>
-    </svg>
-  </section>
+<!-- ── 2. Main Page Content Wrapper ── -->
+<main class="schedule-page-wrap">
 
-  <section class="section">
-    <h2 class="r">Three ways in</h2>
-    <div class="cards">
-      <div class="card r">
-        <svg class="card-icon" viewBox="0 0 80 80" aria-hidden="true">
-          <path d="M12,50 L68,50 M18,50 L18,30 L62,30 L62,50"/>
-          <path d="M24,30 L24,22 L56,22 L56,30"/>
-          <circle cx="26" cy="58" r="4"/><circle cx="54" cy="58" r="4"/>
-          <path d="M8,66 L72,66"/>
-        </svg>
-        <h3>By Rail</h3>
-        <p><strong>Kathgodam (KGM)</strong> is the nearest railhead — about 23 km and a one-hour taxi ride up the hill. Overnight trains run from Delhi; taxis and shared cabs wait at the station.</p>
-      </div>
-      <div class="card r">
-        <svg class="card-icon" viewBox="0 0 80 80" aria-hidden="true">
-          <path d="M10,46 L70,34 M40,40 L36,16 L42,16 L48,38"/>
-          <path d="M40,40 L28,62 L34,62 L46,42"/>
-          <circle class="fill" cx="70" cy="34" r="2.6"/>
-        </svg>
-        <h3>By Air</h3>
-        <p><strong>Pantnagar (PGH)</strong> is the closest airport, around 65 km / two hours away, with flights from Delhi. Flying into <strong>Delhi (DEL)</strong> and driving or taking the train up is often easier.</p>
-      </div>
-      <div class="card r">
-        <svg class="card-icon" viewBox="0 0 80 80" aria-hidden="true">
-          <path d="M8,58 C24,58 26,42 40,42 C54,42 56,58 72,58"/>
-          <path d="M16,58 L16,52 M64,58 L64,52"/>
-          <path d="M20,34 L30,24 M50,24 L60,34"/>
-          <circle class="fill" cx="40" cy="30" r="2.6"/>
-        </svg>
-        <h3>By Road</h3>
-        <p>From <strong>Delhi</strong> it is roughly 300 km — six and a half to eight hours via Moradabad and Haldwani. The last 35 km are winding hill roads; carry motion-sickness tablets if you need them.</p>
-      </div>
+  <!-- ── Top Flowers ── -->
+  <div class="schedule-flowers-top">
+    <picture>
+      <source srcset="images/Event_Flowers.webp" type="image/webp">
+      <img src="images/Event_Flowers.png" alt="Botanical Wedding Flowers" width="2115" height="2559">
+    </picture>
+  </div>
+
+  <!-- ── Header: The Travel & Stay ── -->
+  <header class="schedule-header">
+    <div class="schedule-title-lockup">
+      <span class="schedule-script-the">the</span>
+      <h1 class="schedule-name-top">TRAVEL &amp;</h1>
+      <h1 class="schedule-name-bottom">STAY</h1>
     </div>
-    <a class="btn btn-red r" href="https://maps.google.com/?q=Nainital,+Uttarakhand" target="_blank" rel="noopener">Open in Google Maps</a>
-  </section>
+    <p class="stay-hero-sub">
+      Nainital sits at 2,084 meters, nested around a pear-shaped, natural freshwater lake. Here is the easiest way to reach us.
+    </p>
+  </header>
 
-  <div class="dotted-rule r" aria-hidden="true">
-    <svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg>
+  <!-- ── Travel & Stay Feed ── -->
+  <div class="schedule-events-feed">
+
+    <!-- Section 1: By Rail -->
+    <article class="schedule-event-card">
+      <p class="event-eyebrow">NEAREST RAILHEAD · KATHGODAM (KGM)</p>
+      <h2 class="event-title">By Rail</h2>
+      <p class="event-desc">
+        Kathgodam (KGM) is the nearest railway station — about 23 km and a scenic one-hour taxi drive up the hill.
+      </p>
+      <div class="event-meta-wrap">
+        <p class="event-meta-row"><strong>Direct Trains:</strong> Overnight and day trains run from Delhi (Ranikhet Express, Kathgodam Shatabdi Express).</p>
+        <p class="event-meta-row"><strong>Local Transit:</strong> Pre-paid taxis and cabs are readily available at the station exit.</p>
+      </div>
+    </article>
+
+    <div class="schedule-separator" aria-hidden="true">
+      <span></span><span class="sep-diamond"></span><span></span>
+    </div>
+
+    <!-- Section 2: By Air -->
+    <article class="schedule-event-card">
+      <p class="event-eyebrow">CLOSEST AIRPORTS · PANTNAGAR &amp; DELHI</p>
+      <h2 class="event-title">By Air</h2>
+      <p class="event-desc">
+        Pantnagar (PGH) is the closest airport (~65 km / 2 hours away) with scheduled domestic flights from New Delhi.
+      </p>
+      <div class="event-meta-wrap">
+        <p class="event-meta-row"><strong>Alternative:</strong> Flying into New Delhi (DEL) and taking the train or private taxi up is the most frequent and reliable route.</p>
+      </div>
+    </article>
+
+    <div class="schedule-separator" aria-hidden="true">
+      <span></span><span class="sep-diamond"></span><span></span>
+    </div>
+
+    <!-- Section 3: By Road -->
+    <article class="schedule-event-card">
+      <p class="event-eyebrow">SCENIC MOUNTAIN HIGHWAY · ~300 KM</p>
+      <h2 class="event-title">By Road</h2>
+      <p class="event-desc">
+        From Delhi, it is roughly 300 km (6.5 to 8 hours) via Moradabad, Rampur, Bazpur, and Haldwani.
+      </p>
+      <div class="event-meta-wrap">
+        <p class="event-meta-row"><strong>Hill Drive:</strong> The final 35 km ascends winding mountain roads. Keep motion-sickness tablets handy if you need them.</p>
+      </div>
+      <a class="stay-btn" href="https://maps.google.com/?q=Nainital,+Uttarakhand" target="_blank" rel="noopener">Open in Google Maps</a>
+    </article>
+
+    <div class="schedule-separator" aria-hidden="true">
+      <span></span><span class="sep-diamond"></span><span></span>
+    </div>
+
+    <!-- Section 4: Weather & Packing -->
+    <article class="schedule-event-card">
+      <p class="event-eyebrow">NOVEMBER CLIMATE · 2°C TO 15°C</p>
+      <h2 class="event-title">Weather &amp; Packing</h2>
+      <p class="event-desc">
+        Expect crisp, sunny mountain days around 10–15 °C and chilly evenings dipping to 2–7 °C.
+      </p>
+      <div class="event-meta-wrap">
+        <p class="event-meta-row"><strong>What to pack:</strong> Heavy woollens, a warm evening coat or shawl, and comfortable walking shoes — Nainital is best explored on foot.</p>
+      </div>
+    </article>
+
+    <div class="schedule-separator" aria-hidden="true">
+      <span></span><span class="sep-diamond"></span><span></span>
+    </div>
+
+    <!-- Section 5: Accommodation -->
+    <article class="schedule-event-card">
+      <p class="event-eyebrow">GUEST ACCOMMODATION</p>
+      <h2 class="event-title">Stay Arrangements</h2>
+      <p class="event-desc">
+        We are coordinating stay details for our guests and will share your specific hotel and room allocation directly with you.
+      </p>
+      <div class="event-meta-wrap">
+        <p class="event-meta-row"><strong>Help us plan:</strong> Please let us know if you're coming so we can finalize the rooms.</p>
+      </div>
+      <a class="stay-btn" href="joinus.html">RSVP Now</a>
+    </article>
+
   </div>
 
-  <section class="section">
-    <h2 class="r">Weather &amp; packing</h2>
-    <p class="sub r">
-      Expect crisp, sunny days around 10–15&nbsp;°C and cold nights that can dip to 2–7&nbsp;°C.
-      Pack proper woollens, a warm jacket for the evenings, and comfortable shoes —
-      Nainital is a town best wandered on foot.
-    </p>
-  </section>
-
-  <div class="dotted-rule r" aria-hidden="true">
-    <svg viewBox="0 0 64 64"><g class="fill"><circle cx="32" cy="32" r="4"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(90 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(180 32 32)"/><path d="M32,26 C27,18 27,8 32,3 C37,8 37,18 32,26 Z" transform="rotate(270 32 32)"/></g></svg>
-  </div>
-
-  <section class="section">
-    <h2 class="r">Accommodation</h2>
-    <p class="sub r">
-      We are arranging stay details for our guests and will publish them here shortly.
-      Tell us you're coming in the meantime — it helps us plan the rooms.
-    </p>
-    <a class="btn btn-red r" href="joinus.html">RSVP</a>
-  </section>
 </main>
 
 <!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container" role="tablist">
-    <a href="index.html" class="nav-tab" role="tab" aria-selected="false" aria-label="G&amp;M">
+    <a href="G&M.html" class="nav-tab" role="tab" aria-selected="false" aria-label="G&amp;M">
       <div class="nav-pill-wrapper">
         <div class="nav-pill"></div>
         <svg class="nav-icon" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -267,17 +617,13 @@ main {
   </div>
 </nav>
 
-<script src="js/site.js?v=21000"></script>
-
-
-<!-- ── Native Micro Music Player Button (Always Fixed Top-Right) ── -->
 <!-- ── Global Horizontal Music Player Pill ── -->
 <div id="global-music-player" class="global-audio-pill" role="button" aria-label="Toggle Music">
   <div class="audio-icon-wrap">
-    <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#7E1216">
+    <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#0b4c6d">
       <path d="M8 5v14l11-7z"/>
     </svg>
-    <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#7E1216">
+    <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#0b4c6d">
       <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
     </svg>
   </div>
@@ -288,13 +634,12 @@ main {
   </div>
 </div>
 
+<!-- ── Audio Element ── -->
 <audio id="bg-music" loop preload="auto" playsinline>
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-
-
-<script src="js/spa-nav.js?v=21000"></script>
-<script src="js/global-audio.js?v=21000"></script>
+<script src="js/spa-nav.js?v=21100"></script>
+<script src="js/global-audio.js?v=21100"></script>
 </body>
 </html>
