@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=16800">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=16800">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=16800">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=16900">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=16900">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=16900">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=16800">
+<link rel="stylesheet" href="css/site.css?v=16900">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -621,7 +621,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=16800') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=16900') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 460px 460px !important;
@@ -648,14 +648,15 @@ main.paper, main, .rsvp-page-wrap {
 
 
 
-/* ── Handmade Paper Engraved Letterpress Variations ── */
 
-/* Default / Option A: Natural Cotton-Rag (Bone White Bite) */
-body.emboss-handmade-a .rsvp-title,
-body.emboss-handmade-a .rsvp-card-title,
-body.emboss-handmade-a .rsvp-subtitle,
-body.emboss-handmade-a .rsvp-option-text,
-body.emboss-handmade-a .rsvp-event-name,
+/* ── Hybrid Embossed + Engraved Style Variations ── */
+
+/* Default / Hybrid 1: Sculpted Multi-Facet Relief (Compound on All Text) */
+body.hybrid-sculpted .rsvp-title,
+body.hybrid-sculpted .rsvp-card-title,
+body.hybrid-sculpted .rsvp-subtitle,
+body.hybrid-sculpted .rsvp-option-text,
+body.hybrid-sculpted .rsvp-event-name,
 .rsvp-title,
 .rsvp-card-title,
 .rsvp-subtitle,
@@ -663,51 +664,62 @@ body.emboss-handmade-a .rsvp-event-name,
 .rsvp-event-name {
   color: #FAF4EB !important;
   text-shadow: 
+    -0.6px -0.6px 0.8px rgba(18, 2, 4, 0.50),
+     0.0px -0.8px 0.5px rgba(255, 255, 255, 0.25),
+     0.0px  1.0px 1.5px rgba(25, 2, 4, 0.38),
+     0.6px  0.6px 0.8px rgba(255, 245, 230, 0.16) !important;
+}
+body.hybrid-sculpted .rsvp-event-date,
+.rsvp-event-date {
+  color: rgba(250, 244, 235, 0.42) !important;
+  text-shadow: 
+    -0.4px -0.4px 0.6px rgba(18, 2, 4, 0.35),
+     0.4px  0.4px 0.6px rgba(255, 245, 230, 0.12) !important;
+}
+
+/* Hybrid 2: Hierarchical (Embossed Title + Engraved Cotton Body) */
+body.hybrid-hierarchical .rsvp-title {
+  /* Raised embossed title */
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 -0.8px 0.5px rgba(255, 255, 255, 0.35),
+    0  1.5px 2.5px rgba(25, 2, 4, 0.52),
+    0  4.0px 12.0px rgba(18, 2, 3, 0.30) !important;
+}
+body.hybrid-hierarchical .rsvp-card-title,
+body.hybrid-hierarchical .rsvp-subtitle,
+body.hybrid-hierarchical .rsvp-option-text,
+body.hybrid-hierarchical .rsvp-event-name {
+  /* Engraved cotton bite for body/cards */
+  color: #FAF4EB !important;
+  text-shadow: 
     -0.5px -0.5px 0.8px rgba(20, 2, 4, 0.48),
      0.5px  0.6px 0.8px rgba(255, 245, 230, 0.16) !important;
 }
-body.emboss-handmade-a .rsvp-event-date,
-.rsvp-event-date {
+body.hybrid-hierarchical .rsvp-event-date {
   color: rgba(250, 244, 235, 0.42) !important;
   text-shadow: 
     -0.4px -0.4px 0.6px rgba(20, 2, 4, 0.35),
      0.4px  0.4px 0.6px rgba(255, 245, 230, 0.12) !important;
 }
 
-/* Option B: Deep Plate Press (Heavyweight 450gsm Paper) */
-body.emboss-handmade-b .rsvp-title,
-body.emboss-handmade-b .rsvp-card-title,
-body.emboss-handmade-b .rsvp-subtitle,
-body.emboss-handmade-b .rsvp-option-text,
-body.emboss-handmade-b .rsvp-event-name {
+/* Hybrid 3: Chiaroscuro Ridge (Top Cavity + Luminous Raised Lip) */
+body.hybrid-chiaroscuro .rsvp-title,
+body.hybrid-chiaroscuro .rsvp-card-title,
+body.hybrid-chiaroscuro .rsvp-subtitle,
+body.hybrid-chiaroscuro .rsvp-option-text,
+body.hybrid-chiaroscuro .rsvp-event-name {
   color: #FFFDF8 !important;
   text-shadow: 
-    -0.75px -0.75px 1.0px rgba(18, 2, 3, 0.55),
-     0.75px  0.85px 1.0px rgba(255, 248, 235, 0.20) !important;
+    0 -0.8px 0.6px rgba(15, 2, 3, 0.60),
+    0  1.0px 0.8px rgba(255, 248, 235, 0.26),
+    0  2.5px 5.0px rgba(20, 2, 4, 0.28) !important;
 }
-body.emboss-handmade-b .rsvp-event-date {
+body.hybrid-chiaroscuro .rsvp-event-date {
   color: rgba(255, 253, 248, 0.45) !important;
   text-shadow: 
-    -0.5px -0.5px 0.8px rgba(18, 2, 3, 0.40),
-     0.5px  0.6px 0.8px rgba(255, 248, 235, 0.15) !important;
-}
-
-/* Option C: Soft Matte Ink Sink (Whisper Subtle) */
-body.emboss-handmade-c .rsvp-title,
-body.emboss-handmade-c .rsvp-card-title,
-body.emboss-handmade-c .rsvp-subtitle,
-body.emboss-handmade-c .rsvp-option-text,
-body.emboss-handmade-c .rsvp-event-name {
-  color: rgba(250, 244, 235, 0.94) !important;
-  text-shadow: 
-    -0.4px -0.4px 0.5px rgba(25, 3, 5, 0.38),
-     0.4px  0.5px 0.5px rgba(255, 250, 242, 0.12) !important;
-}
-body.emboss-handmade-c .rsvp-event-date {
-  color: rgba(250, 244, 235, 0.40) !important;
-  text-shadow: 
-    -0.3px -0.3px 0.4px rgba(25, 3, 5, 0.30),
-     0.3px  0.4px 0.4px rgba(255, 250, 242, 0.10) !important;
+    0 -0.5px 0.5px rgba(15, 2, 3, 0.40),
+    0  0.8px 0.6px rgba(255, 248, 235, 0.18) !important;
 }
 
 /* Option None: Flat Pure White */
@@ -732,10 +744,10 @@ body.emboss-none .rsvp-event-date {
   gap: 8px !important;
   margin: 16px auto 10px auto !important;
   width: 100% !important;
-  max-width: 440px !important;
+  max-width: 480px !important;
   padding: 10px 14px !important;
-  background: rgba(0, 0, 0, 0.25) !important;
-  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(0, 0, 0, 0.28) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   border-radius: 16px !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
@@ -747,7 +759,7 @@ body.emboss-none .rsvp-event-date {
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 12px !important;
   font-weight: 500 !important;
-  color: rgba(255, 255, 255, 0.75) !important;
+  color: rgba(255, 255, 255, 0.80) !important;
   letter-spacing: 0.08em !important;
   text-transform: uppercase !important;
 }
@@ -789,7 +801,7 @@ body.emboss-none .rsvp-event-date {
 
 </style>
 </head>
-<body class="emboss-handmade-a">
+<body class="hybrid-sculpted">
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true">
@@ -801,14 +813,14 @@ body.emboss-none .rsvp-event-date {
   <!-- Centered Hero Header with Top Aipan Border & Lakshmi Pada Mandala Centerpiece -->
 
     
-    <!-- Interactive Handmade Paper Engraved Tester -->
-    <div class="emboss-tester-panel" aria-label="Handmade Paper Engraved Style Tester">
-      <span class="emboss-tester-title">Test Handmade Paper Engraved Styles:</span>
+    <!-- Interactive Hybrid Embossed + Engraved Style Tester -->
+    <div class="emboss-tester-panel" aria-label="Hybrid Embossed + Engraved Style Tester">
+      <span class="emboss-tester-title">Test Hybrid Embossed + Engraved Styles:</span>
       <div class="emboss-tester-buttons">
-        <button type="button" class="emboss-btn active" id="btn-emboss-a" onclick="setEmbossOption('a')">A: Natural Cotton</button>
-        <button type="button" class="emboss-btn" id="btn-emboss-b" onclick="setEmbossOption('b')">B: Deep Plate Press</button>
-        <button type="button" class="emboss-btn" id="btn-emboss-c" onclick="setEmbossOption('c')">C: Soft Matte Sink</button>
-        <button type="button" class="emboss-btn" id="btn-emboss-none" onclick="setEmbossOption('none')">Off: Flat White</button>
+        <button type="button" class="emboss-btn active" id="btn-hybrid-1" onclick="setHybridOption('sculpted')">1: Sculpted Relief</button>
+        <button type="button" class="emboss-btn" id="btn-hybrid-2" onclick="setHybridOption('hierarchical')">2: Hierarchical Mix</button>
+        <button type="button" class="emboss-btn" id="btn-hybrid-3" onclick="setHybridOption('chiaroscuro')">3: Chiaroscuro Ridge</button>
+        <button type="button" class="emboss-btn" id="btn-hybrid-none" onclick="setHybridOption('none')">Off: Flat White</button>
       </div>
     </div>
 
@@ -975,7 +987,7 @@ body.emboss-none .rsvp-event-date {
   </div>
 </nav>
 
-<script src="js/site.js?v=16800"></script>
+<script src="js/site.js?v=16900"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1135,31 +1147,31 @@ form.addEventListener('submit',function(e){
 
 
 
-<script src="js/spa-nav.js?v=16800"></script>
-<script src="js/global-audio.js?v=16800"></script>
+<script src="js/spa-nav.js?v=16900"></script>
+<script src="js/global-audio.js?v=16900"></script>
 
 
 <script>
-function setEmbossOption(opt) {
-  document.body.classList.remove('emboss-handmade-a', 'emboss-handmade-b', 'emboss-handmade-c', 'emboss-none');
+function setHybridOption(opt) {
+  document.body.classList.remove('hybrid-sculpted', 'hybrid-hierarchical', 'hybrid-chiaroscuro', 'emboss-none');
   var btns = document.querySelectorAll('.emboss-btn');
   btns.forEach(function(b) { b.classList.remove('active'); });
 
-  if (opt === 'b') {
-    document.body.classList.add('emboss-handmade-b');
-    var b = document.getElementById('btn-emboss-b');
+  if (opt === 'hierarchical') {
+    document.body.classList.add('hybrid-hierarchical');
+    var b = document.getElementById('btn-hybrid-2');
     if (b) b.classList.add('active');
-  } else if (opt === 'c') {
-    document.body.classList.add('emboss-handmade-c');
-    var b = document.getElementById('btn-emboss-c');
+  } else if (opt === 'chiaroscuro') {
+    document.body.classList.add('hybrid-chiaroscuro');
+    var b = document.getElementById('btn-hybrid-3');
     if (b) b.classList.add('active');
   } else if (opt === 'none') {
     document.body.classList.add('emboss-none');
-    var b = document.getElementById('btn-emboss-none');
+    var b = document.getElementById('btn-hybrid-none');
     if (b) b.classList.add('active');
   } else {
-    document.body.classList.add('emboss-handmade-a');
-    var b = document.getElementById('btn-emboss-a');
+    document.body.classList.add('hybrid-sculpted');
+    var b = document.getElementById('btn-hybrid-1');
     if (b) b.classList.add('active');
   }
 }
