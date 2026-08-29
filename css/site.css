@@ -1663,7 +1663,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Individual Field Card */
 .rsvp-card-section {
-  background: rgba(255, 255, 255, 0.04) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
   -webkit-backdrop-filter: blur(8px) !important;
   backdrop-filter: blur(8px) !important;
   border-radius: 12px !important;
@@ -2128,7 +2128,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: none;
   text-align: center;
   padding: 40px 24px !important;
-  background: rgba(255, 255, 255, 0.04) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
   border-radius: 12px !important;
   border: none !important;
   box-shadow: none !important;
