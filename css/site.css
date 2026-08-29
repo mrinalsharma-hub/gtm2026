@@ -2472,3 +2472,15 @@ body.rsvp-page .global-audio-pill .bar,
 .rsvp-page-wrap ~ .global-audio-pill .bar {
   background-color: #7B1115 !important;
 }
+
+
+/* On confirmation screen, hide the RSVP instructions subtitle */
+.rsvp-hero-header.is-confirmed .rsvp-subtitle,
+.rsvp-page-wrap.is-confirmed .rsvp-subtitle,
+body.rsvp-confirmed .rsvp-subtitle {
+  display: none !important;
+}
+
+.rsvp-hero-header.is-confirmed {
+  margin-bottom: 36px !important;
+}
