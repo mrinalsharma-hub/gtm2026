@@ -1655,10 +1655,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-form {
-  display: flex !important;
-  flex-direction: column !important;
-  gap: 8px !important;
-  width: 100% !important;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+.rsvp-form.is-hidden {
+  display: none !important;
+}
+#rsvp-thanks.is-visible {
+  display: block !important;
 }
 
 /* Individual Field Card */

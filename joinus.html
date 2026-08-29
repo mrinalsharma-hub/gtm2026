@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=19700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=19700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=19700">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=19800">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=19800">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=19800">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=19700">
+<link rel="stylesheet" href="css/site.css?v=19800">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=19700') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=19800') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -805,10 +805,10 @@ main.paper, main, .rsvp-page-wrap {
 
   <!-- ── 3. Translucent Cards Container (Figma Match) ── -->
   <div class="rsvp-form-container">
-    <div id="rsvp-thanks">
+        <div id="rsvp-thanks">
       <p class="big">THANK YOU</p>
       <p class="sub">Your response has reached us safely.<br>We can't wait to celebrate with you.</p>
-      <a class="btn btn-red" href="travel.html">Plan your trip</a>
+      <button type="button" id="btn-edit-rsvp" class="btn btn-red rsvp-edit-btn" onclick="handleEditRSVP()">Edit RSVP</button>
     </div>
 
     <form id="rsvp-form" class="rsvp-form" novalidate>
@@ -892,7 +892,7 @@ main.paper, main, .rsvp-page-wrap {
 
       <!-- Submit Button -->
       <div class="rsvp-submit-wrap">
-        <button type="submit" class="rsvp-submit-btn">SEND RSVP</button>
+        <button type="submit" id="btn-submit" class="rsvp-submit-btn">SEND RSVP</button>
         <p id="rsvp-status" role="status"></p>
       </div>
     </form>
@@ -941,7 +941,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=19700"></script>
+<script src="js/site.js?v=19800"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -968,33 +968,85 @@ var EVENT_FORM_MAP = {
   'Delhi Reception • Mon, Nov 23': 'Delhi Reception · Monday Nov 23, 2026'
 };
 
-/* Test functions to preview submit states */
-function testTriggerSuccessScreen() {
+var isEditMode = false;
+
+function showConfirmationScreen() {
   var form = document.getElementById('rsvp-form'),
-      status = document.getElementById('rsvp-status'),
       thanks = document.getElementById('rsvp-thanks'),
+      status = document.getElementById('rsvp-status'),
+      btn = document.getElementById('btn-submit');
+
+  if (form) {
+    form.classList.add('is-hidden');
+    form.style.setProperty('display', 'none', 'important');
+  }
+  if (thanks) {
+    thanks.classList.add('is-visible');
+    thanks.style.setProperty('display', 'block', 'important');
+  }
+  if (status) status.textContent = '';
+  if (btn) btn.textContent = isEditMode ? 'SAVE RSVP' : 'SEND RSVP';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function handleEditRSVP() {
+  var form = document.getElementById('rsvp-form'),
+      thanks = document.getElementById('rsvp-thanks'),
+      status = document.getElementById('rsvp-status'),
+      btn = document.getElementById('btn-submit');
+
+  isEditMode = true;
+
+  if (thanks) {
+    thanks.classList.remove('is-visible');
+    thanks.style.setProperty('display', 'none', 'important');
+  }
+  if (form) {
+    form.classList.remove('is-hidden');
+    form.style.setProperty('display', 'flex', 'important');
+  }
+  if (status) status.textContent = '';
+  if (btn) btn.textContent = 'SAVE RSVP';
+
+  // Smooth scroll to top of form
+  var hero = document.querySelector('.rsvp-hero-header');
+  if (hero) {
+    hero.scrollIntoView({ behavior: 'smooth' });
+  } else {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+/* Tester functions */
+function testTriggerSuccessScreen() {
+  var status = document.getElementById('rsvp-status'),
       btn = document.getElementById('btn-submit');
 
   if (btn) btn.textContent = 'Sending…';
   if (status) status.textContent = 'Sending…';
 
   setTimeout(function() {
-    if (form) form.style.display = 'none';
-    if (thanks) thanks.style.display = 'block';
-    if (status) status.textContent = '';
-    if (btn) btn.textContent = 'Send RSVP';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    showConfirmationScreen();
   }, 600);
 }
 
 function testShowRSVPForm() {
+  isEditMode = false;
   var form = document.getElementById('rsvp-form'),
       thanks = document.getElementById('rsvp-thanks'),
-      status = document.getElementById('rsvp-status');
+      status = document.getElementById('rsvp-status'),
+      btn = document.getElementById('btn-submit');
 
-  if (form) form.style.display = 'flex';
-  if (thanks) thanks.style.display = 'none';
+  if (thanks) {
+    thanks.classList.remove('is-visible');
+    thanks.style.setProperty('display', 'none', 'important');
+  }
+  if (form) {
+    form.classList.remove('is-hidden');
+    form.style.setProperty('display', 'flex', 'important');
+  }
   if (status) status.textContent = '';
+  if (btn) btn.textContent = 'SEND RSVP';
 }
 
 function testAutoFillForm() {
@@ -1008,7 +1060,6 @@ function testAutoFillForm() {
   var msg = document.getElementById('f-msg');
   if (msg) msg.value = 'So thrilled to celebrate with you both! See you in Nainital!';
   
-  // Check all events
   document.querySelectorAll('input[name=events]').forEach(function(cb) {
     cb.checked = true;
   });
@@ -1017,7 +1068,6 @@ function testAutoFillForm() {
 (function(){
   var form=document.getElementById('rsvp-form'),
       status=document.getElementById('rsvp-status'),
-      thanks=document.getElementById('rsvp-thanks'),
       list=document.getElementById('name-list'),
       addBtn=document.getElementById('add-person'),
       submitBtn=document.getElementById('btn-submit'),
@@ -1125,13 +1175,9 @@ function testAutoFillForm() {
       headers:{'Content-Type':'application/x-www-form-urlencoded'},
       body:p.toString()
     }).then(function(){
-      form.style.display='none';
-      thanks.style.display='block';
-      if (submitBtn) submitBtn.textContent = 'Send RSVP';
-      status.textContent = '';
-      window.scrollTo({top:0,behavior:'smooth'});
+      showConfirmationScreen();
     }).catch(function(){
-      if (submitBtn) submitBtn.textContent = 'Send RSVP';
+      if (submitBtn) submitBtn.textContent = isEditMode ? 'SAVE RSVP' : 'SEND RSVP';
       status.textContent='Something went wrong — please try again, or write to us directly.';
     });
   });
@@ -1164,8 +1210,8 @@ function testAutoFillForm() {
 
 
 
-<script src="js/spa-nav.js?v=19700"></script>
-<script src="js/global-audio.js?v=19700"></script>
+<script src="js/spa-nav.js?v=19800"></script>
+<script src="js/global-audio.js?v=19800"></script>
 
 
 
