@@ -34,14 +34,14 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Travel &amp; Stay · Garima &amp; Mrinal — Nainital 2026</title>
 <meta name="description" content="How to reach Nainital by rail, air, and road — accommodation and packing guide for November 2026.">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=22200">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=22200">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=22200">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=22500">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=22500">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=22500">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700;800&family=WindSong&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/Event_Flowers.webp" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="css/site.css?v=22200">
+<link rel="stylesheet" href="css/site.css?v=22500">
 
 <style>
 :root {
@@ -142,7 +142,7 @@ body {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/events_botanical_tonal_lines.webp?v=22200') !important;
+  background-image: url('images/events_botanical_tonal_lines.webp?v=22500') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 418px 418px !important;
@@ -309,35 +309,36 @@ body {
 }
 
 .schedule-event-card {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
   align-items: flex-start !important;
   text-align: left !important;
-  position: relative;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(16px) saturate(180%);
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid rgba(167, 31, 35, 0.12);
-  border-radius: 24px;
-  padding: 26px 22px;
-  box-shadow: 0 10px 30px rgba(110, 15, 18, 0.06), 0 2px 8px rgba(60, 40, 25, 0.04);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative !important;
+  background: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(167, 31, 35, 0.12) !important;
+  border-radius: 24px !important;
+  padding: 28px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0 10px 30px rgba(110, 15, 18, 0.06), 0 2px 8px rgba(60, 40, 25, 0.04) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
 .aipan-plane-icon {
   display: inline-block !important;
   vertical-align: middle !important;
   margin-left: 10px !important;
-  margin-top: -4px !important;
+  margin-top: -3px !important;
   width: 26px !important;
   height: 26px !important;
-  filter: drop-shadow(0 2px 6px rgba(167, 31, 35, 0.20)) !important;
+  filter: drop-shadow(0 2px 5px rgba(167, 31, 35, 0.20)) !important;
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
 }
 
 .schedule-event-card:hover .aipan-plane-icon {
-  transform: translateY(-2px) rotate(4deg) !important;
+  transform: translateY(-3px) translateX(2px) scale(1.05) !important;
 }
 
 .event-title {
@@ -350,7 +351,7 @@ body {
   background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
-  margin: 0 0 16px 0 !important;
+  margin: 0 0 24px 0 !important;
   text-align: left !important;
   width: 100% !important;
   align-self: flex-start !important;
@@ -373,10 +374,10 @@ body {
 .event-meta-wrap {
   width: 100% !important;
   max-width: 100% !important;
-  margin: 14px 0 0 0 !important;
+  margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 20px !important;
   text-align: left !important;
   align-items: flex-start !important;
 }
@@ -395,7 +396,7 @@ body {
 
 .stay-bold-label {
   font-family: 'Spectral', Georgia, serif !important;
-  font-weight: 800 !important;
+  font-weight: 600 !important;
   color: #3D2E26 !important;
 }
 
@@ -515,24 +516,32 @@ body {
       <h2 class="event-title">
         BY AIR
         <svg class="aipan-plane-icon" viewBox="0 0 40 40" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M20 2 C20.8 7 22.5 13 22.5 24 L24.5 31 L20 29.5 L15.5 31 L17.5 24 C17.5 13 19.2 7 20 2 Z" fill="#A71F23" fill-opacity="0.16" stroke="#A71F23" stroke-width="1.3" stroke-linejoin="round"/>
-          <circle cx="20" cy="8" r="1" fill="#A71F23"/>
-          <circle cx="20" cy="13" r="1.1" fill="#A71F23"/>
-          <circle cx="20" cy="18" r="1.1" fill="#A71F23"/>
-          <circle cx="20" cy="23" r="1" fill="#A71F23"/>
-          <path d="M21 14 L36 21.5 C36.8 22 36.8 23 35.8 23 L22 21.5" stroke="#A71F23" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M19 14 L4 21.5 C3.2 22 3.2 23 4.2 23 L18 21.5" stroke="#A71F23" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M22 17 L31 21.8 M22 19.5 L27 22.2" stroke="#A71F23" stroke-width="1" stroke-linecap="round"/>
-          <path d="M18 17 L9 21.8 M18 19.5 L13 22.2" stroke="#A71F23" stroke-width="1" stroke-linecap="round"/>
-          <circle cx="36" cy="22" r="1.3" fill="#A71F23"/>
-          <circle cx="4" cy="22" r="1.3" fill="#A71F23"/>
-          <path d="M20 28 L29 35 C29.6 35.5 29.2 36.2 28.5 36 L20 33.5 L11.5 36 C10.8 36.2 10.4 35.5 11 35 L20 28 Z" fill="#A71F23" fill-opacity="0.22" stroke="#A71F23" stroke-width="1.2" stroke-linejoin="round"/>
-          <circle cx="28.5" cy="35.5" r="1" fill="#A71F23"/>
-          <circle cx="11.5" cy="35.5" r="1" fill="#A71F23"/>
-          <circle cx="20" cy="36" r="1" fill="#A71F23"/>
+          <!-- Ascending Sacred Spindle Fuselage -->
+          <path d="M34 6 C30 9 20 18 11 26 L5 31 L10 30 L18 25 L30 14 C33.5 9.5 35 6.5 34 6 Z" fill="#A71F23" fill-opacity="0.18" stroke="#A71F23" stroke-width="1.3" stroke-linejoin="round"/>
+          <!-- Central Spine Bindu Dots -->
+          <circle cx="31" cy="9.5" r="0.9" fill="#A71F23"/>
+          <circle cx="25" cy="15.5" r="1.1" fill="#A71F23"/>
+          <circle cx="19.5" cy="21" r="1.1" fill="#A71F23"/>
+          <circle cx="14" cy="26" r="0.9" fill="#A71F23"/>
+          <!-- Upper Swept Wing (Sacred Lotus Petal Flare) -->
+          <path d="M24 14 L28 3 C28.6 1.8 30.2 2.2 29.8 3.6 L26 17" stroke="#A71F23" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M25 11 L28.5 5" stroke="#A71F23" stroke-width="0.9" stroke-linecap="round"/>
+          <circle cx="28.5" cy="2.5" r="1.2" fill="#A71F23"/>
+          <!-- Lower Swept Wing with Aipan Flutes -->
+          <path d="M19 19 L8 30 C7 31 5.8 29.8 6.8 28.8 L16 22" stroke="#A71F23" stroke-width="1.3" stroke-linejoin="round" stroke-linecap="round"/>
+          <path d="M17 21 L10 28" stroke="#A71F23" stroke-width="0.9" stroke-linecap="round"/>
+          <circle cx="6.2" cy="30.5" r="1.2" fill="#A71F23"/>
+          <!-- Tail Fins -->
+          <path d="M9 27 L3 30 C2.2 30.5 2.5 31.8 3.5 31.5 L8 29.5" stroke="#A71F23" stroke-width="1.1" stroke-linejoin="round"/>
+          <path d="M12 30 L8 36 C7.5 36.8 6.2 36.5 6.5 35.5 L10 31" stroke="#A71F23" stroke-width="1.1" stroke-linejoin="round"/>
+          <circle cx="2.5" cy="31" r="0.8" fill="#A71F23"/>
+          <circle cx="6.5" cy="36.5" r="0.8" fill="#A71F23"/>
+          <!-- Auspicious Aipan Trail Radiance -->
+          <circle cx="3" cy="37" r="1.1" fill="#A71F23" fill-opacity="0.8"/>
+          <circle cx="7" cy="39.5" r="0.8" fill="#A71F23" fill-opacity="0.5"/>
         </svg>
       </h2>
-      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 12px !important;">
+      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 20px !important;">
         <p class="event-desc">
           <strong class="stay-bold-label">Pantnagar (PGH):</strong> The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi.
         </p>
@@ -673,7 +682,7 @@ body {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<script src="js/spa-nav.js?v=22200"></script>
-<script src="js/global-audio.js?v=22200"></script>
+<script src="js/spa-nav.js?v=22500"></script>
+<script src="js/global-audio.js?v=22500"></script>
 </body>
 </html>
