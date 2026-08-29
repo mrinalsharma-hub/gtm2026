@@ -2269,7 +2269,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* ── Global Horizontal Music Player Pill (Accessible from every page) ── */
 .global-audio-pill {
-  position: fixed;
+  position: absolute !important;
   top: max(14px, env(safe-area-inset-top, 14px));
   right: max(14px, env(safe-area-inset-right, 14px));
   height: 38px;
@@ -2409,8 +2409,13 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Audio player placement on joinus.html below Aipan top border */
 body.rsvp-page .global-audio-pill,
+.rsvp-hero-header .global-audio-pill,
+.rsvp-page-wrap .global-audio-pill,
 .rsvp-page-wrap ~ .global-audio-pill {
+  position: absolute !important;
   top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
+  right: max(14px, env(safe-area-inset-right, 14px)) !important;
+  z-index: 25 !important;
 }
 
 /* ── Locked-in Royal Carmine Gradient for joinus.html ── */

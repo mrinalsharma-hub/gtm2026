@@ -172,7 +172,7 @@
       var preservedAudio = document.getElementById('bg-music') || window.__GTM_AUDIO__;
       var preservedNav = document.querySelector('.fixed-bottom-nav');
 
-      // Remove existing non-preserved content from body
+            // Remove existing non-preserved content from body
       var nodesToRemove = [];
       Array.from(document.body.childNodes).forEach(function(node) {
         if (node === preservedPlayer || node === preservedAudio || node === preservedNav) return;
@@ -193,6 +193,18 @@
           document.body.appendChild(adopted);
         }
       });
+
+      // Ensure preservedPlayer sits inside scrollable header on joinus or document.body
+      if (preservedPlayer) {
+        var targetHeroHeader = document.querySelector('.rsvp-hero-header');
+        if (targetHeroHeader) {
+          targetHeroHeader.appendChild(preservedPlayer);
+        } else if (preservedNav && preservedNav.parentNode === document.body) {
+          document.body.insertBefore(preservedPlayer, preservedNav);
+        } else {
+          document.body.appendChild(preservedPlayer);
+        }
+      }
 
       // 5. Update URL History
       if (pushState !== false) {
