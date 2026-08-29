@@ -2326,3 +2326,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 
 
+
+/* Audio player placement on joinus.html below Aipan top border */
+body.rsvp-page .global-audio-pill,
+.rsvp-page-wrap ~ .global-audio-pill {
+  top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
+}
