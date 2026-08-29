@@ -34,14 +34,14 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Travel &amp; Stay · Garima &amp; Mrinal — Nainital 2026</title>
 <meta name="description" content="How to reach Nainital by rail, air, and road — accommodation and packing guide for November 2026.">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=22000">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=22000">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=22000">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=22200">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=22200">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=22200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700;800&family=WindSong&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="images/Event_Flowers.webp" type="image/webp" fetchpriority="high">
-<link rel="stylesheet" href="css/site.css?v=22000">
+<link rel="stylesheet" href="css/site.css?v=22200">
 
 <style>
 :root {
@@ -142,7 +142,7 @@ body {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/events_botanical_tonal_lines.webp?v=22000') !important;
+  background-image: url('images/events_botanical_tonal_lines.webp?v=22200') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 418px 418px !important;
@@ -325,6 +325,21 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
+.aipan-plane-icon {
+  display: inline-block !important;
+  vertical-align: middle !important;
+  margin-left: 10px !important;
+  margin-top: -4px !important;
+  width: 26px !important;
+  height: 26px !important;
+  filter: drop-shadow(0 2px 6px rgba(167, 31, 35, 0.20)) !important;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.schedule-event-card:hover .aipan-plane-icon {
+  transform: translateY(-2px) rotate(4deg) !important;
+}
+
 .event-title {
   font-family: 'Cinzel', serif !important;
   font-size: 20px !important;
@@ -376,6 +391,12 @@ body {
   color: #3D2E26 !important;
   text-align: left !important;
   width: 100% !important;
+}
+
+.stay-bold-label {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-weight: 800 !important;
+  color: #3D2E26 !important;
 }
 
 .event-meta-row strong {
@@ -491,12 +512,33 @@ body {
 
     <!-- Section 1: By Air -->
     <article class="schedule-event-card">
-      <h2 class="event-title">BY AIR</h2>
-      <p class="event-desc">
-        Pantnagar (PGH) is the closest airport (~65 km / 2 hours away) with scheduled domestic flights from New Delhi.
-      </p>
-      <div class="event-meta-wrap">
-        <p class="event-meta-row"><strong>Alternative:</strong> Flying into New Delhi (DEL) and taking the train or private taxi up is the most frequent and reliable route.</p>
+      <h2 class="event-title">
+        BY AIR
+        <svg class="aipan-plane-icon" viewBox="0 0 40 40" width="26" height="26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 2 C20.8 7 22.5 13 22.5 24 L24.5 31 L20 29.5 L15.5 31 L17.5 24 C17.5 13 19.2 7 20 2 Z" fill="#A71F23" fill-opacity="0.16" stroke="#A71F23" stroke-width="1.3" stroke-linejoin="round"/>
+          <circle cx="20" cy="8" r="1" fill="#A71F23"/>
+          <circle cx="20" cy="13" r="1.1" fill="#A71F23"/>
+          <circle cx="20" cy="18" r="1.1" fill="#A71F23"/>
+          <circle cx="20" cy="23" r="1" fill="#A71F23"/>
+          <path d="M21 14 L36 21.5 C36.8 22 36.8 23 35.8 23 L22 21.5" stroke="#A71F23" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M19 14 L4 21.5 C3.2 22 3.2 23 4.2 23 L18 21.5" stroke="#A71F23" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 17 L31 21.8 M22 19.5 L27 22.2" stroke="#A71F23" stroke-width="1" stroke-linecap="round"/>
+          <path d="M18 17 L9 21.8 M18 19.5 L13 22.2" stroke="#A71F23" stroke-width="1" stroke-linecap="round"/>
+          <circle cx="36" cy="22" r="1.3" fill="#A71F23"/>
+          <circle cx="4" cy="22" r="1.3" fill="#A71F23"/>
+          <path d="M20 28 L29 35 C29.6 35.5 29.2 36.2 28.5 36 L20 33.5 L11.5 36 C10.8 36.2 10.4 35.5 11 35 L20 28 Z" fill="#A71F23" fill-opacity="0.22" stroke="#A71F23" stroke-width="1.2" stroke-linejoin="round"/>
+          <circle cx="28.5" cy="35.5" r="1" fill="#A71F23"/>
+          <circle cx="11.5" cy="35.5" r="1" fill="#A71F23"/>
+          <circle cx="20" cy="36" r="1" fill="#A71F23"/>
+        </svg>
+      </h2>
+      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 12px !important;">
+        <p class="event-desc">
+          <strong class="stay-bold-label">Pantnagar (PGH):</strong> The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi.
+        </p>
+        <p class="event-desc">
+          <strong class="stay-bold-label">New Delhi (DEL):</strong> Fly into Delhi, then take a train or private taxi. This is the most frequent and reliable option.
+        </p>
       </div>
     </article>
 
@@ -631,7 +673,7 @@ body {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<script src="js/spa-nav.js?v=22000"></script>
-<script src="js/global-audio.js?v=22000"></script>
+<script src="js/spa-nav.js?v=22200"></script>
+<script src="js/global-audio.js?v=22200"></script>
 </body>
 </html>
