@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=17000">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=17000">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=17000">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=17100">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=17100">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=17100">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=17000">
+<link rel="stylesheet" href="css/site.css?v=17100">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -621,7 +621,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=17000') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=17100') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 460px 460px !important;
@@ -649,9 +649,153 @@ main.paper, main, .rsvp-page-wrap {
 
 
 
+
+/* ── Reference Letterpress Deboss Intensity Variations ── */
+
+/* Option 1: Subtle Intensity (Delicate Sub-Pixel Bite) */
+body.deboss-subtle .rsvp-title,
+body.deboss-subtle .rsvp-card-title,
+body.deboss-subtle .rsvp-subtitle,
+body.deboss-subtle .rsvp-option-text,
+body.deboss-subtle .rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: 
+    -0.75px -0.75px 0px rgba(15, 2, 3, 0.65),
+     0.75px  0.75px 0px rgba(255, 255, 255, 0.25),
+     0       1.5px  3px rgba(15, 2, 3, 0.20) !important;
+}
+body.deboss-subtle .rsvp-event-date {
+  color: rgba(255, 255, 255, 0.45) !important;
+  text-shadow: 
+    -0.5px -0.5px 0px rgba(15, 2, 3, 0.50),
+     0.5px  0.5px 0px rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Default / Option 2: Medium Intensity (Exact Reference Match) */
+body.deboss-medium .rsvp-title,
+body.deboss-medium .rsvp-card-title,
+body.deboss-medium .rsvp-subtitle,
+body.deboss-medium .rsvp-option-text,
+body.deboss-medium .rsvp-event-name,
+.rsvp-title,
+.rsvp-card-title,
+.rsvp-subtitle,
+.rsvp-option-text,
+.rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: 
+    -1.0px -1.0px 0px rgba(15, 2, 3, 0.85),
+     1.0px  1.0px 0px rgba(255, 255, 255, 0.35),
+     0      2.0px 4px rgba(15, 2, 3, 0.30) !important;
+}
+body.deboss-medium .rsvp-event-date,
+.rsvp-event-date {
+  color: rgba(255, 255, 255, 0.45) !important;
+  text-shadow: 
+    -0.6px -0.6px 0px rgba(15, 2, 3, 0.65),
+     0.6px  0.6px 0px rgba(255, 255, 255, 0.22) !important;
+}
+
+/* Option 3: Deep Strike Intensity (Pronounced Bevel & Cavity) */
+body.deboss-deep .rsvp-title,
+body.deboss-deep .rsvp-card-title,
+body.deboss-deep .rsvp-subtitle,
+body.deboss-deep .rsvp-option-text,
+body.deboss-deep .rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: 
+    -1.25px -1.25px 0px rgba(10, 1, 2, 0.95),
+    -0.5px  -0.5px  0px rgba(0, 0, 0, 0.70),
+     1.25px  1.25px 0px rgba(255, 255, 255, 0.45),
+     0       3.0px  6px rgba(10, 1, 2, 0.40) !important;
+}
+body.deboss-deep .rsvp-event-date {
+  color: rgba(255, 255, 255, 0.50) !important;
+  text-shadow: 
+    -0.75px -0.75px 0px rgba(10, 1, 2, 0.75),
+     0.75px  0.75px 0px rgba(255, 255, 255, 0.28) !important;
+}
+
+/* Option None: Flat Pure White */
+body.deboss-none .rsvp-title,
+body.deboss-none .rsvp-card-title,
+body.deboss-none .rsvp-subtitle,
+body.deboss-none .rsvp-option-text,
+body.deboss-none .rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+body.deboss-none .rsvp-event-date {
+  color: rgba(255, 255, 255, 0.40) !important;
+  text-shadow: none !important;
+}
+
+/* Tester UI styling */
+.deboss-tester-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 16px auto 10px auto !important;
+  width: 100% !important;
+  max-width: 460px !important;
+  padding: 10px 14px !important;
+  background: rgba(0, 0, 0, 0.30) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 20 !important;
+  position: relative !important;
+}
+
+.deboss-tester-title {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.80) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.deboss-tester-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+
+.deboss-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  color: #FFFFFF !important;
+  padding: 6px 12px !important;
+  border-radius: 14px !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+}
+
+.deboss-btn:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.40) !important;
+}
+
+.deboss-btn.active {
+  background: #FFFFFF !important;
+  color: #19202F !important;
+  border-color: #FFFFFF !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
+
 </style>
 </head>
-<body>
+<body class="deboss-medium">
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true">
@@ -663,6 +807,18 @@ main.paper, main, .rsvp-page-wrap {
   <!-- Centered Hero Header with Top Aipan Border & Lakshmi Pada Mandala Centerpiece -->
 
     
+    
+    <!-- Interactive Reference Letterpress Deboss Intensity Tester -->
+    <div class="deboss-tester-panel" aria-label="Letterpress Deboss Intensity Tester">
+      <span class="deboss-tester-title">Test Deboss Intensity (Image Reference):</span>
+      <div class="deboss-tester-buttons">
+        <button type="button" class="deboss-btn" id="btn-deboss-1" onclick="setDebossIntensity('subtle')">1: Subtle (Soft)</button>
+        <button type="button" class="deboss-btn active" id="btn-deboss-2" onclick="setDebossIntensity('medium')">2: Medium (Reference)</button>
+        <button type="button" class="deboss-btn" id="btn-deboss-3" onclick="setDebossIntensity('deep')">3: Deep Strike (Bold)</button>
+        <button type="button" class="deboss-btn" id="btn-deboss-none" onclick="setDebossIntensity('none')">Off: Flat White</button>
+      </div>
+    </div>
+
     <header class="rsvp-hero-header">
     <!-- Authentic Kumaoni Aipan Top Border (Pearl Dots & Vasudhara Bands) -->
     <div class="aipan-top-border-wrap" aria-hidden="true">
@@ -826,7 +982,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=17000"></script>
+<script src="js/site.js?v=17100"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -986,9 +1142,36 @@ form.addEventListener('submit',function(e){
 
 
 
-<script src="js/spa-nav.js?v=17000"></script>
-<script src="js/global-audio.js?v=17000"></script>
+<script src="js/spa-nav.js?v=17100"></script>
+<script src="js/global-audio.js?v=17100"></script>
 
+
+
+<script>
+function setDebossIntensity(opt) {
+  document.body.classList.remove('deboss-subtle', 'deboss-medium', 'deboss-deep', 'deboss-none');
+  var btns = document.querySelectorAll('.deboss-btn');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+
+  if (opt === 'subtle') {
+    document.body.classList.add('deboss-subtle');
+    var b = document.getElementById('btn-deboss-1');
+    if (b) b.classList.add('active');
+  } else if (opt === 'deep') {
+    document.body.classList.add('deboss-deep');
+    var b = document.getElementById('btn-deboss-3');
+    if (b) b.classList.add('active');
+  } else if (opt === 'none') {
+    document.body.classList.add('deboss-none');
+    var b = document.getElementById('btn-deboss-none');
+    if (b) b.classList.add('active');
+  } else {
+    document.body.classList.add('deboss-medium');
+    var b = document.getElementById('btn-deboss-2');
+    if (b) b.classList.add('active');
+  }
+}
+</script>
 
 </body>
 </html>
