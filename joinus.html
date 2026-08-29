@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=18700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=18700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=18700">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=18800">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=18800">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=18800">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=18700">
+<link rel="stylesheet" href="css/site.css?v=18800">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -635,7 +635,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=18700') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=18800') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -669,9 +669,133 @@ main.paper, main, .rsvp-page-wrap {
 .global-audio-pill {
   top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
 }
+
+/* ── Background Gradient Drama Variations ── */
+
+/* Option 1: Imperial Chiaroscuro (High Contrast Royal Vignette) */
+body.grad-chiaroscuro .rsvp-bg-layer,
+body.grad-chiaroscuro {
+  background-color: #B81D22 !important;
+}
+body.grad-chiaroscuro .rsvp-bg-layer {
+  background: 
+    radial-gradient(ellipse 120% 50% at 50% 100%, rgba(36, 2, 4, 0.98) 0%, rgba(56, 4, 7, 0.85) 45%, transparent 80%),
+    radial-gradient(ellipse 110% 70% at 50% 0%, #C22428 0%, #A0181D 20%, #7E1216 45%, #4A080B 75%, #240204 100%) !important;
+}
+body.grad-chiaroscuro .rsvp-bg-layer::before {
+  background: 
+    radial-gradient(circle 360px at 50% 10%, rgba(255, 120, 80, 0.18) 0%, rgba(220, 40, 60, 0.08) 50%, transparent 80%),
+    radial-gradient(ellipse 130% 60% at 50% 18%, rgba(240, 60, 80, 0.12) 0%, transparent 75%) !important;
+}
+
+/* Option 2: Saffron & Wine Hearth (Warm Radiant Sunset Glow) */
+body.grad-saffron-hearth .rsvp-bg-layer,
+body.grad-saffron-hearth {
+  background-color: #C93B2B !important;
+}
+body.grad-saffron-hearth .rsvp-bg-layer {
+  background: 
+    radial-gradient(ellipse 130% 55% at 50% 100%, rgba(61, 5, 8, 0.95) 0%, rgba(100, 15, 20, 0.70) 50%, transparent 85%),
+    radial-gradient(ellipse 115% 75% at 50% -5%, #D4422A 0%, #B82823 22%, #8C1419 50%, #5E0C10 75%, #350406 100%) !important;
+}
+body.grad-saffron-hearth .rsvp-bg-layer::before {
+  background: 
+    radial-gradient(circle 420px at 50% 8%, rgba(255, 160, 50, 0.22) 0%, rgba(240, 90, 40, 0.10) 50%, transparent 80%),
+    radial-gradient(ellipse 140% 60% at 50% 20%, rgba(255, 140, 40, 0.14) 0%, rgba(220, 50, 70, 0.08) 55%, transparent 85%) !important;
+}
+
+/* Option 3: Velvet Midnight Bordeaux (Deep Moody Jewel Tone) */
+body.grad-midnight-bordeaux .rsvp-bg-layer,
+body.grad-midnight-bordeaux {
+  background-color: #8C1418 !important;
+}
+body.grad-midnight-bordeaux .rsvp-bg-layer {
+  background: 
+    radial-gradient(ellipse 120% 60% at 50% 100%, rgba(18, 2, 3, 0.98) 0%, rgba(35, 3, 5, 0.85) 50%, transparent 80%),
+    radial-gradient(ellipse 100% 65% at 50% 0%, #9E161C 0%, #751014 25%, #4F0A0D 50%, #2E0406 75%, #140203 100%) !important;
+}
+body.grad-midnight-bordeaux .rsvp-bg-layer::before {
+  background: 
+    radial-gradient(circle 380px at 50% 12%, rgba(210, 50, 90, 0.16) 0%, rgba(140, 20, 40, 0.06) 55%, transparent 80%),
+    radial-gradient(ellipse 120% 50% at 50% 22%, rgba(180, 40, 70, 0.10) 0%, transparent 75%) !important;
+}
+
+/* Option Current / Baseline */
+body.grad-current .rsvp-bg-layer,
+body.grad-current {
+  background-color: #A71F23 !important;
+}
+body.grad-current .rsvp-bg-layer {
+  background: 
+    radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
+    radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
+}
+
+/* Tester UI styling */
+.grad-tester-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 16px auto 12px auto !important;
+  width: 100% !important;
+  max-width: 460px !important;
+  padding: 12px 14px !important;
+  background: rgba(0, 0, 0, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  z-index: 20 !important;
+  position: relative !important;
+}
+
+.grad-tester-title {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.90) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.grad-tester-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+
+.grad-btn {
+  background: rgba(255, 255, 255, 0.10) !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  color: #FFFFFF !important;
+  padding: 6px 12px !important;
+  border-radius: 14px !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+}
+
+.grad-btn:hover {
+  background: rgba(255, 255, 255, 0.20) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+.grad-btn.active {
+  background: #FFFFFF !important;
+  color: #19202F !important;
+  border-color: #FFFFFF !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.30) !important;
+}
 </style>
 </head>
-<body>
+<body class="grad-chiaroscuro">
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true">
@@ -847,7 +971,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=18700"></script>
+<script src="js/site.js?v=18800"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1007,10 +1131,36 @@ form.addEventListener('submit',function(e){
 
 
 
-<script src="js/spa-nav.js?v=18700"></script>
-<script src="js/global-audio.js?v=18700"></script>
+<script src="js/spa-nav.js?v=18800"></script>
+<script src="js/global-audio.js?v=18800"></script>
 
 
 
+
+<script>
+function setGradOption(opt) {
+  document.body.classList.remove('grad-chiaroscuro', 'grad-saffron-hearth', 'grad-midnight-bordeaux', 'grad-current');
+  var btns = document.querySelectorAll('.grad-btn');
+  btns.forEach(function(b) { b.classList.remove('active'); });
+
+  if (opt === 'saffron-hearth') {
+    document.body.classList.add('grad-saffron-hearth');
+    var b = document.getElementById('btn-grad-2');
+    if (b) b.classList.add('active');
+  } else if (opt === 'midnight-bordeaux') {
+    document.body.classList.add('grad-midnight-bordeaux');
+    var b = document.getElementById('btn-grad-3');
+    if (b) b.classList.add('active');
+  } else if (opt === 'current') {
+    document.body.classList.add('grad-current');
+    var b = document.getElementById('btn-grad-0');
+    if (b) b.classList.add('active');
+  } else {
+    document.body.classList.add('grad-chiaroscuro');
+    var b = document.getElementById('btn-grad-1');
+    if (b) b.classList.add('active');
+  }
+}
+</script>
 </body>
 </html>
