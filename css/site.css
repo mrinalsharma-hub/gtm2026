@@ -1248,10 +1248,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   padding-bottom: constant(safe-area-inset-bottom) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  background: rgba(76, 7, 10, 0.85) !important;
-  background-color: rgba(76, 7, 10, 0.85) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  background: linear-gradient(180deg, #5A0C10 0%, #460508 100%) !important;
+  background-color: #4C070A !important;
   border: none !important;
   border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
   box-shadow: 0 -6px 28px rgba(20, 2, 4, 0.40) !important;
@@ -2437,10 +2435,8 @@ body.rsvp-page,
 /* ── Locked-in Ambient Deep-Wine Glass Bottom Navigation for joinus.html ── */
 body.rsvp-page .fixed-bottom-nav,
 .rsvp-page-wrap ~ .fixed-bottom-nav {
-  background: rgba(76, 7, 10, 0.85) !important;
-  background-color: rgba(76, 7, 10, 0.85) !important;
-  backdrop-filter: blur(20px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  background: linear-gradient(180deg, #5A0C10 0%, #460508 100%) !important;
+  background-color: #4C070A !important;
   border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
   box-shadow: 0 -6px 28px rgba(20, 2, 4, 0.40) !important;
 }
