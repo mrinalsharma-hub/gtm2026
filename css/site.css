@@ -1762,7 +1762,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   transform: none !important;
 }
 
-/* Name Row & Add Person Button */
+/* Name Row & Dual Action Buttons (Tick & Cross) */
 .name-row-wrap {
   display: flex !important;
   flex-direction: column !important;
@@ -1773,34 +1773,98 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .name-input-row {
   position: relative !important;
   width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-.name-input-row .rm-person-btn {
+.name-input-row .rsvp-pill-input {
+  width: 100% !important;
+  padding-right: 76px !important;
+}
+
+.name-row-actions {
   position: absolute !important;
   right: 8px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  z-index: 5 !important;
+}
+
+.name-action-btn {
   background: none !important;
   border: none !important;
-  color: #8B1E22 !important;
-  font-size: 20px !important;
+  font-size: 19px !important;
   line-height: 1 !important;
   cursor: pointer !important;
-  padding: 8px !important;
-  width: 36px !important;
-  height: 36px !important;
+  padding: 4px !important;
+  width: 32px !important;
+  height: 32px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 50% !important;
   -webkit-tap-highlight-color: transparent !important;
   touch-action: manipulation !important;
-  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease !important;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, opacity 0.15s ease !important;
 }
 
-.name-input-row .rm-person-btn:active {
-  transform: translateY(-50%) scale(0.85) !important;
+.name-action-btn:active {
+  transform: scale(0.88) !important;
+}
+
+/* ── Default Unfocused / Dark Background State (Image 1) ── */
+.name-input-row .rm-person-btn {
+  color: #FFFFFF !important;
+  opacity: 0.9 !important;
+  display: flex !important;
+}
+
+.name-input-row .rm-person-btn:hover {
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+.name-input-row .done-btn {
+  display: none !important; /* hidden when already unfocused/done */
+}
+
+/* If row is empty and not focused, hide action buttons so placeholder is clean */
+.name-input-row.is-empty:not(:focus-within) .rm-person-btn {
+  display: none !important;
+}
+
+/* ── Active Focused / Adding / Editing State (Image 2) ── */
+.name-input-row:focus-within .name-row-actions,
+.name-input-row.is-editing .name-row-actions {
+  display: flex !important;
+}
+
+.name-input-row:focus-within .done-btn,
+.name-input-row.is-editing .done-btn {
+  display: flex !important;
+  color: #2E7D32 !important; /* Green tick */
+  opacity: 1 !important;
+}
+
+.name-input-row:focus-within .done-btn:hover,
+.name-input-row.is-editing .done-btn:hover {
+  background-color: rgba(46, 125, 50, 0.12) !important;
+}
+
+.name-input-row:focus-within .rm-person-btn,
+.name-input-row.is-editing .rm-person-btn {
+  color: #8B1E22 !important; /* Wine cross on white input */
+  opacity: 0.95 !important;
+  display: flex !important;
+}
+
+.name-input-row:focus-within .rm-person-btn:hover,
+.name-input-row.is-editing .rm-person-btn:hover {
   background-color: rgba(139, 30, 34, 0.10) !important;
+  opacity: 1 !important;
 }
 
 .add-person-btn {
