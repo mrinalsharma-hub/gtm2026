@@ -2333,68 +2333,18 @@ body.rsvp-page .global-audio-pill,
   top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
 }
 
-/* ── Balanced Richness (20% Uplift) Hue Variations ── */
-
-/* Hue 1: Royal Carmine (Pure Classic Red-Crimson) */
-body.hue-carmine .rsvp-bg-layer,
-body.hue-carmine {
+/* ── Locked-in Royal Carmine Gradient for joinus.html ── */
+body.rsvp-page,
+.rsvp-bg-layer {
   background-color: #B02428 !important;
 }
-body.hue-carmine .rsvp-bg-layer {
+.rsvp-bg-layer {
   background: 
     radial-gradient(ellipse 135% 60% at 50% 100%, rgba(98, 10, 14, 0.95) 0%, rgba(98, 10, 14, 0.55) 50%, transparent 80%),
     radial-gradient(ellipse 118% 75% at 50% 0%, #B02428 0%, #94181C 25%, #7B1115 50%, #620B0E 75%, #4C070A 100%) !important;
 }
-body.hue-carmine .rsvp-bg-layer::before {
+.rsvp-bg-layer::before {
   background: 
     radial-gradient(circle 380px at 45% 15%, rgba(248, 130, 50, 0.11) 0%, rgba(235, 60, 85, 0.05) 55%, transparent 85%),
     radial-gradient(ellipse 135% 60% at 50% 18%, rgba(248, 140, 55, 0.08) 0%, transparent 80%) !important;
-}
-
-/* Hue 2: Saffron Sindoori (Warm Amber / Vermilion Spiced Red) */
-body.hue-saffron .rsvp-bg-layer,
-body.hue-saffron {
-  background-color: #B62C1E !important;
-}
-body.hue-saffron .rsvp-bg-layer {
-  background: 
-    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(98, 12, 14, 0.95) 0%, rgba(98, 12, 14, 0.55) 50%, transparent 80%),
-    radial-gradient(ellipse 118% 75% at 50% 0%, #B62C1E 0%, #9A2016 25%, #7F1512 50%, #640F0E 75%, #4C090B 100%) !important;
-}
-body.hue-saffron .rsvp-bg-layer::before {
-  background: 
-    radial-gradient(circle 380px at 45% 15%, rgba(255, 155, 45, 0.13) 0%, rgba(242, 80, 40, 0.07) 55%, transparent 85%),
-    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(255, 150, 40, 0.09) 0%, transparent 80%) !important;
-}
-
-/* Hue 3: Deep Wine Bordeaux (Jewel-Tone Ruby / Cool Plum-Burgundy) */
-body.hue-bordeaux .rsvp-bg-layer,
-body.hue-bordeaux {
-  background-color: #A82034 !important;
-}
-body.hue-bordeaux .rsvp-bg-layer {
-  background: 
-    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(90, 8, 18, 0.95) 0%, rgba(90, 8, 18, 0.55) 50%, transparent 80%),
-    radial-gradient(ellipse 118% 75% at 50% 0%, #A82034 0%, #8F1628 25%, #760F1F 50%, #5D0916 75%, #46050F 100%) !important;
-}
-body.hue-bordeaux .rsvp-bg-layer::before {
-  background: 
-    radial-gradient(circle 380px at 45% 15%, rgba(240, 70, 110, 0.11) 0%, rgba(215, 40, 80, 0.06) 55%, transparent 85%),
-    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(235, 60, 95, 0.08) 0%, transparent 80%) !important;
-}
-
-/* Hue 4: Imperial Kumkum (Earthy Ochre-Crimson / Heritage Lacquer) */
-body.hue-kumkum .rsvp-bg-layer,
-body.hue-kumkum {
-  background-color: #AC2A22 !important;
-}
-body.hue-kumkum .rsvp-bg-layer {
-  background: 
-    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(94, 10, 12, 0.95) 0%, rgba(94, 10, 12, 0.55) 50%, transparent 80%),
-    radial-gradient(ellipse 118% 75% at 50% 0%, #AC2A22 0%, #90201A 25%, #771714 50%, #5F100D 75%, #4A0808 100%) !important;
-}
-body.hue-kumkum .rsvp-bg-layer::before {
-  background: 
-    radial-gradient(circle 380px at 45% 15%, rgba(250, 135, 45, 0.10) 0%, rgba(230, 60, 50, 0.06) 55%, transparent 85%),
-    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(245, 130, 45, 0.08) 0%, transparent 80%) !important;
 }
