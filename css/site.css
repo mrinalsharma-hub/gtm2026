@@ -2333,62 +2333,62 @@ body.rsvp-page .global-audio-pill,
   top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
 }
 
-/* ── Background Gradient Drama Variations ── */
+/* ── Subtle Background Gradient Variations (Progressive Intensity) ── */
 
-/* Option 1: Imperial Chiaroscuro (High Contrast Royal Vignette) */
-body.grad-chiaroscuro .rsvp-bg-layer,
-body.grad-chiaroscuro {
-  background-color: #B81D22 !important;
+/* Option 1: Subtle Warm Glow (+10% Intensity) */
+body.grad-opt1 .rsvp-bg-layer,
+body.grad-opt1 {
+  background-color: #AB2125 !important;
 }
-body.grad-chiaroscuro .rsvp-bg-layer {
+body.grad-opt1 .rsvp-bg-layer {
   background: 
-    radial-gradient(ellipse 120% 50% at 50% 100%, rgba(36, 2, 4, 0.98) 0%, rgba(56, 4, 7, 0.85) 45%, transparent 80%),
-    radial-gradient(ellipse 110% 70% at 50% 0%, #C22428 0%, #A0181D 20%, #7E1216 45%, #4A080B 75%, #240204 100%) !important;
+    radial-gradient(ellipse 140% 60% at 50% 100%, rgba(110, 14, 18, 0.94) 0%, rgba(110, 14, 18, 0.50) 50%, transparent 80%),
+    radial-gradient(ellipse 120% 75% at 50% 0%, #AB2125 0%, #90171B 25%, #7D1216 50%, #680D10 75%, #54090C 100%) !important;
 }
-body.grad-chiaroscuro .rsvp-bg-layer::before {
+body.grad-opt1 .rsvp-bg-layer::before {
   background: 
-    radial-gradient(circle 360px at 50% 10%, rgba(255, 120, 80, 0.18) 0%, rgba(220, 40, 60, 0.08) 50%, transparent 80%),
-    radial-gradient(ellipse 130% 60% at 50% 18%, rgba(240, 60, 80, 0.12) 0%, transparent 75%) !important;
-}
-
-/* Option 2: Saffron & Wine Hearth (Warm Radiant Sunset Glow) */
-body.grad-saffron-hearth .rsvp-bg-layer,
-body.grad-saffron-hearth {
-  background-color: #C93B2B !important;
-}
-body.grad-saffron-hearth .rsvp-bg-layer {
-  background: 
-    radial-gradient(ellipse 130% 55% at 50% 100%, rgba(61, 5, 8, 0.95) 0%, rgba(100, 15, 20, 0.70) 50%, transparent 85%),
-    radial-gradient(ellipse 115% 75% at 50% -5%, #D4422A 0%, #B82823 22%, #8C1419 50%, #5E0C10 75%, #350406 100%) !important;
-}
-body.grad-saffron-hearth .rsvp-bg-layer::before {
-  background: 
-    radial-gradient(circle 420px at 50% 8%, rgba(255, 160, 50, 0.22) 0%, rgba(240, 90, 40, 0.10) 50%, transparent 80%),
-    radial-gradient(ellipse 140% 60% at 50% 20%, rgba(255, 140, 40, 0.14) 0%, rgba(220, 50, 70, 0.08) 55%, transparent 85%) !important;
+    radial-gradient(circle 350px at 42% 14%, rgba(245, 120, 60, 0.08) 0%, rgba(230, 50, 80, 0.04) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 55% at 50% 18%, rgba(245, 130, 60, 0.06) 0%, transparent 80%) !important;
 }
 
-/* Option 3: Velvet Midnight Bordeaux (Deep Moody Jewel Tone) */
-body.grad-midnight-bordeaux .rsvp-bg-layer,
-body.grad-midnight-bordeaux {
-  background-color: #8C1418 !important;
+/* Option 2: Balanced Richness (+20% Intensity - Active Default) */
+body.grad-opt2 .rsvp-bg-layer,
+body.grad-opt2 {
+  background-color: #B02428 !important;
 }
-body.grad-midnight-bordeaux .rsvp-bg-layer {
+body.grad-opt2 .rsvp-bg-layer {
   background: 
-    radial-gradient(ellipse 120% 60% at 50% 100%, rgba(18, 2, 3, 0.98) 0%, rgba(35, 3, 5, 0.85) 50%, transparent 80%),
-    radial-gradient(ellipse 100% 65% at 50% 0%, #9E161C 0%, #751014 25%, #4F0A0D 50%, #2E0406 75%, #140203 100%) !important;
+    radial-gradient(ellipse 135% 60% at 50% 100%, rgba(98, 10, 14, 0.95) 0%, rgba(98, 10, 14, 0.55) 50%, transparent 80%),
+    radial-gradient(ellipse 118% 75% at 50% 0%, #B02428 0%, #94181C 25%, #7B1115 50%, #620B0E 75%, #4C070A 100%) !important;
 }
-body.grad-midnight-bordeaux .rsvp-bg-layer::before {
+body.grad-opt2 .rsvp-bg-layer::before {
   background: 
-    radial-gradient(circle 380px at 50% 12%, rgba(210, 50, 90, 0.16) 0%, rgba(140, 20, 40, 0.06) 55%, transparent 80%),
-    radial-gradient(ellipse 120% 50% at 50% 22%, rgba(180, 40, 70, 0.10) 0%, transparent 75%) !important;
+    radial-gradient(circle 380px at 45% 15%, rgba(248, 130, 50, 0.11) 0%, rgba(235, 60, 85, 0.05) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(248, 140, 55, 0.08) 0%, transparent 80%) !important;
 }
 
-/* Option Current / Baseline */
-body.grad-current .rsvp-bg-layer,
-body.grad-current {
+/* Option 3: Velvet Crimson (+30% Intensity) */
+body.grad-opt3 .rsvp-bg-layer,
+body.grad-opt3 {
+  background-color: #B6272C !important;
+}
+body.grad-opt3 .rsvp-bg-layer {
+  background: 
+    radial-gradient(ellipse 130% 60% at 50% 100%, rgba(85, 8, 11, 0.96) 0%, rgba(85, 8, 11, 0.60) 50%, transparent 80%),
+    radial-gradient(ellipse 115% 75% at 50% 0%, #B6272C 0%, #98191E 25%, #781014 50%, #5B090C 75%, #420508 100%) !important;
+}
+body.grad-opt3 .rsvp-bg-layer::before {
+  background: 
+    radial-gradient(circle 400px at 48% 16%, rgba(250, 140, 50, 0.14) 0%, rgba(238, 65, 85, 0.07) 55%, transparent 85%),
+    radial-gradient(ellipse 135% 60% at 50% 18%, rgba(250, 150, 60, 0.10) 0%, transparent 80%) !important;
+}
+
+/* Option 0: Current Baseline (0% Intensity) */
+body.grad-opt0 .rsvp-bg-layer,
+body.grad-opt0 {
   background-color: #A71F23 !important;
 }
-body.grad-current .rsvp-bg-layer {
+body.grad-opt0 .rsvp-bg-layer {
   background: 
     radial-gradient(ellipse 140% 60% at 50% 100%, rgba(126, 18, 22, 0.92) 0%, rgba(126, 18, 22, 0.45) 50%, transparent 80%),
     radial-gradient(ellipse 120% 75% at 50% 0%, #A71F23 0%, #8E161A 25%, #7E1216 50%, #6E0F12 75%, #5C0B0E 100%) !important;
