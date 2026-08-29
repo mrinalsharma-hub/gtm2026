@@ -1826,53 +1826,53 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   display: none !important;
 }
 
-/* ── Scenario 2: Active Typing / Focused with Text (Both Green Tick & Wine Cross appear) ── */
-.name-input-row:not(.is-empty):focus-within .name-row-actions,
-.name-input-row:not(.is-empty).is-editing .name-row-actions {
+/* ── Scenario 2: Active Focused with Text (Both Green Tick & Wine Cross appear) ── */
+.name-input-row:not(.is-empty).is-editing .name-row-actions,
+.name-input-row:not(.is-empty) .rsvp-pill-input:focus ~ .name-row-actions {
   display: flex !important;
 }
 
-.name-input-row:not(.is-empty):focus-within .done-btn,
-.name-input-row:not(.is-empty).is-editing .done-btn {
+.name-input-row:not(.is-empty).is-editing .done-btn,
+.name-input-row:not(.is-empty) .rsvp-pill-input:focus ~ .name-row-actions .done-btn {
   display: flex !important;
   color: #2E7D32 !important; /* Google Material green check */
   opacity: 1 !important;
 }
 
-.name-input-row:not(.is-empty):focus-within .done-btn:hover,
-.name-input-row:not(.is-empty).is-editing .done-btn:hover {
+.name-input-row:not(.is-empty).is-editing .done-btn:hover,
+.name-input-row:not(.is-empty) .rsvp-pill-input:focus ~ .name-row-actions .done-btn:hover {
   background-color: rgba(46, 125, 50, 0.12) !important;
 }
 
-.name-input-row:not(.is-empty):focus-within .rm-person-btn,
-.name-input-row:not(.is-empty).is-editing .rm-person-btn {
+.name-input-row:not(.is-empty).is-editing .rm-person-btn,
+.name-input-row:not(.is-empty) .rsvp-pill-input:focus ~ .name-row-actions .rm-person-btn {
   display: flex !important;
   color: #8B1E22 !important; /* Google Material wine close on white */
   opacity: 0.95 !important;
 }
 
-.name-input-row:not(.is-empty):focus-within .rm-person-btn:hover,
-.name-input-row:not(.is-empty).is-editing .rm-person-btn:hover {
+.name-input-row:not(.is-empty).is-editing .rm-person-btn:hover,
+.name-input-row:not(.is-empty) .rsvp-pill-input:focus ~ .name-row-actions .rm-person-btn:hover {
   background-color: rgba(139, 30, 34, 0.10) !important;
   opacity: 1 !important;
 }
 
 /* ── Scenario 3: Unfocused with Text (Done / Confirmed: Tick hidden, Pure White Cross remains) ── */
-.name-input-row:not(.is-empty):not(:focus-within) .name-row-actions {
+.name-input-row:not(.is-empty):not(.is-editing) .name-row-actions {
   display: flex !important;
 }
 
-.name-input-row:not(.is-empty):not(:focus-within) .done-btn {
-  display: none !important; /* Tick disappears */
+.name-input-row:not(.is-empty):not(.is-editing) .done-btn {
+  display: none !important; /* Tick disappears completely */
 }
 
-.name-input-row:not(.is-empty):not(:focus-within) .rm-person-btn {
+.name-input-row:not(.is-empty):not(.is-editing) .rm-person-btn {
   display: flex !important;
   color: #FFFFFF !important; /* Pure white cross */
   opacity: 0.95 !important;
 }
 
-.name-input-row:not(.is-empty):not(:focus-within) .rm-person-btn:hover {
+.name-input-row:not(.is-empty):not(.is-editing) .rm-person-btn:hover {
   opacity: 1 !important;
   background-color: rgba(255, 255, 255, 0.15) !important;
 }

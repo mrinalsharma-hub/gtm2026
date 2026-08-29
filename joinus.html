@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20200">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20200">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=20200">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20300">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20300">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=20300">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20200">
+<link rel="stylesheet" href="css/site.css?v=20300">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20200') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20300') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -871,7 +871,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=20200"></script>
+<script src="js/site.js?v=20300"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -989,7 +989,7 @@ function handleEditRSVP() {
   list.addEventListener('keyup', updateAddButtonState);
   list.addEventListener('change', updateAddButtonState);
 
-    function createNameRow(initialValue, autoFocus) {
+      function createNameRow(initialValue, autoFocus) {
     var row = document.createElement('div');
     row.className = 'name-input-row' + (initialValue ? '' : ' is-empty');
     row.innerHTML = '<input type="text" class="rsvp-pill-input name-input" placeholder="Enter full name" value="' + (initialValue || '') + '">' +
@@ -1011,22 +1011,40 @@ function handleEditRSVP() {
       updateAddButtonState();
     }
 
+    input.addEventListener('focus', function() {
+      row.classList.add('is-editing');
+    });
+
+    input.addEventListener('blur', function() {
+      setTimeout(function() {
+        row.classList.remove('is-editing');
+      }, 80);
+    });
+
     input.addEventListener('input', syncEmptyState);
     input.addEventListener('keyup', function(e) {
       syncEmptyState();
       if (e.key === 'Enter') {
         e.preventDefault();
+        row.classList.remove('is-editing');
         input.blur();
       }
     });
 
+    doneBtn.addEventListener('mousedown', function(e) { e.preventDefault(); });
+    doneBtn.addEventListener('pointerdown', function(e) { e.preventDefault(); });
     doneBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
+      row.classList.remove('is-editing');
       input.blur();
+      doneBtn.blur();
+      if (document.activeElement) document.activeElement.blur();
       syncEmptyState();
     });
 
+    rmBtn.addEventListener('mousedown', function(e) { e.preventDefault(); });
+    rmBtn.addEventListener('pointerdown', function(e) { e.preventDefault(); });
     rmBtn.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
@@ -1035,15 +1053,21 @@ function handleEditRSVP() {
         row.remove();
       } else {
         input.value = '';
-        input.blur();
         row.classList.add('is-empty');
+        row.classList.remove('is-editing');
+        input.blur();
+        rmBtn.blur();
+        if (document.activeElement) document.activeElement.blur();
       }
       updateAddButtonState();
     });
 
     list.appendChild(row);
     syncEmptyState();
-    if (autoFocus) input.focus();
+    if (autoFocus) {
+      input.focus();
+      row.classList.add('is-editing');
+    }
     return row;
   }
 
@@ -1065,22 +1089,40 @@ function handleEditRSVP() {
         updateAddButtonState();
       }
 
+      input.addEventListener('focus', function() {
+        row.classList.add('is-editing');
+      });
+
+      input.addEventListener('blur', function() {
+        setTimeout(function() {
+          row.classList.remove('is-editing');
+        }, 80);
+      });
+
       input.addEventListener('input', syncEmptyState);
       input.addEventListener('keyup', function(e) {
         syncEmptyState();
         if (e.key === 'Enter') {
           e.preventDefault();
+          row.classList.remove('is-editing');
           input.blur();
         }
       });
 
+      doneBtn.addEventListener('mousedown', function(e) { e.preventDefault(); });
+      doneBtn.addEventListener('pointerdown', function(e) { e.preventDefault(); });
       doneBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
+        row.classList.remove('is-editing');
         input.blur();
+        doneBtn.blur();
+        if (document.activeElement) document.activeElement.blur();
         syncEmptyState();
       });
 
+      rmBtn.addEventListener('mousedown', function(e) { e.preventDefault(); });
+      rmBtn.addEventListener('pointerdown', function(e) { e.preventDefault(); });
       rmBtn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
@@ -1089,8 +1131,11 @@ function handleEditRSVP() {
           row.remove();
         } else {
           input.value = '';
-          input.blur();
           row.classList.add('is-empty');
+          row.classList.remove('is-editing');
+          input.blur();
+          rmBtn.blur();
+          if (document.activeElement) document.activeElement.blur();
         }
         updateAddButtonState();
       });
@@ -1192,8 +1237,8 @@ function handleEditRSVP() {
 
 
 
-<script src="js/spa-nav.js?v=20200"></script>
-<script src="js/global-audio.js?v=20200"></script>
+<script src="js/spa-nav.js?v=20300"></script>
+<script src="js/global-audio.js?v=20300"></script>
 
 
 
