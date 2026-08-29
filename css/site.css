@@ -2486,18 +2486,45 @@ body.rsvp-confirmed .rsvp-subtitle {
 }
 
 
-/* ── Disabled Card Sections when Declining RSVP ── */
+/* ── Disabled Card Sections when Declining RSVP (Identical Background Treatment, Dimmed Text) ── */
 .rsvp-card-section.is-disabled-section {
-  opacity: 0.30 !important;
   pointer-events: none !important;
   user-select: none !important;
   cursor: not-allowed !important;
-  filter: grayscale(0.6) !important;
-  transition: opacity 0.3s ease, filter 0.3s ease !important;
+  /* Keep background and blur identical to enabled cards */
+  background: rgba(255, 255, 255, 0.06) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  backdrop-filter: blur(8px) !important;
+  border-radius: 12px !important;
 }
 
-.rsvp-card-section.is-disabled-section input,
-.rsvp-card-section.is-disabled-section textarea {
+.rsvp-card-section.is-disabled-section .rsvp-card-title,
+.rsvp-card-section.is-disabled-section .rsvp-option-text,
+.rsvp-card-section.is-disabled-section .rsvp-event-name,
+.rsvp-card-section.is-disabled-section .rsvp-event-date,
+.rsvp-card-section.is-disabled-section .rsvp-event-dot,
+.rsvp-card-section.is-disabled-section .req-star {
+  opacity: 0.32 !important;
+  transition: opacity 0.25s ease !important;
+}
+
+.rsvp-card-section.is-disabled-section .rsvp-check-mark {
+  opacity: 0.30 !important;
+  border-color: rgba(255, 255, 255, 0.40) !important;
+  transition: opacity 0.25s ease, border-color 0.25s ease !important;
+}
+
+.rsvp-card-section.is-disabled-section .rsvp-pill-input,
+.rsvp-card-section.is-disabled-section .rsvp-textarea-card {
+  opacity: 0.32 !important;
+  border-color: rgba(255, 255, 255, 0.40) !important;
   pointer-events: none !important;
   cursor: not-allowed !important;
+  transition: opacity 0.25s ease, border-color 0.25s ease !important;
+}
+
+.rsvp-card-section.is-disabled-section .rsvp-pill-input::placeholder,
+.rsvp-card-section.is-disabled-section .rsvp-textarea-card::placeholder {
+  color: rgba(255, 255, 255, 0.32) !important;
+  opacity: 1 !important;
 }
