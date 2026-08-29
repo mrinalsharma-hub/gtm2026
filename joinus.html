@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20100">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20100">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=20100">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=20200">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=20200">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=20200">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=20100">
+<link rel="stylesheet" href="css/site.css?v=20200">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20100') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=20200') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -759,11 +759,11 @@ main.paper, main, .rsvp-page-wrap {
       <section class="rsvp-card-section">
         <h2 class="rsvp-card-title">NAME <span class="req-star conditional-star">*</span></h2>
         <div id="name-list" class="name-row-wrap">
-                    <div class="name-input-row is-empty">
+                              <div class="name-input-row is-empty">
             <input type="text" class="rsvp-pill-input name-input" id="name-1" placeholder="Enter full name" autocomplete="name">
             <div class="name-row-actions">
-              <button type="button" class="name-action-btn done-btn" aria-label="Done">&#10003;</button>
-              <button type="button" class="name-action-btn rm-person-btn" aria-label="Cancel / Remove">&#10005;</button>
+              <button type="button" class="name-action-btn done-btn" aria-label="Done with name"><svg class="mat-icon icon-check" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
+              <button type="button" class="name-action-btn rm-person-btn" aria-label="Cancel or remove name"><svg class="mat-icon icon-close" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
             </div>
           </div>
         </div>
@@ -871,7 +871,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=20100"></script>
+<script src="js/site.js?v=20200"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -989,13 +989,13 @@ function handleEditRSVP() {
   list.addEventListener('keyup', updateAddButtonState);
   list.addEventListener('change', updateAddButtonState);
 
-  function createNameRow(initialValue, autoFocus) {
+    function createNameRow(initialValue, autoFocus) {
     var row = document.createElement('div');
     row.className = 'name-input-row' + (initialValue ? '' : ' is-empty');
     row.innerHTML = '<input type="text" class="rsvp-pill-input name-input" placeholder="Enter full name" value="' + (initialValue || '') + '">' +
                     '<div class="name-row-actions">' +
-                    '  <button type="button" class="name-action-btn done-btn" aria-label="Done">&#10003;</button>' +
-                    '  <button type="button" class="name-action-btn rm-person-btn" aria-label="Cancel / Remove">&#10005;</button>' +
+                    '  <button type="button" class="name-action-btn done-btn" aria-label="Done with name"><svg class="mat-icon icon-check" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>' +
+                    '  <button type="button" class="name-action-btn rm-person-btn" aria-label="Cancel or remove name"><svg class="mat-icon icon-close" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>' +
                     '</div>';
     
     var input = row.querySelector('.name-input');
@@ -1022,12 +1022,14 @@ function handleEditRSVP() {
 
     doneBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       input.blur();
-      updateAddButtonState();
+      syncEmptyState();
     });
 
     rmBtn.addEventListener('click', function(e) {
       e.preventDefault();
+      e.stopPropagation();
       var allRows = list.querySelectorAll('.name-input-row');
       if (allRows.length > 1) {
         row.remove();
@@ -1074,12 +1076,14 @@ function handleEditRSVP() {
 
       doneBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         input.blur();
-        updateAddButtonState();
+        syncEmptyState();
       });
 
       rmBtn.addEventListener('click', function(e) {
         e.preventDefault();
+        e.stopPropagation();
         var allRows = list.querySelectorAll('.name-input-row');
         if (allRows.length > 1) {
           row.remove();
@@ -1188,8 +1192,8 @@ function handleEditRSVP() {
 
 
 
-<script src="js/spa-nav.js?v=20100"></script>
-<script src="js/global-audio.js?v=20100"></script>
+<script src="js/spa-nav.js?v=20200"></script>
+<script src="js/global-audio.js?v=20200"></script>
 
 
 

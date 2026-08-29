@@ -1762,7 +1762,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   transform: none !important;
 }
 
-/* Name Row & Dual Action Buttons (Tick & Cross) */
+/* ── Name Row & Google Material Dual Actions (4 Scenarios) ── */
 .name-row-wrap {
   display: flex !important;
   flex-direction: column !important;
@@ -1796,8 +1796,6 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .name-action-btn {
   background: none !important;
   border: none !important;
-  font-size: 19px !important;
-  line-height: 1 !important;
   cursor: pointer !important;
   padding: 4px !important;
   width: 32px !important;
@@ -1815,56 +1813,68 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   transform: scale(0.88) !important;
 }
 
-/* ── Default Unfocused / Dark Background State (Image 1) ── */
-.name-input-row .rm-person-btn {
-  color: #FFFFFF !important;
-  opacity: 0.9 !important;
-  display: flex !important;
+.name-action-btn .mat-icon {
+  display: block !important;
+  width: 22px !important;
+  height: 22px !important;
 }
 
-.name-input-row .rm-person-btn:hover {
-  opacity: 1 !important;
-  background-color: rgba(255, 255, 255, 0.15) !important;
-}
-
-.name-input-row .done-btn {
-  display: none !important; /* hidden when already unfocused/done */
-}
-
-/* If row is empty and not focused, hide action buttons so placeholder is clean */
-.name-input-row.is-empty:not(:focus-within) .rm-person-btn {
+/* ── Scenario 1 & Scenario 4: Empty Text Field (NO icons at all, whether focused or not) ── */
+.name-input-row.is-empty .name-row-actions,
+.name-input-row.is-empty .done-btn,
+.name-input-row.is-empty .rm-person-btn {
   display: none !important;
 }
 
-/* ── Active Focused / Adding / Editing State (Image 2) ── */
-.name-input-row:focus-within .name-row-actions,
-.name-input-row.is-editing .name-row-actions {
+/* ── Scenario 2: Active Typing / Focused with Text (Both Green Tick & Wine Cross appear) ── */
+.name-input-row:not(.is-empty):focus-within .name-row-actions,
+.name-input-row:not(.is-empty).is-editing .name-row-actions {
   display: flex !important;
 }
 
-.name-input-row:focus-within .done-btn,
-.name-input-row.is-editing .done-btn {
+.name-input-row:not(.is-empty):focus-within .done-btn,
+.name-input-row:not(.is-empty).is-editing .done-btn {
   display: flex !important;
-  color: #2E7D32 !important; /* Green tick */
+  color: #2E7D32 !important; /* Google Material green check */
   opacity: 1 !important;
 }
 
-.name-input-row:focus-within .done-btn:hover,
-.name-input-row.is-editing .done-btn:hover {
+.name-input-row:not(.is-empty):focus-within .done-btn:hover,
+.name-input-row:not(.is-empty).is-editing .done-btn:hover {
   background-color: rgba(46, 125, 50, 0.12) !important;
 }
 
-.name-input-row:focus-within .rm-person-btn,
-.name-input-row.is-editing .rm-person-btn {
-  color: #8B1E22 !important; /* Wine cross on white input */
+.name-input-row:not(.is-empty):focus-within .rm-person-btn,
+.name-input-row:not(.is-empty).is-editing .rm-person-btn {
+  display: flex !important;
+  color: #8B1E22 !important; /* Google Material wine close on white */
   opacity: 0.95 !important;
+}
+
+.name-input-row:not(.is-empty):focus-within .rm-person-btn:hover,
+.name-input-row:not(.is-empty).is-editing .rm-person-btn:hover {
+  background-color: rgba(139, 30, 34, 0.10) !important;
+  opacity: 1 !important;
+}
+
+/* ── Scenario 3: Unfocused with Text (Done / Confirmed: Tick hidden, Pure White Cross remains) ── */
+.name-input-row:not(.is-empty):not(:focus-within) .name-row-actions {
   display: flex !important;
 }
 
-.name-input-row:focus-within .rm-person-btn:hover,
-.name-input-row.is-editing .rm-person-btn:hover {
-  background-color: rgba(139, 30, 34, 0.10) !important;
+.name-input-row:not(.is-empty):not(:focus-within) .done-btn {
+  display: none !important; /* Tick disappears */
+}
+
+.name-input-row:not(.is-empty):not(:focus-within) .rm-person-btn {
+  display: flex !important;
+  color: #FFFFFF !important; /* Pure white cross */
+  opacity: 0.95 !important;
+}
+
+.name-input-row:not(.is-empty):not(:focus-within) .rm-person-btn:hover {
   opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.15) !important;
 }
 
 .add-person-btn {
