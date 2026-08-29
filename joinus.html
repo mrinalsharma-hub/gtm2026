@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=19300">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=19300">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=19300">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=19400">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=19400">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=19400">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=19300">
+<link rel="stylesheet" href="css/site.css?v=19400">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=19300') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=19400') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -660,171 +660,41 @@ main.paper, main, .rsvp-page-wrap {
   top: max(60px, calc(52.4px + 8px + env(safe-area-inset-top, 0px))) !important;
 }
 
-/* ── Holistic Color Scheme Variations for Address Bar & Tabs Bar ── */
 
-/* ── Option 1: Holistic Ambient Deep-Wine Glass (Active Default / Recommended) ── */
-body.nav-ambient-glass .fixed-bottom-nav {
+/* ── Ambient Deep-Wine Glass Bottom Navigation (Hardly Visible Hairline) ── */
+.fixed-bottom-nav {
   background: rgba(76, 7, 10, 0.85) !important;
   background-color: rgba(76, 7, 10, 0.85) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-top: 1px solid rgba(234, 199, 134, 0.22) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
   box-shadow: 0 -6px 28px rgba(20, 2, 4, 0.40) !important;
 }
-body.nav-ambient-glass .fixed-bottom-nav .nav-tab.active .nav-icon,
-body.nav-ambient-glass .fixed-bottom-nav .nav-tab.active .nav-label {
+
+.fixed-bottom-nav .nav-tab.active .nav-icon,
+.fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   filter: drop-shadow(0 2px 8px rgba(255, 184, 0, 0.25)) !important;
 }
-body.nav-ambient-glass .global-audio-pill {
+
+.global-audio-pill {
   background: rgba(255, 255, 255, 0.94) !important;
   border: 1px solid rgba(234, 199, 134, 0.35) !important;
   box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
 }
-body.nav-ambient-glass .global-audio-pill .icon-play,
-body.nav-ambient-glass .global-audio-pill .icon-pause {
+
+.global-audio-pill .icon-play,
+.global-audio-pill .icon-pause {
   fill: #7B1115 !important;
 }
-body.nav-ambient-glass .global-audio-pill .bar {
+
+.global-audio-pill .bar {
   background-color: #7B1115 !important;
-}
-
-/* ── Option 2: Monolithic Grounded Gradient ── */
-body.nav-monolithic-grad .fixed-bottom-nav {
-  background: linear-gradient(180deg, rgba(76, 7, 10, 0.95) 0%, #360406 100%) !important;
-  background-color: #360406 !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.45) !important;
-}
-body.nav-monolithic-grad .global-audio-pill {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid rgba(234, 199, 134, 0.35) !important;
-  box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
-}
-body.nav-monolithic-grad .global-audio-pill .icon-play,
-body.nav-monolithic-grad .global-audio-pill .icon-pause {
-  fill: #7B1115 !important;
-}
-body.nav-monolithic-grad .global-audio-pill .bar {
-  background-color: #7B1115 !important;
-}
-
-/* ── Option 3: Floating Modern Frosted Pill Dock ── */
-body.nav-floating-dock .fixed-bottom-nav {
-  left: 16px !important;
-  right: 16px !important;
-  bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
-  width: calc(100vw - 32px) !important;
-  max-width: 440px !important;
-  margin: 0 auto !important;
-  border-radius: 26px !important;
-  background: rgba(48, 5, 8, 0.88) !important;
-  background-color: rgba(48, 5, 8, 0.88) !important;
-  backdrop-filter: blur(24px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-  border: 1px solid rgba(234, 199, 134, 0.28) !important;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.50), 0 2px 10px rgba(234, 199, 134, 0.12) !important;
-  min-height: 60px !important;
-  height: 60px !important;
-  padding-bottom: 0 !important;
-}
-body.nav-floating-dock .fixed-bottom-nav .nav-container {
-  height: 60px !important;
-  min-height: 60px !important;
-}
-body.nav-floating-dock .fixed-bottom-nav .nav-tab {
-  height: 60px !important;
-  min-height: 60px !important;
-}
-body.nav-floating-dock .global-audio-pill {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid rgba(234, 199, 134, 0.35) !important;
-  box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
-}
-body.nav-floating-dock .global-audio-pill .icon-play,
-body.nav-floating-dock .global-audio-pill .icon-pause {
-  fill: #7B1115 !important;
-}
-body.nav-floating-dock .global-audio-pill .bar {
-  background-color: #7B1115 !important;
-}
-
-/* ── Option 0: Present Baseline (Flat #A71F23) ── */
-body.nav-present-baseline .fixed-bottom-nav {
-  background: #A71F23 !important;
-  background-color: #A71F23 !important;
-  border-top: 1px solid rgba(255, 246, 232, 0.12) !important;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25) !important;
-}
-
-/* Tester UI styling */
-.harmony-tester-panel {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  gap: 8px !important;
-  margin: 16px auto 12px auto !important;
-  width: 100% !important;
-  max-width: 500px !important;
-  padding: 12px 16px !important;
-  background: rgba(0, 0, 0, 0.45) !important;
-  border: 1px solid rgba(234, 199, 134, 0.30) !important;
-  border-radius: 16px !important;
-  backdrop-filter: blur(14px) !important;
-  -webkit-backdrop-filter: blur(14px) !important;
-  z-index: 20 !important;
-  position: relative !important;
-}
-
-.harmony-tester-title {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 13px !important;
-  font-weight: 500 !important;
-  color: rgba(255, 255, 255, 0.95) !important;
-  letter-spacing: 0.08em !important;
-  text-transform: uppercase !important;
-}
-
-.harmony-tester-buttons {
-  display: flex !important;
-  flex-wrap: wrap !important;
-  justify-content: center !important;
-  gap: 6px !important;
-  width: 100% !important;
-}
-
-.harmony-btn {
-  background: rgba(255, 255, 255, 0.12) !important;
-  border: 1px solid rgba(255, 255, 255, 0.22) !important;
-  color: #FFFFFF !important;
-  padding: 6px 12px !important;
-  border-radius: 14px !important;
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 13px !important;
-  font-weight: 400 !important;
-  cursor: pointer !important;
-  transition: all 0.2s ease !important;
-  user-select: none !important;
-}
-
-.harmony-btn:hover {
-  background: rgba(255, 255, 255, 0.22) !important;
-  border-color: rgba(234, 199, 134, 0.50) !important;
-}
-
-.harmony-btn.active {
-  background: #FFFFFF !important;
-  color: #19202F !important;
-  border-color: #FFFFFF !important;
-  font-weight: 600 !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35) !important;
 }
 </style>
 </head>
-<body class="nav-ambient-glass">
+<body>
 
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true">
@@ -833,16 +703,6 @@ body.nav-present-baseline .fixed-bottom-nav {
 
 <!-- ── 2. RSVP Main Scrollable Wrapper ── -->
 <main class="rsvp-page-wrap">
-    <!-- Live Holistic Scheme Tester (Address Bar & Bottom Tabs Bar) -->
-  <div class="harmony-tester-panel" aria-label="Holistic Color Scheme Tester">
-    <span class="harmony-tester-title">Test Holistic Address &amp; Tabs Bar Harmony:</span>
-    <div class="harmony-tester-buttons">
-      <button type="button" class="harmony-btn active" id="btn-harm-1" onclick="setHarmonyOption('ambient-glass')">1: Ambient Deep-Wine Glass (Recommended)</button>
-      <button type="button" class="harmony-btn" id="btn-harm-2" onclick="setHarmonyOption('monolithic-grad')">2: Grounded Gradient</button>
-      <button type="button" class="harmony-btn" id="btn-harm-3" onclick="setHarmonyOption('floating-dock')">3: Floating Modern Dock</button>
-      <button type="button" class="harmony-btn" id="btn-harm-0" onclick="setHarmonyOption('present')">0: Present Baseline (Flat #A71F23)</button>
-    </div>
-  </div>
 <header class="rsvp-hero-header">
     <!-- Authentic Kumaoni Aipan Top Border (Pearl Dots & Vasudhara Bands) -->
     <div class="aipan-top-border-wrap" aria-hidden="true">
@@ -1006,7 +866,7 @@ body.nav-present-baseline .fixed-bottom-nav {
   </div>
 </nav>
 
-<script src="js/site.js?v=19300"></script>
+<script src="js/site.js?v=19400"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1166,50 +1026,14 @@ form.addEventListener('submit',function(e){
 
 
 
-<script src="js/spa-nav.js?v=19300"></script>
-<script src="js/global-audio.js?v=19300"></script>
+<script src="js/spa-nav.js?v=19400"></script>
+<script src="js/global-audio.js?v=19400"></script>
 
 
 
 
 
 
-<script>
-function setHarmonyOption(opt) {
-  document.body.classList.remove('nav-ambient-glass', 'nav-monolithic-grad', 'nav-floating-dock', 'nav-present-baseline');
-  var btns = document.querySelectorAll('.harmony-btn');
-  btns.forEach(function(b) { b.classList.remove('active'); });
 
-  var themeColor = '#B02428';
-
-  if (opt === 'monolithic-grad') {
-    document.body.classList.add('nav-monolithic-grad');
-    var b = document.getElementById('btn-harm-2');
-    if (b) b.classList.add('active');
-    themeColor = '#B02428';
-  } else if (opt === 'floating-dock') {
-    document.body.classList.add('nav-floating-dock');
-    var b = document.getElementById('btn-harm-3');
-    if (b) b.classList.add('active');
-    themeColor = '#B02428';
-  } else if (opt === 'present') {
-    document.body.classList.add('nav-present-baseline');
-    var b = document.getElementById('btn-harm-0');
-    if (b) b.classList.add('active');
-    themeColor = '#A71F23';
-  } else {
-    document.body.classList.add('nav-ambient-glass');
-    var b = document.getElementById('btn-harm-1');
-    if (b) b.classList.add('active');
-    themeColor = '#B02428';
-  }
-
-  // Dynamically update browser address bar theme-color
-  var metaTags = document.querySelectorAll('meta[name="theme-color"]');
-  metaTags.forEach(function(m) {
-    m.setAttribute('content', themeColor);
-  });
-}
-</script>
 </body>
 </html>

@@ -2349,102 +2349,41 @@ body.rsvp-page,
     radial-gradient(ellipse 135% 60% at 50% 18%, rgba(248, 140, 55, 0.08) 0%, transparent 80%) !important;
 }
 
-/* ── Holistic Color Scheme Variations for Address Bar & Tabs Bar ── */
-
-/* ── Option 1: Holistic Ambient Deep-Wine Glass (Active Default / Recommended) ── */
-body.nav-ambient-glass .fixed-bottom-nav {
+/* ── Locked-in Ambient Deep-Wine Glass Bottom Navigation for joinus.html ── */
+body.rsvp-page .fixed-bottom-nav,
+.rsvp-page-wrap ~ .fixed-bottom-nav {
   background: rgba(76, 7, 10, 0.85) !important;
   background-color: rgba(76, 7, 10, 0.85) !important;
   backdrop-filter: blur(20px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-  border-top: 1px solid rgba(234, 199, 134, 0.22) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
   box-shadow: 0 -6px 28px rgba(20, 2, 4, 0.40) !important;
 }
-body.nav-ambient-glass .fixed-bottom-nav .nav-tab.active .nav-icon,
-body.nav-ambient-glass .fixed-bottom-nav .nav-tab.active .nav-label {
+
+body.rsvp-page .fixed-bottom-nav .nav-tab.active .nav-icon,
+body.rsvp-page .fixed-bottom-nav .nav-tab.active .nav-label,
+.rsvp-page-wrap ~ .fixed-bottom-nav .nav-tab.active .nav-icon,
+.rsvp-page-wrap ~ .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #FFFFFF !important;
   fill: #FFFFFF !important;
   filter: drop-shadow(0 2px 8px rgba(255, 184, 0, 0.25)) !important;
 }
-body.nav-ambient-glass .global-audio-pill {
+
+body.rsvp-page .global-audio-pill,
+.rsvp-page-wrap ~ .global-audio-pill {
   background: rgba(255, 255, 255, 0.94) !important;
   border: 1px solid rgba(234, 199, 134, 0.35) !important;
   box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
 }
-body.nav-ambient-glass .global-audio-pill .icon-play,
-body.nav-ambient-glass .global-audio-pill .icon-pause {
+
+body.rsvp-page .global-audio-pill .icon-play,
+body.rsvp-page .global-audio-pill .icon-pause,
+.rsvp-page-wrap ~ .global-audio-pill .icon-play,
+.rsvp-page-wrap ~ .global-audio-pill .icon-pause {
   fill: #7B1115 !important;
 }
-body.nav-ambient-glass .global-audio-pill .bar {
-  background-color: #7B1115 !important;
-}
 
-/* ── Option 2: Monolithic Grounded Gradient ── */
-body.nav-monolithic-grad .fixed-bottom-nav {
-  background: linear-gradient(180deg, rgba(76, 7, 10, 0.95) 0%, #360406 100%) !important;
-  background-color: #360406 !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.45) !important;
-}
-body.nav-monolithic-grad .global-audio-pill {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid rgba(234, 199, 134, 0.35) !important;
-  box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
-}
-body.nav-monolithic-grad .global-audio-pill .icon-play,
-body.nav-monolithic-grad .global-audio-pill .icon-pause {
-  fill: #7B1115 !important;
-}
-body.nav-monolithic-grad .global-audio-pill .bar {
+body.rsvp-page .global-audio-pill .bar,
+.rsvp-page-wrap ~ .global-audio-pill .bar {
   background-color: #7B1115 !important;
-}
-
-/* ── Option 3: Floating Modern Frosted Pill Dock ── */
-body.nav-floating-dock .fixed-bottom-nav {
-  left: 16px !important;
-  right: 16px !important;
-  bottom: max(12px, env(safe-area-inset-bottom, 12px)) !important;
-  width: calc(100vw - 32px) !important;
-  max-width: 440px !important;
-  margin: 0 auto !important;
-  border-radius: 26px !important;
-  background: rgba(48, 5, 8, 0.88) !important;
-  background-color: rgba(48, 5, 8, 0.88) !important;
-  backdrop-filter: blur(24px) saturate(190%) !important;
-  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
-  border: 1px solid rgba(234, 199, 134, 0.28) !important;
-  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.50), 0 2px 10px rgba(234, 199, 134, 0.12) !important;
-  min-height: 60px !important;
-  height: 60px !important;
-  padding-bottom: 0 !important;
-}
-body.nav-floating-dock .fixed-bottom-nav .nav-container {
-  height: 60px !important;
-  min-height: 60px !important;
-}
-body.nav-floating-dock .fixed-bottom-nav .nav-tab {
-  height: 60px !important;
-  min-height: 60px !important;
-}
-body.nav-floating-dock .global-audio-pill {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid rgba(234, 199, 134, 0.35) !important;
-  box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
-}
-body.nav-floating-dock .global-audio-pill .icon-play,
-body.nav-floating-dock .global-audio-pill .icon-pause {
-  fill: #7B1115 !important;
-}
-body.nav-floating-dock .global-audio-pill .bar {
-  background-color: #7B1115 !important;
-}
-
-/* ── Option 0: Present Baseline (Flat #A71F23) ── */
-body.nav-present-baseline .fixed-bottom-nav {
-  background: #A71F23 !important;
-  background-color: #A71F23 !important;
-  border-top: 1px solid rgba(255, 246, 232, 0.12) !important;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25) !important;
 }
