@@ -2316,3 +2316,148 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 
 
+
+
+/* ── Live Emboss Style Variations ── */
+
+/* Default / Option 1: Micro-Stationery Blind Emboss */
+body.emboss-opt1 .rsvp-title,
+body.emboss-opt1 .rsvp-card-title,
+body.emboss-opt1 .rsvp-subtitle,
+body.emboss-opt1 .rsvp-option-text,
+body.emboss-opt1 .rsvp-event-name,
+.rsvp-title,
+.rsvp-card-title,
+.rsvp-subtitle,
+.rsvp-option-text,
+.rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 -0.6px 0.5px rgba(255, 255, 255, 0.30),
+    0  1.0px 1.5px rgba(30, 2, 5, 0.45) !important;
+}
+
+body.emboss-opt1 .rsvp-event-date,
+.rsvp-event-date {
+  text-shadow: 
+    0 -0.4px 0.4px rgba(255, 255, 255, 0.18),
+    0  0.8px 1.0px rgba(30, 2, 5, 0.30) !important;
+}
+
+/* Option 2: Tiered Hierarchical Emboss */
+body.emboss-opt2 .rsvp-title {
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 -0.8px 0.5px rgba(255, 255, 255, 0.35),
+    0  1.5px 2.5px rgba(30, 2, 5, 0.50) !important;
+}
+body.emboss-opt2 .rsvp-card-title {
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 -0.6px 0.5px rgba(255, 255, 255, 0.30),
+    0  1.0px 1.5px rgba(30, 2, 5, 0.40) !important;
+}
+body.emboss-opt2 .rsvp-subtitle,
+body.emboss-opt2 .rsvp-option-text,
+body.emboss-opt2 .rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 -0.5px 0.5px rgba(255, 255, 255, 0.25),
+    0  0.8px 1.2px rgba(30, 2, 5, 0.35) !important;
+}
+body.emboss-opt2 .rsvp-event-date {
+  text-shadow: 
+    0 -0.4px 0.4px rgba(255, 255, 255, 0.15),
+    0  0.6px 0.8px rgba(30, 2, 5, 0.25) !important;
+}
+
+/* Option 3: Top-Lit Micro Crest */
+body.emboss-opt3 .rsvp-title,
+body.emboss-opt3 .rsvp-card-title,
+body.emboss-opt3 .rsvp-subtitle,
+body.emboss-opt3 .rsvp-option-text,
+body.emboss-opt3 .rsvp-event-name {
+  color: #FFFFFF !important;
+  text-shadow: 
+    0 -0.8px 0.5px rgba(255, 255, 255, 0.28),
+    0  0.8px 1.0px rgba(25, 2, 4, 0.25) !important;
+}
+body.emboss-opt3 .rsvp-event-date {
+  text-shadow: 
+    0 -0.5px 0.4px rgba(255, 255, 255, 0.18),
+    0  0.6px 0.8px rgba(25, 2, 4, 0.20) !important;
+}
+
+/* None: Clean (Off) */
+body.emboss-none .rsvp-title,
+body.emboss-none .rsvp-card-title,
+body.emboss-none .rsvp-subtitle,
+body.emboss-none .rsvp-option-text,
+body.emboss-none .rsvp-event-name,
+body.emboss-none .rsvp-event-date {
+  color: #FFFFFF !important;
+  text-shadow: none !important;
+}
+
+/* Tester UI styling */
+.emboss-tester-panel {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 16px auto 10px auto !important;
+  width: 100% !important;
+  max-width: 420px !important;
+  padding: 10px 14px !important;
+  background: rgba(0, 0, 0, 0.22) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  z-index: 20 !important;
+  position: relative !important;
+}
+
+.emboss-tester-title {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+.emboss-tester-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  width: 100% !important;
+}
+
+.emboss-btn {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  color: #FFFFFF !important;
+  padding: 6px 12px !important;
+  border-radius: 14px !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13px !important;
+  font-weight: 300 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+}
+
+.emboss-btn:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  border-color: rgba(255, 255, 255, 0.40) !important;
+}
+
+.emboss-btn.active {
+  background: #FFFFFF !important;
+  color: #19202F !important;
+  border-color: #FFFFFF !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25) !important;
+}
