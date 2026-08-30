@@ -2524,3 +2524,14 @@ body.rsvp-confirmed .rsvp-subtitle {
   color: rgba(255, 255, 255, 0.32) !important;
   opacity: 1 !important;
 }
+
+
+/* ── Floating Gold Sparks & Diya Embers Canvas ── */
+.particles-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}

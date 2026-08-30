@@ -34,15 +34,15 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title>Celebrate With Us · Garima weds Mrinal</title>
 <meta name="description" content="Please RSVP — help us finalize our celebration. 20–22 November 2026, Nainital">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24300">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=24300">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=24300">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24400">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=24400">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=24400">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="fonts/Spectral-Light.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/Cormorant-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Upright:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&family=Lustria&family=Quattrocento:wght@400;700&family=Raleway:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Spectral:wght@200;300;400;500&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=24300">
+<link rel="stylesheet" href="css/site.css?v=24400">
 <style>
 @font-face {
   font-family: 'Cormorant';
@@ -625,7 +625,7 @@ main.paper, main, .rsvp-page-wrap {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=24300') !important;
+  background-image: url('images/rsvp_botanical_gold_lines.webp?v=24400') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 795px 795px !important;
@@ -691,6 +691,14 @@ main.paper, main, .rsvp-page-wrap {
   background-color: #7B1115 !important;
 }
 
+.particles-canvas {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
 </style>
 </head>
 <body>
@@ -698,6 +706,7 @@ main.paper, main, .rsvp-page-wrap {
 <!-- ── 1. Sole Attached Gradient Background Layer ── -->
 <div class="rsvp-bg-layer" aria-hidden="true">
   <div class="rsvp-botanical-art-layer" aria-hidden="true"></div>
+  <canvas id="particles-canvas" class="particles-canvas" aria-hidden="true"></canvas>
 </div>
 
 <!-- ── 2. RSVP Main Scrollable Wrapper ── -->
@@ -886,7 +895,7 @@ main.paper, main, .rsvp-page-wrap {
   </div>
 </nav>
 
-<script src="js/site.js?v=24300"></script>
+<script src="js/site.js?v=24400"></script>
 <script>
 /* ── RSVP → Google Form bridge ─────────────────────────────
    Responses land in the Google Form (and its linked Sheet).
@@ -1314,8 +1323,8 @@ function handleEditRSVP() {
 
 
 
-<script src="js/spa-nav.js?v=24300"></script>
-<script src="js/global-audio.js?v=24300"></script>
+<script src="js/spa-nav.js?v=24400"></script>
+<script src="js/global-audio.js?v=24400"></script>
 
 
 
@@ -1323,5 +1332,82 @@ function handleEditRSVP() {
 
 
 
+<script>
+/* ── Floating Gold Sparks & Diya Embers Engine ── */
+(function() {
+  const canvas = document.getElementById('particles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animId = null;
+  const count = 24;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resize, { passive: true });
+  resize();
+
+  class Spark {
+    constructor() {
+      this.reset(true);
+    }
+    reset(initial = false) {
+      this.x = Math.random() * canvas.width;
+      this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
+      this.size = Math.random() * 2.2 + 0.8;
+      this.baseAlpha = Math.random() * 0.65 + 0.25;
+      this.alpha = this.baseAlpha;
+      this.speedY = Math.random() * 0.55 + 0.25;
+      this.speedX = (Math.random() - 0.5) * 0.35;
+      this.twinkleSpeed = Math.random() * 0.04 + 0.02;
+      this.twinkleAngle = Math.random() * Math.PI * 2;
+    }
+    update() {
+      this.y -= this.speedY;
+      this.x += this.speedX + Math.sin(this.twinkleAngle) * 0.2;
+      this.twinkleAngle += this.twinkleSpeed;
+      this.alpha = this.baseAlpha * (0.5 + 0.5 * Math.sin(this.twinkleAngle));
+      if (this.y < -10 || this.x < -10 || this.x > canvas.width + 10) {
+        this.reset(false);
+      }
+    }
+    draw() {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 220, 120, ' + this.alpha + ')';
+      ctx.shadowBlur = this.size * 3;
+      ctx.shadowColor = 'rgba(255, 215, 0, 0.8)';
+      ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  for (let i = 0; i < count; i++) {
+    particles.push(new Spark());
+  }
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+    }
+    animId = requestAnimationFrame(loop);
+  }
+
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+      if (animId) cancelAnimationFrame(animId);
+    } else {
+      animId = requestAnimationFrame(loop);
+    }
+  });
+
+  animId = requestAnimationFrame(loop);
+})();
+</script>
 </body>
 </html>
