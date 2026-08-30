@@ -1616,7 +1616,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-title {
   font-family: 'Cinzel', serif !important;
-  font-size: clamp(52px, 13vw, 64px) !important;
+  font-size: clamp(40px, 10vw, 48px) !important;
   font-weight: 400 !important;
   letter-spacing: 1px !important;
   color: #FFFFFF !important;
@@ -1624,7 +1624,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   text-transform: uppercase !important;
   margin-top: 24px !important;
   margin-bottom: 0 !important;
-  line-height: 0.88 !important;
+  line-height: 0.95 !important;
 }
 
 .rsvp-subtitle {
