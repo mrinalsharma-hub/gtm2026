@@ -1616,15 +1616,15 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-title {
   font-family: 'Cinzel', serif !important;
-  font-size: clamp(30px, 7.5vw, 38px) !important;
-  font-weight: 450 !important;
-  letter-spacing: 0.02em !important;
+  font-size: clamp(52px, 13vw, 64px) !important;
+  font-weight: 400 !important;
+  letter-spacing: 1px !important;
   color: #FFFFFF !important;
   text-shadow: -0.75px -0.75px 0px rgba(15, 2, 3, 0.65), 0.75px 0.75px 0px rgba(255, 255, 255, 0.25), 0 1.5px 3px rgba(15, 2, 3, 0.20) !important;
   text-transform: uppercase !important;
-  margin-top: 40px !important;
-  margin-bottom: 3px !important;
-  line-height: 1.15 !important;
+  margin-top: 24px !important;
+  margin-bottom: 0 !important;
+  line-height: 0.88 !important;
 }
 
 .rsvp-subtitle {
@@ -2382,7 +2382,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background-repeat: repeat !important;
   background-position: top center !important;
   background-size: 418px 418px !important;
-  opacity: 0.32 !important;
+  opacity: 0.25 !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
