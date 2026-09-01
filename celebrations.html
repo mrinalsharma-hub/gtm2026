@@ -436,6 +436,87 @@ body {
   background-color: #A71F23 !important;
 }
 
+/* ── Royal Entrance Choreography (Silk & Velvet Cascade) ── */
+@keyframes royalFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes royalCardSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.988);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes royalPillFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header Text Stagger */
+.celebrations-script-the {
+  animation: royalFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+}
+
+.celebrations-title-main {
+  animation: royalFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both;
+}
+
+.celebrations-date-location {
+  animation: royalFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+/* Four Event Cards Staggered Cascade */
+.celebrations-cards-feed #card-mehndi {
+  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+
+.celebrations-cards-feed #card-wedding {
+  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
+}
+
+.celebrations-cards-feed #card-party {
+  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.66s both;
+}
+
+.celebrations-cards-feed #card-reception {
+  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both;
+}
+
+/* Floating Audio Player Entrance */
+.global-audio-pill {
+  animation: royalPillFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both;
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .celebrations-script-the,
+  .celebrations-title-main,
+  .celebrations-date-location,
+  .celebrations-cards-feed .celebration-card-shell,
+  .global-audio-pill {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 
 </style>
 </head>
