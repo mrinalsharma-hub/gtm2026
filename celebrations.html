@@ -23,9 +23,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#FFEFD4">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
+<meta name="theme-color" content="#FFEFD5">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD5">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD5">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -38,6 +38,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=24700">
 
 <!-- ── Resource Preloads for Instant First-Load Performance ── -->
+<link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
@@ -91,8 +92,8 @@ html {
   width: 100% !important;
   height: 100% !important;
   height: 100dvh !important;
-  background: #FFEFD4 !important;
-  background-color: #FFEFD4 !important;
+  background: #FFEFD5 !important;
+  background-color: #FFEFD5 !important;
   overflow: hidden !important;
 }
 
@@ -104,8 +105,8 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: #FFEFD4 !important;
-  background-color: #FFEFD4 !important;
+  background: #FFEFD5 !important;
+  background-color: #FFEFD5 !important;
   font-family: 'Spectral', Georgia, serif;
   overflow: hidden !important;
   overscroll-behavior: none !important;
@@ -114,7 +115,7 @@ body {
   justify-content: center;
 }
 
-/* ── 1. Page Background Canvas ── */
+/* ── 1. Page Background Canvas (Figma Node 22:80 Motif Texture) ── */
 .celebrations-bg-layer {
   position: fixed;
   inset: 0;
@@ -124,8 +125,8 @@ body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  background: #FFEFD4 !important;
-  background-color: #FFEFD4 !important;
+  background: #FFEFD5 !important;
+  background-color: #FFEFD5 !important;
 }
 
 .celebrations-botanical-art-layer {
@@ -133,11 +134,12 @@ body {
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url('images/rsvp_botanical_gold_lines.webp?v=24700') !important;
+  background-image: url('images/celebrations/bg_motif_celebrations.webp?v=24700') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
-  background-size: 640px 640px !important;
-  opacity: 0.18 !important;
+  background-size: 486px 364px !important;
+  opacity: 0.55 !important;
+  mix-blend-mode: multiply !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
@@ -149,7 +151,7 @@ body {
   transform: translateX(-50%);
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(255, 253, 249, 0.75) 0%, rgba(255, 239, 212, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%);
   pointer-events: none;
   z-index: 1;
 }
