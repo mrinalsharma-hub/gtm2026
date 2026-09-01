@@ -10,7 +10,7 @@
       return 'index.html';
     }
     if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html') return 'G&M.html';
-    if (path === 'events.html' || path === 'celebrations.html' || path === 'schedule.html') return 'events.html';
+    if (path === 'events.html' || path === 'celebrations.html' || path === 'schedule.html') return 'celebrations.html';
     if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
     if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
     return path;
@@ -58,8 +58,16 @@
   }
 
   function ensureThemeColor() {
+    var path = (window.location.pathname || '').toLowerCase();
     var currentNorm = normalizePath(window.location.pathname);
-    var themeColor = (currentNorm === 'joinus.html') ? '#B02428' : '#A71F23';
+    var themeColor = '#A71F23';
+
+    if (path.indexOf('celebrations.html') !== -1 || path.indexOf('events.html') !== -1 || currentNorm === 'celebrations.html' || currentNorm === 'events.html') {
+      themeColor = '#FFEFD5';
+    } else if (currentNorm === 'joinus.html') {
+      themeColor = '#B02428';
+    }
+
     var metaTags = document.querySelectorAll('meta[name="theme-color"]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
