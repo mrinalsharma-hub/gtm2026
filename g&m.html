@@ -606,7 +606,7 @@ body {
   <div class="home-auth-backdrop" id="auth-backdrop" aria-hidden="true"></div>
 
   <!-- ── 6. Unlock for Details Button ── -->
-  <a href="events.html" id="btn-view-details" class="home-unlock-details-btn" aria-label="View Event Details" style="white-space: nowrap !important; display: inline-flex !important; flex-wrap: nowrap !important; text-decoration: none !important;">
+  <a href="celebrations.html" id="btn-view-details" class="home-unlock-details-btn" aria-label="View Event Details" style="white-space: nowrap !important; display: inline-flex !important; flex-wrap: nowrap !important; text-decoration: none !important;">
     <svg class="home-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
       <circle cx="12" cy="12" r="10"></circle>
       <polyline points="12 16 16 12 12 8"></polyline>
@@ -665,7 +665,7 @@ body {
       </div>
       <span class="nav-label">G&amp;M</span>
     </a>
-    <a href="events.html" class="nav-tab" role="tab" aria-selected="false" aria-label="Events">
+    <a href="celebrations.html" class="nav-tab" role="tab" aria-selected="false" aria-label="Events">
       <div class="nav-pill-wrapper">
         <div class="nav-pill"></div>
         <svg class="nav-icon" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -808,7 +808,7 @@ document.addEventListener('DOMContentLoaded', function() {
       setPersistentAuth();
       sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
       unlockAllTabs();
-      window.location.href = targetUrl || 'events.html';
+      window.location.href = targetUrl || 'celebrations.html';
     } else {
       isSubmitting = false;
       if (pinError) pinError.style.display = 'block';
@@ -821,7 +821,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Flow 2: Authenticated user -> direct instant navigation
     if (isAuthed()) {
-      window.location.href = destination || 'events.html';
+      window.location.href = destination || 'celebrations.html';
       return;
     }
 
@@ -850,7 +850,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (btnViewDetails) {
     btnViewDetails.addEventListener('click', function(e) {
-      window.handleOpenDetails(e, 'events.html');
+      window.handleOpenDetails(e, 'celebrations.html');
     });
   }
 

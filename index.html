@@ -664,7 +664,7 @@ body {
       </div>
       <span class="nav-label">G&amp;M</span>
     </a>
-    <a href="events.html" class="nav-tab is-locked" role="tab" aria-selected="false" aria-label="Events">
+    <a href="celebrations.html" class="nav-tab is-locked" role="tab" aria-selected="false" aria-label="Events">
       <div class="nav-pill-wrapper">
         <div class="nav-pill"></div>
         <svg class="nav-icon" viewBox="0 0 512 512" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -820,7 +820,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Flow 2: Authenticated user -> direct instant navigation
     if (isAuthed()) {
-      window.location.href = destination || 'events.html';
+      window.location.href = destination || 'celebrations.html';
       return;
     }
 
@@ -849,7 +849,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (btnViewDetails) {
     btnViewDetails.addEventListener('click', function(e) {
-      window.handleOpenDetails(e, 'events.html');
+      window.handleOpenDetails(e, 'celebrations.html');
     });
   }
 

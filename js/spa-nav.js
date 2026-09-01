@@ -10,7 +10,7 @@
       return 'index.html';
     }
     if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html') return 'G&M.html';
-    if (path === 'events.html' || path === 'celebrations.html' || path === 'schedule.html') return 'celebrations.html';
+    if (path === 'celebrations.html' || path === 'celebrations.html' || path === 'schedule.html') return 'celebrations.html';
     if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
     if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
     return path;
@@ -62,7 +62,7 @@
     var currentNorm = normalizePath(window.location.pathname);
     var themeColor = '#A71F23';
 
-    if (path.indexOf('celebrations.html') !== -1 || path.indexOf('events.html') !== -1 || currentNorm === 'celebrations.html' || currentNorm === 'events.html') {
+    if (path.indexOf('celebrations.html') !== -1 || path.indexOf('celebrations.html') !== -1 || currentNorm === 'celebrations.html' || currentNorm === 'celebrations.html') {
       themeColor = '#FFEFD5';
     } else if (currentNorm === 'joinus.html') {
       themeColor = '#B02428';
@@ -112,7 +112,7 @@
 
   // Pre-fetch tabs into memory cache
   var pageCache = {};
-  var TABS = ['G&M.html', 'events.html', 'stay.html', 'joinus.html'];
+  var TABS = ['G&M.html', 'celebrations.html', 'stay.html', 'joinus.html'];
 
   function prefetchPage(url) {
     if (!url || pageCache[url]) return;
