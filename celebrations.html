@@ -196,10 +196,11 @@ body {
   width: 100%;
   max-width: 440px;
   margin: 16px auto 24px auto;
-  padding: 0;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   position: relative;
   flex-shrink: 0;
   box-sizing: border-box;
@@ -211,6 +212,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .celebrations-script-the {
@@ -222,8 +224,9 @@ body {
   color: #A71F23;
   text-shadow: 0px 1px 2px #FFFDF9;
   display: block;
-  margin-bottom: 2px;
+  margin: 0 auto 2px auto;
   text-align: center;
+  width: 100%;
 }
 
 .celebrations-title-main {
@@ -235,20 +238,20 @@ body {
   color: #A71F23;
   text-transform: uppercase;
   text-shadow: 0px 1px 2px #FFFDF9;
-  margin: 0;
+  margin: 0 auto;
   text-align: center;
   width: 100%;
 }
 
-/* Subrow: Exact 15% Left Margin (Flush with W in WEDDING) + Right Boat Illustration */
+/* Subrow: Relatively Placed directly below the Centered Title */
 .celebrations-subrow {
   width: 100%;
+  max-width: 396px;
+  margin: -24px auto 0 auto;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: -24px;
-  padding-left: 15%;
-  padding-right: 6%;
+  padding: 0;
   position: relative;
   box-sizing: border-box;
 }
