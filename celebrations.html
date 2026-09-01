@@ -39,6 +39,7 @@
 
 <!-- ── Resource Preloads for Instant First-Load Performance ── -->
 <link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/celebrations/boat_illustration.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
@@ -190,54 +191,106 @@ body {
   align-items: center;
 }
 
-/* ── Header: The Wedding Weekend ── */
+/* ── Header: The Wedding Weekend (Figma Node 18:79 / 18:107) ── */
 .celebrations-header {
   width: 100%;
-  padding: 0 8px;
+  max-width: 440px;
+  padding: 0 16px;
   margin-top: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  position: relative;
   flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.celebrations-title-wrap {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .celebrations-script-the {
   font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif;
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.5px;
+  line-height: 44px;
+  letter-spacing: -0.96px;
   color: #A71F23;
   text-shadow: 0px 1px 2px #FFFDF9;
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
 }
 
 .celebrations-title-main {
   font-family: 'Kugile', 'Cinzel', serif;
   font-size: clamp(44px, 12.5vw, 56px);
   font-weight: 400;
-  line-height: 0.88;
+  line-height: 52px;
   letter-spacing: -1.12px;
   color: #A71F23;
   text-transform: uppercase;
   text-shadow: 0px 1px 2px #FFFDF9;
   margin: 0;
+  text-align: center;
 }
 
-.celebrations-date-location {
+/* Subrow: Left-aligned Countdown + Right-aligned Nainital Boat Illustration */
+.celebrations-subrow {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: -12px;
+  padding: 0 4px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.celebrations-desc-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding-bottom: 8px;
+  z-index: 2;
+}
+
+.celebrations-countdown-text,
+.celebrations-location-text {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.96px;
-  line-height: 1.25;
+  line-height: 1.35;
   color: #A71F23;
   text-transform: uppercase;
   text-shadow: 0px 1px 2px #FFFDF9;
-  margin-top: 14px;
-  margin-bottom: 0;
+  display: block;
+}
+
+.celebrations-boat-wrap {
+  width: clamp(140px, 38vw, 168px);
+  height: auto;
+  position: relative;
+  margin-right: -4px;
+  margin-bottom: -6px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 1;
+}
+
+.celebrations-boat-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.06));
 }
 
 /* ── 3. Events Cards Feed (4px Side Padding & 4px Gap) ── */
@@ -609,14 +662,31 @@ body {
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="celebrations-page-wrap">
 
-  <!-- ── Header: The Wedding Weekend (Figma Node 18:107) ── -->
+  <!-- ── Header: The Wedding Weekend (Figma Node 18:79 / 18:107) ── -->
   <header class="celebrations-header" data-node-id="18:107">
-    <span class="celebrations-script-the">The</span>
-    <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
-    <p class="celebrations-date-location" data-node-id="18:108">
-      <span id="celebrations-countdown">120 DAYS TO GO</span><br>
-      NAINITAL &amp; DELHI
-    </p>
+    <div class="celebrations-title-wrap">
+      <span class="celebrations-script-the">The</span>
+      <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
+    </div>
+    
+    <div class="celebrations-subrow">
+      <div class="celebrations-desc-block" data-node-id="18:108">
+        <span id="celebrations-countdown" class="celebrations-countdown-text">120 DAYS TO GO</span>
+        <span class="celebrations-location-text">NAINITAL &amp; DELHI</span>
+      </div>
+      <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
+        <picture>
+          <source srcset="images/celebrations/boat_illustration.webp?v=24700" type="image/webp">
+          <img src="images/celebrations/boat_illustration.png?v=24700" 
+               alt="Bride and Groom in Nainital Boat" 
+               class="celebrations-boat-img" 
+               width="168" 
+               height="106" 
+               loading="eager" 
+               decoding="async">
+        </picture>
+      </div>
+    </div>
   </header>
 
   <!-- ── 3. Four Miniature Art Event Cards ── -->
