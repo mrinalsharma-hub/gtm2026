@@ -36,6 +36,12 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24700">
 <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=24700">
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=24700">
+
+<!-- ── Resource Preloads for Instant First-Load Performance ── -->
+<link rel="preload" as="image" href="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=WindSong&display=swap" rel="stylesheet">
@@ -63,6 +69,7 @@
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
@@ -107,7 +114,7 @@ body {
   justify-content: center;
 }
 
-/* ── 1. Page Background Canvas (#FFEFD4 + Tonal Damask Linen Texture) ── */
+/* ── 1. Page Background Canvas ── */
 .celebrations-bg-layer {
   position: fixed;
   inset: 0;
@@ -147,7 +154,7 @@ body {
   z-index: 1;
 }
 
-/* ── 2. Edge-to-Edge Scrollable Content Container (Smooth Native App Scroll) ── */
+/* ── 2. Scrollable Content Viewport ── */
 .celebrations-page-wrap {
   position: absolute !important;
   top: 0 !important;
@@ -230,7 +237,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Authentic Figma Card Shell */
+/* Authentic Figma Card Shell (GPU Composited) */
 .celebration-card-shell {
   width: 100%;
   max-width: 424px;
@@ -238,13 +245,23 @@ body {
   position: relative;
   display: block;
   background: transparent;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   filter: drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
 }
 
 .celebration-card-shell:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
   filter: drop-shadow(0 12px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08));
+}
+
+.card-picture-wrap {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
 /* Pure Clean Background Artwork from Figma */
@@ -256,6 +273,9 @@ body {
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+  transform: translateZ(0);
 }
 
 /* Single Real Visible & Selectable HTML Text Layer */
@@ -298,7 +318,7 @@ body {
   color: #FFFFFF;
 }
 
-/* ── Typography per User Specifications ── */
+/* ── Typography Specs ── */
 .card-eyebrow {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
@@ -390,15 +410,18 @@ body {
 
     <!-- ── Card 1: Mehndi ── -->
     <article class="celebration-card-shell" id="card-mehndi">
-      <!-- Clean Textured Card Artwork (Direct from Figma) -->
-      <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
-           alt="Mehndi · Friday 20 November, 7:30 PM" 
-           class="celebration-card-art" 
-           width="848" 
-           height="558"
-           loading="eager">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
+             alt="Mehndi · Friday 20 November, 7:30 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             fetchpriority="high"
+             decoding="async"
+             loading="eager">
+      </picture>
 
-      <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
         <div class="text-box-right">
           <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
@@ -411,15 +434,18 @@ body {
 
     <!-- ── Card 2: Wedding ── -->
     <article class="celebration-card-shell" id="card-wedding">
-      <!-- Clean Textured Card Artwork (Direct from Figma) -->
-      <img src="images/celebrations/card_bg_wedding.png?v=24700" 
-           alt="Wedding · Friday 20 November, 7:30 PM" 
-           class="celebration-card-art" 
-           width="848" 
-           height="558"
-           loading="lazy">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_wedding.png?v=24700" 
+             alt="Wedding · Friday 20 November, 7:30 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             fetchpriority="high"
+             decoding="async"
+             loading="eager">
+      </picture>
 
-      <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
         <div class="text-box-left">
           <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
@@ -435,15 +461,17 @@ body {
 
     <!-- ── Card 3: Evening Party ── -->
     <article class="celebration-card-shell" id="card-party">
-      <!-- Clean Textured Card Artwork (Direct from Figma) -->
-      <img src="images/celebrations/card_bg_party.png?v=24700" 
-           alt="Evening Party · Saturday 21 November, 6:00 PM" 
-           class="celebration-card-art" 
-           width="848" 
-           height="558"
-           loading="lazy">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_party.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_party.png?v=24700" 
+             alt="Evening Party · Saturday 21 November, 6:00 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             decoding="async"
+             loading="lazy">
+      </picture>
 
-      <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
         <div class="text-box-right">
           <span class="card-eyebrow">SAT 21 NOV | 6:00 PM</span>
@@ -455,15 +483,17 @@ body {
 
     <!-- ── Card 4: Reception ── -->
     <article class="celebration-card-shell" id="card-reception">
-      <!-- Clean Textured Card Artwork (Direct from Figma) -->
-      <img src="images/celebrations/card_bg_reception.png?v=24700" 
-           alt="Reception · Monday 23 November, 7:00 PM" 
-           class="celebration-card-art" 
-           width="848" 
-           height="558"
-           loading="lazy">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_reception.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_reception.png?v=24700" 
+             alt="Reception · Monday 23 November, 7:00 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             decoding="async"
+             loading="lazy">
+      </picture>
 
-      <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
         <div class="text-box-left">
           <span class="card-eyebrow">MON 23 NOV | 7:00 PM</span>
