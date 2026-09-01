@@ -179,177 +179,117 @@ html, body {
   gap: 16px;
 }
 
-/* Base Card Shell */
+/* Card Shell with Natural Arch Contour Drop Shadow */
 .celebration-card-shell {
   width: 100%;
   max-width: 408px;
-  height: 268px;
   position: relative;
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(60, 5, 8, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+  display: block;
+  background: transparent;
+  filter: drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
 }
 
 .celebration-card-shell:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(60, 5, 8, 0.20), 0 3px 8px rgba(0, 0, 0, 0.08);
+  filter: drop-shadow(0 12px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08));
 }
 
-/* Masked Background Layer with Indian Scalloped Arch Cutout */
-.card-masked-bg {
+/* Pixel-Perfect Visual Artwork Layer */
+.celebration-card-art {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* 100% Real Selectable & Accessible HTML Overlay */
+.card-selectable-text-layer {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 24px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.mask-top-left {
-  -webkit-mask-image: url('images/celebrations/mask_top_left.svg');
-  mask-image: url('images/celebrations/mask_top_left.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-.mask-top-right {
-  -webkit-mask-image: url('images/celebrations/mask_top_right.svg');
-  mask-image: url('images/celebrations/mask_top_right.svg');
-  -webkit-mask-size: 100% 100%;
-  mask-size: 100% 100%;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-}
-
-/* Card Themes */
-.theme-mehndi {
-  background-color: #08422D;
-}
-.theme-wedding {
-  background-color: #931F19;
-}
-.theme-party {
-  background-color: #0E273B;
-}
-.theme-reception {
-  background-color: #51255C;
-}
-
-/* Internal Background Artworks & Vignettes */
-.card-bg-damask {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.card-blur-vignette {
-  position: absolute;
-  pointer-events: none;
-  filter: blur(27px);
-  z-index: 2;
-}
-
-/* Character Artworks */
-.card-character-art {
-  position: absolute;
-  pointer-events: none;
-  z-index: 3;
-}
-
-/* Selectable Real HTML Typography */
-.card-content-overlay {
-  position: absolute;
-  top: 30px;
   z-index: 10;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+  pointer-events: auto;
   user-select: text;
   -webkit-user-select: text;
 }
 
-.align-right-content {
-  right: 22px;
-  width: 168px;
+.text-box-right {
+  position: absolute;
+  right: 24px;
+  top: 32px;
+  width: 164px;
+  text-align: left;
 }
 
-.align-left-content {
-  left: 22px;
+.text-box-left {
+  position: absolute;
+  left: 24px;
+  top: 32px;
   width: 172px;
+  text-align: left;
 }
 
-.card-time-badge {
+/* Selection Color Styling */
+.card-selectable-text-layer ::selection {
+  background: rgba(255, 215, 0, 0.35);
+  color: #FFFFFF;
+}
+
+.card-selectable-text-layer ::-moz-selection {
+  background: rgba(255, 215, 0, 0.35);
+  color: #FFFFFF;
+}
+
+.sel-time-badge {
   font-family: 'Spectral', Georgia, serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 1.2px;
+  line-height: 1;
   text-transform: uppercase;
-  color: #FFDCA1;
-  margin-bottom: 2px;
+  color: transparent;
+  margin-bottom: 4px;
   display: block;
 }
 
-.badge-mehndi {
-  color: #F8E2BD;
-}
-
-.card-title-event {
+.sel-title {
   font-family: 'Cormorant Garamond', 'Cinzel', serif;
   font-size: 34px;
   font-weight: 400;
   line-height: 1.15;
-  color: #FFFFFF;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.40);
+  color: transparent;
   margin: 0 0 8px 0;
   letter-spacing: -0.28px;
 }
 
-.card-body-text {
+.sel-body {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
   font-weight: 200;
   line-height: 1.28;
-  color: rgba(255, 255, 255, 0.95);
+  color: transparent;
   margin: 0 0 6px 0;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
 }
 
-.card-optional-tag {
+.sel-optional {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
   font-weight: 200;
-  color: rgba(255, 255, 255, 0.85);
+  color: transparent;
   margin: 0;
 }
 
-.card-venue-wrap {
+.sel-venue {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 12px;
+  line-height: 1.2;
+  color: transparent;
   margin-top: 4px;
-}
-
-.venue-label {
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
-  font-weight: 400;
-  color: #FFDCA1;
-  display: block;
-  line-height: 1.2;
-}
-
-.venue-name {
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
-  font-weight: 200;
-  color: #FFFFFF;
-  display: block;
-  line-height: 1.2;
 }
 </style>
 </head>
@@ -379,79 +319,86 @@ html, body {
 
     <!-- ── Card 1: Mehndi ── -->
     <article class="celebration-card-shell" id="card-mehndi">
-      <!-- Masked Scallop Arch Background Container -->
-      <div class="card-masked-bg mask-top-left theme-mehndi">
-        <img src="images/celebrations/bg_miniature.png" alt="" class="card-bg-damask" style="right: -11px; top: -34px; width: 456px; height: 342px; mix-blend-mode: color-dodge; opacity: 0.36;">
-        <div class="card-blur-vignette" style="right: 0; top: 0; width: 207px; height: 300px; background: rgba(8,66,45,0.76);"></div>
-        <!-- Bride Character Art -->
-        <img src="images/celebrations/mehndi_art_shadow.png" alt="" class="card-character-art" style="left: 32px; bottom: -13px; width: 187px; height: 243px; mix-blend-mode: multiply; opacity: 0.9;">
-        <img src="images/celebrations/mehndi_bride_art.png" alt="Mehndi Bride Art" class="card-character-art" style="left: 8px; bottom: -14px; width: 211px; height: 244px; opacity: 0.95;">
-      </div>
+      <!-- High-Res Miniature Art Render with Transparent Scallop Arch -->
+      <img src="images/celebrations/card_mehndi_2x.png?v=24700" 
+           alt="Mehndi · Friday 20 November, 7:30 PM" 
+           class="celebration-card-art" 
+           width="816" 
+           height="536"
+           loading="eager">
 
-      <!-- Real Selectable HTML Content Overlay -->
-      <div class="card-content-overlay align-right-content">
-        <span class="card-time-badge badge-mehndi">FRI 20 NOV | 7:30PM</span>
-        <h2 class="card-title-event">Mehndi</h2>
-        <p class="card-body-text">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet, we couldn't resist.</p>
-        <p class="card-optional-tag">(Optional)</p>
+      <!-- Real Selectable HTML Text Layer -->
+      <div class="card-selectable-text-layer">
+        <div class="text-box-right">
+          <span class="sel-time-badge">FRI 20 NOV | 7:30PM</span>
+          <h2 class="sel-title">Mehndi</h2>
+          <p class="sel-body">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet, we couldn't resist.</p>
+          <p class="sel-optional">(Optional)</p>
+        </div>
       </div>
     </article>
 
     <!-- ── Card 2: Wedding ── -->
     <article class="celebration-card-shell" id="card-wedding">
-      <!-- Masked Scallop Arch Background Container -->
-      <div class="card-masked-bg mask-top-right theme-wedding">
-        <img src="images/celebrations/wedding_bg_pattern.png" alt="" class="card-bg-damask" style="left: -10%; top: -50%; width: 110%; height: 180%; mix-blend-mode: soft-light; opacity: 0.60;">
-        <div class="card-blur-vignette" style="left: 0; top: 0; width: 408px; height: 172px; background: rgba(147,31,25,0.6);"></div>
-        <!-- Wedding Couple Art -->
-        <img src="images/celebrations/wedding_couple_art.png" alt="Wedding Couple Art" class="card-character-art" style="right: -4px; bottom: 0; width: 233px; height: 268px; object-fit: contain; object-position: bottom right;">
-      </div>
+      <!-- High-Res Miniature Art Render with Transparent Scallop Arch -->
+      <img src="images/celebrations/card_wedding_2x.png?v=24700" 
+           alt="Wedding · Friday 20 November, 7:30 PM" 
+           class="celebration-card-art" 
+           width="816" 
+           height="536"
+           loading="lazy">
 
-      <!-- Real Selectable HTML Content Overlay -->
-      <div class="card-content-overlay align-left-content">
-        <span class="card-time-badge">FRI 20 NOV | 7:30PM</span>
-        <h2 class="card-title-event">Wedding</h2>
-        <p class="card-body-text">The ceremony, the vows, and the beginning of our next chapter.</p>
-        <div class="card-venue-wrap">
-          <span class="venue-label">Venue:</span>
-          <span class="venue-name">The Balrampur House</span>
+      <!-- Real Selectable HTML Text Layer -->
+      <div class="card-selectable-text-layer">
+        <div class="text-box-left">
+          <span class="sel-time-badge">FRI 20 NOV | 7:30PM</span>
+          <h2 class="sel-title">Wedding</h2>
+          <p class="sel-body">The ceremony, the vows, and the beginning of our next chapter.</p>
+          <div class="sel-venue">
+            <span>Venue:</span><br>
+            <span>The Balrampur House</span>
+          </div>
         </div>
       </div>
     </article>
 
     <!-- ── Card 3: Evening Party ── -->
     <article class="celebration-card-shell" id="card-party">
-      <!-- Masked Scallop Arch Background Container -->
-      <div class="card-masked-bg mask-top-left theme-party">
-        <img src="images/celebrations/party_bg_pattern.png" alt="" class="card-bg-damask" style="right: -11px; top: -12px; width: 559px; height: 305px; opacity: 0.30; object-fit: cover;">
-        <div class="card-blur-vignette" style="right: 0; top: 0; width: 186px; height: 197px; background: rgba(14,39,59,0.6);"></div>
-        <!-- Party Dancing Couple Art -->
-        <img src="images/celebrations/party_couple_art.png" alt="Dancing Couple Art" class="card-character-art" style="left: -48px; top: -16px; width: 314px; height: 392px; transform: rotate(-4.15deg); object-fit: contain;">
-      </div>
+      <!-- High-Res Miniature Art Render with Transparent Scallop Arch -->
+      <img src="images/celebrations/card_party_2x.png?v=24700" 
+           alt="Evening Party · Saturday 21 November, 6:00 PM" 
+           class="celebration-card-art" 
+           width="816" 
+           height="536"
+           loading="lazy">
 
-      <!-- Real Selectable HTML Content Overlay -->
-      <div class="card-content-overlay align-right-content">
-        <span class="card-time-badge">SAT 21 NOV | 6:00 PM</span>
-        <h2 class="card-title-event" style="line-height: 1.05;">Evening<br>Party</h2>
-        <p class="card-body-text">Music, toast, dancing and a memorable celebration together.</p>
+      <!-- Real Selectable HTML Text Layer -->
+      <div class="card-selectable-text-layer">
+        <div class="text-box-right">
+          <span class="sel-time-badge">SAT 21 NOV | 6:00 PM</span>
+          <h2 class="sel-title" style="line-height: 1.05;">Evening<br>Party</h2>
+          <p class="sel-body">Music, toast, dancing and a memorable celebration together.</p>
+        </div>
       </div>
     </article>
 
     <!-- ── Card 4: Reception ── -->
     <article class="celebration-card-shell" id="card-reception">
-      <!-- Masked Scallop Arch Background Container -->
-      <div class="card-masked-bg mask-top-right theme-reception">
-        <img src="images/celebrations/reception_bg_pattern.png" alt="" class="card-bg-damask" style="left: 0; top: -186px; width: 408px; height: 519px; mix-blend-mode: multiply; opacity: 0.30; object-fit: cover;">
-        <div class="card-blur-vignette" style="left: 0; top: 0; width: 408px; height: 170px; background: rgba(81,37,92,0.6);"></div>
-        <!-- Reception Couple Art -->
-        <img src="images/celebrations/reception_couple_art.png" alt="Reception Couple Art" class="card-character-art" style="right: -4px; top: 0; width: 218px; height: 268px; object-fit: cover; object-position: center top;">
-      </div>
+      <!-- High-Res Miniature Art Render with Transparent Scallop Arch -->
+      <img src="images/celebrations/card_reception_2x.png?v=24700" 
+           alt="Reception · Monday 23 November, 7:00 PM" 
+           class="celebration-card-art" 
+           width="816" 
+           height="536"
+           loading="lazy">
 
-      <!-- Real Selectable HTML Content Overlay -->
-      <div class="card-content-overlay align-left-content">
-        <span class="card-time-badge">MON 23 NOV | 7:00 PM</span>
-        <h2 class="card-title-event">Reception</h2>
-        <p class="card-body-text">A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.</p>
+      <!-- Real Selectable HTML Text Layer -->
+      <div class="card-selectable-text-layer">
+        <div class="text-box-left">
+          <span class="sel-time-badge">MON 23 NOV | 7:00 PM</span>
+          <h2 class="sel-title">Reception</h2>
+          <p class="sel-body">A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.</p>
+        </div>
       </div>
     </article>
 
