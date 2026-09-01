@@ -206,12 +206,21 @@ body {
   box-sizing: border-box;
 }
 
-.celebrations-title-wrap {
+.celebrations-header-content {
   width: 100%;
-  text-align: center;
+  max-width: 396px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  position: relative;
+}
+
+.celebrations-title-wrap {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .celebrations-script-the {
@@ -224,6 +233,7 @@ body {
   text-shadow: 0px 1px 2px #FFFDF9;
   display: block;
   margin-bottom: 2px;
+  align-self: center;
 }
 
 .celebrations-title-main {
@@ -236,17 +246,18 @@ body {
   text-transform: uppercase;
   text-shadow: 0px 1px 2px #FFFDF9;
   margin: 0;
-  text-align: center;
+  text-align: left;
+  width: 100%;
 }
 
-/* Subrow: Left-aligned Countdown + Right-aligned Nainital Boat Illustration */
+/* Subrow: Strict Flush-Left Countdown + Right Boat Illustration */
 .celebrations-subrow {
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   margin-top: -24px;
-  padding: 0 4px 0 12px;
+  padding: 0;
   position: relative;
   box-sizing: border-box;
 }
@@ -271,6 +282,7 @@ body {
   text-transform: uppercase;
   text-shadow: 0px 1px 2px #FFFDF9;
   display: block;
+  text-align: left;
 }
 
 .celebrations-boat-wrap {
@@ -664,27 +676,29 @@ body {
 
   <!-- ── Header: The Wedding Weekend (Figma Node 18:79 / 18:107) ── -->
   <header class="celebrations-header" data-node-id="18:107">
-    <div class="celebrations-title-wrap">
-      <span class="celebrations-script-the">The</span>
-      <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
-    </div>
-    
-    <div class="celebrations-subrow">
-      <div class="celebrations-desc-block" data-node-id="18:108">
-        <span id="celebrations-countdown" class="celebrations-countdown-text">120 DAYS TO GO</span>
-        <span class="celebrations-location-text">NAINITAL &amp; DELHI</span>
+    <div class="celebrations-header-content">
+      <div class="celebrations-title-wrap">
+        <span class="celebrations-script-the">The</span>
+        <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
       </div>
-      <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
-        <picture>
-          <source srcset="images/celebrations/boat_illustration.webp?v=24700" type="image/webp">
-          <img src="images/celebrations/boat_illustration.png?v=24700" 
-               alt="Bride and Groom in Nainital Boat" 
-               class="celebrations-boat-img" 
-               width="168" 
-               height="106" 
-               loading="eager" 
-               decoding="async">
-        </picture>
+      
+      <div class="celebrations-subrow">
+        <div class="celebrations-desc-block" data-node-id="18:108">
+          <span id="celebrations-countdown" class="celebrations-countdown-text">120 DAYS TO GO</span>
+          <span class="celebrations-location-text">NAINITAL &amp; DELHI</span>
+        </div>
+        <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
+          <picture>
+            <source srcset="images/celebrations/boat_illustration.webp?v=24700" type="image/webp">
+            <img src="images/celebrations/boat_illustration.svg?v=24700" 
+                 alt="Bride and Groom in Nainital Boat" 
+                 class="celebrations-boat-img" 
+                 width="168" 
+                 height="106" 
+                 loading="eager" 
+                 decoding="async">
+          </picture>
+        </div>
       </div>
     </div>
   </header>
