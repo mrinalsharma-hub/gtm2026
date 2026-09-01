@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#FFEFD5">
+<meta name="color-scheme" content="light">
+<title>Celebrations Scroll Effects Tester · Garima &amp; Mrinal</title>
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24700">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=WindSong&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=24700">
+
+<style>
+@font-face {
+  font-family: 'Kugile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Kugile.ttf?v=24700') format('truetype'),
+       url('fonts/Kugile_Demo.ttf?v=24700') format('truetype'),
+       local('Kugile');
+}
+
+:root {
+  color-scheme: light;
+  --theme-color: #A71F23;
+  --gold-glow: rgba(248, 226, 189, 0.4);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-tap-highlight-color: transparent !important;
+  scrollbar-width: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  background: #FFEFD5;
+  overflow: hidden;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFEFD5;
+  font-family: 'Spectral', Georgia, serif;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Top Floating Effect Selector Pill ── */
+.tester-controls-dock {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  width: calc(100% - 24px);
+  max-width: 460px;
+  background: rgba(255, 253, 249, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(167, 31, 35, 0.18);
+  border-radius: 24px;
+  padding: 6px 8px;
+  box-shadow: 0 10px 30px rgba(60, 5, 8, 0.14), 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tester-dock-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 8px;
+}
+
+.tester-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #A71F23;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tester-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #A71F23;
+  box-shadow: 0 0 8px #A71F23;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.tester-mode-desc {
+  font-size: 11px;
+  color: #555;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 260px;
+}
+
+.tester-pill-scroll {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 2px 2px 4px 2px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.effect-tab-btn {
+  appearance: none;
+  border: 1px solid rgba(167, 31, 35, 0.15);
+  background: rgba(255, 239, 213, 0.6);
+  color: #553335;
+  padding: 5px 12px;
+  border-radius: 14px;
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.effect-tab-btn.active {
+  background: #A71F23;
+  color: #FFFDF9;
+  border-color: #A71F23;
+  box-shadow: 0 3px 10px rgba(167, 31, 35, 0.35);
+  transform: scale(1.02);
+}
+
+/* ── 1. Page Background Canvas ── */
+.celebrations-bg-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  background: #FFEFD5 !important;
+}
+
+.celebrations-botanical-art-layer {
+  position: absolute !important;
+  inset: -100px 0 -100px 0 !important;
+  width: 100% !important;
+  height: calc(100% + 200px) !important;
+  background-image: url('images/celebrations/bg_motif_celebrations.webp?v=24700') !important;
+  background-repeat: repeat !important;
+  background-position: top center !important;
+  background-size: 440px 330px !important;
+  opacity: 0.14 !important;
+  mix-blend-mode: multiply !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  will-change: transform;
+}
+
+.celebrations-radial-glow {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Golden Dust Particle Canvas */
+#particles-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+#particles-canvas.active {
+  opacity: 1;
+}
+
+/* ── 2. Scrollable Content Viewport ── */
+.celebrations-page-wrap {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 480px !important;
+  margin: 0 auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  touch-action: pan-y !important;
+  z-index: 3 !important;
+  padding-top: 80px;
+  padding-bottom: 120px;
+  perspective: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header: The Wedding Weekend ── */
+.celebrations-header {
+  width: 100%;
+  padding: 0 8px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex-shrink: 0;
+  will-change: transform, opacity;
+}
+
+.celebrations-script-the {
+  font-family: 'Snell Roundhand', 'WindSong', 'Cormorant Garamond', cursive, serif;
+  font-size: 48px;
+  line-height: 44px;
+  letter-spacing: -0.96px;
+  color: #A71F23;
+  text-shadow: 0px 1px 2px #FFFDF9;
+  display: block;
+  margin-bottom: -4px;
+}
+
+.celebrations-title-main {
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: clamp(44px, 12.5vw, 56px);
+  font-weight: 500;
+  line-height: 0.94;
+  letter-spacing: -1.12px;
+  color: #A71F23;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 2px #FFFDF9;
+  margin: 0;
+}
+
+.celebrations-date-location {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.44px;
+  line-height: 1.35;
+  color: #A71F23;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 2px #FFFDF9;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+/* ── 3. Events Cards Feed ── */
+.celebrations-cards-feed {
+  width: 100%;
+  padding: 0 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Authentic Figma Card Shell (GPU Composited) */
+.celebration-card-shell {
+  width: 100%;
+  max-width: 424px;
+  aspect-ratio: 848 / 558;
+  position: relative;
+  display: block;
+  background: transparent;
+  transform-style: preserve-3d;
+  will-change: transform, filter, opacity;
+  filter: drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  transition: filter 0.3s ease;
+}
+
+.card-picture-wrap {
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: relative;
+}
+
+/* Pure Clean Background Artwork from Figma */
+.celebration-card-art {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: high-quality;
+}
+
+/* Shimmer Light Bar Overlay */
+.card-shimmer-sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-shimmer-sheen::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 235, 180, 0.25) 45%,
+    rgba(255, 255, 255, 0.55) 50%,
+    rgba(255, 235, 180, 0.25) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(20deg) translateX(-100%);
+}
+
+.shimmer-active .card-shimmer-sheen {
+  opacity: 1;
+}
+
+.shimmer-active .card-shimmer-sheen::after {
+  animation: shine-sweep 3.5s infinite ease-in-out;
+}
+
+@keyframes shine-sweep {
+  0% { transform: rotate(20deg) translateX(-200%); }
+  35%, 100% { transform: rotate(20deg) translateX(400%); }
+}
+
+/* Single Real Visible & Selectable HTML Text Layer */
+.card-text-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: auto;
+  user-select: text;
+  -webkit-user-select: text;
+  will-change: transform;
+}
+
+.text-box-right {
+  position: absolute;
+  right: 5.5%;
+  top: 10%;
+  width: 43%;
+  text-align: left;
+}
+
+.text-box-left {
+  position: absolute;
+  left: 5.5%;
+  top: 10%;
+  width: 43%;
+  text-align: left;
+}
+
+/* Selection Color Styling */
+.card-text-layer ::selection {
+  background: rgba(255, 215, 0, 0.40);
+  color: #FFFFFF;
+}
+
+/* ── Typography Specs ── */
+.card-eyebrow {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.4px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #F8E2BD;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.card-title {
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.1px;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.35);
+  margin: 0 0 6px 0;
+}
+
+.card-body {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 125%;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.30);
+  margin: 0 0 6px 0;
+}
+
+.card-optional {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 125%;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+}
+
+.card-venue {
+  margin-top: 4px;
+}
+
+.card-venue-label {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 125%;
+  color: #FFDCA1;
+  display: block;
+}
+
+.card-venue-name {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 125%;
+  color: #FFFFFF;
+  display: block;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   EFFECT SPECIFIC CSS MODIFIERS
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Mode 3: Sticky Deck Stacking ── */
+.mode-deck .celebrations-cards-feed {
+  gap: 20px;
+  padding-bottom: 80px;
+}
+
+.mode-deck .celebration-card-shell {
+  position: sticky;
+  top: 96px;
+}
+
+.mode-deck #card-mehndi { top: 96px; z-index: 10; }
+.mode-deck #card-wedding { top: 110px; z-index: 20; }
+.mode-deck #card-party { top: 124px; z-index: 30; }
+.mode-deck #card-reception { top: 138px; z-index: 40; }
+</style>
+</head>
+<body>
+
+<!-- ── Floating Interactive Controls ── -->
+<aside class="tester-controls-dock" aria-label="Scroll Effects Tester">
+  <div class="tester-dock-header">
+    <div class="tester-badge">
+      <span class="tester-badge-dot"></span>
+      <span id="current-mode-title">Mode 1: 3D Depth Parallax</span>
+    </div>
+    <span class="tester-mode-desc" id="current-mode-desc">Kinetic wallpaper & character layering</span>
+  </div>
+  <div class="tester-pill-scroll" role="tablist">
+    <button class="effect-tab-btn active" data-mode="1" role="tab">✨ 3D Parallax</button>
+    <button class="effect-tab-btn" data-mode="2" role="tab">👑 Darbar Spotlight</button>
+    <button class="effect-tab-btn" data-mode="3" role="tab">🎴 Sticky Deck</button>
+    <button class="effect-tab-btn" data-mode="4" role="tab">🌟 Gold Shimmer</button>
+    <button class="effect-tab-btn" data-mode="5" role="tab">🏛️ Royal Heritage</button>
+    <button class="effect-tab-btn" data-mode="0" role="tab">⚪ Baseline (Clean)</button>
+  </div>
+</aside>
+
+<!-- ── Particle Canvas ── -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- ── Background Layers ── -->
+<div class="celebrations-bg-layer" aria-hidden="true">
+  <div class="celebrations-botanical-art-layer" id="bg-wallpaper" aria-hidden="true"></div>
+  <div class="celebrations-radial-glow" id="bg-glow" aria-hidden="true"></div>
+</div>
+
+<!-- ── Scrollable Page Content Viewport ── -->
+<main class="celebrations-page-wrap" id="scroll-container">
+
+  <!-- ── Header: The Wedding Weekend ── -->
+  <header class="celebrations-header" id="page-header">
+    <span class="celebrations-script-the">The</span>
+    <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
+    <p class="celebrations-date-location">
+      20-23 NOVEMBER 2026<br>
+      NAINITAL+DELHI
+    </p>
+  </header>
+
+  <!-- ── Four Event Cards ── -->
+  <section class="celebrations-cards-feed" id="cards-feed" aria-label="Wedding Events Schedule">
+
+    <!-- ── Card 1: Mehndi ── -->
+    <article class="celebration-card-shell" id="card-mehndi">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
+             alt="Mehndi · Friday 20 November, 7:30 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             fetchpriority="high"
+             decoding="async"
+             loading="eager">
+        <div class="card-shimmer-sheen"></div>
+      </picture>
+
+      <div class="card-text-layer">
+        <div class="text-box-right">
+          <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
+          <h2 class="card-title">Mehndi</h2>
+          <p class="card-body">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet, we couldn't resist.</p>
+          <p class="card-optional">(Optional)</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Card 2: Wedding ── -->
+    <article class="celebration-card-shell" id="card-wedding">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_wedding.png?v=24700" 
+             alt="Wedding · Friday 20 November, 7:30 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             fetchpriority="high"
+             decoding="async"
+             loading="eager">
+        <div class="card-shimmer-sheen"></div>
+      </picture>
+
+      <div class="card-text-layer">
+        <div class="text-box-left">
+          <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
+          <h2 class="card-title">Wedding</h2>
+          <p class="card-body">The ceremony, the vows, and the beginning of our next chapter.</p>
+          <div class="card-venue">
+            <span class="card-venue-label">Venue:</span>
+            <span class="card-venue-name">The Balrampur House</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Card 3: Evening Party ── -->
+    <article class="celebration-card-shell" id="card-party">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_party.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_party.png?v=24700" 
+             alt="Evening Party · Saturday 21 November, 6:00 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             decoding="async"
+             loading="lazy">
+        <div class="card-shimmer-sheen"></div>
+      </picture>
+
+      <div class="card-text-layer">
+        <div class="text-box-right">
+          <span class="card-eyebrow">SAT 21 NOV | 6:00 PM</span>
+          <h2 class="card-title" style="line-height: 1.05;">Evening<br>Party</h2>
+          <p class="card-body">Music, toast, dancing and a memorable celebration together.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- ── Card 4: Reception ── -->
+    <article class="celebration-card-shell" id="card-reception">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_reception.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_reception.png?v=24700" 
+             alt="Reception · Monday 23 November, 7:00 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             decoding="async"
+             loading="lazy">
+        <div class="card-shimmer-sheen"></div>
+      </picture>
+
+      <div class="card-text-layer">
+        <div class="text-box-left">
+          <span class="card-eyebrow">MON 23 NOV | 7:00 PM</span>
+          <h2 class="card-title">Reception</h2>
+          <p class="card-body">A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+</main>
+
+<script>
+(function() {
+  const container = document.getElementById('scroll-container');
+  const wallpaper = document.getElementById('bg-wallpaper');
+  const glow = document.getElementById('bg-glow');
+  const header = document.getElementById('page-header');
+  const cards = Array.from(document.querySelectorAll('.celebration-card-shell'));
+  const canvas = document.getElementById('particles-canvas');
+  const buttons = document.querySelectorAll('.effect-tab-btn');
+  const titleEl = document.getElementById('current-mode-title');
+  const descEl = document.getElementById('current-mode-desc');
+
+  let currentMode = 1;
+  let rafId = null;
+
+  const modeDescriptions = {
+    0: { title: "Mode 0: Baseline (Clean)", desc: "Standard smooth scrolling with zero 3D transformations" },
+    1: { title: "Mode 1: 3D Depth Parallax", desc: "Kinetic wallpaper motion + floating 3D card perspective" },
+    2: { title: "Mode 2: Darbar Spotlight", desc: "Active card scales & illuminates with golden royal aura" },
+    3: { title: "Mode 3: Sticky Deck", desc: "Cards stack & slide over each other like royal invitations" },
+    4: { title: "Mode 4: Gold Shimmer & Drift", desc: "Floating gold fireflies + metallic light sweep across cards" },
+    5: { title: "Mode 5: Royal Heritage", desc: "Combined 3D parallax + spotlight glow + ambient gold dust" },
+  };
+
+  // ── Particle System ──
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  });
+
+  function initParticles() {
+    particles = [];
+    for (let i = 0; i < 35; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        size: Math.random() * 2.2 + 0.8,
+        speedX: (Math.random() - 0.5) * 0.4,
+        speedY: -Math.random() * 0.5 - 0.2,
+        opacity: Math.random() * 0.7 + 0.2,
+        pulse: Math.random() * Math.PI * 2
+      });
+    }
+  }
+  initParticles();
+
+  function drawParticles(scrollSpeed) {
+    ctx.clearRect(0, 0, w, h);
+    const speedBoost = Math.min(Math.abs(scrollSpeed) * 0.08, 2.5);
+
+    particles.forEach(p => {
+      p.y += p.speedY - (scrollSpeed > 0 ? speedBoost : -speedBoost * 0.5);
+      p.x += p.speedX;
+      p.pulse += 0.03;
+
+      if (p.y < 0) p.y = h;
+      if (p.y > h) p.y = 0;
+      if (p.x < 0) p.x = w;
+      if (p.x > w) p.x = 0;
+
+      const alpha = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(235, 195, 120, ${alpha})`;
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = 'rgba(255, 215, 140, 0.8)';
+      ctx.fill();
+    });
+  }
+
+  // ── Scroll Loop ──
+  let lastScrollTop = 0;
+  let scrollVelocity = 0;
+
+  function update() {
+    const scrollTop = container.scrollTop;
+    scrollVelocity = scrollTop - lastScrollTop;
+    lastScrollTop = scrollTop;
+
+    const viewportH = container.clientHeight;
+    const centerY = viewportH / 2;
+
+    // Reset styles
+    if (currentMode === 0) {
+      wallpaper.style.transform = 'none';
+      header.style.transform = 'none';
+      header.style.opacity = '1';
+      cards.forEach(card => {
+        card.style.transform = 'none';
+        card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
+      });
+      rafId = requestAnimationFrame(update);
+      return;
+    }
+
+    // Parallax Wallpaper
+    if (currentMode === 1 || currentMode === 5) {
+      wallpaper.style.transform = `translateY(${scrollTop * 0.22}px)`;
+      header.style.transform = `translateY(${scrollTop * 0.15}px)`;
+      header.style.opacity = `${Math.max(0, 1 - scrollTop / 280)}`;
+    } else {
+      wallpaper.style.transform = 'none';
+      header.style.transform = 'none';
+      header.style.opacity = '1';
+    }
+
+    // Particles
+    if (currentMode === 4 || currentMode === 5) {
+      canvas.classList.add('active');
+      drawParticles(scrollVelocity);
+    } else {
+      canvas.classList.remove('active');
+    }
+
+    // Card Animations
+    cards.forEach((card, index) => {
+      const rect = card.getBoundingClientRect();
+      const cardCenter = rect.top + rect.height / 2;
+      const distFromCenter = cardCenter - centerY;
+      const normDist = distFromCenter / (viewportH / 2); // -1 (top) to +1 (bottom)
+
+      if (currentMode === 1) {
+        // Mode 1: 3D Perspective Tilt Parallax
+        const tiltX = Math.max(-8, Math.min(8, normDist * 6));
+        const translateY = Math.max(-15, Math.min(15, -normDist * 10));
+        const scale = 1 - Math.abs(normDist) * 0.04;
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) translateY(${translateY}px) scale(${scale})`;
+        card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
+      } 
+      else if (currentMode === 2) {
+        // Mode 2: Darbar Spotlight Elevation
+        const closeness = Math.max(0, 1 - Math.abs(normDist) * 1.3); // 1 at center, 0 far
+        const scale = 0.95 + closeness * 0.06;
+        const glowAlpha = closeness * 0.35;
+        card.style.transform = `scale(${scale})`;
+        card.style.filter = `drop-shadow(0 ${8 + closeness * 16}px ${20 + closeness * 24}px rgba(167, 31, 35, ${0.12 + closeness * 0.16})) drop-shadow(0 0 ${closeness * 30}px rgba(248, 226, 189, ${glowAlpha}))`;
+      }
+      else if (currentMode === 4) {
+        // Mode 4: Shimmer Sheen on Center
+        const inSpotlight = Math.abs(normDist) < 0.45;
+        if (inSpotlight) {
+          card.classList.add('shimmer-active');
+        } else {
+          card.classList.remove('shimmer-active');
+        }
+        card.style.transform = `scale(${1 - Math.abs(normDist) * 0.02})`;
+      }
+      else if (currentMode === 5) {
+        // Mode 5: Royal Combined
+        const closeness = Math.max(0, 1 - Math.abs(normDist) * 1.2);
+        const tiltX = Math.max(-6, Math.min(6, normDist * 5));
+        const scale = 0.96 + closeness * 0.05;
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) scale(${scale})`;
+        card.style.filter = `drop-shadow(0 ${8 + closeness * 14}px ${20 + closeness * 20}px rgba(167, 31, 35, ${0.14 + closeness * 0.14})) drop-shadow(0 0 ${closeness * 24}px rgba(248, 226, 189, ${closeness * 0.3}))`;
+        if (Math.abs(normDist) < 0.4) card.classList.add('shimmer-active');
+        else card.classList.remove('shimmer-active');
+      }
+      else if (currentMode === 3) {
+        // Mode 3: Sticky Deck
+        card.style.transform = 'none';
+        card.style.filter = 'drop-shadow(0 12px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08))';
+      }
+    });
+
+    rafId = requestAnimationFrame(update);
+  }
+
+  // Switch Modes
+  function setMode(mode) {
+    currentMode = parseInt(mode, 10);
+    buttons.forEach(btn => {
+      btn.classList.toggle('active', parseInt(btn.dataset.mode, 10) === currentMode);
+    });
+
+    const info = modeDescriptions[currentMode];
+    titleEl.textContent = info.title;
+    descEl.textContent = info.desc;
+
+    // Toggle Deck Mode CSS
+    if (currentMode === 3) {
+      document.body.classList.add('mode-deck');
+    } else {
+      document.body.classList.remove('mode-deck');
+    }
+
+    // Remove shimmer if leaving shimmer modes
+    if (currentMode !== 4 && currentMode !== 5) {
+      cards.forEach(c => c.classList.remove('shimmer-active'));
+    }
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.mode));
+  });
+
+  setMode(1);
+  rafId = requestAnimationFrame(update);
+})();
+</script>
+</body>
+</html>
