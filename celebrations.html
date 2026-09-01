@@ -230,53 +230,35 @@ body {
   flex-shrink: 0;
 }
 
-/* Scaled Card Shell */
+/* Authentic Figma Card Shell */
 .celebration-card-shell {
   width: 100%;
   max-width: 424px;
-  aspect-ratio: 408 / 268;
+  aspect-ratio: 848 / 558;
   position: relative;
   display: block;
   background: transparent;
-  filter: drop-shadow(0 8px 24px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  filter: drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.3s ease;
 }
 
 .celebration-card-shell:hover {
   transform: translateY(-2px);
-  filter: drop-shadow(0 12px 32px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 12px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08));
 }
 
-/* Vector Arch Clipped Inner Container */
-.card-clipped-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.clip-left {
-  clip-path: url(#card-clip-left);
-  -webkit-clip-path: url(#card-clip-left);
-}
-
-.clip-right {
-  clip-path: url(#card-clip-right);
-  -webkit-clip-path: url(#card-clip-right);
-}
-
-/* Clean Background Artwork (NO Text Baked In) */
+/* Pure Clean Background Artwork from Figma */
 .celebration-card-art {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: fill;
   display: block;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
 }
 
-/* 100% Single Real Visible & Selectable HTML Text Layer */
+/* Single Real Visible & Selectable HTML Text Layer */
 .card-text-layer {
   position: absolute;
   top: 0;
@@ -292,16 +274,16 @@ body {
 .text-box-right {
   position: absolute;
   right: 5.5%;
-  top: 10.5%;
-  width: 42%;
+  top: 10%;
+  width: 43%;
   text-align: left;
 }
 
 .text-box-left {
   position: absolute;
   left: 5.5%;
-  top: 10.5%;
-  width: 44%;
+  top: 10%;
+  width: 43%;
   text-align: left;
 }
 
@@ -316,7 +298,7 @@ body {
   color: #FFFFFF;
 }
 
-/* ── Typography Specs ── */
+/* ── Typography per User Specifications ── */
 .card-eyebrow {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
@@ -384,20 +366,6 @@ body {
 </head>
 <body>
 
-<!-- ── Responsive SVG Vector Arch Clip Paths (objectBoundingBox) ── -->
-<svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
-  <defs>
-    <!-- Left Arch Card Clip Path -->
-    <clipPath id="card-clip-left" clipPathUnits="objectBoundingBox">
-      <path d="M 0.18862 0 L 0.941176 0 A 0.058824 0.089552 0 0 1 1 0.089552 L 1 0.910448 A 0.058824 0.089552 0 0 1 0.941176 1 L 0.058824 1 A 0.058824 0.089552 0 0 1 0 0.910448 L 0 0.417198 C 0.017083 0.38866 0.0215 0.356735 0.022103 0.319784 C 0.022603 0.279604 0.022 0.239623 0.029978 0.200709 C 0.033679 0.182664 0.036252 0.167496 0.046515 0.154549 C 0.053206 0.146108 0.055468 0.144354 0.064539 0.142787 C 0.065733 0.077757 0.093716 0.050142 0.136429 0.050194 C 0.141248 0.050201 0.147973 0.049526 0.152654 0.048131 C 0.169137 0.04322 0.18198 0.021981 0.18862 0 Z" />
-    </clipPath>
-    <!-- Right Arch Card Clip Path -->
-    <clipPath id="card-clip-right" clipPathUnits="objectBoundingBox">
-      <path d="M 0.81138 0 L 0.058824 0 A 0.058824 0.089552 0 0 0 0 0.089552 L 0 0.910448 A 0.058824 0.089552 0 0 0 0.058824 1 L 0.941176 1 A 0.058824 0.089552 0 0 0 1 0.910448 L 1 0.417198 C 0.982917 0.38866 0.9785 0.356735 0.977897 0.319784 C 0.977397 0.279604 0.978 0.239623 0.970022 0.200709 C 0.966321 0.182664 0.963748 0.167496 0.953485 0.154549 C 0.946794 0.146108 0.944532 0.144354 0.935461 0.142787 C 0.934267 0.077757 0.906284 0.050142 0.863571 0.050194 C 0.858752 0.050201 0.852027 0.049526 0.847346 0.048131 C 0.830863 0.04322 0.81802 0.021981 0.81138 0 Z" />
-    </clipPath>
-  </defs>
-</svg>
-
 <!-- ── 1. Background Layers ── -->
 <div class="celebrations-bg-layer" aria-hidden="true">
   <div class="celebrations-botanical-art-layer" aria-hidden="true"></div>
@@ -422,15 +390,13 @@ body {
 
     <!-- ── Card 1: Mehndi ── -->
     <article class="celebration-card-shell" id="card-mehndi">
-      <div class="card-clipped-inner clip-left">
-        <!-- Clean Textured Card Artwork (No Text) -->
-        <img src="images/celebrations/card_art_mehndi.png?v=24700" 
-             alt="Mehndi · Friday 20 November, 7:30 PM" 
-             class="celebration-card-art" 
-             width="816" 
-             height="536"
-             loading="eager">
-      </div>
+      <!-- Clean Textured Card Artwork (Direct from Figma) -->
+      <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
+           alt="Mehndi · Friday 20 November, 7:30 PM" 
+           class="celebration-card-art" 
+           width="848" 
+           height="558"
+           loading="eager">
 
       <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
@@ -445,15 +411,13 @@ body {
 
     <!-- ── Card 2: Wedding ── -->
     <article class="celebration-card-shell" id="card-wedding">
-      <div class="card-clipped-inner clip-right">
-        <!-- Clean Textured Card Artwork (No Text) -->
-        <img src="images/celebrations/card_art_wedding.png?v=24700" 
-             alt="Wedding · Friday 20 November, 7:30 PM" 
-             class="celebration-card-art" 
-             width="816" 
-             height="536"
-             loading="lazy">
-      </div>
+      <!-- Clean Textured Card Artwork (Direct from Figma) -->
+      <img src="images/celebrations/card_bg_wedding.png?v=24700" 
+           alt="Wedding · Friday 20 November, 7:30 PM" 
+           class="celebration-card-art" 
+           width="848" 
+           height="558"
+           loading="lazy">
 
       <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
@@ -471,15 +435,13 @@ body {
 
     <!-- ── Card 3: Evening Party ── -->
     <article class="celebration-card-shell" id="card-party">
-      <div class="card-clipped-inner clip-left">
-        <!-- Clean Textured Card Artwork (No Text) -->
-        <img src="images/celebrations/card_art_party.png?v=24700" 
-             alt="Evening Party · Saturday 21 November, 6:00 PM" 
-             class="celebration-card-art" 
-             width="816" 
-             height="536"
-             loading="lazy">
-      </div>
+      <!-- Clean Textured Card Artwork (Direct from Figma) -->
+      <img src="images/celebrations/card_bg_party.png?v=24700" 
+           alt="Evening Party · Saturday 21 November, 6:00 PM" 
+           class="celebration-card-art" 
+           width="848" 
+           height="558"
+           loading="lazy">
 
       <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
@@ -493,15 +455,13 @@ body {
 
     <!-- ── Card 4: Reception ── -->
     <article class="celebration-card-shell" id="card-reception">
-      <div class="card-clipped-inner clip-right">
-        <!-- Clean Textured Card Artwork (No Text) -->
-        <img src="images/celebrations/card_art_reception.png?v=24700" 
-             alt="Reception · Monday 23 November, 7:00 PM" 
-             class="celebration-card-art" 
-             width="816" 
-             height="536"
-             loading="lazy">
-      </div>
+      <!-- Clean Textured Card Artwork (Direct from Figma) -->
+      <img src="images/celebrations/card_bg_reception.png?v=24700" 
+           alt="Reception · Monday 23 November, 7:00 PM" 
+           class="celebration-card-art" 
+           width="848" 
+           height="558"
+           loading="lazy">
 
       <!-- Single Real Visible & Selectable HTML Text Layer -->
       <div class="card-text-layer">
