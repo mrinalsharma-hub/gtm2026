@@ -8,6 +8,16 @@
        local('Kugile');
 }
 
+@font-face {
+  font-family: 'Snell Roundhand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/SnellRoundhand.ttf?v=24700') format('truetype'),
+       local('Snell Roundhand'),
+       local('SnellRoundhand');
+}
+
 /* ═══════════════════════════════════════════════════════
    Garima weds Mrinal · Aipan design system
    Ivory line-art on geru red, ported from the invite film
