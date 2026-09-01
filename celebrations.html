@@ -432,22 +432,25 @@ body {
 
 .celebrations-topbar-right {
   display: flex !important;
-  align-items: center !important;
+  align-items: flex-end !important;
   justify-content: flex-end !important;
-  min-width: 44px !important;
+  min-width: 48px !important;
   flex: 1 !important;
+  height: 100% !important;
+  padding-bottom: 0 !important;
 }
 
-/* ── Royal Medallion Music Player (Figma Node 26:627) ── */
+/* ── Royal Medallion Music Player (Figma Node 26:627 · 48x48px · 0px Bottom Margin) ── */
 .celebration-player-btn {
   position: relative !important;
-  width: 44px !important;
-  height: 44px !important;
+  width: 48px !important;
+  height: 48px !important;
   border-radius: 50% !important;
   background: transparent !important;
   border: none !important;
   padding: 0 !important;
   margin: 0 !important;
+  margin-bottom: 0 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -596,10 +599,10 @@ body {
     <!-- Slot 2: Center Element -->
   </div>
   <div class="celebrations-topbar-right" id="topbar-slot-right">
-    <!-- Slot 3: Royal Medallion Music Player (Figma Node 26:627) -->
+    <!-- Slot 3: Royal Medallion Music Player (Figma Node 26:627 · 48x48px) -->
     <button id="global-music-player" class="celebration-player-btn" role="button" aria-label="Play Music" type="button">
-      <img src="images/player_figma_play.svg?v=24700" alt="Play Music" class="player-state-img player-img-play" width="44" height="44">
-      <img src="images/player_figma_pause.svg?v=24700" alt="Pause Music" class="player-state-img player-img-pause" width="44" height="44">
+      <img src="images/player_figma_play.svg?v=24700" alt="Play Music" class="player-state-img player-img-play" width="48" height="48">
+      <img src="images/player_figma_pause.svg?v=24700" alt="Pause Music" class="player-state-img player-img-pause" width="48" height="48">
     </button>
   </div>
 </header>
