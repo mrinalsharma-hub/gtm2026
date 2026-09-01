@@ -26,7 +26,8 @@
 :root {
   color-scheme: light;
   --theme-color: #A71F23;
-  --stack-step: 60px;
+  --top-pin: 20px;
+  --stack-step: 100px;
 }
 
 *, *::before, *::after {
@@ -67,17 +68,17 @@ body {
 /* ── Top Floating Control Dock ── */
 .tester-controls-dock {
   position: fixed;
-  top: 10px;
+  top: 8px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  width: calc(100% - 20px);
+  width: calc(100% - 16px);
   max-width: 460px;
-  background: rgba(255, 253, 249, 0.92);
+  background: rgba(255, 253, 249, 0.94);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(167, 31, 35, 0.2);
-  border-radius: 20px;
+  border-radius: 18px;
   padding: 8px 10px;
   box-shadow: 0 12px 36px rgba(60, 5, 8, 0.16), 0 2px 8px rgba(0,0,0,0.04);
   display: flex;
@@ -89,14 +90,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px;
+  padding: 0 2px;
 }
 
 .tester-badge {
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.8px;
   color: #A71F23;
   display: flex;
   align-items: center;
@@ -129,9 +130,9 @@ body {
 
 .tester-pill-scroll {
   display: flex;
-  gap: 6px;
+  gap: 5px;
   overflow-x: auto;
-  padding: 2px 2px 4px 2px;
+  padding: 2px 0 3px 0;
   -webkit-overflow-scrolling: touch;
 }
 
@@ -140,17 +141,14 @@ body {
   border: 1px solid rgba(167, 31, 35, 0.18);
   background: rgba(255, 239, 213, 0.6);
   color: #553335;
-  padding: 5px 12px;
-  border-radius: 14px;
+  padding: 4px 10px;
+  border-radius: 12px;
   font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
-  display: flex;
-  align-items: center;
-  gap: 4px;
 }
 
 .effect-tab-btn.active {
@@ -162,41 +160,66 @@ body {
 }
 
 /* Offset Slider Controls for Stacking */
-.stack-offset-bar {
-  display: none;
+.stack-controls-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px 8px;
+  background: rgba(255, 239, 213, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(167, 31, 35, 0.12);
+}
+
+.control-row {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 6px;
-  background: rgba(255, 239, 213, 0.5);
-  border-radius: 10px;
   font-size: 11px;
   color: #553335;
 }
 
-.stack-offset-bar.visible {
-  display: flex;
-}
-
-.offset-btn-group {
+.offset-presets {
   display: flex;
   gap: 4px;
 }
 
-.offset-btn {
+.preset-btn {
   border: 1px solid rgba(167, 31, 35, 0.2);
   background: #FFFDF9;
   color: #553335;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 8px;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.offset-btn.active {
+.preset-btn.active {
   background: #A71F23;
   color: #FFFDF9;
   border-color: #A71F23;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.custom-range {
+  flex: 1;
+  accent-color: #A71F23;
+  cursor: pointer;
+  height: 4px;
+}
+
+.slider-val {
+  font-weight: 700;
+  color: #A71F23;
+  min-width: 44px;
+  text-align: right;
 }
 
 /* ── 1. Page Background Canvas (Figma Fill Stack) ── */
@@ -256,8 +279,8 @@ body {
   overscroll-behavior-y: contain !important;
   touch-action: pan-y !important;
   z-index: 2 !important;
-  padding-top: 104px;
-  padding-bottom: 220px;
+  padding-top: 130px;
+  padding-bottom: 260px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -319,7 +342,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 16px;
   flex-shrink: 0;
 }
 
@@ -452,20 +475,19 @@ body {
    SPOTLIGHT STACKING DECK ENGINE (Mode 6)
    ══════════════════════════════════════════════════════════════ */
 .mode-spotlight-deck .celebrations-cards-feed {
-  gap: 16px;
-  padding-bottom: 120px;
+  gap: 20px;
+  padding-bottom: 240px;
 }
 
 .mode-spotlight-deck .celebration-card-shell {
   position: sticky;
 }
 
-.mode-spotlight-deck #card-mehndi    { top: calc(76px + 0 * var(--stack-step)); z-index: 10; }
-.mode-spotlight-deck #card-wedding   { top: calc(76px + 1 * var(--stack-step)); z-index: 20; }
-.mode-spotlight-deck #card-party     { top: calc(76px + 2 * var(--stack-step)); z-index: 30; }
-.mode-spotlight-deck #card-reception { top: calc(76px + 3 * var(--stack-step)); z-index: 40; }
+.mode-spotlight-deck #card-mehndi    { top: calc(var(--top-pin) + 0 * var(--stack-step)); z-index: 10; }
+.mode-spotlight-deck #card-wedding   { top: calc(var(--top-pin) + 1 * var(--stack-step)); z-index: 20; }
+.mode-spotlight-deck #card-party     { top: calc(var(--top-pin) + 2 * var(--stack-step)); z-index: 30; }
+.mode-spotlight-deck #card-reception { top: calc(var(--top-pin) + 3 * var(--stack-step)); z-index: 40; }
 
-/* Sticky shadow enhancements */
 .mode-spotlight-deck .celebration-card-shell {
   filter: drop-shadow(0 14px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
 }
@@ -478,25 +500,40 @@ body {
   <div class="tester-dock-header">
     <div class="tester-badge">
       <span class="tester-badge-dot"></span>
-      <span id="current-mode-title">Mode 6: Spotlight Sticky Deck</span>
+      <span id="current-mode-title">Spotlight Cascading Deck</span>
     </div>
-    <span class="tester-mode-desc" id="current-mode-desc">Cascading stack + spotlight glow on active card</span>
+    <span class="tester-mode-desc" id="current-mode-desc">Full screen vertical spread & spotlight focus</span>
   </div>
+
   <div class="tester-pill-scroll" role="tablist">
     <button class="effect-tab-btn active" data-mode="6" role="tab">👑🎴 Spotlight Deck</button>
-    <button class="effect-tab-btn" data-mode="2" role="tab">👑 Darbar Spotlight</button>
+    <button class="effect-tab-btn" data-mode="2" role="tab">👑 Spotlight Only</button>
     <button class="effect-tab-btn" data-mode="1" role="tab">✨ 3D Parallax</button>
     <button class="effect-tab-btn" data-mode="5" role="tab">🏛️ Royal Heritage</button>
     <button class="effect-tab-btn" data-mode="0" role="tab">⚪ Baseline</button>
   </div>
-  <!-- Offset Adjustment Slider for Mode 6 -->
-  <div class="stack-offset-bar visible" id="stack-offset-bar">
-    <span>Visible Stack Step:</span>
-    <div class="offset-btn-group">
-      <button class="offset-btn" data-step="48px">48px</button>
-      <button class="offset-btn active" data-step="60px">60px</button>
-      <button class="offset-btn" data-step="72px">72px</button>
-      <button class="offset-btn" data-step="84px">84px</button>
+
+  <!-- Real-Time Adjustable Stack Controls -->
+  <div class="stack-controls-panel" id="stack-controls-panel">
+    <div class="control-row">
+      <span>Visible Card Exposure:</span>
+      <div class="offset-presets">
+        <button class="preset-btn" data-val="30px">30px (Tabs)</button>
+        <button class="preset-btn" data-val="60px">60px (Badge)</button>
+        <button class="preset-btn active" data-val="100px">100px (Title)</button>
+        <button class="preset-btn" data-val="135px">135px (Half)</button>
+        <button class="preset-btn" data-val="auto">Auto Fill</button>
+      </div>
+    </div>
+    <div class="slider-container">
+      <span style="font-size: 10px; color:#775555;">Step:</span>
+      <input type="range" min="20" max="160" value="100" class="custom-range" id="step-slider">
+      <span class="slider-val" id="step-val-display">100px</span>
+    </div>
+    <div class="slider-container">
+      <span style="font-size: 10px; color:#775555;">Pin Top:</span>
+      <input type="range" min="0" max="80" value="20" class="custom-range" id="pin-slider">
+      <span class="slider-val" id="pin-val-display">20px</span>
     </div>
   </div>
 </aside>
@@ -631,8 +668,12 @@ body {
   const buttons = document.querySelectorAll('.effect-tab-btn');
   const titleEl = document.getElementById('current-mode-title');
   const descEl = document.getElementById('current-mode-desc');
-  const offsetBar = document.getElementById('stack-offset-bar');
-  const offsetBtns = document.querySelectorAll('.offset-btn');
+  const controlsPanel = document.getElementById('stack-controls-panel');
+  const stepSlider = document.getElementById('step-slider');
+  const pinSlider = document.getElementById('pin-slider');
+  const stepDisplay = document.getElementById('step-val-display');
+  const pinDisplay = document.getElementById('pin-val-display');
+  const presetBtns = document.querySelectorAll('.preset-btn');
 
   let currentMode = 6;
   let rafId = null;
@@ -642,22 +683,54 @@ body {
     1: { title: "Mode 1: 3D Depth Parallax", desc: "Kinetic wallpaper motion + floating 3D card perspective" },
     2: { title: "Mode 2: Darbar Spotlight", desc: "Active card scales & illuminates with golden royal aura" },
     5: { title: "Mode 5: Royal Heritage", desc: "Combined 3D parallax + spotlight glow" },
-    6: { title: "Mode 6: Spotlight Sticky Deck", desc: "Cascading stack + spotlight elevation on active card" },
+    6: { title: "Spotlight Cascading Deck", desc: "Full-screen vertical spread & spotlight focus" },
   };
 
-  // Click on card to smooth scroll into focus
-  cards.forEach((card, idx) => {
-    card.addEventListener('click', () => {
-      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  // Slider adjustments
+  stepSlider.addEventListener('input', (e) => {
+    presetBtns.forEach(b => b.classList.remove('active'));
+    setStep(e.target.value + 'px');
+  });
+
+  pinSlider.addEventListener('input', (e) => {
+    setPin(e.target.value + 'px');
+  });
+
+  function setStep(val) {
+    document.documentElement.style.setProperty('--stack-step', val);
+    stepDisplay.textContent = val;
+    stepSlider.value = parseInt(val, 10);
+  }
+
+  function setPin(val) {
+    document.documentElement.style.setProperty('--top-pin', val);
+    pinDisplay.textContent = val;
+    pinSlider.value = parseInt(val, 10);
+  }
+
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      presetBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (btn.dataset.val === 'auto') {
+        // Auto-calculate step to fill remaining viewport
+        const vh = container.clientHeight;
+        const cardH = cards[0].clientHeight || 260;
+        const pinTop = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--top-pin'), 10) || 20;
+        const availableHeight = vh - pinTop - cardH - 30; // 30px bottom buffer
+        const autoStep = Math.max(30, Math.min(150, Math.floor(availableHeight / 3)));
+        setStep(autoStep + 'px');
+      } else {
+        setStep(btn.dataset.val);
+      }
     });
   });
 
-  // Offset step buttons
-  offsetBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      offsetBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.documentElement.style.setProperty('--stack-step', btn.dataset.step);
+  // Tap card to smooth scroll into focus
+  cards.forEach((card) => {
+    card.addEventListener('click', () => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 
@@ -679,11 +752,11 @@ body {
       return;
     }
 
-    // Parallax Wallpaper
+    // Parallax Wallpaper & Header Fade
     if (currentMode === 1 || currentMode === 5 || currentMode === 6) {
       wallpaper.style.transform = `translateY(${scrollTop * 0.18}px)`;
-      header.style.transform = `translateY(${scrollTop * 0.12}px)`;
-      header.style.opacity = `${Math.max(0, 1 - scrollTop / 260)}`;
+      header.style.transform = `translateY(${scrollTop * 0.14}px)`;
+      header.style.opacity = `${Math.max(0, 1 - scrollTop / 240)}`;
     } else {
       wallpaper.style.transform = 'none';
       header.style.transform = 'none';
@@ -691,17 +764,14 @@ body {
     }
 
     if (currentMode === 6) {
-      // ══════════════════════════════════════════════════════════
-      // MODE 6: SPOTLIGHT STICKY DECK ENGINE
-      // ══════════════════════════════════════════════════════════
-      // Find which card is currently active (closest to center or topmost reaching stick point)
+      // Find active card nearest to focus trigger
       let activeIdx = 0;
       let minDistance = Infinity;
 
       cards.forEach((card, idx) => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
-        const dist = Math.abs(cardCenter - (centerY * 0.9));
+        const dist = Math.abs(cardCenter - (centerY * 0.95));
         if (dist < minDistance) {
           minDistance = dist;
           activeIdx = idx;
@@ -709,34 +779,24 @@ body {
       });
 
       cards.forEach((card, idx) => {
-        const rect = card.getBoundingClientRect();
-        const cardCenter = rect.top + rect.height / 2;
-        const normDist = (cardCenter - centerY) / (viewportH / 2); // -1 to +1
-
-        const isStickyPinned = rect.top <= (76 + idx * 60 + 5);
-
         if (idx === activeIdx) {
-          // Active Spotlight Card: elevated, golden royal glow, 1.01 scale
           card.style.transform = 'scale(1.015)';
-          card.style.filter = 'drop-shadow(0 16px 36px rgba(167, 31, 35, 0.28)) drop-shadow(0 0 28px rgba(248, 226, 189, 0.45))';
+          card.style.filter = 'drop-shadow(0 16px 36px rgba(167, 31, 35, 0.30)) drop-shadow(0 0 28px rgba(248, 226, 189, 0.50))';
           card.style.opacity = '1';
         } else if (idx < activeIdx) {
-          // Stacked Beneath Cards: subtle scale down and soft elegant rest
           const depth = activeIdx - idx;
-          const scale = Math.max(0.94, 1 - depth * 0.02);
+          const scale = Math.max(0.95, 1 - depth * 0.018);
           card.style.transform = `scale(${scale})`;
-          card.style.filter = 'drop-shadow(0 10px 24px rgba(60, 5, 8, 0.20)) drop-shadow(0 2px 6px rgba(0,0,0,0.08))';
-          card.style.opacity = '0.92';
+          card.style.filter = 'drop-shadow(0 10px 22px rgba(60, 5, 8, 0.20)) drop-shadow(0 2px 6px rgba(0,0,0,0.08))';
+          card.style.opacity = '0.94';
         } else {
-          // Approaching Cards below
-          card.style.transform = 'scale(0.97)';
+          card.style.transform = 'scale(0.98)';
           card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0,0,0,0.06))';
-          card.style.opacity = '0.96';
+          card.style.opacity = '0.97';
         }
       });
     }
     else if (currentMode === 2) {
-      // Mode 2: Darbar Spotlight
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
@@ -750,7 +810,6 @@ body {
       });
     }
     else if (currentMode === 1) {
-      // Mode 1: 3D Parallax
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
@@ -764,7 +823,6 @@ body {
       });
     }
     else if (currentMode === 5) {
-      // Mode 5: Royal Combined
       cards.forEach(card => {
         const rect = card.getBoundingClientRect();
         const cardCenter = rect.top + rect.height / 2;
@@ -781,7 +839,7 @@ body {
     rafId = requestAnimationFrame(update);
   }
 
-  // Switch Modes
+  // Mode Switcher
   function setMode(mode) {
     currentMode = parseInt(mode, 10);
     buttons.forEach(btn => {
@@ -792,13 +850,12 @@ body {
     titleEl.textContent = info.title;
     descEl.textContent = info.desc;
 
-    // Toggle Deck Mode CSS
     if (currentMode === 6) {
       document.body.classList.add('mode-spotlight-deck');
-      offsetBar.classList.add('visible');
+      controlsPanel.style.display = 'flex';
     } else {
       document.body.classList.remove('mode-spotlight-deck');
-      offsetBar.classList.remove('visible');
+      controlsPanel.style.display = 'none';
     }
   }
 
