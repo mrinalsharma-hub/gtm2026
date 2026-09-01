@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#FFEFD5">
+<meta name="theme-color" content="#FFEFD4">
 <meta name="color-scheme" content="light">
 <title>Celebrations Scroll Effects Tester · Garima &amp; Mrinal</title>
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24700">
@@ -26,7 +26,7 @@
 :root {
   color-scheme: light;
   --theme-color: #A71F23;
-  --gold-glow: rgba(248, 226, 189, 0.4);
+  --stack-step: 60px;
 }
 
 *, *::before, *::after {
@@ -64,22 +64,22 @@ body {
   justify-content: center;
 }
 
-/* ── Top Floating Effect Selector Pill ── */
+/* ── Top Floating Control Dock ── */
 .tester-controls-dock {
   position: fixed;
-  top: 12px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
-  width: calc(100% - 24px);
+  z-index: 1000;
+  width: calc(100% - 20px);
   max-width: 460px;
-  background: rgba(255, 253, 249, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(167, 31, 35, 0.18);
-  border-radius: 24px;
-  padding: 6px 8px;
-  box-shadow: 0 10px 30px rgba(60, 5, 8, 0.14), 0 2px 8px rgba(0,0,0,0.04);
+  background: rgba(255, 253, 249, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(167, 31, 35, 0.2);
+  border-radius: 20px;
+  padding: 8px 10px;
+  box-shadow: 0 12px 36px rgba(60, 5, 8, 0.16), 0 2px 8px rgba(0,0,0,0.04);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -89,7 +89,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2px 8px;
+  padding: 0 4px;
 }
 
 .tester-badge {
@@ -119,12 +119,12 @@ body {
 
 .tester-mode-desc {
   font-size: 11px;
-  color: #555;
+  color: #553335;
   font-style: italic;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 260px;
+  max-width: 250px;
 }
 
 .tester-pill-scroll {
@@ -137,7 +137,7 @@ body {
 
 .effect-tab-btn {
   appearance: none;
-  border: 1px solid rgba(167, 31, 35, 0.15);
+  border: 1px solid rgba(167, 31, 35, 0.18);
   background: rgba(255, 239, 213, 0.6);
   color: #553335;
   padding: 5px 12px;
@@ -161,7 +161,45 @@ body {
   transform: scale(1.02);
 }
 
-/* ── 1. Page Background Canvas ── */
+/* Offset Slider Controls for Stacking */
+.stack-offset-bar {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px;
+  background: rgba(255, 239, 213, 0.5);
+  border-radius: 10px;
+  font-size: 11px;
+  color: #553335;
+}
+
+.stack-offset-bar.visible {
+  display: flex;
+}
+
+.offset-btn-group {
+  display: flex;
+  gap: 4px;
+}
+
+.offset-btn {
+  border: 1px solid rgba(167, 31, 35, 0.2);
+  background: #FFFDF9;
+  color: #553335;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.offset-btn.active {
+  background: #A71F23;
+  color: #FFFDF9;
+  border-color: #A71F23;
+}
+
+/* ── 1. Page Background Canvas (Figma Fill Stack) ── */
 .celebrations-bg-layer {
   position: fixed;
   inset: 0;
@@ -171,7 +209,7 @@ body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  background: #FFEFD5 !important;
+  background: #FFEFD4 !important;
 }
 
 .celebrations-botanical-art-layer {
@@ -196,25 +234,9 @@ body {
   transform: translateX(-50%);
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%);
+  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 212, 0) 70%);
   pointer-events: none;
   z-index: 1;
-}
-
-/* Golden Dust Particle Canvas */
-#particles-canvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-#particles-canvas.active {
-  opacity: 1;
 }
 
 /* ── 2. Scrollable Content Viewport ── */
@@ -233,10 +255,9 @@ body {
   -webkit-overflow-scrolling: touch !important;
   overscroll-behavior-y: contain !important;
   touch-action: pan-y !important;
-  z-index: 3 !important;
-  padding-top: 80px;
-  padding-bottom: 120px;
-  perspective: 1200px;
+  z-index: 2 !important;
+  padding-top: 104px;
+  padding-bottom: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -302,7 +323,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Authentic Figma Card Shell (GPU Composited) */
+/* Card Shell */
 .celebration-card-shell {
   width: 100%;
   max-width: 424px;
@@ -310,20 +331,18 @@ body {
   position: relative;
   display: block;
   background: transparent;
-  transform-style: preserve-3d;
   will-change: transform, filter, opacity;
   filter: drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
-  transition: filter 0.3s ease;
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease, opacity 0.25s ease;
+  cursor: pointer;
 }
 
 .card-picture-wrap {
   width: 100%;
   height: 100%;
   display: block;
-  position: relative;
 }
 
-/* Pure Clean Background Artwork from Figma */
 .celebration-card-art {
   width: 100%;
   height: 100%;
@@ -336,49 +355,6 @@ body {
   image-rendering: high-quality;
 }
 
-/* Shimmer Light Bar Overlay */
-.card-shimmer-sheen {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  overflow: hidden;
-  border-radius: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.card-shimmer-sheen::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 60%;
-  height: 200%;
-  background: linear-gradient(
-    105deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 235, 180, 0.25) 45%,
-    rgba(255, 255, 255, 0.55) 50%,
-    rgba(255, 235, 180, 0.25) 55%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(20deg) translateX(-100%);
-}
-
-.shimmer-active .card-shimmer-sheen {
-  opacity: 1;
-}
-
-.shimmer-active .card-shimmer-sheen::after {
-  animation: shine-sweep 3.5s infinite ease-in-out;
-}
-
-@keyframes shine-sweep {
-  0% { transform: rotate(20deg) translateX(-200%); }
-  35%, 100% { transform: rotate(20deg) translateX(400%); }
-}
-
-/* Single Real Visible & Selectable HTML Text Layer */
 .card-text-layer {
   position: absolute;
   top: 0;
@@ -389,7 +365,6 @@ body {
   pointer-events: auto;
   user-select: text;
   -webkit-user-select: text;
-  will-change: transform;
 }
 
 .text-box-right {
@@ -406,12 +381,6 @@ body {
   top: 10%;
   width: 43%;
   text-align: left;
-}
-
-/* Selection Color Styling */
-.card-text-layer ::selection {
-  background: rgba(255, 215, 0, 0.40);
-  color: #FFFFFF;
 }
 
 /* ── Typography Specs ── */
@@ -480,24 +449,26 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   EFFECT SPECIFIC CSS MODIFIERS
+   SPOTLIGHT STACKING DECK ENGINE (Mode 6)
    ══════════════════════════════════════════════════════════════ */
-
-/* ── Mode 3: Sticky Deck Stacking ── */
-.mode-deck .celebrations-cards-feed {
-  gap: 20px;
-  padding-bottom: 80px;
+.mode-spotlight-deck .celebrations-cards-feed {
+  gap: 16px;
+  padding-bottom: 120px;
 }
 
-.mode-deck .celebration-card-shell {
+.mode-spotlight-deck .celebration-card-shell {
   position: sticky;
-  top: 96px;
 }
 
-.mode-deck #card-mehndi { top: 96px; z-index: 10; }
-.mode-deck #card-wedding { top: 110px; z-index: 20; }
-.mode-deck #card-party { top: 124px; z-index: 30; }
-.mode-deck #card-reception { top: 138px; z-index: 40; }
+.mode-spotlight-deck #card-mehndi    { top: calc(76px + 0 * var(--stack-step)); z-index: 10; }
+.mode-spotlight-deck #card-wedding   { top: calc(76px + 1 * var(--stack-step)); z-index: 20; }
+.mode-spotlight-deck #card-party     { top: calc(76px + 2 * var(--stack-step)); z-index: 30; }
+.mode-spotlight-deck #card-reception { top: calc(76px + 3 * var(--stack-step)); z-index: 40; }
+
+/* Sticky shadow enhancements */
+.mode-spotlight-deck .celebration-card-shell {
+  filter: drop-shadow(0 14px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+}
 </style>
 </head>
 <body>
@@ -507,22 +478,28 @@ body {
   <div class="tester-dock-header">
     <div class="tester-badge">
       <span class="tester-badge-dot"></span>
-      <span id="current-mode-title">Mode 1: 3D Depth Parallax</span>
+      <span id="current-mode-title">Mode 6: Spotlight Sticky Deck</span>
     </div>
-    <span class="tester-mode-desc" id="current-mode-desc">Kinetic wallpaper & character layering</span>
+    <span class="tester-mode-desc" id="current-mode-desc">Cascading stack + spotlight glow on active card</span>
   </div>
   <div class="tester-pill-scroll" role="tablist">
-    <button class="effect-tab-btn active" data-mode="1" role="tab">✨ 3D Parallax</button>
+    <button class="effect-tab-btn active" data-mode="6" role="tab">👑🎴 Spotlight Deck</button>
     <button class="effect-tab-btn" data-mode="2" role="tab">👑 Darbar Spotlight</button>
-    <button class="effect-tab-btn" data-mode="3" role="tab">🎴 Sticky Deck</button>
-    <button class="effect-tab-btn" data-mode="4" role="tab">🌟 Gold Shimmer</button>
+    <button class="effect-tab-btn" data-mode="1" role="tab">✨ 3D Parallax</button>
     <button class="effect-tab-btn" data-mode="5" role="tab">🏛️ Royal Heritage</button>
-    <button class="effect-tab-btn" data-mode="0" role="tab">⚪ Baseline (Clean)</button>
+    <button class="effect-tab-btn" data-mode="0" role="tab">⚪ Baseline</button>
+  </div>
+  <!-- Offset Adjustment Slider for Mode 6 -->
+  <div class="stack-offset-bar visible" id="stack-offset-bar">
+    <span>Visible Stack Step:</span>
+    <div class="offset-btn-group">
+      <button class="offset-btn" data-step="48px">48px</button>
+      <button class="offset-btn active" data-step="60px">60px</button>
+      <button class="offset-btn" data-step="72px">72px</button>
+      <button class="offset-btn" data-step="84px">84px</button>
+    </div>
   </div>
 </aside>
-
-<!-- ── Particle Canvas ── -->
-<canvas id="particles-canvas"></canvas>
 
 <!-- ── Background Layers ── -->
 <div class="celebrations-bg-layer" aria-hidden="true">
@@ -558,7 +535,6 @@ body {
              fetchpriority="high"
              decoding="async"
              loading="eager">
-        <div class="card-shimmer-sheen"></div>
       </picture>
 
       <div class="card-text-layer">
@@ -583,7 +559,6 @@ body {
              fetchpriority="high"
              decoding="async"
              loading="eager">
-        <div class="card-shimmer-sheen"></div>
       </picture>
 
       <div class="card-text-layer">
@@ -610,7 +585,6 @@ body {
              height="558"
              decoding="async"
              loading="lazy">
-        <div class="card-shimmer-sheen"></div>
       </picture>
 
       <div class="card-text-layer">
@@ -633,7 +607,6 @@ body {
              height="558"
              decoding="async"
              loading="lazy">
-        <div class="card-shimmer-sheen"></div>
       </picture>
 
       <div class="card-text-layer">
@@ -653,90 +626,47 @@ body {
 (function() {
   const container = document.getElementById('scroll-container');
   const wallpaper = document.getElementById('bg-wallpaper');
-  const glow = document.getElementById('bg-glow');
   const header = document.getElementById('page-header');
   const cards = Array.from(document.querySelectorAll('.celebration-card-shell'));
-  const canvas = document.getElementById('particles-canvas');
   const buttons = document.querySelectorAll('.effect-tab-btn');
   const titleEl = document.getElementById('current-mode-title');
   const descEl = document.getElementById('current-mode-desc');
+  const offsetBar = document.getElementById('stack-offset-bar');
+  const offsetBtns = document.querySelectorAll('.offset-btn');
 
-  let currentMode = 1;
+  let currentMode = 6;
   let rafId = null;
 
   const modeDescriptions = {
     0: { title: "Mode 0: Baseline (Clean)", desc: "Standard smooth scrolling with zero 3D transformations" },
     1: { title: "Mode 1: 3D Depth Parallax", desc: "Kinetic wallpaper motion + floating 3D card perspective" },
     2: { title: "Mode 2: Darbar Spotlight", desc: "Active card scales & illuminates with golden royal aura" },
-    3: { title: "Mode 3: Sticky Deck", desc: "Cards stack & slide over each other like royal invitations" },
-    4: { title: "Mode 4: Gold Shimmer & Drift", desc: "Floating gold fireflies + metallic light sweep across cards" },
-    5: { title: "Mode 5: Royal Heritage", desc: "Combined 3D parallax + spotlight glow + ambient gold dust" },
+    5: { title: "Mode 5: Royal Heritage", desc: "Combined 3D parallax + spotlight glow" },
+    6: { title: "Mode 6: Spotlight Sticky Deck", desc: "Cascading stack + spotlight elevation on active card" },
   };
 
-  // ── Particle System ──
-  const ctx = canvas.getContext('2d');
-  let particles = [];
-  let w = canvas.width = window.innerWidth;
-  let h = canvas.height = window.innerHeight;
-
-  window.addEventListener('resize', () => {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
+  // Click on card to smooth scroll into focus
+  cards.forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   });
 
-  function initParticles() {
-    particles = [];
-    for (let i = 0; i < 35; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        size: Math.random() * 2.2 + 0.8,
-        speedX: (Math.random() - 0.5) * 0.4,
-        speedY: -Math.random() * 0.5 - 0.2,
-        opacity: Math.random() * 0.7 + 0.2,
-        pulse: Math.random() * Math.PI * 2
-      });
-    }
-  }
-  initParticles();
-
-  function drawParticles(scrollSpeed) {
-    ctx.clearRect(0, 0, w, h);
-    const speedBoost = Math.min(Math.abs(scrollSpeed) * 0.08, 2.5);
-
-    particles.forEach(p => {
-      p.y += p.speedY - (scrollSpeed > 0 ? speedBoost : -speedBoost * 0.5);
-      p.x += p.speedX;
-      p.pulse += 0.03;
-
-      if (p.y < 0) p.y = h;
-      if (p.y > h) p.y = 0;
-      if (p.x < 0) p.x = w;
-      if (p.x > w) p.x = 0;
-
-      const alpha = p.opacity * (0.7 + Math.sin(p.pulse) * 0.3);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(235, 195, 120, ${alpha})`;
-      ctx.shadowBlur = 6;
-      ctx.shadowColor = 'rgba(255, 215, 140, 0.8)';
-      ctx.fill();
+  // Offset step buttons
+  offsetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      offsetBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.documentElement.style.setProperty('--stack-step', btn.dataset.step);
     });
-  }
+  });
 
-  // ── Scroll Loop ──
-  let lastScrollTop = 0;
-  let scrollVelocity = 0;
-
+  // Scroll Loop
   function update() {
     const scrollTop = container.scrollTop;
-    scrollVelocity = scrollTop - lastScrollTop;
-    lastScrollTop = scrollTop;
-
     const viewportH = container.clientHeight;
     const centerY = viewportH / 2;
 
-    // Reset styles
     if (currentMode === 0) {
       wallpaper.style.transform = 'none';
       header.style.transform = 'none';
@@ -750,73 +680,103 @@ body {
     }
 
     // Parallax Wallpaper
-    if (currentMode === 1 || currentMode === 5) {
-      wallpaper.style.transform = `translateY(${scrollTop * 0.22}px)`;
-      header.style.transform = `translateY(${scrollTop * 0.15}px)`;
-      header.style.opacity = `${Math.max(0, 1 - scrollTop / 280)}`;
+    if (currentMode === 1 || currentMode === 5 || currentMode === 6) {
+      wallpaper.style.transform = `translateY(${scrollTop * 0.18}px)`;
+      header.style.transform = `translateY(${scrollTop * 0.12}px)`;
+      header.style.opacity = `${Math.max(0, 1 - scrollTop / 260)}`;
     } else {
       wallpaper.style.transform = 'none';
       header.style.transform = 'none';
       header.style.opacity = '1';
     }
 
-    // Particles
-    if (currentMode === 4 || currentMode === 5) {
-      canvas.classList.add('active');
-      drawParticles(scrollVelocity);
-    } else {
-      canvas.classList.remove('active');
+    if (currentMode === 6) {
+      // ══════════════════════════════════════════════════════════
+      // MODE 6: SPOTLIGHT STICKY DECK ENGINE
+      // ══════════════════════════════════════════════════════════
+      // Find which card is currently active (closest to center or topmost reaching stick point)
+      let activeIdx = 0;
+      let minDistance = Infinity;
+
+      cards.forEach((card, idx) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const dist = Math.abs(cardCenter - (centerY * 0.9));
+        if (dist < minDistance) {
+          minDistance = dist;
+          activeIdx = idx;
+        }
+      });
+
+      cards.forEach((card, idx) => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const normDist = (cardCenter - centerY) / (viewportH / 2); // -1 to +1
+
+        const isStickyPinned = rect.top <= (76 + idx * 60 + 5);
+
+        if (idx === activeIdx) {
+          // Active Spotlight Card: elevated, golden royal glow, 1.01 scale
+          card.style.transform = 'scale(1.015)';
+          card.style.filter = 'drop-shadow(0 16px 36px rgba(167, 31, 35, 0.28)) drop-shadow(0 0 28px rgba(248, 226, 189, 0.45))';
+          card.style.opacity = '1';
+        } else if (idx < activeIdx) {
+          // Stacked Beneath Cards: subtle scale down and soft elegant rest
+          const depth = activeIdx - idx;
+          const scale = Math.max(0.94, 1 - depth * 0.02);
+          card.style.transform = `scale(${scale})`;
+          card.style.filter = 'drop-shadow(0 10px 24px rgba(60, 5, 8, 0.20)) drop-shadow(0 2px 6px rgba(0,0,0,0.08))';
+          card.style.opacity = '0.92';
+        } else {
+          // Approaching Cards below
+          card.style.transform = 'scale(0.97)';
+          card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0,0,0,0.06))';
+          card.style.opacity = '0.96';
+        }
+      });
     }
-
-    // Card Animations
-    cards.forEach((card, index) => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.top + rect.height / 2;
-      const distFromCenter = cardCenter - centerY;
-      const normDist = distFromCenter / (viewportH / 2); // -1 (top) to +1 (bottom)
-
-      if (currentMode === 1) {
-        // Mode 1: 3D Perspective Tilt Parallax
+    else if (currentMode === 2) {
+      // Mode 2: Darbar Spotlight
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const normDist = (cardCenter - centerY) / (viewportH / 2);
+        const closeness = Math.max(0, 1 - Math.abs(normDist) * 1.3);
+        const scale = 0.95 + closeness * 0.06;
+        const glowAlpha = closeness * 0.35;
+        card.style.transform = `scale(${scale})`;
+        card.style.filter = `drop-shadow(0 ${8 + closeness * 16}px ${20 + closeness * 24}px rgba(167, 31, 35, ${0.12 + closeness * 0.16})) drop-shadow(0 0 ${closeness * 30}px rgba(248, 226, 189, ${glowAlpha}))`;
+        card.style.opacity = '1';
+      });
+    }
+    else if (currentMode === 1) {
+      // Mode 1: 3D Parallax
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const normDist = (cardCenter - centerY) / (viewportH / 2);
         const tiltX = Math.max(-8, Math.min(8, normDist * 6));
         const translateY = Math.max(-15, Math.min(15, -normDist * 10));
         const scale = 1 - Math.abs(normDist) * 0.04;
         card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) translateY(${translateY}px) scale(${scale})`;
         card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
-      } 
-      else if (currentMode === 2) {
-        // Mode 2: Darbar Spotlight Elevation
-        const closeness = Math.max(0, 1 - Math.abs(normDist) * 1.3); // 1 at center, 0 far
-        const scale = 0.95 + closeness * 0.06;
-        const glowAlpha = closeness * 0.35;
-        card.style.transform = `scale(${scale})`;
-        card.style.filter = `drop-shadow(0 ${8 + closeness * 16}px ${20 + closeness * 24}px rgba(167, 31, 35, ${0.12 + closeness * 0.16})) drop-shadow(0 0 ${closeness * 30}px rgba(248, 226, 189, ${glowAlpha}))`;
-      }
-      else if (currentMode === 4) {
-        // Mode 4: Shimmer Sheen on Center
-        const inSpotlight = Math.abs(normDist) < 0.45;
-        if (inSpotlight) {
-          card.classList.add('shimmer-active');
-        } else {
-          card.classList.remove('shimmer-active');
-        }
-        card.style.transform = `scale(${1 - Math.abs(normDist) * 0.02})`;
-      }
-      else if (currentMode === 5) {
-        // Mode 5: Royal Combined
+        card.style.opacity = '1';
+      });
+    }
+    else if (currentMode === 5) {
+      // Mode 5: Royal Combined
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+        const normDist = (cardCenter - centerY) / (viewportH / 2);
         const closeness = Math.max(0, 1 - Math.abs(normDist) * 1.2);
         const tiltX = Math.max(-6, Math.min(6, normDist * 5));
         const scale = 0.96 + closeness * 0.05;
         card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) scale(${scale})`;
         card.style.filter = `drop-shadow(0 ${8 + closeness * 14}px ${20 + closeness * 20}px rgba(167, 31, 35, ${0.14 + closeness * 0.14})) drop-shadow(0 0 ${closeness * 24}px rgba(248, 226, 189, ${closeness * 0.3}))`;
-        if (Math.abs(normDist) < 0.4) card.classList.add('shimmer-active');
-        else card.classList.remove('shimmer-active');
-      }
-      else if (currentMode === 3) {
-        // Mode 3: Sticky Deck
-        card.style.transform = 'none';
-        card.style.filter = 'drop-shadow(0 12px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08))';
-      }
-    });
+        card.style.opacity = '1';
+      });
+    }
 
     rafId = requestAnimationFrame(update);
   }
@@ -833,15 +793,12 @@ body {
     descEl.textContent = info.desc;
 
     // Toggle Deck Mode CSS
-    if (currentMode === 3) {
-      document.body.classList.add('mode-deck');
+    if (currentMode === 6) {
+      document.body.classList.add('mode-spotlight-deck');
+      offsetBar.classList.add('visible');
     } else {
-      document.body.classList.remove('mode-deck');
-    }
-
-    // Remove shimmer if leaving shimmer modes
-    if (currentMode !== 4 && currentMode !== 5) {
-      cards.forEach(c => c.classList.remove('shimmer-active'));
+      document.body.classList.remove('mode-spotlight-deck');
+      offsetBar.classList.remove('visible');
     }
   }
 
@@ -849,7 +806,7 @@ body {
     btn.addEventListener('click', () => setMode(btn.dataset.mode));
   });
 
-  setMode(1);
+  setMode(6);
   rafId = requestAnimationFrame(update);
 })();
 </script>
