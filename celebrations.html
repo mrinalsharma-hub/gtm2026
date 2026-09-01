@@ -393,6 +393,53 @@ body {
   color: #FFFFFF;
   display: block;
 }
+
+/* ── Global Horizontal Music Player Pill (Authentic iOS Liquid Frosted Glass) ── */
+.global-audio-pill {
+  position: fixed !important;
+  top: max(14px, env(safe-area-inset-top, 14px)) !important;
+  right: max(14px, env(safe-area-inset-right, 14px)) !important;
+  height: 38px !important;
+  padding: 0 14px 0 12px !important;
+  border-radius: 20px !important;
+  background: rgba(255, 255, 255, 0.22) !important;
+  backdrop-filter: blur(8px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(160%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.75), 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
+  z-index: 9999 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.global-audio-pill:hover {
+  transform: scale(1.04) translateZ(0) !important;
+  background: rgba(255, 255, 255, 0.35) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.90), 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+.global-audio-pill:active {
+  transform: scale(0.94) translateZ(0) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.global-audio-pill .icon-play,
+.global-audio-pill .icon-pause {
+  fill: #A71F23 !important;
+}
+
+.global-audio-pill .bar {
+  background-color: #A71F23 !important;
+}
 </style>
 </head>
 <body>
