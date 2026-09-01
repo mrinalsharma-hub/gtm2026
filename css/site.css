@@ -1,3 +1,13 @@
+@font-face {
+  font-family: 'Kugile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/Kugile.ttf?v=24700') format('truetype'),
+       url('../fonts/Kugile_Demo.ttf?v=24700') format('truetype'),
+       local('Kugile');
+}
+
 /* ═══════════════════════════════════════════════════════
    Garima weds Mrinal · Aipan design system
    Ivory line-art on geru red, ported from the invite film

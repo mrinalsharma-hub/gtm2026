@@ -42,6 +42,16 @@
 <link rel="stylesheet" href="css/site.css?v=24700">
 
 <style>
+@font-face {
+  font-family: 'Kugile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Kugile.ttf?v=24700') format('truetype'),
+       url('fonts/Kugile_Demo.ttf?v=24700') format('truetype'),
+       local('Kugile');
+}
+
 :root {
   color-scheme: light;
   --theme-color: #A71F23;
@@ -185,7 +195,7 @@ body {
 }
 
 .celebrations-title-main {
-  font-family: 'Cinzel', serif;
+  font-family: 'Kugile', 'Cinzel', serif;
   font-size: clamp(44px, 12.5vw, 56px);
   font-weight: 500;
   line-height: 0.94;
@@ -209,7 +219,7 @@ body {
   margin-bottom: 0;
 }
 
-/* ── 3. Events Cards Feed (8px side padding, scaled cards) ── */
+/* ── 3. Events Cards Feed (8px side padding, 8px vertical gap) ── */
 .celebrations-cards-feed {
   width: 100%;
   padding: 0 8px;
@@ -220,7 +230,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Scaled Card Shell (max-width: 424px for 440px container - 16px padding) */
+/* Scaled Card Shell (max-width: 424px) */
 .celebration-card-shell {
   width: 100%;
   max-width: 424px;
@@ -306,11 +316,12 @@ body {
   color: #FFFFFF;
 }
 
+/* ── Typography per User Specifications ── */
 .sel-time-badge {
   font-family: 'Spectral', Georgia, serif;
-  font-size: clamp(9px, 2.4vw, 10.5px);
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 1.2px;
+  letter-spacing: 1.4px;
   line-height: 1;
   text-transform: uppercase;
   color: transparent;
@@ -319,38 +330,53 @@ body {
 }
 
 .sel-title {
-  font-family: 'Cormorant Garamond', 'Cinzel', serif;
-  font-size: clamp(28px, 8.2vw, 36px);
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: 36px;
   font-weight: 400;
   line-height: 1.15;
+  letter-spacing: -0.1px;
   color: transparent;
   margin: 0 0 8px 0;
-  letter-spacing: -0.28px;
 }
 
 .sel-body {
   font-family: 'Spectral', Georgia, serif;
-  font-size: clamp(11px, 2.9vw, 12.5px);
+  font-size: 14px;
   font-weight: 200;
-  line-height: 1.28;
+  line-height: 125%;
   color: transparent;
   margin: 0 0 6px 0;
 }
 
 .sel-optional {
   font-family: 'Spectral', Georgia, serif;
-  font-size: clamp(11px, 2.9vw, 12.5px);
+  font-size: 14px;
   font-weight: 200;
+  line-height: 125%;
   color: transparent;
   margin: 0;
 }
 
 .sel-venue {
-  font-family: 'Spectral', Georgia, serif;
-  font-size: clamp(11px, 2.9vw, 12.5px);
-  line-height: 1.2;
-  color: transparent;
   margin-top: 4px;
+}
+
+.sel-venue-label {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 125%;
+  color: transparent;
+  display: block;
+}
+
+.sel-venue-name {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 125%;
+  color: transparent;
+  display: block;
 }
 </style>
 </head>
@@ -434,8 +460,8 @@ body {
           <h2 class="sel-title">Wedding</h2>
           <p class="sel-body">The ceremony, the vows, and the beginning of our next chapter.</p>
           <div class="sel-venue">
-            <span>Venue:</span><br>
-            <span>The Balrampur House</span>
+            <span class="sel-venue-label">Venue:</span>
+            <span class="sel-venue-name">The Balrampur House</span>
           </div>
         </div>
       </div>
