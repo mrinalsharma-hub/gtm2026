@@ -10,7 +10,7 @@
       return 'index.html';
     }
     if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html') return 'G&M.html';
-    if (path === 'celebrations.html' || path === 'celebrations.html' || path === 'schedule.html') return 'celebrations.html';
+    if (path === 'celebrations.html' || path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
     if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
     if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
     return path;
