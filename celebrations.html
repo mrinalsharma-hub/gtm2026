@@ -251,7 +251,7 @@ body {
   padding-bottom: 60px;
 }
 
-/* Authentic Figma Card Shell (GPU Composited with Spotlight Elevation) */
+/* Authentic Figma Card Shell (Clean Static Rendering) */
 .celebration-card-shell {
   width: 100%;
   max-width: 424px;
@@ -259,13 +259,9 @@ body {
   position: relative;
   display: block;
   background: transparent;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform, filter;
+  border-radius: 32px;
+  overflow: hidden;
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.05));
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease;
 }
 
 .card-picture-wrap {
@@ -440,38 +436,6 @@ body {
   background-color: #A71F23 !important;
 }
 
-
-/* ── 2.5D Micro-Tilt Shadowbox Parallax ── */
-.celebrations-cards-feed {
-  perspective: 1200px;
-}
-
-.celebration-card-shell {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  border-radius: 32px;
-  will-change: transform, filter;
-  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease;
-}
-
-.celebration-card-art {
-  transform: translateZ(0);
-  border-radius: 32px;
-  transition: transform 0.2s ease-out;
-}
-
-.card-text-layer {
-  transform: translateZ(36px);
-  transform-style: preserve-3d;
-  transition: transform 0.25s ease-out;
-}
-
-.card-title,
-.card-eyebrow,
-.card-body,
-.card-venue {
-  transform: translateZ(18px);
-}
 
 </style>
 </head>
@@ -669,151 +633,6 @@ body {
 
 <script src="js/spa-nav.js?v=24700"></script>
 <script src="js/global-audio.js?v=24700"></script>
-
-<script>
-(function() {
-  const container = document.querySelector('.celebrations-page-wrap');
-  const cards = Array.from(document.querySelectorAll('.celebration-card-shell'));
-  if (!container || !cards.length) return;
-
-  let ticking = false;
-
-  function updateSpotlight() {
-    const viewportH = container.clientHeight;
-    const centerY = viewportH / 2;
-
-    cards.forEach(card => {
-      const rect = card.getBoundingClientRect();
-      const cardCenter = rect.top + rect.height / 2;
-      const normDist = (cardCenter - centerY) / (viewportH / 2);
-      const closeness = Math.max(0, 1 - Math.abs(normDist) * 1.3);
-
-      const scale = 0.98 + closeness * 0.035;
-      const shadowY = 8 + closeness * 10;
-      const shadowBlur = 20 + closeness * 16;
-      const shadowAlpha = 0.10 + closeness * 0.06;
-      const glowBlur = closeness * 26;
-      const glowAlpha = closeness * 0.45;
-
-      card.style.transform = `scale(${scale}) translateZ(0)`;
-      card.style.filter = `drop-shadow(0 ${shadowY}px ${shadowBlur}px rgba(0, 0, 0, ${shadowAlpha})) drop-shadow(0 0 ${glowBlur}px rgba(248, 226, 189, ${glowAlpha}))`;
-    });
-
-    ticking = false;
-  }
-
-  container.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(updateSpotlight);
-      ticking = true;
-    }
-  }, { passive: true });
-
-  window.addEventListener('load', updateSpotlight);
-  window.addEventListener('resize', updateSpotlight);
-  setTimeout(updateSpotlight, 100);
-})();
-</script>
-
-
-
-<script>
-/* ── 2.5D Micro-Tilt Parallax Interaction Controller ── */
-(function() {
-  const cards = Array.from(document.querySelectorAll('.celebration-card-shell'));
-  if (!cards.length) return;
-
-  // Customization Configuration:
-  const config = {
-    maxTiltDeg: 10.0,     // Max rotation angle in degrees
-    scaleOnHover: 1.035,  // Subtle card scale when interacting
-    textDepthPx: 36,      // 3D forward pop for text layer (px)
-    springEasing: 0.06    // Inertia damping (0.06 = silky smooth float)
-  };
-
-  cards.forEach(card => {
-    let currentX = 0, currentY = 0;
-    let targetX = 0, targetY = 0;
-    let isInteracting = false;
-    let animFrame = null;
-
-    const textLayer = card.querySelector('.card-text-layer');
-
-    function update() {
-      // Smooth lerp (linear interpolation) toward target
-      currentX += (targetX - currentX) * config.springEasing;
-      currentY += (targetY - currentY) * config.springEasing;
-
-      const rotX = currentY * -config.maxTiltDeg;
-      const rotY = currentX * config.maxTiltDeg;
-      const scale = isInteracting ? config.scaleOnHover : 1.0;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(${scale}, ${scale}, 1)`;
-      
-      if (textLayer) {
-        textLayer.style.transform = `translateZ(${isInteracting ? config.textDepthPx : 0}px)`;
-      }
-
-      // Continue animating until settled
-      if (isInteracting || Math.abs(targetX - currentX) > 0.005 || Math.abs(targetY - currentY) > 0.005) {
-        animFrame = requestAnimationFrame(update);
-      } else {
-        card.style.transform = '';
-        if (textLayer) textLayer.style.transform = '';
-        animFrame = null;
-      }
-    }
-
-    function onPointerMove(e) {
-      isInteracting = true;
-      const rect = card.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width;
-      const y = (e.clientY - rect.top) / rect.height;
-
-      // Normalize coordinates to [-1, 1]
-      targetX = Math.max(-1, Math.min(1, (x - 0.5) * 2));
-      targetY = Math.max(-1, Math.min(1, (y - 0.5) * 2));
-
-      if (!animFrame) {
-        animFrame = requestAnimationFrame(update);
-      }
-    }
-
-    function onPointerLeave() {
-      isInteracting = false;
-      targetX = 0;
-      targetY = 0;
-      if (!animFrame) {
-        animFrame = requestAnimationFrame(update);
-      }
-    }
-
-    card.addEventListener('pointermove', onPointerMove, { passive: true });
-    card.addEventListener('pointerleave', onPointerLeave, { passive: true });
-    card.addEventListener('pointercancel', onPointerLeave, { passive: true });
-  });
-
-  // Mobile Gyroscope / Device Orientation Support (50% increased sensitivity)
-  if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== 'function') {
-    window.addEventListener('deviceorientation', (e) => {
-      if (e.gamma == null || e.beta == null) return;
-      // 50% higher sensitivity: divider decreased from 25 to 16.6
-      const tiltX = Math.max(-1, Math.min(1, e.gamma / 16.6));
-      const tiltY = Math.max(-1, Math.min(1, (e.beta - 45) / 16.6));
-
-      cards.forEach(card => {
-        const rotX = (tiltY * -config.maxTiltDeg).toFixed(2);
-        const rotY = (tiltX * config.maxTiltDeg).toFixed(2);
-        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03, 1.03, 1.03)`;
-        const textLayer = card.querySelector('.card-text-layer');
-        if (textLayer) {
-          textLayer.style.transform = 'translateZ(36px)';
-        }
-      });
-    }, { passive: true });
-  }
-})();
-</script>
 
 </body>
 </html>
