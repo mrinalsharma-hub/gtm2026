@@ -247,8 +247,8 @@ body {
   align-items: flex-end;
   justify-content: space-between;
   margin-top: -24px;
-  padding-left: clamp(24px, 15vw, 66px);
-  padding-right: clamp(12px, 6.36vw, 28px);
+  padding-left: 15%;
+  padding-right: 6%;
   position: relative;
   box-sizing: border-box;
 }
@@ -278,8 +278,8 @@ body {
 }
 
 .celebrations-boat-wrap {
-  width: clamp(145px, 38vw, 168px);
-  aspect-ratio: 168 / 106;
+  width: clamp(150px, 42vw, 178px);
+  aspect-ratio: 600 / 303;
   position: relative;
   margin-right: -4px;
   pointer-events: none;
@@ -680,13 +680,17 @@ body {
         <span class="celebrations-location-text">NAINITAL &amp; DELHI</span>
       </div>
       <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
-        <img src="images/celebrations/boat_illustration.svg?v=24700" 
-             alt="Bride and Groom in Nainital Boat" 
-             class="celebrations-boat-img" 
-             width="168" 
-             height="106" 
-             loading="eager" 
-             decoding="async">
+        <picture>
+          <source srcset="images/celebrations/boat_illustration.webp?v=24800" type="image/webp">
+          <img src="images/celebrations/boat_illustration.png?v=24800" 
+               alt="Bride and Groom in Nainital Boat" 
+               class="celebrations-boat-img" 
+               width="600" 
+               height="303" 
+               fetchpriority="high"
+               loading="eager" 
+               decoding="async">
+        </picture>
       </div>
     </div>
   </header>
