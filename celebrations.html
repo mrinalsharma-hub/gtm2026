@@ -230,11 +230,12 @@ body {
 .celebrations-date-location {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.4px;
-  line-height: 125%;
+  font-weight: 700;
+  letter-spacing: 0.96px;
+  line-height: 1.25;
   color: #A71F23;
   text-transform: uppercase;
+  text-shadow: 0px 1px 2px #FFFDF9;
   margin-top: 14px;
   margin-bottom: 0;
 }
@@ -608,13 +609,13 @@ body {
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="celebrations-page-wrap">
 
-  <!-- ── Header: The Wedding Weekend ── -->
-  <header class="celebrations-header">
+  <!-- ── Header: The Wedding Weekend (Figma Node 18:107) ── -->
+  <header class="celebrations-header" data-node-id="18:107">
     <span class="celebrations-script-the">The</span>
     <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
-    <p class="celebrations-date-location">
-      20-23 NOVEMBER 2026<br>
-      NAINITAL+DELHI
+    <p class="celebrations-date-location" data-node-id="18:108">
+      <span id="celebrations-countdown">120 DAYS TO GO</span><br>
+      NAINITAL &amp; DELHI
     </p>
   </header>
 
@@ -773,6 +774,37 @@ body {
 
 <script src="js/spa-nav.js?v=24700"></script>
 <script src="js/global-audio.js?v=24700"></script>
+<script>
+/* ── Dynamic Live Wedding Countdown (Target: Nov 20, 2026 IST) ── */
+(function() {
+  function updateCountdown() {
+    var targetDate = new Date('2026-11-20T00:00:00+05:30');
+    var now = new Date();
+    var msPerDay = 1000 * 60 * 60 * 24;
+    var diffMs = targetDate.getTime() - now.getTime();
+    var daysRemaining = Math.ceil(diffMs / msPerDay);
+    
+    var countdownEl = document.getElementById('celebrations-countdown');
+    if (countdownEl) {
+      if (daysRemaining > 1) {
+        countdownEl.textContent = daysRemaining + ' DAYS TO GO';
+      } else if (daysRemaining === 1) {
+        countdownEl.textContent = '1 DAY TO GO';
+      } else if (daysRemaining === 0) {
+        countdownEl.textContent = "TODAY'S THE DAY";
+      } else {
+        countdownEl.textContent = 'CELEBRATING';
+      }
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateCountdown);
+  } else {
+    updateCountdown();
+  }
+})();
+</script>
 
 </body>
 </html>
