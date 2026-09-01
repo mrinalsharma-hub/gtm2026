@@ -183,7 +183,7 @@ body {
   overscroll-behavior-y: contain !important;
   touch-action: pan-y !important;
   z-index: 2 !important;
-  padding-top: max(24px, env(safe-area-inset-top, 24px));
+  padding-top: calc(64px + env(safe-area-inset-top, 0px)) !important;
   padding-bottom: 120px;
   display: flex;
   flex-direction: column;
@@ -194,7 +194,7 @@ body {
 .celebrations-header {
   width: 100%;
   padding: 0 8px;
-  margin-top: 36px;
+  margin-top: 20px;
   margin-bottom: 24px;
   display: flex;
   flex-direction: column;
@@ -389,11 +389,60 @@ body {
   display: block;
 }
 
+/* ── Top Bar Container (64px Height with Safe-Area & 3 Slots) ── */
+.celebrations-topbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: calc(64px + env(safe-area-inset-top, 0px)) !important;
+  padding-top: env(safe-area-inset-top, 0px) !important;
+  padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
+  padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
+  max-width: 480px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  z-index: 9999 !important;
+  pointer-events: none !important; /* Let scrolls pass through empty areas */
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+.celebrations-topbar > * {
+  pointer-events: auto !important;
+}
+
+.celebrations-topbar-left {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  min-width: 44px !important;
+  flex: 1 !important;
+}
+
+.celebrations-topbar-center {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex: 2 !important;
+  text-align: center !important;
+}
+
+.celebrations-topbar-right {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  min-width: 44px !important;
+  flex: 1 !important;
+}
+
 /* ── Global Horizontal Music Player Pill (Authentic iOS Liquid Frosted Glass) ── */
 .global-audio-pill {
-  position: fixed !important;
-  top: max(14px, env(safe-area-inset-top, 14px)) !important;
-  right: max(14px, env(safe-area-inset-right, 14px)) !important;
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
   height: 38px !important;
   padding: 0 14px 0 12px !important;
   border-radius: 20px !important;
@@ -402,7 +451,6 @@ body {
   -webkit-backdrop-filter: blur(8px) saturate(160%) !important;
   border: none !important;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
-  z-index: 9999 !important;
   display: inline-flex !important;
   align-items: center !important;
   gap: 8px !important;
@@ -527,6 +575,34 @@ body {
   <div class="celebrations-botanical-art-layer" aria-hidden="true"></div>
   <div class="celebrations-radial-glow" aria-hidden="true"></div>
 </div>
+
+<!-- ── Top Control Bar (64px Height · Left, Center, Right Slots) ── -->
+<header class="celebrations-topbar" role="banner">
+  <div class="celebrations-topbar-left" id="topbar-slot-left">
+    <!-- Slot 1: Extreme Left Element -->
+  </div>
+  <div class="celebrations-topbar-center" id="topbar-slot-center">
+    <!-- Slot 2: Center Element -->
+  </div>
+  <div class="celebrations-topbar-right" id="topbar-slot-right">
+    <!-- Slot 3: Music Player Pill -->
+    <div id="global-music-player" class="global-audio-pill" role="button" aria-label="Toggle Music">
+      <div class="audio-icon-wrap">
+        <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#A71F23">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+        <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#A71F23">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      </div>
+      <div class="audio-wave-bars">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </div>
+    </div>
+  </div>
+</header>
 
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="celebrations-page-wrap">
@@ -688,23 +764,6 @@ body {
     </a>
   </div>
 </nav>
-
-<!-- ── Global Horizontal Music Player Pill ── -->
-<div id="global-music-player" class="global-audio-pill" role="button" aria-label="Toggle Music">
-  <div class="audio-icon-wrap">
-    <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#A71F23">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#A71F23">
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-    </svg>
-  </div>
-  <div class="audio-wave-bars">
-    <span class="bar bar-1"></span>
-    <span class="bar bar-2"></span>
-    <span class="bar bar-3"></span>
-  </div>
-</div>
 
 <!-- ── Audio Element ── -->
 <audio id="bg-music" loop preload="auto" playsinline>
