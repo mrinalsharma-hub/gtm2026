@@ -39,8 +39,7 @@
 
 <!-- ── Resource Preloads for Instant First-Load Performance ── -->
 <link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/celebrations/card_mehndi_bg_texture.webp?v=24700" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/celebrations/card_mehndi_char.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
@@ -252,11 +251,11 @@ body {
   padding-bottom: 60px;
 }
 
-/* Authentic Figma Card Shell (432.36 x 317.91 · Radius: 25.4px) */
+/* Authentic Figma Card Shell (848 x 558 · Radius: 25.4px) */
 .celebration-card-shell {
   width: 100%;
   max-width: 432px;
-  aspect-ratio: 432.358 / 317.91;
+  aspect-ratio: 848 / 558;
   position: relative;
   display: block;
   background: transparent;
@@ -272,7 +271,7 @@ body {
   display: block;
 }
 
-/* Pure Clean Background Artwork */
+/* Pure Clean Background Artwork from Figma */
 .celebration-card-art {
   width: 100%;
   height: 100%;
@@ -284,48 +283,6 @@ body {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
   transform: translateZ(0);
-}
-
-/* ── Multi-Layer Stacked Architecture (Mehndi Card · Figma Node 18:110) ── */
-#card-mehndi {
-  background-color: #08422D;
-  position: relative;
-}
-
-#card-mehndi .card-layer-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-#card-mehndi .card-layer-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-#card-mehndi .card-layer-char {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 44.8%;
-  height: 77.5%;
-  pointer-events: none;
-  z-index: 2;
-  transform: translateZ(0);
-}
-
-#card-mehndi .card-layer-char img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: bottom left;
-  display: block;
 }
 
 /* Single Real Visible & Selectable HTML Text Layer */
@@ -664,22 +621,21 @@ body {
   <!-- ── 3. Four Miniature Art Event Cards ── -->
   <section class="celebrations-cards-feed" aria-label="Wedding Events Schedule">
 
-    <!-- ── Card 1: Mehndi (Figma Node 18:110 · Multi-Layer Stacked Architecture) ── -->
+    <!-- ── Card 1: Mehndi (Figma Node 18:110) ── -->
     <article class="celebration-card-shell" id="card-mehndi" data-node-id="18:110">
 
-      <!-- Layer 1: Emerald Miniature Background Texture -->
-      <picture class="card-layer-bg">
-        <source srcset="images/celebrations/card_mehndi_bg_texture.webp?v=24700" type="image/webp">
-        <img src="images/celebrations/card_mehndi_bg_texture.png?v=24700" alt="" width="433" height="284" loading="eager" decoding="async">
+      <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
+             alt="Mehndi · Friday 20 November, 7:30 PM" 
+             class="celebration-card-art" 
+             width="848" 
+             height="558"
+             fetchpriority="high"
+             decoding="async"
+             loading="eager">
       </picture>
 
-      <!-- Layer 2: Character Foreground Art -->
-      <picture class="card-layer-char">
-        <source srcset="images/celebrations/card_mehndi_char.webp?v=24700" type="image/webp">
-        <img src="images/celebrations/card_mehndi_char.png?v=24700" alt="Mehndi Character" width="194" height="220" loading="eager" decoding="async">
-      </picture>
-
-      <!-- Layer 3: Selectable Typography Layer -->
       <div class="card-text-layer">
         <div class="text-box-right">
           <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
