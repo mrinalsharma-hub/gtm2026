@@ -461,16 +461,16 @@ body {
 }
 
 .card-text-layer {
-  transform: translateZ(24px);
+  transform: translateZ(36px);
   transform-style: preserve-3d;
-  transition: transform 0.2s ease-out;
+  transition: transform 0.25s ease-out;
 }
 
 .card-title,
 .card-eyebrow,
 .card-body,
 .card-venue {
-  transform: translateZ(12px);
+  transform: translateZ(18px);
 }
 
 </style>
@@ -503,8 +503,9 @@ body {
     <article class="celebration-card-shell" id="card-mehndi">
 
       <picture class="card-picture-wrap">
+        <source srcset="images/celebrations/Card_Mehndi.svg?v=24700" type="image/svg+xml">
         <source srcset="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp">
-        <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
+        <img src="images/celebrations/Card_Mehndi.svg?v=24700" 
              alt="Mehndi · Friday 20 November, 7:30 PM" 
              class="celebration-card-art" 
              width="848" 
@@ -724,10 +725,10 @@ body {
 
   // Customization Configuration:
   const config = {
-    maxTiltDeg: 6.5,      // Max rotation angle in degrees (higher = more dramatic tilt)
-    scaleOnHover: 1.025,  // Subtle card scale when interacting (1.0 = no scale)
-    textDepthPx: 24,      // 3D forward pop for text layer (px)
-    springEasing: 0.12    // Inertia damping (0.05 = soft/smooth, 0.25 = snappy)
+    maxTiltDeg: 10.0,     // Max rotation angle in degrees
+    scaleOnHover: 1.035,  // Subtle card scale when interacting
+    textDepthPx: 36,      // 3D forward pop for text layer (px)
+    springEasing: 0.06    // Inertia damping (0.06 = silky smooth float)
   };
 
   cards.forEach(card => {
@@ -792,17 +793,22 @@ body {
     card.addEventListener('pointercancel', onPointerLeave, { passive: true });
   });
 
-  // Mobile Gyroscope / Device Orientation Support (Subtle ambient tilt)
+  // Mobile Gyroscope / Device Orientation Support (50% increased sensitivity)
   if (window.DeviceOrientationEvent && typeof window.DeviceOrientationEvent.requestPermission !== 'function') {
     window.addEventListener('deviceorientation', (e) => {
       if (e.gamma == null || e.beta == null) return;
-      const tiltX = Math.max(-1, Math.min(1, e.gamma / 25));
-      const tiltY = Math.max(-1, Math.min(1, (e.beta - 45) / 25));
+      // 50% higher sensitivity: divider decreased from 25 to 16.6
+      const tiltX = Math.max(-1, Math.min(1, e.gamma / 16.6));
+      const tiltY = Math.max(-1, Math.min(1, (e.beta - 45) / 16.6));
 
       cards.forEach(card => {
-        const rotX = (tiltY * -4).toFixed(2);
-        const rotY = (tiltX * 4).toFixed(2);
-        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        const rotX = (tiltY * -config.maxTiltDeg).toFixed(2);
+        const rotY = (tiltX * config.maxTiltDeg).toFixed(2);
+        card.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.03, 1.03, 1.03)`;
+        const textLayer = card.querySelector('.card-text-layer');
+        if (textLayer) {
+          textLayer.style.transform = 'translateZ(36px)';
+        }
       });
     }, { passive: true });
   }
