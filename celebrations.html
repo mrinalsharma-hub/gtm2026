@@ -436,11 +436,11 @@ body {
   background-color: #A71F23 !important;
 }
 
-/* ── Royal Entrance Choreography (Silk & Velvet Cascade) ── */
+/* ── Relaxed Royal Entrance Choreography (Silk & Velvet Cascade) ── */
 @keyframes royalFadeSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(22px);
   }
   100% {
     opacity: 1;
@@ -451,7 +451,7 @@ body {
 @keyframes royalCardSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(22px) scale(0.988);
+    transform: translateY(28px) scale(0.985);
   }
   100% {
     opacity: 1;
@@ -462,7 +462,7 @@ body {
 @keyframes royalPillFadeIn {
   0% {
     opacity: 0;
-    transform: translateY(-8px) scale(0.95);
+    transform: translateY(-10px) scale(0.94);
   }
   100% {
     opacity: 1;
@@ -470,39 +470,39 @@ body {
   }
 }
 
-/* Header Text Stagger */
+/* Header Text (Paced gracefully with relaxed breathing pauses) */
 .celebrations-script-the {
-  animation: royalFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both;
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.10s both;
 }
 
 .celebrations-title-main {
-  animation: royalFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.20s both;
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.30s both;
 }
 
 .celebrations-date-location {
-  animation: royalFadeSlideUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.50s both;
 }
 
-/* Four Event Cards Staggered Cascade */
+/* Four Event Cards (Staggered with 0.22s luxury pauses) */
 .celebrations-cards-feed #card-mehndi {
-  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+  animation: royalCardSlideUp 1.3s cubic-bezier(0.12, 1, 0.22, 1) 0.70s both;
 }
 
 .celebrations-cards-feed #card-wedding {
-  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.54s both;
+  animation: royalCardSlideUp 1.3s cubic-bezier(0.12, 1, 0.22, 1) 0.92s both;
 }
 
 .celebrations-cards-feed #card-party {
-  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.66s both;
+  animation: royalCardSlideUp 1.3s cubic-bezier(0.12, 1, 0.22, 1) 1.14s both;
 }
 
 .celebrations-cards-feed #card-reception {
-  animation: royalCardSlideUp 0.90s cubic-bezier(0.16, 1, 0.3, 1) 0.78s both;
+  animation: royalCardSlideUp 1.3s cubic-bezier(0.12, 1, 0.22, 1) 1.36s both;
 }
 
 /* Floating Audio Player Entrance */
 .global-audio-pill {
-  animation: royalPillFadeIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.30s both;
+  animation: royalPillFadeIn 1.1s cubic-bezier(0.12, 1, 0.22, 1) 0.40s both;
 }
 
 /* Reduced Motion Accessibility */
@@ -548,9 +548,8 @@ body {
     <article class="celebration-card-shell" id="card-mehndi">
 
       <picture class="card-picture-wrap">
-        <source srcset="images/celebrations/Card_Mehndi.svg?v=24700" type="image/svg+xml">
         <source srcset="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp">
-        <img src="images/celebrations/Card_Mehndi.svg?v=24700" 
+        <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
              alt="Mehndi · Friday 20 November, 7:30 PM" 
              class="celebration-card-art" 
              width="848" 
