@@ -80,7 +80,7 @@ body {
   border: 1px solid rgba(167, 31, 35, 0.2);
   border-radius: 18px;
   padding: 8px 10px;
-  box-shadow: 0 12px 36px rgba(60, 5, 8, 0.16), 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10), 0 2px 8px rgba(0,0,0,0.04);
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -355,7 +355,7 @@ body {
   display: block;
   background: transparent;
   will-change: transform, filter, opacity;
-  filter: drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
   transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s ease, opacity 0.25s ease;
   cursor: pointer;
 }
@@ -489,7 +489,7 @@ body {
 .mode-spotlight-deck #card-reception { top: calc(var(--top-pin) + 3 * var(--stack-step)); z-index: 40; }
 
 .mode-spotlight-deck .celebration-card-shell {
-  filter: drop-shadow(0 14px 28px rgba(60, 5, 8, 0.22)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
 }
 </style>
 </head>
@@ -746,7 +746,7 @@ body {
       header.style.opacity = '1';
       cards.forEach(card => {
         card.style.transform = 'none';
-        card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
+        card.style.filter = 'drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
       });
       rafId = requestAnimationFrame(update);
       return;
@@ -781,17 +781,17 @@ body {
       cards.forEach((card, idx) => {
         if (idx === activeIdx) {
           card.style.transform = 'scale(1.015)';
-          card.style.filter = 'drop-shadow(0 16px 36px rgba(167, 31, 35, 0.30)) drop-shadow(0 0 28px rgba(248, 226, 189, 0.50))';
+          card.style.filter = 'drop-shadow(0 16px 36px rgba(0, 0, 0, 0.14)) drop-shadow(0 0 28px rgba(248, 226, 189, 0.50))';
           card.style.opacity = '1';
         } else if (idx < activeIdx) {
           const depth = activeIdx - idx;
           const scale = Math.max(0.95, 1 - depth * 0.018);
           card.style.transform = `scale(${scale})`;
-          card.style.filter = 'drop-shadow(0 10px 22px rgba(60, 5, 8, 0.20)) drop-shadow(0 2px 6px rgba(0,0,0,0.08))';
+          card.style.filter = 'drop-shadow(0 10px 22px rgba(0, 0, 0, 0.11)) drop-shadow(0 2px 6px rgba(0,0,0,0.08))';
           card.style.opacity = '0.94';
         } else {
           card.style.transform = 'scale(0.98)';
-          card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0,0,0,0.06))';
+          card.style.filter = 'drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 6px rgba(0,0,0,0.06))';
           card.style.opacity = '0.97';
         }
       });
@@ -805,7 +805,7 @@ body {
         const scale = 0.95 + closeness * 0.06;
         const glowAlpha = closeness * 0.35;
         card.style.transform = `scale(${scale})`;
-        card.style.filter = `drop-shadow(0 ${8 + closeness * 16}px ${20 + closeness * 24}px rgba(167, 31, 35, ${0.12 + closeness * 0.16})) drop-shadow(0 0 ${closeness * 30}px rgba(248, 226, 189, ${glowAlpha}))`;
+        card.style.filter = `drop-shadow(0 ${8 + closeness * 16}px ${20 + closeness * 24}px rgba(0, 0, 0, 0.12)) drop-shadow(0 0 ${closeness * 30}px rgba(248, 226, 189, ${glowAlpha}))`;
         card.style.opacity = '1';
       });
     }
@@ -818,7 +818,7 @@ body {
         const translateY = Math.max(-15, Math.min(15, -normDist * 10));
         const scale = 1 - Math.abs(normDist) * 0.04;
         card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) translateY(${translateY}px) scale(${scale})`;
-        card.style.filter = 'drop-shadow(0 8px 20px rgba(60, 5, 8, 0.16)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
+        card.style.filter = 'drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06))';
         card.style.opacity = '1';
       });
     }
@@ -831,7 +831,7 @@ body {
         const tiltX = Math.max(-6, Math.min(6, normDist * 5));
         const scale = 0.96 + closeness * 0.05;
         card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) scale(${scale})`;
-        card.style.filter = `drop-shadow(0 ${8 + closeness * 14}px ${20 + closeness * 20}px rgba(167, 31, 35, ${0.14 + closeness * 0.14})) drop-shadow(0 0 ${closeness * 24}px rgba(248, 226, 189, ${closeness * 0.3}))`;
+        card.style.filter = `drop-shadow(0 ${8 + closeness * 14}px ${20 + closeness * 20}px rgba(0, 0, 0, 0.12)) drop-shadow(0 0 ${closeness * 24}px rgba(248, 226, 189, ${closeness * 0.3}))`;
         card.style.opacity = '1';
       });
     }
