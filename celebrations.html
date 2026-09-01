@@ -195,9 +195,8 @@ body {
 .celebrations-header {
   width: 100%;
   max-width: 440px;
-  padding: 0 16px;
-  margin-top: 16px;
-  margin-bottom: 24px;
+  margin: 16px auto 24px auto;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -206,26 +205,17 @@ body {
   box-sizing: border-box;
 }
 
-.celebrations-header-content {
-  width: 100%;
-  max-width: 380px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: relative;
-}
-
 .celebrations-title-wrap {
   width: 100%;
-  text-align: left;
+  text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .celebrations-script-the {
   font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif;
-  font-size: 48px;
+  font-size: clamp(40px, 11vw, 48px);
   font-weight: 400;
   line-height: 44px;
   letter-spacing: -0.96px;
@@ -233,12 +223,12 @@ body {
   text-shadow: 0px 1px 2px #FFFDF9;
   display: block;
   margin-bottom: 2px;
-  align-self: center;
+  text-align: center;
 }
 
 .celebrations-title-main {
   font-family: 'Kugile', 'Cinzel', serif;
-  font-size: clamp(44px, 12.5vw, 56px);
+  font-size: clamp(44px, 12.7vw, 56px);
   font-weight: 400;
   line-height: 52px;
   letter-spacing: -1.12px;
@@ -246,18 +236,19 @@ body {
   text-transform: uppercase;
   text-shadow: 0px 1px 2px #FFFDF9;
   margin: 0;
-  text-align: left;
+  text-align: center;
   width: 100%;
 }
 
-/* Subrow: Strict Flush-Left Countdown + Right Boat Illustration */
+/* Subrow: Exact 15% Left Margin (Flush with W in WEDDING) + Right Boat Illustration */
 .celebrations-subrow {
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-top: -22px;
-  padding: 0;
+  margin-top: -24px;
+  padding-left: clamp(24px, 15vw, 66px);
+  padding-right: clamp(12px, 6.36vw, 28px);
   position: relative;
   box-sizing: border-box;
 }
@@ -287,8 +278,7 @@ body {
 }
 
 .celebrations-boat-wrap {
-  width: 168px;
-  max-width: 46%;
+  width: clamp(145px, 38vw, 168px);
   aspect-ratio: 168 / 106;
   position: relative;
   margin-right: -4px;
@@ -679,26 +669,24 @@ body {
 
   <!-- ── Header: The Wedding Weekend (Figma Node 18:79 / 18:107) ── -->
   <header class="celebrations-header" data-node-id="18:107">
-    <div class="celebrations-header-content">
-      <div class="celebrations-title-wrap">
-        <span class="celebrations-script-the">The</span>
-        <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
+    <div class="celebrations-title-wrap">
+      <span class="celebrations-script-the">The</span>
+      <h1 class="celebrations-title-main">WEDDING<br>WEEKEND</h1>
+    </div>
+    
+    <div class="celebrations-subrow">
+      <div class="celebrations-desc-block" data-node-id="18:108">
+        <span id="celebrations-countdown" class="celebrations-countdown-text">120 DAYS TO GO</span>
+        <span class="celebrations-location-text">NAINITAL &amp; DELHI</span>
       </div>
-      
-      <div class="celebrations-subrow">
-        <div class="celebrations-desc-block" data-node-id="18:108">
-          <span id="celebrations-countdown" class="celebrations-countdown-text">120 DAYS TO GO</span>
-          <span class="celebrations-location-text">NAINITAL &amp; DELHI</span>
-        </div>
-        <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
-          <img src="images/celebrations/boat_illustration.svg?v=24700" 
-               alt="Bride and Groom in Nainital Boat" 
-               class="celebrations-boat-img" 
-               width="168" 
-               height="106" 
-               loading="eager" 
-               decoding="async">
-        </div>
+      <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
+        <img src="images/celebrations/boat_illustration.svg?v=24700" 
+             alt="Bride and Groom in Nainital Boat" 
+             class="celebrations-boat-img" 
+             width="168" 
+             height="106" 
+             loading="eager" 
+             decoding="async">
       </div>
     </div>
   </header>
