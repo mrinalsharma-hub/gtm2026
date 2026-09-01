@@ -112,7 +112,7 @@
 
   // Pre-fetch tabs into memory cache
   var pageCache = {};
-  var TABS = ['G&M.html', 'celebrations.html', 'stay.html', 'joinus.html'];
+  var TABS = ['G&M.html', 'stay.html', 'celebrations.html', 'joinus.html'];
 
   function prefetchPage(url) {
     if (!url || pageCache[url]) return;
