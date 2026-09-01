@@ -243,14 +243,14 @@ body {
   width: 100%;
 }
 
-/* Subrow: Relatively Placed directly below the Centered Title */
+/* Subrow: Centered Row directly below the Centered Title with 40px Gap */
 .celebrations-subrow {
   width: 100%;
-  max-width: 436px;
   margin: -26px auto 0 auto;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 40px;
   padding: 0;
   position: relative;
   box-sizing: border-box;
@@ -289,11 +289,12 @@ body {
   width: clamp(165px, 46.2vw, 196px);
   aspect-ratio: 600 / 303;
   position: relative;
-  margin-right: -4px;
+  margin-right: 0;
   pointer-events: none;
   user-select: none;
   -webkit-user-select: none;
   z-index: 3;
+  flex-shrink: 0;
 }
 
 .celebrations-boat-img {
