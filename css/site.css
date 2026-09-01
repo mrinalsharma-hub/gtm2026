@@ -2285,7 +2285,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 
-/* ── Global Horizontal Music Player Pill (Accessible from every page) ── */
+/* ── Global Horizontal Music Player Pill (iOS Liquid Frosted Glass) ── */
 .global-audio-pill {
   position: absolute !important;
   top: max(14px, env(safe-area-inset-top, 14px));
@@ -2293,11 +2293,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   height: 38px;
   padding: 0 14px 0 12px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.40) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
   z-index: 9999;
   display: inline-flex;
   align-items: center;
@@ -2311,11 +2311,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 .global-audio-pill:hover {
   transform: scale(1.04);
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  background: rgba(255, 255, 255, 0.55) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08) !important;
 }
 .global-audio-pill:active {
   transform: scale(0.94);
+  background: rgba(255, 255, 255, 0.25) !important;
 }
 .global-audio-pill .audio-icon-wrap {
   position: relative;
@@ -2327,7 +2328,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 .global-audio-pill .icon-play,
 .global-audio-pill .icon-pause {
-  fill: #0b4c6d !important;
+  fill: #A71F23 !important;
   position: absolute;
   transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -2356,7 +2357,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .global-audio-pill .bar {
   width: 2.5px;
   height: 4px;
-  background-color: #0b4c6d;
+  background-color: #A71F23 !important;
   border-radius: 2px;
   transition: height 0.2s ease;
 }
