@@ -161,11 +161,11 @@ body {
   align-items: center;
 }
 
-/* ── Header: The Wedding Weekend ── */
+/* ── Header: The Wedding Weekend (8px side padding) ── */
 .celebrations-header {
   width: 100%;
-  padding: 0 16px;
-  margin-bottom: 28px;
+  padding: 0 8px;
+  margin-bottom: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,10 +209,10 @@ body {
   margin-bottom: 0;
 }
 
-/* ── 3. Events Cards Feed ── */
+/* ── 3. Events Cards Feed (8px side padding, scaled cards) ── */
 .celebrations-cards-feed {
   width: 100%;
-  padding: 0 16px;
+  padding: 0 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,10 +220,11 @@ body {
   flex-shrink: 0;
 }
 
-/* Card Shell with Clean Drop Shadow wrapping the Vector Arch */
+/* Scaled Card Shell (max-width: 424px for 440px container - 16px padding) */
 .celebration-card-shell {
   width: 100%;
-  max-width: 408px;
+  max-width: 424px;
+  aspect-ratio: 408 / 268;
   position: relative;
   display: block;
   background: transparent;
@@ -236,10 +237,10 @@ body {
   filter: drop-shadow(0 12px 32px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08));
 }
 
-/* Vector Arch Clipped Inner Container */
+/* Vector Arch Clipped Inner Container (Responsive objectBoundingBox) */
 .card-clipped-inner {
   width: 100%;
-  height: 268px;
+  height: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -280,17 +281,17 @@ body {
 
 .text-box-right {
   position: absolute;
-  right: 24px;
-  top: 32px;
-  width: 164px;
+  right: 5.8%;
+  top: 11.9%;
+  width: 41%;
   text-align: left;
 }
 
 .text-box-left {
   position: absolute;
-  left: 24px;
-  top: 32px;
-  width: 172px;
+  left: 5.8%;
+  top: 11.9%;
+  width: 42%;
   text-align: left;
 }
 
@@ -307,7 +308,7 @@ body {
 
 .sel-time-badge {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 10px;
+  font-size: clamp(9px, 2.4vw, 10.5px);
   font-weight: 500;
   letter-spacing: 1.2px;
   line-height: 1;
@@ -319,7 +320,7 @@ body {
 
 .sel-title {
   font-family: 'Cormorant Garamond', 'Cinzel', serif;
-  font-size: 34px;
+  font-size: clamp(28px, 8.2vw, 36px);
   font-weight: 400;
   line-height: 1.15;
   color: transparent;
@@ -329,7 +330,7 @@ body {
 
 .sel-body {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
+  font-size: clamp(11px, 2.9vw, 12.5px);
   font-weight: 200;
   line-height: 1.28;
   color: transparent;
@@ -338,7 +339,7 @@ body {
 
 .sel-optional {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
+  font-size: clamp(11px, 2.9vw, 12.5px);
   font-weight: 200;
   color: transparent;
   margin: 0;
@@ -346,7 +347,7 @@ body {
 
 .sel-venue {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
+  font-size: clamp(11px, 2.9vw, 12.5px);
   line-height: 1.2;
   color: transparent;
   margin-top: 4px;
@@ -355,16 +356,16 @@ body {
 </head>
 <body>
 
-<!-- ── SVG Vector Arch Clip Paths Definition ── -->
+<!-- ── Responsive SVG Vector Arch Clip Paths (objectBoundingBox) ── -->
 <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
   <defs>
-    <!-- Left Arch Card Clip Path (Top-Left Indian Scalloped Arch, Other 3 corners r=24) -->
-    <clipPath id="card-clip-left" clipPathUnits="userSpaceOnUse">
-      <path d="M 76.957 0 L 384 0 A 24 24 0 0 1 408 24 L 408 244 A 24 24 0 0 1 384 268 L 24 268 A 24 24 0 0 1 0 244 L 0 111.809 C 6.97 104.161 8.772 95.605 9.018 85.702 C 9.222 74.934 8.976 64.219 12.231 53.79 C 13.741 48.954 14.791 44.889 18.978 41.419 C 21.708 39.157 22.631 38.687 26.332 38.267 C 26.819 20.839 38.236 13.438 55.663 13.452 C 57.629 13.454 60.373 13.273 62.283 12.899 C 69.008 11.583 74.248 5.891 76.957 0 Z" />
+    <!-- Left Arch Card Clip Path -->
+    <clipPath id="card-clip-left" clipPathUnits="objectBoundingBox">
+      <path d="M 0.18862 0 L 0.941176 0 A 0.058824 0.089552 0 0 1 1 0.089552 L 1 0.910448 A 0.058824 0.089552 0 0 1 0.941176 1 L 0.058824 1 A 0.058824 0.089552 0 0 1 0 0.910448 L 0 0.417198 C 0.017083 0.38866 0.0215 0.356735 0.022103 0.319784 C 0.022603 0.279604 0.022 0.239623 0.029978 0.200709 C 0.033679 0.182664 0.036252 0.167496 0.046515 0.154549 C 0.053206 0.146108 0.055468 0.144354 0.064539 0.142787 C 0.065733 0.077757 0.093716 0.050142 0.136429 0.050194 C 0.141248 0.050201 0.147973 0.049526 0.152654 0.048131 C 0.169137 0.04322 0.18198 0.021981 0.18862 0 Z" />
     </clipPath>
-    <!-- Right Arch Card Clip Path (Top-Right Indian Scalloped Arch, Other 3 corners r=24) -->
-    <clipPath id="card-clip-right" clipPathUnits="userSpaceOnUse">
-      <path d="M 331.043 0 L 24 0 A 24 24 0 0 0 0 24 L 0 244 A 24 24 0 0 0 24 268 L 384 268 A 24 24 0 0 0 408 244 L 408 111.809 C 401.03 104.161 399.228 95.605 398.982 85.702 C 398.778 74.934 399.024 64.219 395.769 53.79 C 394.259 48.954 393.209 44.889 389.022 41.419 C 386.292 39.157 385.369 38.687 381.668 38.267 C 381.181 20.839 369.764 13.438 352.337 13.452 C 350.371 13.454 347.627 13.273 345.717 12.899 C 338.992 11.583 333.752 5.891 331.043 0 Z" />
+    <!-- Right Arch Card Clip Path -->
+    <clipPath id="card-clip-right" clipPathUnits="objectBoundingBox">
+      <path d="M 0.81138 0 L 0.058824 0 A 0.058824 0.089552 0 0 0 0 0.089552 L 0 0.910448 A 0.058824 0.089552 0 0 0 0.058824 1 L 0.941176 1 A 0.058824 0.089552 0 0 0 1 0.910448 L 1 0.417198 C 0.982917 0.38866 0.9785 0.356735 0.977897 0.319784 C 0.977397 0.279604 0.978 0.239623 0.970022 0.200709 C 0.966321 0.182664 0.963748 0.167496 0.953485 0.154549 C 0.946794 0.146108 0.944532 0.144354 0.935461 0.142787 C 0.934267 0.077757 0.906284 0.050142 0.863571 0.050194 C 0.858752 0.050201 0.852027 0.049526 0.847346 0.048131 C 0.830863 0.04322 0.81802 0.021981 0.81138 0 Z" />
     </clipPath>
   </defs>
 </svg>
