@@ -39,7 +39,8 @@
 
 <!-- ── Resource Preloads for Instant First-Load Performance ── -->
 <link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/celebrations/card_mehndi_bg_miniature.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/celebrations/card_mehndi_char_main.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/celebrations/card_bg_wedding.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
@@ -239,29 +240,30 @@ body {
   margin-bottom: 0;
 }
 
-/* ── 3. Events Cards Feed ── */
+/* ── 3. Events Cards Feed (4px Side Padding & 4px Gap) ── */
 .celebrations-cards-feed {
   width: 100%;
-  padding: 0 8px;
+  padding: 0 4px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 4px !important;
   flex-shrink: 0;
   padding-bottom: 60px;
 }
 
-/* Authentic Figma Card Shell (Clean Static Rendering) */
+/* Authentic Figma Card Shell (432.36 x 317.91 · Radius: 25.4px) */
 .celebration-card-shell {
   width: 100%;
-  max-width: 424px;
-  aspect-ratio: 848 / 558;
+  max-width: 432px;
+  aspect-ratio: 432.358 / 317.91;
   position: relative;
   display: block;
   background: transparent;
-  border-radius: 32px;
+  border-radius: 25.4px;
   overflow: hidden;
-  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.10)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.05));
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  transform: translateZ(0);
 }
 
 .card-picture-wrap {
@@ -270,7 +272,7 @@ body {
   display: block;
 }
 
-/* Pure Clean Background Artwork from Figma */
+/* Pure Clean Background Artwork */
 .celebration-card-art {
   width: 100%;
   height: 100%;
@@ -282,6 +284,81 @@ body {
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
   transform: translateZ(0);
+}
+
+/* ── Multi-Layer Stacked Architecture (Mehndi Card · Figma Node 18:110) ── */
+#card-mehndi {
+  background-color: #08422D;
+}
+
+#card-mehndi .card-layer-bg {
+  position: absolute;
+  top: -14.5%;
+  right: -9.6%;
+  width: 111.8%;
+  height: 114%;
+  mix-blend-mode: color-dodge;
+  opacity: 0.36;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#card-mehndi .card-layer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#card-mehndi .card-layer-glow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50.7%;
+  height: 100%;
+  background: rgba(8, 66, 45, 0.76);
+  filter: blur(28.6px);
+  -webkit-filter: blur(28.6px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+#card-mehndi .card-layer-char-shadow {
+  position: absolute;
+  bottom: -4.5%;
+  left: 3.2%;
+  width: 41.6%;
+  height: 73.6%;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#card-mehndi .card-layer-char-shadow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  display: block;
+}
+
+#card-mehndi .card-layer-char-main {
+  position: absolute;
+  bottom: -4.6%;
+  left: -2.1%;
+  width: 46.9%;
+  height: 73.8%;
+  opacity: 0.90;
+  pointer-events: none;
+  z-index: 4;
+}
+
+#card-mehndi .card-layer-char-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom left;
+  display: block;
 }
 
 /* Single Real Visible & Selectable HTML Text Layer */
@@ -300,16 +377,16 @@ body {
 .text-box-right {
   position: absolute;
   right: 5.5%;
-  top: 10%;
-  width: 43%;
+  top: 7.5%;
+  width: 44%;
   text-align: left;
 }
 
 .text-box-left {
   position: absolute;
   left: 5.5%;
-  top: 10%;
-  width: 43%;
+  top: 7.5%;
+  width: 44%;
   text-align: left;
 }
 
@@ -327,43 +404,43 @@ body {
 /* ── Typography Specs ── */
 .card-eyebrow {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 12px;
+  font-size: clamp(10px, 2.75vw, 12px);
   font-weight: 500;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.96px;
   line-height: 1;
   text-transform: uppercase;
-  color: #F8E2BD;
-  margin-bottom: 12px;
+  color: #E1B25E;
+  margin-bottom: 4px;
   display: block;
 }
 
 .card-title {
   font-family: 'Kugile', 'Cinzel', serif;
-  font-size: 36px;
+  font-size: clamp(28px, 8.3vw, 36px);
   font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.1px;
+  line-height: 1.25;
+  letter-spacing: -0.3px;
   color: #FFFFFF;
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.35);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
   margin: 0 0 6px 0;
 }
 
 .card-body {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 16px;
+  font-size: clamp(11.5px, 3.2vw, 14px);
   font-weight: 200;
-  line-height: 125%;
-  color: rgba(255, 255, 255, 0.95);
+  line-height: 1.3;
+  color: #FFFFFF;
   text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.30);
   margin: 0 0 6px 0;
 }
 
 .card-optional {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 16px;
+  font-size: clamp(11.5px, 3.2vw, 14px);
   font-weight: 200;
-  line-height: 125%;
-  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.88);
   margin: 0;
 }
 
@@ -373,18 +450,18 @@ body {
 
 .card-venue-label {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 16px;
+  font-size: clamp(11.5px, 3.2vw, 14px);
   font-weight: 400;
-  line-height: 125%;
-  color: #FFDCA1;
+  line-height: 1.25;
+  color: #E1B25E;
   display: block;
 }
 
 .card-venue-name {
   font-family: 'Spectral', Georgia, serif;
-  font-size: 16px;
+  font-size: clamp(11.5px, 3.2vw, 14px);
   font-weight: 200;
-  line-height: 125%;
+  line-height: 1.25;
   color: #FFFFFF;
   display: block;
 }
@@ -620,21 +697,31 @@ body {
   <!-- ── 3. Four Miniature Art Event Cards ── -->
   <section class="celebrations-cards-feed" aria-label="Wedding Events Schedule">
 
-    <!-- ── Card 1: Mehndi ── -->
-    <article class="celebration-card-shell" id="card-mehndi">
+    <!-- ── Card 1: Mehndi (Figma Node 18:110 · Multi-Layer Stacked Architecture) ── -->
+    <article class="celebration-card-shell" id="card-mehndi" data-node-id="18:110">
 
-      <picture class="card-picture-wrap">
-        <source srcset="images/celebrations/card_bg_mehndi.webp?v=24700" type="image/webp">
-        <img src="images/celebrations/card_bg_mehndi.png?v=24700" 
-             alt="Mehndi · Friday 20 November, 7:30 PM" 
-             class="celebration-card-art" 
-             width="848" 
-             height="558"
-             fetchpriority="high"
-             decoding="async"
-             loading="eager">
+      <!-- Layer 1: Background Miniature Texture (Color-Dodge Blend) -->
+      <picture class="card-layer-bg">
+        <source srcset="images/celebrations/card_mehndi_bg_miniature.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_mehndi_bg_miniature.png?v=24700" alt="" width="483" height="362" loading="eager" decoding="async">
       </picture>
 
+      <!-- Layer 2: Emerald Blur Glow Vignette -->
+      <div class="card-layer-glow" aria-hidden="true"></div>
+
+      <!-- Layer 3: Character Multiply Shadow -->
+      <picture class="card-layer-char-shadow">
+        <source srcset="images/celebrations/card_mehndi_char_shadow.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_mehndi_char_shadow.png?v=24700" alt="" width="180" height="234" loading="eager" decoding="async">
+      </picture>
+
+      <!-- Layer 4: Character Main Foreground Art -->
+      <picture class="card-layer-char-main">
+        <source srcset="images/celebrations/card_mehndi_char_main.webp?v=24700" type="image/webp">
+        <img src="images/celebrations/card_mehndi_char_main.png?v=24700" alt="Mehndi Illustration" width="203" height="235" loading="eager" decoding="async">
+      </picture>
+
+      <!-- Layer 5: Selectable Typography Layer -->
       <div class="card-text-layer">
         <div class="text-box-right">
           <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
