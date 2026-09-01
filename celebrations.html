@@ -171,7 +171,7 @@ body {
   align-items: center;
 }
 
-/* ── Header: The Wedding Weekend (8px side padding) ── */
+/* ── Header: The Wedding Weekend ── */
 .celebrations-header {
   width: 100%;
   padding: 0 8px;
@@ -219,7 +219,7 @@ body {
   margin-bottom: 0;
 }
 
-/* ── 3. Events Cards Feed (8px side padding, 8px vertical gap) ── */
+/* ── 3. Events Cards Feed ── */
 .celebrations-cards-feed {
   width: 100%;
   padding: 0 8px;
@@ -230,7 +230,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Scaled Card Shell (max-width: 424px) */
+/* Scaled Card Shell */
 .celebration-card-shell {
   width: 100%;
   max-width: 424px;
@@ -247,7 +247,7 @@ body {
   filter: drop-shadow(0 12px 32px rgba(60, 5, 8, 0.22)) drop-shadow(0 3px 8px rgba(0, 0, 0, 0.08));
 }
 
-/* Vector Arch Clipped Inner Container (Responsive objectBoundingBox) */
+/* Vector Arch Clipped Inner Container */
 .card-clipped-inner {
   width: 100%;
   height: 100%;
@@ -265,7 +265,7 @@ body {
   -webkit-clip-path: url(#card-clip-right);
 }
 
-/* Pixel-Perfect Artwork Render */
+/* Clean Background Artwork (NO Text Baked In) */
 .celebration-card-art {
   width: 100%;
   height: 100%;
@@ -276,8 +276,8 @@ body {
   -webkit-user-select: none;
 }
 
-/* 100% Real Selectable & Accessible HTML Overlay */
-.card-selectable-text-layer {
+/* 100% Single Real Visible & Selectable HTML Text Layer */
+.card-text-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -291,91 +291,93 @@ body {
 
 .text-box-right {
   position: absolute;
-  right: 5.8%;
-  top: 11.9%;
-  width: 41%;
+  right: 5.5%;
+  top: 10.5%;
+  width: 42%;
   text-align: left;
 }
 
 .text-box-left {
   position: absolute;
-  left: 5.8%;
-  top: 11.9%;
-  width: 42%;
+  left: 5.5%;
+  top: 10.5%;
+  width: 44%;
   text-align: left;
 }
 
 /* Selection Color Styling */
-.card-selectable-text-layer ::selection {
-  background: rgba(255, 215, 0, 0.35);
+.card-text-layer ::selection {
+  background: rgba(255, 215, 0, 0.40);
   color: #FFFFFF;
 }
 
-.card-selectable-text-layer ::-moz-selection {
-  background: rgba(255, 215, 0, 0.35);
+.card-text-layer ::-moz-selection {
+  background: rgba(255, 215, 0, 0.40);
   color: #FFFFFF;
 }
 
-/* ── Typography per User Specifications ── */
-.sel-time-badge {
+/* ── Typography Specs ── */
+.card-eyebrow {
   font-family: 'Spectral', Georgia, serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 1.4px;
   line-height: 1;
   text-transform: uppercase;
-  color: transparent;
+  color: #F8E2BD;
   margin-bottom: 4px;
   display: block;
 }
 
-.sel-title {
+.card-title {
   font-family: 'Kugile', 'Cinzel', serif;
   font-size: 36px;
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.1px;
-  color: transparent;
-  margin: 0 0 8px 0;
-}
-
-.sel-body {
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 16px;
-  font-weight: 200;
-  line-height: 125%;
-  color: transparent;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.35);
   margin: 0 0 6px 0;
 }
 
-.sel-optional {
+.card-body {
   font-family: 'Spectral', Georgia, serif;
   font-size: 16px;
   font-weight: 200;
   line-height: 125%;
-  color: transparent;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.30);
+  margin: 0 0 6px 0;
+}
+
+.card-optional {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 16px;
+  font-weight: 200;
+  line-height: 125%;
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
 
-.sel-venue {
+.card-venue {
   margin-top: 4px;
 }
 
-.sel-venue-label {
+.card-venue-label {
   font-family: 'Spectral', Georgia, serif;
   font-size: 16px;
   font-weight: 400;
   line-height: 125%;
-  color: transparent;
+  color: #FFDCA1;
   display: block;
 }
 
-.sel-venue-name {
+.card-venue-name {
   font-family: 'Spectral', Georgia, serif;
   font-size: 16px;
   font-weight: 200;
   line-height: 125%;
-  color: transparent;
+  color: #FFFFFF;
   display: block;
 }
 </style>
@@ -421,8 +423,8 @@ body {
     <!-- ── Card 1: Mehndi ── -->
     <article class="celebration-card-shell" id="card-mehndi">
       <div class="card-clipped-inner clip-left">
-        <!-- High-Res Miniature Art Render -->
-        <img src="images/celebrations/card_mehndi_2x.png?v=24700" 
+        <!-- Clean Textured Card Artwork (No Text) -->
+        <img src="images/celebrations/card_art_mehndi.png?v=24700" 
              alt="Mehndi · Friday 20 November, 7:30 PM" 
              class="celebration-card-art" 
              width="816" 
@@ -430,13 +432,13 @@ body {
              loading="eager">
       </div>
 
-      <!-- Real Selectable HTML Text Layer -->
-      <div class="card-selectable-text-layer">
+      <!-- Single Real Visible & Selectable HTML Text Layer -->
+      <div class="card-text-layer">
         <div class="text-box-right">
-          <span class="sel-time-badge">FRI 20 NOV | 7:30PM</span>
-          <h2 class="sel-title">Mehndi</h2>
-          <p class="sel-body">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet, we couldn't resist.</p>
-          <p class="sel-optional">(Optional)</p>
+          <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
+          <h2 class="card-title">Mehndi</h2>
+          <p class="card-body">While traditional Kumaoni weddings don’t feature grand Mehndi or Sangeet, we couldn't resist.</p>
+          <p class="card-optional">(Optional)</p>
         </div>
       </div>
     </article>
@@ -444,8 +446,8 @@ body {
     <!-- ── Card 2: Wedding ── -->
     <article class="celebration-card-shell" id="card-wedding">
       <div class="card-clipped-inner clip-right">
-        <!-- High-Res Miniature Art Render -->
-        <img src="images/celebrations/card_wedding_2x.png?v=24700" 
+        <!-- Clean Textured Card Artwork (No Text) -->
+        <img src="images/celebrations/card_art_wedding.png?v=24700" 
              alt="Wedding · Friday 20 November, 7:30 PM" 
              class="celebration-card-art" 
              width="816" 
@@ -453,15 +455,15 @@ body {
              loading="lazy">
       </div>
 
-      <!-- Real Selectable HTML Text Layer -->
-      <div class="card-selectable-text-layer">
+      <!-- Single Real Visible & Selectable HTML Text Layer -->
+      <div class="card-text-layer">
         <div class="text-box-left">
-          <span class="sel-time-badge">FRI 20 NOV | 7:30PM</span>
-          <h2 class="sel-title">Wedding</h2>
-          <p class="sel-body">The ceremony, the vows, and the beginning of our next chapter.</p>
-          <div class="sel-venue">
-            <span class="sel-venue-label">Venue:</span>
-            <span class="sel-venue-name">The Balrampur House</span>
+          <span class="card-eyebrow">FRI 20 NOV | 7:30PM</span>
+          <h2 class="card-title">Wedding</h2>
+          <p class="card-body">The ceremony, the vows, and the beginning of our next chapter.</p>
+          <div class="card-venue">
+            <span class="card-venue-label">Venue:</span>
+            <span class="card-venue-name">The Balrampur House</span>
           </div>
         </div>
       </div>
@@ -470,8 +472,8 @@ body {
     <!-- ── Card 3: Evening Party ── -->
     <article class="celebration-card-shell" id="card-party">
       <div class="card-clipped-inner clip-left">
-        <!-- High-Res Miniature Art Render -->
-        <img src="images/celebrations/card_party_2x.png?v=24700" 
+        <!-- Clean Textured Card Artwork (No Text) -->
+        <img src="images/celebrations/card_art_party.png?v=24700" 
              alt="Evening Party · Saturday 21 November, 6:00 PM" 
              class="celebration-card-art" 
              width="816" 
@@ -479,12 +481,12 @@ body {
              loading="lazy">
       </div>
 
-      <!-- Real Selectable HTML Text Layer -->
-      <div class="card-selectable-text-layer">
+      <!-- Single Real Visible & Selectable HTML Text Layer -->
+      <div class="card-text-layer">
         <div class="text-box-right">
-          <span class="sel-time-badge">SAT 21 NOV | 6:00 PM</span>
-          <h2 class="sel-title" style="line-height: 1.05;">Evening<br>Party</h2>
-          <p class="sel-body">Music, toast, dancing and a memorable celebration together.</p>
+          <span class="card-eyebrow">SAT 21 NOV | 6:00 PM</span>
+          <h2 class="card-title" style="line-height: 1.05;">Evening<br>Party</h2>
+          <p class="card-body">Music, toast, dancing and a memorable celebration together.</p>
         </div>
       </div>
     </article>
@@ -492,8 +494,8 @@ body {
     <!-- ── Card 4: Reception ── -->
     <article class="celebration-card-shell" id="card-reception">
       <div class="card-clipped-inner clip-right">
-        <!-- High-Res Miniature Art Render -->
-        <img src="images/celebrations/card_reception_2x.png?v=24700" 
+        <!-- Clean Textured Card Artwork (No Text) -->
+        <img src="images/celebrations/card_art_reception.png?v=24700" 
              alt="Reception · Monday 23 November, 7:00 PM" 
              class="celebration-card-art" 
              width="816" 
@@ -501,12 +503,12 @@ body {
              loading="lazy">
       </div>
 
-      <!-- Real Selectable HTML Text Layer -->
-      <div class="card-selectable-text-layer">
+      <!-- Single Real Visible & Selectable HTML Text Layer -->
+      <div class="card-text-layer">
         <div class="text-box-left">
-          <span class="sel-time-badge">MON 23 NOV | 7:00 PM</span>
-          <h2 class="sel-title">Reception</h2>
-          <p class="sel-body">A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.</p>
+          <span class="card-eyebrow">MON 23 NOV | 7:00 PM</span>
+          <h2 class="card-title">Reception</h2>
+          <p class="card-body">A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.</p>
         </div>
       </div>
     </article>
