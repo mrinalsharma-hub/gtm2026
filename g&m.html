@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     var path = (window.location.pathname || '').toLowerCase();
-    if (path.indexOf('celebrations.html') !== -1) return;
+    if (path.indexOf('celebrations.html') !== -1 || path.indexOf('stay.html') !== -1 || path.indexOf('travel.html') !== -1) return;
     if (path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1) return;
 
     var metas = document.querySelectorAll('meta[name="theme-color"]');

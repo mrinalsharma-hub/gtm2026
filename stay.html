@@ -3,6 +3,14 @@
 <head>
 <script>
 (function() {
+  function applyCream() {
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    metas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
+    if (document.documentElement) document.documentElement.style.backgroundColor = '#FFEFD4';
+    if (document.body) document.body.style.backgroundColor = '#FFEFD4';
+  }
+  applyCream();
+
   function getCookie(name) {
     var value = '; ' + document.cookie;
     var parts = value.split('; ' + name + '=');
@@ -23,11 +31,11 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#A71F23">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#A71F23">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#A71F23">
-<meta name="color-scheme" content="dark">
-<meta name="msapplication-navbutton-color" content="#A71F23">
+<meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
+<meta name="color-scheme" content="light">
+<meta name="msapplication-navbutton-color" content="#FFEFD4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
@@ -45,7 +53,7 @@
 
 <style>
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --theme-color: #A71F23;
 }
 
@@ -77,8 +85,8 @@ html {
   width: 100% !important;
   height: 100% !important;
   height: 100dvh !important;
-  background: #A71F23 !important;
-  background-color: #A71F23 !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
   overflow: hidden !important;
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
@@ -92,8 +100,8 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: #A71F23 !important;
-  background-color: #A71F23 !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
   font-family: 'Cinzel', serif;
   overflow: hidden !important;
   overscroll-behavior: none !important;
@@ -102,7 +110,7 @@ body {
   justify-content: center;
 }
 
-/* ── 1. Page Background Canvas (#FFF5DF + Subtle Linen Grain + Botanical Lines) ── */
+/* ── 1. Page Background Canvas (#FFEFD4 + Subtle Linen Grain + Botanical Lines) ── */
 .schedule-bg-layer {
   position: fixed;
   inset: 0;
@@ -112,8 +120,8 @@ body {
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
-  background: #FFF5DF !important;
-  background-color: #FFF5DF !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
 }
@@ -641,5 +649,37 @@ body {
 
 <script src="js/spa-nav.js?v=26000"></script>
 <script src="js/global-audio.js?v=26000"></script>
+<script>
+/* ── Stay Address Bar & Tabs Bar Cream Theme Watchdog (#FFEFD4) ── */
+(function() {
+  function enforceCreamTheme() {
+    var path = (window.location.pathname || '').toLowerCase();
+    var currentNorm = path.split('/').pop() || 'index.html';
+    if (currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1 || path.indexOf('travel.html') !== -1) {
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      metas.forEach(function(m) {
+        if (m.getAttribute('content') !== '#FFEFD4') {
+          m.setAttribute('content', '#FFEFD4');
+        }
+      });
+      var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
+      if (msMeta && msMeta.getAttribute('content') !== '#FFEFD4') {
+        msMeta.setAttribute('content', '#FFEFD4');
+      }
+      if (document.documentElement && document.documentElement.style.backgroundColor !== 'rgb(255, 239, 212)' && document.documentElement.style.backgroundColor !== '#FFEFD4') {
+        document.documentElement.style.backgroundColor = '#FFEFD4';
+      }
+      var nav = document.querySelector('.fixed-bottom-nav');
+      if (nav && nav.classList.contains('nav-theme-red')) {
+        nav.classList.remove('nav-theme-red');
+      }
+    }
+  }
+  enforceCreamTheme();
+  window.addEventListener('focus', enforceCreamTheme, { passive: true });
+  window.addEventListener('visibilitychange', enforceCreamTheme, { passive: true });
+  window.addEventListener('pageshow', enforceCreamTheme, { passive: true });
+})();
+</script>
 </body>
 </html>

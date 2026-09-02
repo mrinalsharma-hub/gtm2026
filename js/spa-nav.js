@@ -62,12 +62,10 @@
     var currentNorm = forceNorm || normalizePath(window.location.pathname);
     var themeColor = '#A71F23';
 
-    if (currentNorm === 'celebrations.html' || path.indexOf('celebrations.html') !== -1) {
+    if (currentNorm === 'celebrations.html' || path.indexOf('celebrations.html') !== -1 || currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1 || path.indexOf('travel.html') !== -1) {
       themeColor = '#FFEFD4';
     } else if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'RSVP.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1 || path.indexOf('rsvp') !== -1) {
       themeColor = '#B02428';
-    } else if (currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1) {
-      themeColor = '#A71F23';
     } else {
       themeColor = '#A71F23';
     }
