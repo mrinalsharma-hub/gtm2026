@@ -319,6 +319,22 @@
     }
   }
 
+  // Instant Tap / Touchdown Theme Trigger: Switch address bar color the exact moment finger touches tab
+  function onNavTouchStart(e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    var href = link.getAttribute('href');
+    if (!href || href.startsWith('#') || link.target === '_blank') return;
+    var targetNorm = normalizePath(href);
+    if (isAuthenticated() || targetNorm === 'index.html') {
+      ensureThemeColor(targetNorm);
+      updateNav(targetNorm);
+    }
+  }
+
+  document.addEventListener('touchstart', onNavTouchStart, { capture: true, passive: true });
+  document.addEventListener('pointerdown', onNavTouchStart, { capture: true, passive: true });
+
   // Intercept all internal navigation clicks globally
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a');
