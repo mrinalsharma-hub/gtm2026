@@ -246,6 +246,7 @@ body {
 /* Subrow: Centered Row directly below the Centered Title with 3px Gap */
 .celebrations-subrow {
   width: 100%;
+  max-width: 100%;
   margin: -26px auto 0 auto;
   display: flex;
   align-items: flex-end;
@@ -265,6 +266,7 @@ body {
   transform: translateY(-47px);
   z-index: 2;
   flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .celebrations-countdown-text,
@@ -286,7 +288,8 @@ body {
 }
 
 .celebrations-boat-wrap {
-  width: clamp(200px, 55.9vw, 238px);
+  width: clamp(175px, 48vw, 220px);
+  max-width: calc(100% - 140px);
   aspect-ratio: 175 / 107;
   position: relative;
   margin-right: 0;
@@ -294,7 +297,7 @@ body {
   user-select: none;
   -webkit-user-select: none;
   z-index: 3;
-  flex-shrink: 0;
+  flex-shrink: 1;
 }
 
 .celebrations-boat-img {
