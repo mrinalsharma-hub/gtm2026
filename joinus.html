@@ -502,11 +502,18 @@ body {
 .rsvp-option-label input[type="checkbox"]:checked + .rsvp-check-mark::after {
   content: "" !important;
   position: absolute !important;
-  width: 7px !important;
-  height: 13px !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 6.5px !important;
+  height: 12.5px !important;
   border: solid #A71E20 !important;
-  border-width: 0 2.2px 2.2px 0 !important;
-  transform: rotate(45deg) translate(-1.5px, -1.5px) !important;
+  border-width: 0 2.4px 2.4px 0 !important;
+  transform: translate(-50%, -62%) rotate(45deg) !important;
+  box-sizing: border-box !important;
+}
+
+#sec-events .rsvp-options-list {
+  gap: 6px !important;
 }
 
 /* Option Text */
