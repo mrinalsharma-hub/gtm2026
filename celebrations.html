@@ -672,17 +672,21 @@ body {
   transition: transform 0.08s linear;
 }
 
-/* 2. Prominent Card Scrolling Parallax */
+/* 2. Prominent Card Scrolling Parallax (Full Uncropped Artwork) */
 .celebration-card-shell {
   position: relative;
   overflow: hidden;
   border-radius: 25.4px;
+  will-change: transform;
+  transform: translate3d(0, var(--card-parallax-y, 0px), 0);
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .celebration-card-art {
-  will-change: transform;
-  transform: scale(1.18) translate3d(0, var(--card-art-y, 0px), 0);
-  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: fill !important;
+  transform: none !important; /* Preserves 100% uncropped full artwork */
 }
 
 .card-text-layer {
@@ -1407,7 +1411,7 @@ body.sheet-modal-open .fixed-bottom-nav {
     document.documentElement.style.setProperty('--boat-bob-y', bobY.toFixed(1) + 'px');
     document.documentElement.style.setProperty('--header-title-y', titleY.toFixed(1) + 'px');
 
-    // 2. Prominent Card Scrolling Parallax (Artwork Multi-Plane Depth & Floating Typography)
+    // 2. Prominent Card Scrolling Parallax (Full Uncropped Cards & Floating Typography)
     var centerThreshold = vh * 0.5;
 
     cards.forEach(function(card) {
@@ -1418,11 +1422,11 @@ body.sheet-modal-open .fixed-bottom-nav {
       // When card is in or near the viewport
       if (rect.bottom >= -80 && rect.top <= vh + 80) {
         var norm = distFromCenter / (vh * 0.5);
-        // Art moves with depth (-32px to +32px)
-        var artY = norm * 32;
-        // Text layer floats with opposing subtle offset
-        var textY = norm * -14;
-        card.style.setProperty('--card-art-y', artY.toFixed(1) + 'px');
+        // Card itself moves with smooth vertical parallax translation (-18px to +18px)
+        var cardY = norm * 18;
+        // Text layer inside moves with subtle micro-depth
+        var textY = norm * -8;
+        card.style.setProperty('--card-parallax-y', cardY.toFixed(1) + 'px');
         card.style.setProperty('--card-text-y', textY.toFixed(1) + 'px');
       }
     });
