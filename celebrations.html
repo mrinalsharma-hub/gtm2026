@@ -572,6 +572,18 @@ body {
   flex: 1 !important;
 }
 
+.topbar-aipan-emblem {
+  width: 38px;
+  height: 38px;
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
+  opacity: 0.95;
+  filter: drop-shadow(0 1px 2px rgba(255, 253, 249, 0.8));
+}
+
 .celebrations-topbar-center {
   display: flex !important;
   align-items: center !important;
@@ -938,7 +950,7 @@ body.sheet-modal-open .fixed-bottom-nav {
 <!-- ── Top Control Bar (64px Height · Left, Center, Right Slots) ── -->
 <header class="celebrations-topbar" role="banner">
   <div class="celebrations-topbar-left" id="topbar-slot-left">
-    <!-- Slot 1: Extreme Left Element -->
+    <img src="images/celebrations/aipan_emblem_top_left.svg?v=28000" alt="Aipan Emblem" class="topbar-aipan-emblem" width="38" height="38" loading="eager" fetchpriority="high">
   </div>
   <div class="celebrations-topbar-center" id="topbar-slot-center">
     <!-- Slot 2: Center Element -->
