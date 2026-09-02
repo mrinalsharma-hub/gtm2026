@@ -661,19 +661,41 @@ main.paper, main, .rsvp-page-wrap {
 }
 
 
-/* ── Light Theme Bottom Navigation ── */
+/* ── Red Theme Bottom Navigation for RSVP tab (matching browser address bar #B02428) ── */
 .fixed-bottom-nav {
-  background: #FFEFD4 !important;
-  background-color: #FFEFD4 !important;
-  border-top: 1px solid rgba(167, 31, 35, 0.12) !important;
-  box-shadow: 0 -4px 20px rgba(110, 33, 26, 0.08) !important;
+  background: #B02428 !important;
+  background-color: #B02428 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 -4px 20px rgba(45, 5, 8, 0.35) !important;
 }
 
-.fixed-bottom-nav .nav-tab.active .nav-icon,
+.fixed-bottom-nav .nav-tab .nav-icon {
+  color: rgba(255, 255, 255, 0.65) !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  opacity: 0.65 !important;
+  filter: none !important;
+}
+
+.fixed-bottom-nav .nav-tab .nav-label {
+  color: rgba(255, 255, 255, 0.70) !important;
+  opacity: 1 !important;
+}
+
+.fixed-bottom-nav .nav-tab.active .nav-icon {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  opacity: 1 !important;
+  transform: scale(1.08) !important;
+  filter: drop-shadow(0 1px 6px rgba(255, 255, 255, 0.40)) !important;
+}
+
 .fixed-bottom-nav .nav-tab.active .nav-label {
-  color: #A71F23 !important;
-  fill: #A71F23 !important;
-  filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.30)) !important;
 }
 
 .global-audio-pill {
@@ -835,7 +857,7 @@ main.paper, main, .rsvp-page-wrap {
 </main>
 
 <!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
-<nav class="fixed-bottom-nav" aria-label="Main Navigation">
+<nav class="fixed-bottom-nav nav-theme-red" aria-label="Main Navigation">
   <div class="nav-container" role="tablist">
     <a href="G&M.html" class="nav-tab" role="tab" aria-selected="false" aria-label="G&amp;M">
       <div class="nav-pill-wrapper">

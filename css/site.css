@@ -1466,6 +1466,44 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   background: transparent !important;
 }
 
+/* ── Red Theme Bottom Navigation (Used for RSVP tab) ── */
+.fixed-bottom-nav.nav-theme-red {
+  background: #B02428 !important;
+  background-color: #B02428 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: 0 -4px 20px rgba(45, 5, 8, 0.35) !important;
+}
+
+.fixed-bottom-nav.nav-theme-red .nav-tab .nav-icon {
+  color: rgba(255, 255, 255, 0.65) !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  opacity: 0.65 !important;
+  filter: none !important;
+}
+
+.fixed-bottom-nav.nav-theme-red .nav-tab .nav-label {
+  color: rgba(255, 255, 255, 0.70) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+
+.fixed-bottom-nav.nav-theme-red .nav-tab.active .nav-icon {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+  stroke: #FFFFFF !important;
+  opacity: 1 !important;
+  transform: scale(1.08) !important;
+  filter: drop-shadow(0 1px 6px rgba(255, 255, 255, 0.40)) !important;
+}
+
+.fixed-bottom-nav.nav-theme-red .nav-tab.active .nav-label {
+  color: #FFFFFF !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.30) !important;
+}
+
 /* ═══════════════════════════════════════════════════════
    RSVP / Join Us Form Styling (Figma Node 359-173 Match)
    ═══════════════════════════════════════════════════════ */

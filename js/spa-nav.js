@@ -85,6 +85,15 @@
     currentNorm = currentNorm || normalizePath(window.location.pathname);
     var authed = isAuthenticated();
     var tabs = document.querySelectorAll('.fixed-bottom-nav .nav-tab');
+    var navEl = document.querySelector('.fixed-bottom-nav');
+
+    if (navEl) {
+      if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html') {
+        navEl.classList.add('nav-theme-red');
+      } else {
+        navEl.classList.remove('nav-theme-red');
+      }
+    }
 
     tabs.forEach(function(tab) {
       var href = tab.getAttribute('href');
