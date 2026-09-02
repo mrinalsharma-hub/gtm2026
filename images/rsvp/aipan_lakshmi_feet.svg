@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
+  <!-- Aipan Lakshmi Charan (Sacred Lakshmi Feet) -->
+  <g id="LakshmiFeet" fill="#FFFDF9" stroke="none">
+    
+    <!-- LEFT FOOT (Sole & Toes) -->
+    <g id="LeftFoot">
+      <!-- Sole Pad: contoured Aipan footpad -->
+      <path d="M 42 38 C 45 38 46.5 41.5 46 47 C 45.5 53 44 59.5 42.5 65.5 C 41.5 69.5 38.5 71 36.5 71 C 34.5 71 31.5 69.5 30.5 65.5 C 29 59.5 27.5 53 28 47 C 28.5 41.5 30 38 34.5 38 Z" />
+      <!-- Inner decorative Aipan Geru incision (gives geometric character) -->
+      <path d="M 36.5 46 C 37.8 46 38.5 48 38 52 C 37.5 56 36.5 60 36.5 62 C 36.5 60 35.5 56 35 52 C 34.5 48 35.2 46 36.5 46 Z" fill="#AC2525" />
+      
+      <!-- 5 Toes (Graduated Pearl Dots in upward curve) -->
+      <circle cx="44.5" cy="28" r="3.8" />
+      <circle cx="39.5" cy="26.8" r="3.2" />
+      <circle cx="34.8" cy="27.8" r="2.7" />
+      <circle cx="30.5" cy="30.2" r="2.2" />
+      <circle cx="27" cy="33.5" r="1.8" />
+      
+      <!-- Auspicious Heel Pearl / Dot -->
+      <circle cx="36.5" cy="75.5" r="1.6" />
+    </g>
+
+    <!-- RIGHT FOOT (Symmetric across x=50) -->
+    <g id="RightFoot">
+      <!-- Sole Pad: contoured Aipan footpad -->
+      <path d="M 58 38 C 55 38 53.5 41.5 54 47 C 54.5 53 56 59.5 57.5 65.5 C 58.5 69.5 61.5 71 63.5 71 C 65.5 71 68.5 69.5 69.5 65.5 C 71 59.5 72.5 53 72 47 C 71.5 41.5 70 38 65.5 38 Z" />
+      <!-- Inner decorative Aipan Geru incision -->
+      <path d="M 63.5 46 C 62.2 46 61.5 48 62 52 C 62.5 56 63.5 60 63.5 62 C 63.5 60 64.5 56 65 52 C 65.5 48 64.8 46 63.5 46 Z" fill="#AC2525" />
+      
+      <!-- 5 Toes (Graduated Pearl Dots in upward curve) -->
+      <circle cx="55.5" cy="28" r="3.8" />
+      <circle cx="60.5" cy="26.8" r="3.2" />
+      <circle cx="65.2" cy="27.8" r="2.7" />
+      <circle cx="69.5" cy="30.2" r="2.2" />
+      <circle cx="73" cy="33.5" r="1.8" />
+      
+      <!-- Auspicious Heel Pearl / Dot -->
+      <circle cx="63.5" cy="75.5" r="1.6" />
+    </g>
+
+    <!-- Central Auspicious Bindu between feet -->
+    <circle cx="50" cy="49" r="1.8" fill="#F6BD59" />
+  </g>
+</svg>

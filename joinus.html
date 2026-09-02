@@ -330,6 +330,32 @@ body {
   filter: drop-shadow(0 4px 20px rgba(172, 37, 37, 0.14)) !important;
 }
 
+/* Static Central Aipan Lakshmi Feet (Stays Static while Mandala spins) */
+.rsvp-lakshmi-feet-static {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 52px !important;
+  height: 52px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  z-index: 3 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.rsvp-lakshmi-feet-img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25)) !important;
+}
+
 @keyframes mandalaGentleHover {
   0% { transform: translate3d(0, 0, 0) scale(1); }
   50% { transform: translate3d(0, -2px, 0) scale(1.015); }
@@ -739,7 +765,7 @@ body {
   object-fit: contain !important;
   display: block !important;
   margin: 0 auto !important;
-  transform: translateX(-6px) !important;
+  transform: translateX(-5.5%) !important;
 }
 
 .rsvp-footer-quote {
@@ -815,10 +841,13 @@ body {
     <span class="rsvp-script-come">Come</span>
     <h1 class="rsvp-title-main">CELEBRATE<br>WITH US</h1>
 
-    <!-- Rotating Mandala Flower with Counter-Clockwise Dots Ring -->
+    <!-- Rotating Mandala Flower with Counter-Clockwise Dots Ring and Static Central Lakshmi Feet -->
     <div class="rsvp-mandala-wrap" aria-hidden="true">
       <img src="images/mandala-dots-ring.svg?v=26700" alt="" class="rsvp-dots-ring" width="298" height="298" aria-hidden="true">
       <img src="images/rsvp/rsvp_mandala_flower.svg?v=26700" alt="Aipan Flower Mandala" class="rsvp-mandala-img" width="264" height="264">
+      <div class="rsvp-lakshmi-feet-static" aria-hidden="true">
+        <img src="images/rsvp/aipan_lakshmi_feet.svg?v=27100" alt="Aipan Lakshmi Feet" class="rsvp-lakshmi-feet-img" width="52" height="52">
+      </div>
     </div>
 
     <!-- Sub-heading Invitation Banner (Figma Node 43:1021) -->
