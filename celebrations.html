@@ -353,17 +353,15 @@ body {
   transition-duration: 0.12s;
 }
 
-/* Simple & Elegant Outline Action Button (No gradient, no shimmer) */
+/* Simple & Elegant Outline Action Button (Transparent with outline stroke) */
 .card-action-seal {
   position: absolute;
   bottom: 18px;
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.18);
-  border: 1.5px solid rgba(255, 238, 217, 0.72);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: transparent;
+  border: 1.6px solid rgba(255, 238, 217, 0.78);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -371,7 +369,6 @@ body {
   cursor: pointer;
   z-index: 20;
   transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.2s ease,
               border-color 0.2s ease;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -391,13 +388,14 @@ body {
 .card-action-seal:focus,
 .celebration-card-shell:hover .card-action-seal {
   transform: scale(1.15);
-  background: rgba(0, 0, 0, 0.30);
-  border-color: rgba(255, 255, 255, 0.95);
+  background: transparent;
+  border-color: #FFFFFF;
 }
 
 .card-action-seal:active,
 .celebration-card-shell:active .card-action-seal {
   transform: scale(0.95);
+  background: transparent;
 }
 
 .card-action-seal svg {
