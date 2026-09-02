@@ -543,70 +543,33 @@ body {
   display: block;
 }
 
-/* ── Top Bar Container (56px Height Aligned with Audio Player) ── */
-.celebrations-topbar {
-  position: fixed !important;
+/* ── Scrollable Top-Left Aipan Emblem (Scrolls with page · No drop shadow) ── */
+.celebrations-scroll-aipan-wrap {
+  position: absolute !important;
   top: max(14px, env(safe-area-inset-top, 14px)) !important;
-  left: 0 !important;
-  right: 0 !important;
+  left: max(16px, env(safe-area-inset-left, 16px)) !important;
+  width: 56px !important;
   height: 56px !important;
-  padding-left: max(16px, env(safe-area-inset-left, 16px)) !important;
-  padding-right: max(16px, env(safe-area-inset-right, 16px)) !important;
-  max-width: 480px !important;
-  margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  z-index: 9999 !important;
-  pointer-events: none !important; /* Let scrolls pass through empty areas */
-  background: transparent !important;
-  box-sizing: border-box !important;
-}
-
-.celebrations-topbar > * {
-  pointer-events: auto !important;
-}
-
-.celebrations-topbar-left {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  width: 56px !important;
-  height: 56px !important;
-  min-width: 56px !important;
-  min-height: 56px !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
 }
 
-.topbar-aipan-emblem {
+.celebrations-scroll-aipan-img {
   width: 56px !important;
   height: 56px !important;
   min-width: 56px !important;
   min-height: 56px !important;
   display: block !important;
   object-fit: contain !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   pointer-events: none !important;
-  opacity: 0.98 !important;
-  filter: drop-shadow(0 1px 3px rgba(255, 253, 249, 0.9)) !important;
-}
-
-.celebrations-topbar-center {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  flex: 1 !important;
-  text-align: center !important;
-}
-
-.celebrations-topbar-right {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 56px !important;
-  height: 56px !important;
-  min-width: 56px !important;
-  min-height: 56px !important;
 }
 
 /* ── Relaxed Royal Entrance Choreography (Silk & Velvet Cascade) ── */
@@ -954,21 +917,13 @@ body.sheet-modal-open .fixed-bottom-nav {
   <div class="celebrations-radial-glow" aria-hidden="true"></div>
 </div>
 
-<!-- ── Top Control Bar (64px Height · Left, Center, Right Slots) ── -->
-<header class="celebrations-topbar" role="banner">
-  <div class="celebrations-topbar-left" id="topbar-slot-left">
-    <img src="images/celebrations/aipan_emblem_top_left.svg?v=34000" alt="Aipan Emblem" class="topbar-aipan-emblem" width="56" height="56" loading="eager" fetchpriority="high">
-  </div>
-  <div class="celebrations-topbar-center" id="topbar-slot-center">
-    <!-- Slot 2: Center Element -->
-  </div>
-  <div class="celebrations-topbar-right" id="topbar-slot-right">
-    <!-- Slot 3: Extreme Right Element -->
-  </div>
-</header>
-
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="celebrations-page-wrap">
+
+  <!-- ── Top-Left Aipan Emblem (Scrolls naturally with page · No drop shadow) ── -->
+  <div class="celebrations-scroll-aipan-wrap" aria-hidden="true">
+    <img src="images/celebrations/aipan_emblem_top_left.svg?v=36000" alt="Aipan Emblem" class="celebrations-scroll-aipan-img" width="56" height="56" loading="eager" fetchpriority="high">
+  </div>
 
   <!-- ── Header: The Wedding Weekend (Figma Node 18:79 / 18:107) ── -->
   <header class="celebrations-header" data-node-id="18:107">
