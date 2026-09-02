@@ -1411,8 +1411,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   fill: #A71F23 !important;
   stroke: #A71F23 !important;
   transform: scale(1.08) !important;
-  -webkit-filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
-  filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
+  -webkit-filter: none !important;
+  filter: none !important;
 }
 
 /* Label below icon (13.5px, regular for unselected, bold for active, 0.01em tracking, perfect vertical centering) */
@@ -1445,8 +1445,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   color: #A71F23 !important;
   opacity: 1 !important;
   font-weight: 700 !important;
-  -webkit-text-shadow: 0 1px 4px rgba(167, 31, 35, 0.20) !important;
-  text-shadow: 0 1px 4px rgba(167, 31, 35, 0.20) !important;
+  -webkit-text-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* Completely Remove Active Indicator Dot */
@@ -2462,7 +2462,10 @@ body.rsvp-page .fixed-bottom-nav .nav-tab.active .nav-label,
 .rsvp-page-wrap ~ .fixed-bottom-nav .nav-tab.active .nav-label {
   color: #A71F23 !important;
   fill: #A71F23 !important;
-  filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  text-shadow: none !important;
+  -webkit-text-shadow: none !important;
 }
 
 
