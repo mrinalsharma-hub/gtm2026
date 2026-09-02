@@ -2289,8 +2289,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .celebration-player-btn,
 .global-audio-pill {
   position: fixed !important;
-  top: max(14px, env(safe-area-inset-top, 14px));
-  right: max(14px, env(safe-area-inset-right, 14px));
+  top: max(14px, env(safe-area-inset-top, 14px)) !important;
+  right: max(14px, env(safe-area-inset-right, 14px)) !important;
   width: 56px !important;
   height: 56px !important;
   border-radius: 50% !important;
@@ -2298,9 +2298,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   border: none !important;
   padding: 0 !important;
   margin: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
   cursor: pointer !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
@@ -2311,51 +2309,62 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   z-index: 9999 !important;
-  transform: none !important;
-  -webkit-transform: none !important;
-  transition: transform 0.2s ease, filter 0.2s ease !important;
+  transform: translateZ(0) !important;
+  -webkit-transform: translateZ(0) !important;
+  transition: filter 0.25s ease, opacity 0.25s ease !important;
 }
 
 .celebration-player-btn:hover,
 .global-audio-pill:hover {
-  transform: scale(1.04) !important;
-  -webkit-transform: scale(1.04) !important;
-  filter: drop-shadow(0 4px 12px rgba(167, 31, 35, 0.20)) !important;
+  filter: drop-shadow(0 4px 14px rgba(167, 31, 35, 0.22)) !important;
 }
 
 .celebration-player-btn:active,
 .global-audio-pill:active {
-  transform: scale(0.96) !important;
-  -webkit-transform: scale(0.96) !important;
+  filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.18)) !important;
 }
 
 .celebration-player-btn .player-state-img,
 .global-audio-pill .player-state-img {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 100% !important;
   height: 100% !important;
   display: block !important;
   pointer-events: none !important;
   user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1), transform 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  -webkit-transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 /* State 1: Play (Default when not playing) */
 .celebration-player-btn .player-img-play,
 .global-audio-pill .player-img-play {
-  display: block !important;
+  opacity: 1 !important;
+  transform: scale(1) translateZ(0) !important;
+  -webkit-transform: scale(1) translateZ(0) !important;
 }
 .celebration-player-btn .player-img-pause,
 .global-audio-pill .player-img-pause {
-  display: none !important;
+  opacity: 0 !important;
+  transform: scale(0.88) translateZ(0) !important;
+  -webkit-transform: scale(0.88) translateZ(0) !important;
 }
 
 /* State 2: Pause (When music is playing) */
 .celebration-player-btn.is-playing .player-img-play,
 .global-audio-pill.is-playing .player-img-play {
-  display: none !important;
+  opacity: 0 !important;
+  transform: scale(0.88) translateZ(0) !important;
+  -webkit-transform: scale(0.88) translateZ(0) !important;
 }
 .celebration-player-btn.is-playing .player-img-pause,
 .global-audio-pill.is-playing .player-img-pause {
-  display: block !important;
+  opacity: 1 !important;
+  transform: scale(1) translateZ(0) !important;
+  -webkit-transform: scale(1) translateZ(0) !important;
 }
 
 
