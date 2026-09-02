@@ -599,22 +599,11 @@ body {
   </div>
 </nav>
 
-<!-- ── Global Horizontal Music Player Pill ── -->
-<div id="global-music-player" class="global-audio-pill" role="button" aria-label="Toggle Music">
-  <div class="audio-icon-wrap">
-    <svg class="icon-play" width="16" height="16" viewBox="0 0 24 24" fill="#0b4c6d">
-      <path d="M8 5v14l11-7z"/>
-    </svg>
-    <svg class="icon-pause" width="16" height="16" viewBox="0 0 24 24" fill="#0b4c6d">
-      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-    </svg>
-  </div>
-  <div class="audio-wave-bars">
-    <span class="bar bar-1"></span>
-    <span class="bar bar-2"></span>
-    <span class="bar bar-3"></span>
-  </div>
-</div>
+<!-- ── Global Royal Medallion Music Player (Figma Node 26:627 · 56x56px) ── -->
+<button id="global-music-player" class="celebration-player-btn" role="button" aria-label="Play Music" type="button">
+  <img src="images/player_figma_play.svg?v=24700" alt="Play Music" class="player-state-img player-img-play" width="56" height="56">
+  <img src="images/player_figma_pause.svg?v=24700" alt="Pause Music" class="player-state-img player-img-pause" width="56" height="56">
+</button>
 
 <!-- ── Audio Element ── -->
 <audio id="bg-music" loop preload="auto" playsinline>

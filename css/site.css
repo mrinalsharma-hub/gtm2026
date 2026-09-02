@@ -2285,96 +2285,83 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 
-/* ── Global Horizontal Music Player Pill (Authentic iOS Liquid Frosted Glass) ── */
+/* ── Universal Royal Medallion Music Player (Figma Node 26:627 · 56x56px) ── */
+.celebration-player-btn,
 .global-audio-pill {
   position: fixed !important;
   top: max(14px, env(safe-area-inset-top, 14px));
   right: max(14px, env(safe-area-inset-right, 14px));
-  height: 38px;
-  padding: 0 14px 0 12px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.22) !important;
-  backdrop-filter: blur(8px) saturate(160%) !important;
-  -webkit-backdrop-filter: blur(8px) saturate(160%) !important;
+  width: 56px !important;
+  height: 56px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
   border: none !important;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03) !important;
-  z-index: 9999;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  outline: none;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, box-shadow 0.2s ease;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  outline: none !important;
+  -webkit-tap-highlight-color: transparent !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.12)) !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  z-index: 9999 !important;
+  transform: none !important;
+  -webkit-transform: none !important;
+  transition: transform 0.2s ease, filter 0.2s ease !important;
 }
+
+.celebrations-topbar-right .celebration-player-btn {
+  position: relative !important;
+  top: auto !important;
+  right: auto !important;
+}
+
+.celebration-player-btn:hover,
 .global-audio-pill:hover {
-  transform: scale(1.04) translateZ(0);
-  background: rgba(255, 255, 255, 0.35) !important;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08) !important;
+  transform: scale(1.04) !important;
+  -webkit-transform: scale(1.04) !important;
+  filter: drop-shadow(0 4px 12px rgba(167, 31, 35, 0.20)) !important;
 }
+
+.celebration-player-btn:active,
 .global-audio-pill:active {
-  transform: scale(0.94) translateZ(0);
-  background: rgba(255, 255, 255, 0.15) !important;
+  transform: scale(0.96) !important;
+  -webkit-transform: scale(0.96) !important;
 }
-.global-audio-pill .audio-icon-wrap {
-  position: relative;
-  width: 16px;
-  height: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
+.celebration-player-btn .player-state-img,
+.global-audio-pill .player-state-img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  pointer-events: none !important;
+  user-select: none !important;
 }
-.global-audio-pill .icon-play,
-.global-audio-pill .icon-pause {
-  fill: #A71F23 !important;
-  position: absolute;
-  transition: opacity 0.2s ease, transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+/* State 1: Play (Default when not playing) */
+.celebration-player-btn .player-img-play,
+.global-audio-pill .player-img-play {
+  display: block !important;
 }
-.global-audio-pill .icon-play {
-  opacity: 1;
-  transform: scale(1);
+.celebration-player-btn .player-img-pause,
+.global-audio-pill .player-img-pause {
+  display: none !important;
 }
-.global-audio-pill .icon-pause {
-  opacity: 0;
-  transform: scale(0.5);
+
+/* State 2: Pause (When music is playing) */
+.celebration-player-btn.is-playing .player-img-play,
+.global-audio-pill.is-playing .player-img-play {
+  display: none !important;
 }
-.global-audio-pill.is-playing .icon-play {
-  opacity: 0;
-  transform: scale(0.5);
-}
-.global-audio-pill.is-playing .icon-pause {
-  opacity: 1;
-  transform: scale(1);
-}
-.global-audio-pill .audio-wave-bars {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  height: 14px;
-}
-.global-audio-pill .bar {
-  width: 2.5px;
-  height: 4px;
-  background-color: #A71F23 !important;
-  border-radius: 2px;
-  transition: height 0.2s ease;
-}
-.global-audio-pill.is-playing .bar-1 {
-  animation: waveAnim 0.8s ease-in-out infinite alternate;
-}
-.global-audio-pill.is-playing .bar-2 {
-  animation: waveAnim 0.8s ease-in-out infinite 0.25s alternate;
-}
-.global-audio-pill.is-playing .bar-3 {
-  animation: waveAnim 0.8s ease-in-out infinite 0.5s alternate;
-}
-@keyframes waveAnim {
-  0% { height: 4px; }
-  100% { height: 14px; }
+.celebration-player-btn.is-playing .player-img-pause,
+.global-audio-pill.is-playing .player-img-pause {
+  display: block !important;
 }
 
 
@@ -2473,24 +2460,7 @@ body.rsvp-page .fixed-bottom-nav .nav-tab.active .nav-label,
   filter: drop-shadow(0 2px 8px rgba(255, 184, 0, 0.25)) !important;
 }
 
-body.rsvp-page .global-audio-pill,
-.rsvp-page-wrap ~ .global-audio-pill {
-  background: rgba(255, 255, 255, 0.94) !important;
-  border: 1px solid rgba(234, 199, 134, 0.35) !important;
-  box-shadow: 0 4px 16px rgba(45, 5, 8, 0.25) !important;
-}
 
-body.rsvp-page .global-audio-pill .icon-play,
-body.rsvp-page .global-audio-pill .icon-pause,
-.rsvp-page-wrap ~ .global-audio-pill .icon-play,
-.rsvp-page-wrap ~ .global-audio-pill .icon-pause {
-  fill: #7B1115 !important;
-}
-
-body.rsvp-page .global-audio-pill .bar,
-.rsvp-page-wrap ~ .global-audio-pill .bar {
-  background-color: #7B1115 !important;
-}
 
 
 /* On confirmation screen, hide the RSVP instructions subtitle */
