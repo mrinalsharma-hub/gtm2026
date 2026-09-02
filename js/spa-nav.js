@@ -57,15 +57,23 @@
     return true;
   }
 
-  function ensureThemeColor() {
+  function ensureThemeColor(forceNorm) {
     var path = (window.location.pathname || '').toLowerCase();
-    var currentNorm = normalizePath(window.location.pathname);
+    var currentNorm = forceNorm || normalizePath(window.location.pathname);
     var themeColor = '#A71F23';
 
-    if (path.indexOf('celebrations.html') !== -1 || path.indexOf('celebrations.html') !== -1 || currentNorm === 'celebrations.html' || currentNorm === 'celebrations.html') {
-      themeColor = '#FFEFD5';
-    } else if (currentNorm === 'joinus.html') {
+    if (currentNorm === 'celebrations.html' || path.indexOf('celebrations.html') !== -1) {
+      themeColor = '#FFEFD4';
+    } else if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1) {
       themeColor = '#B02428';
+    } else if (currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1) {
+      themeColor = '#A71F23';
+    } else {
+      themeColor = '#A71F23';
+    }
+
+    if (document.documentElement) {
+      document.documentElement.style.backgroundColor = themeColor;
     }
 
     var metaTags = document.querySelectorAll('meta[name="theme-color"]');
@@ -79,7 +87,16 @@
         m.setAttribute('content', themeColor);
       });
     }
+
+    var lightMeta = document.querySelector('meta[name="theme-color"][media*="light"]');
+    if (lightMeta) lightMeta.setAttribute('content', themeColor);
+    var darkMeta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+    if (darkMeta) darkMeta.setAttribute('content', themeColor);
+
+    var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
+    if (msMeta) msMeta.setAttribute('content', themeColor);
   }
+  window.ensureThemeColor = ensureThemeColor;
 
   function updateNav(currentNorm) {
     currentNorm = currentNorm || normalizePath(window.location.pathname);
@@ -158,6 +175,10 @@
     }
 
     isNavigating = true;
+
+    // Instant Feedback: Switch theme-color and active tab immediately on tap
+    ensureThemeColor(targetNorm);
+    updateNav(targetNorm);
 
     function applyHTML(html) {
       var parser = new DOMParser();
@@ -242,8 +263,9 @@
         history.pushState({ path: targetUrl }, newDoc.title, targetUrl);
       }
 
-      // 6. Update Active Navigation Tab
+      // 6. Update Active Navigation Tab & Theme Color
       updateNav(targetNorm);
+      ensureThemeColor(targetNorm);
 
       // 7. Ensure audio player is bound and in sync
       if (window.GTM_AUDIO && window.GTM_AUDIO.bindPlayer) {
@@ -337,6 +359,10 @@
     ensureThemeColor();
     updateNav();
     prefetchAll();
+
+    window.addEventListener('focus', function() { ensureThemeColor(); }, { passive: true });
+    window.addEventListener('visibilitychange', function() { ensureThemeColor(); }, { passive: true });
+    window.addEventListener('pageshow', function() { ensureThemeColor(); }, { passive: true });
 
     // Cache the initial page HTML
     var currentPath = window.location.pathname.split('/').pop() || 'index.html';

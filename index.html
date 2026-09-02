@@ -728,8 +728,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const pinError = document.getElementById('pin-error');
   const bottomArch = document.getElementById('bottom-arch');
 
-  // ── Persistent Theme Color Lock (#A71F23) ──
+  // ── Persistent Theme Color Lock ──
   function enforceThemeColor() {
+    if (window.ensureThemeColor) {
+      window.ensureThemeColor();
+      return;
+    }
+    var path = (window.location.pathname || '').toLowerCase();
+    if (path.indexOf('celebrations.html') !== -1) return;
+    if (path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1) return;
+
     var metas = document.querySelectorAll('meta[name="theme-color"]');
     metas.forEach(function(m) {
       m.setAttribute('content', '#A71F23');
