@@ -1,44 +1,87 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%" fill="none">
-  <!-- Aipan Lakshmi Charan (Sacred Lakshmi Feet) -->
-  <g id="LakshmiFeet" fill="#FFFDF9" stroke="none">
+  <!-- Authentic Uttarakhand Aipan Lakshmi Charan (Exact Match to Folk Art Reference) -->
+  
+  <!-- Outer Dotted Frame Ring -->
+  <circle cx="50" cy="50" r="47" stroke="#FFFDF9" stroke-width="0.8" opacity="0.5" />
+  <circle cx="94.50" cy="50.00" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="93.64" cy="58.68" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="91.11" cy="67.03" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="87.00" cy="74.72" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="81.47" cy="81.47" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="74.72" cy="87.00" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="67.03" cy="91.11" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="58.68" cy="93.64" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="50.00" cy="94.50" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="41.32" cy="93.64" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="32.97" cy="91.11" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="25.28" cy="87.00" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="18.53" cy="81.47" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="13.00" cy="74.72" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="8.89" cy="67.03" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="6.36" cy="58.68" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="5.50" cy="50.00" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="6.36" cy="41.32" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="8.89" cy="32.97" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="13.00" cy="25.28" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="18.53" cy="18.53" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="25.28" cy="13.00" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="32.97" cy="8.89" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="41.32" cy="6.36" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="50.00" cy="5.50" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="58.68" cy="6.36" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="67.03" cy="8.89" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="74.72" cy="13.00" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="81.47" cy="18.53" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="87.00" cy="25.28" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="91.11" cy="32.97" r="1.1" fill="#FFFDF9" opacity="0.85" />
+    <circle cx="93.64" cy="41.32" r="1.1" fill="#FFFDF9" opacity="0.85" />
+  <circle cx="50" cy="50" r="42" stroke="#FFFDF9" stroke-width="0.6" opacity="0.4" />
+
+  <!-- Sacred Pair of Lakshmi Feet -->
+  <g id="LakshmiFeetGroup" fill="#FFFDF9">
+    <!-- Left Foot Sole -->
+    <path d="M 45.5 37.5 
+C 47 40 46.5 43 45.5 46.5
+C 44.5 50 42.5 52.5 42.5 56
+C 42.5 59.5 44 63.5 42 66.5
+C 40.5 68.5 37 68.5 35 66.5
+C 33 63.5 32 58 32.5 51
+C 33 44 34.5 37.5 40 37.5
+C 42.5 37.5 44.5 37.5 45.5 37.5 Z" />
+    <!-- Left Foot Toes -->
     
-    <!-- LEFT FOOT (Sole & Toes) -->
-    <g id="LeftFoot">
-      <!-- Sole Pad: contoured Aipan footpad -->
-      <path d="M 42 38 C 45 38 46.5 41.5 46 47 C 45.5 53 44 59.5 42.5 65.5 C 41.5 69.5 38.5 71 36.5 71 C 34.5 71 31.5 69.5 30.5 65.5 C 29 59.5 27.5 53 28 47 C 28.5 41.5 30 38 34.5 38 Z" />
-      <!-- Inner decorative Aipan Geru incision (gives geometric character) -->
-      <path d="M 36.5 46 C 37.8 46 38.5 48 38 52 C 37.5 56 36.5 60 36.5 62 C 36.5 60 35.5 56 35 52 C 34.5 48 35.2 46 36.5 46 Z" fill="#AC2525" />
-      
-      <!-- 5 Toes (Graduated Pearl Dots in upward curve) -->
-      <circle cx="44.5" cy="28" r="3.8" />
-      <circle cx="39.5" cy="26.8" r="3.2" />
-      <circle cx="34.8" cy="27.8" r="2.7" />
-      <circle cx="30.5" cy="30.2" r="2.2" />
-      <circle cx="27" cy="33.5" r="1.8" />
-      
-      <!-- Auspicious Heel Pearl / Dot -->
-      <circle cx="36.5" cy="75.5" r="1.6" />
-    </g>
+      <ellipse cx="45.8" cy="29.5" rx="2.7" ry="3.7" transform="rotate(6 45.8 29.5)" fill="#FFFDF9" />
+      <ellipse cx="40.8" cy="28.2" rx="2.4" ry="3.4" transform="rotate(-4 40.8 28.2)" fill="#FFFDF9" />
+      <ellipse cx="36.0" cy="29.2" rx="2.1" ry="3.0" transform="rotate(-15 36.0 29.2)" fill="#FFFDF9" />
+      <ellipse cx="31.8" cy="31.8" rx="1.8" ry="2.6" transform="rotate(-26 31.8 31.8)" fill="#FFFDF9" />
+      <ellipse cx="28.2" cy="35.5" rx="1.5" ry="2.2" transform="rotate(-36 28.2 35.5)" fill="#FFFDF9" />
 
-    <!-- RIGHT FOOT (Symmetric across x=50) -->
-    <g id="RightFoot">
-      <!-- Sole Pad: contoured Aipan footpad -->
-      <path d="M 58 38 C 55 38 53.5 41.5 54 47 C 54.5 53 56 59.5 57.5 65.5 C 58.5 69.5 61.5 71 63.5 71 C 65.5 71 68.5 69.5 69.5 65.5 C 71 59.5 72.5 53 72 47 C 71.5 41.5 70 38 65.5 38 Z" />
-      <!-- Inner decorative Aipan Geru incision -->
-      <path d="M 63.5 46 C 62.2 46 61.5 48 62 52 C 62.5 56 63.5 60 63.5 62 C 63.5 60 64.5 56 65 52 C 65.5 48 64.8 46 63.5 46 Z" fill="#AC2525" />
-      
-      <!-- 5 Toes (Graduated Pearl Dots in upward curve) -->
-      <circle cx="55.5" cy="28" r="3.8" />
-      <circle cx="60.5" cy="26.8" r="3.2" />
-      <circle cx="65.2" cy="27.8" r="2.7" />
-      <circle cx="69.5" cy="30.2" r="2.2" />
-      <circle cx="73" cy="33.5" r="1.8" />
-      
-      <!-- Auspicious Heel Pearl / Dot -->
-      <circle cx="63.5" cy="75.5" r="1.6" />
-    </g>
 
-    <!-- Central Auspicious Bindu between feet -->
-    <circle cx="50" cy="49" r="1.8" fill="#F6BD59" />
+    <!-- Right Foot Sole -->
+    <path d="M 54.5 37.5 
+C 53 40 53.5 43 54.5 46.5
+C 55.5 50 57.5 52.5 57.5 56
+C 57.5 59.5 56 63.5 58 66.5
+C 59.5 68.5 63 68.5 65 66.5
+C 67 63.5 68 58 67.5 51
+C 67 44 65.5 37.5 60 37.5
+C 57.5 37.5 55.5 37.5 54.5 37.5 Z" />
+    <!-- Right Foot Toes -->
+    
+      <ellipse cx="54.2" cy="29.5" rx="2.7" ry="3.7" transform="rotate(-6 54.2 29.5)" fill="#FFFDF9" />
+      <ellipse cx="59.2" cy="28.2" rx="2.4" ry="3.4" transform="rotate(4 59.2 28.2)" fill="#FFFDF9" />
+      <ellipse cx="64.0" cy="29.2" rx="2.1" ry="3.0" transform="rotate(15 64.0 29.2)" fill="#FFFDF9" />
+      <ellipse cx="68.2" cy="31.8" rx="1.8" ry="2.6" transform="rotate(26 68.2 31.8)" fill="#FFFDF9" />
+      <ellipse cx="71.8" cy="35.5" rx="1.5" ry="2.2" transform="rotate(36 71.8 35.5)" fill="#FFFDF9" />
+
+
+    <!-- Central Aipan Flower Motif -->
+    <ellipse cx="53.20" cy="52.00" rx="1.1" ry="2.2" transform="rotate(90.0 53.20 52.00)" fill="#FFFDF9" />
+    <ellipse cx="51.60" cy="54.77" rx="1.1" ry="2.2" transform="rotate(150.0 51.60 54.77)" fill="#FFFDF9" />
+    <ellipse cx="48.40" cy="54.77" rx="1.1" ry="2.2" transform="rotate(210.0 48.40 54.77)" fill="#FFFDF9" />
+    <ellipse cx="46.80" cy="52.00" rx="1.1" ry="2.2" transform="rotate(270.0 46.80 52.00)" fill="#FFFDF9" />
+    <ellipse cx="48.40" cy="49.23" rx="1.1" ry="2.2" transform="rotate(330.0 48.40 49.23)" fill="#FFFDF9" />
+    <ellipse cx="51.60" cy="49.23" rx="1.1" ry="2.2" transform="rotate(390.0 51.60 49.23)" fill="#FFFDF9" />
+    <circle cx="50" cy="52" r="1.2" fill="#AC2525" />
   </g>
 </svg>
