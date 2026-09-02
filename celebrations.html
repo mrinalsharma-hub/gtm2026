@@ -353,18 +353,20 @@ body {
   transition-duration: 0.12s;
 }
 
-/* ── 4. Full-Bleed Edge-to-Edge Epilogue Section (Figma Node 484:242) ── */
+/* ── 4. Full-Bleed Edge-to-Edge Epilogue Section (Figma Node 482:1720) ── */
 .celebrations-epilogue-section {
   width: 100% !important;
   max-width: 480px !important;
   position: relative !important;
   display: block !important;
   background: transparent !important;
-  margin: 6px auto 30px auto !important;
-  padding: 0 4px !important;
+  margin: 8px auto 0 auto !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
   z-index: 2 !important;
   flex-shrink: 0 !important;
+  border-radius: 0 !important;
+  overflow: visible !important;
 }
 
 .epilogue-art-wrap {
@@ -373,7 +375,8 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   line-height: 0 !important;
-  aspect-ratio: 920 / 771 !important;
+  border-radius: 0 !important;
+  aspect-ratio: 990 / 831 !important;
 }
 
 .epilogue-footer-art {
@@ -381,8 +384,8 @@ body {
   height: 100% !important;
   display: block !important;
   object-fit: cover !important;
-  border-radius: 25.4px !important;
-  filter: contrast(1.02) brightness(1.01) !important;
+  border-radius: 0 !important;
+  filter: none !important;
   opacity: 1 !important;
   visibility: visible !important;
 }
@@ -1074,15 +1077,15 @@ body.sheet-modal-open .fixed-bottom-nav {
 
   </section>
 
-  <!-- ── 4. Full-Bleed Edge-to-Edge Epilogue Section (Figma Node 484:242) ── -->
+  <!-- ── 4. Full-Bleed Edge-to-Edge Epilogue Section (Figma Node 482:1720) ── -->
   <section class="celebrations-epilogue-section" aria-label="About the Pahari Motifs">
     <picture class="epilogue-art-wrap">
-      <source srcset="images/celebrations/pahari_motifs_footer.webp?v=30000" type="image/webp">
-      <img src="images/celebrations/pahari_motifs_footer.jpg?v=30000" 
+      <source srcset="images/celebrations/pahari_motifs_footer.webp?v=40000" type="image/webp">
+      <img src="images/celebrations/pahari_motifs_footer.jpg?v=40000" 
            alt="“Motifs on this page is inspired by traditional Pahari/Garhwali miniature paintings—an art form we both hold close to our hearts. We hope it brings a touch of the mountains and our journey to you as we prepare to celebrate.”" 
            class="epilogue-footer-art" 
-           width="920" 
-           height="771" 
+           width="990" 
+           height="831" 
            loading="eager" 
            fetchpriority="high"
            decoding="sync">

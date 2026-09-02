@@ -1268,11 +1268,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   padding-bottom: constant(safe-area-inset-bottom) !important;
   padding-bottom: env(safe-area-inset-bottom, 0px) !important;
-  background: linear-gradient(180deg, #5A0C10 0%, #460508 100%) !important;
-  background-color: #4C070A !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
   border: none !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
-  box-shadow: 0 -6px 28px rgba(20, 2, 4, 0.40) !important;
+  border-top: 1px solid rgba(167, 31, 35, 0.12) !important;
+  box-shadow: 0 -4px 20px rgba(110, 33, 26, 0.08) !important;
   z-index: 2147483647 !important;
   display: -webkit-box !important;
   display: -webkit-flex !important;
@@ -1395,8 +1395,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   flex-shrink: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
-  color: rgba(255, 255, 255, 0.50) !important;
-  opacity: 0.50 !important;
+  color: rgba(110, 33, 26, 0.50) !important;
+  opacity: 0.55 !important;
   fill: currentColor !important;
   -webkit-filter: none !important;
   filter: none !important;
@@ -1405,12 +1405,12 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 /* Active Icon */
 .fixed-bottom-nav .nav-tab.active .nav-icon {
-  color: #FFFFFF !important;
+  color: #A71F23 !important;
   opacity: 1 !important;
-  fill: #FFFFFF !important;
+  fill: #A71F23 !important;
   transform: scale(1.08) !important;
-  -webkit-filter: drop-shadow(0 2px 8px rgba(255, 184, 0, 0.25)) !important;
-  filter: drop-shadow(0 2px 8px rgba(255, 184, 0, 0.25)) !important;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
+  filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
 }
 
 /* Label below icon (13.5px, regular for unselected, bold for active, 0.01em tracking, perfect vertical centering) */
@@ -1428,7 +1428,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   letter-spacing: 0.01em !important;
   line-height: 1 !important;
   height: auto !important;
-  color: rgba(255, 255, 255, 0.50) !important;
+  color: rgba(110, 33, 26, 0.60) !important;
   opacity: 0.95 !important;
   -webkit-text-shadow: none !important;
   text-shadow: none !important;
@@ -1440,11 +1440,11 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
-  color: #FFFFFF !important;
+  color: #A71F23 !important;
   opacity: 1 !important;
   font-weight: 700 !important;
-  -webkit-text-shadow: 0 2px 8px rgba(255, 184, 0, 0.25) !important;
-  text-shadow: 0 2px 8px rgba(255, 184, 0, 0.25) !important;
+  -webkit-text-shadow: 0 1px 4px rgba(167, 31, 35, 0.20) !important;
+  text-shadow: 0 1px 4px rgba(167, 31, 35, 0.20) !important;
 }
 
 /* Completely Remove Active Indicator Dot */
@@ -2445,22 +2445,22 @@ body.rsvp-page,
     radial-gradient(ellipse 135% 60% at 50% 18%, rgba(248, 140, 55, 0.08) 0%, transparent 80%) !important;
 }
 
-/* ── Locked-in Ambient Deep-Wine Glass Bottom Navigation for joinus.html ── */
+/* ── Unified Light Theme Bottom Navigation for RSVP page ── */
 body.rsvp-page .fixed-bottom-nav,
 .rsvp-page-wrap ~ .fixed-bottom-nav {
-  background: linear-gradient(180deg, #5A0C10 0%, #460508 100%) !important;
-  background-color: #4C070A !important;
-  border-top: 1px solid rgba(255, 255, 255, 0.04) !important;
-  box-shadow: 0 -6px 28px rgba(20, 2, 4, 0.40) !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
+  border-top: 1px solid rgba(167, 31, 35, 0.12) !important;
+  box-shadow: 0 -4px 20px rgba(110, 33, 26, 0.08) !important;
 }
 
 body.rsvp-page .fixed-bottom-nav .nav-tab.active .nav-icon,
 body.rsvp-page .fixed-bottom-nav .nav-tab.active .nav-label,
 .rsvp-page-wrap ~ .fixed-bottom-nav .nav-tab.active .nav-icon,
 .rsvp-page-wrap ~ .fixed-bottom-nav .nav-tab.active .nav-label {
-  color: #FFFFFF !important;
-  fill: #FFFFFF !important;
-  filter: drop-shadow(0 2px 8px rgba(255, 184, 0, 0.25)) !important;
+  color: #A71F23 !important;
+  fill: #A71F23 !important;
+  filter: drop-shadow(0 1px 4px rgba(167, 31, 35, 0.25)) !important;
 }
 
 
