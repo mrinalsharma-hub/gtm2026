@@ -322,7 +322,7 @@ body {
   padding-bottom: 60px;
 }
 
-/* Authentic Figma Card Shell (848 x 558 · Radius: 25.4px) */
+/* Authentic Figma Card Shell (848 x 558 · Radius: 25.4px) with Luxury Tactile Affordance */
 .celebration-card-shell {
   width: 100%;
   max-width: 432px;
@@ -333,7 +333,79 @@ body {
   border-radius: 25.4px;
   overflow: hidden;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.06));
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   transform: translateZ(0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .celebration-card-shell:hover {
+    transform: translateY(-4px) scale(1.012) translateZ(0);
+    filter: drop-shadow(0 18px 36px rgba(110, 33, 26, 0.26)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.10));
+  }
+}
+
+.celebration-card-shell:active {
+  transform: scale(0.985) translateZ(0);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  transition-duration: 0.12s;
+}
+
+/* Floating Gold Action Seal (Icon-Only Affordance) */
+.card-action-seal {
+  position: absolute;
+  bottom: 18px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 220, 166, 0.55);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 0 4px rgba(255, 220, 166, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 20;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+#card-mehndi .card-action-seal,
+#card-party .card-action-seal {
+  right: 20px;
+}
+
+#card-wedding .card-action-seal,
+#card-reception .card-action-seal {
+  left: 20px;
+}
+
+.celebration-card-shell:hover .card-action-seal {
+  transform: scale(1.14);
+  background: rgba(255, 220, 166, 0.28);
+  border-color: rgba(255, 220, 166, 0.95);
+  box-shadow: 0 4px 14px rgba(255, 220, 166, 0.45), inset 0 0 6px rgba(255, 220, 166, 0.35);
+}
+
+.card-action-seal svg {
+  width: 12px;
+  height: 12px;
+  stroke: #FFDCA6;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.celebration-card-shell:hover .card-action-seal svg {
+  transform: translate(1px, -1px);
 }
 
 .card-picture-wrap {
@@ -658,6 +730,9 @@ body {
           <p class="card-body">A relaxed evening of henna, music and conversations - our one playful exception to Kumaoni traditions.</p>
           <p class="card-optional">(Optional to attend)</p>
         </div>
+        <span class="card-action-seal" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
       </div>
     </article>
 
@@ -686,6 +761,9 @@ body {
             <span class="card-venue-name">The Balrampur House</span>
           </div>
         </div>
+        <span class="card-action-seal" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
       </div>
     </article>
 
@@ -710,6 +788,9 @@ body {
           <p class="card-body" style="margin-bottom: 8px;">An evening of great music, good food and dancing with all our favorite people.</p>
           <p class="card-body" style="margin-bottom: 0;">The wedding may be done. The celebration isn’t.</p>
         </div>
+        <span class="card-action-seal" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
       </div>
     </article>
 
@@ -722,8 +803,8 @@ body {
              alt="Reception · Monday 23 November, 7:00 PM" 
              class="celebration-card-art" 
              width="848" 
-             height="558"
-             decoding="async"
+             height="558" 
+             decoding="async" 
              loading="lazy">
       </picture>
 
@@ -733,6 +814,9 @@ body {
           <h2 class="card-title">Reception</h2>
           <p class="card-body">A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.</p>
         </div>
+        <span class="card-action-seal" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
       </div>
     </article>
 
