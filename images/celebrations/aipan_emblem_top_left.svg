@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200" width="100%" height="100%" fill="none">
   <g fill="#9A2D29" stroke="#9A2D29">
-    <!-- Center Concentric Hollow Diamond -->
-    <path d="M 0 -18 L 18 0 L 0 18 L -18 0 Z M 0 -9.5 L -9.5 0 L 0 9.5 L 9.5 0 Z" fill="#9A2D29" stroke="none" fill-rule="evenodd"/>
+    <!-- Center Concentric Hollow Diamond (1pt thicker) -->
+    <path d="M 0 -19.5 L 19.5 0 L 0 19.5 L -19.5 0 Z M 0 -8.5 L -8.5 0 L 0 8.5 L 8.5 0 Z" fill="#9A2D29" stroke="none" fill-rule="evenodd"/>
 
-    <!-- Main Diamond & 4 Interlocking Dhoka/Petal Loops -->
+    <!-- Main Diamond & 4 Interlocking Dhoka/Petal Loops (Stroke increased by 1pt) -->
     <path d="
       M -48 0
       L 0 -48
@@ -21,47 +21,47 @@
       Z" 
       fill="none" 
       stroke="#9A2D29" 
-      stroke-width="5.8" 
+      stroke-width="8.2" 
       stroke-linecap="round" 
       stroke-linejoin="round"/>
 
     <!-- 4 Cardinal Outer Bindu Dots -->
-    <circle cx="0" cy="-91.5" r="3.8" fill="#9A2D29" stroke="none"/>
-    <circle cx="91.5" cy="0" r="3.8" fill="#9A2D29" stroke="none"/>
-    <circle cx="0" cy="91.5" r="3.8" fill="#9A2D29" stroke="none"/>
-    <circle cx="-91.5" cy="0" r="3.8" fill="#9A2D29" stroke="none"/>
+    <circle cx="0" cy="-91.5" r="4.6" fill="#9A2D29" stroke="none"/>
+    <circle cx="91.5" cy="0" r="4.6" fill="#9A2D29" stroke="none"/>
+    <circle cx="0" cy="91.5" r="4.6" fill="#9A2D29" stroke="none"/>
+    <circle cx="-91.5" cy="0" r="4.6" fill="#9A2D29" stroke="none"/>
 
     <!-- 4 Quadrants Diagonal Ornaments (Rice-Grain Teardrops & Framing Dots) -->
     <!-- NE (0 deg) -->
     <g transform="rotate(0)">
-      <circle cx="45" cy="-45" r="2.8" fill="#9A2D29" stroke="none"/>
-      <circle cx="53.5" cy="-53.5" r="2.8" fill="#9A2D29" stroke="none"/>
-      <path d="M 35.5 -29.5 C 42.5 -26.5 49 -32.5 46 -37 C 43 -41.5 37 -35 35.5 -29.5 Z" fill="#9A2D29" stroke="none"/>
-      <path d="M 29.5 -35.5 C 35 -37 41.5 -43 37 -46 C 32.5 -49 26.5 -42.5 29.5 -35.5 Z" fill="#9A2D29" stroke="none"/>
+      <circle cx="44.5" cy="-44.5" r="3.4" fill="#9A2D29" stroke="none"/>
+      <circle cx="54" cy="-54" r="3.4" fill="#9A2D29" stroke="none"/>
+      <path d="M 35 -28.5 C 43 -25 50 -32 46.5 -37 C 43 -42 36 -35 35 -28.5 Z" fill="#9A2D29" stroke="none"/>
+      <path d="M 28.5 -35 C 35 -36 42 -43 37 -46.5 C 32 -50 25 -43 28.5 -35 Z" fill="#9A2D29" stroke="none"/>
     </g>
 
     <!-- SE (90 deg) -->
     <g transform="rotate(90)">
-      <circle cx="45" cy="-45" r="2.8" fill="#9A2D29" stroke="none"/>
-      <circle cx="53.5" cy="-53.5" r="2.8" fill="#9A2D29" stroke="none"/>
-      <path d="M 35.5 -29.5 C 42.5 -26.5 49 -32.5 46 -37 C 43 -41.5 37 -35 35.5 -29.5 Z" fill="#9A2D29" stroke="none"/>
-      <path d="M 29.5 -35.5 C 35 -37 41.5 -43 37 -46 C 32.5 -49 26.5 -42.5 29.5 -35.5 Z" fill="#9A2D29" stroke="none"/>
+      <circle cx="44.5" cy="-44.5" r="3.4" fill="#9A2D29" stroke="none"/>
+      <circle cx="54" cy="-54" r="3.4" fill="#9A2D29" stroke="none"/>
+      <path d="M 35 -28.5 C 43 -25 50 -32 46.5 -37 C 43 -42 36 -35 35 -28.5 Z" fill="#9A2D29" stroke="none"/>
+      <path d="M 28.5 -35 C 35 -36 42 -43 37 -46.5 C 32 -50 25 -43 28.5 -35 Z" fill="#9A2D29" stroke="none"/>
     </g>
 
     <!-- SW (180 deg) -->
     <g transform="rotate(180)">
-      <circle cx="45" cy="-45" r="2.8" fill="#9A2D29" stroke="none"/>
-      <circle cx="53.5" cy="-53.5" r="2.8" fill="#9A2D29" stroke="none"/>
-      <path d="M 35.5 -29.5 C 42.5 -26.5 49 -32.5 46 -37 C 43 -41.5 37 -35 35.5 -29.5 Z" fill="#9A2D29" stroke="none"/>
-      <path d="M 29.5 -35.5 C 35 -37 41.5 -43 37 -46 C 32.5 -49 26.5 -42.5 29.5 -35.5 Z" fill="#9A2D29" stroke="none"/>
+      <circle cx="44.5" cy="-44.5" r="3.4" fill="#9A2D29" stroke="none"/>
+      <circle cx="54" cy="-54" r="3.4" fill="#9A2D29" stroke="none"/>
+      <path d="M 35 -28.5 C 43 -25 50 -32 46.5 -37 C 43 -42 36 -35 35 -28.5 Z" fill="#9A2D29" stroke="none"/>
+      <path d="M 28.5 -35 C 35 -36 42 -43 37 -46.5 C 32 -50 25 -43 28.5 -35 Z" fill="#9A2D29" stroke="none"/>
     </g>
 
     <!-- NW (270 deg) -->
     <g transform="rotate(270)">
-      <circle cx="45" cy="-45" r="2.8" fill="#9A2D29" stroke="none"/>
-      <circle cx="53.5" cy="-53.5" r="2.8" fill="#9A2D29" stroke="none"/>
-      <path d="M 35.5 -29.5 C 42.5 -26.5 49 -32.5 46 -37 C 43 -41.5 37 -35 35.5 -29.5 Z" fill="#9A2D29" stroke="none"/>
-      <path d="M 29.5 -35.5 C 35 -37 41.5 -43 37 -46 C 32.5 -49 26.5 -42.5 29.5 -35.5 Z" fill="#9A2D29" stroke="none"/>
+      <circle cx="44.5" cy="-44.5" r="3.4" fill="#9A2D29" stroke="none"/>
+      <circle cx="54" cy="-54" r="3.4" fill="#9A2D29" stroke="none"/>
+      <path d="M 35 -28.5 C 43 -25 50 -32 46.5 -37 C 43 -42 36 -35 35 -28.5 Z" fill="#9A2D29" stroke="none"/>
+      <path d="M 28.5 -35 C 35 -36 42 -43 37 -46.5 C 32 -50 25 -43 28.5 -35 Z" fill="#9A2D29" stroke="none"/>
     </g>
   </g>
 </svg>
