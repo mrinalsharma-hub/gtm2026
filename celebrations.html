@@ -769,7 +769,7 @@ body.sheet-modal-open .fixed-bottom-nav {
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
   -webkit-overflow-scrolling: touch !important;
-  padding: 16px 24px calc(52px + env(safe-area-inset-bottom, 0px)) 24px !important;
+  padding: 37px 24px calc(52px + env(safe-area-inset-bottom, 0px)) 24px !important;
   box-sizing: border-box !important;
   position: relative !important;
   color: #1E120E !important;
@@ -781,15 +781,9 @@ body.sheet-modal-open .fixed-bottom-nav {
   transform: translateY(0) !important;
 }
 
-/* Sheet Drag Handle */
+/* Sheet Drag Handle - Removed */
 .sheet-drag-handle {
-  width: 52px;
-  height: 5px;
-  background: #D2AA6D;
-  border-radius: 3px;
-  margin: 0 auto 16px auto;
-  cursor: grab;
-  flex-shrink: 0;
+  display: none !important;
 }
 
 .sheet-close-btn {
@@ -1182,7 +1176,6 @@ body.sheet-modal-open .fixed-bottom-nav {
 <!-- ── Royal Event Details Bottom Sheet Modal (Figma 438:1168) ── -->
 <div id="event-sheet-overlay" class="event-sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
   <div class="event-bottom-sheet" id="event-bottom-sheet">
-    <div class="sheet-drag-handle" aria-hidden="true"></div>
     <button type="button" class="sheet-close-btn" id="sheet-close-btn" aria-label="Close details">✕</button>
 
     <div class="sheet-event-eyebrow" id="sheet-eyebrow">FRI 20 NOV | 7:30PM</div>

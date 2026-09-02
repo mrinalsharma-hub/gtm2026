@@ -2533,3 +2533,8 @@ body.rsvp-confirmed .rsvp-subtitle {
   pointer-events: none !important;
   z-index: 2 !important;
 }
+
+/* Hide Sheet Drag Handle globally */
+.sheet-drag-handle {
+  display: none !important;
+}
