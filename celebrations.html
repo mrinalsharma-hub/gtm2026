@@ -851,7 +851,7 @@ body.sheet-modal-open .fixed-bottom-nav {
   display: flex;
   flex-direction: column;
   gap: 26px;
-  margin: 0 0 28px 0;
+  margin: 0;
   padding: 0;
   list-style: none;
   flex-shrink: 0;
@@ -895,12 +895,13 @@ body.sheet-modal-open .fixed-bottom-nav {
   flex: 1;
 }
 
-/* Bottom CTA Button */
+/* Bottom CTA Button (Figma: 36px rounded corners · 56px height · 24px top/bottom padding) */
 .sheet-action-btn {
   width: 100%;
-  height: 50px;
+  height: 56px;
+  min-height: 56px;
   background: #9A2B28;
-  border-radius: 14px;
+  border-radius: 36px;
   color: #FFFFFF;
   font-family: 'Spectral', Georgia, serif;
   font-size: 17px;
@@ -914,8 +915,8 @@ body.sheet-modal-open .fixed-bottom-nav {
   cursor: pointer;
   transition: background 0.2s ease, transform 0.15s ease;
   flex-shrink: 0;
-  margin-top: 4px;
-  margin-bottom: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
   box-shadow: 0 4px 14px rgba(154, 43, 40, 0.25);
 }
 
@@ -1085,9 +1086,9 @@ body.sheet-modal-open .fixed-bottom-nav {
   <!-- ── 4. Full-Bleed Edge-to-Edge Epilogue Section (Figma Node 482:1720) ── -->
   <section class="celebrations-epilogue-section" aria-label="About the Pahari Motifs">
     <picture class="epilogue-art-wrap">
-      <source srcset="images/celebrations/pahari_motifs_footer.webp?v=71000" type="image/webp">
-      <img src="images/celebrations/pahari_motifs_footer.jpg?v=71000" 
-           alt="“ Motifs on this page are inspired by traditional Pahari/Garhwali miniature paintings—an art form we both hold close to our hearts. We hope it brings a touch of the mountains and our journey to you as we prepare to celebrate. ”" 
+      <source srcset="images/celebrations/pahari_motifs_footer.webp?v=80000" type="image/webp">
+      <img src="images/celebrations/pahari_motifs_footer.jpg?v=80000" 
+           alt="“ These motifs are inspired by Pahari miniatures - a mountain art form close to both our hearts. A little piece of home, brought into our celebration ”" 
            class="epilogue-footer-art" 
            width="990" 
            height="831" 
