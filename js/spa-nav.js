@@ -64,7 +64,7 @@
 
     if (currentNorm === 'celebrations.html' || path.indexOf('celebrations.html') !== -1) {
       themeColor = '#FFEFD4';
-    } else if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1) {
+    } else if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'RSVP.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1 || path.indexOf('rsvp') !== -1) {
       themeColor = '#B02428';
     } else if (currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1) {
       themeColor = '#A71F23';
@@ -105,7 +105,7 @@
     var navEl = document.querySelector('.fixed-bottom-nav');
 
     if (navEl) {
-      if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html') {
+      if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'RSVP.html') {
         navEl.classList.add('nav-theme-red');
       } else {
         navEl.classList.remove('nav-theme-red');
@@ -334,6 +334,7 @@
 
   document.addEventListener('touchstart', onNavTouchStart, { capture: true, passive: true });
   document.addEventListener('pointerdown', onNavTouchStart, { capture: true, passive: true });
+  document.addEventListener('mousedown', onNavTouchStart, { capture: true, passive: true });
 
   // Intercept all internal navigation clicks globally
   document.addEventListener('click', function(e) {

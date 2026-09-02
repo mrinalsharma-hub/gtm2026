@@ -3,6 +3,13 @@
 <head>
 <script>
 (function() {
+  function applyRed() {
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    metas.forEach(function(m) { m.setAttribute('content', '#B02428'); });
+    if (document.documentElement) document.documentElement.style.backgroundColor = '#B02428';
+  }
+  applyRed();
+
   function getCookie(name) {
     var value = '; ' + document.cookie;
     var parts = value.split('; ' + name + '=');
@@ -27,7 +34,7 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#B02428">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#B02428">
 <meta name="color-scheme" content="dark">
-<meta name="msapplication-navbutton-color" content="#A71F23">
+<meta name="msapplication-navbutton-color" content="#B02428">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1445,6 +1452,37 @@ function handleEditRSVP() {
   });
 
   animId = requestAnimationFrame(loop);
+})();
+
+/* ── RSVP Address Bar & Tabs Bar Red Theme Watchdog (#B02428) ── */
+(function() {
+  function enforceRedTheme() {
+    var path = (window.location.pathname || '').toLowerCase();
+    var currentNorm = path.split('/').pop() || 'index.html';
+    if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'rsvp.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp') !== -1) {
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      metas.forEach(function(m) {
+        if (m.getAttribute('content') !== '#B02428') {
+          m.setAttribute('content', '#B02428');
+        }
+      });
+      var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
+      if (msMeta && msMeta.getAttribute('content') !== '#B02428') {
+        msMeta.setAttribute('content', '#B02428');
+      }
+      if (document.documentElement && document.documentElement.style.backgroundColor !== '#B02428') {
+        document.documentElement.style.backgroundColor = '#B02428';
+      }
+      var nav = document.querySelector('.fixed-bottom-nav');
+      if (nav && !nav.classList.contains('nav-theme-red')) {
+        nav.classList.add('nav-theme-red');
+      }
+    }
+  }
+  enforceRedTheme();
+  window.addEventListener('focus', enforceRedTheme, { passive: true });
+  window.addEventListener('visibilitychange', enforceRedTheme, { passive: true });
+  window.addEventListener('pageshow', enforceRedTheme, { passive: true });
 })();
 </script>
 </body>
