@@ -2316,12 +2316,6 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   transition: transform 0.2s ease, filter 0.2s ease !important;
 }
 
-.celebrations-topbar-right .celebration-player-btn {
-  position: relative !important;
-  top: auto !important;
-  right: auto !important;
-}
-
 .celebration-player-btn:hover,
 .global-audio-pill:hover {
   transform: scale(1.04) !important;

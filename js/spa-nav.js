@@ -180,11 +180,17 @@
       var preservedAudio = document.getElementById('bg-music') || window.__GTM_AUDIO__;
       var preservedNav = document.querySelector('.fixed-bottom-nav');
 
-            // Remove existing non-preserved content from body
+      // Strip any audio players or audio elements from the incoming document before adoption
+      var incomingPlayers = newDoc.querySelectorAll('#global-music-player, #music-toggle, .celebration-player-btn, .global-audio-pill');
+      incomingPlayers.forEach(function(el) { el.remove(); });
+      var incomingAudios = newDoc.querySelectorAll('#bg-music, audio');
+      incomingAudios.forEach(function(el) { el.remove(); });
+
+      // Remove existing non-preserved content from body
       var nodesToRemove = [];
       Array.from(document.body.childNodes).forEach(function(node) {
         if (node === preservedPlayer || node === preservedAudio || node === preservedNav) return;
-        if (node.nodeType === 1 && (node.id === 'global-music-player' || node.id === 'bg-music' || node.classList.contains('fixed-bottom-nav'))) return;
+        if (node.nodeType === 1 && (node.id === 'global-music-player' || node.id === 'bg-music' || node.classList.contains('fixed-bottom-nav') || node.classList.contains('celebration-player-btn'))) return;
         nodesToRemove.push(node);
       });
       nodesToRemove.forEach(function(node) { node.remove(); });
@@ -192,7 +198,7 @@
       // Insert new content nodes before the nav/player
       Array.from(newDoc.body.childNodes).forEach(function(node) {
         if (node.nodeType === 1) {
-          if (node.id === 'global-music-player' || node.id === 'bg-music' || node.classList.contains('fixed-bottom-nav')) return;
+          if (node.id === 'global-music-player' || node.id === 'bg-music' || node.classList.contains('fixed-bottom-nav') || node.classList.contains('celebration-player-btn')) return;
         }
         var adopted = document.adoptNode(node);
         if (preservedNav && preservedNav.parentNode === document.body) {
@@ -202,15 +208,23 @@
         }
       });
 
-      // Ensure preservedPlayer sits inside scrollable header on joinus or document.body
+      // Ensure preservedPlayer and preservedAudio sit cleanly as direct children of document.body
       if (preservedPlayer) {
-        var targetHeroHeader = document.querySelector('.rsvp-hero-header');
-        if (targetHeroHeader) {
-          targetHeroHeader.appendChild(preservedPlayer);
-        } else if (preservedNav && preservedNav.parentNode === document.body) {
+        if (preservedNav && preservedNav.parentNode === document.body) {
           document.body.insertBefore(preservedPlayer, preservedNav);
         } else {
           document.body.appendChild(preservedPlayer);
+        }
+      }
+      if (preservedAudio && preservedAudio.parentNode !== document.body) {
+        document.body.appendChild(preservedAudio);
+      }
+
+      // Purge any accidental duplicates that might exist anywhere in DOM
+      var allLivePlayers = document.querySelectorAll('#global-music-player, .celebration-player-btn');
+      if (allLivePlayers.length > 1) {
+        for (var i = 1; i < allLivePlayers.length; i++) {
+          allLivePlayers[i].remove();
         }
       }
 

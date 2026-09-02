@@ -26,8 +26,18 @@
   var audio = window.__GTM_AUDIO__;
   audio.volume = 0.85;
 
+  function deduplicatePlayers() {
+    var players = document.querySelectorAll('#global-music-player, .celebration-player-btn, .global-audio-pill, #music-toggle');
+    if (players.length > 1) {
+      for (var i = 1; i < players.length; i++) {
+        players[i].remove();
+      }
+    }
+  }
+
   function getPlayerElements() {
-    return document.querySelectorAll('#global-music-player, #music-toggle, .global-audio-pill');
+    deduplicatePlayers();
+    return document.querySelectorAll('#global-music-player, #music-toggle, .celebration-player-btn, .global-audio-pill');
   }
 
   function updateUI(playing) {

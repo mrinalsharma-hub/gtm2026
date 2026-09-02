@@ -48,7 +48,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=24700">
+<link rel="stylesheet" href="css/site.css?v=25500">
 
 <style>
 @font-face {
@@ -510,61 +510,6 @@ body {
   padding-bottom: 0 !important;
 }
 
-/* ── Royal Medallion Music Player (Figma Node 26:627 · 56x56px · 0px Bottom Margin) ── */
-.celebration-player-btn {
-  position: relative !important;
-  width: 56px !important;
-  height: 56px !important;
-  border-radius: 50% !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  margin-bottom: 0 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.10));
-  transform: none !important;
-  -webkit-transform: none !important;
-  transition: filter 0.2s ease !important;
-}
-
-.celebration-player-btn:hover,
-.celebration-player-btn:active {
-  transform: none !important;
-  -webkit-transform: none !important;
-}
-
-.celebration-player-btn .player-state-img {
-  width: 100% !important;
-  height: 100% !important;
-  display: block !important;
-  pointer-events: none !important;
-  user-select: none !important;
-}
-
-/* State 1: Play (Default when not playing) */
-.celebration-player-btn .player-img-play {
-  display: block !important;
-}
-.celebration-player-btn .player-img-pause {
-  display: none !important;
-}
-
-/* State 2: Pause (When music is playing) */
-.celebration-player-btn.is-playing .player-img-play {
-  display: none !important;
-}
-.celebration-player-btn.is-playing .player-img-pause {
-  display: block !important;
-}
-
 /* ── Relaxed Royal Entrance Choreography (Silk & Velvet Cascade) ── */
 @keyframes royalFadeSlideUp {
   0% {
@@ -666,11 +611,7 @@ body {
     <!-- Slot 2: Center Element -->
   </div>
   <div class="celebrations-topbar-right" id="topbar-slot-right">
-    <!-- Slot 3: Royal Medallion Music Player (Figma Node 26:627 · 56x56px) -->
-    <button id="global-music-player" class="celebration-player-btn" role="button" aria-label="Play Music" type="button">
-      <img src="images/player_figma_play.svg?v=24700" alt="Play Music" class="player-state-img player-img-play" width="56" height="56">
-      <img src="images/player_figma_pause.svg?v=24700" alt="Pause Music" class="player-state-img player-img-pause" width="56" height="56">
-    </button>
+    <!-- Slot 3: Extreme Right Element -->
   </div>
 </header>
 
@@ -854,13 +795,19 @@ body {
   </div>
 </nav>
 
+<!-- ── Global Royal Medallion Music Player (Figma Node 26:627 · 56x56px) ── -->
+<button id="global-music-player" class="celebration-player-btn" role="button" aria-label="Play Music" type="button">
+  <img src="images/player_figma_play.svg?v=24700" alt="Play Music" class="player-state-img player-img-play" width="56" height="56">
+  <img src="images/player_figma_pause.svg?v=24700" alt="Pause Music" class="player-state-img player-img-pause" width="56" height="56">
+</button>
+
 <!-- ── Audio Element ── -->
 <audio id="bg-music" loop preload="auto" playsinline>
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<script src="js/spa-nav.js?v=24700"></script>
-<script src="js/global-audio.js?v=24700"></script>
+<script src="js/spa-nav.js?v=25500"></script>
+<script src="js/global-audio.js?v=25500"></script>
 <script>
 /* ── Dynamic Live Wedding Countdown (Target: Nov 20, 2026 IST) ── */
 (function() {
