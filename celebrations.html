@@ -353,27 +353,28 @@ body {
   transition-duration: 0.12s;
 }
 
-/* Floating Gold Action Seal (Icon-Only Affordance) */
+/* Simple & Elegant Outline Action Button (No gradient, no shimmer) */
 .card-action-seal {
   position: absolute;
   bottom: 18px;
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.14);
-  border: 1px solid rgba(255, 220, 166, 0.55);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 0 4px rgba(255, 220, 166, 0.25);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.18);
+  border: 1.5px solid rgba(255, 238, 217, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   z-index: 20;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              background 0.35s ease,
-              border-color 0.35s ease,
-              box-shadow 0.35s ease;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.2s ease,
+              border-color 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #card-mehndi .card-action-seal,
@@ -386,26 +387,28 @@ body {
   left: 20px;
 }
 
+.card-action-seal:hover,
+.card-action-seal:focus,
 .celebration-card-shell:hover .card-action-seal {
-  transform: scale(1.14);
-  background: rgba(255, 220, 166, 0.28);
-  border-color: rgba(255, 220, 166, 0.95);
-  box-shadow: 0 4px 14px rgba(255, 220, 166, 0.45), inset 0 0 6px rgba(255, 220, 166, 0.35);
+  transform: scale(1.15);
+  background: rgba(0, 0, 0, 0.30);
+  border-color: rgba(255, 255, 255, 0.95);
+}
+
+.card-action-seal:active,
+.celebration-card-shell:active .card-action-seal {
+  transform: scale(0.95);
 }
 
 .card-action-seal svg {
-  width: 12px;
-  height: 12px;
-  stroke: #FFDCA6;
-  stroke-width: 2;
+  width: 13px;
+  height: 13px;
+  stroke: #FFF8EE;
+  stroke-width: 2.2;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.celebration-card-shell:hover .card-action-seal svg {
-  transform: translate(1px, -1px);
+  display: block;
 }
 
 .card-picture-wrap {
@@ -654,6 +657,216 @@ body {
   }
 }
 
+/* ══════════════════════════════════════════════════════════
+   ROYAL CELEBRATION EVENT BOTTOM SHEET MODAL
+   ══════════════════════════════════════════════════════════ */
+.event-sheet-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  background: rgba(26, 12, 10, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+}
+
+.event-sheet-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.event-bottom-sheet {
+  width: 100%;
+  max-width: 460px;
+  background: #FAF6EF;
+  background-image: radial-gradient(circle at 50% 0%, #FFFDF9 0%, #FAF6EF 100%);
+  border-radius: 28px 28px 0 0;
+  border-top: 1px solid rgba(255, 220, 166, 0.8);
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.28), 0 0 1px rgba(110, 33, 26, 0.15);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 85vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 24px 36px 24px;
+  box-sizing: border-box;
+  position: relative;
+  color: #2C1E18;
+}
+
+.event-sheet-overlay.is-open .event-bottom-sheet {
+  transform: translateY(0);
+}
+
+/* Sheet Drag Handle */
+.sheet-drag-handle {
+  width: 44px;
+  height: 4px;
+  background: rgba(167, 31, 35, 0.22);
+  border-radius: 4px;
+  margin: 0 auto 16px auto;
+  cursor: grab;
+}
+
+.sheet-close-btn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(167, 31, 35, 0.06);
+  border: 1px solid rgba(167, 31, 35, 0.15);
+  color: #741014;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  line-height: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.sheet-close-btn:hover {
+  background: rgba(167, 31, 35, 0.12);
+  transform: scale(1.06);
+}
+
+/* Event Title & Date Header */
+.sheet-event-title {
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.8px;
+  color: #741014;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+.sheet-event-datetime {
+  font-family: 'Spectral', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: #4A342E;
+  text-transform: uppercase;
+  margin: 0 0 10px 0;
+  line-height: 1.35;
+  white-space: pre-line;
+}
+
+.sheet-event-location-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Spectral', serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4A342E;
+  margin: 0 0 18px 0;
+}
+
+.sheet-location-icon {
+  width: 17px;
+  height: 17px;
+  color: #741014;
+  flex-shrink: 0;
+}
+
+.sheet-divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(167, 31, 35, 0.25) 0%, rgba(167, 31, 35, 0.08) 100%);
+  margin: 0 0 22px 0;
+  border: none;
+}
+
+/* Details List */
+.sheet-details-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 0 28px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sheet-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Spectral', serif;
+  font-size: 14px;
+  line-height: 1.35;
+  color: #2C1E18;
+}
+
+.sheet-detail-icon-wrap {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #A71F23;
+  flex-shrink: 0;
+}
+
+.sheet-detail-icon-wrap svg {
+  width: 19px;
+  height: 19px;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sheet-detail-text {
+  flex: 1;
+}
+
+/* Bottom CTA Button */
+.sheet-action-btn {
+  width: 100%;
+  height: 48px;
+  background: #741014;
+  border: 1px solid rgba(255, 220, 166, 0.4);
+  border-radius: 24px;
+  color: #FFFDF9;
+  font-family: 'Spectral', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(116, 16, 20, 0.35);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  text-decoration: none;
+}
+
+.sheet-action-btn:hover {
+  background: #871419;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(116, 16, 20, 0.45);
+}
+
+.sheet-action-btn:active {
+  transform: scale(0.98);
+}
 </style>
 </head>
 <body>
@@ -877,6 +1090,40 @@ body {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
+<!-- ── Royal Event Details Bottom Sheet Modal (Figma Matching) ── -->
+<div id="event-sheet-overlay" class="event-sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+  <div class="event-bottom-sheet" id="event-bottom-sheet">
+    <div class="sheet-drag-handle" aria-hidden="true"></div>
+    <button type="button" class="sheet-close-btn" id="sheet-close-btn" aria-label="Close details">✕</button>
+
+    <h2 class="sheet-event-title" id="sheet-title">THE WEDDING</h2>
+    <div class="sheet-event-datetime" id="sheet-datetime">SATURDAY, 21 NOVEMBER 2026
+9:00 AM</div>
+    
+    <div class="sheet-event-location-row" id="sheet-location-row">
+      <svg class="sheet-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      <span id="sheet-location">Balrampur House, Nainital</span>
+    </div>
+
+    <hr class="sheet-divider">
+
+    <ul class="sheet-details-list" id="sheet-details-list">
+      <!-- Injected dynamically based on event -->
+    </ul>
+
+    <a href="#" target="_blank" rel="noopener noreferrer" class="sheet-action-btn" id="sheet-map-btn">
+      <span>VIEW ON MAP</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </a>
+  </div>
+</div>
+
 <script src="js/spa-nav.js?v=26000"></script>
 <script src="js/global-audio.js?v=26000"></script>
 <script>
@@ -907,6 +1154,172 @@ body {
     document.addEventListener('DOMContentLoaded', updateCountdown);
   } else {
     updateCountdown();
+  }
+})();
+
+/* ── Royal Event Details Bottom Sheet Interactive Controller ── */
+(function() {
+  var iconSvgs = {
+    clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg>',
+    seat: '<svg viewBox="0 0 24 24"><path d="M4 18v3M20 18v3M6 18h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2z"></path><path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"></path></svg>',
+    attire: '<svg viewBox="0 0 24 24"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>',
+    food: '<svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"></path></svg>',
+    parking: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path></svg>'
+  };
+
+  var eventData = {
+    'card-mehndi': {
+      title: 'THE MEHNDI',
+      datetime: 'FRIDAY, 20 NOVEMBER 2026\n7:30 PM',
+      location: 'The Balrampur House, Nainital',
+      mapUrl: 'https://maps.google.com/?q=The+Balrampur+House+Nainital',
+      details: [
+        { icon: 'clock', text: 'Celebration begins at 7:30 PM' },
+        { icon: 'seat', text: 'Kindly arrive by 7:15 PM' },
+        { icon: 'attire', text: 'Playful festive / pastel ethnic attire' },
+        { icon: 'food', text: 'Traditional Pahadi snacks & high dinner' },
+        { icon: 'parking', text: 'Parking & valet available on premises' }
+      ]
+    },
+    'card-wedding': {
+      title: 'THE WEDDING',
+      datetime: 'FRIDAY, 20 NOVEMBER 2026\n7:30 PM',
+      location: 'The Balrampur House, Nainital',
+      mapUrl: 'https://maps.google.com/?q=Balrampur+House+Nainital',
+      details: [
+        { icon: 'clock', text: 'Ceremony begins at 7:30 PM' },
+        { icon: 'seat', text: 'Kindly be seated by 7:15 PM' },
+        { icon: 'attire', text: 'Traditional Indian wedding attire' },
+        { icon: 'food', text: 'Royal dinner banquet following rituals' },
+        { icon: 'parking', text: 'Parking & valet available' }
+      ]
+    },
+    'card-party': {
+      title: 'THE EVENING PARTY',
+      datetime: 'SATURDAY, 21 NOVEMBER 2026\n7:00 PM',
+      location: 'The Naini Retreat, Nainital',
+      mapUrl: 'https://maps.google.com/?q=The+Naini+Retreat+Nainital',
+      details: [
+        { icon: 'clock', text: 'Evening begins at 7:00 PM' },
+        { icon: 'seat', text: 'Music and cocktails kick off early' },
+        { icon: 'attire', text: 'Glamorous party / modern cocktail attire' },
+        { icon: 'food', text: 'Dinner banquet & cocktail bar' },
+        { icon: 'parking', text: 'Valet parking available' }
+      ]
+    },
+    'card-reception': {
+      title: 'THE RECEPTION',
+      datetime: 'MONDAY, 23 NOVEMBER 2026\n7:00 PM',
+      location: 'New Delhi',
+      mapUrl: 'https://maps.google.com/?q=New+Delhi',
+      details: [
+        { icon: 'clock', text: 'Reception begins at 7:00 PM' },
+        { icon: 'seat', text: 'Family blessings & greetings ceremony' },
+        { icon: 'attire', text: 'Formal festive / black tie attire' },
+        { icon: 'food', text: 'Celebratory dinner banquet' },
+        { icon: 'parking', text: 'Valet parking on site' }
+      ]
+    }
+  };
+
+  var overlay = document.getElementById('event-sheet-overlay');
+  var sheet = document.getElementById('event-bottom-sheet');
+  var closeBtn = document.getElementById('sheet-close-btn');
+  var titleEl = document.getElementById('sheet-title');
+  var datetimeEl = document.getElementById('sheet-datetime');
+  var locationEl = document.getElementById('sheet-location');
+  var listEl = document.getElementById('sheet-details-list');
+  var mapBtn = document.getElementById('sheet-map-btn');
+
+  function openSheet(eventId) {
+    var data = eventData[eventId] || eventData['card-wedding'];
+    titleEl.textContent = data.title;
+    datetimeEl.textContent = data.datetime;
+    locationEl.textContent = data.location;
+    mapBtn.href = data.mapUrl;
+
+    listEl.innerHTML = '';
+    data.details.forEach(function(item) {
+      var li = document.createElement('li');
+      li.className = 'sheet-detail-item';
+      li.innerHTML = '<span class="sheet-detail-icon-wrap" aria-hidden="true">' + (iconSvgs[item.icon] || '') + '</span><span class="sheet-detail-text">' + item.text + '</span>';
+      listEl.appendChild(li);
+    });
+
+    overlay.classList.add('is-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSheet() {
+    overlay.classList.remove('is-open');
+    document.body.style.overflow = '';
+  }
+
+  // Card & Button click handlers
+  document.querySelectorAll('.celebration-card-shell').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      var cardId = card.id;
+      if (cardId) {
+        openSheet(cardId);
+      }
+    });
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeSheet();
+    });
+  }
+
+  if (overlay) {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) {
+        closeSheet();
+      }
+    });
+  }
+
+  // Keyboard Escape
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && overlay.classList.contains('is-open')) {
+      closeSheet();
+    }
+  });
+
+  // Touch Swipe Down Gesture to Dismiss
+  var startY = 0;
+  var currentY = 0;
+  var isDragging = false;
+
+  if (sheet) {
+    sheet.addEventListener('touchstart', function(e) {
+      if (sheet.scrollTop <= 0) {
+        startY = e.touches[0].clientY;
+        isDragging = true;
+      }
+    }, { passive: true });
+
+    sheet.addEventListener('touchmove', function(e) {
+      if (!isDragging) return;
+      currentY = e.touches[0].clientY;
+      var diffY = currentY - startY;
+      if (diffY > 0) {
+        sheet.style.transform = 'translateY(' + diffY + 'px)';
+      }
+    }, { passive: true });
+
+    sheet.addEventListener('touchend', function(e) {
+      if (!isDragging) return;
+      isDragging = false;
+      var diffY = currentY - startY;
+      if (diffY > 100) {
+        closeSheet();
+      }
+      sheet.style.transform = '';
+      startY = 0;
+      currentY = 0;
+    });
   }
 })();
 </script>
