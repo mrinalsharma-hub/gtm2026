@@ -728,10 +728,10 @@ body.sheet-modal-open .fixed-bottom-nav {
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
   -webkit-overflow-scrolling: touch !important;
-  padding: 16px 22px calc(52px + env(safe-area-inset-bottom, 0px)) 22px !important;
+  padding: 16px 24px calc(52px + env(safe-area-inset-bottom, 0px)) 24px !important;
   box-sizing: border-box !important;
   position: relative !important;
-  color: #2C1E18 !important;
+  color: #1E120E !important;
   display: flex !important;
   flex-direction: column !important;
 }
@@ -742,96 +742,72 @@ body.sheet-modal-open .fixed-bottom-nav {
 
 /* Sheet Drag Handle */
 .sheet-drag-handle {
-  width: 44px;
-  height: 4px;
-  background: rgba(167, 31, 35, 0.25);
-  border-radius: 4px;
-  margin: 0 auto 14px auto;
+  width: 52px;
+  height: 5px;
+  background: #D2AA6D;
+  border-radius: 3px;
+  margin: 0 auto 16px auto;
   cursor: grab;
   flex-shrink: 0;
 }
 
 .sheet-close-btn {
   position: absolute;
-  top: 16px;
-  right: 18px;
+  top: 18px;
+  right: 20px;
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: rgba(167, 31, 35, 0.08);
-  border: 1px solid rgba(167, 31, 35, 0.2);
-  color: #741014;
+  background: transparent;
+  border: none;
+  color: #2C1E18;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 22px;
   line-height: 1;
-  transition: background 0.2s ease, transform 0.2s ease;
+  font-weight: 300;
+  transition: transform 0.2s ease, opacity 0.2s ease;
   z-index: 10;
+  padding: 0;
 }
 
 .sheet-close-btn:hover {
-  background: rgba(167, 31, 35, 0.16);
-  transform: scale(1.08);
+  transform: scale(1.12);
+  opacity: 0.75;
 }
 
-/* Event Title & Date Header */
-.sheet-event-title {
-  font-family: 'Kugile', 'Cinzel', serif;
-  font-size: 24px;
-  font-weight: 400;
-  letter-spacing: 0.6px;
-  color: #741014;
-  margin: 0 0 8px 0;
-  text-transform: uppercase;
-  padding-right: 36px;
-}
-
-.sheet-event-datetime {
+/* Centered Top Eyebrow */
+.sheet-event-eyebrow {
   font-family: 'Spectral', Georgia, serif;
   font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  color: #3D2924;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  color: #38241D;
   text-transform: uppercase;
-  margin: 0 0 10px 0;
-  line-height: 1.35;
-  white-space: pre-line;
+  text-align: center;
+  margin: 0 0 6px 0;
+  line-height: 1.2;
 }
 
-.sheet-event-location-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 16px;
+/* Centered Main Title (Title Case) */
+.sheet-event-title {
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: 42px;
   font-weight: 400;
-  color: #2C1E18;
-  margin: 0 0 16px 0;
-}
-
-.sheet-location-icon {
-  width: 17px;
-  height: 17px;
-  color: #741014;
-  flex-shrink: 0;
-}
-
-.sheet-divider {
-  height: 1px;
-  background: linear-gradient(90deg, rgba(167, 31, 35, 0.25) 0%, rgba(167, 31, 35, 0.08) 100%);
-  margin: 0 0 18px 0;
-  border: none;
-  flex-shrink: 0;
+  letter-spacing: 0.2px;
+  color: #9A2B28;
+  margin: 0 0 28px 0;
+  text-align: center;
+  line-height: 1.1;
 }
 
 /* Details List */
 .sheet-details-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  margin: 0 0 22px 0;
+  gap: 18px;
+  margin: 0 0 26px 0;
   padding: 0;
   list-style: none;
   flex-shrink: 0;
@@ -840,36 +816,37 @@ body.sheet-modal-open .fixed-bottom-nav {
 .sheet-detail-item {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .sheet-detail-icon-wrap {
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #A71F23;
+  color: #9A2B28;
   flex-shrink: 0;
 }
 
 .sheet-detail-icon-wrap svg {
-  width: 19px;
-  height: 19px;
-  stroke: currentColor;
-  stroke-width: 1.7;
+  width: 20px;
+  height: 20px;
+  stroke: #9A2B28;
+  stroke-width: 1.8;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
+  display: block;
 }
 
 .sheet-detail-text {
   font-family: 'Spectral', Georgia, serif;
   font-size: 16px;
-  font-weight: 200;
-  line-height: 1.25;
+  font-weight: 400;
+  line-height: 1.35;
   letter-spacing: normal;
-  color: #2C1E18;
+  color: #1E120E;
   flex: 1;
 }
 
@@ -877,35 +854,32 @@ body.sheet-modal-open .fixed-bottom-nav {
 .sheet-action-btn {
   width: 100%;
   height: 50px;
-  background: #741014;
-  border: 1px solid rgba(255, 220, 166, 0.4);
-  border-radius: 25px;
-  color: #FFFDF9;
-  font-family: 'Spectral', serif;
-  font-size: 13.5px;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
+  background: #9A2B28;
+  border-radius: 14px;
+  color: #FFFFFF;
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  box-shadow: 0 6px 20px rgba(116, 16, 20, 0.35);
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
   text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
   flex-shrink: 0;
   margin-top: 4px;
+  box-shadow: 0 4px 14px rgba(154, 43, 40, 0.25);
 }
 
 .sheet-action-btn:hover {
-  background: #871419;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(116, 16, 20, 0.45);
+  background: #842321;
+  transform: scale(0.99);
 }
 
 .sheet-action-btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
 </style>
 </head>
@@ -1118,36 +1092,21 @@ body.sheet-modal-open .fixed-bottom-nav {
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
-<!-- ── Royal Event Details Bottom Sheet Modal (Figma Matching) ── -->
+<!-- ── Royal Event Details Bottom Sheet Modal (Figma 438:1168) ── -->
 <div id="event-sheet-overlay" class="event-sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
   <div class="event-bottom-sheet" id="event-bottom-sheet">
     <div class="sheet-drag-handle" aria-hidden="true"></div>
     <button type="button" class="sheet-close-btn" id="sheet-close-btn" aria-label="Close details">✕</button>
 
-    <h2 class="sheet-event-title" id="sheet-title">THE WEDDING</h2>
-    <div class="sheet-event-datetime" id="sheet-datetime">SATURDAY, 21 NOVEMBER 2026
-9:00 AM</div>
-    
-    <div class="sheet-event-location-row" id="sheet-location-row">
-      <svg class="sheet-location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-        <circle cx="12" cy="10" r="3"></circle>
-      </svg>
-      <span id="sheet-location">Balrampur House, Nainital</span>
-    </div>
-
-    <hr class="sheet-divider">
+    <div class="sheet-event-eyebrow" id="sheet-eyebrow">FRI 20 NOV | 7:30PM</div>
+    <h2 class="sheet-event-title" id="sheet-title">Mehndi</h2>
 
     <ul class="sheet-details-list" id="sheet-details-list">
       <!-- Injected dynamically based on event -->
     </ul>
 
     <a href="#" target="_blank" rel="noopener noreferrer" class="sheet-action-btn" id="sheet-map-btn">
-      <span>VIEW ON MAP</span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
+      View on Map
     </a>
   </div>
 </div>
@@ -1185,67 +1144,68 @@ body.sheet-modal-open .fixed-bottom-nav {
   }
 })();
 
-/* ── Royal Event Details Bottom Sheet Interactive Controller ── */
+/* ── Royal Event Details Bottom Sheet Interactive Controller (Figma 438:1168) ── */
 (function() {
   var iconSvgs = {
     clock: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><polyline points="12 7 12 12 15 14"></polyline></svg>',
-    seat: '<svg viewBox="0 0 24 24"><path d="M4 18v3M20 18v3M6 18h12a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2z"></path><path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"></path></svg>',
+    seat: '<svg viewBox="0 0 24 24"><path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"></path><path d="M3 11v5a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2z"></path><path d="M6 18v2"></path><path d="M18 18v2"></path></svg>',
     attire: '<svg viewBox="0 0 24 24"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"></path></svg>',
-    food: '<svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"></path></svg>',
-    parking: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 17V7h4a3 3 0 0 1 0 6H9"></path></svg>'
+    food: '<svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"></path><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path><line x1="6" y1="2" x2="6" y2="4"></line><line x1="10" y1="2" x2="10" y2="4"></line><line x1="14" y1="2" x2="14" y2="4"></line></svg>',
+    parking: '<svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 17V7h4.5a3 3 0 0 1 0 6H9"></path></svg>',
+    pin: '<svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>'
   };
 
   var eventData = {
     'card-mehndi': {
-      title: 'THE MEHNDI',
-      datetime: 'FRIDAY, 20 NOVEMBER 2026\n7:30 PM',
-      location: 'The Balrampur House, Nainital',
+      eyebrow: 'FRI 20 NOV | 7:30PM',
+      title: 'Mehndi',
       mapUrl: 'https://maps.google.com/?q=The+Balrampur+House+Nainital',
       details: [
         { icon: 'clock', text: 'Celebration begins at 7:30 PM' },
         { icon: 'seat', text: 'Kindly arrive by 7:15 PM' },
-        { icon: 'attire', text: 'Playful festive / pastel ethnic attire' },
+        { icon: 'attire', text: 'Playful causals or festive ethnic attire' },
         { icon: 'food', text: 'Traditional Pahadi snacks & high dinner' },
-        { icon: 'parking', text: 'Parking & valet available on premises' }
+        { icon: 'parking', text: 'Parking will be available at venue' },
+        { icon: 'pin', text: 'TBD' }
       ]
     },
     'card-wedding': {
-      title: 'THE WEDDING',
-      datetime: 'FRIDAY, 20 NOVEMBER 2026\n7:30 PM',
-      location: 'The Balrampur House, Nainital',
+      eyebrow: 'FRI 20 NOV | 7:30PM',
+      title: 'Wedding',
       mapUrl: 'https://maps.google.com/?q=Balrampur+House+Nainital',
       details: [
         { icon: 'clock', text: 'Ceremony begins at 7:30 PM' },
         { icon: 'seat', text: 'Kindly be seated by 7:15 PM' },
         { icon: 'attire', text: 'Traditional Indian wedding attire' },
         { icon: 'food', text: 'Royal dinner banquet following rituals' },
-        { icon: 'parking', text: 'Parking & valet available' }
+        { icon: 'parking', text: 'Parking & valet available at venue' },
+        { icon: 'pin', text: 'The Balrampur House, Nainital' }
       ]
     },
     'card-party': {
-      title: 'THE EVENING PARTY',
-      datetime: 'SATURDAY, 21 NOVEMBER 2026\n7:00 PM',
-      location: 'The Naini Retreat, Nainital',
+      eyebrow: 'SAT 21 NOV | 7:00 PM',
+      title: 'Evening Party',
       mapUrl: 'https://maps.google.com/?q=The+Naini+Retreat+Nainital',
       details: [
         { icon: 'clock', text: 'Evening begins at 7:00 PM' },
         { icon: 'seat', text: 'Music and cocktails kick off early' },
-        { icon: 'attire', text: 'Glamorous party / modern cocktail attire' },
-        { icon: 'food', text: 'Dinner banquet & cocktail bar' },
-        { icon: 'parking', text: 'Valet parking available' }
+        { icon: 'attire', text: 'Glamorous party or modern cocktail attire' },
+        { icon: 'food', text: 'Dinner banquet & open cocktail bar' },
+        { icon: 'parking', text: 'Valet parking available at venue' },
+        { icon: 'pin', text: 'The Naini Retreat, Nainital' }
       ]
     },
     'card-reception': {
-      title: 'THE RECEPTION',
-      datetime: 'MONDAY, 23 NOVEMBER 2026\n7:00 PM',
-      location: 'New Delhi',
+      eyebrow: 'MON 23 NOV | 7:00 PM',
+      title: 'Reception',
       mapUrl: 'https://maps.google.com/?q=New+Delhi',
       details: [
         { icon: 'clock', text: 'Reception begins at 7:00 PM' },
         { icon: 'seat', text: 'Family blessings & greetings ceremony' },
         { icon: 'attire', text: 'Formal festive / black tie attire' },
         { icon: 'food', text: 'Celebratory dinner banquet' },
-        { icon: 'parking', text: 'Valet parking on site' }
+        { icon: 'parking', text: 'Valet parking on site' },
+        { icon: 'pin', text: 'New Delhi' }
       ]
     }
   };
@@ -1253,26 +1213,26 @@ body.sheet-modal-open .fixed-bottom-nav {
   var overlay = document.getElementById('event-sheet-overlay');
   var sheet = document.getElementById('event-bottom-sheet');
   var closeBtn = document.getElementById('sheet-close-btn');
+  var eyebrowEl = document.getElementById('sheet-eyebrow');
   var titleEl = document.getElementById('sheet-title');
-  var datetimeEl = document.getElementById('sheet-datetime');
-  var locationEl = document.getElementById('sheet-location');
   var listEl = document.getElementById('sheet-details-list');
   var mapBtn = document.getElementById('sheet-map-btn');
 
   function openSheet(eventId) {
-    var data = eventData[eventId] || eventData['card-wedding'];
-    titleEl.textContent = data.title;
-    datetimeEl.textContent = data.datetime;
-    locationEl.textContent = data.location;
-    mapBtn.href = data.mapUrl;
+    var data = eventData[eventId] || eventData['card-mehndi'];
+    if (eyebrowEl) eyebrowEl.textContent = data.eyebrow;
+    if (titleEl) titleEl.textContent = data.title;
+    if (mapBtn) mapBtn.href = data.mapUrl;
 
-    listEl.innerHTML = '';
-    data.details.forEach(function(item) {
-      var li = document.createElement('li');
-      li.className = 'sheet-detail-item';
-      li.innerHTML = '<span class="sheet-detail-icon-wrap" aria-hidden="true">' + (iconSvgs[item.icon] || '') + '</span><span class="sheet-detail-text">' + item.text + '</span>';
-      listEl.appendChild(li);
-    });
+    if (listEl) {
+      listEl.innerHTML = '';
+      data.details.forEach(function(item) {
+        var li = document.createElement('li');
+        li.className = 'sheet-detail-item';
+        li.innerHTML = '<span class="sheet-detail-icon-wrap" aria-hidden="true">' + (iconSvgs[item.icon] || '') + '</span><span class="sheet-detail-text">' + item.text + '</span>';
+        listEl.appendChild(li);
+      });
+    }
 
     overlay.classList.add('is-open');
     document.body.classList.add('sheet-modal-open');
