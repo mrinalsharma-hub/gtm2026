@@ -57,18 +57,8 @@
     return true;
   }
 
-  function ensureThemeColor(forceNorm) {
-    var path = (window.location.pathname || '').toLowerCase();
-    var currentNorm = forceNorm || normalizePath(window.location.pathname);
-    var themeColor = '#A71F23';
-
-    if (currentNorm === 'celebrations.html' || path.indexOf('celebrations.html') !== -1 || currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1 || path.indexOf('travel.html') !== -1) {
-      themeColor = '#FFEFD4';
-    } else if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'RSVP.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1 || path.indexOf('rsvp') !== -1) {
-      themeColor = '#B02428';
-    } else {
-      themeColor = '#A71F23';
-    }
+  function ensureThemeColor() {
+    var themeColor = '#FFEFD4';
 
     if (document.documentElement) {
       document.documentElement.style.backgroundColor = themeColor;
@@ -100,15 +90,6 @@
     currentNorm = currentNorm || normalizePath(window.location.pathname);
     var authed = isAuthenticated();
     var tabs = document.querySelectorAll('.fixed-bottom-nav .nav-tab');
-    var navEl = document.querySelector('.fixed-bottom-nav');
-
-    if (navEl) {
-      if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'RSVP.html') {
-        navEl.classList.add('nav-theme-red');
-      } else {
-        navEl.classList.remove('nav-theme-red');
-      }
-    }
 
     tabs.forEach(function(tab) {
       var href = tab.getAttribute('href');

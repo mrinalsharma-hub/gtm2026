@@ -3,13 +3,6 @@
 <head>
 <script>
 (function() {
-  function applyRed() {
-    var metas = document.querySelectorAll('meta[name="theme-color"]');
-    metas.forEach(function(m) { m.setAttribute('content', '#B02428'); });
-    if (document.documentElement) document.documentElement.style.backgroundColor = '#B02428';
-  }
-  applyRed();
-
   function getCookie(name) {
     var value = '; ' + document.cookie;
     var parts = value.split('; ' + name + '=');
@@ -30,11 +23,11 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#B02428" id="meta-theme-color">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#B02428">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#B02428">
-<meta name="color-scheme" content="dark">
-<meta name="msapplication-navbutton-color" content="#B02428">
+<meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
+<meta name="color-scheme" content="light dark">
+<meta name="msapplication-navbutton-color" content="#FFEFD4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
@@ -864,7 +857,7 @@ main.paper, main, .rsvp-page-wrap {
 </main>
 
 <!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
-<nav class="fixed-bottom-nav nav-theme-red" aria-label="Main Navigation">
+<nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container" role="tablist">
     <a href="G&M.html" class="nav-tab" role="tab" aria-selected="false" aria-label="G&amp;M">
       <div class="nav-pill-wrapper">
@@ -1452,37 +1445,6 @@ function handleEditRSVP() {
   });
 
   animId = requestAnimationFrame(loop);
-})();
-
-/* ── RSVP Address Bar & Tabs Bar Red Theme Watchdog (#B02428) ── */
-(function() {
-  function enforceRedTheme() {
-    var path = (window.location.pathname || '').toLowerCase();
-    var currentNorm = path.split('/').pop() || 'index.html';
-    if (currentNorm === 'joinus.html' || currentNorm === 'rsvp.html' || currentNorm === 'rsvp.html' || path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp') !== -1) {
-      var metas = document.querySelectorAll('meta[name="theme-color"]');
-      metas.forEach(function(m) {
-        if (m.getAttribute('content') !== '#B02428') {
-          m.setAttribute('content', '#B02428');
-        }
-      });
-      var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
-      if (msMeta && msMeta.getAttribute('content') !== '#B02428') {
-        msMeta.setAttribute('content', '#B02428');
-      }
-      if (document.documentElement && document.documentElement.style.backgroundColor !== '#B02428') {
-        document.documentElement.style.backgroundColor = '#B02428';
-      }
-      var nav = document.querySelector('.fixed-bottom-nav');
-      if (nav && !nav.classList.contains('nav-theme-red')) {
-        nav.classList.add('nav-theme-red');
-      }
-    }
-  }
-  enforceRedTheme();
-  window.addEventListener('focus', enforceRedTheme, { passive: true });
-  window.addEventListener('visibilitychange', enforceRedTheme, { passive: true });
-  window.addEventListener('pageshow', enforceRedTheme, { passive: true });
 })();
 </script>
 </body>

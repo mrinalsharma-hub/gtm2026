@@ -649,37 +649,5 @@ body {
 
 <script src="js/spa-nav.js?v=26000"></script>
 <script src="js/global-audio.js?v=26000"></script>
-<script>
-/* ── Stay Address Bar & Tabs Bar Cream Theme Watchdog (#FFEFD4) ── */
-(function() {
-  function enforceCreamTheme() {
-    var path = (window.location.pathname || '').toLowerCase();
-    var currentNorm = path.split('/').pop() || 'index.html';
-    if (currentNorm === 'stay.html' || path.indexOf('stay.html') !== -1 || path.indexOf('travel.html') !== -1) {
-      var metas = document.querySelectorAll('meta[name="theme-color"]');
-      metas.forEach(function(m) {
-        if (m.getAttribute('content') !== '#FFEFD4') {
-          m.setAttribute('content', '#FFEFD4');
-        }
-      });
-      var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
-      if (msMeta && msMeta.getAttribute('content') !== '#FFEFD4') {
-        msMeta.setAttribute('content', '#FFEFD4');
-      }
-      if (document.documentElement && document.documentElement.style.backgroundColor !== 'rgb(255, 239, 212)' && document.documentElement.style.backgroundColor !== '#FFEFD4') {
-        document.documentElement.style.backgroundColor = '#FFEFD4';
-      }
-      var nav = document.querySelector('.fixed-bottom-nav');
-      if (nav && nav.classList.contains('nav-theme-red')) {
-        nav.classList.remove('nav-theme-red');
-      }
-    }
-  }
-  enforceCreamTheme();
-  window.addEventListener('focus', enforceCreamTheme, { passive: true });
-  window.addEventListener('visibilitychange', enforceCreamTheme, { passive: true });
-  window.addEventListener('pageshow', enforceCreamTheme, { passive: true });
-})();
-</script>
 </body>
 </html>
