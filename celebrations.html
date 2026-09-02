@@ -777,7 +777,7 @@ body.sheet-modal-open .fixed-bottom-nav {
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
   -webkit-overflow-scrolling: touch !important;
-  padding: 37px 24px calc(52px + env(safe-area-inset-bottom, 0px)) 24px !important;
+  padding: 28px 24px calc(48px + env(safe-area-inset-bottom, 0px)) 24px !important;
   box-sizing: border-box !important;
   position: relative !important;
   color: #1E120E !important;
@@ -795,55 +795,63 @@ body.sheet-modal-open .fixed-bottom-nav {
 }
 
 .sheet-close-btn {
-  position: absolute;
-  top: 18px;
-  right: 20px;
-  width: 32px;
-  height: 32px;
-  background: transparent;
-  border: none;
-  color: #2C1E18;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  font-size: 22px;
-  line-height: 1;
-  font-weight: 300;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-  z-index: 10;
-  padding: 0;
+  position: absolute !important;
+  top: 24px !important;
+  right: 24px !important;
+  width: 28px !important;
+  height: 28px !important;
+  background: transparent !important;
+  border: none !important;
+  color: #1E120E !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, opacity 0.2s ease !important;
+  z-index: 10 !important;
+  padding: 0 !important;
+}
+
+.sheet-close-btn svg {
+  width: 20px !important;
+  height: 20px !important;
+  stroke: currentColor !important;
+  stroke-width: 2.2 !important;
+  stroke-linecap: round !important;
+  stroke-linejoin: round !important;
+  fill: none !important;
+  display: block !important;
 }
 
 .sheet-close-btn:hover {
-  transform: scale(1.12);
-  opacity: 0.75;
+  transform: scale(1.12) !important;
+  opacity: 0.75 !important;
 }
 
 /* Centered Top Eyebrow */
 .sheet-event-eyebrow {
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 13.5px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-  color: #38241D;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 8px 0;
-  margin: 0 0 4px 0;
-  line-height: 1.2;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 13.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.6px !important;
+  color: #1D2633 !important;
+  text-transform: uppercase !important;
+  text-align: center !important;
+  padding: 0 !important;
+  margin: 0 0 10px 0 !important;
+  line-height: 1.2 !important;
 }
 
 /* Centered Main Title (Title Case) */
 .sheet-event-title {
-  font-family: 'Kugile', 'Cinzel', serif;
-  font-size: 42px;
-  font-weight: 400;
-  letter-spacing: 0.2px;
-  color: #9A2B28;
-  margin: 0 0 28px 0;
-  text-align: center;
-  line-height: 1.1;
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 42px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.2px !important;
+  color: #9A2B28 !important;
+  margin: 0 0 26px 0 !important;
+  text-align: center !important;
+  line-height: 1.05 !important;
 }
 
 /* Details List */
@@ -1185,7 +1193,9 @@ body.sheet-modal-open .fixed-bottom-nav {
 <!-- ── Royal Event Details Bottom Sheet Modal (Figma 438:1168) ── -->
 <div id="event-sheet-overlay" class="event-sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
   <div class="event-bottom-sheet" id="event-bottom-sheet">
-    <button type="button" class="sheet-close-btn" id="sheet-close-btn" aria-label="Close details">✕</button>
+    <button type="button" class="sheet-close-btn" id="sheet-close-btn" aria-label="Close details">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+    </button>
 
     <div class="sheet-event-eyebrow" id="sheet-eyebrow">FRI 20 NOV | 7:30PM</div>
     <h2 class="sheet-event-title" id="sheet-title">Mehndi</h2>
@@ -1251,7 +1261,6 @@ body.sheet-modal-open .fixed-bottom-nav {
       mapUrl: 'https://maps.google.com/?q=The+Balrampur+House+Nainital',
       details: [
         { icon: 'clock', text: 'Celebration begins at 7:30 PM' },
-        { icon: 'seat', text: 'Kindly arrive by 7:15 PM' },
         { icon: 'attire', text: 'Playful causals or festive ethnic attire' },
         { icon: 'food', text: 'Traditional Pahadi snacks & high dinner' },
         { icon: 'parking', text: 'Parking will be available at venue' },
@@ -1288,7 +1297,6 @@ body.sheet-modal-open .fixed-bottom-nav {
       mapUrl: 'https://maps.app.goo.gl/4TfqbwzTNBG7aSrv7',
       details: [
         { icon: 'clock', text: 'Wedding Reception begins at 7:00 PM' },
-        { icon: 'seat', text: 'Festive gathering to celebrate our marriage with family blessings, greetings, and a joyful feast.' },
         { icon: 'attire', text: 'Traditional Indian glam and contemporary formals. Make sure to wear footwear you can dance in.' },
         { icon: 'food', text: 'Celebratory dinner with endless appetizers, and a luxurious dinner spread.' },
         { icon: 'parking', text: 'Parking available at venue' },
