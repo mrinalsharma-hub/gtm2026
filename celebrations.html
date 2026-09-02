@@ -822,7 +822,7 @@ body.sheet-modal-open .fixed-bottom-nav {
   overflow-y: auto !important;
   overscroll-behavior: contain !important;
   -webkit-overflow-scrolling: touch !important;
-  padding: 32px 32px calc(36px + env(safe-area-inset-bottom, 0px)) 32px !important;
+  padding: 32px 32px calc(48px + env(safe-area-inset-bottom, 0px)) 32px !important;
   box-sizing: border-box !important;
   position: relative !important;
   color: #1E120E !important;
@@ -950,34 +950,34 @@ body.sheet-modal-open .fixed-bottom-nav {
   flex: 1;
 }
 
-/* Bottom CTA Button (Figma: 36px rounded corners · 56px height · 24px top/bottom padding) */
+/* Bottom CTA Button (Figma: 36px rounded corners · 56px height · 28px top / 24px bottom margin) */
 .sheet-action-btn {
-  width: 100%;
-  height: 56px;
-  min-height: 56px;
-  background: #9A2B28;
-  border-radius: 36px;
-  color: #FFFFFF;
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 17px;
-  font-weight: 600;
-  letter-spacing: normal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
-  flex-shrink: 0;
-  margin-top: 24px;
-  margin-bottom: 0;
-  box-shadow: 0 4px 14px rgba(154, 43, 40, 0.25);
+  width: 100% !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  background: #9A2B28 !important;
+  border-radius: 36px !important;
+  color: #FFFFFF !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 18px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.3px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: none !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease, transform 0.15s ease !important;
+  flex-shrink: 0 !important;
+  margin-top: 28px !important;
+  margin-bottom: 24px !important;
+  box-shadow: 0 4px 14px rgba(154, 43, 40, 0.25) !important;
 }
 
 .sheet-action-btn:hover {
-  background: #842321;
-  transform: scale(0.99);
+  background: #842321 !important;
+  transform: scale(0.99) !important;
 }
 
 .sheet-action-btn:active {
