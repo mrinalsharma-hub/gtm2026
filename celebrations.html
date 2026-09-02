@@ -360,10 +360,10 @@ body {
   position: relative !important;
   display: block !important;
   background: transparent !important;
-  margin: 4px auto 0 auto !important;
+  margin: -28px auto 0 auto !important;
   padding: 0 !important;
   box-sizing: border-box !important;
-  z-index: 2 !important;
+  z-index: 1 !important;
   flex-shrink: 0 !important;
   border-radius: 0 !important;
   overflow: hidden !important;
@@ -377,6 +377,7 @@ body {
   line-height: 0 !important;
   border-radius: 0 !important;
   aspect-ratio: 990 / 831 !important;
+  background: transparent !important;
 }
 
 .epilogue-footer-art {
@@ -385,8 +386,11 @@ body {
   display: block !important;
   object-fit: cover !important;
   border-radius: 0 !important;
-  filter: none !important;
-  opacity: 1 !important;
+  mix-blend-mode: multiply !important;
+  opacity: 0.95 !important;
+  filter: contrast(1.04) brightness(0.99) !important;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 24px, rgba(0,0,0,1) 50px) !important;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 24px, rgba(0,0,0,1) 50px) !important;
   visibility: visible !important;
   vertical-align: bottom !important;
   margin: 0 !important;
