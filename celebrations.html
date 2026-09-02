@@ -991,73 +991,84 @@ body {
    ROYAL CELEBRATION EVENT BOTTOM SHEET MODAL
    ══════════════════════════════════════════════════════════ */
 .event-sheet-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 2000;
-  background: rgba(26, 12, 10, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 2147483648 !important; /* Always sits on top of all fixed elements & bottom nav */
+  background: rgba(18, 6, 5, 0.65) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  padding: 0 !important;
 }
 
 .event-sheet-overlay.is-open {
-  opacity: 1;
-  visibility: visible;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hide fixed bottom nav smoothly when modal is active */
+body.sheet-modal-open .fixed-bottom-nav {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(100%) !important;
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
 }
 
 .event-bottom-sheet {
-  width: 100%;
-  max-width: 460px;
-  background: #FAF6EF;
-  background-image: radial-gradient(circle at 50% 0%, #FFFDF9 0%, #FAF6EF 100%);
-  border-radius: 28px 28px 0 0;
-  border-top: 1px solid rgba(255, 220, 166, 0.8);
-  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.28), 0 0 1px rgba(110, 33, 26, 0.15);
-  transform: translateY(100%);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  max-height: 85vh;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  padding: 14px 24px 36px 24px;
-  box-sizing: border-box;
-  position: relative;
-  color: #2C1E18;
+  width: 100% !important;
+  max-width: 480px !important;
+  background: #FAF6EF !important;
+  background-image: radial-gradient(circle at 50% 0%, #FFFDF9 0%, #FAF6EF 100%) !important;
+  border-radius: 28px 28px 0 0 !important;
+  border-top: 1.5px solid rgba(255, 220, 166, 0.85) !important;
+  box-shadow: 0 -16px 48px rgba(0, 0, 0, 0.40), 0 0 1px rgba(110, 33, 26, 0.2) !important;
+  transform: translateY(100%) !important;
+  transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  max-height: 90vh !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  padding: 16px 22px calc(28px + env(safe-area-inset-bottom, 0px)) 22px !important;
+  box-sizing: border-box !important;
+  position: relative !important;
+  color: #2C1E18 !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .event-sheet-overlay.is-open .event-bottom-sheet {
-  transform: translateY(0);
+  transform: translateY(0) !important;
 }
 
 /* Sheet Drag Handle */
 .sheet-drag-handle {
   width: 44px;
   height: 4px;
-  background: rgba(167, 31, 35, 0.22);
+  background: rgba(167, 31, 35, 0.25);
   border-radius: 4px;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 14px auto;
   cursor: grab;
+  flex-shrink: 0;
 }
 
 .sheet-close-btn {
   position: absolute;
-  top: 18px;
+  top: 16px;
   right: 18px;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  background: rgba(167, 31, 35, 0.06);
-  border: 1px solid rgba(167, 31, 35, 0.15);
+  background: rgba(167, 31, 35, 0.08);
+  border: 1px solid rgba(167, 31, 35, 0.2);
   color: #741014;
   display: flex;
   align-items: center;
@@ -1066,11 +1077,12 @@ body {
   font-size: 15px;
   line-height: 1;
   transition: background 0.2s ease, transform 0.2s ease;
+  z-index: 10;
 }
 
 .sheet-close-btn:hover {
-  background: rgba(167, 31, 35, 0.12);
-  transform: scale(1.06);
+  background: rgba(167, 31, 35, 0.16);
+  transform: scale(1.08);
 }
 
 /* Event Title & Date Header */
@@ -1078,18 +1090,19 @@ body {
   font-family: 'Kugile', 'Cinzel', serif;
   font-size: 24px;
   font-weight: 400;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
   color: #741014;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   text-transform: uppercase;
+  padding-right: 36px;
 }
 
 .sheet-event-datetime {
   font-family: 'Spectral', serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 0.8px;
-  color: #4A342E;
+  color: #3D2924;
   text-transform: uppercase;
   margin: 0 0 10px 0;
   line-height: 1.35;
@@ -1101,10 +1114,10 @@ body {
   align-items: center;
   gap: 8px;
   font-family: 'Spectral', serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: #4A342E;
-  margin: 0 0 18px 0;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: #3D2924;
+  margin: 0 0 16px 0;
 }
 
 .sheet-location-icon {
@@ -1117,18 +1130,20 @@ body {
 .sheet-divider {
   height: 1px;
   background: linear-gradient(90deg, rgba(167, 31, 35, 0.25) 0%, rgba(167, 31, 35, 0.08) 100%);
-  margin: 0 0 22px 0;
+  margin: 0 0 18px 0;
   border: none;
+  flex-shrink: 0;
 }
 
 /* Details List */
 .sheet-details-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin: 0 0 28px 0;
+  gap: 14px;
+  margin: 0 0 22px 0;
   padding: 0;
   list-style: none;
+  flex-shrink: 0;
 }
 
 .sheet-detail-item {
@@ -1168,13 +1183,13 @@ body {
 /* Bottom CTA Button */
 .sheet-action-btn {
   width: 100%;
-  height: 48px;
+  height: 50px;
   background: #741014;
   border: 1px solid rgba(255, 220, 166, 0.4);
-  border-radius: 24px;
+  border-radius: 25px;
   color: #FFFDF9;
   font-family: 'Spectral', serif;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 700;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -1186,6 +1201,8 @@ body {
   cursor: pointer;
   transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   text-decoration: none;
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
 .sheet-action-btn:hover {
@@ -1664,11 +1681,13 @@ body {
     });
 
     overlay.classList.add('is-open');
+    document.body.classList.add('sheet-modal-open');
     document.body.style.overflow = 'hidden';
   }
 
   function closeSheet() {
     overlay.classList.remove('is-open');
+    document.body.classList.remove('sheet-modal-open');
     document.body.style.overflow = '';
   }
 
