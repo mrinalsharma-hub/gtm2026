@@ -216,6 +216,29 @@ body {
   object-fit: cover !important;
 }
 
+/* Authentic Kumaoni Aipan Bottom Border (Vertically Rotated / Inverted) */
+.aipan-bottom-border-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 52.4px !important;
+  overflow: hidden !important;
+  display: block !important;
+  margin-top: 10px !important;
+  margin-bottom: 24px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  pointer-events: none !important;
+  flex-shrink: 0 !important;
+  transform: scaleY(-1) !important;
+}
+
+.aipan-bottom-border-img {
+  width: 100% !important;
+  height: 52.4px !important;
+  display: block !important;
+  object-fit: cover !important;
+}
+
 /* Hero Header */
 .rsvp-hero-header {
   width: 100% !important;
@@ -896,6 +919,11 @@ body {
       “ Inspired by our love for Aipan—the traditional folk art of Uttarakhand, painted at doorsteps to bless new beginnings and welcome cherished guests. Having you join us in the mountains to celebrate is our greatest blessing.”
     </p>
   </section>
+
+  <!-- Authentic Kumaoni Aipan Bottom Border (Vertically Rotated) -->
+  <div class="aipan-bottom-border-wrap" aria-hidden="true">
+    <img src="images/aipan-top-border.svg?v=26700" alt="Aipan Border" class="aipan-bottom-border-img" width="504" height="52.4">
+  </div>
 
 </main>
 
