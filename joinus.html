@@ -317,7 +317,7 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   transform-origin: center center !important;
-  animation: rsvpDotsAntiClockwiseSpin 44s linear infinite !important;
+  animation: rsvpDotsAntiClockwiseSpin 48.9s linear infinite !important;
   will-change: transform !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -334,7 +334,7 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   transform-origin: center center !important;
-  animation: rsvpDotsClockwiseSpin 44s linear infinite !important;
+  animation: rsvpDotsClockwiseSpin 48.9s linear infinite !important;
   will-change: transform !important;
   margin: 0 !important;
   padding: 0 !important;
@@ -347,7 +347,7 @@ body {
   display: block !important;
   object-fit: contain !important;
   transform-origin: center center !important;
-  animation: rsvpMandalaSpin 32s linear infinite !important;
+  animation: rsvpMandalaSpin 35.6s linear infinite !important;
   will-change: transform !important;
   position: relative !important;
   z-index: 2 !important;
@@ -459,7 +459,7 @@ body {
   transition: opacity 0.3s ease !important;
 }
 
-/* Card Inner Dotted Border: Yellow Pichoda Diamond Dots (Matched 1:1 to Rotating Flower Dots) with Equidistant Symmetrical Corner Alignment */
+/* Card Inner Dotted Border: Alternating White and Yellow Pichoda Diamond Dots (Matched 1:1 to Rotating Flower Dots) */
 .rsvp-card-section::before,
 #rsvp-thanks::before {
   content: "" !important;
@@ -471,17 +471,17 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   background-image:
-    url('images/pichoda-border-dot.svg?v=30400'),
-    url('images/pichoda-border-dot.svg?v=30400') !important;
+    url('images/pichoda-border-dots-pair-h.svg?v=30600'),
+    url('images/pichoda-border-dots-pair-h.svg?v=30600') !important;
   background-position:
     top left,
     bottom left !important;
   background-repeat:
-    space no-repeat,
-    space no-repeat !important;
+    round no-repeat,
+    round no-repeat !important;
   background-size:
-    5px 5px,
-    5px 5px !important;
+    32px 5px,
+    32px 5px !important;
 }
 
 .rsvp-card-section::after,
@@ -495,17 +495,17 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   background-image:
-    url('images/pichoda-border-dot.svg?v=30400'),
-    url('images/pichoda-border-dot.svg?v=30400') !important;
+    url('images/pichoda-border-dots-pair-v.svg?v=30600'),
+    url('images/pichoda-border-dots-pair-v.svg?v=30600') !important;
   background-position:
     top left,
     top right !important;
   background-repeat:
-    no-repeat space,
-    no-repeat space !important;
+    no-repeat round,
+    no-repeat round !important;
   background-size:
-    5px 5px,
-    5px 5px !important;
+    5px 32px,
+    5px 32px !important;
 }
 
 /* Four Corner Aipan Motifs */
@@ -925,7 +925,7 @@ body {
   display: block !important;
   margin: 0 auto !important;
   transform-origin: 50% 0% !important;
-  animation: handsContinuous3DSwing 2.6s ease-in-out infinite alternate !important;
+  animation: handsContinuous3DSwing 2.9s ease-in-out infinite alternate !important;
   will-change: transform, filter !important;
   backface-visibility: hidden !important;
 }

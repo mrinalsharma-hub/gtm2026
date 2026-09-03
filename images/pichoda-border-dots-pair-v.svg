@@ -1,0 +1,8 @@
+<svg width="5" height="32" viewBox="0 0 5 32" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Yellow Pichoda Diamond Dot 1 -->
+  <polygon points="2.50,6.20 4.30,8.00 2.50,9.80 0.70,8.00" fill="none" stroke="#E58A00" stroke-width="0.85"/>
+  <circle cx="2.50" cy="8.00" r="0.55" fill="#E58A00"/>
+  <!-- White Pichoda Diamond Dot 2 -->
+  <polygon points="2.50,22.20 4.30,24.00 2.50,25.80 0.70,24.00" fill="none" stroke="#FFFDF9" stroke-width="0.85"/>
+  <circle cx="2.50" cy="24.00" r="0.55" fill="#FFFDF9"/>
+</svg>
