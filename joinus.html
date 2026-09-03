@@ -459,6 +459,39 @@ body {
   transition: opacity 0.3s ease !important;
 }
 
+/* Card Inner Dotted Border: Yellow Aipan Dots connecting to Corner Motifs */
+.rsvp-card-section::before,
+#rsvp-thanks::before {
+  content: "" !important;
+  position: absolute !important;
+  top: 6.5px !important;
+  left: 6.5px !important;
+  right: 6.5px !important;
+  bottom: 6.5px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  background-image:
+    radial-gradient(circle 1.65px at 4px 1.75px, #E58A00 96%, transparent 100%),
+    radial-gradient(circle 1.65px at 4px 1.75px, #E58A00 96%, transparent 100%),
+    radial-gradient(circle 1.65px at 1.75px 4px, #E58A00 96%, transparent 100%),
+    radial-gradient(circle 1.65px at 1.75px 4px, #E58A00 96%, transparent 100%) !important;
+  background-position:
+    top left,
+    bottom left,
+    top left,
+    top right !important;
+  background-repeat:
+    repeat-x,
+    repeat-x,
+    repeat-y,
+    repeat-y !important;
+  background-size:
+    8px 3.5px,
+    8px 3.5px,
+    3.5px 8px,
+    3.5px 8px !important;
+}
+
 /* Four Corner Aipan Motifs */
 .aipan-card-corner {
   position: absolute !important;
@@ -468,7 +501,7 @@ body {
   background-size: contain !important;
   background-repeat: no-repeat !important;
   pointer-events: none !important;
-  z-index: 1 !important;
+  z-index: 2 !important;
   opacity: 0.95 !important;
 }
 
