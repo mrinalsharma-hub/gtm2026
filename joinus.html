@@ -419,56 +419,22 @@ body {
   gap: 10px !important; /* 10px gap between cards as per Figma */
 }
 
-/* Card Shell: Browser Address Bar Background (#FFEFD4) at 90% Opacity with 8px Rounded Corners */
+/* Card Shell: Aipan Red Background (#A71F23), 1px Gold Frame Border (#C89B3C), 6px Rounded Corners, 48px Inner Padding */
 .rsvp-card-section {
-  background: rgba(255, 239, 212, 0.90) !important;
-  border-radius: 8px !important;
-  border: none !important;
-  padding: 32px 28px 32px 28px !important;
-  box-shadow: none !important;
-  color: #A71F23 !important;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 auto !important;
-  position: relative !important;
-  box-sizing: border-box !important;
-  transition: opacity 0.3s ease !important;
-}
-
-/* Card 1 Custom Wall Hanging Styling: Aipan Red Background, 1px Gold Frame Border, 4 Corner Motifs, White Font */
-#sec-attending {
   background: #A71F23 !important;
   background-color: #A71F23 !important;
   border: 1px solid #C89B3C !important;
   border-radius: 6px !important;
-  color: #FFFDF9 !important;
   padding: 48px 24px 48px 48px !important;
-  position: relative !important;
-  overflow: hidden !important;
+  box-shadow: none !important;
+  color: #FFFDF9 !important;
   width: 100% !important;
   max-width: 100% !important;
-}
-
-#sec-attending .rsvp-card-title {
-  color: #FFFDF9 !important;
-}
-
-#sec-attending .rsvp-option-text {
-  color: #FFFDF9 !important;
-  font-weight: 500 !important;
-}
-
-#sec-attending .rsvp-radio-mark {
-  border: 2px solid #FFFDF9 !important;
-  background: transparent !important;
-}
-
-#sec-attending .rsvp-option-label input[type="radio"]:checked + .rsvp-radio-mark {
-  border-color: #FFFDF9 !important;
-}
-
-#sec-attending .rsvp-option-label input[type="radio"]:checked + .rsvp-radio-mark::after {
-  background: #FFFDF9 !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+  transition: opacity 0.3s ease !important;
 }
 
 /* Four Corner Aipan Motifs */
@@ -517,7 +483,7 @@ body {
   font-family: "Kugile", "Cormorant Garamond", serif !important;
   font-size: 24px !important;
   font-weight: 400 !important;
-  color: #A71F23 !important;
+  color: #FFFDF9 !important;
   margin: 0 0 20px 0 !important;
   line-height: 1.15 !important;
   letter-spacing: 0px !important;
@@ -565,7 +531,7 @@ body {
   min-width: 30px !important;
   min-height: 30px !important;
   border-radius: 50% !important;
-  border: 2px solid #A71F23 !important;
+  border: 2px solid #FFFDF9 !important;
   background: transparent !important;
   display: flex !important;
   align-items: center !important;
@@ -577,7 +543,7 @@ body {
 }
 
 .rsvp-option-label input[type="radio"]:checked + .rsvp-radio-mark {
-  border-color: #A71F23 !important;
+  border-color: #FFFDF9 !important;
 }
 
 .rsvp-option-label input[type="radio"]:checked + .rsvp-radio-mark::after {
@@ -586,7 +552,7 @@ body {
   width: 14px !important;
   height: 14px !important;
   border-radius: 50% !important;
-  background: #A71F23 !important;
+  background: #FFFDF9 !important;
 }
 
 /* Custom 30px Rounded Square Checkbox */
@@ -596,8 +562,8 @@ body {
   min-width: 30px !important;
   min-height: 30px !important;
   border-radius: 4px !important;
-  border: 2px solid #A71F23 !important;
-  background: #FFFDF9 !important;
+  border: 2px solid #FFFDF9 !important;
+  background: transparent !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -608,8 +574,8 @@ body {
 }
 
 .rsvp-option-label input[type="checkbox"]:checked + .rsvp-check-mark {
-  background: #A71F23 !important;
-  border-color: #A71F23 !important;
+  background: #FFFDF9 !important;
+  border-color: #FFFDF9 !important;
 }
 
 .rsvp-option-label input[type="checkbox"]:checked + .rsvp-check-mark::after {
@@ -619,14 +585,14 @@ body {
   left: 50% !important;
   width: 6.5px !important;
   height: 12.5px !important;
-  border: solid #FFFDF9 !important;
+  border: solid #A71F23 !important;
   border-width: 0 2.4px 2.4px 0 !important;
   transform: translate(-50%, -62%) rotate(45deg) !important;
   box-sizing: border-box !important;
 }
 
 #sec-events .rsvp-options-list {
-  gap: 6px !important;
+  gap: 2px !important;
 }
 
 /* Option Text */
@@ -635,7 +601,7 @@ body {
   font-size: 18px !important;
   font-weight: 500 !important;
   line-height: 1.3 !important;
-  color: #A71F23 !important;
+  color: #FFFDF9 !important;
 }
 
 /* Input Fields (8px rounded, 52px height, #FFFDF9 background, #A71F23 text) */
@@ -722,7 +688,7 @@ body {
   font-family: "Spectral", Georgia, serif !important;
   font-size: 16px !important;
   font-weight: 500 !important;
-  color: #A71F23 !important;
+  color: #FFFDF9 !important;
   cursor: pointer !important;
   display: inline-flex !important;
   align-items: center !important;
@@ -747,7 +713,7 @@ body {
   height: 52px !important;
   background: #FFFDF9 !important;
   border-radius: 8px !important;
-  border: 1.5px solid rgba(167, 31, 35, 0.35) !important;
+  border: 1.5px solid #C89B3C !important;
   padding: 14px 18px !important;
   font-family: "Spectral", Georgia, serif !important;
   font-size: 16px !important;
@@ -764,7 +730,7 @@ body {
   background: #FFFFFF !important;
   min-height: 84px !important;
   height: 84px !important;
-  border-color: #A71F23 !important;
+  border-color: #E58A00 !important;
   box-shadow: none !important;
 }
 
@@ -789,6 +755,7 @@ body {
   min-height: 60px !important;
   padding: 4px 24px 0 24px !important;
   background: #A71F23 !important;
+  border: 1px solid #C89B3C !important;
   border-radius: 8px !important;
   color: #FFFDF9 !important;
   font-family: "Kugile", "Cinzel", serif !important;
@@ -799,7 +766,6 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  border: none !important;
   cursor: pointer !important;
   box-shadow: none !important;
   transition: background 0.2s ease, transform 0.15s ease !important;
@@ -877,42 +843,50 @@ body {
 /* ── Confirmation Screen ── */
 #rsvp-thanks {
   display: none;
-  background: rgba(255, 239, 212, 0.90) !important;
-  border-radius: 8px !important;
-  border: none !important;
-  padding: 36px 24px !important;
+  background: #A71F23 !important;
+  border-radius: 6px !important;
+  border: 1px solid #C89B3C !important;
+  padding: 48px 24px 48px 48px !important;
   text-align: center !important;
-  color: #A71F23 !important;
+  color: #FFFDF9 !important;
   box-shadow: none !important;
   margin-bottom: 20px !important;
+  position: relative !important;
+  overflow: hidden !important;
 }
 
 #rsvp-thanks .big {
   font-family: "Kugile", "Cinzel", serif !important;
   font-size: 32px !important;
   margin: 0 0 12px 0 !important;
-  color: #A71F23 !important;
+  color: #FFFDF9 !important;
 }
 
 #rsvp-thanks .sub {
   font-family: "Spectral", Georgia, serif !important;
   font-size: 17px !important;
   line-height: 1.4 !important;
-  color: #A71F23 !important;
+  color: #FFFDF9 !important;
   margin: 0 0 24px 0 !important;
 }
 
 .rsvp-edit-btn {
-  background: #A71F23 !important;
+  background: transparent !important;
   color: #FFFDF9 !important;
+  border: 1px solid #C89B3C !important;
   border-radius: 8px !important;
   padding: 12px 28px !important;
   font-family: "Spectral", Georgia, serif !important;
   font-size: 16px !important;
   font-weight: 600 !important;
-  border: none !important;
   box-shadow: none !important;
   cursor: pointer !important;
+  transition: background 0.2s ease, color 0.2s ease !important;
+}
+
+.rsvp-edit-btn:hover {
+  background: #FFFDF9 !important;
+  color: #A71F23 !important;
 }
 
 /* ── Relaxed Royal Entrance Choreography (Silk & Velvet Cascade · Celebrations Clone) ── */
@@ -1062,6 +1036,10 @@ body {
   <div class="rsvp-form-container">
     
     <div id="rsvp-thanks">
+      <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+      <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+      <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+      <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
       <p class="big">THANK YOU</p>
       <p class="sub">Your response has reached us safely.<br>We can't wait to celebrate with you.</p>
       <button type="button" id="btn-edit-rsvp" class="rsvp-edit-btn" onclick="handleEditRSVP()">Edit RSVP</button>
@@ -1092,6 +1070,10 @@ body {
 
       <!-- Card 2: Name (Figma Node 43:1036) -->
       <section class="rsvp-card-section" id="sec-name">
+        <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Name <span class="req-star">*</span></h2>
         <div id="name-list" class="name-row-wrap">
           <div class="name-input-row is-empty">
@@ -1107,12 +1089,20 @@ body {
 
       <!-- Card 3: Phone or email (Figma Node 43:1042) -->
       <section class="rsvp-card-section" id="sec-contact">
+        <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Phone or email <span class="req-star conditional-star">*</span></h2>
         <input type="text" id="f-contact" class="rsvp-pill-input" placeholder="To stay in touch with the updates" autocomplete="email">
       </section>
 
       <!-- Card 4: Events you will attend (Figma Node 43:1057) -->
       <section class="rsvp-card-section" id="sec-events">
+        <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Events you will attend <span class="req-star conditional-star">*</span></h2>
         <div class="rsvp-options-list">
           <label class="rsvp-option-label">
@@ -1140,12 +1130,20 @@ body {
 
       <!-- Card 5: Preferences or requests (Figma Node 43:1047) -->
       <section class="rsvp-card-section" id="sec-diet">
+        <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Preferences or requests</h2>
         <textarea id="f-diet" class="rsvp-textarea-card" placeholder="Allergies or any stay related requests ..."></textarea>
       </section>
 
       <!-- Card 6: Note for us (Figma Node 43:1052) -->
       <section class="rsvp-card-section" id="sec-note">
+        <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Note for us</h2>
         <textarea id="f-msg" class="rsvp-textarea-card" placeholder="Any special notes or wishes for us..."></textarea>
       </section>
