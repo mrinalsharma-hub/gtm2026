@@ -57,7 +57,7 @@
     return true;
   }
 
-  function ensureThemeColor() {
+  function ensureThemeColor(targetNorm) {
     var themeColor = '#FFEFD4';
 
     if (document.documentElement) {
@@ -97,11 +97,13 @@
 
       if (tabNorm === currentNorm && (authed || currentNorm !== 'index.html')) {
         tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
         var label = tab.querySelector('.nav-label');
         var text = label ? label.textContent.trim() : '';
         tab.setAttribute('aria-label', text + ' (Current Page)');
       } else {
         tab.classList.remove('active');
+        tab.setAttribute('aria-selected', 'false');
         var label = tab.querySelector('.nav-label');
         var text = label ? label.textContent.trim() : '';
         tab.setAttribute('aria-label', text);
@@ -115,15 +117,16 @@
     });
   }
 
-  // Pre-fetch tabs into memory cache
+  // Pre-fetch tabs into memory cache with normalized keys
   var pageCache = {};
   var TABS = ['G&M.html', 'stay.html', 'celebrations.html', 'joinus.html'];
 
   function prefetchPage(url) {
-    if (!url || pageCache[url]) return;
-    fetch(url + (url.indexOf("?") !== -1 ? "&" : "?") + "_spa=" + Date.now())
-      .then(function(res) { return res.text(); })
-      .then(function(html) { pageCache[url] = html; })
+    var norm = normalizePath(url);
+    if (!norm || pageCache[norm]) return;
+    fetch(norm + (norm.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now())
+      .then(function(res) { if (res.ok) return res.text(); })
+      .then(function(html) { if (html) pageCache[norm] = html; })
       .catch(function() {});
   }
 
@@ -132,16 +135,13 @@
     TABS.forEach(prefetchPage);
   }
 
-  // ── Seamless In-Place SPA Page Transition ──
-  var isNavigating = false;
+  // ── Robust Concurrent SPA Navigation Controller with NavId Sequencing ──
+  var currentNavId = 0;
+  var activeAbortController = null;
 
   function loadPageSPA(targetUrl, pushState) {
-    if (isNavigating) return;
     var targetNorm = normalizePath(targetUrl);
     var currentNorm = normalizePath(window.location.pathname);
-
-    // If already on the same page, do nothing
-    if (targetNorm === currentNorm && pushState !== false) return;
 
     // If unauthenticated and trying to go to protected pages
     if (targetNorm !== 'index.html' && !isAuthenticated()) {
@@ -153,13 +153,27 @@
       return;
     }
 
-    isNavigating = true;
+    // Sequence token: every new navigation increments the ID so older in-flight transitions are discarded
+    currentNavId++;
+    var thisNavId = currentNavId;
 
-    // Instant Feedback: Switch theme-color and active tab immediately on tap
-    ensureThemeColor(targetNorm);
+    // Abort any in-flight network request from prior navigation
+    if (activeAbortController) {
+      try { activeAbortController.abort(); } catch(e) {}
+      activeAbortController = null;
+    }
+
+    // Instant Visual Feedback: lock active tab highlight and theme-color immediately to the latest tapped tab
     updateNav(targetNorm);
+    ensureThemeColor(targetNorm);
+
+    // If already on the same page and not popstate, no-op
+    if (targetNorm === currentNorm && pushState !== false) return;
 
     function applyHTML(html) {
+      // Discard stale transitions if a newer navigation was initiated
+      if (thisNavId !== currentNavId) return;
+
       var parser = new DOMParser();
       var newDoc = parser.parseFromString(html, 'text/html');
 
@@ -180,22 +194,24 @@
         document.head.appendChild(cloneStyle);
       });
 
-      // 3. Update Body styling / classes
+      // 3. Update Body styling / classes & reset modal overflows
       document.body.className = newDoc.body.className;
+      document.body.style.overflow = '';
 
-      // 4. Swap Content Nodes (Leave Audio Player & Fixed Nav completely uninterrupted)
-      // Elements to PRESERVE: #global-music-player, #bg-music, .fixed-bottom-nav
+      // 4. Swap Content Nodes (Preserve audio player & bottom navigation)
       var preservedPlayer = document.getElementById('global-music-player');
       var preservedAudio = document.getElementById('bg-music') || window.__GTM_AUDIO__;
       var preservedNav = document.querySelector('.fixed-bottom-nav');
 
-      // Strip any audio players or audio elements from the incoming document before adoption
+      // Strip duplicate audio player or nav elements from incoming document before adoption
       var incomingPlayers = newDoc.querySelectorAll('#global-music-player, #music-toggle, .celebration-player-btn, .global-audio-pill');
       incomingPlayers.forEach(function(el) { el.remove(); });
       var incomingAudios = newDoc.querySelectorAll('#bg-music, audio');
       incomingAudios.forEach(function(el) { el.remove(); });
+      var incomingNavs = newDoc.querySelectorAll('.fixed-bottom-nav');
+      incomingNavs.forEach(function(el) { el.remove(); });
 
-      // Remove existing non-preserved content from body
+      // Remove existing non-preserved content nodes from body
       var nodesToRemove = [];
       Array.from(document.body.childNodes).forEach(function(node) {
         if (node === preservedPlayer || node === preservedAudio || node === preservedNav) return;
@@ -204,7 +220,7 @@
       });
       nodesToRemove.forEach(function(node) { node.remove(); });
 
-      // Insert new content nodes before the nav/player
+      // Insert new content nodes before the bottom navigation
       Array.from(newDoc.body.childNodes).forEach(function(node) {
         if (node.nodeType === 1) {
           if (node.id === 'global-music-player' || node.id === 'bg-music' || node.classList.contains('fixed-bottom-nav') || node.classList.contains('celebration-player-btn')) return;
@@ -229,7 +245,7 @@
         document.body.appendChild(preservedAudio);
       }
 
-      // Purge any accidental duplicates that might exist anywhere in DOM
+      // Purge any accidental duplicate player buttons
       var allLivePlayers = document.querySelectorAll('#global-music-player, .celebration-player-btn');
       if (allLivePlayers.length > 1) {
         for (var i = 1; i < allLivePlayers.length; i++) {
@@ -239,7 +255,7 @@
 
       // 5. Update URL History
       if (pushState !== false) {
-        history.pushState({ path: targetUrl }, newDoc.title, targetUrl);
+        history.pushState({ path: targetNorm }, newDoc.title, targetNorm);
       }
 
       // 6. Update Active Navigation Tab & Theme Color
@@ -265,40 +281,51 @@
         oldScript.parentNode.replaceChild(newScript, oldScript);
       });
 
-      // 9. Dispatch custom ready event for page scripts
+      // 9. Dispatch custom ready events for page scripts
       document.dispatchEvent(new Event('DOMContentLoaded'));
       window.dispatchEvent(new CustomEvent('gtm:page-loaded', { detail: { url: targetUrl, name: targetNorm } }));
 
       // Scroll smoothly to top of the new page container
       window.scrollTo(0, 0);
-      var mainWrap = document.querySelector('.schedule-page-wrap, main, .stay-container, .rsvp-page-wrap');
+      var mainWrap = document.querySelector('.schedule-page-wrap, main, .stay-container, .rsvp-page-wrap, .celebrations-page-wrap');
       if (mainWrap) {
         mainWrap.scrollTop = 0;
       }
-
-      isNavigating = false;
     }
 
-    if (pageCache[targetUrl]) {
-      applyHTML(pageCache[targetUrl]);
-    } else {
-      fetch(targetUrl + (targetUrl.indexOf("?") !== -1 ? "&" : "?") + "_spa=" + Date.now())
-        .then(function(res) {
-          if (!res.ok) throw new Error('Page fetch failed');
-          return res.text();
-        })
-        .then(function(html) {
-          pageCache[targetUrl] = html;
+    // Check memory cache first (instant 0ms synchronous transition)
+    var cached = pageCache[targetNorm];
+    if (cached) {
+      applyHTML(cached);
+      return;
+    }
+
+    // Otherwise fetch with AbortController
+    var controller = new AbortController();
+    activeAbortController = controller;
+
+    fetch(targetNorm + (targetNorm.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now(), {
+      signal: controller.signal
+    })
+      .then(function(res) {
+        if (!res.ok) throw new Error('Page fetch failed');
+        return res.text();
+      })
+      .then(function(html) {
+        pageCache[targetNorm] = html;
+        if (thisNavId === currentNavId) {
           applyHTML(html);
-        })
-        .catch(function(err) {
-          console.error('SPA navigation fallback to full load:', err);
-          window.location.href = targetUrl;
-        });
-    }
+        }
+      })
+      .catch(function(err) {
+        if (err.name === 'AbortError') return; // Superseded by a newer navigation
+        if (thisNavId !== currentNavId) return;
+        console.error('SPA navigation fallback to full load:', err);
+        window.location.href = targetNorm;
+      });
   }
 
-  // Instant Tap / Touchdown Theme Trigger: Switch address bar color the exact moment finger touches tab
+  // Instant Tap / Touchdown Theme Trigger
   function onNavTouchStart(e) {
     var link = e.target.closest('a');
     if (!link) return;
@@ -326,7 +353,6 @@
     if (link.classList.contains('no-spa')) return;
 
     var targetNorm = normalizePath(href);
-    var currentNorm = normalizePath(window.location.pathname);
 
     // If clicking a locked tab when unauthenticated
     if (!isAuthenticated() && targetNorm !== 'index.html') {
@@ -360,9 +386,9 @@
     window.addEventListener('visibilitychange', function() { ensureThemeColor(); }, { passive: true });
     window.addEventListener('pageshow', function() { ensureThemeColor(); }, { passive: true });
 
-    // Cache the initial page HTML
-    var currentPath = window.location.pathname.split('/').pop() || 'index.html';
-    pageCache[currentPath] = document.documentElement.outerHTML;
+    // Cache the initial page HTML with normalized key
+    var currentNorm = normalizePath(window.location.pathname);
+    pageCache[currentNorm] = document.documentElement.outerHTML;
   }
 
   // Expose loadPageSPA globally
