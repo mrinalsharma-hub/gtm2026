@@ -9,7 +9,7 @@
     if (!path || path === '' || path === 'index.html') {
       return 'index.html';
     }
-    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html') return 'G&M.html';
+    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html') return 'G&M.html';
     if (path === 'celebrations.html' || path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
     if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
     if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
@@ -121,10 +121,16 @@
   var pageCache = {};
   var TABS = ['G&M.html', 'stay.html', 'celebrations.html', 'joinus.html'];
 
+  function getFetchUrl(norm) {
+    if (norm === 'G&M.html') return 'G%26M.html';
+    return norm;
+  }
+
   function prefetchPage(url) {
     var norm = normalizePath(url);
     if (!norm || pageCache[norm]) return;
-    fetch(norm + (norm.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now())
+    var fetchUrl = getFetchUrl(norm);
+    fetch(fetchUrl + (fetchUrl.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now())
       .then(function(res) { if (res.ok) return res.text(); })
       .then(function(html) { if (html) pageCache[norm] = html; })
       .catch(function() {});
@@ -163,12 +169,13 @@
       activeAbortController = null;
     }
 
-    // Instant Visual Feedback: lock active tab highlight and theme-color immediately to the latest tapped tab
-    updateNav(targetNorm);
-    ensureThemeColor(targetNorm);
-
-    // If already on the same page and not popstate, no-op
-    if (targetNorm === currentNorm && pushState !== false) return;
+    // If already on the same page and not popstate, just sync nav, scroll and return
+    if (targetNorm === currentNorm && pushState !== false) {
+      updateNav(targetNorm);
+      ensureThemeColor(targetNorm);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
 
     function applyHTML(html) {
       // Discard stale transitions if a newer navigation was initiated
@@ -197,6 +204,7 @@
       // 3. Update Body styling / classes & reset modal overflows
       document.body.className = newDoc.body.className;
       document.body.style.overflow = '';
+      document.body.style.position = '';
 
       // 4. Swap Content Nodes (Preserve audio player & bottom navigation)
       var preservedPlayer = document.getElementById('global-music-player');
@@ -258,7 +266,7 @@
         history.pushState({ path: targetNorm }, newDoc.title, targetNorm);
       }
 
-      // 6. Update Active Navigation Tab & Theme Color
+      // 6. Update Active Navigation Tab & Theme Color AT THE EXACT SAME TIME AS CONTENT UPDATE
       updateNav(targetNorm);
       ensureThemeColor(targetNorm);
 
@@ -271,19 +279,23 @@
       var scripts = document.body.querySelectorAll('script');
       scripts.forEach(function(oldScript) {
         if (oldScript.src && (oldScript.src.indexOf('spa-nav.js') !== -1 || oldScript.src.indexOf('global-audio.js') !== -1)) return;
-        var newScript = document.createElement('script');
-        Array.from(oldScript.attributes).forEach(function(attr) {
-          newScript.setAttribute(attr.name, attr.value);
-        });
-        if (oldScript.innerHTML) {
-          newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+        try {
+          var newScript = document.createElement('script');
+          Array.from(oldScript.attributes).forEach(function(attr) {
+            newScript.setAttribute(attr.name, attr.value);
+          });
+          if (oldScript.innerHTML) {
+            newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+          }
+          oldScript.parentNode.replaceChild(newScript, oldScript);
+        } catch(e) {
+          console.warn('SPA script execution warning:', e);
         }
-        oldScript.parentNode.replaceChild(newScript, oldScript);
       });
 
       // 9. Dispatch custom ready events for page scripts
-      document.dispatchEvent(new Event('DOMContentLoaded'));
-      window.dispatchEvent(new CustomEvent('gtm:page-loaded', { detail: { url: targetUrl, name: targetNorm } }));
+      try { document.dispatchEvent(new Event('DOMContentLoaded')); } catch(e) {}
+      try { window.dispatchEvent(new CustomEvent('gtm:page-loaded', { detail: { url: targetUrl, name: targetNorm } })); } catch(e) {}
 
       // Scroll smoothly to top of the new page container
       window.scrollTo(0, 0);
@@ -303,8 +315,9 @@
     // Otherwise fetch with AbortController
     var controller = new AbortController();
     activeAbortController = controller;
+    var fetchUrl = getFetchUrl(targetNorm);
 
-    fetch(targetNorm + (targetNorm.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now(), {
+    fetch(fetchUrl + (fetchUrl.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now(), {
       signal: controller.signal
     })
       .then(function(res) {
@@ -321,32 +334,19 @@
         if (err.name === 'AbortError') return; // Superseded by a newer navigation
         if (thisNavId !== currentNavId) return;
         console.error('SPA navigation fallback to full load:', err);
-        window.location.href = targetNorm;
+        window.location.href = fetchUrl;
       });
   }
 
-  // Instant Tap / Touchdown Theme Trigger
-  function onNavTouchStart(e) {
-    var link = e.target.closest('a');
+  // ── Bulletproof iOS & Android Touch Navigation Handler ──
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var touchStartTime = 0;
+  var touchTargetLink = null;
+  var lastHandledTime = 0;
+
+  function executeLinkNavigation(link, e) {
     if (!link) return;
-    var href = link.getAttribute('href');
-    if (!href || href.startsWith('#') || link.target === '_blank') return;
-    var targetNorm = normalizePath(href);
-    if (isAuthenticated() || targetNorm === 'index.html') {
-      ensureThemeColor(targetNorm);
-      updateNav(targetNorm);
-    }
-  }
-
-  document.addEventListener('touchstart', onNavTouchStart, { capture: true, passive: true });
-  document.addEventListener('pointerdown', onNavTouchStart, { capture: true, passive: true });
-  document.addEventListener('mousedown', onNavTouchStart, { capture: true, passive: true });
-
-  // Intercept all internal navigation clicks globally
-  document.addEventListener('click', function(e) {
-    var link = e.target.closest('a');
-    if (!link) return;
-
     var href = link.getAttribute('href');
     if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) return;
     if (link.target === '_blank') return;
@@ -354,10 +354,9 @@
 
     var targetNorm = normalizePath(href);
 
-    // If clicking a locked tab when unauthenticated
+    // If unauthenticated and clicking a locked tab
     if (!isAuthenticated() && targetNorm !== 'index.html') {
-      e.preventDefault();
-      e.stopPropagation();
+      if (e) { e.preventDefault(); e.stopPropagation(); }
       if (window.handleOpenDetails) {
         window.handleOpenDetails(e);
       } else {
@@ -366,9 +365,65 @@
       return;
     }
 
-    // Process SPA transition
-    e.preventDefault();
+    if (e) {
+      try { e.preventDefault(); e.stopPropagation(); } catch(err) {}
+    }
+    lastHandledTime = Date.now();
     loadPageSPA(href, true);
+  }
+
+  // 1. Touchstart: record start point without mutating DOM (prevents iOS WebKit tap gesture cancellation)
+  document.addEventListener('touchstart', function(e) {
+    var link = e.target.closest('a');
+    if (!link) {
+      touchTargetLink = null;
+      return;
+    }
+    var touch = e.touches[0];
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+    touchStartTime = Date.now();
+    touchTargetLink = link;
+  }, { capture: true, passive: true });
+
+  // 2. Touchend: execute instant navigation if finger didn't move significantly (genuine tap on iOS)
+  document.addEventListener('touchend', function(e) {
+    if (!touchTargetLink) return;
+    var touch = e.changedTouches[0];
+    if (!touch) return;
+    var dx = Math.abs(touch.clientX - touchStartX);
+    var dy = Math.abs(touch.clientY - touchStartY);
+    var dt = Date.now() - touchStartTime;
+
+    // If tap was clean (<12px drift, <600ms duration)
+    if (dx < 12 && dy < 12 && dt < 600) {
+      var link = touchTargetLink;
+      touchTargetLink = null;
+      executeLinkNavigation(link, e);
+    } else {
+      touchTargetLink = null;
+    }
+  }, { capture: true, passive: false });
+
+  document.addEventListener('touchcancel', function() {
+    touchTargetLink = null;
+  }, { capture: true, passive: true });
+
+  // 3. Click handler: fallback for mouse / keyboard / non-touch clicks (debounced after touchend)
+  document.addEventListener('click', function(e) {
+    // If this click was already triggered and processed by touchend in the last 400ms, prevent duplicate processing
+    if (Date.now() - lastHandledTime < 400) {
+      var handledLink = e.target.closest('a');
+      if (handledLink && !handledLink.classList.contains('no-spa')) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      return;
+    }
+
+    var link = e.target.closest('a');
+    if (!link) return;
+    executeLinkNavigation(link, e);
   }, { capture: true });
 
   // Handle browser Back / Forward buttons
