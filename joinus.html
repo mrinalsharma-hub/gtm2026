@@ -441,13 +441,13 @@ body {
   gap: 4px !important; /* 4px gap between cards */
 }
 
-/* Card Shell: Aipan Red Background (#A71F23), 1px Gold Frame Border (#C89B3C), 6px Rounded Corners, 60px Top/Bottom Inner Padding */
+/* Card Shell: Aipan Red Background (#A71F23), 1px Gold Frame Border (#C89B3C), 6px Rounded Corners, 72px Top/Bottom Inner Padding */
 .rsvp-card-section {
   background: #A71F23 !important;
   background-color: #A71F23 !important;
   border: 1px solid #C89B3C !important;
   border-radius: 6px !important;
-  padding: 60px 24px 60px 48px !important;
+  padding: 72px 24px 72px 48px !important;
   box-shadow: none !important;
   color: #FFFDF9 !important;
   width: 100% !important;
@@ -948,7 +948,7 @@ body {
   background: #A71F23 !important;
   border-radius: 6px !important;
   border: 1px solid #C89B3C !important;
-  padding: 60px 24px 60px 48px !important;
+  padding: 72px 24px 72px 48px !important;
   text-align: center !important;
   color: #FFFDF9 !important;
   box-shadow: none !important;
@@ -1253,7 +1253,7 @@ body {
 
       <!-- Submit CTA Button -->
       <div class="rsvp-submit-wrap">
-        <button type="submit" id="btn-submit" class="rsvp-submit-btn">Send RSVP</button>
+        <button type="submit" id="btn-submit" class="rsvp-submit-btn">Send Rsvp</button>
         <p id="rsvp-status" role="status"></p>
       </div>
     </form>
@@ -1402,7 +1402,7 @@ function showConfirmationScreen() {
   if (form) form.style.setProperty("display", "none", "important");
   if (thanks) thanks.style.setProperty("display", "block", "important");
   if (status) status.textContent = "";
-  if (btn) btn.textContent = isEditMode ? "Save RSVP" : "Send RSVP";
+  if (btn) btn.textContent = isEditMode ? "Save Rsvp" : "Send Rsvp";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
@@ -1417,7 +1417,7 @@ function handleEditRSVP() {
   if (thanks) thanks.style.setProperty("display", "none", "important");
   if (form) form.style.setProperty("display", "flex", "important");
   if (status) status.textContent = "";
-  if (btn) btn.textContent = "Save RSVP";
+  if (btn) btn.textContent = "Save Rsvp";
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
