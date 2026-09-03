@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 32" width="100%" height="32" preserveAspectRatio="none" fill="none">
+  <rect x="0" y="0" width="400" height="3" fill="#A71E20" />
+  <g fill="#A71E20" stroke="none">
+    <path d="M 12 16 C 18 10 28 12 34 16 C 28 20 18 22 12 16 Z" />
+    <polygon points="10,12 14,16 10,20" />
+    <circle cx="30" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="23" cy="6" r="1.6" />
+    <circle cx="23" cy="26" r="1.6" />
+    <path d="M 62 16 C 68 10 78 12 84 16 C 78 20 68 22 62 16 Z" />
+    <polygon points="60,12 64,16 60,20" />
+    <circle cx="80" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="73" cy="6" r="1.6" />
+    <circle cx="73" cy="26" r="1.6" />
+    <path d="M 112 16 C 118 10 128 12 134 16 C 128 20 118 22 112 16 Z" />
+    <polygon points="110,12 114,16 110,20" />
+    <circle cx="130" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="123" cy="6" r="1.6" />
+    <circle cx="123" cy="26" r="1.6" />
+    <path d="M 162 16 C 168 10 178 12 184 16 C 178 20 168 22 162 16 Z" />
+    <polygon points="160,12 164,16 160,20" />
+    <circle cx="180" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="173" cy="6" r="1.6" />
+    <circle cx="173" cy="26" r="1.6" />
+    <path d="M 212 16 C 218 10 228 12 234 16 C 228 20 218 22 212 16 Z" />
+    <polygon points="210,12 214,16 210,20" />
+    <circle cx="230" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="223" cy="6" r="1.6" />
+    <circle cx="223" cy="26" r="1.6" />
+    <path d="M 262 16 C 268 10 278 12 284 16 C 278 20 268 22 262 16 Z" />
+    <polygon points="260,12 264,16 260,20" />
+    <circle cx="280" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="273" cy="6" r="1.6" />
+    <circle cx="273" cy="26" r="1.6" />
+    <path d="M 312 16 C 318 10 328 12 334 16 C 328 20 318 22 312 16 Z" />
+    <polygon points="310,12 314,16 310,20" />
+    <circle cx="330" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="323" cy="6" r="1.6" />
+    <circle cx="323" cy="26" r="1.6" />
+    <path d="M 362 16 C 368 10 378 12 384 16 C 378 20 368 22 362 16 Z" />
+    <polygon points="360,12 364,16 360,20" />
+    <circle cx="380" cy="15" r="1" fill="#F6BD28" />
+    <circle cx="373" cy="6" r="1.6" />
+    <circle cx="373" cy="26" r="1.6" />
+  </g>
+  <rect x="0" y="29" width="400" height="1.5" fill="#A71E20" />
+</svg>
