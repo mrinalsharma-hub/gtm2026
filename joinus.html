@@ -459,37 +459,53 @@ body {
   transition: opacity 0.3s ease !important;
 }
 
-/* Card Inner Dotted Border: Yellow Pichoda Diamond Dots connecting to Corner Motifs */
+/* Card Inner Dotted Border: Yellow Pichoda Diamond Dots connecting to Corner Motifs without Under-Corner Overlap */
 .rsvp-card-section::before,
 #rsvp-thanks::before {
   content: "" !important;
   position: absolute !important;
-  top: 5px !important;
-  left: 5px !important;
-  right: 5px !important;
-  bottom: 5px !important;
+  top: 5.15px !important;
+  bottom: 5.15px !important;
+  left: 47px !important;
+  right: 47px !important;
   pointer-events: none !important;
   z-index: 1 !important;
   background-image:
-    url('images/pichoda-border-dot.svg?v=30000'),
-    url('images/pichoda-border-dot.svg?v=30000'),
-    url('images/pichoda-border-dot.svg?v=30000'),
-    url('images/pichoda-border-dot.svg?v=30000') !important;
+    url('images/pichoda-border-dot.svg?v=30100'),
+    url('images/pichoda-border-dot.svg?v=30100') !important;
   background-position:
     top left,
-    bottom left,
+    bottom left !important;
+  background-repeat:
+    repeat-x,
+    repeat-x !important;
+  background-size:
+    6.3px 6.3px,
+    6.3px 6.3px !important;
+}
+
+.rsvp-card-section::after,
+#rsvp-thanks::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 47px !important;
+  bottom: 47px !important;
+  left: 5.15px !important;
+  right: 5.15px !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  background-image:
+    url('images/pichoda-border-dot.svg?v=30100'),
+    url('images/pichoda-border-dot.svg?v=30100') !important;
+  background-position:
     top left,
     top right !important;
   background-repeat:
-    repeat-x,
-    repeat-x,
     repeat-y,
     repeat-y !important;
   background-size:
-    7px 7px,
-    7px 7px,
-    7px 7px,
-    7px 7px !important;
+    6.3px 6.3px,
+    6.3px 6.3px !important;
 }
 
 /* Four Corner Aipan Motifs */
