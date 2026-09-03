@@ -79,8 +79,18 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url("fonts/Spectral-Light.woff2") format("woff2"),
+  src: url("fonts/Spectral-Regular.ttf") format("truetype"),
+       url("fonts/Spectral-Light.woff2") format("woff2"),
        url("https://fonts.gstatic.com/s/spectral/v15/rnCs-xNNww_2s0amA9uSsG3BafY.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Spectral";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/Spectral-Regular.ttf") format("truetype"),
+       url("https://fonts.gstatic.com/s/spectral/v15/rnCr-xNNww_2s0amA9uqtmbAHZyc.woff2") format("woff2");
 }
 
 * {
@@ -275,7 +285,7 @@ body {
   color: #A71F23 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   text-transform: uppercase !important;
-  margin: 0 auto 20px auto !important;
+  margin: 0 auto 12px auto !important;
   text-align: center !important;
   width: 100% !important;
 }
@@ -283,12 +293,12 @@ body {
 /* Rotating Mandala Flower (Figma Node 43:884) with Outer Counter-Clockwise Dots Ring */
 .rsvp-mandala-wrap {
   position: relative !important;
-  width: 298px !important;
-  height: 298px !important;
+  width: 238px !important;
+  height: 238px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  margin: 0 auto 20px auto !important;
+  margin: 0 auto 16px auto !important;
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
@@ -315,8 +325,8 @@ body {
 }
 
 .rsvp-mandala-img {
-  width: 264px !important;
-  height: 264px !important;
+  width: 211px !important;
+  height: 211px !important;
   display: block !important;
   object-fit: contain !important;
   transform-origin: center center !important;
@@ -331,14 +341,14 @@ body {
   filter: drop-shadow(0 4px 20px rgba(172, 37, 37, 0.14)) !important;
 }
 
-/* Static Central Aipan Lakshmi Feet (Stays Static while Mandala spins) */
-.rsvp-lakshmi-feet-static {
+/* Static Central Aipan Lotus (Stays Static while Mandala spins) */
+.rsvp-lotus-center-static {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 42px !important;
-  height: 42px !important;
+  width: 44px !important;
+  height: 38px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -349,7 +359,7 @@ body {
   box-sizing: border-box !important;
 }
 
-.rsvp-lakshmi-feet-img {
+.rsvp-lotus-img {
   width: 100% !important;
   height: 100% !important;
   display: block !important;
@@ -426,13 +436,74 @@ body {
   transition: opacity 0.3s ease !important;
 }
 
-/* Card 1 Custom Header Shape: 28px Top Corners, +8px Top Padding */
+/* Card 1 Custom Wall Hanging Styling: Aipan Red Background, Gold Frame Border, 4 Corner Motifs, White Font */
 #sec-attending {
-  border-top-left-radius: 28px !important;
-  border-top-right-radius: 28px !important;
-  border-bottom-left-radius: 8px !important;
-  border-bottom-right-radius: 8px !important;
-  padding-top: 40px !important;
+  background: #A71F23 !important;
+  background-color: #A71F23 !important;
+  border: 3.5px solid #C89B3C !important;
+  border-radius: 6px !important;
+  color: #FFFDF9 !important;
+  padding: 30px 24px 28px 24px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+#sec-attending .rsvp-card-title {
+  color: #FFFDF9 !important;
+}
+
+#sec-attending .rsvp-option-text {
+  color: #FFFDF9 !important;
+  font-weight: 500 !important;
+}
+
+#sec-attending .rsvp-radio-mark {
+  border: 2px solid #FFFDF9 !important;
+  background: transparent !important;
+}
+
+#sec-attending .rsvp-option-label input[type="radio"]:checked + .rsvp-radio-mark {
+  border-color: #FFFDF9 !important;
+}
+
+#sec-attending .rsvp-option-label input[type="radio"]:checked + .rsvp-radio-mark::after {
+  background: #FFFDF9 !important;
+}
+
+/* Four Corner Aipan Motifs */
+.aipan-card-corner {
+  position: absolute !important;
+  width: 44px !important;
+  height: 44px !important;
+  background-image: url('images/rsvp/aipan_card_corner.png?v=28000') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  opacity: 0.95 !important;
+}
+
+.aipan-card-corner.corner-tl {
+  top: 4px !important;
+  left: 4px !important;
+}
+
+.aipan-card-corner.corner-tr {
+  top: 4px !important;
+  right: 4px !important;
+  transform: scaleX(-1) !important;
+}
+
+.aipan-card-corner.corner-bl {
+  bottom: 4px !important;
+  left: 4px !important;
+  transform: scaleY(-1) !important;
+}
+
+.aipan-card-corner.corner-br {
+  bottom: 4px !important;
+  right: 4px !important;
+  transform: scale(-1, -1) !important;
 }
 
 .rsvp-card-section.is-disabled-section {
@@ -453,7 +524,7 @@ body {
 }
 
 .req-star {
-  color: #F6BD59 !important;
+  color: #E58A00 !important;
   font-weight: bold !important;
   margin-left: 2px !important;
 }
@@ -561,7 +632,7 @@ body {
 .rsvp-option-text {
   font-family: "Spectral", Georgia, serif !important;
   font-size: 18px !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   line-height: 1.3 !important;
   color: #A71F23 !important;
 }
@@ -970,12 +1041,12 @@ body {
     <span class="rsvp-script-come">Come</span>
     <h1 class="rsvp-title-main">CELEBRATE<br>WITH US</h1>
 
-    <!-- Rotating Mandala Flower with Counter-Clockwise Dots Ring and Static Central Lakshmi Feet -->
+    <!-- Rotating Mandala Flower with Counter-Clockwise Dots Ring and Static Central Lotus -->
     <div class="rsvp-mandala-wrap" aria-hidden="true">
-      <img src="images/mandala-dots-ring.svg?v=26700" alt="" class="rsvp-dots-ring" width="298" height="298" aria-hidden="true">
-      <img src="images/rsvp/rsvp_mandala_flower.svg?v=26700" alt="Aipan Flower Mandala" class="rsvp-mandala-img" width="264" height="264">
-      <div class="rsvp-lakshmi-feet-static" aria-hidden="true">
-        <img src="images/rsvp/aipan_lakshmi_feet.png?v=27800" alt="Aipan Lakshmi Feet" class="rsvp-lakshmi-feet-img" width="42" height="42">
+      <img src="images/mandala-dots-ring.svg?v=26700" alt="" class="rsvp-dots-ring" width="238" height="238" aria-hidden="true">
+      <img src="images/rsvp/rsvp_mandala_flower.svg?v=26700" alt="Aipan Flower Mandala" class="rsvp-mandala-img" width="211" height="211">
+      <div class="rsvp-lotus-center-static" aria-hidden="true">
+        <img src="images/rsvp/aipan_lotus_center.png?v=28000" alt="Aipan Lotus" class="rsvp-lotus-img" width="44" height="38">
       </div>
     </div>
 
@@ -997,8 +1068,12 @@ body {
 
     <form id="rsvp-form" class="rsvp-form" novalidate>
       
-      <!-- Card 1: Are you joining us? (Figma Node 43:1022) -->
+      <!-- Card 1: Are you joining us? (Wall Hanging Aipan Style) -->
       <section class="rsvp-card-section" id="sec-attending">
+        <span class="aipan-card-corner corner-tl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-tr" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
+        <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Are you joining us? <span class="req-star">*</span></h2>
         <div class="rsvp-options-list">
           <label class="rsvp-option-label">

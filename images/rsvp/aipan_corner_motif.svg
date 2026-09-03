@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none">
+  <circle cx="12.0" cy="12.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="12.0" cy="12.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="30.0" cy="12.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="30.0" cy="12.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="48.0" cy="12.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="48.0" cy="12.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="66.0" cy="12.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="66.0" cy="12.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="84.0" cy="12.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="84.0" cy="12.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="12.0" cy="30.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="12.0" cy="30.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="30.0" cy="30.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="30.0" cy="30.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="48.0" cy="30.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="48.0" cy="30.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="66.0" cy="30.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="66.0" cy="30.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="12.0" cy="48.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="12.0" cy="48.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="30.0" cy="48.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="30.0" cy="48.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="48.0" cy="48.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="48.0" cy="48.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="12.0" cy="66.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="12.0" cy="66.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="30.0" cy="66.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="30.0" cy="66.0" r="1.8" fill="#FFFDF9" />
+  <circle cx="12.0" cy="84.0" r="6.8" stroke="#FFFDF9" stroke-width="1.8" fill="none" />
+  <circle cx="12.0" cy="84.0" r="1.8" fill="#FFFDF9" />
+  <line x1="18.8" y1="12.0" x2="23.2" y2="12.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="36.8" y1="12.0" x2="41.2" y2="12.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="54.8" y1="12.0" x2="59.2" y2="12.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="72.8" y1="12.0" x2="77.2" y2="12.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="18.8" y1="30.0" x2="23.2" y2="30.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="36.8" y1="30.0" x2="41.2" y2="30.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="54.8" y1="30.0" x2="59.2" y2="30.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="18.8" y1="48.0" x2="23.2" y2="48.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="36.8" y1="48.0" x2="41.2" y2="48.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="18.8" y1="66.0" x2="23.2" y2="66.0" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="12.0" y1="18.8" x2="12.0" y2="23.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="30.0" y1="18.8" x2="30.0" y2="23.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="48.0" y1="18.8" x2="48.0" y2="23.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="66.0" y1="18.8" x2="66.0" y2="23.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="12.0" y1="36.8" x2="12.0" y2="41.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="30.0" y1="36.8" x2="30.0" y2="41.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="48.0" y1="36.8" x2="48.0" y2="41.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="12.0" y1="54.8" x2="12.0" y2="59.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="30.0" y1="54.8" x2="30.0" y2="59.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+  <line x1="12.0" y1="72.8" x2="12.0" y2="77.2" stroke="#FFFDF9" stroke-width="1.8" stroke-linecap="round" />
+</svg>
