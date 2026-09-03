@@ -307,7 +307,7 @@ body {
   will-change: transform !important;
 }
 
-.rsvp-dots-ring {
+.rsvp-dots-ring-red {
   position: absolute !important;
   top: 0 !important;
   left: 0 !important;
@@ -317,12 +317,28 @@ body {
   pointer-events: none !important;
   z-index: 1 !important;
   transform-origin: center center !important;
-  animation: rsvpDotsAntiClockwiseSpin 42s linear infinite !important;
+  animation: rsvpDotsAntiClockwiseSpin 44s linear infinite !important;
   will-change: transform !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
-  filter: none !important;
+}
+
+.rsvp-dots-ring-yellow {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  transform-origin: center center !important;
+  animation: rsvpDotsClockwiseSpin 44s linear infinite !important;
+  will-change: transform !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
 }
 
 .rsvp-mandala-img {
@@ -375,6 +391,11 @@ body {
 }
 
 @keyframes rsvpMandalaSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rsvpDotsClockwiseSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
@@ -1015,6 +1036,9 @@ body {
   .rsvp-script-come,
   .rsvp-title-main,
   .rsvp-mandala-wrap,
+  .rsvp-dots-ring-red,
+  .rsvp-dots-ring-yellow,
+  .rsvp-mandala-img,
   .rsvp-sub-banner,
   .rsvp-card-section,
   .rsvp-submit-wrap,
@@ -1049,9 +1073,10 @@ body {
     <span class="rsvp-script-come">Come</span>
     <h1 class="rsvp-title-main">CELEBRATE<br>WITH US</h1>
 
-    <!-- Rotating Mandala Flower with Counter-Clockwise Dots Ring and Static Central Lotus -->
+    <!-- Rotating Mandala Flower with Counter-Rotating Dots Rings and Static Central Lotus -->
     <div class="rsvp-mandala-wrap" aria-hidden="true">
-      <img src="images/mandala-dots-ring.svg?v=29700" alt="" class="rsvp-dots-ring" width="238" height="238" aria-hidden="true">
+      <img src="images/mandala-dots-yellow.svg?v=29800" alt="" class="rsvp-dots-ring-yellow" width="238" height="238" aria-hidden="true">
+      <img src="images/mandala-dots-red.svg?v=29800" alt="" class="rsvp-dots-ring-red" width="238" height="238" aria-hidden="true">
       <img src="images/rsvp/rsvp_mandala_flower.svg?v=26700" alt="Aipan Flower Mandala" class="rsvp-mandala-img" width="211" height="211">
       <div class="rsvp-lotus-center-static" aria-hidden="true">
         <img src="images/rsvp/aipan_lotus_center.png?v=29200" alt="Aipan Lotus" class="rsvp-lotus-img" width="44" height="38">
