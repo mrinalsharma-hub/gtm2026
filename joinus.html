@@ -709,27 +709,26 @@ body {
 /* Textarea Fields (Preferences & Note) */
 .rsvp-textarea-card {
   width: 100% !important;
-  min-height: 52px !important;
-  height: 52px !important;
+  min-height: 78px !important;
+  height: 78px !important;
   background: #FFFDF9 !important;
   border-radius: 8px !important;
   border: 1.5px solid #C89B3C !important;
   padding: 14px 18px !important;
   font-family: "Spectral", Georgia, serif !important;
   font-size: 16px !important;
+  line-height: 1.45 !important;
   font-weight: 500 !important;
   color: #A71F23 !important;
   outline: none !important;
   box-sizing: border-box !important;
   resize: vertical !important;
   box-shadow: none !important;
-  transition: background-color 0.2s ease, border-color 0.2s ease, height 0.2s ease !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
 }
 
 .rsvp-textarea-card:focus {
   background: #FFFFFF !important;
-  min-height: 84px !important;
-  height: 84px !important;
   border-color: #E58A00 !important;
   box-shadow: none !important;
 }
@@ -738,6 +737,7 @@ body {
   color: rgba(167, 31, 35, 0.55) !important;
   font-family: "Spectral", Georgia, serif !important;
   font-size: 16px !important;
+  line-height: 1.45 !important;
   font-weight: 400 !important;
 }
 
@@ -1135,7 +1135,7 @@ body {
         <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
         <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Preferences or requests</h2>
-        <textarea id="f-diet" class="rsvp-textarea-card" placeholder="Allergies or any stay related requests ..."></textarea>
+        <textarea id="f-diet" class="rsvp-textarea-card" rows="2" placeholder="Allergies or any stay related requests ..."></textarea>
       </section>
 
       <!-- Card 6: Note for us (Figma Node 43:1052) -->
@@ -1145,7 +1145,7 @@ body {
         <span class="aipan-card-corner corner-bl" aria-hidden="true"></span>
         <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Note for us</h2>
-        <textarea id="f-msg" class="rsvp-textarea-card" placeholder="Any special notes or wishes for us..."></textarea>
+        <textarea id="f-msg" class="rsvp-textarea-card" rows="2" placeholder="Any special notes or wishes for us..."></textarea>
       </section>
 
       <!-- Submit CTA Button -->
