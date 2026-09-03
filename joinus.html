@@ -653,32 +653,33 @@ body {
   align-items: center !important;
 }
 
-.name-row-actions {
+.name-input-row.has-delete-btn .name-input {
+  padding-right: 44px !important;
+}
+
+.guest-delete-btn {
   position: absolute !important;
   right: 12px !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  display: flex !important;
-  align-items: center !important;
-  gap: 6px !important;
-  z-index: 5 !important;
-}
-
-.name-action-btn {
   background: transparent !important;
   border: none !important;
-  color: #A71F23 !important;
-  padding: 4px !important;
+  color: rgba(56, 43, 36, 0.45) !important;
+  padding: 6px !important;
   cursor: pointer !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   border-radius: 50% !important;
   box-shadow: none !important;
+  transition: color 0.2s ease, transform 0.15s ease, background-color 0.2s ease !important;
+  z-index: 5 !important;
 }
 
-.name-input-row.is-empty .done-btn {
-  display: none !important;
+.guest-delete-btn:hover {
+  color: #A71F23 !important;
+  background: rgba(167, 31, 35, 0.08) !important;
+  transform: translateY(-50%) scale(1.08) !important;
 }
 
 /* + Add another guest button */
@@ -757,7 +758,7 @@ body {
   width: 100% !important;
   height: 60px !important;
   min-height: 60px !important;
-  padding: 6px 24px 0 24px !important;
+  padding: 12px 24px 8px 24px !important;
   background: #A71F23 !important;
   border: 1px solid #C89B3C !important;
   border-radius: 40px !important;
@@ -772,7 +773,7 @@ body {
   justify-content: center !important;
   cursor: pointer !important;
   box-shadow: none !important;
-  transition: background 0.2s ease, transform 0.15s ease !important;
+  transition: background 0.2s ease, transform 0.15s ease, opacity 0.2s ease !important;
 }
 
 .rsvp-submit-btn:hover {
@@ -782,6 +783,13 @@ body {
 
 .rsvp-submit-btn:active {
   transform: scale(0.97) !important;
+}
+
+.rsvp-submit-btn:disabled {
+  opacity: 0.40 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  transform: none !important;
 }
 
 #rsvp-status {
@@ -1080,12 +1088,8 @@ body {
         <span class="aipan-card-corner corner-br" aria-hidden="true"></span>
         <h2 class="rsvp-card-title">Name <span class="req-star">*</span></h2>
         <div id="name-list" class="name-row-wrap">
-          <div class="name-input-row is-empty">
+          <div class="name-input-row">
             <input type="text" class="rsvp-pill-input name-input" id="name-1" placeholder="Enter full name" autocomplete="name">
-            <div class="name-row-actions">
-              <button type="button" class="name-action-btn done-btn" aria-label="Done with name"><svg class="mat-icon icon-check" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>
-              <button type="button" class="name-action-btn rm-person-btn" aria-label="Cancel or remove name"><svg class="mat-icon icon-close" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>
-            </div>
           </div>
         </div>
         <button type="button" id="add-person" class="add-person-btn">+ Add another guest</button>
@@ -1330,6 +1334,26 @@ function handleEditRSVP() {
       submitBtn = document.getElementById("btn-submit"),
       MAX_NAMES = 8;
 
+  function isFormValid() {
+    var attending = form.querySelector("input[name=attending]:checked");
+    if (!attending) return false;
+    var firstInput = list.querySelector(".name-input");
+    if (!firstInput || firstInput.value.trim().length === 0) return false;
+    var isYes = (attending.value === "Joyfully accept" || attending.value === "Yes, can't wait");
+    if (isYes) {
+      var contact = form.querySelector("#f-contact");
+      if (!contact || contact.value.trim().length === 0) return false;
+      var events = form.querySelectorAll("input[name=events]:checked");
+      if (!events || events.length === 0) return false;
+    }
+    return true;
+  }
+
+  function updateSubmitButtonState() {
+    if (!submitBtn) return;
+    submitBtn.disabled = !isFormValid();
+  }
+
   function updateAttendingState() {
     var checked = form.querySelector("input[name=attending]:checked");
     var isYes = checked && (checked.value === "Joyfully accept" || checked.value === "Yes, can't wait");
@@ -1354,12 +1378,13 @@ function handleEditRSVP() {
         sec.querySelectorAll("input, textarea").forEach(function(el) { el.disabled = true; });
       }
     });
+
+    updateSubmitButtonState();
   }
 
   form.querySelectorAll("input[name=attending]").forEach(function(radio) {
     radio.addEventListener("change", updateAttendingState);
   });
-  updateAttendingState();
 
   function updateAddButtonState() {
     var inputs = list.querySelectorAll(".name-input");
@@ -1380,67 +1405,73 @@ function handleEditRSVP() {
     }
   }
 
-  list.addEventListener("input", updateAddButtonState);
-  list.addEventListener("keyup", updateAddButtonState);
-  list.addEventListener("change", updateAddButtonState);
-
   function createNameRow(initialValue, autoFocus) {
     var row = document.createElement("div");
-    row.className = "name-input-row" + (initialValue ? "" : " is-empty");
-    row.innerHTML = "<input type="text" class="rsvp-pill-input name-input" placeholder="Enter full name" value="" + (initialValue || "") + "">" +
-                    "<div class="name-row-actions">" +
-                    "  <button type="button" class="name-action-btn done-btn" aria-label="Done with name"><svg class="mat-icon icon-check" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg></button>" +
-                    "  <button type="button" class="name-action-btn rm-person-btn" aria-label="Cancel or remove name"><svg class="mat-icon icon-close" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button>" +
-                    "</div>";
-    
-    var input = row.querySelector(".name-input");
-    var doneBtn = row.querySelector(".done-btn");
-    var rmBtn = row.querySelector(".rm-person-btn");
+    row.className = "name-input-row has-delete-btn";
 
-    function syncEmptyState() {
-      if (input.value.trim().length > 0) {
-        row.classList.remove("is-empty");
-      } else {
-        row.classList.add("is-empty");
-      }
-    }
+    var input = document.createElement("input");
+    input.type = "text";
+    input.className = "rsvp-pill-input name-input";
+    input.placeholder = "Guest name";
+    input.value = initialValue || "";
+    input.autocomplete = "off";
 
-    input.addEventListener("input", syncEmptyState);
-    input.addEventListener("change", syncEmptyState);
+    var delBtn = document.createElement("button");
+    delBtn.type = "button";
+    delBtn.className = "guest-delete-btn";
+    delBtn.setAttribute("aria-label", "Remove guest");
+    delBtn.setAttribute("title", "Remove guest");
+    delBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
 
-    input.addEventListener("keydown", function(e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        input.blur();
-      }
-    });
-
-    doneBtn.addEventListener("click", function(e) {
+    delBtn.addEventListener("click", function(e) {
       e.preventDefault();
-      input.blur();
+      row.remove();
+      updateAddButtonState();
+      updateSubmitButtonState();
     });
 
-    rmBtn.addEventListener("click", function(e) {
-      e.preventDefault();
-      var allRows = list.querySelectorAll(".name-input-row");
-      if (allRows.length === 1) {
-        input.value = "";
-        syncEmptyState();
-        updateAddButtonState();
-        input.focus();
-      } else {
-        row.remove();
-        updateAddButtonState();
-      }
+    input.addEventListener("input", function() {
+      updateAddButtonState();
+      updateSubmitButtonState();
+    });
+    input.addEventListener("change", function() {
+      updateAddButtonState();
+      updateSubmitButtonState();
     });
 
+    row.appendChild(input);
+    row.appendChild(delBtn);
     list.appendChild(row);
+
     updateAddButtonState();
+    updateSubmitButtonState();
 
     if (autoFocus) {
       setTimeout(function() { input.focus(); }, 50);
     }
   }
+
+  var firstInput = list.querySelector(".name-input");
+  if (firstInput) {
+    firstInput.addEventListener("input", function() {
+      updateAddButtonState();
+      updateSubmitButtonState();
+    });
+    firstInput.addEventListener("change", function() {
+      updateAddButtonState();
+      updateSubmitButtonState();
+    });
+  }
+
+  var contactInput = form.querySelector("#f-contact");
+  if (contactInput) {
+    contactInput.addEventListener("input", updateSubmitButtonState);
+    contactInput.addEventListener("change", updateSubmitButtonState);
+  }
+
+  form.querySelectorAll("input[name=events]").forEach(function(checkbox) {
+    checkbox.addEventListener("change", updateSubmitButtonState);
+  });
 
   addBtn.addEventListener("click", function() {
     var inputs = list.querySelectorAll(".name-input");
@@ -1452,71 +1483,23 @@ function handleEditRSVP() {
     createNameRow("", true);
   });
 
-  var initialFirstRow = list.querySelector(".name-input-row");
-  if (initialFirstRow) {
-    var initInput = initialFirstRow.querySelector(".name-input");
-    var initDone = initialFirstRow.querySelector(".done-btn");
-    var initRm = initialFirstRow.querySelector(".rm-person-btn");
-
-    function syncInitEmpty() {
-      if (initInput.value.trim().length > 0) {
-        initialFirstRow.classList.remove("is-empty");
-      } else {
-        initialFirstRow.classList.add("is-empty");
-      }
-    }
-
-    initInput.addEventListener("input", syncInitEmpty);
-    initInput.addEventListener("change", syncInitEmpty);
-
-    initInput.addEventListener("keydown", function(e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        initInput.blur();
-      }
-    });
-
-    initDone.addEventListener("click", function(e) {
-      e.preventDefault();
-      initInput.blur();
-    });
-
-    initRm.addEventListener("click", function(e) {
-      e.preventDefault();
-      initInput.value = "";
-      syncInitEmpty();
-      updateAddButtonState();
-      initInput.focus();
-    });
-  }
-
+  updateAttendingState();
   updateAddButtonState();
+  updateSubmitButtonState();
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
-    var attending = form.querySelector("input[name=attending]:checked");
-    if (!attending) {
+    if (!isFormValid()) {
       status.textContent = "Please fill in the required (*) info above";
       return;
     }
+    var attending = form.querySelector("input[name=attending]:checked");
     var isYes = attending.value === "Joyfully accept" || attending.value === "Yes, can't wait",
         names = [].slice.call(form.querySelectorAll(".name-input"))
                   .map(function(i) { return i.value.trim(); })
                   .filter(Boolean),
         contact = form.querySelector("#f-contact").value.trim(),
         events = form.querySelectorAll("input[name=events]:checked");
-
-    if (isYes) {
-      if (!names.length || !contact || !events.length) {
-        status.textContent = "Please fill in the required (*) info above";
-        return;
-      }
-    } else {
-      if (!names.length) {
-        status.textContent = "Please enter your name above";
-        return;
-      }
-    }
 
     var p = new URLSearchParams();
     p.append(RSVP_CONFIG.entries.name, names.length ? names.join(", ") : "Declined");
