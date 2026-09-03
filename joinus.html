@@ -435,7 +435,9 @@ body {
   position: relative !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
-  transition: opacity 0.3s ease !important;
+  will-change: transform !important;
+  transform: translate3d(0, var(--card-parallax-y, 0px), 0) !important;
+  transition: opacity 0.3s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 /* Four Corner Aipan Motifs */
@@ -752,6 +754,9 @@ body {
   max-width: 100% !important;
   margin: 26px auto 0 auto !important;
   text-align: center !important;
+  will-change: transform !important;
+  transform: translate3d(0, var(--card-parallax-y, 0px), 0) !important;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .rsvp-submit-btn {
@@ -822,6 +827,21 @@ body {
   box-sizing: border-box !important;
 }
 
+@keyframes handsGentleFloat {
+  0% {
+    transform: translate3d(0, 0px, 0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translate3d(0, -6px, 0) rotate(0.6deg) scale(1.012);
+  }
+  70% {
+    transform: translate3d(0, -3px, 0) rotate(-0.5deg) scale(1.008);
+  }
+  100% {
+    transform: translate3d(0, 0px, 0) rotate(0deg) scale(1);
+  }
+}
+
 .rsvp-footer-hands-wrap {
   width: calc(100% - 80px) !important;
   max-width: 328px !important;
@@ -832,6 +852,7 @@ body {
   pointer-events: none !important;
   user-select: none !important;
   box-sizing: border-box !important;
+  perspective: 600px !important;
 }
 
 .rsvp-footer-hands-img {
@@ -839,7 +860,9 @@ body {
   height: auto !important;
   display: block !important;
   margin: 0 auto !important;
-  transform: none !important;
+  transform-origin: 50% 15% !important;
+  animation: handsGentleFloat 7.5s ease-in-out infinite alternate !important;
+  will-change: transform !important;
 }
 
 .rsvp-footer-quote {
@@ -918,11 +941,11 @@ body {
 @keyframes royalCardSlideUp {
   0% {
     opacity: 0;
-    transform: translateY(28px) scale(0.985);
+    transform: translate3d(0, calc(28px + var(--card-parallax-y, 0px)), 0) scale(0.985);
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translate3d(0, var(--card-parallax-y, 0px), 0) scale(1);
   }
 }
 
@@ -1001,7 +1024,8 @@ body {
   .rsvp-card-section,
   .rsvp-submit-wrap,
   .rsvp-footer-section,
-  .aipan-bottom-border-wrap {
+  .aipan-bottom-border-wrap,
+  .rsvp-footer-hands-img {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -1568,6 +1592,50 @@ function handleEditRSVP() {
       showConfirmationScreen();
     }, 450);
   });
+})();
+</script>
+
+<script>
+/* ── Royal Parallax Engine: Cards Scrolling Parallax ── */
+(function() {
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  var cards = document.querySelectorAll(".rsvp-card-section, .rsvp-submit-wrap");
+  if (!cards.length) return;
+  var ticking = false;
+  var lastScrollY = 0;
+
+  function onScroll() {
+    lastScrollY = window.pageYOffset || document.documentElement.scrollTop || 0;
+    if (!ticking) {
+      requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  }
+
+  function updateParallax() {
+    ticking = false;
+    var vh = window.innerHeight;
+    var centerThreshold = vh * 0.5;
+
+    cards.forEach(function(card, idx) {
+      var rect = card.getBoundingClientRect();
+      var cardCenter = rect.top + rect.height / 2;
+      var distFromCenter = cardCenter - centerThreshold;
+
+      if (rect.bottom >= -120 && rect.top <= vh + 120) {
+        var norm = distFromCenter / (vh * 0.5);
+        // Smooth vertical parallax translation (-12px to +12px with gentle depth stagger)
+        var depthFactor = 10 + (idx % 2) * 3;
+        var cardY = norm * depthFactor;
+        card.style.setProperty("--card-parallax-y", cardY.toFixed(1) + "px");
+      }
+    });
+  }
+
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
+  updateParallax();
 })();
 </script>
 </body>
