@@ -822,12 +822,21 @@ body {
   box-sizing: border-box !important;
 }
 
-@keyframes handsFrontToBackSwing {
+@keyframes handsNatural3DSwing {
   0% {
-    transform: rotateX(-6.5deg) translate3d(0, -2px, 18px) scale(1.025);
+    /* Forward swing towards viewer: bottom tilts out, arc rises */
+    transform: rotateX(-12deg) rotateY(1.8deg) translateY(-2px);
+    filter: drop-shadow(0 8px 14px rgba(167, 31, 35, 0.12));
+  }
+  50% {
+    /* Neutral bottom of swing arc */
+    transform: rotateX(0deg) rotateY(0deg) translateY(3.5px);
+    filter: drop-shadow(0 3px 6px rgba(167, 31, 35, 0.05));
   }
   100% {
-    transform: rotateX(5.5deg) translate3d(0, 3px, -16px) scale(0.975);
+    /* Backward swing away into depth: bottom tilts back */
+    transform: rotateX(10deg) rotateY(-1.5deg) translateY(-1px);
+    filter: drop-shadow(0 1px 3px rgba(167, 31, 35, 0.03));
   }
 }
 
@@ -841,7 +850,7 @@ body {
   pointer-events: none !important;
   user-select: none !important;
   box-sizing: border-box !important;
-  perspective: 800px !important;
+  perspective: 550px !important;
   transform-style: preserve-3d !important;
 }
 
@@ -851,8 +860,8 @@ body {
   display: block !important;
   margin: 0 auto !important;
   transform-origin: 50% 0% !important;
-  animation: handsFrontToBackSwing 4.8s ease-in-out infinite alternate !important;
-  will-change: transform !important;
+  animation: handsNatural3DSwing 4.6s ease-in-out infinite alternate !important;
+  will-change: transform, filter !important;
   backface-visibility: hidden !important;
 }
 
