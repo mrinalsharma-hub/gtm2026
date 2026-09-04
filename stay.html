@@ -34,8 +34,8 @@
 <meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
-<meta name="color-scheme" content="light">
 <meta name="msapplication-navbutton-color" content="#FFEFD4">
+<meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
@@ -45,13 +45,38 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24700">
 <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=24700">
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=24700">
+
+<!-- ── Resource Preloads matching Celebrations & RSVP ── -->
+<link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
+<link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=WindSong&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="images/Event_Flowers.webp" type="image/webp" fetchpriority="high">
 <link rel="stylesheet" href="css/site.css?v=26000">
 
 <style>
+@font-face {
+  font-family: 'Kugile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Kugile.ttf?v=24700') format('truetype'),
+       url('fonts/Kugile_Demo.ttf?v=24700') format('truetype'),
+       local('Kugile');
+}
+
+@font-face {
+  font-family: 'Snell Roundhand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/SnellRoundhand.ttf?v=24700') format('truetype'),
+       local('Snell Roundhand'),
+       local('SnellRoundhand');
+}
+
 :root {
   color-scheme: light;
   --theme-color: #A71F23;
@@ -63,6 +88,7 @@
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   -webkit-tap-highlight-color: transparent !important;
   -webkit-touch-callout: none !important;
   scrollbar-width: none !important;
@@ -74,7 +100,7 @@ html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 div::-webkit-scrollbar,
 main::-webkit-scrollbar,
-.schedule-page-wrap::-webkit-scrollbar {
+.stay-page-wrap::-webkit-scrollbar {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
@@ -88,8 +114,6 @@ html {
   background: #FFEFD4 !important;
   background-color: #FFEFD4 !important;
   overflow: hidden !important;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
 }
 
 body {
@@ -102,7 +126,7 @@ body {
   padding: 0 !important;
   background: #FFEFD4 !important;
   background-color: #FFEFD4 !important;
-  font-family: 'Cinzel', serif;
+  font-family: 'Spectral', Georgia, serif;
   overflow: hidden !important;
   overscroll-behavior: none !important;
   touch-action: none !important;
@@ -110,424 +134,325 @@ body {
   justify-content: center;
 }
 
-/* ── 1. Page Background Canvas (#FFEFD4 + Subtle Linen Grain + Botanical Lines) ── */
-.schedule-bg-layer {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
+/* ── 1. Page Background Canvas (Exact Celebrations & RSVP background) ── */
+.celebrations-bg-layer {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  overflow: hidden !important;
   background: #FFEFD4 !important;
   background-color: #FFEFD4 !important;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
 }
 
-.schedule-bg-layer::before {
-  display: none !important;
-}
-
-.schedule-bg-layer::after {
-  display: block !important;
-  content: "" !important;
+.celebrations-botanical-art-layer {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='finePaperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.25  0 0 0 0 0.20  0 0 0 0 0.15  0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23finePaperGrain)'/%3E%3C/svg%3E") !important;
-  background-repeat: repeat !important;
-  background-size: 180px 180px !important;
-  mix-blend-mode: multiply !important;
-  opacity: 0.7 !important;
-  pointer-events: none !important;
-}
-
-.events-botanical-art-layer {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-image: url('images/events_botanical_tonal_lines.webp?v=24700') !important;
+  background-image: url('images/celebrations/bg_motif_celebrations.webp?v=24700') !important;
   background-repeat: repeat !important;
   background-position: top center !important;
-  background-size: 418px 418px !important;
-  opacity: 0.25 !important;
+  background-size: 388px 291px !important;
+  opacity: 0.16 !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
 
-/* ── 2. Edge-to-Edge Content Container (Smooth Native App Scroll Viewport) ── */
-.schedule-page-wrap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
+.celebrations-radial-glow {
+  position: absolute !important;
+  top: 40px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 480px !important;
+  height: 480px !important;
+  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* ── 2. Scrollable Content Viewport ── */
+.stay-page-wrap {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  max-width: 480px !important;
+  margin: 0 auto !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  overscroll-behavior-y: contain !important;
+  touch-action: pan-y !important;
+  z-index: 2 !important;
+  padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
+  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* ── 3. Header: Travel & Stay (Typography strictly matching Celebrations.html) ── */
+.stay-header {
   width: 100%;
   max-width: 480px;
-  margin: 0 auto;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-  z-index: 2;
+  margin: 18px auto 28px auto;
+  padding: 0 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: calc(100px + env(safe-area-inset-bottom, 20px));
-  touch-action: pan-y;
-  transform: translate3d(0, 0, 0);
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
-/* ── 3. Top Flowers (Zero Top Truncation & Botanical Sunlight Shadows) ── */
-.schedule-flowers-top {
-  filter: drop-shadow(-6px 14px 28px rgba(145, 95, 45, 0.18)) drop-shadow(-3px 7px 14px rgba(165, 110, 55, 0.12)) drop-shadow(-1px 2px 4px rgba(130, 80, 40, 0.08));
-  position: relative;
-  margin-top: 0;
-  width: min(340px, 85vw);
-  height: auto;
-  pointer-events: none;
-  z-index: 3;
-  transform-origin: 58% top;
-  animation: gentleFloralBreeze 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-  will-change: transform;
-}
-
-.schedule-flowers-top img,
-.schedule-flowers-top picture {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  aspect-ratio: 2115 / 2559;
-}
-
-@keyframes gentleFloralBreeze {
-  0% { transform: rotate(0deg) translateY(0px); }
-  30% { transform: rotate(1.2deg) translateY(-1px) skewX(-0.4deg); }
-  70% { transform: rotate(-0.8deg) translateY(-2px) skewX(0.3deg); }
-  100% { transform: rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
-}
-
-/* ── 4. Header: Travel & Stay (Windsong Script Ampersand) ── */
-.schedule-header {
   text-align: center;
-  margin-top: -64px;
-  margin-bottom: 28px;
   position: relative;
-  z-index: 4;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.stay-title-wrap {
   width: 100%;
-  max-width: 440px;
-  padding: 0 20px;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.schedule-title-lockup {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-}
-
-.schedule-name-top {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(52px, 13vw, 64px);
+.stay-title-main {
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: clamp(48px, 13.5vw, 62px);
   font-weight: 400;
-  line-height: 0.86 !important;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(167, 31, 35, 0.15));
+  line-height: 0.98;
+  letter-spacing: -1.2px;
+  color: #A71F23;
   text-transform: uppercase;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: visible !important;
+  text-shadow: 0px 1px 2px #FFFDF9;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
 }
 
 .stay-title-amp {
-  font-family: 'WindSong', cursive !important;
-  font-weight: 400 !important;
-  font-size: 1.15em !important;
-  line-height: 0.8 !important;
-  display: inline-block !important;
-  vertical-align: middle !important;
-  margin-left: 2px !important;
-  padding: 0 24px 0 4px !important;
-  margin-right: -20px !important;
-  text-transform: none !important;
-  overflow: visible !important;
-  box-sizing: content-box !important;
-  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.12)) !important;
-}
-
-.schedule-name-bottom {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(52px, 13vw, 64px);
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif;
   font-weight: 400;
-  line-height: 0.86 !important;
-  letter-spacing: 1px;
-  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(167, 31, 35, 0.15));
+  font-size: 1.05em;
+  color: #A71F23;
+  display: inline-block;
+  vertical-align: baseline;
+  margin: 0 4px;
+  text-transform: none;
+  text-shadow: 0px 1px 2px #FFFDF9;
+}
+
+.stay-subrow {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stay-location-text {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.96px;
+  line-height: 1.2;
+  color: #A71F23;
   text-transform: uppercase;
-  margin-top: -4px !important;
-  padding: 0 !important;
+  text-shadow: 0px 1px 2px #FFFDF9;
+  display: block;
+  text-align: center;
 }
 
-.stay-hero-sub {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 20px !important;
-  font-weight: 400 !important;
-  font-style: normal !important;
-  line-height: 1.45 !important;
-  letter-spacing: 0.010em !important;
-  color: #3D2E26 !important;
-  max-width: 360px !important;
-  margin: 18px auto 0 !important;
-  text-align: center !important;
-}
-
-/* ── 5. Travel & Stay Cards Feed (Luxury Editorial Cards) ── */
-.schedule-events-feed {
+/* ── 4. Travel & Stay Cards Feed (Luxury Editorial Cards matching Celebrations/RSVP) ── */
+.stay-events-feed {
   width: 100%;
   max-width: 440px;
-  padding: 0 20px;
+  padding: 0 16px;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 20px;
   position: relative;
   z-index: 3;
+  box-sizing: border-box;
+  margin-bottom: 24px;
 }
 
-.schedule-event-card {
+.stay-event-card {
   width: 100% !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
   text-align: left !important;
   position: relative !important;
-  background: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(255, 255, 255, 0.88) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid rgba(167, 31, 35, 0.12) !important;
+  border: 1px solid rgba(167, 31, 35, 0.14) !important;
   border-radius: 24px !important;
-  padding: 28px !important;
+  padding: 24px 24px 22px 24px !important;
   box-sizing: border-box !important;
-  box-shadow: 0 10px 30px rgba(110, 15, 18, 0.06), 0 2px 8px rgba(60, 40, 25, 0.04) !important;
+  box-shadow: 0 8px 24px rgba(110, 15, 18, 0.06), 0 2px 8px rgba(60, 40, 25, 0.04) !important;
   transition: transform 0.25s ease, box-shadow 0.25s ease !important;
 }
 
-
-
-.event-title {
-  font-family: 'Cinzel', serif !important;
-  font-size: 21px !important;
-  font-weight: 600 !important;
-  line-height: normal !important;
-  letter-spacing: 0.04em !important;
+.stay-card-title {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 24px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.02em !important;
+  line-height: 1.15 !important;
+  color: #A71F23 !important;
   text-transform: uppercase !important;
-  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  margin: 0 0 24px 0 !important;
+  text-shadow: 0px 1px 1px #FFFDF9 !important;
+  margin: 0 0 16px 0 !important;
   text-align: left !important;
   width: 100% !important;
   align-self: flex-start !important;
 }
 
-.event-desc {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 20px !important;
-  font-weight: 400 !important;
-  font-style: normal !important;
-  line-height: 1.45 !important;
-  letter-spacing: 0.010em !important;
-  color: #3D2E26 !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  margin: 0 !important;
-  text-align: left !important;
-}
-
-.event-meta-wrap {
+.stay-card-content {
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 20px !important;
+  gap: 14px !important;
   text-align: left !important;
   align-items: flex-start !important;
 }
 
-.event-meta-row {
+.stay-desc {
   font-family: 'Spectral', Georgia, serif !important;
-  font-size: 20px !important;
+  font-size: 16px !important;
   font-weight: 400 !important;
   font-style: normal !important;
-  line-height: 1.45 !important;
+  line-height: 1.55 !important;
   letter-spacing: 0.010em !important;
-  color: #3D2E26 !important;
-  text-align: left !important;
+  color: #1E120E !important;
+  max-width: 100% !important;
   width: 100% !important;
+  margin: 0 !important;
+  text-align: left !important;
 }
 
 .stay-bold-label {
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 600 !important;
-  color: #3D2E26 !important;
+  color: #1E120E !important;
 }
 
-.event-meta-row strong {
-  font-family: 'Spectral', Georgia, serif;
-  color: #0b4c6d;
-  font-weight: 600;
+.stay-desc em {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-style: italic !important;
 }
 
-.event-meta-row a {
-  color: #0b4c6d;
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
+.stay-desc a {
+  color: #0b4c6d !important;
+  font-weight: 600 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  transition: color 0.2s ease !important;
 }
 
-.event-meta-row a:hover {
-  color: #A71F23;
+.stay-desc a:hover {
+  color: #A71F23 !important;
 }
 
 .stay-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
   color: #FFFFFF !important;
-  background: linear-gradient(135deg, #C63034 0%, #A71F23 50%, #6E0F12 100%) !important;
-  border: none;
-  border-radius: 28px;
-  padding: 12px 28px;
-  margin-top: 16px;
-  text-decoration: none;
-  box-shadow: 0 4px 14px rgba(167, 31, 35, 0.25);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-  cursor: pointer;
+  background: #A71F23 !important;
+  border: none !important;
+  border-radius: 28px !important;
+  padding: 13px 26px !important;
+  margin-top: 14px !important;
+  text-decoration: none !important;
+  box-shadow: 0 4px 14px rgba(167, 31, 35, 0.25) !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease !important;
+  cursor: pointer !important;
 }
 
 .stay-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(167, 31, 35, 0.35);
-  opacity: 0.95;
+  background: #90191D !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 18px rgba(167, 31, 35, 0.35) !important;
 }
 
 .stay-btn:active {
-  transform: translateY(1px);
-  box-shadow: 0 2px 8px rgba(167, 31, 35, 0.20);
-}
-
-.schedule-separator span {
-  width: 4px;
-  height: 4px;
-  background-color: #A71F23;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.45;
-}
-
-.schedule-separator .sep-diamond {
-  width: 7px;
-  height: 7px;
-  border-radius: 1px;
-  transform: rotate(45deg);
-  background-color: #A71F23;
-  opacity: 0.75;
-  box-shadow: 0 0 6px rgba(167, 31, 35, 0.35);
+  transform: translateY(1px) !important;
+  box-shadow: 0 2px 8px rgba(167, 31, 35, 0.20) !important;
 }
 </style>
 </head>
 <body>
 
-<!-- ── 1. Architectural Cotton-Rag Paper Background Layer ── -->
-<div class="schedule-bg-layer" aria-hidden="true">
-  <div class="events-botanical-art-layer" aria-hidden="true"></div>
+<!-- ── 1. Page Background Canvas (Exact Celebrations & RSVP background) ── -->
+<div class="celebrations-bg-layer" aria-hidden="true">
+  <div class="celebrations-botanical-art-layer" aria-hidden="true"></div>
+  <div class="celebrations-radial-glow" aria-hidden="true"></div>
 </div>
 
-<!-- ── 2. Main Page Content Wrapper ── -->
-<main class="schedule-page-wrap">
-
-  <!-- ── Top Flowers ── -->
-  <div class="schedule-flowers-top">
-    <picture>
-      <source srcset="images/Event_Flowers.webp" type="image/webp">
-      <img src="images/Event_Flowers.png" alt="Botanical Wedding Flowers" width="2115" height="2559">
-    </picture>
-  </div>
+<!-- ── 2. Scrollable Page Content Viewport ── -->
+<main class="stay-page-wrap">
 
   <!-- ── Header: Travel & Stay ── -->
-  <header class="schedule-header">
-    <div class="schedule-title-lockup">
-      <h1 class="schedule-name-top">TRAVEL<span class="stay-title-amp">&amp;</span></h1>
-      <h1 class="schedule-name-bottom">STAY</h1>
+  <header class="stay-header">
+    <div class="stay-title-wrap">
+      <h1 class="stay-title-main">TRAVEL<span class="stay-title-amp">&amp;</span><br>STAY</h1>
+    </div>
+    <div class="stay-subrow">
+      <span class="stay-location-text">GETTING TO NAINITAL</span>
     </div>
   </header>
 
   <!-- ── Travel & Stay Feed ── -->
-  <div class="schedule-events-feed">
+  <div class="stay-events-feed">
 
     <!-- Section 1: By Air -->
-    <article class="schedule-event-card">
-      <h2 class="event-title">BY AIR</h2>
-      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 20px !important;">
-        <p class="event-desc">
+    <article class="stay-event-card">
+      <h2 class="stay-card-title">BY AIR</h2>
+      <div class="stay-card-content">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Pantnagar (PGH):</strong> The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi.
         </p>
-        <p class="event-desc">
+        <p class="stay-desc">
           <strong class="stay-bold-label">New Delhi (DEL):</strong> Fly into Delhi, then take a train or private taxi. This is the most frequent and reliable option.
         </p>
       </div>
     </article>
 
     <!-- Section 2: By Train -->
-    <article class="schedule-event-card">
-      <h2 class="event-title">BY TRAIN</h2>
-      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 20px !important;">
-        <p class="event-desc">
+    <article class="stay-event-card">
+      <h2 class="stay-card-title">BY TRAIN</h2>
+      <div class="stay-card-content">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Kathgodam (KGM):</strong> The closest railway station (~1 hour away by road / 23 km). Direct daily and overnight trains run from New Delhi.
         </p>
-        <p class="event-desc">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Direct Trains:</strong> Options include the day-run <em>Kathgodam Shatabdi Express</em> and the overnight <em>Ranikhet Express</em>. Prepaid taxis and cabs are readily available at the station exit.
         </p>
       </div>
     </article>
 
     <!-- Section 3: By Road -->
-    <article class="schedule-event-card">
-      <h2 class="event-title">BY ROAD</h2>
-      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 20px !important;">
-        <p class="event-desc">
+    <article class="stay-event-card">
+      <h2 class="stay-card-title">BY ROAD</h2>
+      <div class="stay-card-content">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Delhi to Nainital:</strong> A scenic road journey (~6.5 to 8 hours / 300 km) via Moradabad, Rampur, Bazpur, and Haldwani.
         </p>
-        <p class="event-desc">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Hill Drive:</strong> The final 35 km climbs winding mountain roads. We highly recommend keeping motion-sickness tablets handy if you need them.
         </p>
       </div>
@@ -535,26 +460,26 @@ body {
     </article>
 
     <!-- Section 4: Weather & Packing -->
-    <article class="schedule-event-card">
-      <h2 class="event-title">WEATHER &amp; PACKING</h2>
-      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 20px !important;">
-        <p class="event-desc">
+    <article class="stay-event-card">
+      <h2 class="stay-card-title">WEATHER &amp; PACKING</h2>
+      <div class="stay-card-content">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Mountain Weather:</strong> Expect crisp, sunny days (~10–15°C) and chilly evenings dipping to a brisk ~2–7°C.
         </p>
-        <p class="event-desc">
+        <p class="stay-desc">
           <strong class="stay-bold-label">What to Pack:</strong> Warm layers, heavy woollens, a cozy evening coat or shawl, and comfortable walking shoes (Nainital is best explored on foot!).
         </p>
       </div>
     </article>
 
     <!-- Section 5: Accommodation -->
-    <article class="schedule-event-card">
-      <h2 class="event-title">ACCOMMODATION</h2>
-      <div class="event-meta-wrap" style="margin-top: 0 !important; gap: 20px !important;">
-        <p class="event-desc">
+    <article class="stay-event-card">
+      <h2 class="stay-card-title">ACCOMMODATION</h2>
+      <div class="stay-card-content">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Guest Stays:</strong> We are lovingly coordinating all accommodation and will share your specific hotel and room details directly with you.
         </p>
-        <p class="event-desc">
+        <p class="stay-desc">
           <strong class="stay-bold-label">Help Us Plan:</strong> Please let us know if you can make it by September 30 so we can finalise the rooms.
         </p>
       </div>
@@ -565,7 +490,7 @@ body {
 
 </main>
 
-<!-- ── Material & Apple HIG Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
+<!-- ── Fixed Bottom Navigation (4 Tabs with Aipan Icons) ── -->
 <nav class="fixed-bottom-nav" aria-label="Main Navigation">
   <div class="nav-container" role="tablist">
     <a href="G&M.html" class="nav-tab" role="tab" aria-selected="false" aria-label="G&amp;M" data-tab="gm">
