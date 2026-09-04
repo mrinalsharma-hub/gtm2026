@@ -1314,18 +1314,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   -webkit-box-align: stretch !important;
   -webkit-align-items: stretch !important;
   align-items: stretch !important;
-  -webkit-box-pack: justify !important;
-  -webkit-justify-content: space-between !important;
-  justify-content: space-between !important;
+  -webkit-box-pack: center !important;
+  -webkit-justify-content: space-around !important;
+  justify-content: space-around !important;
   padding: 0 20px !important;
   margin: 0 auto !important;
 }
 
 .fixed-bottom-nav .nav-tab {
   box-sizing: border-box !important;
-  flex: 0 0 auto !important;
-  width: auto !important;
-  max-width: none !important;
+  flex: 1 1 0% !important;
+  width: 25% !important;
+  max-width: 25% !important;
   height: 68px !important;
   min-height: 68px !important;
   display: -webkit-box !important;
@@ -1346,7 +1346,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   gap: 5px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  padding: 0 4px !important;
+  padding: 0 2px !important;
   margin: 0 !important;
   user-select: none !important;
   -webkit-user-select: none !important;
@@ -1424,7 +1424,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   margin: 0 !important;
   padding: 0 !important;
   font-family: 'Spectral', 'Cinzel', Georgia, serif !important;
-  font-size: clamp(12px, 3.2vw, 13px) !important;
+  font-size: clamp(11.5px, 2.9vw, 13px) !important;
   font-weight: 400 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.005em !important;
