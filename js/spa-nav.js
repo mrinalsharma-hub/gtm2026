@@ -434,23 +434,40 @@
   }
 
   function getScrollInfo(target) {
-    if (!target || target === document || target === window || target === document.documentElement || target === document.body) {
+    if (target && typeof target.scrollTop === 'number' && target !== document && target !== window && target !== document.documentElement && target !== document.body) {
+      if (target.scrollHeight > target.clientHeight) {
+        return {
+          elem: target,
+          scrollTop: target.scrollTop,
+          scrollHeight: target.scrollHeight,
+          clientHeight: target.clientHeight
+        };
+      }
+    }
+    // Check if there is an active scrolling container in the page
+    var pageContainer = document.querySelector('.celebrations-page-wrap, .stay-page-wrap, .rsvp-page-wrap, .schedule-page-wrap, .stay-container, main');
+    if (pageContainer && pageContainer.scrollHeight > pageContainer.clientHeight && pageContainer.clientHeight > 0) {
       return {
-        elem: document.scrollingElement || document.documentElement || document.body || window,
-        scrollTop: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
-        scrollHeight: document.documentElement.scrollHeight || document.body.scrollHeight || 0,
-        clientHeight: window.innerHeight || document.documentElement.clientHeight || 0
+        elem: pageContainer,
+        scrollTop: pageContainer.scrollTop,
+        scrollHeight: pageContainer.scrollHeight,
+        clientHeight: pageContainer.clientHeight
       };
     }
-    if (typeof target.scrollTop === 'number') {
-      return {
-        elem: target,
-        scrollTop: target.scrollTop,
-        scrollHeight: target.scrollHeight,
-        clientHeight: target.clientHeight
-      };
-    }
-    return null;
+
+    var docEl = document.documentElement;
+    var body = document.body;
+    var scroller = document.scrollingElement || docEl || body || window;
+    var sTop = window.pageYOffset || (docEl ? docEl.scrollTop : 0) || (body ? body.scrollTop : 0) || 0;
+    var sHeight = Math.max(docEl ? docEl.scrollHeight : 0, body ? body.scrollHeight : 0);
+    var cHeight = window.innerHeight || (docEl ? docEl.clientHeight : 0) || 0;
+
+    return {
+      elem: scroller,
+      scrollTop: sTop,
+      scrollHeight: sHeight,
+      clientHeight: cHeight
+    };
   }
 
   function handleAutoScroll(e) {
@@ -468,46 +485,24 @@
     if (!info) return;
 
     var currentTop = info.scrollTop;
-    var elem = info.elem;
 
-    var prevTop = 0;
-    if (lastScrollMap && elem && typeof elem === 'object') {
-      if (lastScrollMap.has(elem)) {
-        prevTop = lastScrollMap.get(elem);
-      } else {
-        prevTop = currentTop;
-      }
-      lastScrollMap.set(elem, currentTop);
-    } else {
-      prevTop = fallbackLastScrollTop;
-      fallbackLastScrollTop = currentTop;
-    }
-
-    // 1. If at or near top of the page (within top 24px), ALWAYS reveal the tab bar
+    // 1. If at or reaching the top edge of the page (within top 24px), ALWAYS reveal the tab bar
     if (currentTop <= 24) {
       setNavHidden(false);
       return;
     }
 
-    // 2. If reaching or at the bottom of the page (within 60px of the bottom), ALWAYS reveal the tab bar
+    // 2. If at or reaching the bottom edge of the page (within 24px of the bottom edge), ALWAYS reveal the tab bar
     if (info.scrollHeight > info.clientHeight && info.clientHeight > 0) {
       var maxScroll = info.scrollHeight - info.clientHeight;
-      if (currentTop >= maxScroll - 60) {
+      if (currentTop >= Math.max(0, maxScroll - 24)) {
         setNavHidden(false);
         return;
       }
     }
 
-    var delta = currentTop - prevTop;
-
-    // 3. Directional scroll detection with 6px threshold
-    if (delta > 6) {
-      // Scrolling DOWN -> Auto-hide tab bar
-      setNavHidden(true);
-    } else if (delta < -6) {
-      // Scrolling UP -> Reveal tab bar
-      setNavHidden(false);
-    }
+    // 3. ANY other scroll on any page (between top and bottom edges) MUST hide the tabs bar
+    setNavHidden(true);
   }
 
   function bindScrollContainers() {
