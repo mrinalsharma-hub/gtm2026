@@ -1559,8 +1559,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 .rsvp-mandala-wrap {
   position: relative !important;
-  width: 230px !important;
-  height: 230px !important;
+  width: 262px !important;
+  height: 262px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -1591,8 +1591,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 }
 
 .rsvp-mandala-img {
-  width: 209px !important;
-  height: 209px !important;
+  width: 232px !important;
+  height: 232px !important;
   display: block !important;
   object-fit: contain !important;
   transform-origin: center center !important;
@@ -1607,23 +1607,31 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   filter: drop-shadow(0 4px 28px rgba(60, 5, 8, 0.16)) !important;
 }
 
+.rsvp-om-center-static,
 .mandala-center-hands {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 64px !important;
-  height: 64px !important;
+  width: 48px !important;
+  height: 44px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   pointer-events: none !important;
-  z-index: 4 !important;
+  z-index: 3 !important;
   margin: 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
-  filter: drop-shadow(0 3px 14px rgba(60, 5, 8, 0.14)) !important;
+}
+
+.rsvp-om-img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35)) !important;
 }
 
 .mandala-hands-svg {
