@@ -1283,6 +1283,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   backface-visibility: hidden !important;
   -webkit-backface-visibility: hidden !important;
   contain: layout paint !important;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+  will-change: transform, opacity !important;
+}
+
+.fixed-bottom-nav.nav-hidden,
+.fixed-bottom-nav.is-hidden {
+  transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px) + 24px), 0) !important;
+  -webkit-transform: translate3d(0, calc(100% + env(safe-area-inset-bottom, 0px) + 24px), 0) !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 .fixed-bottom-nav .nav-container {

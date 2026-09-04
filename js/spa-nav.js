@@ -249,6 +249,7 @@
       // 6. Update Active Navigation Tab & Theme Color AT THE EXACT SAME TIME AS CONTENT UPDATE
       updateNav(targetNorm);
       ensureThemeColor(targetNorm);
+      setNavHidden(false);
 
       // 7. Ensure audio player is bound and in sync
       if (window.GTM_AUDIO && window.GTM_AUDIO.bindPlayer) {
@@ -283,6 +284,9 @@
       if (mainWrap) {
         mainWrap.scrollTop = 0;
       }
+
+      // Rebind scroll listeners on newly mounted scroll containers
+      bindScrollContainers();
     }
 
     // Check memory cache first (instant 0ms synchronous transition)
@@ -406,8 +410,131 @@
     executeLinkNavigation(link, e);
   }, { capture: true });
 
+  // ── Auto-Hide Bottom Navigation on Scroll Controller ──
+  var lastScrollMap = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
+  var fallbackLastScrollTop = 0;
+  var isNavHidden = false;
+
+  function setNavHidden(hidden) {
+    var nav = document.querySelector('.fixed-bottom-nav');
+    if (!nav) return;
+    if (hidden) {
+      if (!isNavHidden) {
+        isNavHidden = true;
+        nav.classList.add('nav-hidden');
+        nav.classList.add('is-hidden');
+      }
+    } else {
+      if (isNavHidden) {
+        isNavHidden = false;
+        nav.classList.remove('nav-hidden');
+        nav.classList.remove('is-hidden');
+      }
+    }
+  }
+
+  function getScrollInfo(target) {
+    if (!target || target === document || target === window || target === document.documentElement || target === document.body) {
+      return {
+        elem: document.scrollingElement || document.documentElement || document.body || window,
+        scrollTop: window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0,
+        scrollHeight: document.documentElement.scrollHeight || document.body.scrollHeight || 0,
+        clientHeight: window.innerHeight || document.documentElement.clientHeight || 0
+      };
+    }
+    if (typeof target.scrollTop === 'number') {
+      return {
+        elem: target,
+        scrollTop: target.scrollTop,
+        scrollHeight: target.scrollHeight,
+        clientHeight: target.clientHeight
+      };
+    }
+    return null;
+  }
+
+  function handleAutoScroll(e) {
+    // If modal sheet is active on Celebrations or anywhere, do not hide/show nav from background scroll
+    if (document.body && document.body.classList.contains('sheet-modal-open')) {
+      return;
+    }
+
+    // Ignore scrolling inside modal bottom sheets or overlays
+    if (e && e.target && e.target.closest && (e.target.closest('.event-bottom-sheet') || e.target.closest('.event-sheet-overlay'))) {
+      return;
+    }
+
+    var info = getScrollInfo(e ? e.target : null);
+    if (!info) return;
+
+    var currentTop = info.scrollTop;
+    var elem = info.elem;
+
+    var prevTop = 0;
+    if (lastScrollMap && elem && typeof elem === 'object') {
+      if (lastScrollMap.has(elem)) {
+        prevTop = lastScrollMap.get(elem);
+      } else {
+        prevTop = currentTop;
+      }
+      lastScrollMap.set(elem, currentTop);
+    } else {
+      prevTop = fallbackLastScrollTop;
+      fallbackLastScrollTop = currentTop;
+    }
+
+    // 1. If at or near top of the page (within top 24px), ALWAYS reveal the tab bar
+    if (currentTop <= 24) {
+      setNavHidden(false);
+      return;
+    }
+
+    // 2. Prevent erratic rubber-band bottom bounce on iOS Safari
+    if (info.scrollHeight > info.clientHeight && info.clientHeight > 0) {
+      var maxScroll = info.scrollHeight - info.clientHeight;
+      if (currentTop > maxScroll - 5) {
+        return;
+      }
+    }
+
+    var delta = currentTop - prevTop;
+
+    // 3. Directional scroll detection with 6px threshold
+    if (delta > 6) {
+      // Scrolling DOWN -> Auto-hide tab bar
+      setNavHidden(true);
+    } else if (delta < -6) {
+      // Scrolling UP -> Reveal tab bar
+      setNavHidden(false);
+    }
+  }
+
+  function bindScrollContainers() {
+    // Global capture listener catches scroll on window, document, and all child scrolling containers
+    window.removeEventListener('scroll', handleAutoScroll, { capture: true });
+    window.addEventListener('scroll', handleAutoScroll, { capture: true, passive: true });
+
+    // Also attach directly to known scroll containers for maximum compatibility
+    var scrollSelectors = [
+      '.celebrations-page-wrap',
+      '.stay-page-wrap',
+      '.rsvp-page-wrap',
+      '.schedule-page-wrap',
+      '.stay-container',
+      'main'
+    ];
+    scrollSelectors.forEach(function(sel) {
+      var elems = document.querySelectorAll(sel);
+      elems.forEach(function(el) {
+        el.removeEventListener('scroll', handleAutoScroll);
+        el.addEventListener('scroll', handleAutoScroll, { passive: true });
+      });
+    });
+  }
+
   // Handle browser Back / Forward buttons
   window.addEventListener('popstate', function(e) {
+    setNavHidden(false);
     loadPageSPA(window.location.pathname, false);
   });
 
@@ -416,22 +543,28 @@
     ensureThemeColor();
     updateNav();
     prefetchAll();
+    bindScrollContainers();
 
-    window.addEventListener('focus', function() { ensureThemeColor(); }, { passive: true });
-    window.addEventListener('visibilitychange', function() { ensureThemeColor(); }, { passive: true });
-    window.addEventListener('pageshow', function() { ensureThemeColor(); }, { passive: true });
+    window.addEventListener('focus', function() { ensureThemeColor(); setNavHidden(false); }, { passive: true });
+    window.addEventListener('visibilitychange', function() { ensureThemeColor(); setNavHidden(false); }, { passive: true });
+    window.addEventListener('pageshow', function() { ensureThemeColor(); setNavHidden(false); }, { passive: true });
+    window.addEventListener('resize', function() { setNavHidden(false); }, { passive: true });
+    window.addEventListener('orientationchange', function() { setNavHidden(false); }, { passive: true });
 
     // Cache the initial page HTML with normalized key
     var currentNorm = normalizePath(window.location.pathname);
     pageCache[currentNorm] = document.documentElement.outerHTML;
   }
 
-  // Expose loadPageSPA globally
+  // Expose loadPageSPA and nav helpers globally
   window.GTM_SPA = {
     navigateTo: loadPageSPA,
     updateNav: updateNav,
     normalizePath: normalizePath,
-    isAuthenticated: isAuthenticated
+    isAuthenticated: isAuthenticated,
+    showNav: function() { setNavHidden(false); },
+    hideNav: function() { setNavHidden(true); },
+    setNavHidden: setNavHidden
   };
 
   if (document.readyState === 'loading') {
