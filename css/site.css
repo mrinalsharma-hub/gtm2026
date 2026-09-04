@@ -1317,7 +1317,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   -webkit-box-pack: center !important;
   -webkit-justify-content: space-around !important;
   justify-content: space-around !important;
-  padding: 0 20px !important;
+  padding: 0 12px !important;
   margin: 0 auto !important;
 }
 
