@@ -1613,8 +1613,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 48px !important;
-  height: 44px !important;
+  width: 38.4px !important;
+  height: 35.2px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
