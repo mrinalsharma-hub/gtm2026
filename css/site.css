@@ -1424,7 +1424,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   transform: scale(1.50) !important;
 }
 
-/* Label below icon - strictly identical font treatment and size for all tabs */
+/* Label below icon - strictly identical font treatment (700 bold) and size for all tabs */
 .fixed-bottom-nav .nav-tab .nav-label {
   box-sizing: border-box !important;
   display: block !important;
@@ -1434,7 +1434,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   font-family: 'Spectral', 'Cinzel', Georgia, serif !important;
   font-size: clamp(11.5px, 2.9vw, 13px) !important;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   font-style: normal !important;
   font-variant: normal !important;
   text-transform: uppercase !important;
@@ -1449,7 +1449,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   overflow: visible !important;
   text-overflow: clip !important;
   -webkit-font-smoothing: antialiased !important;
-  transition: color 0.2s ease, opacity 0.2s ease, font-weight 0.2s ease !important;
+  transition: color 0.2s ease, opacity 0.2s ease !important;
 }
 
 .fixed-bottom-nav .nav-tab.active .nav-label {
