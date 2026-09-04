@@ -13,15 +13,17 @@
       var path = window.location.pathname.split('/').pop().toLowerCase();
       try { path = decodeURIComponent(path); } catch(e) {}
       
-      var target = 'index.html';
+      var target = 'G&M.html';
       if (path === 'schedule.html' || path === 'celebrations.html' || path === 'events.html') {
         target = 'celebrations.html';
       } else if (path === 'travel.html' || path === 'stay.html') {
         target = 'stay.html';
-      } else if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'rsvp.html' || path === 'joinus.html') {
+      } else if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'joinus.html') {
         target = 'joinus.html';
+      } else if (path === 'g&m.html' || path === 'gm.html' || path === 'g%26m.html' || path === 'home.html' || path === 'us.html' || path === 'index.html') {
+        target = 'G&M.html';
       } else {
-        target = 'index.html';
+        target = 'G&M.html';
       }
       window.location.replace(target);
     })();

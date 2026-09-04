@@ -3,13 +3,12 @@
   'use strict';
 
   function normalizePath(url) {
-    if (!url) return 'index.html';
+    if (!url) return 'G&M.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
     try { path = decodeURIComponent(path); } catch(e) {}
-    if (!path || path === '' || path === 'index.html') {
-      return 'index.html';
+    if (!path || path === '' || path === 'index.html' || path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html') {
+      return 'G&M.html';
     }
-    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html') return 'G&M.html';
     if (path === 'celebrations.html' || path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
     if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
     if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
@@ -24,13 +23,7 @@
   }
 
   function isAuthenticated() {
-    return (
-      sessionStorage.getItem('gtm2026_auth') === 'true' ||
-      localStorage.getItem('gtm2026_auth') === 'true' ||
-      localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
-      getCookie('gtm2026_auth') === 'true' ||
-      getCookie('gtm2026_has_authenticated') === 'true'
-    );
+    return true;
   }
 
   function setPersistentAuth() {
@@ -44,16 +37,9 @@
     } catch(e) {}
   }
 
-  if (isAuthenticated()) {
-    setPersistentAuth();
-  }
+  setPersistentAuth();
 
   function checkAuthGuard() {
-    var currentNorm = normalizePath(window.location.pathname);
-    if (currentNorm !== 'index.html' && !isAuthenticated()) {
-      window.location.replace('index.html');
-      return false;
-    }
     return true;
   }
 
@@ -88,14 +74,13 @@
 
   function updateNav(currentNorm) {
     currentNorm = currentNorm || normalizePath(window.location.pathname);
-    var authed = isAuthenticated();
     var tabs = document.querySelectorAll('.fixed-bottom-nav .nav-tab');
 
     tabs.forEach(function(tab) {
       var href = tab.getAttribute('href');
       var tabNorm = normalizePath(href);
 
-      if (tabNorm === currentNorm && (authed || currentNorm !== 'index.html')) {
+      if (tabNorm === currentNorm) {
         tab.classList.add('active');
         tab.setAttribute('aria-selected', 'true');
         var label = tab.querySelector('.nav-label');
@@ -108,12 +93,7 @@
         var text = label ? label.textContent.trim() : '';
         tab.setAttribute('aria-label', text);
       }
-
-      if (!authed) {
-        tab.classList.add('is-locked');
-      } else {
-        tab.classList.remove('is-locked');
-      }
+      tab.classList.remove('is-locked');
     });
   }
 

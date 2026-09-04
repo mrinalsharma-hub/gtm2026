@@ -1396,7 +1396,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   margin: 0 !important;
   padding: 0 !important;
   color: rgba(110, 33, 26, 0.65) !important;
-  opacity: 1 !important;
+  opacity: 0.75 !important;
   fill: currentColor !important;
   stroke: currentColor !important;
   transform: none !important;
@@ -1434,7 +1434,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   line-height: 1.1 !important;
   height: auto !important;
   color: rgba(110, 33, 26, 0.65) !important;
-  opacity: 1 !important;
+  opacity: 0.75 !important;
   -webkit-text-shadow: none !important;
   text-shadow: none !important;
   white-space: nowrap !important;
@@ -2276,19 +2276,6 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 
 
-
-
-/* ── Locked Bottom Nav Tabs State ── */
-.fixed-bottom-nav .nav-tab.is-locked {
-  opacity: 0.35 !important;
-  cursor: pointer !important;
-}
-.fixed-bottom-nav .nav-tab.is-locked .nav-icon {
-  opacity: 0.35 !important;
-}
-.fixed-bottom-nav .nav-tab.is-locked .nav-label {
-  opacity: 0.35 !important;
-}
 
 
 /* ── Universal Royal Medallion Music Player (Figma Node 26:627 · 56x56px) ── */
