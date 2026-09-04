@@ -48,6 +48,7 @@
 
 <!-- ── Resource Preloads matching Celebrations & RSVP ── -->
 <link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/celebrations/aipan_emblem_top_left.svg?v=36000" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
 
@@ -196,6 +197,35 @@ body {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+}
+
+/* ── Scrollable Top-Right Aipan Emblem (Scrolls with page · No drop shadow) ── */
+.stay-scroll-aipan-wrap {
+  position: absolute !important;
+  top: max(14px, env(safe-area-inset-top, 14px)) !important;
+  right: max(16px, env(safe-area-inset-right, 16px)) !important;
+  width: 56px !important;
+  height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+}
+
+.stay-scroll-aipan-img {
+  width: 56px !important;
+  height: 56px !important;
+  min-width: 56px !important;
+  min-height: 56px !important;
+  display: block !important;
+  object-fit: contain !important;
+  filter: none !important;
+  -webkit-filter: none !important;
+  box-shadow: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  pointer-events: none !important;
 }
 
 /* ── 3. Header: Travel & Stay (Typography strictly matching Celebrations.html) ── */
@@ -405,6 +435,11 @@ body {
 
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="stay-page-wrap">
+
+  <!-- ── Top-Right Aipan Emblem (Scrolls naturally with page · No drop shadow) ── -->
+  <div class="stay-scroll-aipan-wrap" aria-hidden="true">
+    <img src="images/celebrations/aipan_emblem_top_left.svg?v=36000" alt="Aipan Emblem" class="stay-scroll-aipan-img" width="56" height="56" loading="eager" fetchpriority="high">
+  </div>
 
   <!-- ── Header: Travel & Stay ── -->
   <header class="stay-header">
