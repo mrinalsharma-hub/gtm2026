@@ -1508,7 +1508,9 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
   -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior-y: contain !important;
+  overscroll-behavior: none !important;
+  overscroll-behavior-y: none !important;
+  overscroll-behavior-x: none !important;
   z-index: 2 !important;
   display: flex !important;
   flex-direction: column !important;

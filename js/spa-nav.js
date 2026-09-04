@@ -579,6 +579,56 @@
     setNavHidden: setNavHidden
   };
 
+  // ── Bulletproof iOS Elastic Bounce / Rubber-Band Disabler ──
+  (function initIOSBounceDisabler() {
+    var touchStartY = 0;
+    var activeScrollElem = null;
+
+    window.addEventListener('touchstart', function(e) {
+      if (!e.touches || e.touches.length !== 1) return;
+      touchStartY = e.touches[0].clientY;
+
+      var target = e.target;
+      activeScrollElem = target ? target.closest('.celebrations-page-wrap, .stay-page-wrap, .rsvp-page-wrap, .schedule-page-wrap, .stay-container, .event-bottom-sheet, main') : null;
+
+      if (!activeScrollElem) {
+        activeScrollElem = document.scrollingElement || document.documentElement || document.body;
+      }
+
+      if (activeScrollElem && activeScrollElem.scrollHeight > activeScrollElem.clientHeight) {
+        var top = activeScrollElem.scrollTop;
+        var maxScroll = activeScrollElem.scrollHeight - activeScrollElem.clientHeight;
+
+        // Prevent iOS native rubber-band trigger by keeping touchstart within safe bounds [1, maxScroll - 1]
+        if (top <= 0) {
+          activeScrollElem.scrollTop = 1;
+        } else if (top >= maxScroll) {
+          activeScrollElem.scrollTop = maxScroll - 1;
+        }
+      }
+    }, { passive: true, capture: true });
+
+    window.addEventListener('touchmove', function(e) {
+      if (!activeScrollElem || !e.touches || e.touches.length !== 1) return;
+      var currentY = e.touches[0].clientY;
+      var diffY = currentY - touchStartY;
+
+      if (activeScrollElem.scrollHeight <= activeScrollElem.clientHeight) {
+        // Element cannot scroll -> prevent body rubber-band stretch
+        e.preventDefault();
+        return;
+      }
+
+      var top = activeScrollElem.scrollTop;
+      var maxScroll = activeScrollElem.scrollHeight - activeScrollElem.clientHeight;
+
+      // If dragging past top or bottom boundaries, prevent iOS elastic bounce
+      if ((top <= 0 && diffY > 0) || (top >= maxScroll && diffY < 0)) {
+        e.preventDefault();
+      }
+    }, { passive: false, capture: true });
+  })();
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
