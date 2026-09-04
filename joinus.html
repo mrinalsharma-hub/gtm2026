@@ -199,7 +199,7 @@ body {
   touch-action: pan-y !important;
   z-index: 2 !important;
   padding-top: 0 !important;
-  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
   margin-bottom: 0 !important;
   display: flex !important;
   flex-direction: column !important;
@@ -215,7 +215,7 @@ body {
   overflow: hidden !important;
   display: block !important;
   margin-top: 0 !important;
-  margin-bottom: 40px !important;
+  margin-bottom: 24px !important;
   position: relative !important;
   z-index: 2 !important;
   pointer-events: none !important;
@@ -265,6 +265,22 @@ body {
   box-sizing: border-box !important;
 }
 
+/* Rotating Mandala Flower (Figma Node 43:884) with Outer Counter-Clockwise Dots Ring */
+.rsvp-mandala-wrap {
+  position: relative !important;
+  width: 238px !important;
+  height: 238px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto 16px auto !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
+  animation: mandalaGentleHover 7s ease-in-out infinite alternate !important;
+  will-change: transform !important;
+}
+
 .rsvp-script-come {
   font-family: "Snell Roundhand", "SnellRoundhand", cursive, serif !important;
   font-size: 48px !important;
@@ -274,7 +290,7 @@ body {
   color: #A71F23 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   display: block !important;
-  margin: 24px auto 8px auto !important;
+  margin: 0 auto 6px auto !important;
   text-align: center !important;
   width: 100% !important;
 }
@@ -288,25 +304,9 @@ body {
   color: #A71F23 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   text-transform: uppercase !important;
-  margin: 0 auto 12px auto !important;
+  margin: 0 auto 16px auto !important;
   text-align: center !important;
   width: 100% !important;
-}
-
-/* Rotating Mandala Flower (Figma Node 43:884) with Outer Counter-Clockwise Dots Ring */
-.rsvp-mandala-wrap {
-  position: relative !important;
-  width: 238px !important;
-  height: 238px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  margin: 0 auto 20px auto !important;
-  padding: 0 !important;
-  box-sizing: border-box !important;
-  flex-shrink: 0 !important;
-  animation: mandalaGentleHover 7s ease-in-out infinite alternate !important;
-  will-change: transform !important;
 }
 
 .rsvp-dots-ring-red {
@@ -1029,20 +1029,20 @@ body {
 }
 
 /* Header Text & Rotating Mandala Entrance */
+.rsvp-mandala-wrap {
+  animation: royalMandalaEntrance 1.3s cubic-bezier(0.12, 1, 0.22, 1) 0.10s both, mandalaGentleHover 7s ease-in-out 1.40s infinite alternate !important;
+}
+
 .rsvp-script-come {
-  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.10s both !important;
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.22s both !important;
 }
 
 .rsvp-title-main {
-  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.25s both !important;
-}
-
-.rsvp-mandala-wrap {
-  animation: royalMandalaEntrance 1.3s cubic-bezier(0.12, 1, 0.22, 1) 0.38s both, mandalaGentleHover 7s ease-in-out 1.68s infinite alternate !important;
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.35s both !important;
 }
 
 .rsvp-sub-banner {
-  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.52s both !important;
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.48s both !important;
 }
 
 /* Six Form Cards (Staggered with 0.15s luxury cascade) */
@@ -1120,11 +1120,8 @@ body {
     <img src="images/aipan-top-border.svg?v=26400" alt="Aipan Border" class="aipan-top-border-img" width="504" height="52.4">
   </div>
 
-  <!-- Header: Come CELEBRATE WITH US -->
+  <!-- Header: Rotating Mandala Flower & Come CELEBRATE WITH US -->
   <header class="rsvp-hero-header">
-    <span class="rsvp-script-come">Come</span>
-    <h1 class="rsvp-title-main">CELEBRATE<br>WITH US</h1>
-
     <!-- Rotating Mandala Flower with Counter-Rotating Dots Rings and Static Central Lotus -->
     <div class="rsvp-mandala-wrap" aria-hidden="true">
       <img src="images/mandala-dots-yellow.svg?v=30200" alt="" class="rsvp-dots-ring-yellow" width="238" height="238" aria-hidden="true">
@@ -1134,6 +1131,9 @@ body {
         <img src="images/rsvp/aipan_lotus_center.svg?v=30700" alt="Aipan Lotus" class="rsvp-lotus-img" width="38" height="34">
       </div>
     </div>
+
+    <span class="rsvp-script-come">Come</span>
+    <h1 class="rsvp-title-main">CELEBRATE<br>WITH US</h1>
 
     <!-- Sub-heading Invitation Banner (Figma Node 43:1021) -->
     <div class="rsvp-sub-banner">

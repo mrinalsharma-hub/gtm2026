@@ -1262,7 +1262,7 @@ main.celebrations-page-wrap,
 
 main.rsvp-page-wrap,
 .rsvp-page-wrap {
-  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
   margin-bottom: 0 !important;
 }
 
@@ -1516,7 +1516,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   flex-direction: column !important;
   align-items: center !important;
   padding-top: 0 !important;
-  padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;
   margin-bottom: 0 !important;
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0);
