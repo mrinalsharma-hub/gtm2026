@@ -1314,18 +1314,18 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   -webkit-box-align: stretch !important;
   -webkit-align-items: stretch !important;
   align-items: stretch !important;
-  -webkit-box-pack: center !important;
-  -webkit-justify-content: space-around !important;
-  justify-content: space-around !important;
+  -webkit-box-pack: justify !important;
+  -webkit-justify-content: space-between !important;
+  justify-content: space-between !important;
   padding: 0 12px !important;
   margin: 0 auto !important;
 }
 
 .fixed-bottom-nav .nav-tab {
   box-sizing: border-box !important;
-  flex: 1 1 0% !important;
-  width: 25% !important;
-  max-width: 25% !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  max-width: none !important;
   height: 68px !important;
   min-height: 68px !important;
   display: -webkit-box !important;
@@ -1346,7 +1346,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   gap: 5px !important;
   outline: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  padding: 0 2px !important;
+  padding: 0 !important;
   margin: 0 !important;
   user-select: none !important;
   -webkit-user-select: none !important;
