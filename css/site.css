@@ -1540,7 +1540,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .aipan-top-border-wrap {
   width: 100% !important;
   max-width: 100% !important;
-  height: 92.84px !important;
+  height: 93.3px !important;
   overflow: hidden !important;
   display: block !important;
   margin-top: 0 !important;
@@ -1553,7 +1553,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .aipan-top-border-svg,
 .aipan-top-border-img {
   width: 100% !important;
-  height: 92.84px !important;
+  height: 93.3px !important;
   display: block !important;
 }
 
