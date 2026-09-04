@@ -1250,16 +1250,14 @@ header.site,
 }
 
 /* Content Viewport Clearance */
-main:not(.celebrations-page-wrap):not(.rsvp-page-wrap) {
+main:not(.celebrations-page-wrap):not(.rsvp-page-wrap):not(.stay-page-wrap) {
   padding-bottom: calc(96px + env(safe-area-inset-bottom, 20px)) !important;
 }
 
 main.celebrations-page-wrap,
-.celebrations-page-wrap {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-}
-
+.celebrations-page-wrap,
+main.stay-page-wrap,
+.stay-page-wrap,
 main.rsvp-page-wrap,
 .rsvp-page-wrap {
   padding-bottom: calc(58px + env(safe-area-inset-bottom, 0px)) !important;

@@ -418,6 +418,10 @@
   function setNavHidden(hidden) {
     var nav = document.querySelector('.fixed-bottom-nav');
     if (!nav) return;
+    nav.style.transform = '';
+    nav.style.transition = '';
+    nav.style.opacity = '';
+    nav.style.pointerEvents = '';
     if (hidden) {
       if (!isNavHidden) {
         isNavHidden = true;
@@ -484,24 +488,36 @@
     var info = getScrollInfo(e ? e.target : null);
     if (!info) return;
 
-    var currentTop = info.scrollTop;
+    var nav = document.querySelector('.fixed-bottom-nav');
+    if (!nav) return;
 
-    // 1. If at or reaching the top edge of the page (within top 24px), ALWAYS reveal the tab bar
-    if (currentTop <= 24) {
+    var currentTop = info.scrollTop;
+    var maxScroll = info.scrollHeight - info.clientHeight;
+    var pullDistance = nav.offsetHeight || 64;
+
+    // 1. If at or reaching the top edge of the page (within top 24px) or on a non-scrollable page, reveal tab bar
+    if (currentTop <= 24 || maxScroll <= 0) {
       setNavHidden(false);
       return;
     }
 
-    // 2. If at or reaching the bottom edge of the page (within 24px of the bottom edge), ALWAYS reveal the tab bar
-    if (info.scrollHeight > info.clientHeight && info.clientHeight > 0) {
-      var maxScroll = info.scrollHeight - info.clientHeight;
-      if (currentTop >= Math.max(0, maxScroll - 24)) {
-        setNavHidden(false);
+    // 2. If reaching the bottom of the page: the bottom edge of the picture literally pulls up the bottom tab bar!
+    if (maxScroll > 0) {
+      var remaining = maxScroll - currentTop;
+      if (remaining <= pullDistance + 4) {
+        nav.classList.remove('nav-hidden', 'is-hidden');
+        isNavHidden = false;
+
+        var pullOffset = Math.max(0, remaining);
+        nav.style.transition = 'none';
+        nav.style.transform = 'translate3d(0, ' + pullOffset.toFixed(1) + 'px, 0)';
+        nav.style.opacity = '1';
+        nav.style.pointerEvents = 'auto';
         return;
       }
     }
 
-    // 3. ANY other scroll on any page (between top and bottom edges) MUST hide the tabs bar
+    // 3. ANY other scroll on any page (between top and bottom edges) MUST hide the tabs bar smoothly
     setNavHidden(true);
   }
 
