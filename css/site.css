@@ -1250,12 +1250,14 @@ header.site,
 }
 
 /* Content Viewport Clearance */
-main:not(.celebrations-page-wrap) {
+main:not(.celebrations-page-wrap):not(.rsvp-page-wrap) {
   padding-bottom: calc(96px + env(safe-area-inset-bottom, 20px)) !important;
 }
 
 main.celebrations-page-wrap,
-.celebrations-page-wrap {
+.celebrations-page-wrap,
+main.rsvp-page-wrap,
+.rsvp-page-wrap {
   padding-bottom: 0 !important;
   margin-bottom: 0 !important;
 }
@@ -1496,7 +1498,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
-  bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important;
+  bottom: 0 !important;
+  height: 100% !important;
   width: 100% !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
@@ -1509,7 +1512,8 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   flex-direction: column !important;
   align-items: center !important;
   padding-top: 0 !important;
-  padding-bottom: 50px !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
   touch-action: pan-y !important;
   transform: translate3d(0, 0, 0);
   -webkit-transform: translate3d(0, 0, 0);
