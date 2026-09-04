@@ -1415,16 +1415,16 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   filter: none !important;
 }
 
-/* Specific Celebrations Lotus Icon 20% size enhancement */
+/* Specific Celebrations Lotus Icon 15% size enhancement */
 .fixed-bottom-nav .nav-tab[href*="celebrations"] .nav-icon {
-  transform: scale(1.20) !important;
+  transform: scale(1.38) !important;
 }
 
 .fixed-bottom-nav .nav-tab[href*="celebrations"].active .nav-icon {
-  transform: scale(1.30) !important;
+  transform: scale(1.50) !important;
 }
 
-/* Label below icon (13.5px, regular for unselected, bold for active, 0.01em tracking, perfect vertical centering) */
+/* Label below icon - strictly identical font treatment and size for all tabs */
 .fixed-bottom-nav .nav-tab .nav-label {
   box-sizing: border-box !important;
   display: block !important;
@@ -1434,12 +1434,14 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   padding: 0 !important;
   font-family: 'Spectral', 'Cinzel', Georgia, serif !important;
   font-size: clamp(11.5px, 2.9vw, 13px) !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
+  font-variant: normal !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.005em !important;
-  line-height: 1 !important;
+  letter-spacing: 0.01em !important;
+  line-height: 1.1 !important;
   height: auto !important;
-  color: rgba(110, 33, 26, 0.60) !important;
+  color: rgba(110, 33, 26, 0.65) !important;
   opacity: 0.95 !important;
   -webkit-text-shadow: none !important;
   text-shadow: none !important;
