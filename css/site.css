@@ -1612,7 +1612,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 .rsvp-om-center-static,
 .mandala-center-hands {
   position: absolute !important;
-  top: 50% !important;
+  top: calc(50% - 0.5px) !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   width: 38.4px !important;
