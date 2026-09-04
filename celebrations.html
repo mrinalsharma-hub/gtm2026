@@ -176,6 +176,7 @@ body {
 }
 
 /* ── 2. Scrollable Content Viewport ── */
+main.celebrations-page-wrap,
 .celebrations-page-wrap {
   position: absolute !important;
   top: 0 !important;
@@ -186,6 +187,7 @@ body {
   width: 100% !important;
   max-width: 480px !important;
   margin: 0 auto !important;
+  margin-bottom: 0 !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch !important;
@@ -193,7 +195,7 @@ body {
   touch-action: pan-y !important;
   z-index: 2 !important;
   padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
-  padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: 0 !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -369,7 +371,9 @@ body {
   display: block !important;
   background: transparent !important;
   margin: 0 auto !important;
+  margin-bottom: 0 !important;
   padding: 0 !important;
+  padding-bottom: 0 !important;
   box-sizing: border-box !important;
   z-index: 2 !important;
   flex-shrink: 0 !important;
@@ -381,7 +385,9 @@ body {
   width: 100% !important;
   display: block !important;
   margin: 0 !important;
+  margin-bottom: 0 !important;
   padding: 0 !important;
+  padding-bottom: 0 !important;
   line-height: 0 !important;
   border-radius: 0 !important;
   aspect-ratio: 831 / 698 !important;
@@ -399,7 +405,9 @@ body {
   visibility: visible !important;
   vertical-align: bottom !important;
   margin: 0 !important;
+  margin-bottom: 0 !important;
   padding: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 .epilogue-content-overlay {

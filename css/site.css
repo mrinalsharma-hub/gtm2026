@@ -1250,8 +1250,14 @@ header.site,
 }
 
 /* Content Viewport Clearance */
-main {
+main:not(.celebrations-page-wrap) {
   padding-bottom: calc(96px + env(safe-area-inset-bottom, 20px)) !important;
+}
+
+main.celebrations-page-wrap,
+.celebrations-page-wrap {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* ── Unified Seamless Ambient Glass Fixed Bottom Navigation with Aipan Icons (Figma Node 18:202) ── */

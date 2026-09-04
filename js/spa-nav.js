@@ -489,10 +489,11 @@
       return;
     }
 
-    // 2. Prevent erratic rubber-band bottom bounce on iOS Safari
+    // 2. If reaching or at the bottom of the page (within 60px of the bottom), ALWAYS reveal the tab bar
     if (info.scrollHeight > info.clientHeight && info.clientHeight > 0) {
       var maxScroll = info.scrollHeight - info.clientHeight;
-      if (currentTop > maxScroll - 5) {
+      if (currentTop >= maxScroll - 60) {
+        setNavHidden(false);
         return;
       }
     }
