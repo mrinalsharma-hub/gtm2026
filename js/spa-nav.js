@@ -578,6 +578,8 @@
     hideNav: function() { setNavHidden(true); },
     setNavHidden: setNavHidden
   };
+  window.GTM_NAV = window.GTM_SPA;
+  window.loadPageSPA = loadPageSPA;
 
   // ── Bulletproof iOS Elastic Bounce / Rubber-Band Disabler ──
   (function initIOSBounceDisabler() {
