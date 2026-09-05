@@ -165,18 +165,6 @@ body {
   z-index: 1 !important;
 }
 
-.celebrations-radial-glow {
-  position: absolute !important;
-  top: 40px !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 480px !important;
-  height: 480px !important;
-  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%) !important;
-  pointer-events: none !important;
-  z-index: 1 !important;
-}
-
 /* ── 2. Scrollable Page Content Viewport ── */
 .stay-page-wrap {
   position: absolute !important;
@@ -205,7 +193,7 @@ body {
   box-sizing: border-box !important;
 }
 
-/* ── 3. Header & Ambient Halo Rings (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── */
+/* ── 3. Header (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── */
 .stay-header-container {
   position: relative !important;
   width: 100% !important;
@@ -218,28 +206,6 @@ body {
   margin-bottom: 28px !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
-}
-
-.stay-halo-ring-wrap {
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  transform: translate(-50%, -50%) !important;
-  width: 400px !important;
-  max-width: 100% !important;
-  height: 406px !important;
-  pointer-events: none !important;
-  z-index: 0 !important;
-}
-
-.stay-halo-ring-img {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  display: block !important;
-  pointer-events: none !important;
-  user-select: none !important;
 }
 
 .stay-hero-title {
@@ -762,18 +728,13 @@ body {
 <!-- ── 1. Page Background Canvas (Celebrations & RSVP clone) ── -->
 <div class="celebrations-bg-layer" aria-hidden="true">
   <div class="celebrations-botanical-art-layer" aria-hidden="true"></div>
-  <div class="celebrations-radial-glow" aria-hidden="true"></div>
 </div>
 
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="stay-page-wrap">
 
-  <!-- ── Header & Ambient Halo Rings (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── -->
+  <!-- ── Header (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── -->
   <header class="stay-header-container">
-    <div class="stay-halo-ring-wrap" aria-hidden="true">
-      <img src="images/stay/stay_ellipse_1.svg" alt="" class="stay-halo-ring-img">
-      <img src="images/stay/stay_ellipse_2.svg" alt="" class="stay-halo-ring-img">
-    </div>
     <div class="stay-hero-title">
       <h1 class="stay-title-line1">TRAVEL</h1>
       <div class="stay-title-line2">
