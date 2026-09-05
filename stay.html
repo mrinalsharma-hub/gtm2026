@@ -590,8 +590,10 @@ body {
   border-radius: 36px !important;
   width: 132px !important;
   height: 38px !important;
-  box-shadow: 0 4px 12px rgba(167, 31, 35, 0.25) !important;
-  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease !important;
+  box-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease !important;
   cursor: pointer !important;
   white-space: nowrap !important;
 }
@@ -599,11 +601,12 @@ body {
 .stay-arch-rsvp-btn:hover {
   background: #90191D !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 6px 16px rgba(167, 31, 35, 0.35) !important;
+  box-shadow: none !important;
 }
 
 .stay-arch-rsvp-btn:active {
   transform: translateY(1px) !important;
+  box-shadow: none !important;
 }
 
 .stay-arch-bottom-note {
