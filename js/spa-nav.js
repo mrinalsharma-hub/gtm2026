@@ -10,8 +10,8 @@
       return 'G&M.html';
     }
     if (path === 'celebrations.html' || path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
-    if (path === 'stay.html' || path === 'travel.html') return 'stay.html';
-    if (path === 'joinus.html' || path === 'rsvp.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'joinus.html';
+    if (path === 'travel&stay.html' || path === 'travel%26stay.html' || path === 'stay.html' || path === 'travel.html') return 'travel&stay.html';
+    if (path === 'rsvp.html' || path === 'joinus.html' || path === 'rsvp2.html' || path === 'RSVP.html') return 'rsvp.html';
     return path;
   }
 
@@ -99,10 +99,11 @@
 
   // Pre-fetch tabs into memory cache with normalized keys
   var pageCache = {};
-  var TABS = ['G&M.html', 'stay.html', 'celebrations.html', 'joinus.html'];
+  var TABS = ['G&M.html', 'travel&stay.html', 'celebrations.html', 'rsvp.html'];
 
   function getFetchUrl(norm) {
     if (norm === 'G&M.html') return 'G%26M.html';
+    if (norm === 'travel&stay.html') return 'travel%26stay.html';
     return norm;
   }
 

@@ -2447,7 +2447,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
 
 
 
-/* Audio player placement on joinus.html below Aipan top border */
+/* Audio player placement on rsvp.html below Aipan top border */
 body.rsvp-page .global-audio-pill,
 .rsvp-hero-header .global-audio-pill,
 .rsvp-page-wrap .global-audio-pill,
@@ -2458,7 +2458,7 @@ body.rsvp-page .global-audio-pill,
   z-index: 25 !important;
 }
 
-/* ── Locked-in Royal Carmine Gradient for joinus.html ── */
+/* ── Locked-in Royal Carmine Gradient for rsvp.html ── */
 body.rsvp-page,
 .rsvp-bg-layer {
   background-color: #B02428 !important;
