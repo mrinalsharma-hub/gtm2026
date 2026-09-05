@@ -723,6 +723,69 @@ body {
     margin-top: 14px !important;
   }
 }
+
+/* ── Relaxed Royal Entrance Choreography (Silk & Velvet Cascade · Celebrations & RSVP Clone) ── */
+@keyframes royalFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes royalCardSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Header Lockup Entrance */
+.stay-hero-title-wrap {
+  animation: royalFadeSlideUp 1.2s cubic-bezier(0.12, 1, 0.22, 1) 0.15s both !important;
+}
+
+/* Travel & Accommodation Content Sections Staggered Entrance */
+.stay-air-row {
+  animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 0.40s both !important;
+}
+
+.stay-train-row {
+  animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 0.60s both !important;
+}
+
+.stay-cab-block {
+  animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 0.80s both !important;
+}
+
+.stay-arch-section {
+  animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 1.00s both !important;
+}
+
+.stay-weather-section {
+  animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 1.20s both !important;
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .stay-hero-title-wrap,
+  .stay-air-row,
+  .stay-train-row,
+  .stay-cab-block,
+  .stay-arch-section,
+  .stay-weather-section {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
 </style>
 </head>
 <body>
