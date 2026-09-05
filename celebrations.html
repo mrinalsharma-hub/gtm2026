@@ -648,34 +648,7 @@ main.celebrations-page-wrap,
   display: block;
 }
 
-/* ── Scrollable Top-Left Aipan Emblem (Scrolls with page · No drop shadow) ── */
-.celebrations-scroll-aipan-wrap {
-  position: absolute !important;
-  top: max(14px, env(safe-area-inset-top, 14px)) !important;
-  left: max(16px, env(safe-area-inset-left, 16px)) !important;
-  width: 56px !important;
-  height: 56px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  pointer-events: none !important;
-  z-index: 10 !important;
-}
 
-.celebrations-scroll-aipan-img {
-  width: 56px !important;
-  height: 56px !important;
-  min-width: 56px !important;
-  min-height: 56px !important;
-  display: block !important;
-  object-fit: contain !important;
-  filter: none !important;
-  -webkit-filter: none !important;
-  box-shadow: none !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  pointer-events: none !important;
-}
 
 /* ── Relaxed Royal Entrance Choreography (Silk & Velvet Cascade) ── */
 @keyframes royalFadeSlideUp {
@@ -993,11 +966,6 @@ body.sheet-modal-open .fixed-bottom-nav {
 
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="celebrations-page-wrap">
-
-  <!-- ── Top-Left Aipan Emblem (Scrolls naturally with page · No drop shadow) ── -->
-  <div class="celebrations-scroll-aipan-wrap" aria-hidden="true">
-    <img src="images/celebrations/aipan_emblem_top_left.svg?v=36000" alt="Aipan Emblem" class="celebrations-scroll-aipan-img" width="56" height="56" loading="eager" fetchpriority="high">
-  </div>
 
   <!-- ── Header: The Wedding Weekend (Figma Node 18:79 / 18:107) ── -->
   <header class="celebrations-header" data-node-id="18:107">
