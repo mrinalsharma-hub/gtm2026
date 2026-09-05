@@ -202,7 +202,7 @@ body {
   padding-left: 0 !important;
   padding-right: 0 !important;
   padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
-  padding-bottom: calc(66px + 24px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -739,27 +739,29 @@ body {
   text-align: left !important;
 }
 
-/* ── Section F: Royal Couple Illustration (Figma Node 53:559 · 442x230px) ── */
+/* ── Section F: Royal Couple Illustration (Figma Node 53:559 · Edge-to-Edge) ── */
 .stay-couple-section {
   width: 100% !important;
-  max-width: 442px !important;
+  max-width: 100% !important;
   display: flex !important;
   justify-content: center !important;
-  align-items: center !important;
-  margin: 28px auto 0 auto !important;
-  padding-bottom: 0 !important;
+  align-items: flex-end !important;
+  margin: 28px 0 0 0 !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
-  overflow: hidden !important;
+  overflow: visible !important;
 }
 
 .stay-couple-img {
   width: 100% !important;
-  max-width: 442px !important;
+  max-width: 100% !important;
   height: auto !important;
-  aspect-ratio: 442 / 230 !important;
-  object-fit: contain !important;
+  aspect-ratio: 1326 / 638 !important;
+  object-fit: cover !important;
   display: block !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  vertical-align: bottom !important;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
