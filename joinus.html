@@ -911,10 +911,12 @@ body {
   0% {
     /* Forward apex: bottom swings forward, subtle upward arc */
     transform: rotateX(-10.8deg) rotateY(1.44deg) translateY(-1.8px);
+    filter: drop-shadow(0 7px 12px rgba(167, 31, 35, 0.11));
   }
   100% {
     /* Backward apex: bottom swings backward into depth */
     transform: rotateX(9deg) rotateY(-1.26deg) translateY(1.8px);
+    filter: drop-shadow(0 1.5px 3.5px rgba(167, 31, 35, 0.035));
   }
 }
 
@@ -938,9 +940,8 @@ body {
   display: block !important;
   margin: 0 auto !important;
   transform-origin: 50% 0% !important;
-  filter: drop-shadow(0 4px 8px rgba(167, 31, 35, 0.08)) !important;
   animation: handsContinuous3DSwing 2.9s ease-in-out infinite alternate !important;
-  will-change: transform !important;
+  will-change: transform, filter !important;
   backface-visibility: hidden !important;
 }
 
@@ -1274,10 +1275,7 @@ body {
   <!-- ── 4. Footer Hands Illustration & Epilogue Quote (Figma Nodes 43:1089, 43:1090) ── -->
   <section class="rsvp-footer-section">
     <div class="rsvp-footer-hands-wrap" aria-hidden="true">
-      <picture>
-        <source srcset="images/rsvp/rsvp_footer_hands.webp?v=27700" type="image/webp">
-        <img src="images/rsvp/rsvp_footer_hands.png?v=27700" alt="Aipan Wedding Hands" class="rsvp-footer-hands-img" width="528" height="284" loading="lazy" decoding="async" fetchpriority="low">
-      </picture>
+      <img src="images/rsvp/rsvp_footer_hands.webp?v=27700" alt="Aipan Wedding Hands" class="rsvp-footer-hands-img" width="528" height="284" onerror="this.onerror=null;this.src='images/rsvp/rsvp_footer_hands.png?v=27700';">
     </div>
     <p class="rsvp-footer-quote">
       “ Inspired by our love for Aipan—the traditional folk art of Uttarakhand, painted at doorsteps to bless new beginnings and welcome cherished guests. Having you join us in the mountains to celebrate is our greatest blessing.”
