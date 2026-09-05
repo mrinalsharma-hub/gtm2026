@@ -1,8 +1,8 @@
 key,page,section,en,hi,notes
 global.title,Global,Meta,Garima weds Mrinal · Nainital 2026,गरिमा संग मृणाल · नैनीताल २०२६,Browser window / tab title
 global.meta_desc,Global,Meta,"Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand","गरिमा संग मृणाल · कुमाऊं की पहाड़ियों में विवाह · २०–२२ नवंबर २०२६ · नैनीताल, उत्तराखंड",SEO meta description
-global.nav.gm,Global,Navigation,G&amp;M,ग &amp; म,Bottom Tab 1 label
-global.nav.travel_stay,Global,Navigation,Travel &amp; Stay,यात्रा और प्रवास,Bottom Tab 2 label
+global.nav.gm,Global,Navigation,G&M,ग & म,Bottom Tab 1 label
+global.nav.travel_stay,Global,Navigation,Travel & Stay,यात्रा और प्रवास,Bottom Tab 2 label
 global.nav.celebrations,Global,Navigation,Celebrations,समारोह,Bottom Tab 3 label
 global.nav.rsvp,Global,Navigation,RSVP,निमंत्रण स्वीकारें,Bottom Tab 4 label
 home.hero.bride_name,G&M,Hero,GARIMA,गरिमा,Hero bride name
@@ -11,7 +11,7 @@ home.hero.groom_name,G&M,Hero,MRINAL,मृणाल,Hero groom name
 home.hero.date,G&M,Hero,"NOV 21, 2026",२१ नवंबर २०२६,Hero wedding date
 home.hero.location,G&M,Hero,"NAINITAL, INDIA","नैनीताल, भारत",Hero location line
 stay.header.title_line1,Travel & Stay,Header,TRAVEL,यात्रा,Hero title line 1
-stay.header.title_line2,Travel & Stay,Header,&amp; STAY,&amp; प्रवास,Hero title line 2
+stay.header.title_line2,Travel & Stay,Header,& STAY,& प्रवास,Hero title line 2
 stay.travel.air_pantnagar,Travel & Stay,Travel by Air,"<strong class=""stay-bold-highlight"">Pantnagar (PGH)</strong>: The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi.","<strong class=""stay-bold-highlight"">पंतनगर (PGH)</strong>: निकटतम हवाई अड्डा (सड़क मार्ग से ~२ घंटे / ६५ किमी)। नई दिल्ली से सीधी दैनिक उड़ानें उपलब्ध हैं।",Flight option 1
 stay.travel.air_delhi,Travel & Stay,Travel by Air,"<strong class=""stay-bold-highlight"">New Delhi (DEL)</strong>: Fly into Delhi, then take a train or private taxi. This is the most frequent and reliable option.","<strong class=""stay-bold-highlight"">नई दिल्ली (DEL)</strong>: दिल्ली पहुंचें, फिर ट्रेन या निजी टैक्सी लें। यह सबसे सुगम और नियमित विकल्प है।",Flight option 2
 stay.travel.train_kathgodam,Travel & Stay,Travel by Train,"<strong class=""stay-bold-highlight"">Kathgodam (KGM)</strong>: The closest railway station (~1 hour away by road / 23 km). Direct daily and overnight trains run from New Delhi. Options include the day-run <em class=""stay-train-name"">Kathgodam Shatabdi Express</em> and the overnight <em class=""stay-train-name"">Ranikhet Express</em>. Prepaid taxis and cabs are available at the station exit.","<strong class=""stay-bold-highlight"">काठगोदाम (KGM)</strong>: निकटतम रेलवे स्टेशन (सड़क मार्ग से ~१ घंटा / २३ किमी)। नई दिल्ली से सीधी दिन और रात की ट्रेनें चलती हैं, जैसे दिन में <em class=""stay-train-name"">काठगोदाम शताब्दी एक्सप्रेस</em> और रात में <em class=""stay-train-name"">रानीखेत एक्सप्रेस</em>। स्टेशन से बाहर निकलते ही प्रीपेड टैक्सी उपलब्ध हैं।",Train travel details
@@ -27,7 +27,7 @@ stay.weather.packing_desc,Travel & Stay,Weather & Packing,"<strong class=""stay-
 stay.epilogue.quote,Travel & Stay,Epilogue,"“In the hills, traditional woodcraft has always been the heart of a home, intricately carved to hold the warmth of the hearth and welcome dear ones.”","“पहाड़ों में, पारंपरिक काष्ठकला सदा से घर का हृदय रही है—अपनों के स्वागत और आत्मीयता को संजोए हुए।”",Woodcraft tradition quote
 celebrations.header.the,Celebrations,Header,The,शुभ,Header script word
 celebrations.header.title,Celebrations,Header,WEDDING<br>WEEKEND,विवाह<br>समारोह,Main header title
-celebrations.header.location,Celebrations,Header,NAINITAL &amp; DELHI,नैनीताल &amp; दिल्ली,Header location subtitle
+celebrations.header.location,Celebrations,Header,NAINITAL & DELHI,नैनीताल & दिल्ली,Header location subtitle
 celebrations.countdown.suffix,Celebrations,Header,DAYS TO GO,दिन शेष,Countdown suffix
 celebrations.countdown.today,Celebrations,Header,TODAY'S THE DAY,आज है वह शुभ दिन,Countdown on wedding day
 celebrations.mehndi.eyebrow,Celebrations,Mehndi Card,FRI 20 NOV | 7:30PM,शुक्र २० नवं | शाम ७:३०,Mehndi card date & time
@@ -49,9 +49,9 @@ celebrations.reception.body,Celebrations,Reception Card,A final gathering with f
 celebrations.epilogue.quote,Celebrations,Epilogue,"A gentle reflection of the mountains close to our hearts. These delicate Pahari miniature details are a little piece of home, woven into our celebration","हमारे हृदय के करीब इन पर्वतों का एक सौम्य प्रतिबिंब। ये सूक्ष्म पहाड़ी मिनिएचर कलाकृतियां हमारे घर का एक अंश हैं, जो इस उत्सव में समाहित हैं",Pahari miniature quote
 celebrations.sheet.btn_map,Celebrations,Modal Sheet,View on Map,मानचित्र पर देखें,Google Maps action button
 celebrations.sheet.mehndi.attire,Celebrations,Modal Sheet,Playful causals or festive ethnic attire,उत्साही कैजुअल्स या उत्सव के पारंपरिक परिधान,Mehndi attire
-celebrations.sheet.mehndi.food,Celebrations,Modal Sheet,Traditional Pahadi snacks &amp; high dinner,पारंपरिक पहाड़ी अल्पाहार एवं स्वादिष्ट रात्रिभोज,Mehndi food
+celebrations.sheet.mehndi.food,Celebrations,Modal Sheet,Traditional Pahadi snacks & high dinner,पारंपरिक पहाड़ी अल्पाहार एवं स्वादिष्ट रात्रिभोज,Mehndi food
 celebrations.sheet.mehndi.parking,Celebrations,Modal Sheet,Parking will be available at venue,स्थान पर पार्किंग की व्यवस्था उपलब्ध रहेगी,Mehndi parking
-celebrations.sheet.wedding.assembly,Celebrations,Modal Sheet,10:30 AM | Baraat assembly &amp; welcome,सुबह १०:३० | बारात आगमन एवं स्वागत,Wedding timing 1
+celebrations.sheet.wedding.assembly,Celebrations,Modal Sheet,10:30 AM | Baraat assembly & welcome,सुबह १०:३० | बारात आगमन एवं स्वागत,Wedding timing 1
 celebrations.sheet.wedding.rituals,Celebrations,Modal Sheet,11:30 AM | Traditional kumaoni wedding rituals begin,सुबह ११:३० | पारंपरिक कुमाऊंनी विवाह संस्कार का प्रारंभ,Wedding timing 2
 celebrations.sheet.wedding.attire,Celebrations,Modal Sheet,"Traditional Indian wedding wear (bright, festive colours encouraged. No all black and white please. Hot pink reserved for the bride.)","पारंपरिक भारतीय परिधान (उज्ज्वल, मनभावन रंगों का स्वागत है। कृपया पूरी तरह काले या सफेद वस्त्रों से बचें। गहरा गुलाबी रंग दुल्हन के लिए आरक्षित है।)",Wedding dress code
 celebrations.sheet.wedding.food,Celebrations,Modal Sheet,Festive lunch feast to follow,विवाह उपरांत पारंपरिक प्रीतिभोज,Wedding food
@@ -95,7 +95,7 @@ invite.cover.title,Invite,Cover,Garima weds Mrinal,गरिमा संग म
 invite.cover.sub,Invite,Cover,20 – 22 November 2026 · Nainital,२० – २२ नवंबर २०२६ · नैनीताल,Invite cover subtitle
 invite.cover.tap,Invite,Cover,Tap to open,खोलने के लिए स्पर्श करें,Invite cover prompt
 invite.scene1.shloka,Invite,Scene 1,॥ श्री गणेशाय नमः ॥,॥ श्री गणेशाय नमः ॥,Lord Ganesha invocation shloka
-invite.scene1.eyebrow,Invite,Scene 1,With the blessings of Lord Ganesha &amp; our families,भगवान श्री गणेश एवं हमारे परिवारों के आशीर्वाद से,Blessing eyebrow
+invite.scene1.eyebrow,Invite,Scene 1,With the blessings of Lord Ganesha & our families,भगवान श्री गणेश एवं हमारे परिवारों के आशीर्वाद से,Blessing eyebrow
 invite.scene2.eyebrow,Invite,Scene 2,Together with their families,सपरिवार,Invite scene 2 eyebrow
 invite.scene2.sub,Invite,Scene 2,Come join us on our special day,हमारे इस पावन अवसर पर पधारें,Invite scene 2 sub
 invite.scene3.place,Invite,Scene 3,Nainital,नैनीताल,Invite scene 3 place
@@ -110,9 +110,9 @@ invite.scene5.ev_mehndi,Invite,Scene 5,Mehndi Night,मेहंदी की �
 invite.scene5.sat_label,Invite,Scene 5,Saturday · 21 November,शनिवार · २१ नवंबर,Invite scene 5 Saturday
 invite.scene5.ev_baraat,Invite,Scene 5,Baraat,बारात,Invite scene 5 event 2
 invite.scene5.ev_varmaala,Invite,Scene 5,Varmaala,वरमाला,Invite scene 5 event 3
-invite.scene5.ev_pheras,Invite,Scene 5,Pheras &amp; Saptapadi,फेरे एवं सप्तपदी,Invite scene 5 event 4
+invite.scene5.ev_pheras,Invite,Scene 5,Pheras & Saptapadi,फेरे एवं सप्तपदी,Invite scene 5 event 4
 invite.scene5.ev_vidaai,Invite,Scene 5,Vidaai,विदाई,Invite scene 5 event 5
-invite.scene5.ev_party,Invite,Scene 5,Party &amp; Dinner,संगीत एवं रात्रिभोज,Invite scene 5 event 6
+invite.scene5.ev_party,Invite,Scene 5,Party & Dinner,संगीत एवं रात्रिभोज,Invite scene 5 event 6
 invite.scene5.sun_label,Invite,Scene 5,Sunday · 22 November,रविवार · २२ नवंबर,Invite scene 5 Sunday
 invite.scene5.ev_breakfast,Invite,Scene 5,Farewell Breakfast,विदाई अल्पाहार,Invite scene 5 event 7
 invite.scene6.when,Invite,Scene 6,"Saturday, the 21st of November, 2026","शनिवार, २१ नवंबर २०२६",Invite scene 6 full date

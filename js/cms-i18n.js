@@ -104,6 +104,14 @@
     return fallback !== undefined ? fallback : '';
   }
 
+  // Helper to decode HTML entities for attributes and page title
+  function decodeEntities(str) {
+    if (!str || typeof str !== 'string' || str.indexOf('&') === -1) return str;
+    var txt = document.createElement('textarea');
+    txt.innerHTML = str;
+    return txt.value;
+  }
+
   // Apply translations to all DOM elements with data-i18n and data-i18n-attr
   function applyDOM(lang) {
     lang = lang || getCurrentLanguage();
@@ -117,12 +125,22 @@
       if (!key) return;
       var val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
       if (val !== null) {
-        // Preserve safe inline HTML markup (br, strong, em, span, a)
-        if (val.indexOf('<') !== -1) {
-          el.innerHTML = val;
-        } else {
-          el.textContent = val;
+        // Special formatting for stay.header.title_line2 to preserve the cursive Snell Roundhand ampersand
+        if (key === 'stay.header.title_line2') {
+          if (val.indexOf('<span') === -1) {
+            var hasAmp = /&amp;|&/i.test(val);
+            var cleanText = val.replace(/^(&amp;|&)\s*/i, '').trim();
+            if (hasAmp) {
+              el.innerHTML = '<span class="stay-title-amp">&amp;</span><span class="stay-title-stay">' + cleanText + '</span>';
+            } else {
+              el.innerHTML = '<span class="stay-title-stay">' + cleanText + '</span>';
+            }
+            return;
+          }
         }
+
+        // Render content via innerHTML so HTML markup (<br>, <strong>, <em>, <span>, <a>) and entities (&amp;, &nbsp;) are properly rendered
+        el.innerHTML = val;
       }
     });
 
@@ -139,7 +157,7 @@
           var key = parts[1].trim();
           var val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
           if (val !== null) {
-            el.setAttribute(attr, val);
+            el.setAttribute(attr, decodeEntities(val));
           }
         }
       });
@@ -148,7 +166,7 @@
     // 3. Update document title if present
     var titleKey = 'global.title';
     if (dict[titleKey]) {
-      document.title = dict[titleKey];
+      document.title = decodeEntities(dict[titleKey]);
     }
   }
 
