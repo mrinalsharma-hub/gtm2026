@@ -205,26 +205,38 @@ body {
   box-sizing: border-box !important;
 }
 
-/* ── 3. Header (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── */
+/* ── 3. Header (Figma Nodes 53:370, 53:371, 53:494, 53:495, 53:520) ── */
 .stay-header-container {
   position: relative !important;
   width: 100% !important;
   max-width: 480px !important;
   display: flex !important;
-  flex-direction: column !important;
+  flex-direction: row !important;
   align-items: center !important;
   justify-content: center !important;
+  gap: 12px !important;
   margin-top: 54px !important;
   margin-bottom: 64px !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
 }
 
+.stay-title-cone-img {
+  width: auto !important;
+  height: 104px !important;
+  max-height: 104px !important;
+  object-fit: contain !important;
+  flex-shrink: 0 !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
 .stay-hero-title {
   position: relative !important;
   z-index: 1 !important;
   text-align: center !important;
-  margin: 0 auto !important;
+  margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -747,8 +759,9 @@ body {
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="stay-page-wrap">
 
-  <!-- ── Header (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── -->
+  <!-- ── Header (Figma Nodes 53:370, 53:371, 53:494, 53:495, 53:520) ── -->
   <header class="stay-header-container">
+    <img src="images/stay/stay_pinecone.png" alt="Pinecone Motif" class="stay-title-cone-img" width="130" height="203" loading="eager" decoding="async">
     <div class="stay-hero-title">
       <h1 class="stay-title-line1">TRAVEL</h1>
       <div class="stay-title-line2">
