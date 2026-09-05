@@ -251,7 +251,6 @@ body {
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: center !important;
   justify-content: center !important;
   text-align: center !important;
   z-index: 1 !important;
@@ -269,7 +268,6 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   text-align: center !important;
-  width: 100% !important;
   white-space: nowrap !important;
 }
 
@@ -282,13 +280,9 @@ body {
   color: #A71F23 !important;
   text-transform: uppercase !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
   margin: 0 !important;
   padding: 0 !important;
   text-align: center !important;
-  width: 100% !important;
   white-space: nowrap !important;
 }
 
@@ -298,13 +292,22 @@ body {
   line-height: 44px !important;
   font-weight: 400 !important;
   color: #A71F23 !important;
-  display: inline-block !important;
-  margin-right: 4px !important;
+  display: inline !important;
   text-transform: none !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
-  vertical-align: middle !important;
-  position: relative !important;
-  top: 2px !important;
+  vertical-align: baseline !important;
+}
+
+.stay-title-word {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  vertical-align: baseline !important;
 }
 
 /* ── 4. Main Content Stack (Figma Node 53:465) ── */
@@ -791,11 +794,8 @@ body {
     <div class="stay-hero-title-wrap">
       <img src="images/stay/stay_pinecone.png" alt="Ceramic Pinecone" class="stay-title-cone-img" width="74" height="106" loading="eager" decoding="async">
       <div class="stay-hero-title">
-        <h1 class="stay-title-line1">TRAVEL</h1>
-        <div class="stay-title-line2">
-          <span class="stay-title-amp">&amp;</span>
-          <span>STAY</span>
-        </div>
+        <p class="stay-title-line1">TRAVEL</p>
+        <p class="stay-title-line2"><span class="stay-title-amp">&amp; </span><span class="stay-title-word">STAY</span></p>
       </div>
     </div>
   </header>
