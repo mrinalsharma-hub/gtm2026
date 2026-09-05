@@ -211,78 +211,46 @@ body {
   width: 100% !important;
   max-width: 480px !important;
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  gap: 12px !important;
   margin-top: 54px !important;
   margin-bottom: 64px !important;
+  padding: 0 16px !important;
   box-sizing: border-box !important;
   flex-shrink: 0 !important;
 }
 
-.stay-title-cone-img {
-  width: auto !important;
-  height: 104px !important;
-  max-height: 104px !important;
+.stay-hero-heading {
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+}
+
+.stay-hero-title-art {
+  width: clamp(285px, 86vw, 356px) !important;
+  height: auto !important;
+  max-width: 100% !important;
   object-fit: contain !important;
-  flex-shrink: 0 !important;
+  display: block !important;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
 }
 
-.stay-hero-title {
-  position: relative !important;
-  z-index: 1 !important;
-  text-align: center !important;
-  margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-
-.stay-title-line1 {
-  font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: 63px !important;
-  font-weight: 400 !important;
-  line-height: 58.5px !important;
-  letter-spacing: -1.26px !important;
-  color: #A71F23 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
-  margin: 0 !important;
-  text-align: center !important;
-}
-
-.stay-title-line2 {
-  font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: 63px !important;
-  font-weight: 400 !important;
-  line-height: 58.5px !important;
-  letter-spacing: -1.26px !important;
-  color: #A71F23 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
-  display: flex !important;
-  align-items: baseline !important;
-  justify-content: center !important;
-  margin: -13.5px 0 0 0 !important;
-  text-align: center !important;
-}
-
-.stay-title-amp {
-  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
-  font-size: 92px !important;
-  line-height: 50px !important;
-  font-weight: 400 !important;
-  color: #A71F23 !important;
-  display: inline-block !important;
-  vertical-align: baseline !important;
-  margin-right: 16px !important;
-  text-transform: none !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border-width: 0 !important;
 }
 
 /* ── 4. Main Content Stack (Figma Node 53:465) ── */
@@ -761,14 +729,20 @@ body {
 
   <!-- ── Header (Figma Nodes 53:370, 53:371, 53:494, 53:495, 53:520) ── -->
   <header class="stay-header-container">
-    <img src="images/stay/stay_pinecone.png" alt="Pinecone Motif" class="stay-title-cone-img" width="130" height="203" loading="eager" decoding="async">
-    <div class="stay-hero-title">
-      <h1 class="stay-title-line1">TRAVEL</h1>
-      <div class="stay-title-line2">
-        <span class="stay-title-amp">&amp;</span>
-        <span>STAY</span>
-      </div>
-    </div>
+    <h1 class="stay-hero-heading" aria-label="Travel &amp; Stay">
+      <picture>
+        <source srcset="images/stay/stay_title_hero.webp?v=1" type="image/webp">
+        <img src="images/stay/stay_title_hero.png?v=1" 
+             alt="Travel &amp; Stay" 
+             class="stay-hero-title-art" 
+             width="634" 
+             height="208" 
+             fetchpriority="high" 
+             loading="eager" 
+             decoding="async">
+      </picture>
+      <span class="sr-only">Travel &amp; Stay</span>
+    </h1>
   </header>
 
   <!-- ── Main Content Stack (Figma Node 53:465) ── -->
