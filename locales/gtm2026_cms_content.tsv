@@ -1,6 +1,6 @@
 key	page	section	en	hi	notes
 global.title	Global	Meta	Garima weds Mrinal · Nainital 2026	गरिमा संग मृणाल · नैनीताल २०२६	Browser window / tab title
-global.meta_desc	Global	Meta	Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand	गरिमा संग मृणाल · कुमाऊं की पहाड़ियों में विवाह · २०–२२ नवंबर २०२६ · नैनीताल, उत्तराखंड	SEO meta description
+global.meta_desc	Global	Meta	Garima weds Mrinal · A wedding in the Kumaon hills	गरिमा संग मृणाल · कुमाऊं की पहाड़ियों में विवाह · २०–२२ नवंबर २०२६ · नैनीताल, उत्तराखंड	SEO meta description
 global.nav.gm	Global	Navigation	G&M	ग & म	Bottom Tab 1 label
 global.nav.travel_stay	Global	Navigation	Travel & Stay	यात्रा और प्रवास	Bottom Tab 2 label
 global.nav.celebrations	Global	Navigation	Celebrations	समारोह	Bottom Tab 3 label
@@ -8,13 +8,13 @@ global.nav.rsvp	Global	Navigation	RSVP	निमंत्रण स्वीक�
 home.hero.bride_name	G&M	Hero	GARIMA	गरिमा	Hero bride name
 home.hero.connector	G&M	Hero	takes	संग	Hero connector word (takes / संग)
 home.hero.groom_name	G&M	Hero	MRINAL	मृणाल	Hero groom name
-home.hero.date	G&M	Hero	NOV 21, 2026	२१ नवंबर २०२६	Hero wedding date
+home.hero.date	G&M	Hero	Nov 21, 2026	२१ नवंबर २०२६	Hero wedding date
 home.hero.location	G&M	Hero	NAINITAL, INDIA	नैनीताल, भारत	Hero location line
 stay.header.title_line1	Travel & Stay	Header	TRAVEL	यात्रा	Hero title line 1
 stay.header.title_line2	Travel & Stay	Header	& STAY	& प्रवास	Hero title line 2
-stay.travel.air_pantnagar	Travel & Stay	Travel by Air	"<strong class=""stay-bold-highlight"">Pantnagar (PGH)</strong>: The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi."	"<strong class=""stay-bold-highlight"">पंतनगर (PGH)</strong>: निकटतम हवाई अड्डा (सड़क मार्ग से ~२ घंटे / ६५ किमी)। नई दिल्ली से सीधी दैनिक उड़ानें उपलब्ध हैं।"	Flight option 1
-stay.travel.air_delhi	Travel & Stay	Travel by Air	"<strong class=""stay-bold-highlight"">New Delhi (DEL)</strong>: Fly into Delhi, then take a train or private taxi. This is the most frequent and reliable option."	"<strong class=""stay-bold-highlight"">नई दिल्ली (DEL)</strong>: दिल्ली पहुंचें, फिर ट्रेन या निजी टैक्सी लें। यह सबसे सुगम और नियमित विकल्प है।"	Flight option 2
-stay.travel.train_kathgodam	Travel & Stay	Travel by Train	"<strong class=""stay-bold-highlight"">Kathgodam (KGM)</strong>: The closest railway station (~1 hour away by road / 23 km). Direct daily and overnight trains run from New Delhi. Options include the day-run <em class=""stay-train-name"">Kathgodam Shatabdi Express</em> and the overnight <em class=""stay-train-name"">Ranikhet Express</em>. Prepaid taxis and cabs are available at the station exit."	"<strong class=""stay-bold-highlight"">काठगोदाम (KGM)</strong>: निकटतम रेलवे स्टेशन (सड़क मार्ग से ~१ घंटा / २३ किमी)। नई दिल्ली से सीधी दिन और रात की ट्रेनें चलती हैं, जैसे दिन में <em class=""stay-train-name"">काठगोदाम शताब्दी एक्सप्रेस</em> और रात में <em class=""stay-train-name"">रानीखेत एक्सप्रेस</em>। स्टेशन से बाहर निकलते ही प्रीपेड टैक्सी उपलब्ध हैं।"	Train travel details
+stay.travel.air_pantnagar	Travel & Stay	Travel by Air	"<strong class=""stay-bold-highlight"">Pantnagar (PGH)</strong>: The closest airport, about 70 km from Nainital. Regular flights connect Delhi and Pantnagar. Continue to Nainital by taxi."	"<strong class=""stay-bold-highlight"">पंतनगर (PGH)</strong>: निकटतम हवाई अड्डा (सड़क मार्ग से ~२ घंटे / ६५ किमी)। नई दिल्ली से सीधी दैनिक उड़ानें उपलब्ध हैं।"	Flight option 1
+stay.travel.air_delhi	Travel & Stay	Travel by Air	"<strong class=""stay-bold-highlight"">New Delhi (DEL)</strong>: Delhi offers the widest choice of flights. From Delhi, continue by train to Kathgodam or by road to Nainital."	"<strong class=""stay-bold-highlight"">नई दिल्ली (DEL)</strong>: दिल्ली पहुंचें, फिर ट्रेन या निजी टैक्सी लें। यह सबसे सुगम और नियमित विकल्प है।"	Flight option 2
+stay.travel.train_kathgodam	Travel & Stay	Travel by Train	"<strong class=""stay-bold-highlight"">Kathgodam (KGM)</strong>: The nearest railway station. From there, Nainital is roughly 1–1.5 hours by road. Direct trains connect Kathgodam with Delhi."	"<strong class=""stay-bold-highlight"">काठगोदाम (KGM)</strong>: निकटतम रेलवे स्टेशन (सड़क मार्ग से ~१ घंटा / २३ किमी)। नई दिल्ली से सीधी दिन और रात की ट्रेनें चलती हैं, जैसे दिन में <em class=""stay-train-name"">काठगोदाम शताब्दी एक्सप्रेस</em> और रात में <em class=""stay-train-name"">रानीखेत एक्सप्रेस</em>। स्टेशन से बाहर निकलते ही प्रीपेड टैक्सी उपलब्ध हैं।"	Train travel details
 stay.travel.cab_delhi_nainital	Travel & Stay	Travel by Road	"<strong class=""stay-bold-highlight"">Delhi to Nainital</strong>: A scenic road journey (~6.5 to 8 hours / 300 km)."	"<strong class=""stay-bold-highlight"">दिल्ली से नैनीताल</strong>: एक मनोरम सड़क यात्रा (~६.५ से ८ घंटे / ३०० किमी)।"	Road journey intro
 stay.travel.cab_hill_drive	Travel & Stay	Travel by Road	"<strong class=""stay-bold-highlight"">Hill drive</strong>: The final 35 km climbs winding mountain roads. We highly recommend keeping motion-sickness tablets handy if you need them."	"<strong class=""stay-bold-highlight"">पहाड़ी रास्ता</strong>: अंतिम ३५ किमी घुमावदार पहाड़ी रास्तों से होकर गुजरता है। यदि आवश्यकता हो, तो मोशन-सिकनेस की दवाइयां साथ रखने की सलाह दी जाती है।"	Hill drive tip
 stay.arch.title	Travel & Stay	Accommodations	Your<br>stay	आपका<br>प्रवास	Stay arch title
@@ -76,7 +76,7 @@ rsvp.form.opt_yes	RSVP	Form Card 1	Yes, can’t wait!	हाँ, अवश्य
 rsvp.form.opt_no	RSVP	Form Card 1	Sorry, we can’t make it.	क्षमा करें, उपस्थित नहीं हो सकेंगे।	Option No
 rsvp.form.name_title	RSVP	Form Card 2	Name	नाम	Guest name card title
 rsvp.form.name_placeholder	RSVP	Form Card 2	Enter full name	पूरा नाम दर्ज करें	Guest name input placeholder
-rsvp.form.btn_add_guest	RSVP	Form Card 2	+ Add another guest	+ अन्य अतिथि जोड़ें	Add guest button
+rsvp.form.btn_add_guest	RSVP	Form Card 2	#ERROR!	#ERROR!	Add guest button
 rsvp.form.phone_title	RSVP	Form Card 3	Phone	फ़ोन नंबर	Phone card title
 rsvp.form.phone_placeholder	RSVP	Form Card 3	To stay in touch with the updates	नवीनतम जानकारी साझा करने हेतु	Phone input placeholder
 rsvp.form.events_title	RSVP	Form Card 4	Events you will attend	किन समारोहों में पधारेंगे	Events selection title

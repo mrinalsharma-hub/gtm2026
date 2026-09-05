@@ -76,7 +76,7 @@
   "rsvp.form.opt_no": "क्षमा करें, उपस्थित नहीं हो सकेंगे।",
   "rsvp.form.name_title": "नाम",
   "rsvp.form.name_placeholder": "पूरा नाम दर्ज करें",
-  "rsvp.form.btn_add_guest": "+ अन्य अतिथि जोड़ें",
+  "rsvp.form.btn_add_guest": "#ERROR!",
   "rsvp.form.phone_title": "फ़ोन नंबर",
   "rsvp.form.phone_placeholder": "नवीनतम जानकारी साझा करने हेतु",
   "rsvp.form.events_title": "किन समारोहों में पधारेंगे",

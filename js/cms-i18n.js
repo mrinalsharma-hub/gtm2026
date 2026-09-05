@@ -36,7 +36,7 @@
     window.dispatchEvent(event);
   }
 
-  // Load static pre-baked dictionary bundle
+  // Load static pre-baked dictionary bundle (baseline fallback)
   function loadPrebaked(lang) {
     var prefix = window.location.pathname.indexOf('/invite/') !== -1 ? '../' : '';
     return fetch(prefix + 'locales/' + lang + '.json?v=' + Date.now())
@@ -45,7 +45,8 @@
         throw new Error('Prebaked load failed');
       })
       .then(function(data) {
-        dictionaries[lang] = Object.assign({}, dictionaries[lang], data);
+        // Prebaked data is the baseline; any cached/live edits in dictionaries[lang] take precedence
+        dictionaries[lang] = Object.assign({}, data, dictionaries[lang]);
         return dictionaries[lang];
       })
       .catch(function() {
