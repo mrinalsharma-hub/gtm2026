@@ -636,8 +636,7 @@ body {
   position: relative !important;
   width: 100% !important;
   max-width: 480px !important;
-  min-height: 417px !important;
-  margin: 0 auto !important;
+  margin: 12px auto 0 auto !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -645,38 +644,33 @@ body {
 }
 
 .stay-weather-img-container {
-  position: absolute !important;
-  top: 0 !important;
-  left: 50% !important;
-  transform: translateX(-50%) !important;
+  position: relative !important;
   width: 100% !important;
-  max-width: 480px !important;
-  height: 166px !important;
+  max-width: 390px !important;
+  padding: 0 16px !important;
   display: flex !important;
-  align-items: flex-end !important;
+  align-items: center !important;
   justify-content: center !important;
-  overflow: hidden !important;
+  box-sizing: border-box !important;
   pointer-events: none !important;
   user-select: none !important;
 }
 
 .stay-weather-img {
-  position: absolute !important;
-  inset: 0 !important;
   width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: bottom !important;
+  height: auto !important;
+  max-height: 220px !important;
+  object-fit: contain !important;
+  display: block !important;
   pointer-events: none !important;
   user-select: none !important;
 }
 
 .stay-weather-content-wrap {
-  position: absolute !important;
-  top: 190px !important;
-  left: 0 !important;
+  position: relative !important;
   width: 100% !important;
-  padding: 0 41px !important;
+  padding: 0 28px !important;
+  margin-top: 18px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-start !important;
@@ -686,7 +680,7 @@ body {
 .stay-weather-title {
   font-family: 'Kugile', 'Cinzel', serif !important;
   font-size: 29px !important;
-  line-height: 26px !important;
+  line-height: 28px !important;
   font-weight: 400 !important;
   color: #A71F23 !important;
   margin: 0 0 16px 0 !important;
@@ -698,7 +692,7 @@ body {
 .stay-weather-body {
   display: flex !important;
   flex-direction: column !important;
-  gap: 12px !important;
+  gap: 14px !important;
   width: 100% !important;
   text-align: left !important;
 }
@@ -745,8 +739,13 @@ body {
   .stay-cab-text-bottom {
     padding: 0 16px !important;
   }
+  .stay-weather-img-container {
+    max-width: 330px !important;
+    padding: 0 12px !important;
+  }
   .stay-weather-content-wrap {
-    padding: 0 16px !important;
+    padding: 0 20px !important;
+    margin-top: 14px !important;
   }
 }
 </style>
@@ -859,7 +858,7 @@ body {
     <!-- Section E: Weather and Packing (Node 53:487) -->
     <section class="stay-weather-section" aria-label="Weather and Packing Guide">
       <div class="stay-weather-img-container" aria-hidden="true">
-        <img src="images/stay/stay_weather.png" alt="Carved Sun and Mountains" class="stay-weather-img" width="440" height="166" loading="lazy" decoding="async">
+        <img src="images/stay/stay_weather.png" alt="Carved Sun and Mountains" class="stay-weather-img" width="390" height="195" loading="lazy" decoding="async">
       </div>
       <div class="stay-weather-content-wrap">
         <h2 class="stay-weather-title">Weather and Packing</h2>
