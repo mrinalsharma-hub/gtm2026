@@ -222,35 +222,39 @@ body {
 
 .stay-hero-title-wrap {
   position: relative !important;
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 4px !important;
+  width: 325px !important;
+  height: 106px !important;
   margin: 0 auto !important;
+  display: block !important;
 }
 
 .stay-title-cone-img {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
   width: 74px !important;
   height: 106px !important;
   object-fit: contain !important;
-  flex-shrink: 0 !important;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
-  position: relative !important;
   z-index: 2 !important;
 }
 
 .stay-hero-title {
-  position: relative !important;
-  z-index: 1 !important;
+  position: absolute !important;
+  left: 65px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 260px !important;
+  height: 116px !important;
   margin: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  align-items: flex-end !important;
+  align-items: center !important;
   justify-content: center !important;
-  width: auto !important;
+  text-align: center !important;
+  z-index: 1 !important;
 }
 
 .stay-title-line1 {
@@ -263,8 +267,10 @@ body {
   text-transform: uppercase !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   margin: 0 !important;
-  text-align: right !important;
+  padding: 0 !important;
+  text-align: center !important;
   width: 100% !important;
+  white-space: nowrap !important;
 }
 
 .stay-title-line2 {
@@ -277,11 +283,13 @@ body {
   text-transform: uppercase !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   display: flex !important;
-  align-items: baseline !important;
-  justify-content: flex-end !important;
+  align-items: center !important;
+  justify-content: center !important;
   margin: 0 !important;
-  text-align: right !important;
+  padding: 0 !important;
+  text-align: center !important;
   width: 100% !important;
+  white-space: nowrap !important;
 }
 
 .stay-title-amp {
@@ -291,10 +299,12 @@ body {
   font-weight: 400 !important;
   color: #A71F23 !important;
   display: inline-block !important;
-  vertical-align: baseline !important;
-  margin-right: 6px !important;
+  margin-right: 4px !important;
   text-transform: none !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
+  vertical-align: middle !important;
+  position: relative !important;
+  top: 2px !important;
 }
 
 /* ── 4. Main Content Stack (Figma Node 53:465) ── */
