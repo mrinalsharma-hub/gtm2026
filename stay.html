@@ -281,7 +281,7 @@ body {
   font-family: 'Kugile', 'Cinzel', serif !important;
   font-size: 56px !important;
   font-weight: 400 !important;
-  line-height: 40px !important;
+  line-height: 36px !important;
   letter-spacing: -1.12px !important;
   color: #A71F23 !important;
   text-transform: uppercase !important;
@@ -294,7 +294,7 @@ body {
 
 .stay-title-line2 {
   width: 100% !important;
-  height: 40px !important;
+  height: 36px !important;
   display: flex !important;
   align-items: baseline !important;
   justify-content: center !important;
@@ -307,7 +307,7 @@ body {
 .stay-title-amp {
   font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
   font-size: 82px !important;
-  line-height: 40px !important;
+  line-height: 36px !important;
   font-weight: 400 !important;
   color: #A71F23 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
@@ -319,7 +319,7 @@ body {
   font-family: 'Kugile', 'Cinzel', serif !important;
   font-size: 56px !important;
   font-weight: 400 !important;
-  line-height: 40px !important;
+  line-height: 36px !important;
   letter-spacing: -1.12px !important;
   color: #A71F23 !important;
   text-transform: uppercase !important;
@@ -739,21 +739,24 @@ body {
   text-align: left !important;
 }
 
-/* ── Section F: Royal Couple Illustration (Figma Node 53:537 · 165x247px) ── */
+/* ── Section F: Royal Couple Illustration (Figma Node 53:559 · 442x230px) ── */
 .stay-couple-section {
   width: 100% !important;
+  max-width: 442px !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   margin: 28px auto 0 auto !important;
   padding-bottom: 0 !important;
   box-sizing: border-box !important;
+  overflow: hidden !important;
 }
 
 .stay-couple-img {
-  width: 165px !important;
-  height: 247px !important;
-  max-width: 100% !important;
+  width: 100% !important;
+  max-width: 442px !important;
+  height: auto !important;
+  aspect-ratio: 442 / 230 !important;
   object-fit: contain !important;
   display: block !important;
   margin: 0 auto !important;
@@ -1009,11 +1012,11 @@ body {
       </div>
     </section>
 
-    <!-- Section F: Royal Couple Illustration (Node 53:537) -->
+    <!-- Section F: Royal Couple Illustration (Node 53:559) -->
     <section class="stay-couple-section" aria-hidden="true">
       <picture>
         <source srcset="images/stay/stay_couple.webp" type="image/webp">
-        <img src="images/stay/stay_couple.png" alt="Carved Royal Couple" class="stay-couple-img" width="165" height="247" loading="lazy" decoding="async">
+        <img src="images/stay/stay_couple.png" alt="Carved Royal Couple" class="stay-couple-img" width="442" height="230" loading="lazy" decoding="async">
       </picture>
     </section>
 
