@@ -1542,7 +1542,7 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   width: 100% !important;
   max-width: 100% !important;
   height: 93.3px !important;
-  background-image: url('../images/aipan_thick_composite_tile.png') !important;
+  background-image: url('../images/aipan_thick_composite_tile.png?v=35000') !important;
   background-size: auto 93.3px !important;
   background-repeat: round no-repeat !important;
   background-position: left top !important;
