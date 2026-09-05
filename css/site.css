@@ -13,9 +13,10 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('../fonts/SnellRoundhand.ttf?v=24700') format('truetype'),
-       local('Snell Roundhand'),
-       local('SnellRoundhand');
+  src: local('Snell Roundhand'),
+       local('SnellRoundhand'),
+       url('../fonts/SnellRoundhand.woff?v=24700') format('woff'),
+       url('../fonts/SnellRoundhand.ttf?v=24700') format('truetype');
 }
 
 /* ═══════════════════════════════════════════════════════
