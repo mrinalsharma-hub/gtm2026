@@ -243,49 +243,35 @@ body {
   z-index: 2 !important;
 }
 
-.stay-hero-title {
+.stay-title-line1 {
   position: absolute !important;
-  left: 65px !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  width: 260px !important;
-  height: 116px !important;
+  left: 68px !important;
+  top: 0px !important;
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
   margin: 0 !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  text-align: center !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
   z-index: 1 !important;
 }
 
-.stay-title-line1 {
-  font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: 56px !important;
-  font-weight: 400 !important;
-  line-height: 52px !important;
-  letter-spacing: -1.12px !important;
-  color: #A71F23 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  text-align: center !important;
-  white-space: nowrap !important;
-}
-
 .stay-title-line2 {
-  font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: 56px !important;
-  font-weight: 400 !important;
-  line-height: 52px !important;
-  letter-spacing: -1.12px !important;
-  color: #A71F23 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  position: absolute !important;
+  left: 80px !important;
+  top: 50px !important;
+  height: 52px !important;
+  display: flex !important;
+  align-items: baseline !important;
   margin: 0 !important;
   padding: 0 !important;
-  text-align: center !important;
   white-space: nowrap !important;
+  z-index: 1 !important;
 }
 
 .stay-title-amp {
@@ -294,7 +280,8 @@ body {
   line-height: 44px !important;
   font-weight: 400 !important;
   color: #A71F23 !important;
-  display: inline !important;
+  display: inline-block !important;
+  margin-right: 6px !important;
   text-transform: none !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   vertical-align: baseline !important;
@@ -858,9 +845,10 @@ body {
   <header class="stay-header-container">
     <div class="stay-hero-title-wrap">
       <img src="images/stay/stay_pinecone.png?v=28000" alt="Ceramic Pinecone" class="stay-title-cone-img" width="74" height="106" loading="eager" decoding="async" fetchpriority="high">
-      <div class="stay-hero-title">
-        <h1 class="stay-title-line1">TRAVEL</h1>
-        <p class="stay-title-line2"><span class="stay-title-amp">&amp; </span><span class="stay-title-word">STAY</span></p>
+      <h1 class="stay-title-line1">TRAVEL</h1>
+      <div class="stay-title-line2">
+        <span class="stay-title-amp">&amp;</span>
+        <span class="stay-title-word">STAY</span>
       </div>
     </div>
   </header>
