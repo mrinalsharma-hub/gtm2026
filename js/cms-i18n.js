@@ -204,6 +204,7 @@
   // Public API
   window.GTM_CMS = {
     t: t,
+    get: t,
     setLanguage: setLanguage,
     getLanguage: getCurrentLanguage,
     applyDOM: applyDOM,
