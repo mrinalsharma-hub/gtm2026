@@ -48,7 +48,7 @@
 
 <!-- ── Resource Preloads matching Celebrations & RSVP ── -->
 <link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/stay/stay_hero_title_lockup.png?v=28000" type="image/png" fetchpriority="high">
+<link rel="preload" as="image" href="images/stay/stay_pinecone.png?v=28000" type="image/png" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="image" href="images/stay/stay_travel_air.png" type="image/png" fetchpriority="high">
@@ -206,7 +206,7 @@ body {
   box-sizing: border-box !important;
 }
 
-/* ── 3. Header: Travel & Stay Title + Pinecone Lockup (Figma Node 53:531 · 325x106px) ── */
+/* ── 3. Header: Pinecone Image + Live HTML Typography (Figma Node 53:531 · 325x106px) ── */
 .stay-header-container {
   position: relative !important;
   width: 100% !important;
@@ -227,34 +227,89 @@ body {
   height: 106px !important;
   max-width: 100% !important;
   margin: 0 auto !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  display: block !important;
 }
 
-.stay-hero-title-img {
-  width: 325px !important;
+.stay-title-cone-img {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 74px !important;
   height: 106px !important;
-  max-width: 100% !important;
-  height: auto !important;
   object-fit: contain !important;
-  display: block !important;
-  margin: 0 auto !important;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
+  z-index: 2 !important;
 }
 
-.visually-hidden {
+.stay-hero-title {
   position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
+  left: 65px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 260px !important;
+  height: 116px !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  text-align: center !important;
+  z-index: 1 !important;
+}
+
+.stay-title-line1 {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  margin: 0 !important;
   padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
+  text-align: center !important;
   white-space: nowrap !important;
-  border: 0 !important;
+}
+
+.stay-title-line2 {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+}
+
+.stay-title-amp {
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
+  font-size: 82px !important;
+  line-height: 44px !important;
+  font-weight: 400 !important;
+  color: #A71F23 !important;
+  display: inline !important;
+  text-transform: none !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  vertical-align: baseline !important;
+}
+
+.stay-title-word {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  vertical-align: baseline !important;
 }
 
 /* ── 4. Main Content Stack (Figma Node 53:465) ── */
@@ -799,11 +854,14 @@ body {
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="stay-page-wrap">
 
-  <!-- ── Header: Travel & Stay Title + Pinecone Lockup (Figma Node 53:531 · 325x106px) ── -->
+  <!-- ── Header: Ceramic Pinecone Image + Live HTML Typography (Figma Node 53:531 · 325x106px) ── -->
   <header class="stay-header-container">
     <div class="stay-hero-title-wrap">
-      <img src="images/stay/stay_hero_title_lockup.png?v=28000" alt="Travel &amp; Stay" class="stay-hero-title-img" width="325" height="106" fetchpriority="high" loading="eager" decoding="async">
-      <h1 class="visually-hidden">Travel &amp; Stay</h1>
+      <img src="images/stay/stay_pinecone.png?v=28000" alt="Ceramic Pinecone" class="stay-title-cone-img" width="74" height="106" loading="eager" decoding="async" fetchpriority="high">
+      <div class="stay-hero-title">
+        <h1 class="stay-title-line1">TRAVEL</h1>
+        <p class="stay-title-line2"><span class="stay-title-amp">&amp; </span><span class="stay-title-word">STAY</span></p>
+      </div>
     </div>
   </header>
 
