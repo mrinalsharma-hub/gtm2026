@@ -2,26 +2,6 @@
 <html lang="en" style="background-color: #A71F23 !important; background: #A71F23 !important;">
 <head>
 <meta charset="UTF-8">
-<script>
-(function() {
-  function getCookie(name) {
-    var value = '; ' + document.cookie;
-    var parts = value.split('; ' + name + '=');
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-  }
-  var authed = (
-    sessionStorage.getItem('gtm2026_auth') === 'true' ||
-    localStorage.getItem('gtm2026_auth') === 'true' ||
-    localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
-    getCookie('gtm2026_auth') === 'true' ||
-    getCookie('gtm2026_has_authenticated') === 'true'
-  );
-  if (!authed) {
-    window.location.replace('index.html');
-  }
-})();
-</script>
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
@@ -53,11 +33,32 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css?v=26000">
-<!-- Critical High-Performance Asset Preloads -->
-<link rel="preload" as="image" href="images/home_centerpiece.webp?v=24700" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/Welcome_Flowers.png" type="image/png">
-<link rel="preload" as="image" href="images/home_butterfly.webp" type="image/webp">
+<link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
+<link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
+<link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
+
 <style>
+@font-face {
+  font-family: 'Kugile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('fonts/Kugile.ttf?v=24700') format('truetype'),
+       url('fonts/Kugile_Demo.ttf?v=24700') format('truetype'),
+       local('Kugile');
+}
+
+@font-face {
+  font-family: 'Snell Roundhand';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Snell Roundhand'),
+       local('SnellRoundhand'),
+       url('fonts/SnellRoundhand.woff?v=24700') format('woff'),
+       url('fonts/SnellRoundhand.ttf?v=24700') format('truetype');
+}
+
 :root {
   color-scheme: dark;
   --theme-color: #A71F23;
@@ -86,7 +87,7 @@ body {
   overflow: hidden !important;
   background: #A71F23 !important;
   background-color: #A71F23 !important;
-  font-family: 'Cinzel', serif;
+  font-family: 'Spectral', Georgia, serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   user-select: none;
@@ -115,7 +116,7 @@ body {
   }
 }
 
-/* ── 1. Direction 1: Architectural Cotton-Rag Paper (CSS Multi-Radial Mesh + Procedural SVG Micro-Fibers) ── */
+/* ── 1. Architectural Cotton-Rag Paper (CSS Multi-Radial Mesh + Procedural SVG Micro-Fibers) ── */
 .home-bg-layer {
   position: absolute !important;
   inset: 0 !important;
@@ -157,44 +158,14 @@ body {
   pointer-events: none !important;
 }
 
-/* ── 2. Flowers Top (Anchored Top Center) ── */
-.home-flowers-top {
-  filter: drop-shadow(-18px 24px 22px rgba(60, 40, 25, 0.26)) drop-shadow(-6px 10px 10px rgba(80, 50, 30, 0.18)) drop-shadow(-2px 3px 4px rgba(50, 30, 15, 0.12));
-  position: absolute;
-  top: -8px;
-  left: 50% !important;
-  transform: translateX(-50%);
-  width: min(289px, 72vw);
-  height: auto;
-  pointer-events: none;
-  z-index: 3;
-  transform-origin: center top;
-  animation: gentleFloralBreeze 7.5s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
-  will-change: transform;
-}
-.home-flowers-top img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-  aspect-ratio: 247 / 266;
-}
-
-@keyframes gentleFloralBreeze {
-  0% { transform: translateX(-50%) rotate(0deg) translateY(0px); }
-  30% { transform: translateX(-50%) rotate(1.2deg) translateY(-1px) skewX(-0.4deg); }
-  70% { transform: translateX(-50%) rotate(-0.8deg) translateY(-2px) skewX(0.3deg); }
-  100% { transform: translateX(-50%) rotate(1.4deg) translateY(-0.5px) skewX(-0.5deg); }
-}
-
-/* ── 3. Central Typography Centerpiece (Zero Layout Shift & Composited) ── */
+/* ── 2. Central Typography Block (GARIMA takes MRINAL · Date & Location) ── */
 .home-hero-text {
   position: absolute;
-  top: 43%;
+  top: calc(50% - 24px);
   left: 50% !important;
   transform: translate3d(-50%, -50%, 0) !important;
   -webkit-transform: translate3d(-50%, -50%, 0) !important;
-  width: min(94vw, 560px);
+  width: min(92vw, 440px);
   max-width: 100vw;
   display: flex;
   flex-direction: column;
@@ -205,357 +176,70 @@ body {
   pointer-events: none;
   margin: 0 auto;
   box-sizing: border-box;
-  contain: layout style paint;
-  will-change: transform;
 }
-.home-centerpiece-wrap {
-  width: 100%;
-  max-width: 100%;
+
+.home-names-lockup {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  box-sizing: border-box;
-}
-.home-centerpiece-img {
   width: 100%;
-  height: auto;
-  aspect-ratio: 1000 / 565;
-  max-height: 64vh;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  filter: drop-shadow(0 2px 8px rgba(167, 31, 35, 0.05));
 }
 
-/* ── 4. Butterfly (Centered Below Date, Flapping Wings) ── */
-.home-butterfly-wrap {
-  position: absolute;
-  top: auto;
-  bottom: calc(124px + env(safe-area-inset-bottom, 0px));
-  left: 50% !important;
-  transform: translateX(-50%) !important;
-  width: 182px;
-  height: 136px;
-  z-index: 100 !important;
-  pointer-events: none;
-  filter: drop-shadow(0 4px 8px rgba(45, 20, 10, 0.32)) drop-shadow(0 14px 24px rgba(80, 45, 20, 0.26)) drop-shadow(0 28px 38px rgba(60, 30, 10, 0.14));
-  transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
-  will-change: transform;
-  opacity: 1;
-}
-
-.flight-container {
-  width: 100%;
-  height: 100%;
-  transform-origin: center;
-}
-
-.bob-container {
-  width: 100%;
-  height: 100%;
-}
-
-.wing-flap {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  transform-origin: center;
-  animation: flap-slow 0.21s ease-in-out infinite alternate;
-}
-
-@keyframes flap-slow {
-  0% { transform: perspective(400px) rotateY(0deg); }
-  50% { transform: perspective(400px) rotateY(60deg); }
-  100% { transform: perspective(400px) rotateY(0deg); }
-}
-
-/* Butterfly Fly-to-Flowers Transition on Unlock Click */
-.home-butterfly-wrap.fly-to-flowers {
-  transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1) !important;
-  transform: translate3d(-50%, calc(-1 * var(--app-height, 100lvh) + 260px + max(14px, env(safe-area-inset-top, 14px)) + env(safe-area-inset-bottom, 0px)), 0) !important;
-  z-index: 101 !important;
-}
-
-/* ── 5. Fullscreen Red Backdrop for Auth Modal ── */
-.home-auth-backdrop {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(ellipse 120% 70% at 50% 0%, #B42425 0%, #A71F23 35%, #7E1216 70%, #620E0B 100%) !important;
-  z-index: 50;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.home-auth-backdrop.expand-fullscreen {
-  opacity: 1 !important;
-  pointer-events: auto;
-}
-
-
-/* ── Semi-circular Background Arch (Pixel-by-Pixel Smooth Bézier Vector) ── */
-.home-bottom-arch {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: calc(220px + env(safe-area-inset-bottom, 0px));
-  pointer-events: none;
-  z-index: 4;
-  transform-origin: bottom center;
-  transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.home-bottom-arch.is-hidden {
-  opacity: 0 !important;
-}
-.home-arch-svg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* ── 6. Unlock for Details Button (Always Strictly Single Line, Never Wraps) ── */
-.home-unlock-details-btn {
-  position: absolute;
-  bottom: calc(88px + env(safe-area-inset-bottom, 0px));
-  left: 50%;
-  transform: translateX(-50%) scale(0.85);
-  transform-origin: bottom center;
-  z-index: 20;
-  display: inline-flex !important;
-  flex-direction: row !important;
-  flex-wrap: nowrap !important;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: max-content !important;
-  max-width: 94vw !important;
-  white-space: nowrap !important;
-  color: #0b4c6d;
-  background: none;
-  border: none;
-  cursor: pointer;
-  pointer-events: auto;
-  opacity: 1;
-  text-decoration: none;
-  -webkit-tap-highlight-color: transparent;
-  padding: 8px 16px;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.35s ease;
-}
-.home-unlock-details-btn.is-hidden {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-.home-unlock-details-btn:active {
-  transform: translateX(-50%) scale(0.80);
-  opacity: 0.8;
-}
-.home-lock-icon {
-  width: 22px;
-  height: 22px;
-  min-width: 22px;
-  min-height: 22px;
-  flex-shrink: 0 !important;
-  stroke: #0b4c6d;
-  fill: none;
-  stroke-width: 3.0;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  display: block;
-  transform: translateY(-2px);
-}
-.home-unlock-details-label {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: clamp(22px, 5.6vw, 26px) !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.015em !important;
-  color: #0b4c6d;
-  line-height: 1;
-  white-space: nowrap !important;
-  flex-shrink: 0 !important;
-  display: inline-block !important;
-}
-
-/* ── PIN Code Modal Interface (Generous Keyboard Clearance & Visual Hierarchy) ── */
-.home-pin-modal {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent !important;
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-  z-index: 100;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding: clamp(155px, 20vh, 170px) 24px 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  box-sizing: border-box;
-}
-.home-pin-modal.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-.home-pin-content {
-  background: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-  width: 100%;
-  max-width: 290px;
-  box-shadow: none !important;
-  border: none !important;
-  text-align: center;
-  transform: translateY(12px);
-  opacity: 0;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.home-pin-modal.is-active .home-pin-content {
-  transform: translateY(0);
-  opacity: 1;
-}
-.home-pin-title {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(24px, 6vw, 28px);
-  font-weight: 500;
-  color: #FFFFFF;
-  margin-bottom: 2px;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-  text-transform: uppercase;
-}
-.home-pin-subtitle {
-  font-family: 'Cormorant Garamond', serif !important;
-  font-size: 15px;
-  font-weight: 400;
-  font-style: normal !important;
-  color: rgba(255, 255, 255, 0.85) !important;
-  margin-bottom: 12px;
-  line-height: 1.2;
-  letter-spacing: 0.03em;
-}
-.home-pin-input {
-  width: 100%;
-  padding: 9px 12px;
-  font-size: 20px;
-  text-align: center;
-  letter-spacing: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.15);
-  color: #FFFFFF;
-  outline: none !important;
-  box-shadow: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  transition: background-color 0.2s;
-  box-sizing: border-box;
-  -webkit-text-security: disc !important;
-  text-security: disc !important;
-}
-.home-pin-input:focus {
-  background: rgba(255, 255, 255, 0.25);
-  border-color: #FFFFFF;
-}
-.home-pin-error {
-  color: #FFD8A8;
-  font-family: 'Cormorant Garamond', serif !important;
-  font-size: 14px;
-  margin-top: 6px;
-  margin-bottom: 2px;
-  display: none;
-  font-style: italic;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-}
-.home-pin-actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
-.home-pin-btn {
-  flex: 1;
-  height: 42px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cormorant Garamond', serif !important;
-  font-weight: 400;
-  font-style: normal !important;
-  font-size: 17px;
-  letter-spacing: 0.03em;
-  text-transform: uppercase !important;
-  border-radius: 24px;
-  cursor: pointer;
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
-  transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.2s ease;
-}
-.home-pin-btn:active {
-  transform: scale(0.95);
-}
-.btn-close {
-  background: transparent;
-  color: #FFFFFF;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-}
-.btn-close:hover {
-  background: rgba(255, 255, 255, 0.12);
-}
-.btn-open {
-  background: #FFFFFF;
-  color: #7E1216;
-  border: 1.5px solid #FFFFFF;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: not-allowed;
-  transition: opacity 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
-}
-.btn-open.is-enabled {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  cursor: pointer !important;
-  font-weight: 600 !important;
-}
-.btn-open.is-enabled:hover {
-  background: #f4eee2;
-}
-
-/* ── Locked Bottom Nav Tabs State ── */
-.fixed-bottom-nav .nav-tab.is-locked {
-  opacity: 0.45 !important;
-  cursor: pointer !important;
-  color: rgba(110, 33, 26, 0.45) !important;
-  transition: opacity 0.2s ease, color 0.2s ease, transform 0.15s ease;
-}
-.fixed-bottom-nav .nav-tab.is-locked .nav-icon {
-  opacity: 0.45 !important;
-  color: rgba(110, 33, 26, 0.45) !important;
-  fill: currentColor !important;
-  filter: none !important;
-}
-.fixed-bottom-nav .nav-tab.is-locked .nav-label {
-  opacity: 0.50 !important;
-  color: rgba(110, 33, 26, 0.50) !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.01em !important;
-}
-.fixed-bottom-nav .nav-tab.is-locked:hover,
-.fixed-bottom-nav .nav-tab.is-locked:active {
-  opacity: 0.70 !important;
+.home-title-name {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: clamp(52px, 14.5vw, 68px) !important;
+  font-weight: 400 !important;
+  line-height: 0.95 !important;
+  letter-spacing: -1.2px !important;
   color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
 }
 
-/* ── Global Audio Pill (Spectral Navy Blue Theme) ── */
+.home-title-connector {
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
+  font-size: clamp(40px, 11vw, 52px) !important;
+  font-weight: 400 !important;
+  line-height: 0.85 !important;
+  color: #A71F23 !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  text-align: center !important;
+  margin: 4px 0 2px 0 !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.home-details-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: clamp(20px, 5.5vw, 30px);
+  gap: 4px;
+}
+
+.home-date-text,
+.home-location-text {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: clamp(14px, 3.8vw, 16px) !important;
+  font-weight: 700 !important;
+  letter-spacing: clamp(1.2px, 0.16em, 2.5px) !important;
+  line-height: 1.25 !important;
+  color: #071C41 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+}
+
+/* ── Global Audio Pill Theme ── */
 .global-audio-pill .icon-play,
 .global-audio-pill .icon-pause {
   fill: #0b4c6d !important;
@@ -563,7 +247,6 @@ body {
 .global-audio-pill .bar {
   background-color: #0b4c6d !important;
 }
-
 </style>
 </head>
 <body style="background-color: #A71F23 !important; background: #A71F23 !important;">
@@ -573,50 +256,18 @@ body {
   <!-- ── 1. Background Texture ── -->
   <div class="home-bg-layer" aria-hidden="true"></div>
 
-  <!-- ── 2. Flowers Top (Floral Bouquet) ── -->
-  <div class="home-flowers-top" aria-hidden="true">
-    <img src="images/Welcome_Flowers.png" alt="Botanical Floral Bouquet">
-  </div>
-
-          <!-- ── 3. Central Typography Centerpiece (Pixel-by-Pixel Master Design Lockup) ── -->
+  <!-- ── 2. Central Typography Block (GARIMA takes MRINAL · Date & Location) ── -->
   <div class="home-hero-text">
-    <div class="home-centerpiece-wrap">
-      <picture>
-        <source srcset="images/home_centerpiece.webp?v=24700" type="image/webp">
-        <img src="images/home_centerpiece.png?v=24700" alt="GARIMA takes MRINAL · NOV 21, 2026 · NAINITAL, INDIA" class="home-centerpiece-img" width="1000" height="565" fetchpriority="high" decoding="async">
-      </picture>
+    <div class="home-names-lockup">
+      <h1 class="home-title-name">GARIMA</h1>
+      <span class="home-title-connector">takes</span>
+      <h1 class="home-title-name">MRINAL</h1>
+    </div>
+    <div class="home-details-lockup">
+      <p class="home-date-text">NOV 21, 2026</p>
+      <p class="home-location-text">NAINITAL, INDIA</p>
     </div>
   </div>
-
-<!-- ── 4. Butterfly (3D Flapping Wings) ── -->
-    <!-- ── Semi-circular Background Arch (Edge-to-Edge White 60% Opacity) ── -->
-  <!-- ── Semi-circular Background Arch (Pixel-by-Pixel Smooth Bézier Vector) ── -->
-  <div class="home-bottom-arch" id="bottom-arch" aria-hidden="true">
-    <svg class="home-arch-svg" viewBox="0 0 1000 240" preserveAspectRatio="none">
-      <path d="M 0,85 Q 500,0 1000,85 L 1000,240 L 0,240 Z" fill="rgba(255, 255, 255, 0.50)" />
-    </svg>
-  </div>
-
-  <div class="home-butterfly-wrap" aria-hidden="true">
-    <div class="flight-container">
-      <div class="bob-container">
-        <img src="images/home_butterfly.webp" alt="Golden Butterfly" class="wing-flap">
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 5. Fullscreen Red Backdrop for Auth Screen ── -->
-  <div class="home-auth-backdrop" id="auth-backdrop" aria-hidden="true"></div>
-
-  <!-- ── 6. Unlock for Details Button ── -->
-  <a href="celebrations.html" id="btn-view-details" class="home-unlock-details-btn" aria-label="View Event Details" style="white-space: nowrap !important; display: inline-flex !important; flex-wrap: nowrap !important; text-decoration: none !important;">
-    <svg class="home-lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 20px; height: 20px;">
-      <circle cx="12" cy="12" r="10"></circle>
-      <polyline points="12 16 16 12 12 8"></polyline>
-      <line x1="8" y1="12" x2="16" y2="12"></line>
-    </svg>
-    <span class="home-unlock-details-label" style="font-family: 'Spectral', Georgia, serif !important; font-size: clamp(22px, 5.6vw, 26px) !important; font-weight: 600 !important; letter-spacing: 0.015em !important; white-space: nowrap !important; display: inline-block !important; flex-shrink: 0 !important;">View Event Details</span>
-  </a>
 
   <!-- ── Global Royal Medallion Music Player (Figma Node 26:627 · 56x56px) ── -->
   <button id="global-music-player" class="celebration-player-btn" role="button" aria-label="Play Music" type="button">
@@ -625,23 +276,9 @@ body {
   </button>
 
   <!-- ── AUDIO ── -->
-  <audio id="bg-music" loop preload="auto" playsinline>
+  <audio id="bg-music" loop preload="none" playsinline>
     <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
   </audio>
-
-  <!-- ── PIN Code Interface Modal ── -->
-  <div id="pin-modal" class="home-pin-modal">
-    <div class="home-pin-content">
-      <h2 class="home-pin-title">WELCOME!</h2>
-      <p class="home-pin-subtitle">Enter code for event details</p>
-      <input type="text" id="pin-input" name="wedding-access-code" placeholder="" maxlength="15" class="home-pin-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" inputmode="text" data-lpignore="true" data-form-type="other" data-1p-ignore="true">
-      <p id="pin-error" class="home-pin-error">Incorrect code. Please try again.</p>
-      <div class="home-pin-actions">
-        <button type="button" id="btn-pin-cancel" class="home-pin-btn btn-close">CLOSE</button>
-        <button type="button" id="btn-pin-submit" class="home-pin-btn btn-open" disabled>OPEN</button>
-      </div>
-    </div>
-  </div>
 
 </main>
 
@@ -660,6 +297,7 @@ body {
       <div class="nav-pill-wrapper">
         <svg class="nav-icon" width="26" height="26" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M14.3018 20.4707C14.6337 20.4463 14.9165 20.6314 15.1074 20.8926C15.4818 21.4273 15.8303 21.9824 16.1885 22.5283L18.0508 25.3389L20.8701 29.5957C21.3578 30.3306 22.0151 31.2607 22.4414 32H2.57031C2.28956 31.8316 2.15574 31.6993 2 31.415V30.9785C2.11891 30.6889 2.70284 29.9477 2.92969 29.6475L4.30664 27.8271L6.4082 25.0322C6.64606 24.722 6.92174 24.3248 7.16699 24.0361C7.25109 23.9368 7.35739 23.8586 7.47754 23.8086C7.66442 23.7319 7.91818 23.7222 8.10449 23.8057C8.60228 24.0286 9.6181 25.7029 10.0723 26.208L10.085 26.1934C10.2606 25.9941 10.6612 25.334 10.8408 25.0684L13.0059 21.8076C13.3241 21.332 13.6867 20.5162 14.3018 20.4707ZM18.5381 16.2998C18.7509 16.0077 19.1059 15.7752 19.4775 15.8955C19.6853 15.9628 19.8688 16.0901 20.0039 16.2617C20.1914 16.5014 20.422 16.8697 20.6006 17.1318L21.8359 18.9512L25.5391 24.3818L28.5576 28.8076C28.8309 29.2109 29.1071 29.6124 29.3848 30.0127C29.5679 30.2766 29.8571 30.6785 30 30.9541V31.4141C29.8355 31.7113 29.7237 31.8431 29.4111 32H24.4102C24.2329 31.7883 23.7277 30.9673 23.5508 30.7031L21.3262 27.3369C19.6645 24.7961 17.9819 22.2688 16.2783 19.7559C16.4338 19.4341 16.6586 19.1156 16.8584 18.8154C17.1398 18.3894 17.4244 17.9649 17.7119 17.543C17.9889 17.13 18.2451 16.7019 18.5381 16.2998ZM14.8975 10.6445C18.0623 10.4168 20.6609 12.5945 21.5293 15.5459C21.1898 15.1335 20.8982 14.7636 20.415 14.5088C19.7293 14.1473 18.5576 14.1864 17.9268 14.6396C17.7434 14.77 17.5761 14.9219 17.4287 15.0918C17.131 15.4415 16.76 16.0365 16.4932 16.4385L15.248 18.291C15.1794 18.3936 14.956 18.8268 14.9062 18.8311C14.3795 18.8464 13.9038 18.8516 13.3955 19.0117C12.6978 19.3209 12.3609 19.8545 11.957 20.4521C11.8191 20.6563 10.9339 22.0533 10.835 22.0889C10.7068 22.0022 10.5998 21.856 10.4912 21.7441C6.56423 17.698 9.20572 10.8758 14.8975 10.6445ZM2.49902 15.6162C2.77518 15.5219 5.68679 15.537 6.14258 15.5693C6.28294 15.5793 6.44878 15.5953 6.5752 15.6602C6.75599 15.753 6.88361 15.9063 6.94238 16.1006C7.00848 16.3194 6.98914 16.5732 6.87793 16.7744C6.77676 16.9573 6.60828 17.072 6.40918 17.127C6.01186 17.2364 4.88568 17.1743 4.40332 17.1758C3.89171 17.1774 3.34908 17.215 2.84082 17.1689C2.67614 17.154 2.49575 17.1228 2.35156 17.0381C2.1637 16.9277 2.11507 16.7534 2 16.5859V16.1299C2.11377 15.8975 2.24151 15.7049 2.49902 15.6162ZM24.4551 15.5605C25.4801 15.5638 26.4779 15.5448 27.5049 15.5723C28.2466 15.5921 28.5037 16.2946 28.1318 16.8779C28.0043 17.0777 27.7742 17.1281 27.5518 17.1641C27.076 17.2048 26.4072 17.1733 25.9062 17.1777C25.5396 17.181 24.0251 17.2338 23.7637 17.0566C23.168 16.6524 23.2332 15.7749 24.0664 15.5703C24.1896 15.558 24.3305 15.5597 24.4551 15.5605ZM23.7197 6.83203C23.8983 6.82016 24.0297 6.82133 24.1953 6.89648C24.3828 6.98163 24.5676 7.14382 24.6387 7.34082C24.7146 7.55125 24.7098 7.83581 24.6123 8.03906C24.5081 8.25569 22.3405 10.4142 22.0977 10.6084C21.9926 10.6923 21.8765 10.7351 21.751 10.7783C21.5581 10.8013 21.3656 10.7977 21.1855 10.7158C20.993 10.6282 20.8693 10.444 20.7969 10.251C20.7133 10.0275 20.7489 9.79785 20.8467 9.58496C20.9489 9.36255 23.0626 7.27455 23.3926 7.00879C23.4962 6.9254 23.5946 6.87622 23.7197 6.83203ZM6.28906 6.83496C6.61077 6.8136 6.88378 6.8528 7.10254 7.11719C7.49429 7.59063 9.49841 9.3284 9.61133 9.76367C9.66741 9.97662 9.63263 10.2037 9.51465 10.3896C9.38176 10.6008 9.22168 10.7212 8.9834 10.7773C8.82444 10.7967 8.67002 10.7984 8.5166 10.7461C8.43518 10.7183 8.36174 10.6851 8.29492 10.6299C8.01514 10.3985 5.7737 8.1494 5.69238 7.95508C5.61793 7.77702 5.63129 7.52356 5.70801 7.34863C5.81088 7.11441 6.05374 6.92512 6.28906 6.83496ZM15.4307 4C15.5984 4.10594 15.7826 4.21365 15.8916 4.38477C15.9638 4.49833 15.9808 4.62621 15.9932 4.75781C16.0445 5.30424 16.0067 5.88541 16.0068 6.43555C16.007 6.93216 16.0635 7.98773 15.9619 8.42871C15.9219 8.60237 15.7849 8.75029 15.6377 8.84277C15.4227 8.9778 15.1856 8.99934 14.9414 8.94336C14.7172 8.8919 14.5662 8.72142 14.4492 8.53027C14.4002 8.45017 14.3585 8.36181 14.3486 8.26758C14.3086 7.8855 14.312 4.87694 14.3691 4.65234C14.4434 4.36085 14.6544 4.1478 14.9072 4H15.4307Z" fill="currentColor"/>
+        </svg>
       </div>
       <span class="nav-label">Travel &amp; Stay</span>
     </a>
@@ -667,9 +305,9 @@ body {
       <div class="nav-pill-wrapper">
         <svg class="nav-icon" width="32" height="26" viewBox="0 0 40 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M3.1349 14.0634C6.2896 13.9199 10.3184 14.7614 13.0216 16.4111C16.892 18.773 18.9938 22.5652 20.0128 26.8388C20.5987 23.9333 22.2763 20.5284 24.4171 18.4052C27.5641 15.2842 31.908 14.1276 36.2726 14.0507C36.7554 14.0422 37.0623 14.0565 37.4025 14.3876C37.7247 15.4901 37.1661 18.233 36.8712 19.3847C36.5989 20.3197 36.2508 21.2318 35.8312 22.1122C33.8454 26.2545 30.2718 29.4495 25.8966 30.9951C21.534 32.5306 16.7317 32.298 12.5431 30.3476C8.34017 28.3805 5.09845 24.851 3.52943 20.5331C3.09546 19.3314 2.13421 15.4313 2.64662 14.415C2.75035 14.2093 2.92305 14.1312 3.1349 14.0634ZM29.3781 7.42279C30.6578 7.451 31.0926 12.3455 31.1456 13.2783C30.8879 13.3393 30.6315 13.4055 30.3761 13.4755C26.7375 14.4481 23.5842 16.6967 21.5079 19.7988C21.0704 20.4528 20.7007 21.1236 20.3283 21.8154C20.226 22.0053 20.1763 22.1644 20.0783 22.3359C20.0067 22.3446 19.9808 22.3519 19.9425 22.2714C18.2212 18.6447 15.0485 15.2879 11.1251 13.9687C10.1601 13.5784 8.82872 13.2172 7.79701 13.0536C7.88342 12.4464 7.99544 11.8428 8.13392 11.2451C8.29677 10.5686 8.63092 8.53954 9.64174 8.89642C13.4459 10.2398 16.8897 12.404 19.0226 15.8701C20.5145 12.3547 23.8069 9.7162 27.2697 8.21283C27.8786 7.94844 28.7269 7.53538 29.3781 7.42279ZM19.8478 4.00384C20.9513 3.86439 23.2616 7.56119 23.7648 8.50384C21.917 9.59545 20.3162 11.1846 19.0763 12.9101C19.0138 13.0039 18.9898 13.0514 18.8947 13.1181C18.7161 13.0856 18.5068 12.846 18.3869 12.707C17.4691 11.643 16.4038 10.8912 15.2716 10.0654C15.5366 9.63267 15.8877 8.90296 16.1671 8.414C16.7376 7.41575 18.9089 4.42482 19.8478 4.00384Z" fill="currentColor"/>
-       </div>
-       <span class="nav-label">Celebrations</span>
-     </a>
+      </div>
+      <span class="nav-label">Celebrations</span>
+    </a>
     <a href="joinus.html" class="nav-tab" role="tab" aria-selected="false" aria-label="RSVP" data-tab="rsvp">
       <div class="nav-pill-wrapper">
         <svg class="nav-icon" width="26" height="26" viewBox="0 0 32 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -682,27 +320,11 @@ body {
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  const bgMusic = document.getElementById('bg-music');
-  const butterflyWrap = document.querySelector('.home-butterfly-wrap');
-  const authBackdrop = document.getElementById('auth-backdrop');
-  const btnViewDetails = document.getElementById('btn-view-details');
-  const pinModal = document.getElementById('pin-modal');
-  const btnPinCancel = document.getElementById('btn-pin-cancel');
-  const btnPinSubmit = document.getElementById('btn-pin-submit');
-  const pinInput = document.getElementById('pin-input');
-  const pinError = document.getElementById('pin-error');
-  const bottomArch = document.getElementById('bottom-arch');
-
-  // ── Persistent Theme Color Lock ──
   function enforceThemeColor() {
     if (window.ensureThemeColor) {
       window.ensureThemeColor();
       return;
     }
-    var path = (window.location.pathname || '').toLowerCase();
-    if (path.indexOf('celebrations.html') !== -1 || path.indexOf('stay.html') !== -1 || path.indexOf('travel.html') !== -1) return;
-    if (path.indexOf('joinus.html') !== -1 || path.indexOf('rsvp.html') !== -1) return;
-
     var metas = document.querySelectorAll('meta[name="theme-color"]');
     metas.forEach(function(m) {
       m.setAttribute('content', '#A71F23');
@@ -723,202 +345,14 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   enforceThemeColor();
 
-  function getCookie(name) {
-    var value = '; ' + document.cookie;
-    var parts = value.split('; ' + name + '=');
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-  }
-
-  function setCookie(name, val) {
-    try {
-      var maxAge = 365 * 24 * 60 * 60; // 1 year
-      document.cookie = name + '=' + val + '; max-age=' + maxAge + '; path=/; SameSite=Lax';
-    } catch(e) {}
-  }
-
-  function isAuthed() {
-    return (
-      sessionStorage.getItem('gtm2026_auth') === 'true' ||
-      localStorage.getItem('gtm2026_auth') === 'true' ||
-      localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
-      getCookie('gtm2026_auth') === 'true' ||
-      getCookie('gtm2026_has_authenticated') === 'true'
-    );
-  }
-
-  function setPersistentAuth() {
-    try {
-      sessionStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_has_authenticated', 'true');
-      setCookie('gtm2026_auth', 'true');
-      setCookie('gtm2026_has_authenticated', 'true');
-    } catch(e) {}
-  }
-
-  function unlockAllTabs() {
-    document.querySelectorAll('.fixed-bottom-nav .nav-tab').forEach(function(tab) {
-      tab.classList.remove('is-locked');
-    });
-    if (btnViewDetails) {
-      var label = btnViewDetails.querySelector('.home-unlock-details-label');
-      if (label) label.textContent = 'View Details';
-    }
-  }
-
-  if (isAuthed()) {
-    unlockAllTabs();
-    setPersistentAuth();
-  }
-
-  // ── Password Verification Logic ──
-  function isCodeValid(val) {
-    var clean = (val || '').trim().toLowerCase();
-    return clean === 'gtm2026';
-  }
-
-  function checkPinInput() {
-    if (!pinInput || !btnPinSubmit) return;
-    const isValid = isCodeValid(pinInput.value);
-    if (isValid) {
-      btnPinSubmit.classList.add('is-enabled');
-      btnPinSubmit.removeAttribute('disabled');
-      if (pinError) pinError.style.display = 'none';
-    } else {
-      btnPinSubmit.classList.remove('is-enabled');
-      btnPinSubmit.setAttribute('disabled', 'disabled');
-    }
-  }
-
-  let isSubmitting = false;
-  let blurTimeout = null;
-
-  function submitPin(targetUrl) {
-    if (pinInput && isCodeValid(pinInput.value)) {
-      isSubmitting = true;
-      if (blurTimeout) clearTimeout(blurTimeout);
-      setPersistentAuth();
-      sessionStorage.setItem('gtm2026_music_playing', (bgMusic && !bgMusic.paused) ? 'true' : 'false');
-      unlockAllTabs();
-      window.location.href = targetUrl || 'celebrations.html';
-    } else {
-      isSubmitting = false;
-      if (pinError) pinError.style.display = 'block';
-    }
-  }
-
-  // ── Flow 1 & Flow 2 Controller ──
-  window.handleOpenDetails = function(e, destination) {
-    if (e && e.preventDefault) e.preventDefault();
-
-    // Flow 2: Authenticated user -> direct instant navigation
-    if (isAuthed()) {
-      window.location.href = destination || 'celebrations.html';
-      return;
-    }
-
-    // Flow 1: New visitor -> trigger butterfly flight & open PIN modal
-    if (butterflyWrap) {
-      butterflyWrap.classList.add('fly-to-flowers');
-    }
-    if (authBackdrop) {
-      authBackdrop.classList.add('expand-fullscreen');
-    }
-    if (btnViewDetails) {
-      btnViewDetails.classList.add('is-hidden');
-    }
-    if (bottomArch) {
-      bottomArch.classList.add('is-hidden');
-    }
-    if (pinModal) {
-      pinModal.classList.add('is-active');
-    }
-    if (pinInput) {
-      pinInput.focus();
-      pinInput.select();
-    }
-    checkPinInput();
-  };
-
-  if (btnViewDetails) {
-    btnViewDetails.addEventListener('click', function(e) {
-      window.handleOpenDetails(e, 'celebrations.html');
-    });
-  }
-
-  // Intercept locked tab clicks
-  document.querySelectorAll('.fixed-bottom-nav .nav-tab').forEach(function(tab) {
-    tab.addEventListener('click', function(e) {
-      var href = tab.getAttribute('href');
-      if (href && href !== 'index.html' && !isAuthed()) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.handleOpenDetails(e, href);
-      }
-    });
-  });
-
-  function handleCloseModal() {
-    if (!pinModal || !pinModal.classList.contains('is-active')) return;
-    if (isSubmitting) return;
-
-    if (blurTimeout) {
-      clearTimeout(blurTimeout);
-      blurTimeout = null;
-    }
-
-    if (pinInput) {
-      pinInput.blur();
-      pinInput.value = '';
-      checkPinInput();
-    }
-    if (pinError) pinError.style.display = 'none';
-
-    pinModal.classList.remove('is-active');
-
-    if (authBackdrop) {
-      authBackdrop.classList.remove('expand-fullscreen');
-    }
-
-    if (butterflyWrap) {
-      butterflyWrap.classList.remove('fly-to-flowers');
-    }
-
-    setTimeout(() => {
-      if (btnViewDetails) btnViewDetails.classList.remove('is-hidden');
-      if (bottomArch) bottomArch.classList.remove('is-hidden');
-    }, 400);
-  }
-
-  if (btnPinCancel) {
-    btnPinCancel.addEventListener('click', function(e) {
-      e.preventDefault();
-      handleCloseModal();
-    });
-  }
-
-  if (pinInput) {
-    pinInput.addEventListener('input', checkPinInput);
-    pinInput.addEventListener('change', checkPinInput);
-    pinInput.addEventListener('keyup', checkPinInput);
-    pinInput.addEventListener('paste', function() {
-      setTimeout(checkPinInput, 10);
-    });
-    pinInput.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        submitPin();
-      }
-    });
-  }
-
-  if (btnPinSubmit) {
-    btnPinSubmit.addEventListener('click', function(e) {
-      e.preventDefault();
-      submitPin();
-    });
-  }
+  try {
+    sessionStorage.setItem('gtm2026_auth', 'true');
+    localStorage.setItem('gtm2026_auth', 'true');
+    localStorage.setItem('gtm2026_has_authenticated', 'true');
+    var maxAge = 365 * 24 * 60 * 60;
+    document.cookie = 'gtm2026_auth=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+    document.cookie = 'gtm2026_has_authenticated=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+  } catch(e) {}
 });
 </script>
 <script src="js/spa-nav.js?v=26000" defer></script>
