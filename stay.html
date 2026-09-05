@@ -711,6 +711,28 @@ body {
   text-align: left !important;
 }
 
+/* ── Section F: Royal Couple Illustration (Figma Node 53:537 · 165x247px) ── */
+.stay-couple-section {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 36px auto 44px auto !important;
+  box-sizing: border-box !important;
+}
+
+.stay-couple-img {
+  width: 165px !important;
+  height: 247px !important;
+  max-width: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
 /* ── 5. Responsive Adjustments ── */
 @media (max-width: 412px) {
   .stay-air-text-wrap {
@@ -815,6 +837,10 @@ body {
   animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 1.20s both !important;
 }
 
+.stay-couple-section {
+  animation: royalCardSlideUp 1.25s cubic-bezier(0.12, 1, 0.22, 1) 1.40s both !important;
+}
+
 /* Reduced Motion Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .stay-hero-title-wrap,
@@ -822,7 +848,8 @@ body {
   .stay-train-row,
   .stay-cab-block,
   .stay-arch-section,
-  .stay-weather-section {
+  .stay-weather-section,
+  .stay-couple-section {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
@@ -948,6 +975,14 @@ body {
           </p>
         </div>
       </div>
+    </section>
+
+    <!-- Section F: Royal Couple Illustration (Node 53:537) -->
+    <section class="stay-couple-section" aria-hidden="true">
+      <picture>
+        <source srcset="images/stay/stay_couple.webp" type="image/webp">
+        <img src="images/stay/stay_couple.png" alt="Carved Royal Couple" class="stay-couple-img" width="165" height="247" loading="lazy" decoding="async">
+      </picture>
     </section>
 
   </div>
