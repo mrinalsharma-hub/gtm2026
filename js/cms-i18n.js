@@ -3,7 +3,7 @@
   'use strict';
 
   // Configurable Google Apps Script Web App Endpoint for Live Sheet Sync
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzQ_GTM2026_CMS_PLACEHOLDER/exec';
+  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXdtVbvzTwRlecd-v6Q1ayXSyuuKpW3vS_PfSyfdst_JFgm7g7L_dD-LwsZVQvKV79/exec';
   var STORAGE_KEY_PREFIX = 'gtm2026_cms_';
   var CURRENT_LANG_KEY = 'gtm2026_lang';
   var DEFAULT_LANG = 'en';

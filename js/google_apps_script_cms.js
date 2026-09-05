@@ -33,9 +33,9 @@ function doGet(e) {
       targetSheet = sheets[0];
     }
 
-    var data = targetSheet.getDataRange().getValues();
+    var data = targetSheet.getDataRange().getDisplayValues();
     if (!data || data.length < 2) {
-      return createJsonResponse({ error: "No data found" }, 404);
+      return createJsonResponse({ error: "No data found" });
     }
 
     var headers = data[0];
