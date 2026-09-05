@@ -165,6 +165,18 @@ body {
   z-index: 1 !important;
 }
 
+.celebrations-radial-glow {
+  position: absolute !important;
+  top: 40px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 480px !important;
+  height: 480px !important;
+  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
 /* ── 2. Scrollable Page Content Viewport ── */
 .stay-page-wrap {
   position: absolute !important;
@@ -729,6 +741,7 @@ body {
 <!-- ── 1. Page Background Canvas (Celebrations & RSVP clone) ── -->
 <div class="celebrations-bg-layer" aria-hidden="true">
   <div class="celebrations-botanical-art-layer" aria-hidden="true"></div>
+  <div class="celebrations-radial-glow" aria-hidden="true"></div>
 </div>
 
 <!-- ── 2. Scrollable Page Content Viewport ── -->
