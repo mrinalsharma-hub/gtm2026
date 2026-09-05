@@ -78,9 +78,10 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('fonts/SnellRoundhand.ttf?v=24700') format('truetype'),
-       local('Snell Roundhand'),
-       local('SnellRoundhand');
+  src: local('Snell Roundhand'),
+       local('SnellRoundhand'),
+       url('fonts/SnellRoundhand.woff?v=24700') format('woff'),
+       url('fonts/SnellRoundhand.ttf?v=24700') format('truetype');
 }
 
 :root {
@@ -208,7 +209,7 @@ body {
   box-sizing: border-box !important;
 }
 
-/* ── 3. Header: Pinecone + Title Lockup (Figma Node 53:531 · 325x106px) ── */
+/* ── 3. Header: Ceramic Pinecone + Live HTML Typography (Figma Node 53:531 · 325x105px) ── */
 .stay-header-container {
   position: relative !important;
   width: 100% !important;
@@ -226,48 +227,104 @@ body {
 .stay-hero-title-wrap {
   position: relative !important;
   width: 325px !important;
-  height: 106px !important;
+  height: 105px !important;
   max-width: 100% !important;
   margin: 0 auto !important;
   display: block !important;
+  box-sizing: border-box !important;
 }
 
-.stay-title-cone-img {
+.stay-title-cone-container {
   position: absolute !important;
   left: 4px !important;
-  top: 0 !important;
+  top: 0px !important;
   width: 65px !important;
   height: 105px !important;
-  object-fit: contain !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
   z-index: 2 !important;
 }
 
-.stay-title-svg {
+.stay-title-cone-img {
+  width: 65px !important;
+  height: 105px !important;
+  object-fit: contain !important;
+  display: block !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.stay-title-text-wrap {
   position: absolute !important;
   left: 69px !important;
   top: 0px !important;
   width: 256px !important;
   height: 105px !important;
-  object-fit: contain !important;
-  pointer-events: none !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
   z-index: 1 !important;
+  word-break: break-word !important;
 }
 
-.sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
+.stay-title-line1 {
+  width: 100% !important;
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 50px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  text-align: center !important;
+  margin: 0 !important;
   padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
-  border: 0 !important;
+}
+
+.stay-title-line2 {
+  width: 100% !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+}
+
+.stay-title-amp {
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
+  font-size: 82px !important;
+  line-height: 50px !important;
+  font-weight: 400 !important;
+  color: #A71F23 !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  display: inline-block !important;
+  margin-right: 4px !important;
+}
+
+.stay-title-stay {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 50px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  display: inline-block !important;
 }
 
 /* ── 4. Main Content Stack (Figma Node 53:465) ── */
@@ -840,12 +897,18 @@ body {
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="stay-page-wrap">
 
-  <!-- ── Header: Ceramic Pinecone + Vector Typography (Figma Node 53:531 · 325x106px) ── -->
+  <!-- ── Header: Ceramic Pinecone + Live HTML Typography (Figma Node 53:531 · 325x105px) ── -->
   <header class="stay-header-container" role="banner">
     <div class="stay-hero-title-wrap">
-      <img src="images/stay/stay_pinecone.png?v=28000" alt="" class="stay-title-cone-img" width="65" height="105" loading="eager" decoding="async" fetchpriority="high">
-      <img src="images/stay/stay_title.svg?v=28000" alt="Travel &amp; Stay" class="stay-title-svg" width="256" height="105" loading="eager" decoding="async" fetchpriority="high">
-      <h1 class="sr-only">Travel &amp; Stay</h1>
+      <div class="stay-title-cone-container" aria-hidden="true">
+        <img src="images/stay/stay_pinecone.png?v=28000" alt="" class="stay-title-cone-img" width="65" height="105" loading="eager" decoding="async" fetchpriority="high">
+      </div>
+      <div class="stay-title-text-wrap">
+        <h1 class="stay-title-line1">TRAVEL</h1>
+        <div class="stay-title-line2">
+          <span class="stay-title-amp">&amp;</span><span class="stay-title-stay">STAY</span>
+        </div>
+      </div>
     </div>
   </header>
 
