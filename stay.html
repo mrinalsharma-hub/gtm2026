@@ -55,7 +55,8 @@
 <link rel="preload" as="image" href="images/stay/stay_travel_air.png" type="image/png" fetchpriority="high">
 <link rel="preload" as="image" href="images/stay/stay_travel_train.png" type="image/png">
 <link rel="preload" as="image" href="images/stay/stay_arch.png" type="image/png">
-<link rel="preload" as="image" href="images/stay/stay_couple.webp" type="image/webp">
+<link rel="preload" as="image" href="images/stay/stay_weather_divider.png" type="image/png">
+<link rel="preload" as="image" href="images/stay/stay_bottom_couple.png" type="image/png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -678,7 +679,7 @@ body {
   width: 100% !important;
   max-width: 480px !important;
   margin: 20px auto 0 auto !important;
-  padding-bottom: 60px !important;
+  padding-bottom: 0px !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
@@ -739,24 +740,75 @@ body {
   text-align: left !important;
 }
 
-/* ── Section F: Royal Couple Illustration (Figma Node 53:559 · Edge-to-Edge) ── */
-.stay-couple-section {
+/* ── Section F: Bottom Decorative Section & Royal Couple (Figma Node 53:568) ── */
+.stay-bottom-section {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 442px !important;
+  margin: 28px auto 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.stay-bottom-divider-wrap {
+  position: relative !important;
+  width: 242px !important;
+  height: 81px !important;
+  max-width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 auto !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.stay-bottom-divider-img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+}
+
+.stay-bottom-quote-text {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 16px !important;
+  line-height: 1.25 !important;
+  font-weight: 400 !important;
+  color: #071C41 !important;
+  text-align: center !important;
+  width: 100% !important;
+  max-width: 358px !important;
+  margin: 8px auto 0 auto !important;
+  padding: 0 16px !important;
+  box-sizing: border-box !important;
+  word-break: break-word !important;
+}
+
+.stay-bottom-couple-wrap {
   width: 100% !important;
   max-width: 100% !important;
   display: flex !important;
   justify-content: center !important;
   align-items: flex-end !important;
-  margin: 28px 0 0 0 !important;
+  margin: 12px 0 0 0 !important;
   padding: 0 !important;
   box-sizing: border-box !important;
   overflow: visible !important;
 }
 
-.stay-couple-img {
+.stay-bottom-couple-img {
   width: 100% !important;
   max-width: 100% !important;
   height: auto !important;
-  aspect-ratio: 1326 / 638 !important;
   object-fit: cover !important;
   display: block !important;
   margin: 0 !important;
@@ -1005,21 +1057,28 @@ body {
         <h2 class="stay-weather-title">Weather and Packing</h2>
         <div class="stay-weather-body">
           <p class="stay-body-p">
-            <strong class="stay-bold-highlight">Mountain Weather</strong>: Expect crisp, sunny days (~10–15°C) and chilly evenings dipping to a brisk ~2–7°C.
-          </p>
-          <p class="stay-body-p">
             <strong class="stay-bold-highlight">What to Pack</strong>: Warm layers, heavy woolens, a cozy evening coat or shawl, and comfortable walking shoes (Nainital is best explored on foot!).
           </p>
         </div>
       </div>
     </section>
 
-    <!-- Section F: Royal Couple Illustration (Node 53:559) -->
-    <section class="stay-couple-section" aria-hidden="true">
-      <picture>
-        <source srcset="images/stay/stay_couple.webp" type="image/webp">
-        <img src="images/stay/stay_couple.png" alt="Carved Royal Couple" class="stay-couple-img" width="442" height="230" loading="lazy" decoding="async">
-      </picture>
+    <!-- Section F: Bottom Decorative Section & Royal Couple (Figma Node 53:568) -->
+    <section class="stay-bottom-section" aria-label="Weather Note and Royal Illustration">
+      <!-- Ornate Carved Divider (Node 53:564 · 242x81px) -->
+      <div class="stay-bottom-divider-wrap" aria-hidden="true">
+        <img src="images/stay/stay_weather_divider.png" alt="" class="stay-bottom-divider-img" width="242" height="81" loading="lazy" decoding="async">
+      </div>
+      
+      <!-- Quote (Node 53:566 · 358px wide) -->
+      <p class="stay-bottom-quote-text">
+        “Expect crisp, sunny days (~10–15°C) and chilly evenings dipping to a brisk ~2–7°C.”
+      </p>
+      
+      <!-- Royal Couple (Node 53:565 · 442x231px) -->
+      <div class="stay-bottom-couple-wrap" aria-hidden="true">
+        <img src="images/stay/stay_bottom_couple.png" alt="Carved Royal Couple" class="stay-bottom-couple-img" width="442" height="231" loading="lazy" decoding="async">
+      </div>
     </section>
 
   </div>
