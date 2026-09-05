@@ -48,9 +48,11 @@
 
 <!-- ── Resource Preloads matching Celebrations & RSVP ── -->
 <link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/celebrations/aipan_emblem_top_left.svg?v=36000" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
+<link rel="preload" as="image" href="images/stay/stay_travel_air.png" type="image/png" fetchpriority="high">
+<link rel="preload" as="image" href="images/stay/stay_travel_train.png" type="image/png">
+<link rel="preload" as="image" href="images/stay/stay_arch.png" type="image/png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -175,7 +177,7 @@ body {
   z-index: 1 !important;
 }
 
-/* ── 2. Scrollable Content Viewport ── */
+/* ── 2. Scrollable Page Content Viewport ── */
 .stay-page-wrap {
   position: absolute !important;
   top: 0 !important;
@@ -184,252 +186,519 @@ body {
   bottom: 0 !important;
   height: 100% !important;
   width: 100% !important;
-  max-width: 480px !important;
+  max-width: 440px !important;
   margin: 0 auto !important;
   overflow-y: auto !important;
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch !important;
-  overscroll-behavior: none !important;
   overscroll-behavior-y: none !important;
   overscroll-behavior-x: none !important;
   touch-action: pan-y !important;
   z-index: 2 !important;
-  padding-top: calc(72px + env(safe-area-inset-top, 0px)) !important;
-  padding-bottom: calc(66px + env(safe-area-inset-bottom, 0px)) !important;
+  padding-top: max(24px, env(safe-area-inset-top, 24px)) !important;
+  padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
+  box-sizing: border-box !important;
 }
 
-/* ── Scrollable Top-Left Aipan Emblem (Scrolls with page · No drop shadow) ── */
-.stay-scroll-aipan-wrap {
-  position: absolute !important;
-  top: max(14px, env(safe-area-inset-top, 14px)) !important;
-  left: max(16px, env(safe-area-inset-left, 16px)) !important;
-  width: 56px !important;
-  height: 56px !important;
+/* ── 3. Header & Ambient Halo Rings (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── */
+.stay-header-container {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 440px !important;
   display: flex !important;
+  flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  pointer-events: none !important;
-  z-index: 10 !important;
+  margin-top: 12px !important;
+  margin-bottom: 28px !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
 }
 
-.stay-scroll-aipan-img {
-  width: 56px !important;
-  height: 56px !important;
-  min-width: 56px !important;
-  min-height: 56px !important;
+.stay-halo-ring-wrap {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 400px !important;
+  height: 406px !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+.stay-halo-ring-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   display: block !important;
-  object-fit: contain !important;
-  filter: none !important;
-  -webkit-filter: none !important;
-  box-shadow: none !important;
-  user-select: none !important;
-  -webkit-user-select: none !important;
   pointer-events: none !important;
+  user-select: none !important;
 }
 
-/* ── 3. Header: Travel & Stay (Typography strictly matching Celebrations.html) ── */
-.stay-header {
-  width: 100%;
-  max-width: 480px;
-  margin: 18px auto 28px auto;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  flex-shrink: 0;
-  box-sizing: border-box;
+.stay-hero-title {
+  position: relative !important;
+  z-index: 1 !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
-.stay-title-wrap {
-  width: 100%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.stay-title-line1 {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  margin: 0 !important;
+  text-align: center !important;
 }
 
-.stay-title-main {
-  font-family: 'Kugile', 'Cinzel', serif;
-  font-size: clamp(48px, 13.5vw, 62px);
-  font-weight: 400;
-  line-height: 0.98;
-  letter-spacing: -1.2px;
-  color: #A71F23;
-  text-transform: uppercase;
-  text-shadow: 0px 1px 2px #FFFDF9;
-  margin: 0 auto;
-  text-align: center;
-  width: 100%;
+.stay-title-line2 {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 56px !important;
+  font-weight: 400 !important;
+  line-height: 52px !important;
+  letter-spacing: -1.12px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  margin: 0 !important;
+  text-align: center !important;
 }
 
 .stay-title-amp {
-  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif;
-  font-weight: 400;
-  font-size: 1.05em;
-  color: #A71F23;
-  display: inline-block;
-  vertical-align: baseline;
-  margin: 0 4px;
-  text-transform: none;
-  text-shadow: 0px 1px 2px #FFFDF9;
-}
-
-.stay-subrow {
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stay-location-text {
-  font-family: 'Spectral', Georgia, serif;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.96px;
-  line-height: 1.2;
-  color: #A71F23;
-  text-transform: uppercase;
-  text-shadow: 0px 1px 2px #FFFDF9;
-  display: block;
-  text-align: center;
-}
-
-/* ── 4. Travel & Stay Cards Feed (Luxury Editorial Cards matching Celebrations/RSVP) ── */
-.stay-events-feed {
-  width: 100%;
-  max-width: 440px;
-  padding: 0 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: relative;
-  z-index: 3;
-  box-sizing: border-box;
-  margin-bottom: 24px;
-}
-
-.stay-event-card {
-  width: 100% !important;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: flex-start !important;
-  text-align: left !important;
-  position: relative !important;
-  background: rgba(255, 255, 255, 0.88) !important;
-  backdrop-filter: blur(16px) saturate(180%) !important;
-  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-  border: 1px solid rgba(167, 31, 35, 0.14) !important;
-  border-radius: 24px !important;
-  padding: 24px 24px 22px 24px !important;
-  box-sizing: border-box !important;
-  box-shadow: 0 8px 24px rgba(110, 15, 18, 0.06), 0 2px 8px rgba(60, 40, 25, 0.04) !important;
-  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
-}
-
-.stay-card-title {
-  font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: 24px !important;
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
+  font-size: 82px !important;
+  line-height: 44px !important;
   font-weight: 400 !important;
-  letter-spacing: 0.02em !important;
-  line-height: 1.15 !important;
   color: #A71F23 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 1px #FFFDF9 !important;
-  margin: 0 0 16px 0 !important;
-  text-align: left !important;
-  width: 100% !important;
-  align-self: flex-start !important;
+  display: inline-block !important;
+  vertical-align: baseline !important;
+  margin-right: 6px !important;
+  text-transform: none !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
 }
 
-.stay-card-content {
+/* ── 4. Main Content Stack (Figma Node 53:465) ── */
+.stay-content-stack {
   width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
+  max-width: 440px !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 14px !important;
-  text-align: left !important;
-  align-items: flex-start !important;
+  gap: 36px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  box-sizing: border-box !important;
 }
 
-.stay-desc {
+.stay-travel-group {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 41px !important;
+  box-sizing: border-box !important;
+}
+
+/* Common Text Classes */
+.stay-body-p {
   font-family: 'Spectral', Georgia, serif !important;
   font-size: 16px !important;
   font-weight: 400 !important;
-  font-style: normal !important;
-  line-height: 1.55 !important;
-  letter-spacing: 0.010em !important;
-  color: #1E120E !important;
-  max-width: 100% !important;
-  width: 100% !important;
+  line-height: 1.3 !important;
+  color: #071C41 !important;
   margin: 0 !important;
   text-align: left !important;
 }
 
-.stay-bold-label {
+.stay-bold-highlight {
   font-family: 'Spectral', Georgia, serif !important;
-  font-weight: 600 !important;
-  color: #1E120E !important;
+  font-weight: 700 !important;
+  color: #A71F23 !important;
 }
 
-.stay-desc em {
+.stay-train-name {
   font-family: 'Spectral', Georgia, serif !important;
   font-style: italic !important;
 }
 
-.stay-desc a {
-  color: #0b4c6d !important;
-  font-weight: 600 !important;
-  text-decoration: underline !important;
-  text-underline-offset: 3px !important;
-  transition: color 0.2s ease !important;
+/* ── Section A: Air Travel (Figma Node 53:467) ── */
+.stay-air-row {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 192px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
 }
 
-.stay-desc a:hover {
+.stay-air-img-container {
+  position: relative !important;
+  width: 191px !important;
+  height: 192px !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.stay-air-img-inner {
+  position: absolute !important;
+  width: 325.8px !important;
+  height: 325.8px !important;
+  right: -50.5px !important;
+  top: -80.3px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.stay-air-img-rotate {
+  transform: rotate(45deg) !important;
+  width: 263.3px !important;
+  height: 197.5px !important;
+  position: relative !important;
+}
+
+.stay-air-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.stay-air-text-wrap {
+  width: 223px !important;
+  padding-right: 16px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* ── Section B: Train Travel (Figma Node 53:471) ── */
+.stay-train-row {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 238px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-sizing: border-box !important;
+}
+
+.stay-train-text-wrap {
+  width: 212px !important;
+  padding-left: 20px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  box-sizing: border-box !important;
+}
+
+.stay-train-img-container {
+  position: relative !important;
+  width: 204px !important;
+  height: 229px !important;
+  flex-shrink: 0 !important;
+  overflow: hidden !important;
+  margin-top: 8px !important;
+}
+
+.stay-train-img-inner {
+  position: absolute !important;
+  width: 408px !important;
+  height: 306px !important;
+  left: -2px !important;
+  top: calc(50% - 3.5px) !important;
+  transform: translateY(-50%) !important;
+}
+
+.stay-train-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+/* ── Section C: Cab / Road Travel (Figma Node 53:475) ── */
+.stay-cab-block {
+  position: relative !important;
+  width: 100% !important;
+  padding: 0 24px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.stay-cab-text-top {
+  width: 100% !important;
+  margin-bottom: 6px !important;
+}
+
+.stay-cab-img-container {
+  position: relative !important;
+  width: 325px !important;
+  max-width: 100% !important;
+  height: 161px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 6px auto !important;
+}
+
+.stay-cab-img-flip {
+  transform: rotate(180deg) scaleY(-1) !important;
+  width: 325px !important;
+  height: 161px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.stay-cab-img {
+  position: absolute !important;
+  width: 107.9% !important;
+  height: 163.5% !important;
+  top: -32.2% !important;
+  left: 0 !important;
+  max-width: none !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.stay-cab-text-bottom {
+  width: 100% !important;
+  margin-top: 6px !important;
+}
+
+/* ── Section D: Stay / Accommodation Archway (Figma Node 53:479) ── */
+.stay-arch-section {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 442px !important;
+  min-height: 650px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.stay-arch-frame-wrap {
+  position: absolute !important;
+  top: -2px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 442px !important;
+  height: 574px !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.stay-arch-bg-img {
+  position: absolute !important;
+  width: 103.86% !important;
+  height: 100.01% !important;
+  top: 0 !important;
+  left: -2.05% !important;
+  max-width: none !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.stay-arch-content-container {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 16px !important;
+  z-index: 3 !important;
+  box-sizing: border-box !important;
+}
+
+.stay-arch-title {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 29px !important;
+  line-height: 26px !important;
+  font-weight: 400 !important;
   color: #A71F23 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  text-shadow: 0px 1px 1px #FFFDF9 !important;
 }
 
-.stay-btn {
+.stay-arch-desc {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 16px !important;
+  line-height: 1.2 !important;
+  font-weight: 400 !important;
+  color: #071C41 !important;
+  text-align: center !important;
+  width: 130px !important;
+  margin: 0 auto !important;
+}
+
+.stay-arch-rsvp-btn {
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: 16px !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.5px !important;
-  color: #FFFFFF !important;
   background: #A71F23 !important;
-  border: none !important;
-  border-radius: 28px !important;
-  padding: 13px 26px !important;
-  margin-top: 14px !important;
+  color: #FFFFFF !important;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
   text-decoration: none !important;
-  box-shadow: 0 4px 14px rgba(167, 31, 35, 0.25) !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease !important;
+  border-radius: 36px !important;
+  width: 132px !important;
+  height: 38px !important;
+  box-shadow: 0 4px 12px rgba(167, 31, 35, 0.25) !important;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease !important;
   cursor: pointer !important;
+  white-space: nowrap !important;
 }
 
-.stay-btn:hover {
+.stay-arch-rsvp-btn:hover {
   background: #90191D !important;
   transform: translateY(-1px) !important;
-  box-shadow: 0 6px 18px rgba(167, 31, 35, 0.35) !important;
+  box-shadow: 0 6px 16px rgba(167, 31, 35, 0.35) !important;
 }
 
-.stay-btn:active {
+.stay-arch-rsvp-btn:active {
   transform: translateY(1px) !important;
-  box-shadow: 0 2px 8px rgba(167, 31, 35, 0.20) !important;
+}
+
+.stay-arch-bottom-note {
+  width: 100% !important;
+  max-width: 360px !important;
+  padding: 0 16px !important;
+  margin-top: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.stay-arch-bottom-text {
+  font-family: 'Spectral', Georgia, serif !important;
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+  font-weight: 400 !important;
+  color: #071C41 !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* ── Section E: Weather and Packing (Figma Node 53:487) ── */
+.stay-weather-section {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  min-height: 417px !important;
+  margin: 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  box-sizing: border-box !important;
+}
+
+.stay-weather-img-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 440px !important;
+  height: 166px !important;
+  display: flex !important;
+  align-items: flex-end !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.stay-weather-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: bottom !important;
+  pointer-events: none !important;
+  user-select: none !important;
+}
+
+.stay-weather-content-wrap {
+  position: absolute !important;
+  top: 190px !important;
+  left: 0 !important;
+  width: 100% !important;
+  padding: 0 41px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  box-sizing: border-box !important;
+}
+
+.stay-weather-title {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: 29px !important;
+  line-height: 26px !important;
+  font-weight: 400 !important;
+  color: #A71F23 !important;
+  margin: 0 0 16px 0 !important;
+  text-align: left !important;
+  width: 100% !important;
+  text-shadow: 0px 1px 1px #FFFDF9 !important;
+}
+
+.stay-weather-body {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  width: 100% !important;
+  text-align: left !important;
+}
+
+/* ── 5. Responsive Adjustments ── */
+@media (max-width: 412px) {
+  .stay-air-text-wrap {
+    width: 200px !important;
+    padding-right: 12px !important;
+  }
+  .stay-train-text-wrap {
+    width: 190px !important;
+    padding-left: 14px !important;
+  }
+  .stay-weather-content-wrap {
+    padding: 0 24px !important;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- ── 1. Page Background Canvas (Exact Celebrations & RSVP background) ── -->
+<!-- ── 1. Page Background Canvas (Celebrations & RSVP clone) ── -->
 <div class="celebrations-bg-layer" aria-hidden="true">
   <div class="celebrations-botanical-art-layer" aria-hidden="true"></div>
   <div class="celebrations-radial-glow" aria-hidden="true"></div>
@@ -438,90 +707,117 @@ body {
 <!-- ── 2. Scrollable Page Content Viewport ── -->
 <main class="stay-page-wrap">
 
-  <!-- ── Top-Left Aipan Emblem (Scrolls naturally with page · No drop shadow) ── -->
-  <div class="stay-scroll-aipan-wrap" aria-hidden="true">
-    <img src="images/celebrations/aipan_emblem_top_left.svg?v=36000" alt="Aipan Emblem" class="stay-scroll-aipan-img" width="56" height="56" loading="eager" fetchpriority="high">
-  </div>
-
-  <!-- ── Header: Travel & Stay ── -->
-  <header class="stay-header">
-    <div class="stay-title-wrap">
-      <h1 class="stay-title-main">TRAVEL<span class="stay-title-amp">&amp;</span><br>STAY</h1>
+  <!-- ── Header & Ambient Halo Rings (Figma Nodes 53:370, 53:371, 53:494, 53:495) ── -->
+  <header class="stay-header-container">
+    <div class="stay-halo-ring-wrap" aria-hidden="true">
+      <img src="images/stay/stay_ellipse_1.svg" alt="" class="stay-halo-ring-img">
+      <img src="images/stay/stay_ellipse_2.svg" alt="" class="stay-halo-ring-img">
     </div>
-    <div class="stay-subrow">
-      <span class="stay-location-text">GETTING TO NAINITAL</span>
+    <div class="stay-hero-title">
+      <h1 class="stay-title-line1">TRAVEL</h1>
+      <div class="stay-title-line2">
+        <span class="stay-title-amp">&amp;</span>
+        <span>STAY</span>
+      </div>
     </div>
   </header>
 
-  <!-- ── Travel & Stay Feed ── -->
-  <div class="stay-events-feed">
+  <!-- ── Main Content Stack (Figma Node 53:465) ── -->
+  <div class="stay-content-stack">
 
-    <!-- Section 1: By Air -->
-    <article class="stay-event-card">
-      <h2 class="stay-card-title">BY AIR</h2>
-      <div class="stay-card-content">
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Pantnagar (PGH):</strong> The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi.
-        </p>
-        <p class="stay-desc">
-          <strong class="stay-bold-label">New Delhi (DEL):</strong> Fly into Delhi, then take a train or private taxi. This is the most frequent and reliable option.
-        </p>
-      </div>
-    </article>
+    <!-- Travel Group (Air, Train, Cab) -->
+    <div class="stay-travel-group">
 
-    <!-- Section 2: By Train -->
-    <article class="stay-event-card">
-      <h2 class="stay-card-title">BY TRAIN</h2>
-      <div class="stay-card-content">
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Kathgodam (KGM):</strong> The closest railway station (~1 hour away by road / 23 km). Direct daily and overnight trains run from New Delhi.
-        </p>
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Direct Trains:</strong> Options include the day-run <em>Kathgodam Shatabdi Express</em> and the overnight <em>Ranikhet Express</em>. Prepaid taxis and cabs are readily available at the station exit.
-        </p>
-      </div>
-    </article>
+      <!-- Section A: Air Travel (Node 53:467) -->
+      <section class="stay-air-row" aria-label="Travel by Air">
+        <div class="stay-air-img-container" aria-hidden="true">
+          <div class="stay-air-img-inner">
+            <div class="stay-air-img-rotate">
+              <img src="images/stay/stay_travel_air.png" alt="Carved Airplane" class="stay-air-img" width="263" height="198" loading="eager" decoding="async">
+            </div>
+          </div>
+        </div>
+        <div class="stay-air-text-wrap">
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">Pantnagar (PGH)</strong>: The closest runway (~2 hours away by road / 65 km). Direct daily domestic flights from New Delhi.
+          </p>
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">New Delhi (DEL)</strong>: Fly into Delhi, then take a train or private taxi. This is the most frequent and reliable option.
+          </p>
+        </div>
+      </section>
 
-    <!-- Section 3: By Road -->
-    <article class="stay-event-card">
-      <h2 class="stay-card-title">BY ROAD</h2>
-      <div class="stay-card-content">
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Delhi to Nainital:</strong> A scenic road journey (~6.5 to 8 hours / 300 km) via Moradabad, Rampur, Bazpur, and Haldwani.
-        </p>
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Hill Drive:</strong> The final 35 km climbs winding mountain roads. We highly recommend keeping motion-sickness tablets handy if you need them.
-        </p>
-      </div>
-      <a class="stay-btn" href="https://maps.google.com/?q=Nainital,+Uttarakhand" target="_blank" rel="noopener">Open in Google Maps</a>
-    </article>
+      <!-- Section B: Train Travel (Node 53:471) -->
+      <section class="stay-train-row" aria-label="Travel by Train">
+        <div class="stay-train-text-wrap">
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">Kathgodam (KGM)</strong>: The closest railway station (~1 hour away by road / 23 km). Direct daily and overnight trains run from New Delhi. Options include the day-run <em class="stay-train-name">Kathgodam Shatabdi Express</em> and the overnight <em class="stay-train-name">Ranikhet Express</em>. Prepaid taxis and cabs are available at the station exit.
+          </p>
+        </div>
+        <div class="stay-train-img-container" aria-hidden="true">
+          <div class="stay-train-img-inner">
+            <img src="images/stay/stay_travel_train.png" alt="Carved Steam Locomotive" class="stay-train-img" width="408" height="306" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </section>
 
-    <!-- Section 4: Weather & Packing -->
-    <article class="stay-event-card">
-      <h2 class="stay-card-title">WEATHER &amp; PACKING</h2>
-      <div class="stay-card-content">
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Mountain Weather:</strong> Expect crisp, sunny days (~10–15°C) and chilly evenings dipping to a brisk ~2–7°C.
-        </p>
-        <p class="stay-desc">
-          <strong class="stay-bold-label">What to Pack:</strong> Warm layers, heavy woollens, a cozy evening coat or shawl, and comfortable walking shoes (Nainital is best explored on foot!).
-        </p>
-      </div>
-    </article>
+      <!-- Section C: Cab / Road Travel (Node 53:475) -->
+      <section class="stay-cab-block" aria-label="Travel by Road">
+        <div class="stay-cab-text-top">
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">Delhi to Nainital</strong>: A scenic road journey (~6.5 to 8 hours / 300 km).
+          </p>
+        </div>
+        <div class="stay-cab-img-container" aria-hidden="true">
+          <div class="stay-cab-img-flip">
+            <img src="images/stay/stay_travel_cab.png" alt="Carved Taxi" class="stay-cab-img" width="325" height="161" loading="lazy" decoding="async">
+          </div>
+        </div>
+        <div class="stay-cab-text-bottom">
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">Hill drive</strong>: The final 35 km climbs winding mountain roads. We highly recommend keeping motion-sickness tablets handy if you need them.
+          </p>
+        </div>
+      </section>
 
-    <!-- Section 5: Accommodation -->
-    <article class="stay-event-card">
-      <h2 class="stay-card-title">ACCOMMODATION</h2>
-      <div class="stay-card-content">
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Guest Stays:</strong> We are lovingly coordinating all accommodation and will share your specific hotel and room details directly with you.
-        </p>
-        <p class="stay-desc">
-          <strong class="stay-bold-label">Help Us Plan:</strong> Please let us know if you can make it by September 30 so we can finalise the rooms.
-        </p>
+    </div>
+
+    <!-- Section D: Stay / Accommodation Archway (Node 53:479) -->
+    <section class="stay-arch-section" aria-label="Accommodation Details">
+      <div class="stay-arch-frame-wrap" aria-hidden="true">
+        <img src="images/stay/stay_arch.png" alt="Carved Palace Archway" class="stay-arch-bg-img" width="442" height="574" loading="lazy" decoding="async">
       </div>
-      <a class="stay-btn" href="joinus.html">RSVP Now</a>
-    </article>
+      <div class="stay-arch-content-container">
+        <h2 class="stay-arch-title">Your<br>stay</h2>
+        <p class="stay-arch-desc">
+          Please let us know if you can make it by September 30 so we can finalize the rooms.
+        </p>
+        <a href="joinus.html" class="stay-arch-rsvp-btn" role="button">Please RSVP</a>
+        <div class="stay-arch-bottom-note">
+          <p class="stay-arch-bottom-text">
+            We are lovingly coordinating all accommodation and will share your specific hotel and room details directly with you.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section E: Weather and Packing (Node 53:487) -->
+    <section class="stay-weather-section" aria-label="Weather and Packing Guide">
+      <div class="stay-weather-img-container" aria-hidden="true">
+        <img src="images/stay/stay_weather.png" alt="Carved Sun and Mountains" class="stay-weather-img" width="440" height="166" loading="lazy" decoding="async">
+      </div>
+      <div class="stay-weather-content-wrap">
+        <h2 class="stay-weather-title">Weather and Packing</h2>
+        <div class="stay-weather-body">
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">Mountain Weather</strong>: Expect crisp, sunny days (~10–15°C) and chilly evenings dipping to a brisk ~2–7°C.
+          </p>
+          <p class="stay-body-p">
+            <strong class="stay-bold-highlight">What to Pack</strong>: Warm layers, heavy woolens, a cozy evening coat or shawl, and comfortable walking shoes (Nainital is best explored on foot!).
+          </p>
+        </div>
+      </div>
+    </section>
 
   </div>
 
@@ -572,7 +868,7 @@ body {
 </button>
 
 <!-- ── Audio Element ── -->
-<audio id="bg-music" loop preload="auto" playsinline>
+<audio id="bg-music" loop preload="none" playsinline>
   <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 </audio>
 
