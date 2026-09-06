@@ -37,20 +37,20 @@
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title data-i18n="global.title">Garima weds Mrinal · Nainital 2026</title>
 <meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand" data-i18n-attr="content:global.meta_desc">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=26100">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=26100">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=26100">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=26300">
+<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=26300">
+<link rel="icon" type="image/x-icon" href="favicon.ico?v=26300">
 
 <!-- ── Resource Preloads ── -->
-<link rel="preload" as="image" href="images/home/vinyl_record.webp?v=26100" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/home/vinyl_record.png?v=26300" type="image/png" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
 <link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:wght@200;300;400;500;600;700&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=26100">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=WindSong&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=26300">
 
 <style>
 @font-face {
@@ -155,7 +155,7 @@ body {
   align-items: center !important;
 }
 
-/* Viewport above the fixed bottom navigation bar */
+/* Viewport above the fixed bottom navigation bar: 100% Edge-to-Edge */
 .gxm-viewport {
   position: absolute !important;
   top: 0 !important;
@@ -165,31 +165,28 @@ body {
   width: 100% !important;
   max-width: 440px !important;
   margin: 0 auto !important;
+  padding: 0 !important;
   overflow: hidden !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: flex-end !important;
-  align-items: center !important;
 }
 
-/* Scaled Keepsake Card Frame pinned directly above the tabs bar without any horizontal crop */
+/* Keepsake Card Frame: fills 100% of viewport edge-to-edge with 0px margins */
 .gxm-card-frame {
-  position: relative !important;
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
-  max-width: 440px !important;
-  aspect-ratio: 440 / 755 !important;
-  max-height: 100% !important;
-  margin: 0 auto !important;
-  flex-shrink: 0 !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
   display: block !important;
 }
 
-/* Scalable Inlined SVG Artwork Canvas (440x755 viewBox, 100% meet inside frame) */
+/* Scalable Inlined SVG Artwork Canvas (Edge-to-Edge on all mobile viewports) */
 .gxm-svg-canvas {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
+  display: block !important;
   pointer-events: none !important;
   z-index: 1 !important;
 }
@@ -201,10 +198,8 @@ body {
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   z-index: 20 !important;
-  width: 41.5% !important;
-  aspect-ratio: 1 / 1 !important;
-  max-width: 183px !important;
-  max-height: 183px !important;
+  width: clamp(140px, 41.5vw, 182px) !important;
+  height: clamp(140px, 41.5vw, 182px) !important;
   cursor: pointer !important;
   user-select: none !important;
   -webkit-user-select: none !important;
@@ -213,6 +208,9 @@ body {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
@@ -223,10 +221,11 @@ body {
 .gxm-vinyl-disc {
   width: 100% !important;
   height: 100% !important;
-  border-radius: 50% !important;
   display: block !important;
   object-fit: contain !important;
-  box-shadow: 0 10px 24px rgba(35, 10, 15, 0.45), 0 4px 8px rgba(0, 0, 0, 0.25) !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
   transform-origin: center center !important;
   will-change: transform !important;
 }
@@ -241,85 +240,80 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Static Center Play/Pause button on top of vinyl disc */
+/* Static Center Play/Pause button overlay */
 .gxm-vinyl-center-btn {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 25% !important;
-  max-width: 44px !important;
-  min-width: 32px !important;
-  aspect-ratio: 1 / 1 !important;
+  width: 32px !important;
+  height: 32px !important;
   border-radius: 50% !important;
-  background: radial-gradient(circle, #FDF4E3 0%, #EED9B3 100%) !important;
-  border: 1.5px solid #D4AF37 !important;
+  background: transparent !important;
+  border: none !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.6) !important;
   pointer-events: none !important;
-  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease !important;
   z-index: 25 !important;
-}
-
-.gxm-vinyl-anchor:active .gxm-vinyl-center-btn {
-  transform: translate(-50%, -50%) scale(0.92) !important;
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
 }
 
 .gxm-play-icon {
-  width: 50% !important;
-  height: 50% !important;
-  margin-left: 10% !important;
-  fill: #87161A !important;
-  display: block !important;
+  display: none !important;
 }
 
 .gxm-pause-icon {
-  width: 46% !important;
-  height: 46% !important;
+  width: 14px !important;
+  height: 14px !important;
   fill: #87161A !important;
   display: none !important;
 }
 
-.gxm-vinyl-anchor.is-playing .gxm-play-icon {
-  display: none !important;
+.gxm-vinyl-anchor.is-playing .gxm-vinyl-center-btn {
+  background: #EED9B3 !important;
+  border: 1px solid #D4AF37 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
 }
 
 .gxm-vinyl-anchor.is-playing .gxm-pause-icon {
   display: block !important;
 }
 
-.gxm-vinyl-anchor.is-playing .gxm-vinyl-center-btn {
-  background: radial-gradient(circle, #FFF2DC 0%, #E6CDA2 100%) !important;
-  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.7) !important;
-}
-
 /* ── 4. Calligraphy & Wedding Typography Lockup ── */
 .gxm-typography-lockup {
   position: absolute !important;
-  top: 53.64% !important;
+  top: 51% !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100% !important;
-  max-width: 400px !important;
+  max-width: 440px !important;
   padding: 0 16px !important;
   text-align: center !important;
   z-index: 10 !important;
   pointer-events: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
+/* "WE ARE GETTING MARRIED!" - Exact match with "EVERYTHING YOU NEED FOR THE TRIP" in travel&stay.html */
 .gxm-subtitle {
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 700 !important;
-  font-size: clamp(12px, 3.2vw, 14px) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 1.68px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.96px !important;
+  color: #A71F23 !important;
   text-transform: uppercase !important;
-  color: #003C3F !important;
-  margin: 0 0 4px 0 !important;
+  text-align: center !important;
+  line-height: 1.35 !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  margin: 0 0 30px 0 !important; /* EXACT 30px space between "We are.." and "GARIMA & MRINAL" */
+  padding: 0 !important;
 }
 
+/* "GARIMA & MRINAL" - Exact match with "TRAVEL & STAY" in travel&stay.html */
 .gxm-names {
   margin: 0 !important;
   padding: 0 !important;
@@ -327,34 +321,61 @@ body {
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  line-height: 1 !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
-.gxm-name {
+.gxm-name.gxm-garima {
+  width: 100% !important;
   font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: clamp(38px, 11.5vw, 50px) !important;
-  line-height: 0.95 !important;
-  color: #A71F23 !important;
+  font-size: clamp(48px, 14vw, 62px) !important;
   font-weight: 400 !important;
-  letter-spacing: -1.12px !important;
+  line-height: 40px !important;
+  letter-spacing: -1.23px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
 }
 
 .gxm-name-row {
+  width: 100% !important;
+  height: 40px !important;
   display: flex !important;
   align-items: baseline !important;
   justify-content: center !important;
-  margin-top: 2px !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
 }
 
 .gxm-amp {
-  font-family: 'Snell Roundhand', 'SnellRoundhand', 'WindSong', cursive, serif !important;
-  font-size: clamp(38px, 11.5vw, 50px) !important;
-  line-height: 0.95 !important;
-  color: #A71F23 !important;
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
+  font-size: clamp(68px, 20vw, 90px) !important;
+  line-height: 40px !important;
   font-weight: 400 !important;
-  letter-spacing: -1px !important;
-  margin-right: 6px !important;
+  color: #A71F23 !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  display: inline-block !important;
+  margin-right: 18px !important;
+}
+
+.gxm-name.gxm-mrinal {
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: clamp(48px, 14vw, 62px) !important;
+  font-weight: 400 !important;
+  line-height: 40px !important;
+  letter-spacing: -1.23px !important;
+  color: #A71F23 !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
+  display: inline-block !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 </style>
 </head>
@@ -366,7 +387,7 @@ body {
     <div class="gxm-viewport">
       <div class="gxm-card-frame">
         <!-- ── Inlined Background Artwork SVG ── -->
-        <svg class="gxm-svg-canvas" preserveAspectRatio="xMidYMid meet" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <svg class="gxm-svg-canvas" preserveAspectRatio="none" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_554_2091)">
 <rect width="440" height="755" fill="#471618"/>
 <rect width="440" height="755" fill="url(#pattern0_554_2091)" fill-opacity="0.2" style="mix-blend-mode:plus-darker"/>
@@ -566,7 +587,7 @@ body {
 
         <!-- ── Centerpiece Interactive Vinyl Player (Universal Audio Controller on Home) ── -->
         <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music">
-          <img src="images/home/vinyl_record.webp?v=26100" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="182" height="182" fetchpriority="high">
+          <img src="images/home/vinyl_record.png?v=26300" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
           <div class="gxm-vinyl-center-btn" aria-hidden="true">
             <svg class="gxm-play-icon" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z"/>
@@ -580,13 +601,13 @@ body {
         <!-- ── Calligraphy & Wedding Typography Lockup ── -->
         <div class="gxm-typography-lockup">
           <p class="gxm-subtitle" data-i18n="home.hero.getting_married">WE ARE GETTING MARRIED!</p>
-          <h1 class="gxm-names">
-            <span class="gxm-name gxm-garima" data-i18n="home.hero.bride">GARIMA</span>
+          <div class="gxm-names">
+            <h1 class="gxm-name gxm-garima" data-i18n="home.hero.bride">GARIMA</h1>
             <div class="gxm-name-row">
               <span class="gxm-amp">&amp;</span>
               <span class="gxm-name gxm-mrinal" data-i18n="home.hero.groom">MRINAL</span>
             </div>
-          </h1>
+          </div>
         </div>
       </div>
     </div>
@@ -699,8 +720,8 @@ body {
     enforceThemeColor();
   });
   </script>
-  <script src="js/cms-i18n.js?v=26100"></script>
-  <script src="js/spa-nav.js?v=26100" defer></script>
-  <script src="js/global-audio.js?v=26100" defer></script>
+  <script src="js/cms-i18n.js?v=26300"></script>
+  <script src="js/spa-nav.js?v=26300" defer></script>
+  <script src="js/global-audio.js?v=26300" defer></script>
 </body>
 </html>
