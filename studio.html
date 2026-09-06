@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GXM Content Studio · Garima & Mrinal</title>
+  <title>G&M Content Studio · Garima & Mrinal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -265,16 +265,21 @@
       color: var(--crimson);
     }
 
-    .btn-danger-outline {
+    .btn-delete {
       background: transparent;
-      border-color: rgba(220, 38, 38, 0.35);
+      border: 1px solid rgba(220, 38, 38, 0.35);
       color: var(--danger);
       padding: 5px 12px;
       font-size: 12px;
       font-weight: 600;
       border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
     }
-    .btn-danger-outline:hover {
+    .btn-delete:hover {
       background: var(--danger-bg);
       border-color: var(--danger);
       color: var(--danger);
@@ -282,12 +287,16 @@
 
     .btn-restore-outline {
       background: transparent;
-      border-color: rgba(180, 83, 9, 0.4);
+      border: 1px solid rgba(180, 83, 9, 0.4);
       color: var(--warning);
       padding: 5px 12px;
       font-size: 12px;
       font-weight: 600;
       border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
     .btn-restore-outline:hover {
       background: var(--warning-bg);
@@ -561,7 +570,7 @@
     .item-card.is-hidden {
       background: #FAF8F5;
       border-style: dashed;
-      border-color: rgba(180, 83, 9, 0.45);
+      border-color: rgba(220, 38, 38, 0.45);
       opacity: 0.85;
     }
 
@@ -618,8 +627,8 @@
     }
 
     .badge-status.hidden {
-      background: var(--warning-bg);
-      color: var(--warning);
+      background: var(--danger-bg);
+      color: var(--danger);
     }
 
     .item-actions {
@@ -640,29 +649,70 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      flex-wrap: wrap;
     }
 
     .format-bar {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      flex-wrap: wrap;
     }
 
     .fmt-btn {
-      padding: 3px 8px;
+      padding: 4px 9px;
       font-size: 12px;
       font-weight: 600;
       border: 1px solid var(--border);
       background: var(--surface-subtle);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       cursor: pointer;
       color: var(--text-main);
       font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
     }
     .fmt-btn:hover {
       background: var(--crimson-light);
       border-color: var(--crimson);
       color: var(--crimson);
+    }
+
+    /* Color Swatches Bar */
+    .color-swatches {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: var(--surface-subtle);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+
+    .swatch-btn {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid #FFF;
+      box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.15s ease;
+      padding: 0;
+    }
+    .swatch-btn:hover {
+      transform: scale(1.25);
+    }
+
+    .color-picker-native {
+      width: 20px;
+      height: 20px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      padding: 0;
+      vertical-align: middle;
     }
 
     .field-input {
@@ -811,8 +861,8 @@
   <!-- Passcode Screen (Secures public access) -->
   <div class="auth-overlay" id="authOverlay">
     <div class="auth-card">
-      <div class="auth-logo">GXM</div>
-      <h2>GXM Content Studio</h2>
+      <div class="auth-logo">G&M</div>
+      <h2>G&M Content Studio</h2>
       <p>Enter Passcode to access wedding CMS</p>
       <form onsubmit="StudioApp.checkAuth(event)">
         <input type="password" id="authPasscode" class="auth-input" placeholder="••••" autofocus required>
@@ -826,9 +876,9 @@
   <header class="app-header">
     <div class="header-main">
       <a href="javascript:void(0)" class="brand">
-        <div class="brand-icon">GXM</div>
+        <div class="brand-icon">G&M</div>
         <div class="brand-text">
-          <h1>GXM Content Studio</h1>
+          <h1>G&M Content Studio</h1>
           <p>Garima & Mrinal · Nainital 2026</p>
         </div>
       </a>
@@ -885,7 +935,7 @@
           <select class="filter-chip-select" id="filterSelect" onchange="StudioApp.applyFilter(this.value)">
             <option value="all">Filter: All Items</option>
             <option value="modified">✏️ Modified Items Only</option>
-            <option value="hidden">🚫 Hidden / Cleared Items</option>
+            <option value="hidden">🗑️ Deleted / Hidden Items</option>
           </select>
 
           <div class="search-box">
@@ -942,10 +992,10 @@
         <p>This action will publish all changes directly to <strong>www.gtm2026.com</strong>.</p>
         <br>
         <label style="font-weight:600; display:block; margin-bottom: 4px;">Commit Note (optional):</label>
-        <input type="text" id="publishCommitMsg" class="field-input" placeholder="e.g. Updated wedding timings and travel advice">
+        <input type="text" id="publishCommitMsg" class="field-input" placeholder="e.g. Updated wedding card details and travel notes">
         <br><br>
         <div style="background: var(--surface-subtle); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); font-size: 12px; color: var(--text-muted);">
-          ✅ GitHub direct publishing configured. Changes will deploy live in ~30 seconds.
+          ✅ Direct GitHub publishing configured. Changes will deploy live to <strong>www.gtm2026.com</strong> in ~30 seconds.
         </div>
       </div>
       <div class="modal-footer">
@@ -993,7 +1043,7 @@
         if (PASSCODES.includes(code)) {
           localStorage.setItem('gtm2026_studio_auth', 'true');
           document.getElementById('authOverlay').style.display = 'none';
-          this.showToast('Welcome to GXM Content Studio!', 'success');
+          this.showToast('Welcome to G&M Content Studio!', 'success');
         } else {
           alert('Incorrect passcode. Please try again.');
         }
@@ -1124,18 +1174,18 @@
                       <span class="item-title">${k.label}</span>
                       <span class="item-key-badge" onclick="navigator.clipboard.writeText('${key}'); StudioApp.showToast('Key copied: ${key}', 'success')" title="Click to copy key">${key}</span>
                       <span class="badge-status ${isHidden ? 'hidden' : 'visible'}">
-                        ${isHidden ? '🚫 Hidden on Website' : '✅ Visible'}
+                        ${isHidden ? '🚫 Deleted / Hidden' : '✅ Visible'}
                       </span>
                     </div>
 
                     <div class="item-actions">
                       ${isHidden ? `
-                        <button class="btn btn-restore-outline" onclick="StudioApp.restoreKey('${key}')">
-                          ↩️ Restore
+                        <button class="btn-restore-outline" onclick="StudioApp.restoreKey('${key}')">
+                          ↩️ Undo Delete
                         </button>
                       ` : `
-                        <button class="btn btn-danger-outline" onclick="StudioApp.clearKey('${key}')" title="Clears text and hides element on live site">
-                          🗑️ Clear / Hide
+                        <button class="btn-delete" onclick="StudioApp.deleteKey('${key}')" title="Completely delete content and hide from website">
+                          🗑️ Delete
                         </button>
                       `}
                     </div>
@@ -1144,11 +1194,24 @@
                   <div class="single-editor">
                     <div class="editor-toolbar-row">
                       <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Text Content</span>
+                      
+                      <!-- Rich Text Formatting & Color Tools -->
                       <div class="format-bar">
                         <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'em')"><em>I</em> Italic</button>
                         <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'strong')"><strong>B</strong> Bold</button>
                         <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'br')">↵ Break</button>
-                        <button class="fmt-btn" onclick="StudioApp.stripTags('${key}')">Clear Tags</button>
+                        
+                        <!-- Font Color Swatches -->
+                        <div class="color-swatches" title="Pick font color for selected text">
+                          <span style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-right: 2px;">🎨</span>
+                          <button class="swatch-btn" style="background:#A71F23;" title="Crimson (#A71F23)" onclick="StudioApp.applyColor('${key}', '#A71F23')"></button>
+                          <button class="swatch-btn" style="background:#C49A45;" title="Gold (#C49A45)" onclick="StudioApp.applyColor('${key}', '#C49A45')"></button>
+                          <button class="swatch-btn" style="background:#8A151B;" title="Maroon (#8A151B)" onclick="StudioApp.applyColor('${key}', '#8A151B')"></button>
+                          <button class="swatch-btn" style="background:#2D2926;" title="Charcoal (#2D2926)" onclick="StudioApp.applyColor('${key}', '#2D2926')"></button>
+                          <input type="color" class="color-picker-native" value="#A71F23" title="Custom color picker" onchange="StudioApp.applyColor('${key}', this.value)">
+                        </div>
+
+                        <button class="fmt-btn" onclick="StudioApp.stripTags('${key}')" title="Remove all HTML tags & color styles">Clear Tags</button>
                       </div>
                     </div>
 
@@ -1159,7 +1222,7 @@
                     `}
 
                     <div class="live-preview-box ${!val ? 'empty' : ''}" id="preview-${key}">
-                      ${val ? val : '<em>[Empty / Hidden on site]</em>'}
+                      ${val ? val : '<em>[Deleted / Hidden on site]</em>'}
                     </div>
                   </div>
                 </div>
@@ -1210,7 +1273,7 @@
             prevEl.innerHTML = value;
           } else {
             prevEl.classList.add('empty');
-            prevEl.innerHTML = '<em>[Empty / Hidden on site]</em>';
+            prevEl.innerHTML = '<em>[Deleted / Hidden on site]</em>';
           }
         }
 
@@ -1220,16 +1283,21 @@
           const isModified = this.data[key] !== this.initialData[key];
           cardEl.classList.toggle('is-hidden', isHidden);
           cardEl.classList.toggle('is-modified', isModified);
+          const badge = cardEl.querySelector('.badge-status');
+          if (badge) {
+            badge.className = `badge-status ${isHidden ? 'hidden' : 'visible'}`;
+            badge.textContent = isHidden ? '🚫 Deleted / Hidden' : '✅ Visible';
+          }
         }
 
         this.updateGitStatus();
         this.pushToLivePreview();
       },
 
-      clearKey(key) {
+      deleteKey(key) {
         this.data[key] = '';
         this.render();
-        this.showToast(`Cleared & Hidden: ${key}`, 'success');
+        this.showToast(`Deleted: ${key}`, 'success');
         this.updateGitStatus();
         this.pushToLivePreview();
       },
@@ -1264,6 +1332,25 @@
 
         input.focus();
         input.setSelectionRange(start + (tag === 'br' ? 4 : tag.length + 2), start + replacement.length - (tag === 'br' ? 0 : tag.length + 3));
+      },
+
+      applyColor(key, colorHex) {
+        const input = document.getElementById(`input-${key}`);
+        if (!input) return;
+
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+        const val = input.value;
+        let selected = val.substring(start, end);
+
+        const replacement = `<span style="color: ${colorHex};">${selected || 'colored text'}</span>`;
+        const newVal = val.substring(0, start) + replacement + val.substring(end);
+        input.value = newVal;
+        this.updateField(key, newVal);
+
+        input.focus();
+        input.setSelectionRange(start + `<span style="color: ${colorHex};">`.length, start + replacement.length - 7);
+        this.showToast(`Applied color ${colorHex}!`, 'success');
       },
 
       stripTags(key) {
@@ -1341,7 +1428,7 @@
       },
 
       async executePublish() {
-        const commitMsg = document.getElementById('publishCommitMsg').value || 'Update website content via GXM Content Studio';
+        const commitMsg = document.getElementById('publishCommitMsg').value || 'Update website content via G&M Content Studio';
         const token = localStorage.getItem('gtm2026_gh_token') || DEFAULT_GH_TOKEN;
         const btn = document.getElementById('btnConfirmPublish');
         btn.textContent = 'Publishing...';
