@@ -12,6 +12,8 @@
   "home.hero.location": "नैनीताल, भारत",
   "stay.header.title_line1": "यात्रा",
   "stay.header.title_line2": "& प्रवास",
+  "stay.header.banner_line1": "नैनीताल यात्रा एवं ठहरने की व्यवस्था",
+  "stay.header.banner_line2": "आपकी सुखद यात्रा के लिए संपूर्ण जानकारी",
   "stay.travel.air_pantnagar": "<strong class=\"stay-bold-highlight\">पंतनगर (PGH)</strong>: निकटतम हवाई अड्डा (सड़क मार्ग से ~२ घंटे / ६५ किमी)। नई दिल्ली से सीधी दैनिक उड़ानें उपलब्ध हैं।",
   "stay.travel.air_delhi": "<strong class=\"stay-bold-highlight\">नई दिल्ली (DEL)</strong>: दिल्ली पहुंचें, फिर ट्रेन या निजी टैक्सी लें। यह सबसे सुगम और नियमित विकल्प है।",
   "stay.travel.train_kathgodam": "<strong class=\"stay-bold-highlight\">काठगोदाम (KGM)</strong>: निकटतम रेलवे स्टेशन (सड़क मार्ग से ~१ घंटा / २३ किमी)। नई दिल्ली से सीधी दिन और रात की ट्रेनें चलती हैं, जैसे दिन में <em class=\"stay-train-name\">काठगोदाम शताब्दी एक्सप्रेस</em> और रात में <em class=\"stay-train-name\">रानीखेत एक्सप्रेस</em>। स्टेशन से बाहर निकलते ही प्रीपेड टैक्सी उपलब्ध हैं।",
