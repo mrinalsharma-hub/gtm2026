@@ -928,79 +928,6 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* ── MATERIAL DESIGN 3 DIALOG / MODAL ── */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(2px);
-      z-index: 500;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .modal-overlay.open {
-      display: flex;
-    }
-
-    .modal-card {
-      background: var(--md-sys-color-surface);
-      border-radius: var(--md-shape-xl);
-      max-width: 520px;
-      width: 100%;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      border: 1px solid var(--md-sys-color-outline);
-      animation: m3ScaleIn 0.2s cubic-bezier(0.2, 0, 0, 1);
-    }
-
-    @keyframes m3ScaleIn {
-      from { transform: scale(0.95); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .modal-header {
-      padding: 20px 24px;
-      background: var(--md-sys-color-surface);
-      font-family: var(--font-heading);
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--md-sys-color-on-surface);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .modal-body {
-      padding: 0 24px 20px 24px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--md-sys-color-on-surface-variant);
-    }
-
-    .modal-info-banner {
-      background: var(--md-sys-color-surface-dim);
-      padding: 14px 16px;
-      border-radius: var(--md-shape-sm);
-      border: 1px solid var(--md-sys-color-outline);
-      font-size: 14px;
-      color: var(--md-sys-color-on-surface-variant);
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-    }
-
-    .modal-footer {
-      padding: 16px 24px;
-      background: var(--md-sys-color-surface-container);
-      border-top: 1px solid var(--md-sys-color-outline);
-      display: flex;
-      justify-content: flex-end;
-      gap: 12px;
-    }
-
     .stay-bold-highlight {
       color: #A71F23;
       font-weight: 700;
@@ -1069,9 +996,9 @@
           <span>Save Draft</span>
         </button>
 
-        <button class="btn btn-filled" onclick="StudioApp.promptPublish()" title="Publish live to www.gtm2026.com">
-          <span class="material-symbols-outlined">rocket_launch</span>
-          <span>Publish Live</span>
+        <button class="btn btn-filled" id="btnPublishLive" onclick="StudioApp.executePublish()" title="Publish live to www.gtm2026.com">
+          <span class="material-symbols-outlined" id="publishIcon">rocket_launch</span>
+          <span id="publishBtnText">Publish Live</span>
         </button>
 
         <button class="btn btn-outlined" onclick="StudioApp.downloadBackup()" title="Download backup JSON">
@@ -1157,41 +1084,6 @@
 
   <!-- Material Toast Container -->
   <div class="toast-container" id="toastContainer"></div>
-
-  <!-- Material 3 Publish Modal -->
-  <div class="modal-overlay" id="publishModal">
-    <div class="modal-card">
-      <div class="modal-header">
-        <div style="display:flex; align-items:center; gap: 8px;">
-          <span class="material-symbols-outlined" style="color: var(--md-sys-color-primary);">rocket_launch</span>
-          <span>Publish Live to www.gtm2026.com</span>
-        </div>
-        <button onclick="StudioApp.closeModal('publishModal')" style="background:none;border:none;cursor:pointer;display:flex;align-items:center;color:var(--md-sys-color-on-surface-muted);">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p style="margin-bottom: 16px;">This action will deploy your latest edits directly to <strong>www.gtm2026.com</strong>.</p>
-        
-        <label style="font-weight: 500; display:block; margin-bottom: 6px; font-family: var(--font-heading);">Commit Note (optional):</label>
-        <input type="text" id="publishCommitMsg" class="field-input" placeholder="e.g. Updated wedding ceremony details and travel notes">
-        
-        <div style="margin-top: 16px;" class="modal-info-banner">
-          <span class="material-symbols-outlined" style="color: var(--google-green); font-size: 20px;">check_circle</span>
-          <div>
-            Direct GitHub Pages deployment configured. Changes will be live in ~30 seconds.
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-outlined" onclick="StudioApp.closeModal('publishModal')">Cancel</button>
-        <button class="btn btn-filled" id="btnConfirmPublish" onclick="StudioApp.executePublish()">
-          <span class="material-symbols-outlined">publish</span>
-          <span>Publish Now</span>
-        </button>
-      </div>
-    </div>
-  </div>
 
   <script>
 const SCHEMA = {"sections": [{"id": "home", "title": "Home & Navigation", "page": "index.html", "groups": [{"title": "Global Site Navigation & SEO", "keys": [{"key": "global.title", "label": "Browser Tab Title", "type": "text"}, {"key": "global.meta_desc", "label": "Search Engine / Share Meta Description", "type": "textarea"}, {"key": "global.nav.gm", "label": "Tab 1: G&M / Home", "type": "text"}, {"key": "global.nav.travel_stay", "label": "Tab 2: Travel & Stay", "type": "text"}, {"key": "global.nav.celebrations", "label": "Tab 3: Celebrations", "type": "text"}, {"key": "global.nav.rsvp", "label": "Tab 4: RSVP", "type": "text"}]}, {"title": "Home Hero Section", "keys": [{"key": "home.hero.bride_name", "label": "Bride Name (GARIMA)", "type": "text"}, {"key": "home.hero.connector", "label": "Connecting Word (takes)", "type": "text"}, {"key": "home.hero.groom_name", "label": "Groom Name (MRINAL)", "type": "text"}, {"key": "home.hero.date", "label": "Wedding Date Badge", "type": "text"}, {"key": "home.hero.location", "label": "Wedding Location Badge", "type": "text"}]}]}, {"id": "stay", "title": "Travel & Stay", "page": "travel&stay.html", "groups": [{"title": "Header & Subtitle Banner", "keys": [{"key": "stay.header.title_line1", "label": "Header Line 1 (TRAVEL)", "type": "text"}, {"key": "stay.header.title_line2", "label": "Header Line 2 (& STAY)", "type": "text"}, {"key": "stay.header.banner_line1", "label": "Subtitle Banner Line 1", "type": "text"}, {"key": "stay.header.banner_line2", "label": "Subtitle Banner Line 2", "type": "text"}]}, {"title": "Travel Directions (Air, Train, Road)", "keys": [{"key": "stay.travel.air_pantnagar", "label": "Pantnagar Airport (PGH) Guide", "type": "textarea"}, {"key": "stay.travel.air_delhi", "label": "New Delhi Airport (DEL) Guide", "type": "textarea"}, {"key": "stay.travel.train_kathgodam", "label": "Kathgodam Railway Station Guide", "type": "textarea"}, {"key": "stay.travel.cab_delhi_nainital", "label": "Delhi to Nainital Road Trip Guide", "type": "textarea"}, {"key": "stay.travel.cab_hill_drive", "label": "Mountain / Hill Drive Advice", "type": "textarea"}]}, {"title": "Your Stay & Accommodation", "keys": [{"key": "stay.arch.title", "label": "Stay Arch Card Title", "type": "rich"}, {"key": "stay.arch.desc", "label": "Room Confirmation Deadline Note", "type": "textarea"}, {"key": "stay.arch.btn_rsvp", "label": "RSVP Call-to-Action Button", "type": "text"}, {"key": "stay.arch.note", "label": "Room Coordination Guarantee Note", "type": "textarea"}]}, {"title": "Weather & Packing Advice", "keys": [{"key": "stay.weather.title", "label": "Weather Section Heading", "type": "text"}, {"key": "stay.weather.weather_desc", "label": "Mountain Weather Description", "type": "textarea"}, {"key": "stay.weather.packing_desc", "label": "What to Pack Advice", "type": "textarea"}]}, {"title": "Epilogue Quote", "keys": [{"key": "stay.epilogue.quote", "label": "Traditional Woodcraft Epilogue Quote", "type": "textarea"}]}]}, {"id": "celebrations", "title": "Celebrations & Events", "page": "celebrations.html", "groups": [{"title": "Header Banner", "keys": [{"key": "celebrations.header.the", "label": "Header Pre-title (e.g. The)", "type": "text"}, {"key": "celebrations.header.title", "label": "Main Header Title", "type": "rich"}, {"key": "celebrations.header.location", "label": "Event Location Subtitle", "type": "text"}]}, {"title": "Mehndi Ceremony Card", "keys": [{"key": "celebrations.mehndi.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.mehndi.title", "label": "Card Title (Mehndi)", "type": "text"}, {"key": "celebrations.mehndi.body", "label": "Card Description & Story", "type": "textarea"}, {"key": "celebrations.mehndi.optional", "label": "Attendance Tag (Optional)", "type": "text"}]}, {"title": "Wedding Ceremony Card", "keys": [{"key": "celebrations.wedding.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.wedding.title", "label": "Card Title (Wedding)", "type": "text"}, {"key": "celebrations.wedding.body", "label": "Card Description", "type": "textarea"}, {"key": "celebrations.wedding.venue_label", "label": "Front Venue Label (Blank = Hidden)", "type": "text"}, {"key": "celebrations.wedding.venue_name", "label": "Front Venue Name (Blank = Hidden)", "type": "text"}]}, {"title": "Evening Party Card", "keys": [{"key": "celebrations.party.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.party.title", "label": "Card Title (Evening Party)", "type": "rich"}, {"key": "celebrations.party.body1", "label": "Card Description", "type": "textarea"}, {"key": "celebrations.party.body2", "label": "Party Tagline (Blank = Hidden)", "type": "text"}]}, {"title": "Reception Card", "keys": [{"key": "celebrations.reception.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.reception.title", "label": "Card Title (Reception)", "type": "text"}, {"key": "celebrations.reception.body", "label": "Card Description", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Mehndi", "keys": [{"key": "celebrations.sheet.mehndi.attire", "label": "Attire / Dress Code", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.food", "label": "Food & Drinks Note", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.location", "label": "Venue Address", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.map_url", "label": "Google Maps Link URL", "type": "text"}]}, {"title": "Bottom Sheet Details: Wedding", "keys": [{"key": "celebrations.sheet.wedding.assembly", "label": "Baraat Assembly Time", "type": "text"}, {"key": "celebrations.sheet.wedding.rituals", "label": "Wedding Rituals Time", "type": "text"}, {"key": "celebrations.sheet.wedding.attire", "label": "Wedding Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.wedding.food", "label": "Wedding Feast Note", "type": "textarea"}, {"key": "celebrations.sheet.wedding.location", "label": "Venue Address", "type": "textarea"}, {"key": "celebrations.sheet.wedding.map_url", "label": "Google Maps Link URL", "type": "text"}]}, {"title": "Bottom Sheet Details: Evening Party", "keys": [{"key": "celebrations.sheet.party.attire", "label": "Party Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.party.food", "label": "Food & Bar Note", "type": "textarea"}, {"key": "celebrations.sheet.party.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.party.location", "label": "Party Venue Address", "type": "textarea"}, {"key": "celebrations.sheet.party.map_url", "label": "Google Maps Link URL", "type": "text"}]}, {"title": "Bottom Sheet Details: Reception", "keys": [{"key": "celebrations.sheet.reception.attire", "label": "Reception Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.reception.food", "label": "Dinner Spread Note", "type": "textarea"}, {"key": "celebrations.sheet.reception.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.reception.location", "label": "Reception Venue Address", "type": "textarea"}, {"key": "celebrations.sheet.reception.map_url", "label": "Google Maps Link URL", "type": "text"}]}, {"title": "Epilogue & General Actions", "keys": [{"key": "celebrations.sheet.btn_map", "label": "Map Button Label", "type": "text"}, {"key": "celebrations.epilogue.quote", "label": "Pahari Miniature Epilogue Quote", "type": "textarea"}]}]}, {"id": "rsvp", "title": "RSVP & Guest Response", "page": "rsvp.html", "groups": [{"title": "Hero & Subtitle Banner", "keys": [{"key": "rsvp.hero.come", "label": "Hero Pre-title (Come)", "type": "text"}, {"key": "rsvp.hero.title", "label": "Hero Title (CELEBRATE WITH US)", "type": "rich"}, {"key": "rsvp.hero.banner_line1", "label": "Banner Top Line", "type": "text"}, {"key": "rsvp.hero.banner_line2", "label": "Banner Bottom Line", "type": "text"}]}, {"title": "Attendance Question & Options", "keys": [{"key": "rsvp.form.attending_title", "label": "Attendance Question Header", "type": "text"}, {"key": "rsvp.form.opt_yes", "label": "Option: Attending (Yes)", "type": "text"}, {"key": "rsvp.form.opt_no", "label": "Option: Cannot Attend (No)", "type": "text"}]}, {"title": "Guest Information Fields", "keys": [{"key": "rsvp.form.name_title", "label": "Full Name Field Label", "type": "text"}, {"key": "rsvp.form.name_placeholder", "label": "Name Field Placeholder", "type": "text"}, {"key": "rsvp.form.btn_add_guest", "label": "Add Guest Button Label", "type": "text"}, {"key": "rsvp.form.phone_title", "label": "Phone Field Label", "type": "text"}, {"key": "rsvp.form.phone_placeholder", "label": "Phone Field Placeholder", "type": "text"}]}, {"title": "Event Attendance Checkboxes", "keys": [{"key": "rsvp.form.events_title", "label": "Events Section Title", "type": "text"}, {"key": "rsvp.form.event_opt_mehndi", "label": "Mehndi Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_wedding", "label": "Day Wedding Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_party", "label": "Evening Party Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_reception", "label": "Reception Checkbox Label", "type": "text"}]}, {"title": "Diet, Preferences & Wishes", "keys": [{"key": "rsvp.form.diet_title", "label": "Diet & Stay Preferences Label", "type": "text"}, {"key": "rsvp.form.diet_placeholder", "label": "Diet & Stay Placeholder", "type": "textarea"}, {"key": "rsvp.form.note_title", "label": "Special Note for Couple Label", "type": "text"}, {"key": "rsvp.form.note_placeholder", "label": "Special Note Placeholder", "type": "textarea"}, {"key": "rsvp.form.btn_submit", "label": "Submit RSVP Button Label", "type": "text"}, {"key": "rsvp.form.submitting", "label": "Submitting State Text", "type": "text"}]}, {"title": "Thank You Screen & Epilogue", "keys": [{"key": "rsvp.thanks.title", "label": "Thank You Title", "type": "text"}, {"key": "rsvp.thanks.message", "label": "Confirmation Success Message", "type": "rich"}, {"key": "rsvp.thanks.btn_edit", "label": "Edit Response Button Label", "type": "text"}, {"key": "rsvp.epilogue.quote", "label": "Aipan Art Epilogue Quote", "type": "textarea"}]}]}, {"id": "invite", "title": "Digital Invite Story", "page": "invite/index.html", "groups": [{"title": "Cover & Controls", "keys": [{"key": "invite.cover.title", "label": "Cover Title", "type": "text"}, {"key": "invite.cover.sub", "label": "Cover Subtitle & Date", "type": "text"}, {"key": "invite.cover.tap", "label": "Tap to Open CTA", "type": "text"}, {"key": "invite.ctl.skip", "label": "Skip Button", "type": "text"}, {"key": "invite.ctl.replay", "label": "Replay Button", "type": "text"}]}, {"title": "Blessings & Family Announcement", "keys": [{"key": "invite.scene1.shloka", "label": "Ganesha Shloka", "type": "text"}, {"key": "invite.scene1.eyebrow", "label": "Blessings Eyebrow", "type": "textarea"}, {"key": "invite.scene2.eyebrow", "label": "Families Eyebrow", "type": "text"}, {"key": "invite.scene2.sub", "label": "Join Us Invitation Subtitle", "type": "text"}]}, {"title": "Location & Date Scenes", "keys": [{"key": "invite.scene3.place", "label": "Place Name (Nainital)", "type": "text"}, {"key": "invite.scene3.sub", "label": "Place Description", "type": "rich"}, {"key": "invite.scene4.day_word", "label": "Day Word (Saturday)", "type": "text"}, {"key": "invite.scene4.day_num", "label": "Day Number (21)", "type": "text"}, {"key": "invite.scene4.day_my", "label": "Month & Year (November 2026)", "type": "text"}, {"key": "invite.scene4.sub", "label": "Baraat & Pheras Timings", "type": "text"}]}, {"title": "Ceremony Timeline Itinerary", "keys": [{"key": "invite.scene5.title", "label": "Celebrations Scene Title", "type": "text"}, {"key": "invite.scene5.fri_label", "label": "Friday Date Label", "type": "text"}, {"key": "invite.scene5.ev_mehndi", "label": "Mehndi Event Name", "type": "text"}, {"key": "invite.scene5.sat_label", "label": "Saturday Date Label", "type": "text"}, {"key": "invite.scene5.ev_baraat", "label": "Baraat Event Name", "type": "text"}, {"key": "invite.scene5.ev_varmaala", "label": "Varmaala Event Name", "type": "text"}, {"key": "invite.scene5.ev_pheras", "label": "Pheras Event Name", "type": "text"}, {"key": "invite.scene5.ev_vidaai", "label": "Vidaai Event Name", "type": "text"}, {"key": "invite.scene5.ev_party", "label": "Evening Party Event Name", "type": "text"}, {"key": "invite.scene5.sun_label", "label": "Sunday Date Label", "type": "text"}, {"key": "invite.scene5.ev_breakfast", "label": "Farewell Breakfast Event Name", "type": "text"}]}, {"title": "Closing Details", "keys": [{"key": "invite.scene6.when", "label": "Final Date Summary", "type": "text"}, {"key": "invite.scene6.where", "label": "Final Location Summary", "type": "text"}, {"key": "invite.scene6.details_website", "label": "Wedding Website Link Text", "type": "text"}]}]}]};
@@ -1657,22 +1549,18 @@ const SCHEMA = {"sections": [{"id": "home", "title": "Home & Navigation", "page"
         this.showToast('Draft saved in browser memory! Click "Publish Live" to push to website.', 'success');
       },
 
-      promptPublish() {
-        document.getElementById('publishModal').classList.add('open');
-      },
-
-      closeModal(modalId = 'publishModal') {
-        document.getElementById(modalId).classList.remove('open');
-      },
-
       async executePublish() {
-        const commitMsg = document.getElementById('publishCommitMsg').value || 'Update website content via G&M Content Studio';
+        const commitMsg = 'Update website content via G&M Content Studio';
         const token = localStorage.getItem('gtm2026_gh_token') || DEFAULT_GH_TOKEN;
-        const btn = document.getElementById('btnConfirmPublish');
-        btn.textContent = 'Publishing...';
-        btn.disabled = true;
+        const btn = document.getElementById('btnPublishLive');
+        const icon = document.getElementById('publishIcon');
+        const label = document.getElementById('publishBtnText');
 
-        this.showToast('Publishing changes to www.gtm2026.com...', 'success');
+        if (btn) btn.disabled = true;
+        if (icon) icon.textContent = 'sync';
+        if (label) label.textContent = 'Publishing...';
+
+        this.showToast('Publishing live to www.gtm2026.com...', 'info');
 
         // 1. Try local server API first if running locally
         try {
@@ -1690,9 +1578,9 @@ const SCHEMA = {"sections": [{"id": "home", "title": "Home & Navigation", "page"
               this.initialData = JSON.parse(JSON.stringify(this.data));
               this.updateGitStatus(result.git);
               this.render();
-              this.closeModal('publishModal');
-              btn.textContent = 'Publish Now 🚀';
-              btn.disabled = false;
+              if (btn) btn.disabled = false;
+              if (icon) icon.textContent = 'rocket_launch';
+              if (label) label.textContent = 'Publish Live';
               this.showToast(`🎉 Published Live! Commit: ${result.commit || 'pushed'}`, 'success');
               return;
             }
@@ -1704,13 +1592,14 @@ const SCHEMA = {"sections": [{"id": "home", "title": "Home & Navigation", "page"
           await this.publishViaGitHubAPI(token, commitMsg);
           this.initialData = JSON.parse(JSON.stringify(this.data));
           this.render();
-          this.closeModal('publishModal');
-          btn.textContent = 'Publish Now 🚀';
-          btn.disabled = false;
+          if (btn) btn.disabled = false;
+          if (icon) icon.textContent = 'rocket_launch';
+          if (label) label.textContent = 'Publish Live';
           this.showToast('🎉 Published to GitHub Pages successfully! Live on www.gtm2026.com in ~30s.', 'success');
         } catch(ghErr) {
-          btn.textContent = 'Publish Now 🚀';
-          btn.disabled = false;
+          if (btn) btn.disabled = false;
+          if (icon) icon.textContent = 'rocket_launch';
+          if (label) label.textContent = 'Publish Live';
           this.showToast(`GitHub Publish error: ${ghErr.message}`, 'error');
         }
       },
@@ -1786,9 +1675,6 @@ const SCHEMA = {"sections": [{"id": "home", "title": "Home & Navigation", "page"
             e.preventDefault();
             const input = document.getElementById('searchInput');
             if (input) input.focus();
-          }
-          if (e.key === 'Escape') {
-            this.closeModal('publishModal');
           }
         });
       }
