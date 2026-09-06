@@ -66,8 +66,8 @@ function doGet(e) {
       var enVal = row[colEn] !== undefined ? String(row[colEn]).trim() : "";
       var hiVal = row[colHi] !== undefined ? String(row[colHi]).trim() : "";
 
-      if (enVal) dictEn[key] = enVal;
-      if (hiVal) dictHi[key] = hiVal;
+      dictEn[key] = enVal;
+      dictHi[key] = hiVal;
     }
 
     var responseData;

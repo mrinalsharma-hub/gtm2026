@@ -124,8 +124,16 @@
     nodes.forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       if (!key) return;
-      var val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
+      var val = dict[key] !== undefined ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
       if (val !== null) {
+        if (val === '') {
+          el.innerHTML = '';
+          el.style.display = 'none';
+          return;
+        } else if (el.style.display === 'none') {
+          el.style.display = '';
+        }
+
         // Special formatting for stay.header.title_line2 to preserve the cursive Snell Roundhand ampersand
         if (key === 'stay.header.title_line2') {
           if (val.indexOf('<span') === -1) {

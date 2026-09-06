@@ -42,12 +42,11 @@ celebrations.wedding.body	Celebrations	Wedding Card	The ceremony, the vows, and 
 celebrations.wedding.venue_label	Celebrations	Wedding Card	Venue:	स्थान:	Venue label
 celebrations.wedding.venue_name	Celebrations	Wedding Card	The Balrampur House	बलरामपुर हाउस	Venue name
 celebrations.party.eyebrow	Celebrations	Evening Party Card	SAT 21 NOV | 7:00 PM	शनि २१ नवं | शाम ७:००	Party card date & time
-celebrations.party.title	Celebrations	Evening Party Card	Evening<br>Party	संध्या<br>उत्सव	Party card title
-celebrations.party.body1	Celebrations	Evening Party Card	An evening of great music, good food and dancing with all our favorite people.	मधुर संगीत, स्वादिष्ट भोजन और हमारे सभी प्रियजनों के साथ नृत्य से सजी एक शाम।	Party card description 1
-celebrations.party.body2	Celebrations	Evening Party Card	The wedding may be done. The celebration isn’t.	विवाह के फेरे संपन्न हुए, किंतु उत्सव अभी बाकी है।	Party card tagline
+celebrations.party.title	Celebrations	Evening Party Card	Evening Party Card	संध्या<br>उत्सव	Party card title
+celebrations.party.body1	Celebrations	Evening Party Card	Music, dinner and dancing — because one celebration is never enough.	मधुर संगीत, स्वादिष्ट भोजन और हमारे सभी प्रियजनों के साथ नृत्य से सजी एक शाम।	Party card description 1
 celebrations.reception.eyebrow	Celebrations	Reception Card	MON 23 NOV | 7:00 PM	सोम २३ नवं | शाम ७:००	Reception card date & time
 celebrations.reception.title	Celebrations	Reception Card	Reception	स्वागत समारोह	Reception card title
-celebrations.reception.body	Celebrations	Reception Card	A final gathering with family and friends in New Delhi to celebrate and get everyone’s blessings.	नई दिल्ली में परिवार और मित्रों के साथ एक भव्य मिलन, जहां हम सभी का आशीर्वाद प्राप्त करेंगे।	Reception card description
+celebrations.reception.body	Celebrations	Reception Card	One more celebration — this time in Delhi, to celebrate and get everyone’s blessings.	नई दिल्ली में परिवार और मित्रों के साथ एक भव्य मिलन, जहां हम सभी का आशीर्वाद प्राप्त करेंगे।	Reception card description
 celebrations.epilogue.quote	Celebrations	Epilogue	A gentle reflection of the mountains close to our hearts. These delicate Pahari miniature details are a little piece of home, woven into our celebration	हमारे हृदय के करीब इन पर्वतों का एक सौम्य प्रतिबिंब। ये सूक्ष्म पहाड़ी मिनिएचर कलाकृतियां हमारे घर का एक अंश हैं, जो इस उत्सव में समाहित हैं	Pahari miniature quote
 celebrations.sheet.btn_map	Celebrations	Modal Sheet	View on Map	मानचित्र पर देखें	Google Maps action button
 celebrations.sheet.mehndi.attire	Celebrations	Modal Sheet	Playful causals or festive ethnic attire	उत्साही कैजुअल्स या उत्सव के पारंपरिक परिधान	Mehndi attire
