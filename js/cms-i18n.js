@@ -111,7 +111,9 @@
         }
 
         // Render content via innerHTML so HTML markup (<br>, <strong>, <em>, <span>, <a>) and entities (&amp;, &nbsp;) are properly rendered
-        el.innerHTML = val;
+        // Convert any newlines (\n) to <br> so line breaks from editor or JSON display properly on the webpage
+        var formattedVal = typeof val === 'string' ? val.replace(/\r\n|\r|\n/g, '<br>') : val;
+        el.innerHTML = formattedVal;
       }
     });
 
