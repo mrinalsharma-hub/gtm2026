@@ -970,7 +970,7 @@ body.sheet-modal-open .fixed-bottom-nav {
     
     <div class="celebrations-subrow">
       <div class="celebrations-desc-block" data-node-id="18:108">
-        <span id="celebrations-countdown" class="celebrations-countdown-text" data-i18n="celebrations.countdown.suffix">120 DAYS TO GO</span>
+        <span id="celebrations-countdown" class="celebrations-countdown-text">DAYS TO GO</span>
         <span class="celebrations-location-text" data-i18n="celebrations.header.location">NAINITAL &amp; DELHI</span>
       </div>
       <div class="celebrations-boat-wrap" data-node-id="28:713" aria-hidden="true">
@@ -1202,14 +1202,28 @@ body.sheet-modal-open .fixed-bottom-nav {
     
     var countdownEl = document.getElementById('celebrations-countdown');
     if (countdownEl) {
-      if (daysRemaining > 1) {
-        countdownEl.textContent = daysRemaining + ' DAYS TO GO';
-      } else if (daysRemaining === 1) {
-        countdownEl.textContent = '1 DAY TO GO';
-      } else if (daysRemaining === 0) {
-        countdownEl.textContent = "TODAY'S THE DAY";
+      var isHindi = document.documentElement.getAttribute('lang') === 'hi' ||
+                    (window.GTM_I18N && typeof window.GTM_I18N.getCurrentLanguage === 'function' && window.GTM_I18N.getCurrentLanguage() === 'hi');
+      if (isHindi) {
+        if (daysRemaining > 1) {
+          countdownEl.textContent = daysRemaining + ' दिन शेष';
+        } else if (daysRemaining === 1) {
+          countdownEl.textContent = '1 दिन शेष';
+        } else if (daysRemaining === 0) {
+          countdownEl.textContent = 'आज है वह शुभ दिन';
+        } else {
+          countdownEl.textContent = 'उत्सव जारी है';
+        }
       } else {
-        countdownEl.textContent = 'CELEBRATING';
+        if (daysRemaining > 1) {
+          countdownEl.textContent = daysRemaining + ' DAYS TO GO';
+        } else if (daysRemaining === 1) {
+          countdownEl.textContent = '1 DAY TO GO';
+        } else if (daysRemaining === 0) {
+          countdownEl.textContent = "TODAY'S THE DAY";
+        } else {
+          countdownEl.textContent = 'CELEBRATING';
+        }
       }
     }
   }
@@ -1219,6 +1233,9 @@ body.sheet-modal-open .fixed-bottom-nav {
   } else {
     updateCountdown();
   }
+  window.addEventListener('gtm:spa-page-swapped', updateCountdown);
+  window.addEventListener('gtm:lang-changed', updateCountdown);
+  window.addEventListener('pageshow', updateCountdown);
 })();
 
 /* ── Royal Event Details Bottom Sheet Interactive Controller (Figma 438:1168) ── */
