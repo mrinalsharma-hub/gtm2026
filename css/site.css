@@ -2343,6 +2343,14 @@ header.site, #menu-panel, .mobile-wheel-nav, .site-bottom-nav, .floating-dock-na
   transition: filter 0.25s ease, opacity 0.25s ease !important;
 }
 
+/* Hide floating medallion player on Home page (G&M.html / index.html) where centerpiece Vinyl Player is used */
+body.home-page .celebration-player-btn,
+body.home-page #global-music-player,
+body[data-page="gm"] .celebration-player-btn,
+body[data-page="gm"] #global-music-player {
+  display: none !important;
+}
+
 .celebration-player-btn:hover,
 .global-audio-pill:hover {
   filter: drop-shadow(0 4px 14px rgba(167, 31, 35, 0.22)) !important;

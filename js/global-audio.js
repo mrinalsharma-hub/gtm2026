@@ -27,10 +27,16 @@
   audio.volume = 0.85;
 
   function deduplicatePlayers() {
-    var players = document.querySelectorAll('#global-music-player, .celebration-player-btn, .global-audio-pill, #music-toggle');
-    if (players.length > 1) {
-      for (var i = 1; i < players.length; i++) {
-        players[i].remove();
+    var globalPlayers = document.querySelectorAll('#global-music-player, .celebration-player-btn');
+    if (globalPlayers.length > 1) {
+      for (var i = 1; i < globalPlayers.length; i++) {
+        globalPlayers[i].remove();
+      }
+    }
+    var vinylPlayers = document.querySelectorAll('#music-toggle');
+    if (vinylPlayers.length > 1) {
+      for (var j = 1; j < vinylPlayers.length; j++) {
+        vinylPlayers[j].remove();
       }
     }
   }

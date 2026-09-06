@@ -188,17 +188,23 @@
       document.body.style.position = '';
 
       // 4. Swap Content Nodes (Preserve audio player & bottom navigation)
-      var preservedPlayer = document.getElementById('global-music-player');
+      var preservedPlayer = document.getElementById('global-music-player') || document.querySelector('.celebration-player-btn');
       var preservedAudio = document.getElementById('bg-music') || window.__GTM_AUDIO__;
       var preservedNav = document.querySelector('.fixed-bottom-nav');
 
-      // Strip duplicate audio player or nav elements from incoming document before adoption
-      var incomingPlayers = newDoc.querySelectorAll('#global-music-player, #music-toggle, .celebration-player-btn, .global-audio-pill');
-      incomingPlayers.forEach(function(el) { el.remove(); });
-      var incomingAudios = newDoc.querySelectorAll('#bg-music, audio');
-      incomingAudios.forEach(function(el) { el.remove(); });
-      var incomingNavs = newDoc.querySelectorAll('.fixed-bottom-nav');
-      incomingNavs.forEach(function(el) { el.remove(); });
+      // Strip incoming duplicate singleton elements only if already preserved
+      if (preservedPlayer) {
+        var incomingGlobalPlayers = newDoc.querySelectorAll('#global-music-player, .celebration-player-btn');
+        incomingGlobalPlayers.forEach(function(el) { el.remove(); });
+      }
+      if (preservedAudio) {
+        var incomingAudios = newDoc.querySelectorAll('#bg-music, audio');
+        incomingAudios.forEach(function(el) { el.remove(); });
+      }
+      if (preservedNav) {
+        var incomingNavs = newDoc.querySelectorAll('.fixed-bottom-nav');
+        incomingNavs.forEach(function(el) { el.remove(); });
+      }
 
       // Remove existing non-preserved content nodes from body
       var nodesToRemove = [];
@@ -212,9 +218,14 @@
       // Insert new content nodes before the bottom navigation
       Array.from(newDoc.body.childNodes).forEach(function(node) {
         if (node.nodeType === 1) {
-          if (node.id === 'global-music-player' || node.id === 'bg-music' || node.classList.contains('fixed-bottom-nav') || node.classList.contains('celebration-player-btn')) return;
+          if (preservedPlayer && (node.id === 'global-music-player' || node.classList.contains('celebration-player-btn'))) return;
+          if (preservedAudio && (node.id === 'bg-music' || node.tagName === 'AUDIO')) return;
+          if (preservedNav && node.classList.contains('fixed-bottom-nav')) return;
         }
         var adopted = document.adoptNode(node);
+        if (node.id === 'global-music-player' || (node.classList && node.classList.contains('celebration-player-btn'))) {
+          preservedPlayer = adopted;
+        }
         if (preservedNav && preservedNav.parentNode === document.body) {
           document.body.insertBefore(adopted, preservedNav);
         } else {

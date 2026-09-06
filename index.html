@@ -139,81 +139,86 @@ body {
 
 /* ── 1. Edge-to-Edge Main Stage ── */
 .gxm-stage {
-  position: relative;
-  width: 100vw;
-  height: 100%;
-  height: 100dvh;
-  margin: 0 auto;
-  overflow: hidden;
-  background: #471618;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100% !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #471618 !important;
+  background-color: #471618 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
 }
 
+/* Content Box ends exactly at the top edge of fixed-bottom-nav */
 .gxm-content-box {
-  position: relative;
-  width: 100%;
-  max-width: 440px;
-  height: 100%;
-  margin: 0 auto;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  position: absolute !important;
+  top: 0 !important;
+  bottom: calc(56px + env(safe-area-inset-bottom, 0px)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  display: block !important;
 }
 
-/* ── 2. Scalable Inlined SVG Artwork Canvas (Full Bleed Edge-to-Edge) ── */
+/* ── 2. Scalable Inlined SVG Artwork Canvas (Pinned Just Above Tabs Bar via YMax) ── */
 .gxm-svg-canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  pointer-events: none;
-  z-index: 1;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
 }
 
-/* ── 3. Interactive Centerpiece: Vinyl Record Player ── */
+/* ── 3. Interactive Centerpiece: Universal Vinyl Record Player (Figma Node 55:683) ── */
 .gxm-vinyl-anchor {
-  position: absolute;
-  top: 42.12%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-  width: clamp(140px, 41vw, 180px);
-  height: clamp(140px, 41vw, 180px);
-  cursor: pointer;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  outline: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: absolute !important;
+  bottom: 62.52% !important;
+  left: 50% !important;
+  transform: translate(-50%, 50%) !important;
+  z-index: 20 !important;
+  width: clamp(140px, 41.5vw, 182px) !important;
+  height: clamp(140px, 41.5vw, 182px) !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  touch-action: manipulation !important;
+  outline: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
 }
 
 .gxm-vinyl-anchor:active {
-  transform: translate(-50%, -50%) scale(0.95);
+  transform: translate(-50%, 50%) scale(0.95) !important;
 }
 
 .gxm-vinyl-disc {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: block;
-  object-fit: contain;
-  box-shadow: 0 12px 28px rgba(35, 10, 15, 0.4), 0 4px 10px rgba(0, 0, 0, 0.2);
-  transform-origin: center center;
-  will-change: transform;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 50% !important;
+  display: block !important;
+  object-fit: contain !important;
+  box-shadow: 0 10px 24px rgba(35, 10, 15, 0.45), 0 4px 8px rgba(0, 0, 0, 0.25) !important;
+  transform-origin: center center !important;
+  will-change: transform !important;
 }
 
+/* Rotating vinyl effect ONLY when audio is actively playing */
 .gxm-vinyl-anchor.is-playing .gxm-vinyl-disc {
-  animation: spinVinyl 8s linear infinite;
+  animation: spinVinyl 8s linear infinite !important;
 }
 
 @keyframes spinVinyl {
@@ -221,125 +226,129 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Vinyl Center Action Button */
+/* Static Play/Pause center button: MUST NOT rotate */
 .gxm-vinyl-center-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #A71F23;
-  color: #FFFDF9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.4);
-  pointer-events: none;
-  transition: all 0.3s ease;
-  z-index: 11;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: #A71F23 !important;
+  color: #FFFDF9 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
+  pointer-events: none !important;
+  transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease !important;
+  z-index: 25 !important;
+}
+
+.gxm-vinyl-anchor:active .gxm-vinyl-center-btn {
+  transform: translate(-50%, -50%) scale(0.92) !important;
 }
 
 .gxm-play-icon {
-  width: 14px;
-  height: 14px;
-  margin-left: 2px;
-  fill: #FFFDF9;
-  display: block;
+  width: 15px !important;
+  height: 15px !important;
+  margin-left: 2px !important;
+  fill: #FFFDF9 !important;
+  display: block !important;
 }
 
 .gxm-pause-icon {
-  width: 14px;
-  height: 14px;
-  fill: #FFFDF9;
-  display: none;
+  width: 15px !important;
+  height: 15px !important;
+  fill: #FFFDF9 !important;
+  display: none !important;
 }
 
 .gxm-vinyl-anchor.is-playing .gxm-play-icon {
-  display: none;
+  display: none !important;
 }
 
 .gxm-vinyl-anchor.is-playing .gxm-pause-icon {
-  display: block;
+  display: block !important;
 }
 
 .gxm-vinyl-anchor.is-playing .gxm-vinyl-center-btn {
-  background: #87161A;
-  box-shadow: 0 0 16px rgba(167, 31, 35, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+  background: #87161A !important;
+  box-shadow: 0 0 16px rgba(167, 31, 35, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.4) !important;
 }
 
 /* ── 4. Calligraphy & Wedding Typography Lockup ── */
 .gxm-typography-lockup {
-  position: absolute;
-  top: 68.2%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 400px;
-  padding: 0 16px;
-  text-align: center;
-  z-index: 10;
-  pointer-events: none;
+  position: absolute !important;
+  bottom: 43.05% !important;
+  left: 50% !important;
+  transform: translate(-50%, 50%) !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  padding: 0 16px !important;
+  text-align: center !important;
+  z-index: 10 !important;
+  pointer-events: none !important;
 }
 
 .gxm-subtitle {
-  font-family: 'Spectral', Georgia, serif;
-  font-weight: 700;
-  font-size: clamp(12px, 3.2vw, 14px);
-  line-height: 1.2;
-  letter-spacing: 1.68px;
-  text-transform: uppercase;
-  color: #003C3F;
-  margin: 0 0 4px 0;
+  font-family: 'Spectral', Georgia, serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(12px, 3.2vw, 14px) !important;
+  line-height: 1.2 !important;
+  letter-spacing: 1.68px !important;
+  text-transform: uppercase !important;
+  color: #003C3F !important;
+  margin: 0 0 4px 0 !important;
 }
 
 .gxm-names {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
 }
 
 .gxm-name {
-  font-family: 'Kugile', 'Cinzel', serif;
-  font-size: clamp(38px, 11.5vw, 50px);
-  line-height: 0.95;
-  color: #A71F23;
-  font-weight: 400;
-  letter-spacing: -1.12px;
-  text-shadow: 0px 1px 2px #FFFDF9;
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: clamp(38px, 11.5vw, 50px) !important;
+  line-height: 0.95 !important;
+  color: #A71F23 !important;
+  font-weight: 400 !important;
+  letter-spacing: -1.12px !important;
+  text-shadow: 0px 1px 2px #FFFDF9 !important;
 }
 
 .gxm-name-row {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  margin-top: 2px;
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  margin-top: 2px !important;
 }
 
 .gxm-amp {
-  font-family: 'Snell Roundhand', 'SnellRoundhand', 'WindSong', cursive, serif;
-  font-size: clamp(38px, 11.5vw, 50px);
-  line-height: 0.95;
-  color: #A71F23;
-  font-weight: 400;
-  letter-spacing: -1px;
-  margin-right: 6px;
+  font-family: 'Snell Roundhand', 'SnellRoundhand', 'WindSong', cursive, serif !important;
+  font-size: clamp(38px, 11.5vw, 50px) !important;
+  line-height: 0.95 !important;
+  color: #A71F23 !important;
+  font-weight: 400 !important;
+  letter-spacing: -1px !important;
+  margin-right: 6px !important;
 }
 </style>
 </head>
-<body>
+<body class="home-page" data-page="gm">
 
   <!-- ── Main Keepsake Stage (Edge-to-Edge) ── -->
   <main class="gxm-stage" role="main">
 
     <div class="gxm-content-box">
       <!-- ── Inlined Background Artwork SVG ── -->
-      <svg class="gxm-svg-canvas" preserveAspectRatio="xMidYMid slice" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <svg class="gxm-svg-canvas" preserveAspectRatio="xMidYMax slice" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_554_2091)">
 <rect width="440" height="755" fill="#471618"/>
 <rect width="440" height="755" fill="url(#pattern0_554_2091)" fill-opacity="0.2" style="mix-blend-mode:plus-darker"/>
@@ -537,9 +546,9 @@ body {
 </svg>
 
 
-      <!-- ── Centerpiece Interactive Vinyl Player ── -->
+      <!-- ── Centerpiece Interactive Vinyl Player (Universal Audio Controller on Home) ── -->
       <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music">
-        <img src="images/home/vinyl_record.webp" alt="Wedding Vinyl Record" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
+        <img src="images/home/vinyl_record.webp" alt="Wedding Vinyl Record" class="gxm-vinyl-disc" width="182" height="182" fetchpriority="high">
         <div class="gxm-vinyl-center-btn" aria-hidden="true">
           <svg class="gxm-play-icon" viewBox="0 0 24 24">
             <path d="M8 5v14l11-7z"/>
