@@ -63,7 +63,7 @@
   "celebrations.sheet.mehndi.food": "Traditional snacks and dinner",
   "celebrations.sheet.mehndi.parking": "Parking will be available at venue",
   "celebrations.sheet.mehndi.location": "TBD",
-  "celebrations.sheet.mehndi.map_url": "TBD",
+  "celebrations.sheet.mehndi.map_url": "https://maps.app.goo.gl/XJaNLAvPYWWQnAZR8",
   "celebrations.sheet.wedding.assembly": "10:30 AM  Baraat assembly",
   "celebrations.sheet.wedding.rituals": "12:30 AM Traditional wedding rituals begin",
   "celebrations.sheet.wedding.attire": "Traditional Indian wedding wear (bright, festive colours encouraged. No all black and white please. Red and pink reserved for the bride.)",
@@ -73,8 +73,8 @@
   "celebrations.sheet.party.attire": "Indo-western, glamorous festive, or cocktail attire (encouraged for all! )",
   "celebrations.sheet.party.food": "Celebratory dinner spread and an open bar",
   "celebrations.sheet.party.parking": "Parking available at the venue",
-  "celebrations.sheet.party.location": "The Naini Retreat, Nainital",
-  "celebrations.sheet.party.map_url": "https://maps.google.com/?q=The+Naini+Retreat+Nainital",
+  "celebrations.sheet.party.location": "TBD",
+  "celebrations.sheet.party.map_url": "https://maps.app.goo.gl/XJaNLAvPYWWQnAZR8",
   "celebrations.sheet.reception.attire": "Traditional Indian glam and contemporary formals. Make sure to wear footwear you can dance in.",
   "celebrations.sheet.reception.food": "Celebratory dinner with endless appetizers, and a luxurious dinner spread.",
   "celebrations.sheet.reception.parking": "Parking available at venue",
@@ -135,8 +135,5 @@
   "invite.scene6.where": "Nainital · Uttarakhand",
   "invite.scene6.details_website": "our wedding website",
   "invite.ctl.skip": "Skip ›",
-  "invite.ctl.replay": "↻ Replay",
-  "home.hero.getting_married": "WE ARE GETTING MARRIED!",
-  "home.hero.bride": "GARIMA",
-  "home.hero.groom": "MRINAL"
+  "invite.ctl.replay": "↻ Replay"
 }
