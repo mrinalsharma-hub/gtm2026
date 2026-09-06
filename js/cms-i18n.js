@@ -172,7 +172,11 @@
     get: t,
     setLanguage: setLanguage,
     getLanguage: getCurrentLanguage,
-    applyDOM: applyDOM
+    applyDOM: applyDOM,
+    setDictionary: function(lang, dict) {
+      dictionaries[lang] = Object.assign({}, dict);
+      applyDOM(lang);
+    }
   };
 
 })();

@@ -735,19 +735,48 @@
       box-shadow: 0 0 0 3px rgba(138, 21, 27, 0.1);
     }
 
-    .live-preview-box {
-      padding: 8px 12px;
+    /* ── TRUE VISUAL WYSIWYG BOX ── */
+    .rich-editable-box {
+      width: 100%;
+      min-height: 48px;
+      padding: 12px 16px;
       border-radius: var(--radius-sm);
-      background: var(--surface-subtle);
-      border: 1px dashed var(--border);
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      min-height: 32px;
+      border: 1px solid var(--border-strong);
+      background: #FFFFFF;
+      font-size: 15px;
+      font-family: var(--font-body);
+      color: var(--text-main);
+      outline: none;
+      line-height: 1.6;
+      transition: all 0.15s ease;
+      word-break: break-word;
+      white-space: pre-wrap;
     }
-    .live-preview-box.empty {
-      font-style: italic;
+
+    .rich-editable-box:focus {
+      border-color: var(--crimson);
+      box-shadow: 0 0 0 3px rgba(138, 21, 27, 0.12);
+      background: #FFF;
+    }
+
+    .rich-editable-box:empty:before {
+      content: attr(data-placeholder);
       color: var(--text-light);
+      font-style: italic;
+      pointer-events: none;
+    }
+
+    .rich-editable-box strong, .rich-editable-box b {
+      font-weight: 700;
+    }
+
+    .rich-editable-box em, .rich-editable-box i {
+      font-style: italic;
+    }
+
+    .rich-editable-box .stay-bold-highlight {
+      font-weight: 700;
+      color: var(--crimson);
     }
 
     /* Toast Notification */
@@ -1165,8 +1194,6 @@
               sectionHasMatches = true;
               totalMatches++;
 
-              const isTextarea = k.type === 'textarea' || (val && val.length > 50);
-
               groupItemsHtml += `
                 <div class="item-card ${isHidden ? 'is-hidden' : ''} ${isModified ? 'is-modified' : ''}" id="card-${key}">
                   <div class="item-meta">
@@ -1193,37 +1220,33 @@
 
                   <div class="single-editor">
                     <div class="editor-toolbar-row">
-                      <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Text Content</span>
+                      <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Visual Content</span>
                       
-                      <!-- Rich Text Formatting & Color Tools -->
+                      <!-- Visual Formatting & Color Tools -->
                       <div class="format-bar">
-                        <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'em')"><em>I</em> Italic</button>
-                        <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'strong')"><strong>B</strong> Bold</button>
-                        <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'br')">↵ Break</button>
+                        <button type="button" class="fmt-btn" onmousedown="event.preventDefault()" onclick="StudioApp.formatRichText('${key}', 'bold')" title="Bold (Cmd+B / Ctrl+B)"><strong>B</strong> Bold</button>
+                        <button type="button" class="fmt-btn" onmousedown="event.preventDefault()" onclick="StudioApp.formatRichText('${key}', 'italic')" title="Italic (Cmd+I / Ctrl+I)"><em>I</em> Italic</button>
                         
                         <!-- Font Color Swatches -->
                         <div class="color-swatches" title="Pick font color for selected text">
                           <span style="font-size: 11px; font-weight: 600; color: var(--text-muted); margin-right: 2px;">🎨</span>
-                          <button class="swatch-btn" style="background:#A71F23;" title="Crimson (#A71F23)" onclick="StudioApp.applyColor('${key}', '#A71F23')"></button>
-                          <button class="swatch-btn" style="background:#C49A45;" title="Gold (#C49A45)" onclick="StudioApp.applyColor('${key}', '#C49A45')"></button>
-                          <button class="swatch-btn" style="background:#8A151B;" title="Maroon (#8A151B)" onclick="StudioApp.applyColor('${key}', '#8A151B')"></button>
-                          <button class="swatch-btn" style="background:#2D2926;" title="Charcoal (#2D2926)" onclick="StudioApp.applyColor('${key}', '#2D2926')"></button>
-                          <input type="color" class="color-picker-native" value="#A71F23" title="Custom color picker" onchange="StudioApp.applyColor('${key}', this.value)">
+                          <button type="button" class="swatch-btn" style="background:#A71F23;" title="Crimson (#A71F23)" onmousedown="event.preventDefault()" onclick="StudioApp.applyColorRich('${key}', '#A71F23')"></button>
+                          <button type="button" class="swatch-btn" style="background:#C49A45;" title="Gold (#C49A45)" onmousedown="event.preventDefault()" onclick="StudioApp.applyColorRich('${key}', '#C49A45')"></button>
+                          <button type="button" class="swatch-btn" style="background:#8A151B;" title="Maroon (#8A151B)" onmousedown="event.preventDefault()" onclick="StudioApp.applyColorRich('${key}', '#8A151B')"></button>
+                          <button type="button" class="swatch-btn" style="background:#2D2926;" title="Charcoal (#2D2926)" onmousedown="event.preventDefault()" onclick="StudioApp.applyColorRich('${key}', '#2D2926')"></button>
+                          <input type="color" class="color-picker-native" value="#A71F23" title="Custom color picker" onchange="StudioApp.applyColorRich('${key}', this.value)">
                         </div>
-
-                        <button class="fmt-btn" onclick="StudioApp.stripTags('${key}')" title="Remove all HTML tags & color styles">Clear Tags</button>
                       </div>
                     </div>
 
-                    ${isTextarea ? `
-                      <textarea class="field-input" rows="3" id="input-${key}" oninput="StudioApp.updateField('${key}', this.value)">${StudioApp.escapeHtml(val)}</textarea>
-                    ` : `
-                      <input type="text" class="field-input" id="input-${key}" value="${StudioApp.escapeAttr(val)}" oninput="StudioApp.updateField('${key}', this.value)">
-                    `}
-
-                    <div class="live-preview-box ${!val ? 'empty' : ''}" id="preview-${key}">
-                      ${val ? val : '<em>[Deleted / Hidden on site]</em>'}
-                    </div>
+                    <div class="rich-editable-box"
+                         id="editor-${key}"
+                         contenteditable="true"
+                         data-placeholder="Click to type content..."
+                         oninput="StudioApp.onRichInput('${key}')"
+                         onblur="StudioApp.onRichBlur('${key}')"
+                         onkeydown="StudioApp.onRichKeyDown(event, '${key}')"
+                         onpaste="StudioApp.onRichPaste(event, '${key}')">${val || ''}</div>
                   </div>
                 </div>
               `;
@@ -1266,21 +1289,10 @@
       updateField(key, value) {
         this.data[key] = value;
         
-        const prevEl = document.getElementById(`preview-${key}`);
-        if (prevEl) {
-          if (value) {
-            prevEl.classList.remove('empty');
-            prevEl.innerHTML = value;
-          } else {
-            prevEl.classList.add('empty');
-            prevEl.innerHTML = '<em>[Deleted / Hidden on site]</em>';
-          }
-        }
-
         const cardEl = document.getElementById(`card-${key}`);
         if (cardEl) {
-          const isHidden = !this.data[key];
-          const isModified = this.data[key] !== this.initialData[key];
+          const isHidden = !this.data[key] || this.data[key].trim() === '';
+          const isModified = this.data[key] !== (this.initialData[key] || '');
           cardEl.classList.toggle('is-hidden', isHidden);
           cardEl.classList.toggle('is-modified', isModified);
           const badge = cardEl.querySelector('.badge-status');
@@ -1310,55 +1322,79 @@
         this.pushToLivePreview();
       },
 
-      formatText(key, tag) {
-        const input = document.getElementById(`input-${key}`);
-        if (!input) return;
+      formatRichText(key, cmd) {
+        const editor = document.getElementById(`editor-${key}`);
+        if (!editor) return;
 
-        const start = input.selectionStart;
-        const end = input.selectionEnd;
-        const val = input.value;
-        let selected = val.substring(start, end);
-
-        let replacement = '';
-        if (tag === 'br') {
-          replacement = '<br>';
-        } else if (tag === 'em' || tag === 'strong') {
-          replacement = `<${tag}>${selected || 'text'}</${tag}>`;
+        if (document.activeElement !== editor) {
+          editor.focus();
         }
-
-        const newVal = val.substring(0, start) + replacement + val.substring(end);
-        input.value = newVal;
-        this.updateField(key, newVal);
-
-        input.focus();
-        input.setSelectionRange(start + (tag === 'br' ? 4 : tag.length + 2), start + replacement.length - (tag === 'br' ? 0 : tag.length + 3));
+        document.execCommand(cmd, false, null);
+        this.onRichInput(key);
       },
 
-      applyColor(key, colorHex) {
-        const input = document.getElementById(`input-${key}`);
-        if (!input) return;
+      applyColorRich(key, colorHex) {
+        const editor = document.getElementById(`editor-${key}`);
+        if (!editor) return;
 
-        const start = input.selectionStart;
-        const end = input.selectionEnd;
-        const val = input.value;
-        let selected = val.substring(start, end);
+        if (document.activeElement !== editor) {
+          editor.focus();
+        }
 
-        const replacement = `<span style="color: ${colorHex};">${selected || 'colored text'}</span>`;
-        const newVal = val.substring(0, start) + replacement + val.substring(end);
-        input.value = newVal;
-        this.updateField(key, newVal);
+        const sel = window.getSelection();
+        if (!sel || sel.rangeCount === 0 || sel.isCollapsed) {
+          this.showToast('Please select text inside the box first to apply color', 'warning');
+          return;
+        }
 
-        input.focus();
-        input.setSelectionRange(start + `<span style="color: ${colorHex};">`.length, start + replacement.length - 7);
+        const range = sel.getRangeAt(0);
+        if (!editor.contains(range.commonAncestorContainer)) {
+          this.showToast('Please select text inside the box', 'warning');
+          return;
+        }
+
+        try {
+          document.execCommand('styleWithCSS', false, true);
+          document.execCommand('foreColor', false, colorHex);
+        } catch(e) {
+          const span = document.createElement('span');
+          span.style.color = colorHex;
+          span.appendChild(range.extractContents());
+          range.insertNode(span);
+        }
+
+        this.onRichInput(key);
         this.showToast(`Applied color ${colorHex}!`, 'success');
       },
 
-      stripTags(key) {
-        const current = this.data[key] || '';
-        const stripped = current.replace(/<[^>]*>?/gm, '');
-        const input = document.getElementById(`input-${key}`);
-        if (input) input.value = stripped;
-        this.updateField(key, stripped);
+      onRichInput(key) {
+        const editor = document.getElementById(`editor-${key}`);
+        if (!editor) return;
+        let val = editor.innerHTML;
+        const clean = val.trim();
+        if (clean === '<br>' || clean === '<div><br></div>' || clean === '<p><br></p>' || clean === '&nbsp;' || clean === '') {
+          val = '';
+        }
+        this.updateField(key, val);
+      },
+
+      onRichBlur(key) {
+        this.onRichInput(key);
+      },
+
+      onRichKeyDown(e, key) {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          document.execCommand('insertLineBreak');
+          this.onRichInput(key);
+        }
+      },
+
+      onRichPaste(e, key) {
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+        document.execCommand('insertText', false, text);
+        this.onRichInput(key);
       },
 
       // Live Preview Management
