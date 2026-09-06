@@ -1197,13 +1197,7 @@
               groupItemsHtml += `
                 <div class="item-card ${isHidden ? 'is-hidden' : ''} ${isModified ? 'is-modified' : ''}" id="card-${key}">
                   <div class="item-meta">
-                    <div class="item-info">
-                      <span class="item-title">${k.label}</span>
-                      <span class="item-key-badge" onclick="navigator.clipboard.writeText('${key}'); StudioApp.showToast('Key copied: ${key}', 'success')" title="Click to copy key">${key}</span>
-                      <span class="badge-status ${isHidden ? 'hidden' : 'visible'}">
-                        ${isHidden ? '🚫 Deleted / Hidden' : '✅ Visible'}
-                      </span>
-                    </div>
+                    <span class="item-title">${k.label}</span>
 
                     <div class="item-actions">
                       ${isHidden ? `
@@ -1211,7 +1205,7 @@
                           ↩️ Undo Delete
                         </button>
                       ` : `
-                        <button class="btn-delete" onclick="StudioApp.deleteKey('${key}')" title="Completely delete content and hide from website">
+                        <button class="btn-delete" onclick="StudioApp.deleteKey('${key}')" title="Delete content and hide from website">
                           🗑️ Delete
                         </button>
                       `}
@@ -1220,7 +1214,9 @@
 
                   <div class="single-editor">
                     <div class="editor-toolbar-row">
-                      <span style="font-size: 11px; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Visual Content</span>
+                      <span class="badge-status ${isHidden ? 'hidden' : 'visible'}">
+                        ${isHidden ? '🚫 Not Visible' : '✅ Visible'}
+                      </span>
                       
                       <!-- Visual Formatting & Color Tools -->
                       <div class="format-bar">
@@ -1298,7 +1294,7 @@
           const badge = cardEl.querySelector('.badge-status');
           if (badge) {
             badge.className = `badge-status ${isHidden ? 'hidden' : 'visible'}`;
-            badge.textContent = isHidden ? '🚫 Deleted / Hidden' : '✅ Visible';
+            badge.textContent = isHidden ? '🚫 Not Visible' : '✅ Visible';
           }
         }
 
