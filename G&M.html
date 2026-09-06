@@ -3,13 +3,13 @@
 <head>
 <script>
 (function() {
-  function applyCream() {
+  function applyTheme() {
     var metas = document.querySelectorAll('meta[name="theme-color"]');
-    metas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
-    if (document.documentElement) document.documentElement.style.backgroundColor = '#FFEFD4';
-    if (document.body) document.body.style.backgroundColor = '#FFEFD4';
+    metas.forEach(function(m) { m.setAttribute('content', '#471618'); });
+    if (document.documentElement) document.documentElement.style.backgroundColor = '#471618';
+    if (document.body) document.body.style.backgroundColor = '#471618';
   }
-  applyCream();
+  applyTheme();
 
   try {
     sessionStorage.setItem('gtm2026_auth', 'true');
@@ -26,13 +26,13 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content">
-<meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
-<meta name="msapplication-navbutton-color" content="#FFEFD4">
+<meta name="theme-color" content="#471618" id="meta-theme-color">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#471618">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#471618">
+<meta name="msapplication-navbutton-color" content="#471618">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title data-i18n="global.title">Garima weds Mrinal · Nainital 2026</title>
@@ -76,8 +76,8 @@
 
 :root {
   color-scheme: light;
-  --theme-color: #FFEFD4;
-  --crimson-velvet: #4A0E17;
+  --theme-color: #471618;
+  --crimson-velvet: #471618;
   --geru-deep: #A71F23;
   --gold-antique: #D4AF37;
   --gold-nav: #C8963E;
@@ -113,8 +113,8 @@ html {
   width: 100% !important;
   height: 100% !important;
   height: 100dvh !important;
-  background: #FFEFD4 !important;
-  background-color: #FFEFD4 !important;
+  background: #471618 !important;
+  background-color: #471618 !important;
   overflow: hidden !important;
 }
 
@@ -126,8 +126,8 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: #FFEFD4 !important;
-  background-color: #FFEFD4 !important;
+  background: #471618 !important;
+  background-color: #471618 !important;
   font-family: 'Spectral', Georgia, serif;
   overflow: hidden !important;
   overscroll-behavior: none !important;
@@ -137,29 +137,42 @@ body {
   align-items: center;
 }
 
-/* ── 1. Main Viewport & Stage ── */
+/* ── 1. Edge-to-Edge Main Stage ── */
 .gxm-stage {
   position: relative;
-  width: 100%;
-  max-width: 440px;
+  width: 100vw;
   height: 100%;
   height: 100dvh;
   margin: 0 auto;
   overflow: hidden;
-  background: #FFEFD4;
+  background: #471618;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
-/* ── 2. Scalable Inlined SVG Artwork Canvas ── */
+.gxm-content-box {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: calc(100% - 84px);
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── 2. Scalable Inlined SVG Artwork Canvas (Full Bleed Edge-to-Edge) ── */
 .gxm-svg-canvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
   pointer-events: none;
   z-index: 1;
 }
@@ -171,8 +184,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
-  width: 180px;
-  height: 180px;
+  width: clamp(140px, 41vw, 180px);
+  height: clamp(140px, 41vw, 180px);
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
@@ -273,12 +286,12 @@ body {
 .gxm-subtitle {
   font-family: 'Spectral', Georgia, serif;
   font-weight: 700;
-  font-size: 14px;
+  font-size: clamp(12px, 3.2vw, 14px);
   line-height: 1.2;
   letter-spacing: 1.68px;
   text-transform: uppercase;
   color: #003C3F;
-  margin: 0 0 6px 0;
+  margin: 0 0 4px 0;
 }
 
 .gxm-names {
@@ -293,8 +306,8 @@ body {
 
 .gxm-name {
   font-family: 'Kugile', 'Cinzel', serif;
-  font-size: 50px;
-  line-height: 46px;
+  font-size: clamp(38px, 11.5vw, 50px);
+  line-height: 0.95;
   color: #A71F23;
   font-weight: 400;
   letter-spacing: -1.12px;
@@ -305,53 +318,20 @@ body {
   display: flex;
   align-items: baseline;
   justify-content: center;
-  margin-top: -2px;
+  margin-top: 2px;
 }
 
 .gxm-amp {
   font-family: 'Snell Roundhand', 'SnellRoundhand', 'WindSong', cursive, serif;
-  font-size: 50px;
-  line-height: 46px;
+  font-size: clamp(38px, 11.5vw, 50px);
+  line-height: 0.95;
   color: #A71F23;
   font-weight: 400;
   letter-spacing: -1px;
   margin-right: 6px;
 }
 
-/* ── 5. Responsive Adaptations ── */
-@media (max-width: 380px) {
-  .gxm-name, .gxm-amp {
-    font-size: 42px;
-    line-height: 38px;
-  }
-  .gxm-subtitle {
-    font-size: 12px;
-    letter-spacing: 1.4px;
-  }
-  .gxm-vinyl-anchor {
-    width: 155px;
-    height: 155px;
-  }
-}
-
-@media (max-height: 720px) {
-  .gxm-name, .gxm-amp {
-    font-size: 40px;
-    line-height: 36px;
-  }
-  .gxm-subtitle {
-    font-size: 11px;
-  }
-  .gxm-vinyl-anchor {
-    width: 150px;
-    height: 150px;
-  }
-  .gxm-typography-lockup {
-    top: 69%;
-  }
-}
-
-/* ── 6. Universal Bottom Navigation ── */
+/* ── 5. Universal Bottom Navigation ── */
 nav.universal-bottom-nav {
   position: fixed !important;
   bottom: 0 !important;
@@ -361,11 +341,11 @@ nav.universal-bottom-nav {
   height: 84px !important;
   min-height: 84px !important;
   max-height: 84px !important;
-  background: rgba(255, 239, 212, 0.94) !important;
+  background: rgba(255, 239, 212, 0.96) !important;
   backdrop-filter: blur(16px) saturate(180%) !important;
   -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   border-top: 1px solid rgba(200, 150, 62, 0.25) !important;
-  box-shadow: 0 -4px 20px rgba(74, 14, 23, 0.06) !important;
+  box-shadow: 0 -4px 20px rgba(74, 14, 23, 0.12) !important;
   z-index: 100 !important;
   display: flex !important;
   justify-content: center !important;
@@ -445,13 +425,14 @@ nav.universal-bottom-nav {
 </head>
 <body>
 
-  <!-- ── Main Keepsake Stage ── -->
+  <!-- ── Main Keepsake Stage (Edge-to-Edge) ── -->
   <main class="gxm-stage" role="main">
 
-    <!-- ── Inlined Background Artwork SVG ── -->
-    <svg class="gxm-svg-canvas" preserveAspectRatio="xMidYMid slice" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <div class="gxm-content-box">
+      <!-- ── Inlined Background Artwork SVG ── -->
+      <svg class="gxm-svg-canvas" preserveAspectRatio="xMidYMid slice" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_554_2091)">
-<rect width="440" height="755" fill="#FFEFD4"/>
+<rect width="440" height="755" fill="#471618"/>
 <rect width="440" height="755" fill="url(#pattern0_554_2091)" fill-opacity="0.2" style="mix-blend-mode:plus-darker"/>
 <path d="M0 0H445V171H0V0Z" fill="url(#pattern2_554_2091)"/>
 <rect x="-2" y="134" width="445" height="621" fill="url(#pattern3_554_2091)"/>
@@ -647,29 +628,30 @@ nav.universal-bottom-nav {
 </svg>
 
 
-    <!-- ── Centerpiece Interactive Vinyl Player ── -->
-    <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music">
-      <img src="images/home/vinyl_record.webp" alt="Wedding Vinyl Record" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
-      <div class="gxm-vinyl-center-btn" aria-hidden="true">
-        <svg class="gxm-play-icon" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-        <svg class="gxm-pause-icon" viewBox="0 0 24 24">
-          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-        </svg>
-      </div>
-    </div>
-
-    <!-- ── Calligraphy & Wedding Typography Lockup ── -->
-    <div class="gxm-typography-lockup">
-      <p class="gxm-subtitle" data-i18n="home.hero.getting_married">WE ARE GETTING MARRIED!</p>
-      <h1 class="gxm-names">
-        <span class="gxm-name gxm-garima" data-i18n="home.hero.bride">GARIMA</span>
-        <div class="gxm-name-row">
-          <span class="gxm-amp">&amp;</span>
-          <span class="gxm-name gxm-mrinal" data-i18n="home.hero.groom">MRINAL</span>
+      <!-- ── Centerpiece Interactive Vinyl Player ── -->
+      <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music">
+        <img src="images/home/vinyl_record.webp" alt="Wedding Vinyl Record" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
+        <div class="gxm-vinyl-center-btn" aria-hidden="true">
+          <svg class="gxm-play-icon" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          <svg class="gxm-pause-icon" viewBox="0 0 24 24">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
         </div>
-      </h1>
+      </div>
+
+      <!-- ── Calligraphy & Wedding Typography Lockup ── -->
+      <div class="gxm-typography-lockup">
+        <p class="gxm-subtitle" data-i18n="home.hero.getting_married">WE ARE GETTING MARRIED!</p>
+        <h1 class="gxm-names">
+          <span class="gxm-name gxm-garima" data-i18n="home.hero.bride">GARIMA</span>
+          <div class="gxm-name-row">
+            <span class="gxm-amp">&amp;</span>
+            <span class="gxm-name gxm-mrinal" data-i18n="home.hero.groom">MRINAL</span>
+          </div>
+        </h1>
+      </div>
     </div>
 
   </main>
@@ -759,7 +741,7 @@ nav.universal-bottom-nav {
     window.addEventListener('gtm:page-loaded', updateCountdownTicker);
   })();
 
-  /* ── Theme Color Enforcement (Cream Theme #FFEFD4) ── */
+  /* ── Theme Color Enforcement (Deep Burgundy #471618) ── */
   document.addEventListener('DOMContentLoaded', function() {
     function enforceThemeColor() {
       if (window.ensureThemeColor) {
@@ -768,13 +750,13 @@ nav.universal-bottom-nav {
       }
       var metas = document.querySelectorAll('meta[name="theme-color"]');
       metas.forEach(function(m) {
-        m.setAttribute('content', '#FFEFD4');
+        m.setAttribute('content', '#471618');
       });
       if (document.documentElement) {
-        document.documentElement.style.backgroundColor = '#FFEFD4';
+        document.documentElement.style.backgroundColor = '#471618';
       }
       if (document.body) {
-        document.body.style.backgroundColor = '#FFEFD4';
+        document.body.style.backgroundColor = '#471618';
       }
     }
 
