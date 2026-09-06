@@ -42,7 +42,8 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=26300">
 
 <!-- ── Resource Preloads ── -->
-<link rel="preload" as="image" href="images/home/vinyl_record.png?v=26300" type="image/png" fetchpriority="high">
+<link rel="preload" as="image" href="images/home/vinyl_record.png?v=26400" type="image/png" fetchpriority="high">
+<link rel="preload" as="image" href="images/player_figma_play.svg?v=24700" type="image/svg+xml">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
 <link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
@@ -50,7 +51,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=WindSong&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=26300">
+<link rel="stylesheet" href="css/site.css?v=26400">
 
 <style>
 @font-face {
@@ -203,7 +204,7 @@ body {
   z-index: 1 !important;
 }
 
-/* ── 3. Interactive Centerpiece: Universal Vinyl Record Player (Figma Node 55:683) ── */
+/* ── 3. Interactive Centerpiece: Big Vinyl Record Player with Integrated Royal Medallion (Figma Node 55:683 & 26:627) ── */
 .gxm-vinyl-anchor {
   position: absolute !important;
   top: 37.48% !important;
@@ -253,6 +254,8 @@ body {
 }
 
 .gxm-vinyl-disc {
+  position: absolute !important;
+  inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   display: block !important;
@@ -262,6 +265,7 @@ body {
   box-shadow: none !important;
   transform-origin: center center !important;
   will-change: transform !important;
+  pointer-events: none !important;
 }
 
 /* Rotating vinyl effect ONLY when audio is actively playing */
@@ -274,50 +278,59 @@ body {
   to { transform: rotate(360deg); }
 }
 
-/* Static Center Play/Pause button overlay */
-.gxm-vinyl-center-btn {
+/* Integrated Central Royal Medallion (Figma Node 26:627 seamless inset inside Big Vinyl Player) */
+.gxm-vinyl-medallion-center {
   position: absolute !important;
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
-  width: 32px !important;
-  height: 32px !important;
+  width: 48.5% !important;
+  height: 48.5% !important;
   border-radius: 50% !important;
-  background: transparent !important;
-  border: none !important;
+  pointer-events: none !important;
+  z-index: 25 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  pointer-events: none !important;
-  z-index: 25 !important;
-  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease !important;
 }
 
-.gxm-play-icon {
-  display: none !important;
-}
-
-.gxm-pause-icon {
-  width: 14px !important;
-  height: 14px !important;
-  fill: #87161A !important;
-  display: none !important;
-}
-
-.gxm-vinyl-anchor.is-playing .gxm-vinyl-center-btn {
-  background: #EED9B3 !important;
-  border: 1px solid #D4AF37 !important;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25) !important;
-}
-
-.gxm-vinyl-anchor.is-playing .gxm-pause-icon {
+.gxm-vinyl-medallion-center .player-state-img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
   display: block !important;
+  pointer-events: none !important;
+  user-select: none !important;
+  -webkit-user-select: none !important;
+  transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1), transform 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  -webkit-transition: opacity 0.24s cubic-bezier(0.16, 1, 0.3, 1), -webkit-transform 0.24s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* ── 4. Calligraphy & Wedding Typography Lockup ── */
+.gxm-vinyl-medallion-center .player-img-play {
+  opacity: 1 !important;
+  transform: scale(1) translateZ(0) !important;
+}
+
+.gxm-vinyl-medallion-center .player-img-pause {
+  opacity: 0 !important;
+  transform: scale(0.88) translateZ(0) !important;
+}
+
+.gxm-vinyl-anchor.is-playing .gxm-vinyl-medallion-center .player-img-play {
+  opacity: 0 !important;
+  transform: scale(0.88) translateZ(0) !important;
+}
+
+.gxm-vinyl-anchor.is-playing .gxm-vinyl-medallion-center .player-img-pause {
+  opacity: 1 !important;
+  transform: scale(1) translateZ(0) !important;
+}
+
+/* ── 4. Calligraphy & Wedding Typography Lockup (Expanded 40px gap below Vinyl) ── */
 .gxm-typography-lockup {
   position: absolute !important;
-  top: 51% !important;
+  top: calc(51% + 40px) !important; /* EXACT +40px gap added below Vinyl disc */
   left: 50% !important;
   transform: translateX(-50%) !important;
   width: 100% !important;
@@ -677,16 +690,12 @@ body {
 </svg>
 
 
-        <!-- ── Centerpiece Interactive Vinyl Player (Universal Audio Controller on Home) ── -->
+        <!-- ── Centerpiece Interactive Big Vinyl Player with Integrated Royal Medallion (Universal Audio Controller on Home) ── -->
         <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music" data-i18n-attr="aria-label:home.hero.tap_play">
-          <img src="images/home/vinyl_record.png?v=26300" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
-          <div class="gxm-vinyl-center-btn" aria-hidden="true">
-            <svg class="gxm-play-icon" viewBox="0 0 24 24">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            <svg class="gxm-pause-icon" viewBox="0 0 24 24">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
+          <img src="images/home/vinyl_record.png?v=26400" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
+          <div class="gxm-vinyl-medallion-center" aria-hidden="true">
+            <img src="images/player_figma_play.svg?v=24700" alt="" class="player-state-img player-img-play" width="86" height="86">
+            <img src="images/player_figma_pause.svg?v=24700" alt="" class="player-state-img player-img-pause" width="86" height="86">
           </div>
         </div>
 

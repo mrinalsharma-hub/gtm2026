@@ -2351,6 +2351,12 @@ body[data-page="gm"] #global-music-player {
   display: none !important;
 }
 
+/* Ensure floating medallion player is ALWAYS visible on all other tabs */
+body:not(.home-page):not([data-page="gm"]) .celebration-player-btn,
+body:not(.home-page):not([data-page="gm"]) #global-music-player {
+  display: block !important;
+}
+
 .celebration-player-btn:hover,
 .global-audio-pill:hover {
   filter: drop-shadow(0 4px 14px rgba(167, 31, 35, 0.22)) !important;

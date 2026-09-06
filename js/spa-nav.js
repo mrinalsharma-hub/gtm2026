@@ -182,8 +182,30 @@
         document.head.appendChild(cloneStyle);
       });
 
-      // 3. Update Body styling / classes & reset modal overflows
-      document.body.className = newDoc.body.className;
+      // 3. Update Body attributes, styling, classes & reset modal overflows
+      var pageKey = 'gm';
+      if (targetNorm.indexOf('stay') !== -1) pageKey = 'stay';
+      else if (targetNorm.indexOf('celebrat') !== -1) pageKey = 'celebrations';
+      else if (targetNorm.indexOf('rsvp') !== -1) pageKey = 'rsvp';
+
+      // Remove stale attributes that shouldn't persist
+      Array.from(document.body.attributes).forEach(function(attr) {
+        if (attr.name !== 'style' && !newDoc.body.hasAttribute(attr.name)) {
+          document.body.removeAttribute(attr.name);
+        }
+      });
+      // Copy all attributes from newDoc.body
+      Array.from(newDoc.body.attributes).forEach(function(attr) {
+        document.body.setAttribute(attr.name, attr.value);
+      });
+      // Explicitly set data-page attribute
+      document.body.setAttribute('data-page', pageKey);
+      if (pageKey === 'gm') {
+        document.body.classList.add('home-page');
+      } else {
+        document.body.classList.remove('home-page');
+        document.body.classList.add(pageKey + '-page');
+      }
       document.body.style.overflow = '';
       document.body.style.position = '';
 
