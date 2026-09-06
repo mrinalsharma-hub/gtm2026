@@ -1261,10 +1261,10 @@ body.sheet-modal-open .fixed-bottom-nav {
       'card-mehndi': {
         eyebrow: getCmsText('celebrations.mehndi.eyebrow', 'FRI 20 NOV | 7:30PM'),
         title: getCmsText('celebrations.mehndi.title', 'Mehndi'),
-        mapUrl: 'https://maps.google.com/?q=The+Balrampur+House+Nainital',
+        mapUrl: getCmsText('celebrations.sheet.mehndi.map_url', 'https://maps.google.com/?q=The+Balrampur+House+Nainital'),
         details: [
           { icon: 'attire', text: getCmsText('celebrations.sheet.mehndi.attire', 'Playful causals or festive ethnic attire') },
-          { icon: 'food', text: getCmsText('celebrations.sheet.mehndi.food', 'Traditional Pahadi snacks & high dinner') },
+          { icon: 'food', text: getCmsText('celebrations.sheet.mehndi.food', 'Traditional snacks and dinner') },
           { icon: 'parking', text: getCmsText('celebrations.sheet.mehndi.parking', 'Parking will be available at venue') },
           { icon: 'pin', text: getCmsText('celebrations.sheet.mehndi.location', 'The Balrampur House, Nainital') }
         ]
@@ -1272,7 +1272,7 @@ body.sheet-modal-open .fixed-bottom-nav {
       'card-wedding': {
         eyebrow: getCmsText('celebrations.wedding.eyebrow', 'SAT 21 NOV | 10:30 AM'),
         title: getCmsText('celebrations.wedding.title', 'Wedding'),
-        mapUrl: 'https://maps.google.com/?q=Balrampur+House+Nainital',
+        mapUrl: getCmsText('celebrations.sheet.wedding.map_url', 'https://maps.google.com/?q=Balrampur+House+Nainital'),
         details: [
           { icon: 'clock', text: getCmsText('celebrations.sheet.wedding.assembly', '10:30 AM | Baraat assembly & welcome') },
           { icon: 'seat', text: getCmsText('celebrations.sheet.wedding.rituals', '11:30 AM | Traditional kumaoni wedding rituals begin') },
@@ -1284,7 +1284,7 @@ body.sheet-modal-open .fixed-bottom-nav {
       'card-party': {
         eyebrow: getCmsText('celebrations.party.eyebrow', 'SAT 21 NOV | 7:00 PM'),
         title: getCmsText('celebrations.party.title', 'Evening Party'),
-        mapUrl: 'https://maps.google.com/?q=The+Naini+Retreat+Nainital',
+        mapUrl: getCmsText('celebrations.sheet.party.map_url', 'https://maps.google.com/?q=The+Naini+Retreat+Nainital'),
         details: [
           { icon: 'attire', text: getCmsText('celebrations.sheet.party.attire', 'Indo-western, glamorous festive, or cocktail attire (encouraged for all! )') },
           { icon: 'food', text: getCmsText('celebrations.sheet.party.food', 'Celebratory dinner spread and an open bar') },
@@ -1295,7 +1295,7 @@ body.sheet-modal-open .fixed-bottom-nav {
       'card-reception': {
         eyebrow: getCmsText('celebrations.reception.eyebrow', 'MON 23 NOV | 7:00 PM'),
         title: getCmsText('celebrations.reception.title', 'Reception'),
-        mapUrl: 'https://maps.app.goo.gl/4TfqbwzTNBG7aSrv7',
+        mapUrl: getCmsText('celebrations.sheet.reception.map_url', 'https://maps.app.goo.gl/4TfqbwzTNBG7aSrv7'),
         details: [
           { icon: 'attire', text: getCmsText('celebrations.sheet.reception.attire', 'Traditional Indian glam and contemporary formals. Make sure to wear footwear you can dance in.') },
           { icon: 'food', text: getCmsText('celebrations.sheet.reception.food', 'Celebratory dinner with endless appetizers, and a luxurious dinner spread.') },
@@ -1319,11 +1319,19 @@ body.sheet-modal-open .fixed-bottom-nav {
     var data = getEventData(eventId);
     if (eyebrowEl) eyebrowEl.textContent = data.eyebrow;
     if (titleEl) titleEl.innerHTML = data.title;
-    if (mapBtn) mapBtn.href = data.mapUrl;
+    if (mapBtn) {
+      if (data.mapUrl && data.mapUrl.trim()) {
+        mapBtn.href = data.mapUrl;
+        mapBtn.style.display = '';
+      } else {
+        mapBtn.style.display = 'none';
+      }
+    }
 
     if (listEl) {
       listEl.innerHTML = '';
       data.details.forEach(function(item) {
+        if (!item.text || !item.text.trim()) return;
         var li = document.createElement('li');
         li.className = 'sheet-detail-item';
         li.innerHTML = '<span class="sheet-detail-icon-wrap" aria-hidden="true">' + (iconSvgs[item.icon] || '') + '</span><span class="sheet-detail-text">' + item.text + '</span>';
