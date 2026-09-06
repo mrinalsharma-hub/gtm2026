@@ -1,10 +1,7 @@
-/* ── GTM2026 Dynamic CMS & Localization Engine (Stale-While-Revalidate) ── */
+/* ── GTM2026 Localization & CMS Engine (Static Compiled Bundles) ── */
 (function() {
   'use strict';
 
-  // Configurable Google Apps Script Web App Endpoint for Live Sheet Sync
-  var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwXdtVbvzTwRlecd-v6Q1ayXSyuuKpW3vS_PfSyfdst_JFgm7g7L_dD-LwsZVQvKV79/exec';
-  var STORAGE_KEY_PREFIX = 'gtm2026_cms_';
   var CURRENT_LANG_KEY = 'gtm2026_lang';
   var DEFAULT_LANG = 'en';
 
@@ -21,6 +18,9 @@
     try {
       var saved = localStorage.getItem(CURRENT_LANG_KEY);
       if (saved && SUPPORTED_LANGS.indexOf(saved) !== -1) return saved;
+      var params = new URLSearchParams(window.location.search);
+      var urlLang = params.get('lang');
+      if (urlLang && SUPPORTED_LANGS.indexOf(urlLang) !== -1) return urlLang;
     } catch(e) {}
     return DEFAULT_LANG;
   }
@@ -36,7 +36,7 @@
     window.dispatchEvent(event);
   }
 
-  // Load static pre-baked dictionary bundle (baseline fallback)
+  // Load static pre-baked dictionary bundle
   function loadPrebaked(lang) {
     var prefix = window.location.pathname.indexOf('/invite/') !== -1 ? '../' : '';
     return fetch(prefix + 'locales/' + lang + '.json?v=' + Date.now())
@@ -45,49 +45,11 @@
         throw new Error('Prebaked load failed');
       })
       .then(function(data) {
-        // Prebaked data is the baseline; any cached/live edits in dictionaries[lang] take precedence
-        dictionaries[lang] = Object.assign({}, data, dictionaries[lang]);
+        dictionaries[lang] = Object.assign({}, data);
         return dictionaries[lang];
       })
       .catch(function() {
         return dictionaries[lang] || {};
-      });
-  }
-
-  // Load cached live dictionary from LocalStorage
-  function loadCached(lang) {
-    try {
-      var cached = localStorage.getItem(STORAGE_KEY_PREFIX + lang);
-      if (cached) {
-        var parsed = JSON.parse(cached);
-        dictionaries[lang] = Object.assign({}, dictionaries[lang], parsed);
-      }
-    } catch(e) {}
-  }
-
-  // Background Live Sync from Google Apps Script endpoint
-  function syncLiveFromSheet() {
-    if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf('PLACEHOLDER') !== -1) return;
-
-    fetch(APPS_SCRIPT_URL + '?lang=all&_t=' + Date.now())
-      .then(function(res) {
-        if (res.ok) return res.json();
-        throw new Error('Sheet fetch failed');
-      })
-      .then(function(payload) {
-        if (!payload) return;
-        SUPPORTED_LANGS.forEach(function(l) {
-          if (payload[l] && typeof payload[l] === 'object') {
-            dictionaries[l] = Object.assign({}, dictionaries[l], payload[l]);
-            try {
-              localStorage.setItem(STORAGE_KEY_PREFIX + l, JSON.stringify(payload[l]));
-            } catch(e) {}
-          }
-        });
-        applyDOM();
-      })
-      .catch(function() {
-        // Silently fallback to cached/prebaked data without breaking UX
       });
   }
 
@@ -184,15 +146,9 @@
     var lang = getCurrentLanguage();
     document.documentElement.setAttribute('lang', lang);
 
-    // 1. Instant hydration from LocalStorage cache
-    SUPPORTED_LANGS.forEach(loadCached);
-    applyDOM(lang);
-
-    // 2. Fetch pre-baked bundles
+    // Fetch pre-baked bundles and apply
     Promise.all(SUPPORTED_LANGS.map(loadPrebaked)).then(function() {
-      applyDOM();
-      // 3. Silent background check against Google Sheets CMS
-      syncLiveFromSheet();
+      applyDOM(lang);
     });
   }
 
@@ -216,12 +172,7 @@
     get: t,
     setLanguage: setLanguage,
     getLanguage: getCurrentLanguage,
-    applyDOM: applyDOM,
-    syncLive: syncLiveFromSheet,
-    setEndpointUrl: function(url) {
-      APPS_SCRIPT_URL = url;
-      syncLiveFromSheet();
-    }
+    applyDOM: applyDOM
   };
 
 })();
