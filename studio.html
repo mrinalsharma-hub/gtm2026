@@ -1220,6 +1220,7 @@
                       
                       <!-- Visual Formatting & Color Tools -->
                       <div class="format-bar">
+                        <button type="button" class="fmt-btn" onmousedown="event.preventDefault()" onclick="StudioApp.insertBreak('${key}')" title="Insert line break (↵ Break)">↵ Break</button>
                         <button type="button" class="fmt-btn" onmousedown="event.preventDefault()" onclick="StudioApp.formatRichText('${key}', 'bold')" title="Bold (Cmd+B / Ctrl+B)"><strong>B</strong> Bold</button>
                         <button type="button" class="fmt-btn" onmousedown="event.preventDefault()" onclick="StudioApp.formatRichText('${key}', 'italic')" title="Italic (Cmd+I / Ctrl+I)"><em>I</em> Italic</button>
                         
@@ -1316,6 +1317,22 @@
         this.showToast(`Restored: ${key}`, 'success');
         this.updateGitStatus();
         this.pushToLivePreview();
+      },
+
+      insertBreak(key) {
+        const editor = document.getElementById(`editor-${key}`);
+        if (!editor) return;
+
+        if (document.activeElement !== editor) {
+          editor.focus();
+        }
+
+        try {
+          document.execCommand('insertLineBreak');
+        } catch(e) {
+          document.execCommand('insertHTML', false, '<br>');
+        }
+        this.onRichInput(key);
       },
 
       formatRichText(key, cmd) {
