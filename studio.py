@@ -25,6 +25,15 @@ class StudioHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=BASE_DIR, **kwargs)
 
+    def translate_path(self, path):
+        path = urllib.parse.unquote(path)
+        path = path.split('?', 1)[0].split('#', 1)[0]
+        words = [w for w in path.split('/') if w and w != '..']
+        res = BASE_DIR
+        for word in words:
+            res = os.path.join(res, word)
+        return res
+
     def do_GET(self):
         parsed = urllib.parse.urlparse(self.path)
         if parsed.path in ('/', '/studio', '/admin', '/cms'):
