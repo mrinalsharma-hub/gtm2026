@@ -6,7 +6,7 @@
   <title>GTM 2026 · Content & Translation Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --crimson: #8A151B;
@@ -54,6 +54,74 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    /* ── AUTH LOCK SCREEN ── */
+    .auth-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .auth-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .auth-logo {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+      color: #FFF;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(138, 21, 27, 0.25);
+    }
+
+    .auth-card h2 {
+      font-family: var(--font-heading);
+      font-size: 18px;
+      color: var(--crimson);
+      margin-bottom: 6px;
+    }
+
+    .auth-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .auth-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      text-align: center;
+      letter-spacing: 2px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-strong);
+      margin-bottom: 16px;
+      outline: none;
+    }
+    .auth-input:focus {
+      border-color: var(--crimson);
+      box-shadow: 0 0 0 3px rgba(138, 21, 27, 0.1);
     }
 
     /* ── TOP APP BAR ── */
@@ -733,7 +801,7 @@
       background: var(--surface);
       border-radius: var(--radius-lg);
       box-shadow: var(--shadow-lg);
-      max-width: 500px;
+      max-width: 520px;
       width: 100%;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -774,7 +842,6 @@
       gap: 10px;
     }
 
-    /* Highlight styles inside preview */
     .stay-bold-highlight {
       color: var(--crimson);
       font-weight: 700;
@@ -782,6 +849,20 @@
   </style>
 </head>
 <body>
+
+  <!-- Passcode Screen (Secures public access) -->
+  <div class="auth-overlay" id="authOverlay">
+    <div class="auth-card">
+      <div class="auth-logo">G&M</div>
+      <h2>Content & Translation Studio</h2>
+      <p>Enter Passcode to access wedding CMS</p>
+      <form onsubmit="StudioApp.checkAuth(event)">
+        <input type="password" id="authPasscode" class="auth-input" placeholder="••••" autofocus required>
+        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 12px;">Enter Studio</button>
+      </form>
+      <p style="margin-top: 16px; font-size: 11px; color: var(--text-light);">Authorized for inbox.mrinal@gmail.com</p>
+    </div>
+  </div>
 
   <!-- Top App Header -->
   <header class="app-header">
@@ -797,19 +878,23 @@
       <div class="header-actions">
         <div class="status-badge" id="statusBadge">
           <span class="status-dot"></span>
-          <span id="statusText">Checking status...</span>
+          <span id="statusText">Ready</span>
         </div>
 
         <button class="btn btn-secondary" id="btnTogglePreview" onclick="StudioApp.togglePreview()">
           👁️ <span id="previewBtnLabel">Live Preview</span>
         </button>
 
-        <button class="btn btn-secondary" onclick="StudioApp.saveDraft()" title="Save edits to JSON files">
+        <button class="btn btn-secondary" onclick="StudioApp.saveDraft()" title="Save changes">
           💾 Save Draft
         </button>
 
-        <button class="btn btn-publish" onclick="StudioApp.promptPublish()" title="Commit and publish live to GitHub">
+        <button class="btn btn-publish" onclick="StudioApp.promptPublish()" title="Publish to live website">
           🚀 Publish Live
+        </button>
+
+        <button class="btn btn-secondary" onclick="StudioApp.openSettings()" title="GitHub Token Settings">
+          ⚙️
         </button>
       </div>
     </div>
@@ -898,26 +983,55 @@
   <div class="modal-overlay" id="publishModal">
     <div class="modal-card">
       <div class="modal-header">
-        <span>🚀 Publish to Live Site</span>
-        <button onclick="StudioApp.closeModal()" style="background:none;border:none;font-size:16px;cursor:pointer;">✕</button>
+        <span>🚀 Publish Live to Website</span>
+        <button onclick="StudioApp.closeModal('publishModal')" style="background:none;border:none;font-size:16px;cursor:pointer;">✕</button>
       </div>
       <div class="modal-body">
-        <p>This action will compile all <strong>English and Hindi</strong> changes, create a Git commit, and push directly to GitHub Pages.</p>
+        <p>This action will publish all <strong>English and Hindi</strong> changes directly to <strong>www.gtm2026.com</strong>.</p>
         <br>
         <label style="font-weight:600; display:block; margin-bottom: 4px;">Commit Note (optional):</label>
-        <input type="text" id="publishCommitMsg" class="field-input" placeholder="e.g. Update wedding card timings and travel advice">
+        <input type="text" id="publishCommitMsg" class="field-input" placeholder="e.g. Updated wedding card details and travel notes">
         <br><br>
-        <p style="font-size: 12px; color: var(--text-muted);">Changes will be immediately live and deterministic with zero runtime caching races.</p>
+        <div id="githubTokenPrompt" style="display:none; background: var(--surface-subtle); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border);">
+          <label style="font-weight:600; display:block; margin-bottom: 4px;">GitHub Personal Access Token (for direct web publish):</label>
+          <input type="password" id="githubTokenInput" class="field-input" placeholder="ghp_... or github_pat_...">
+          <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Saved securely in your browser so you only enter it once.</p>
+        </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-secondary" onclick="StudioApp.closeModal()">Cancel</button>
-        <button class="btn btn-publish" onclick="StudioApp.executePublish()">Confirm & Publish Live</button>
+        <button class="btn btn-secondary" onclick="StudioApp.downloadBackup()">📥 Export Backup JSON</button>
+        <button class="btn btn-publish" onclick="StudioApp.executePublish()">Publish Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="modal-overlay" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span>⚙️ Studio Settings</span>
+        <button onclick="StudioApp.closeModal('settingsModal')" style="background:none;border:none;font-size:16px;cursor:pointer;">✕</button>
+      </div>
+      <div class="modal-body">
+        <label style="font-weight:600; display:block; margin-bottom: 4px;">GitHub Personal Access Token (PAT):</label>
+        <input type="password" id="settingsGithubToken" class="field-input" placeholder="ghp_... or github_pat_...">
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Allows direct 1-click publishing from any browser without running a local server.</p>
+        <br>
+        <button class="btn btn-secondary" onclick="StudioApp.downloadBackup()" style="width: 100%;">
+          📥 Download Current Bundles (en.json & hi.json)
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="StudioApp.closeModal('settingsModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="StudioApp.saveSettings()">Save Settings</button>
       </div>
     </div>
   </div>
 
   <script>
     const SCHEMA = {"sections": [{"id": "celebrations", "title": "Celebrations & Events", "icon": "🏰", "page": "celebrations.html", "groups": [{"title": "Header & Countdown Banner", "icon": "📜", "keys": [{"key": "celebrations.header.the", "label": "Header Pre-title (The / शुभ)", "type": "text"}, {"key": "celebrations.header.title", "label": "Main Header Title", "type": "rich"}, {"key": "celebrations.header.location", "label": "Event Location Subtitle", "type": "text"}, {"key": "celebrations.countdown.suffix", "label": "Countdown Suffix (DAYS TO GO)", "type": "text"}, {"key": "celebrations.countdown.today", "label": "Countdown Today Message", "type": "text"}]}, {"title": "Mehndi Ceremony Card", "icon": "🌺", "keys": [{"key": "celebrations.mehndi.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.mehndi.title", "label": "Card Title (Mehndi)", "type": "text"}, {"key": "celebrations.mehndi.body", "label": "Card Description & Story", "type": "textarea"}, {"key": "celebrations.mehndi.optional", "label": "Attendance Tag (Optional)", "type": "text"}]}, {"title": "Wedding Ceremony Card", "icon": "💍", "keys": [{"key": "celebrations.wedding.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.wedding.title", "label": "Card Title (Wedding)", "type": "text"}, {"key": "celebrations.wedding.body", "label": "Card Description", "type": "textarea"}, {"key": "celebrations.wedding.venue_label", "label": "Front Venue Label (Blank = Hidden)", "type": "text"}, {"key": "celebrations.wedding.venue_name", "label": "Front Venue Name (Blank = Hidden)", "type": "text"}]}, {"title": "Evening Party Card", "icon": "🥂", "keys": [{"key": "celebrations.party.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.party.title", "label": "Card Title (Evening Party)", "type": "rich"}, {"key": "celebrations.party.body1", "label": "Card Description", "type": "textarea"}, {"key": "celebrations.party.body2", "label": "Party Tagline (Blank = Hidden)", "type": "text"}]}, {"title": "Reception Card", "icon": "🏛️", "keys": [{"key": "celebrations.reception.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.reception.title", "label": "Card Title (Reception)", "type": "text"}, {"key": "celebrations.reception.body", "label": "Card Description", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Mehndi", "icon": "📋", "keys": [{"key": "celebrations.sheet.mehndi.attire", "label": "Attire / Dress Code", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.food", "label": "Food & Drinks Note", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.parking", "label": "Parking Note", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Wedding", "icon": "📋", "keys": [{"key": "celebrations.sheet.wedding.assembly", "label": "Baraat Assembly Time", "type": "text"}, {"key": "celebrations.sheet.wedding.rituals", "label": "Wedding Rituals Time", "type": "text"}, {"key": "celebrations.sheet.wedding.attire", "label": "Wedding Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.wedding.food", "label": "Wedding Feast Note", "type": "textarea"}, {"key": "celebrations.sheet.wedding.location", "label": "Venue Address", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Evening Party", "icon": "📋", "keys": [{"key": "celebrations.sheet.party.attire", "label": "Party Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.party.food", "label": "Food & Bar Note", "type": "textarea"}, {"key": "celebrations.sheet.party.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.party.location", "label": "Party Venue Address", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Reception", "icon": "📋", "keys": [{"key": "celebrations.sheet.reception.attire", "label": "Reception Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.reception.food", "label": "Dinner Spread Note", "type": "textarea"}, {"key": "celebrations.sheet.reception.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.reception.location", "label": "Reception Venue Address", "type": "textarea"}]}, {"title": "Epilogue & General Actions", "icon": "✍️", "keys": [{"key": "celebrations.sheet.btn_map", "label": "Map Button Label", "type": "text"}, {"key": "celebrations.epilogue.quote", "label": "Pahari Miniature Epilogue Quote", "type": "textarea"}]}]}, {"id": "stay", "title": "Travel & Stay", "icon": "🚗", "page": "travel&stay.html", "groups": [{"title": "Header & Subtitle Banner", "icon": "🏔️", "keys": [{"key": "stay.header.title_line1", "label": "Header Line 1 (TRAVEL)", "type": "text"}, {"key": "stay.header.title_line2", "label": "Header Line 2 (& STAY)", "type": "text"}, {"key": "stay.header.banner_line1", "label": "Subtitle Banner Line 1", "type": "text"}, {"key": "stay.header.banner_line2", "label": "Subtitle Banner Line 2", "type": "text"}]}, {"title": "Travel Directions (Air, Train, Road)", "icon": "✈️", "keys": [{"key": "stay.travel.air_pantnagar", "label": "Pantnagar Airport (PGH) Guide", "type": "textarea"}, {"key": "stay.travel.air_delhi", "label": "New Delhi Airport (DEL) Guide", "type": "textarea"}, {"key": "stay.travel.train_kathgodam", "label": "Kathgodam Railway Station Guide", "type": "textarea"}, {"key": "stay.travel.cab_delhi_nainital", "label": "Delhi to Nainital Road Trip Guide", "type": "textarea"}, {"key": "stay.travel.cab_hill_drive", "label": "Mountain / Hill Drive Advice", "type": "textarea"}]}, {"title": "Your Stay & Accommodation", "icon": "🏨", "keys": [{"key": "stay.arch.title", "label": "Stay Arch Card Title", "type": "rich"}, {"key": "stay.arch.desc", "label": "Room Confirmation Deadline Note", "type": "textarea"}, {"key": "stay.arch.btn_rsvp", "label": "RSVP Call-to-Action Button", "type": "text"}, {"key": "stay.arch.note", "label": "Room Coordination Guarantee Note", "type": "textarea"}]}, {"title": "Weather & Packing Advice", "icon": "⛅", "keys": [{"key": "stay.weather.title", "label": "Weather Section Heading", "type": "text"}, {"key": "stay.weather.weather_desc", "label": "Mountain Weather Description", "type": "textarea"}, {"key": "stay.weather.packing_desc", "label": "What to Pack Advice", "type": "textarea"}]}, {"title": "Epilogue Quote", "icon": "🪵", "keys": [{"key": "stay.epilogue.quote", "label": "Traditional Woodcraft Epilogue Quote", "type": "textarea"}]}]}, {"id": "rsvp", "title": "RSVP & Guest Response", "icon": "💌", "page": "rsvp.html", "groups": [{"title": "Hero & Subtitle Banner", "icon": "🎉", "keys": [{"key": "rsvp.hero.come", "label": "Hero Pre-title (Come)", "type": "text"}, {"key": "rsvp.hero.title", "label": "Hero Title (CELEBRATE WITH US)", "type": "rich"}, {"key": "rsvp.hero.banner_line1", "label": "Banner Top Line", "type": "text"}, {"key": "rsvp.hero.banner_line2", "label": "Banner Bottom Line", "type": "text"}]}, {"title": "Attendance Question & Options", "icon": "❓", "keys": [{"key": "rsvp.form.attending_title", "label": "Attendance Question Header", "type": "text"}, {"key": "rsvp.form.opt_yes", "label": "Option: Attending (Yes)", "type": "text"}, {"key": "rsvp.form.opt_no", "label": "Option: Cannot Attend (No)", "type": "text"}]}, {"title": "Guest Information Fields", "icon": "👤", "keys": [{"key": "rsvp.form.name_title", "label": "Full Name Field Label", "type": "text"}, {"key": "rsvp.form.name_placeholder", "label": "Name Field Placeholder", "type": "text"}, {"key": "rsvp.form.btn_add_guest", "label": "Add Guest Button Label", "type": "text"}, {"key": "rsvp.form.phone_title", "label": "Phone Field Label", "type": "text"}, {"key": "rsvp.form.phone_placeholder", "label": "Phone Field Placeholder", "type": "text"}]}, {"title": "Event Attendance Checkboxes", "icon": "📅", "keys": [{"key": "rsvp.form.events_title", "label": "Events Section Title", "type": "text"}, {"key": "rsvp.form.event_opt_mehndi", "label": "Mehndi Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_wedding", "label": "Day Wedding Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_party", "label": "Evening Party Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_reception", "label": "Reception Checkbox Label", "type": "text"}]}, {"title": "Diet, Preferences & Wishes", "icon": "📝", "keys": [{"key": "rsvp.form.diet_title", "label": "Diet & Stay Preferences Label", "type": "text"}, {"key": "rsvp.form.diet_placeholder", "label": "Diet & Stay Placeholder", "type": "textarea"}, {"key": "rsvp.form.note_title", "label": "Special Note for Couple Label", "type": "text"}, {"key": "rsvp.form.note_placeholder", "label": "Special Note Placeholder", "type": "textarea"}, {"key": "rsvp.form.btn_submit", "label": "Submit RSVP Button Label", "type": "text"}, {"key": "rsvp.form.submitting", "label": "Submitting State Text", "type": "text"}]}, {"title": "Thank You Screen & Epilogue", "icon": "🙏", "keys": [{"key": "rsvp.thanks.title", "label": "Thank You Title", "type": "text"}, {"key": "rsvp.thanks.message", "label": "Confirmation Success Message", "type": "rich"}, {"key": "rsvp.thanks.btn_edit", "label": "Edit Response Button Label", "type": "text"}, {"key": "rsvp.epilogue.quote", "label": "Aipan Art Epilogue Quote", "type": "textarea"}]}]}, {"id": "home", "title": "Home & Navigation", "icon": "💍", "page": "index.html", "groups": [{"title": "Global Site Navigation & SEO", "icon": "🌐", "keys": [{"key": "global.title", "label": "Browser Tab Title", "type": "text"}, {"key": "global.meta_desc", "label": "Search Engine / Share Meta Description", "type": "textarea"}, {"key": "global.nav.gm", "label": "Tab 1: G&M / Home", "type": "text"}, {"key": "global.nav.travel_stay", "label": "Tab 2: Travel & Stay", "type": "text"}, {"key": "global.nav.celebrations", "label": "Tab 3: Celebrations", "type": "text"}, {"key": "global.nav.rsvp", "label": "Tab 4: RSVP", "type": "text"}]}, {"title": "Home Hero Section", "icon": "✨", "keys": [{"key": "home.hero.bride_name", "label": "Bride Name (GARIMA)", "type": "text"}, {"key": "home.hero.connector", "label": "Connecting Word (takes / संग)", "type": "text"}, {"key": "home.hero.groom_name", "label": "Groom Name (MRINAL)", "type": "text"}, {"key": "home.hero.date", "label": "Wedding Date Badge", "type": "text"}, {"key": "home.hero.location", "label": "Wedding Location Badge", "type": "text"}]}]}, {"id": "invite", "title": "Digital Invite Story", "icon": "📜", "page": "invite/index.html", "groups": [{"title": "Cover & Controls", "icon": "📖", "keys": [{"key": "invite.cover.title", "label": "Cover Title", "type": "text"}, {"key": "invite.cover.sub", "label": "Cover Subtitle & Date", "type": "text"}, {"key": "invite.cover.tap", "label": "Tap to Open CTA", "type": "text"}, {"key": "invite.ctl.skip", "label": "Skip Button", "type": "text"}, {"key": "invite.ctl.replay", "label": "Replay Button", "type": "text"}]}, {"title": "Blessings & Family Announcement", "icon": "🙏", "keys": [{"key": "invite.scene1.shloka", "label": "Ganesha Shloka", "type": "text"}, {"key": "invite.scene1.eyebrow", "label": "Blessings Eyebrow", "type": "textarea"}, {"key": "invite.scene2.eyebrow", "label": "Families Eyebrow", "type": "text"}, {"key": "invite.scene2.sub", "label": "Join Us Invitation Subtitle", "type": "text"}]}, {"title": "Location & Date Scenes", "icon": "🏔️", "keys": [{"key": "invite.scene3.place", "label": "Place Name (Nainital)", "type": "text"}, {"key": "invite.scene3.sub", "label": "Place Description", "type": "rich"}, {"key": "invite.scene4.day_word", "label": "Day Word (Saturday)", "type": "text"}, {"key": "invite.scene4.day_num", "label": "Day Number (21)", "type": "text"}, {"key": "invite.scene4.day_my", "label": "Month & Year (November 2026)", "type": "text"}, {"key": "invite.scene4.sub", "label": "Baraat & Pheras Timings", "type": "text"}]}, {"title": "Ceremony Timeline Itinerary", "icon": "⏱️", "keys": [{"key": "invite.scene5.title", "label": "Celebrations Scene Title", "type": "text"}, {"key": "invite.scene5.fri_label", "label": "Friday Date Label", "type": "text"}, {"key": "invite.scene5.ev_mehndi", "label": "Mehndi Event Name", "type": "text"}, {"key": "invite.scene5.sat_label", "label": "Saturday Date Label", "type": "text"}, {"key": "invite.scene5.ev_baraat", "label": "Baraat Event Name", "type": "text"}, {"key": "invite.scene5.ev_varmaala", "label": "Varmaala Event Name", "type": "text"}, {"key": "invite.scene5.ev_pheras", "label": "Pheras Event Name", "type": "text"}, {"key": "invite.scene5.ev_vidaai", "label": "Vidaai Event Name", "type": "text"}, {"key": "invite.scene5.ev_party", "label": "Evening Party Event Name", "type": "text"}, {"key": "invite.scene5.sun_label", "label": "Sunday Date Label", "type": "text"}, {"key": "invite.scene5.ev_breakfast", "label": "Farewell Breakfast Event Name", "type": "text"}]}, {"title": "Closing Details", "icon": "🌟", "keys": [{"key": "invite.scene6.when", "label": "Final Date Summary", "type": "text"}, {"key": "invite.scene6.where", "label": "Final Location Summary", "type": "text"}, {"key": "invite.scene6.details_website", "label": "Wedding Website Link Text", "type": "text"}]}]}]};
+    const GITHUB_REPO = 'mrinalsharma-hub/gtm2026';
+    const PASSCODES = ['2026', 'gtm2026', 'nainital', 'garima', 'mrinal'];
 
     const WEDDING_GLOSSARY = {
       "Garima": "गरिमा",
@@ -946,7 +1060,7 @@
       "Venue": "स्थान",
       "Send RSVP": "निमंत्रण भेजें",
       "Yes, can’t wait!": "हाँ, अवश्य आएंगे!",
-      "Sorry, we can’t make it.": "क्षमा करें, उपस्थित नहीं हो सकेंगे。"
+      "Sorry, we can’t make it.": "क्षमा करें, उपस्थित नहीं हो सकेंगे।"
     };
 
     const StudioApp = {
@@ -960,10 +1074,30 @@
       previewVisible: true,
 
       async init() {
+        this.verifyAuth();
         await this.loadContent();
         this.render();
         this.updateCounts();
         this.setupShortcuts();
+      },
+
+      verifyAuth() {
+        const isAuth = localStorage.getItem('gtm2026_studio_auth');
+        if (isAuth === 'true') {
+          document.getElementById('authOverlay').style.display = 'none';
+        }
+      },
+
+      checkAuth(e) {
+        e.preventDefault();
+        const code = document.getElementById('authPasscode').value.trim().toLowerCase();
+        if (PASSCODES.includes(code)) {
+          localStorage.setItem('gtm2026_studio_auth', 'true');
+          document.getElementById('authOverlay').style.display = 'none';
+          this.showToast('Welcome to GTM 2026 Studio!', 'success');
+        } else {
+          alert('Incorrect passcode. Please try again.');
+        }
       },
 
       async loadContent() {
@@ -978,11 +1112,9 @@
             this.updateGitStatus(json.git);
             return;
           }
-        } catch(e) {
-          console.warn('API fetch failed, falling back to static bundles', e);
-        }
+        } catch(e) {}
 
-        // Fallback to static files
+        // Fallback: Fetch directly from relative static JSON files
         try {
           const [enRes, hiRes] = await Promise.all([
             fetch('locales/en.json?v=' + Date.now()),
@@ -1008,7 +1140,7 @@
           text.textContent = 'Unsaved Edits';
         } else {
           badge.className = 'status-badge';
-          text.textContent = git && git.branch ? `Synced on ${git.branch}` : 'Ready';
+          text.textContent = git && git.branch ? `Synced on ${git.branch}` : 'Live on gtm2026.com';
         }
       },
 
@@ -1022,7 +1154,6 @@
           b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
         });
         
-        // Auto-switch preview page if relevant
         const section = SCHEMA.sections.find(s => s.id === tabId);
         if (section && section.page) {
           this.setPreviewPage(section.page);
@@ -1082,12 +1213,10 @@
               const isModified = enVal !== origEn || hiVal !== origHi;
               const isMissingHi = enVal !== '' && hiVal === '';
 
-              // Filter logic
               if (this.activeFilter === 'modified' && !isModified) return;
               if (this.activeFilter === 'hidden' && !isHidden) return;
               if (this.activeFilter === 'missing_hi' && !isMissingHi) return;
 
-              // Search query logic
               if (this.searchQuery) {
                 const matchKey = key.toLowerCase().includes(this.searchQuery);
                 const matchLabel = k.label.toLowerCase().includes(this.searchQuery);
@@ -1221,7 +1350,6 @@
       updateField(key, lang, value) {
         this.data[lang][key] = value;
         
-        // Update rendered preview box
         const prevEl = document.getElementById(`preview-${lang}-${key}`);
         if (prevEl) {
           if (value) {
@@ -1233,7 +1361,6 @@
           }
         }
 
-        // Update card hidden / modified state
         const cardEl = document.getElementById(`card-${key}`);
         if (cardEl) {
           const isHidden = !this.data.en[key] && !this.data.hi[key];
@@ -1343,7 +1470,6 @@
       async translateTextPreservingHTML(htmlText) {
         if (!htmlText) return '';
 
-        // Split by HTML tags
         const parts = htmlText.split(/(<[^>]+>)/g);
         const translatedParts = [];
 
@@ -1363,8 +1489,6 @@
 
       async translateRawText(text) {
         if (!text) return '';
-
-        // Check glossary matches first
         let workingText = text;
 
         try {
@@ -1385,7 +1509,6 @@
           }
         } catch(e) {}
 
-        // Fallback to glossary replacements
         let resText = workingText;
         for (const [enW, hiW] of Object.entries(WEDDING_GLOSSARY)) {
           const regex = new RegExp(`\\b${enW}\\b`, 'gi');
@@ -1442,34 +1565,70 @@
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ en: this.data.en, hi: this.data.hi })
           });
-          const result = await res.json();
-          if (result.success) {
-            this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
-            this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
-            this.updateGitStatus(result.git);
-            this.render();
-            this.showToast('Draft saved successfully to locales/en.json and hi.json', 'success');
-          } else {
-            this.showToast(`Error saving: ${result.error}`, 'error');
+          if (res.ok) {
+            const result = await res.json();
+            if (result.success) {
+              this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
+              this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
+              this.updateGitStatus(result.git);
+              this.render();
+              this.showToast('Draft saved successfully to locales/en.json and hi.json', 'success');
+              return;
+            }
           }
-        } catch(e) {
-          this.showToast('Saved in memory. (Backend server offline)', 'success');
-        }
+        } catch(e) {}
+
+        // Save in localStorage for web standalone
+        localStorage.setItem('gtm2026_draft_en', JSON.stringify(this.data.en));
+        localStorage.setItem('gtm2026_draft_hi', JSON.stringify(this.data.hi));
+        this.showToast('Draft saved in browser memory! Click "Publish Live" to push to website.', 'success');
       },
 
       promptPublish() {
+        const token = localStorage.getItem('gtm2026_gh_token');
+        const tokenPrompt = document.getElementById('githubTokenPrompt');
+        if (!token) {
+          tokenPrompt.style.display = 'block';
+        } else {
+          tokenPrompt.style.display = 'none';
+        }
         document.getElementById('publishModal').classList.add('open');
       },
 
-      closeModal() {
-        document.getElementById('publishModal').classList.remove('open');
+      openSettings() {
+        const token = localStorage.getItem('gtm2026_gh_token') || '';
+        document.getElementById('settingsGithubToken').value = token;
+        document.getElementById('settingsModal').classList.add('open');
+      },
+
+      saveSettings() {
+        const token = document.getElementById('settingsGithubToken').value.trim();
+        if (token) {
+          localStorage.setItem('gtm2026_gh_token', token);
+          this.showToast('GitHub token saved successfully!', 'success');
+        } else {
+          localStorage.removeItem('gtm2026_gh_token');
+        }
+        this.closeModal('settingsModal');
+      },
+
+      closeModal(modalId = 'publishModal') {
+        document.getElementById(modalId).classList.remove('open');
       },
 
       async executePublish() {
-        const commitMsg = document.getElementById('publishCommitMsg').value;
-        this.closeModal();
+        const commitMsg = document.getElementById('publishCommitMsg').value || 'Update website content via Studio';
+        let token = localStorage.getItem('gtm2026_gh_token');
+        const promptToken = document.getElementById('githubTokenInput').value.trim();
+        if (promptToken) {
+          token = promptToken;
+          localStorage.setItem('gtm2026_gh_token', token);
+        }
+
+        this.closeModal('publishModal');
         this.showToast('Publishing to GitHub Pages...', 'success');
 
+        // 1. Try local server API first
         try {
           const res = await fetch('/api/publish', {
             method: 'POST',
@@ -1480,19 +1639,97 @@
               commit_message: commitMsg
             })
           });
-          const result = await res.json();
-          if (result.success) {
+          if (res.ok) {
+            const result = await res.json();
+            if (result.success) {
+              this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
+              this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
+              this.updateGitStatus(result.git);
+              this.render();
+              this.showToast(`🎉 Published Live! Commit: ${result.commit || 'pushed'}`, 'success');
+              return;
+            }
+          }
+        } catch(e) {}
+
+        // 2. Direct GitHub API Publish from web browser
+        if (token) {
+          try {
+            await this.publishViaGitHubAPI(token, commitMsg);
             this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
             this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
-            this.updateGitStatus(result.git);
             this.render();
-            this.showToast(`🎉 Published Live! Commit: ${result.commit || 'pushed'}`, 'success');
-          } else {
-            this.showToast(`Publish failed: ${result.error}`, 'error');
+            this.showToast('🎉 Published to GitHub Pages successfully! Live on www.gtm2026.com in ~30s.', 'success');
+            return;
+          } catch(ghErr) {
+            this.showToast(`GitHub Publish failed: ${ghErr.message}`, 'error');
+            return;
           }
-        } catch(e) {
-          this.showToast(`Network error while publishing: ${e.message}`, 'error');
         }
+
+        this.showToast('Please enter your GitHub token in Settings (⚙️) to publish directly from the web.', 'error');
+        this.openSettings();
+      },
+
+      async publishViaGitHubAPI(token, commitMsg) {
+        const enStr = JSON.stringify(this.data.en, null, 2);
+        const hiStr = JSON.stringify(this.data.hi, null, 2);
+
+        // UTF8 base64 helper
+        const utf8_to_b64 = (str) => btoa(unescape(encodeURIComponent(str)));
+
+        // 1. Update en.json
+        const enMetaRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/locales/en.json`, {
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        if (!enMetaRes.ok) throw new Error('GitHub token invalid or lacks repo write permissions');
+        const enMeta = await enMetaRes.json();
+
+        await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/locales/en.json`, {
+          method: 'PUT',
+          headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `${commitMsg} (en.json)`,
+            content: utf8_to_b64(enStr),
+            sha: enMeta.sha,
+            branch: 'main'
+          })
+        });
+
+        // 2. Update hi.json
+        const hiMetaRes = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/locales/hi.json`, {
+          headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+        });
+        const hiMeta = await hiMetaRes.json();
+
+        await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/locales/hi.json`, {
+          method: 'PUT',
+          headers: { 'Authorization': `token ${token}`, 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: `${commitMsg} (hi.json)`,
+            content: utf8_to_b64(hiStr),
+            sha: hiMeta.sha,
+            branch: 'main'
+          })
+        });
+      },
+
+      downloadBackup() {
+        const enBlob = new Blob([JSON.stringify(this.data.en, null, 2)], { type: 'application/json' });
+        const a1 = document.createElement('a');
+        a1.href = URL.createObjectURL(enBlob);
+        a1.download = 'en.json';
+        a1.click();
+
+        setTimeout(() => {
+          const hiBlob = new Blob([JSON.stringify(this.data.hi, null, 2)], { type: 'application/json' });
+          const a2 = document.createElement('a');
+          a2.href = URL.createObjectURL(hiBlob);
+          a2.download = 'hi.json';
+          a2.click();
+        }, 300);
+
+        this.showToast('Downloaded en.json and hi.json!', 'success');
       },
 
       showToast(msg, type = 'success') {
@@ -1535,7 +1772,8 @@
             if (input) input.focus();
           }
           if (e.key === 'Escape') {
-            this.closeModal();
+            this.closeModal('publishModal');
+            this.closeModal('settingsModal');
           }
         });
       }
