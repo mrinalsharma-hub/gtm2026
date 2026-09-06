@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTM 2026 · Content & Translation Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --crimson: #8A151B;
+      --crimson-dark: #630C11;
+      --crimson-light: #FAF0F0;
+      --crimson-hover: #A71F23;
+      --gold: #C49A45;
+      --gold-dark: #9B7528;
+      --gold-light: #FDF9F0;
+      --cream: #FAF7F2;
+      --surface: #FFFFFF;
+      --surface-subtle: #F6F3EE;
+      --border: rgba(138, 21, 27, 0.12);
+      --border-strong: rgba(138, 21, 27, 0.24);
+      --text-main: #1C1917;
+      --text-muted: #78716C;
+      --text-light: #A8A29E;
+      --success: #15803D;
+      --success-bg: #F0FDF4;
+      --warning: #B45309;
+      --warning-bg: #FFFBEB;
+      --danger: #DC2626;
+      --danger-bg: #FEF2F2;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.04);
+      --shadow-lg: 0 12px 32px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+      --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Cinzel', serif;
+      --font-devanagari: 'Noto Sans Devanagari', 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── TOP APP BAR ── */
+    .app-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-main {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--crimson), var(--crimson-dark));
+      color: #FFF;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      box-shadow: 0 2px 6px rgba(138, 21, 27, 0.25);
+    }
+
+    .brand-text h1 {
+      font-family: var(--font-heading);
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--crimson);
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      background: var(--surface-subtle);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .status-badge.dirty .status-dot {
+      background: var(--warning);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: var(--crimson);
+      color: #FFF;
+      box-shadow: 0 2px 4px rgba(138, 21, 27, 0.2);
+    }
+    .btn-primary:hover {
+      background: var(--crimson-hover);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(138, 21, 27, 0.25);
+    }
+
+    .btn-publish {
+      background: linear-gradient(135deg, #15803D, #166534);
+      color: #FFF;
+      box-shadow: 0 2px 4px rgba(21, 128, 61, 0.25);
+    }
+    .btn-publish:hover {
+      background: linear-gradient(135deg, #16A34A, #15803D);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      border-color: var(--border-strong);
+      color: var(--text-main);
+    }
+    .btn-secondary:hover {
+      background: var(--surface-subtle);
+      border-color: var(--crimson);
+      color: var(--crimson);
+    }
+
+    .btn-danger-outline {
+      background: transparent;
+      border-color: rgba(220, 38, 38, 0.35);
+      color: var(--danger);
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+    }
+    .btn-danger-outline:hover {
+      background: var(--danger-bg);
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
+    .btn-restore-outline {
+      background: transparent;
+      border-color: rgba(180, 83, 9, 0.4);
+      color: var(--warning);
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+    }
+    .btn-restore-outline:hover {
+      background: var(--warning-bg);
+      border-color: var(--warning);
+    }
+
+    .btn-ai {
+      background: var(--gold-light);
+      border: 1px solid var(--gold);
+      color: var(--gold-dark);
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+    }
+    .btn-ai:hover {
+      background: var(--gold);
+      color: #FFF;
+    }
+
+    /* ── SUBNAV & FILTERS ── */
+    .header-subnav {
+      border-top: 1px solid var(--border);
+      background: var(--surface-subtle);
+    }
+
+    .subnav-content {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 8px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: none;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      color: var(--crimson);
+      background: rgba(138, 21, 27, 0.05);
+    }
+
+    .tab-btn.active {
+      background: var(--crimson);
+      color: #FFF;
+      box-shadow: 0 2px 4px rgba(138, 21, 27, 0.15);
+    }
+
+    .tab-count {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: rgba(0,0,0,0.06);
+    }
+    .tab-btn.active .tab-count {
+      background: rgba(255,255,255,0.25);
+    }
+
+    .filters-search {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .search-box {
+      position: relative;
+      width: 280px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 6px 12px 6px 32px;
+      border-radius: 20px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .search-box input:focus {
+      border-color: var(--crimson);
+      box-shadow: 0 0 0 3px rgba(138, 21, 27, 0.1);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 12px;
+    }
+
+    .filter-chip-select {
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* ── MAIN WORKSPACE CONTAINER ── */
+    .studio-container {
+      max-width: 1560px;
+      margin: 0 auto;
+      padding: 24px;
+      flex: 1;
+      width: 100%;
+      display: flex;
+      gap: 24px;
+      position: relative;
+    }
+
+    .content-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      min-width: 0;
+    }
+
+    /* ── PREVIEW SPLIT PANEL ── */
+    .preview-panel {
+      width: 500px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 120px;
+      height: calc(100vh - 144px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .preview-panel.collapsed {
+      display: none;
+    }
+
+    .preview-header {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .preview-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--crimson);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .preview-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .preview-select {
+      padding: 4px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .preview-iframe-wrapper {
+      flex: 1;
+      background: #E5E7EB;
+      position: relative;
+    }
+
+    .preview-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #FFF;
+    }
+
+    /* ── SECTION CARD ── */
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+
+    .section-header {
+      padding: 14px 20px;
+      background: linear-gradient(to right, rgba(138, 21, 27, 0.04), transparent);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--crimson);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .group-container {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .group-heading {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.75px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-bottom: 4px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    /* ── ROW ITEM / CARD ── */
+    .item-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background: var(--surface);
+      padding: 16px 18px;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .item-card:hover {
+      border-color: var(--crimson-hover);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .item-card.is-hidden {
+      background: #FAF8F5;
+      border-style: dashed;
+      border-color: rgba(180, 83, 9, 0.45);
+      opacity: 0.85;
+    }
+
+    .item-card.is-modified {
+      border-left: 4px solid var(--gold);
+    }
+
+    .item-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .item-key-badge {
+      font-size: 11px;
+      font-family: monospace;
+      color: var(--text-muted);
+      background: var(--surface-subtle);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .item-key-badge:hover {
+      background: #E5E7EB;
+      color: var(--crimson);
+    }
+
+    .badge-status {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 12px;
+    }
+
+    .badge-status.visible {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .badge-status.hidden {
+      background: var(--warning-bg);
+      color: var(--warning);
+    }
+
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ── BILINGUAL SIDE-BY-SIDE EDITOR ── */
+    .editor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 920px) {
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .lang-editor {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .lang-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .format-bar {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .fmt-btn {
+      padding: 2px 7px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      background: var(--surface-subtle);
+      border-radius: 4px;
+      cursor: pointer;
+      color: var(--text-main);
+      font-family: inherit;
+    }
+    .fmt-btn:hover {
+      background: var(--crimson-light);
+      border-color: var(--crimson);
+      color: var(--crimson);
+    }
+
+    .field-input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      font-size: 13px;
+      font-family: var(--font-body);
+      color: var(--text-main);
+      outline: none;
+      line-height: 1.5;
+      transition: all 0.15s ease;
+      resize: vertical;
+    }
+
+    .field-input.devanagari {
+      font-family: var(--font-devanagari);
+      font-size: 14px;
+    }
+
+    .field-input:focus {
+      border-color: var(--crimson);
+      box-shadow: 0 0 0 3px rgba(138, 21, 27, 0.1);
+    }
+
+    .live-preview-box {
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--surface-subtle);
+      border: 1px dashed var(--border);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      min-height: 28px;
+    }
+    .live-preview-box.empty {
+      font-style: italic;
+      color: var(--text-light);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .toast {
+      background: #1C1917;
+      color: #FFF;
+      padding: 12px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: slideUp 0.2s ease forwards;
+    }
+
+    .toast.success {
+      border-left: 4px solid var(--success);
+    }
+
+    .toast.error {
+      border-left: 4px solid var(--danger);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Modal dialog */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(2px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      max-width: 500px;
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      animation: scaleIn 0.2s ease;
+    }
+
+    @keyframes scaleIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-header {
+      padding: 16px 20px;
+      background: var(--surface-subtle);
+      border-bottom: 1px solid var(--border);
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--crimson);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-body {
+      padding: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .modal-footer {
+      padding: 12px 20px;
+      background: var(--surface-subtle);
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* Highlight styles inside preview */
+    .stay-bold-highlight {
+      color: var(--crimson);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Header -->
+  <header class="app-header">
+    <div class="header-main">
+      <a href="javascript:void(0)" class="brand">
+        <div class="brand-icon">G&M</div>
+        <div class="brand-text">
+          <h1>Content & Translation Studio</h1>
+          <p>Garima & Mrinal · Nainital 2026</p>
+        </div>
+      </a>
+
+      <div class="header-actions">
+        <div class="status-badge" id="statusBadge">
+          <span class="status-dot"></span>
+          <span id="statusText">Checking status...</span>
+        </div>
+
+        <button class="btn btn-secondary" id="btnTogglePreview" onclick="StudioApp.togglePreview()">
+          👁️ <span id="previewBtnLabel">Live Preview</span>
+        </button>
+
+        <button class="btn btn-secondary" onclick="StudioApp.saveDraft()" title="Save edits to JSON files">
+          💾 Save Draft
+        </button>
+
+        <button class="btn btn-publish" onclick="StudioApp.promptPublish()" title="Commit and publish live to GitHub">
+          🚀 Publish Live
+        </button>
+      </div>
+    </div>
+
+    <!-- Navigation & Filters -->
+    <div class="header-subnav">
+      <div class="subnav-content">
+        <div class="tabs" id="tabBar">
+          <button class="tab-btn active" data-tab="all" onclick="StudioApp.switchTab('all')">
+            🌟 All Content <span class="tab-count" id="count-all">123</span>
+          </button>
+          <button class="tab-btn" data-tab="celebrations" onclick="StudioApp.switchTab('celebrations')">
+            🏰 Celebrations <span class="tab-count" id="count-celebrations">39</span>
+          </button>
+          <button class="tab-btn" data-tab="stay" onclick="StudioApp.switchTab('stay')">
+            🚗 Travel & Stay <span class="tab-count" id="count-stay">17</span>
+          </button>
+          <button class="tab-btn" data-tab="rsvp" onclick="StudioApp.switchTab('rsvp')">
+            💌 RSVP <span class="tab-count" id="count-rsvp">27</span>
+          </button>
+          <button class="tab-btn" data-tab="home" onclick="StudioApp.switchTab('home')">
+            💍 Home & Nav <span class="tab-count" id="count-home">11</span>
+          </button>
+          <button class="tab-btn" data-tab="invite" onclick="StudioApp.switchTab('invite')">
+            📜 Digital Invite <span class="tab-count" id="count-invite">29</span>
+          </button>
+        </div>
+
+        <div class="filters-search">
+          <select class="filter-chip-select" id="filterSelect" onchange="StudioApp.applyFilter(this.value)">
+            <option value="all">Filter: All Items</option>
+            <option value="modified">✏️ Modified Items Only</option>
+            <option value="hidden">🚫 Hidden / Cleared Items</option>
+            <option value="missing_hi">🌐 Missing Hindi Translations</option>
+          </select>
+
+          <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search text or key (Ctrl+K)..." oninput="StudioApp.onSearch(this.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Studio Main Container -->
+  <main class="studio-container">
+    <div class="content-column" id="contentContainer">
+      <!-- Section cards rendered dynamically -->
+    </div>
+
+    <!-- Live Preview Split Panel -->
+    <aside class="preview-panel" id="previewPanel">
+      <div class="preview-header">
+        <div class="preview-title">
+          <span>👁️ Live Preview</span>
+        </div>
+        <div class="preview-controls">
+          <select class="preview-select" id="previewPageSelect" onchange="StudioApp.setPreviewPage(this.value)">
+            <option value="celebrations.html">Celebrations</option>
+            <option value="travel&stay.html">Travel & Stay</option>
+            <option value="rsvp.html">RSVP</option>
+            <option value="index.html">Home</option>
+            <option value="invite/index.html">Invite Story</option>
+          </select>
+
+          <select class="preview-select" id="previewLangSelect" onchange="StudioApp.setPreviewLang(this.value)">
+            <option value="en">English</option>
+            <option value="hi">हिंदी</option>
+          </select>
+
+          <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 11px;" onclick="StudioApp.refreshPreview()">🔄</button>
+          <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 11px;" onclick="StudioApp.togglePreview()">✕</button>
+        </div>
+      </div>
+      <div class="preview-iframe-wrapper">
+        <iframe id="previewIframe" class="preview-iframe" src="celebrations.html"></iframe>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Publish Confirmation Modal -->
+  <div class="modal-overlay" id="publishModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span>🚀 Publish to Live Site</span>
+        <button onclick="StudioApp.closeModal()" style="background:none;border:none;font-size:16px;cursor:pointer;">✕</button>
+      </div>
+      <div class="modal-body">
+        <p>This action will compile all <strong>English and Hindi</strong> changes, create a Git commit, and push directly to GitHub Pages.</p>
+        <br>
+        <label style="font-weight:600; display:block; margin-bottom: 4px;">Commit Note (optional):</label>
+        <input type="text" id="publishCommitMsg" class="field-input" placeholder="e.g. Update wedding card timings and travel advice">
+        <br><br>
+        <p style="font-size: 12px; color: var(--text-muted);">Changes will be immediately live and deterministic with zero runtime caching races.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" onclick="StudioApp.closeModal()">Cancel</button>
+        <button class="btn btn-publish" onclick="StudioApp.executePublish()">Confirm & Publish Live</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SCHEMA = {"sections": [{"id": "celebrations", "title": "Celebrations & Events", "icon": "🏰", "page": "celebrations.html", "groups": [{"title": "Header & Countdown Banner", "icon": "📜", "keys": [{"key": "celebrations.header.the", "label": "Header Pre-title (The / शुभ)", "type": "text"}, {"key": "celebrations.header.title", "label": "Main Header Title", "type": "rich"}, {"key": "celebrations.header.location", "label": "Event Location Subtitle", "type": "text"}, {"key": "celebrations.countdown.suffix", "label": "Countdown Suffix (DAYS TO GO)", "type": "text"}, {"key": "celebrations.countdown.today", "label": "Countdown Today Message", "type": "text"}]}, {"title": "Mehndi Ceremony Card", "icon": "🌺", "keys": [{"key": "celebrations.mehndi.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.mehndi.title", "label": "Card Title (Mehndi)", "type": "text"}, {"key": "celebrations.mehndi.body", "label": "Card Description & Story", "type": "textarea"}, {"key": "celebrations.mehndi.optional", "label": "Attendance Tag (Optional)", "type": "text"}]}, {"title": "Wedding Ceremony Card", "icon": "💍", "keys": [{"key": "celebrations.wedding.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.wedding.title", "label": "Card Title (Wedding)", "type": "text"}, {"key": "celebrations.wedding.body", "label": "Card Description", "type": "textarea"}, {"key": "celebrations.wedding.venue_label", "label": "Front Venue Label (Blank = Hidden)", "type": "text"}, {"key": "celebrations.wedding.venue_name", "label": "Front Venue Name (Blank = Hidden)", "type": "text"}]}, {"title": "Evening Party Card", "icon": "🥂", "keys": [{"key": "celebrations.party.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.party.title", "label": "Card Title (Evening Party)", "type": "rich"}, {"key": "celebrations.party.body1", "label": "Card Description", "type": "textarea"}, {"key": "celebrations.party.body2", "label": "Party Tagline (Blank = Hidden)", "type": "text"}]}, {"title": "Reception Card", "icon": "🏛️", "keys": [{"key": "celebrations.reception.eyebrow", "label": "Date & Time Eyebrow", "type": "text"}, {"key": "celebrations.reception.title", "label": "Card Title (Reception)", "type": "text"}, {"key": "celebrations.reception.body", "label": "Card Description", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Mehndi", "icon": "📋", "keys": [{"key": "celebrations.sheet.mehndi.attire", "label": "Attire / Dress Code", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.food", "label": "Food & Drinks Note", "type": "textarea"}, {"key": "celebrations.sheet.mehndi.parking", "label": "Parking Note", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Wedding", "icon": "📋", "keys": [{"key": "celebrations.sheet.wedding.assembly", "label": "Baraat Assembly Time", "type": "text"}, {"key": "celebrations.sheet.wedding.rituals", "label": "Wedding Rituals Time", "type": "text"}, {"key": "celebrations.sheet.wedding.attire", "label": "Wedding Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.wedding.food", "label": "Wedding Feast Note", "type": "textarea"}, {"key": "celebrations.sheet.wedding.location", "label": "Venue Address", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Evening Party", "icon": "📋", "keys": [{"key": "celebrations.sheet.party.attire", "label": "Party Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.party.food", "label": "Food & Bar Note", "type": "textarea"}, {"key": "celebrations.sheet.party.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.party.location", "label": "Party Venue Address", "type": "textarea"}]}, {"title": "Bottom Sheet Details: Reception", "icon": "📋", "keys": [{"key": "celebrations.sheet.reception.attire", "label": "Reception Attire Guide", "type": "textarea"}, {"key": "celebrations.sheet.reception.food", "label": "Dinner Spread Note", "type": "textarea"}, {"key": "celebrations.sheet.reception.parking", "label": "Parking Note", "type": "textarea"}, {"key": "celebrations.sheet.reception.location", "label": "Reception Venue Address", "type": "textarea"}]}, {"title": "Epilogue & General Actions", "icon": "✍️", "keys": [{"key": "celebrations.sheet.btn_map", "label": "Map Button Label", "type": "text"}, {"key": "celebrations.epilogue.quote", "label": "Pahari Miniature Epilogue Quote", "type": "textarea"}]}]}, {"id": "stay", "title": "Travel & Stay", "icon": "🚗", "page": "travel&stay.html", "groups": [{"title": "Header & Subtitle Banner", "icon": "🏔️", "keys": [{"key": "stay.header.title_line1", "label": "Header Line 1 (TRAVEL)", "type": "text"}, {"key": "stay.header.title_line2", "label": "Header Line 2 (& STAY)", "type": "text"}, {"key": "stay.header.banner_line1", "label": "Subtitle Banner Line 1", "type": "text"}, {"key": "stay.header.banner_line2", "label": "Subtitle Banner Line 2", "type": "text"}]}, {"title": "Travel Directions (Air, Train, Road)", "icon": "✈️", "keys": [{"key": "stay.travel.air_pantnagar", "label": "Pantnagar Airport (PGH) Guide", "type": "textarea"}, {"key": "stay.travel.air_delhi", "label": "New Delhi Airport (DEL) Guide", "type": "textarea"}, {"key": "stay.travel.train_kathgodam", "label": "Kathgodam Railway Station Guide", "type": "textarea"}, {"key": "stay.travel.cab_delhi_nainital", "label": "Delhi to Nainital Road Trip Guide", "type": "textarea"}, {"key": "stay.travel.cab_hill_drive", "label": "Mountain / Hill Drive Advice", "type": "textarea"}]}, {"title": "Your Stay & Accommodation", "icon": "🏨", "keys": [{"key": "stay.arch.title", "label": "Stay Arch Card Title", "type": "rich"}, {"key": "stay.arch.desc", "label": "Room Confirmation Deadline Note", "type": "textarea"}, {"key": "stay.arch.btn_rsvp", "label": "RSVP Call-to-Action Button", "type": "text"}, {"key": "stay.arch.note", "label": "Room Coordination Guarantee Note", "type": "textarea"}]}, {"title": "Weather & Packing Advice", "icon": "⛅", "keys": [{"key": "stay.weather.title", "label": "Weather Section Heading", "type": "text"}, {"key": "stay.weather.weather_desc", "label": "Mountain Weather Description", "type": "textarea"}, {"key": "stay.weather.packing_desc", "label": "What to Pack Advice", "type": "textarea"}]}, {"title": "Epilogue Quote", "icon": "🪵", "keys": [{"key": "stay.epilogue.quote", "label": "Traditional Woodcraft Epilogue Quote", "type": "textarea"}]}]}, {"id": "rsvp", "title": "RSVP & Guest Response", "icon": "💌", "page": "rsvp.html", "groups": [{"title": "Hero & Subtitle Banner", "icon": "🎉", "keys": [{"key": "rsvp.hero.come", "label": "Hero Pre-title (Come)", "type": "text"}, {"key": "rsvp.hero.title", "label": "Hero Title (CELEBRATE WITH US)", "type": "rich"}, {"key": "rsvp.hero.banner_line1", "label": "Banner Top Line", "type": "text"}, {"key": "rsvp.hero.banner_line2", "label": "Banner Bottom Line", "type": "text"}]}, {"title": "Attendance Question & Options", "icon": "❓", "keys": [{"key": "rsvp.form.attending_title", "label": "Attendance Question Header", "type": "text"}, {"key": "rsvp.form.opt_yes", "label": "Option: Attending (Yes)", "type": "text"}, {"key": "rsvp.form.opt_no", "label": "Option: Cannot Attend (No)", "type": "text"}]}, {"title": "Guest Information Fields", "icon": "👤", "keys": [{"key": "rsvp.form.name_title", "label": "Full Name Field Label", "type": "text"}, {"key": "rsvp.form.name_placeholder", "label": "Name Field Placeholder", "type": "text"}, {"key": "rsvp.form.btn_add_guest", "label": "Add Guest Button Label", "type": "text"}, {"key": "rsvp.form.phone_title", "label": "Phone Field Label", "type": "text"}, {"key": "rsvp.form.phone_placeholder", "label": "Phone Field Placeholder", "type": "text"}]}, {"title": "Event Attendance Checkboxes", "icon": "📅", "keys": [{"key": "rsvp.form.events_title", "label": "Events Section Title", "type": "text"}, {"key": "rsvp.form.event_opt_mehndi", "label": "Mehndi Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_wedding", "label": "Day Wedding Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_party", "label": "Evening Party Checkbox Label", "type": "text"}, {"key": "rsvp.form.event_opt_reception", "label": "Reception Checkbox Label", "type": "text"}]}, {"title": "Diet, Preferences & Wishes", "icon": "📝", "keys": [{"key": "rsvp.form.diet_title", "label": "Diet & Stay Preferences Label", "type": "text"}, {"key": "rsvp.form.diet_placeholder", "label": "Diet & Stay Placeholder", "type": "textarea"}, {"key": "rsvp.form.note_title", "label": "Special Note for Couple Label", "type": "text"}, {"key": "rsvp.form.note_placeholder", "label": "Special Note Placeholder", "type": "textarea"}, {"key": "rsvp.form.btn_submit", "label": "Submit RSVP Button Label", "type": "text"}, {"key": "rsvp.form.submitting", "label": "Submitting State Text", "type": "text"}]}, {"title": "Thank You Screen & Epilogue", "icon": "🙏", "keys": [{"key": "rsvp.thanks.title", "label": "Thank You Title", "type": "text"}, {"key": "rsvp.thanks.message", "label": "Confirmation Success Message", "type": "rich"}, {"key": "rsvp.thanks.btn_edit", "label": "Edit Response Button Label", "type": "text"}, {"key": "rsvp.epilogue.quote", "label": "Aipan Art Epilogue Quote", "type": "textarea"}]}]}, {"id": "home", "title": "Home & Navigation", "icon": "💍", "page": "index.html", "groups": [{"title": "Global Site Navigation & SEO", "icon": "🌐", "keys": [{"key": "global.title", "label": "Browser Tab Title", "type": "text"}, {"key": "global.meta_desc", "label": "Search Engine / Share Meta Description", "type": "textarea"}, {"key": "global.nav.gm", "label": "Tab 1: G&M / Home", "type": "text"}, {"key": "global.nav.travel_stay", "label": "Tab 2: Travel & Stay", "type": "text"}, {"key": "global.nav.celebrations", "label": "Tab 3: Celebrations", "type": "text"}, {"key": "global.nav.rsvp", "label": "Tab 4: RSVP", "type": "text"}]}, {"title": "Home Hero Section", "icon": "✨", "keys": [{"key": "home.hero.bride_name", "label": "Bride Name (GARIMA)", "type": "text"}, {"key": "home.hero.connector", "label": "Connecting Word (takes / संग)", "type": "text"}, {"key": "home.hero.groom_name", "label": "Groom Name (MRINAL)", "type": "text"}, {"key": "home.hero.date", "label": "Wedding Date Badge", "type": "text"}, {"key": "home.hero.location", "label": "Wedding Location Badge", "type": "text"}]}]}, {"id": "invite", "title": "Digital Invite Story", "icon": "📜", "page": "invite/index.html", "groups": [{"title": "Cover & Controls", "icon": "📖", "keys": [{"key": "invite.cover.title", "label": "Cover Title", "type": "text"}, {"key": "invite.cover.sub", "label": "Cover Subtitle & Date", "type": "text"}, {"key": "invite.cover.tap", "label": "Tap to Open CTA", "type": "text"}, {"key": "invite.ctl.skip", "label": "Skip Button", "type": "text"}, {"key": "invite.ctl.replay", "label": "Replay Button", "type": "text"}]}, {"title": "Blessings & Family Announcement", "icon": "🙏", "keys": [{"key": "invite.scene1.shloka", "label": "Ganesha Shloka", "type": "text"}, {"key": "invite.scene1.eyebrow", "label": "Blessings Eyebrow", "type": "textarea"}, {"key": "invite.scene2.eyebrow", "label": "Families Eyebrow", "type": "text"}, {"key": "invite.scene2.sub", "label": "Join Us Invitation Subtitle", "type": "text"}]}, {"title": "Location & Date Scenes", "icon": "🏔️", "keys": [{"key": "invite.scene3.place", "label": "Place Name (Nainital)", "type": "text"}, {"key": "invite.scene3.sub", "label": "Place Description", "type": "rich"}, {"key": "invite.scene4.day_word", "label": "Day Word (Saturday)", "type": "text"}, {"key": "invite.scene4.day_num", "label": "Day Number (21)", "type": "text"}, {"key": "invite.scene4.day_my", "label": "Month & Year (November 2026)", "type": "text"}, {"key": "invite.scene4.sub", "label": "Baraat & Pheras Timings", "type": "text"}]}, {"title": "Ceremony Timeline Itinerary", "icon": "⏱️", "keys": [{"key": "invite.scene5.title", "label": "Celebrations Scene Title", "type": "text"}, {"key": "invite.scene5.fri_label", "label": "Friday Date Label", "type": "text"}, {"key": "invite.scene5.ev_mehndi", "label": "Mehndi Event Name", "type": "text"}, {"key": "invite.scene5.sat_label", "label": "Saturday Date Label", "type": "text"}, {"key": "invite.scene5.ev_baraat", "label": "Baraat Event Name", "type": "text"}, {"key": "invite.scene5.ev_varmaala", "label": "Varmaala Event Name", "type": "text"}, {"key": "invite.scene5.ev_pheras", "label": "Pheras Event Name", "type": "text"}, {"key": "invite.scene5.ev_vidaai", "label": "Vidaai Event Name", "type": "text"}, {"key": "invite.scene5.ev_party", "label": "Evening Party Event Name", "type": "text"}, {"key": "invite.scene5.sun_label", "label": "Sunday Date Label", "type": "text"}, {"key": "invite.scene5.ev_breakfast", "label": "Farewell Breakfast Event Name", "type": "text"}]}, {"title": "Closing Details", "icon": "🌟", "keys": [{"key": "invite.scene6.when", "label": "Final Date Summary", "type": "text"}, {"key": "invite.scene6.where", "label": "Final Location Summary", "type": "text"}, {"key": "invite.scene6.details_website", "label": "Wedding Website Link Text", "type": "text"}]}]}]};
+
+    const WEDDING_GLOSSARY = {
+      "Garima": "गरिमा",
+      "Mrinal": "मृणाल",
+      "Nainital": "नैनीताल",
+      "Pantnagar": "पंतनगर",
+      "Kathgodam": "काठगोदाम",
+      "Delhi": "दिल्ली",
+      "New Delhi": "नई दिल्ली",
+      "Mehndi": "मेहंदी",
+      "Wedding": "विवाह",
+      "Reception": "रिसेप्शन",
+      "Evening Party": "इवनिंग पार्टी",
+      "Baraat": "बारात",
+      "Varmaala": "वरमाला",
+      "Pheras": "फेरे",
+      "Vidaai": "विदाई",
+      "Breakfast": "विदाई नाश्ता",
+      "Friday": "शुक्रवार",
+      "Saturday": "शनिवार",
+      "Sunday": "रविवार",
+      "November": "नवंबर",
+      "Attire": "पहनावा",
+      "Food": "भोजन",
+      "Parking": "पार्किंग",
+      "Venue": "स्थान",
+      "Send RSVP": "निमंत्रण भेजें",
+      "Yes, can’t wait!": "हाँ, अवश्य आएंगे!",
+      "Sorry, we can’t make it.": "क्षमा करें, उपस्थित नहीं हो सकेंगे。"
+    };
+
+    const StudioApp = {
+      data: { en: {}, hi: {} },
+      initialData: { en: {}, hi: {} },
+      currentTab: 'all',
+      activeFilter: 'all',
+      searchQuery: '',
+      previewPage: 'celebrations.html',
+      previewLang: 'en',
+      previewVisible: true,
+
+      async init() {
+        await this.loadContent();
+        this.render();
+        this.updateCounts();
+        this.setupShortcuts();
+      },
+
+      async loadContent() {
+        try {
+          const res = await fetch('/api/content');
+          if (res.ok) {
+            const json = await res.json();
+            this.data.en = { ...json.en };
+            this.data.hi = { ...json.hi };
+            this.initialData.en = JSON.parse(JSON.stringify(json.en));
+            this.initialData.hi = JSON.parse(JSON.stringify(json.hi));
+            this.updateGitStatus(json.git);
+            return;
+          }
+        } catch(e) {
+          console.warn('API fetch failed, falling back to static bundles', e);
+        }
+
+        // Fallback to static files
+        try {
+          const [enRes, hiRes] = await Promise.all([
+            fetch('locales/en.json?v=' + Date.now()),
+            fetch('locales/hi.json?v=' + Date.now())
+          ]);
+          this.data.en = await enRes.json();
+          this.data.hi = await hiRes.json();
+          this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
+          this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
+          this.updateGitStatus({ branch: 'main', has_uncommitted_changes: false });
+        } catch(err) {
+          this.showToast('Failed to load locale data', 'error');
+        }
+      },
+
+      updateGitStatus(git) {
+        const badge = document.getElementById('statusBadge');
+        const text = document.getElementById('statusText');
+        const isDirty = this.checkIfDirty();
+
+        if (isDirty) {
+          badge.className = 'status-badge dirty';
+          text.textContent = 'Unsaved Edits';
+        } else {
+          badge.className = 'status-badge';
+          text.textContent = git && git.branch ? `Synced on ${git.branch}` : 'Ready';
+        }
+      },
+
+      checkIfDirty() {
+        return JSON.stringify(this.data) !== JSON.stringify(this.initialData);
+      },
+
+      switchTab(tabId) {
+        this.currentTab = tabId;
+        document.querySelectorAll('#tabBar .tab-btn').forEach(b => {
+          b.classList.toggle('active', b.getAttribute('data-tab') === tabId);
+        });
+        
+        // Auto-switch preview page if relevant
+        const section = SCHEMA.sections.find(s => s.id === tabId);
+        if (section && section.page) {
+          this.setPreviewPage(section.page);
+        }
+
+        this.render();
+      },
+
+      applyFilter(filterValue) {
+        this.activeFilter = filterValue;
+        this.render();
+      },
+
+      onSearch(query) {
+        this.searchQuery = (query || '').toLowerCase().trim();
+        this.render();
+      },
+
+      updateCounts() {
+        let total = 0;
+        SCHEMA.sections.forEach(s => {
+          let count = 0;
+          s.groups.forEach(g => count += g.keys.length);
+          const el = document.getElementById(`count-${s.id}`);
+          if (el) el.textContent = count;
+          total += count;
+        });
+        const elAll = document.getElementById('count-all');
+        if (elAll) elAll.textContent = total;
+      },
+
+      render() {
+        const container = document.getElementById('contentContainer');
+        container.innerHTML = '';
+
+        const sectionsToRender = this.currentTab === 'all' 
+          ? SCHEMA.sections 
+          : SCHEMA.sections.filter(s => s.id === this.currentTab);
+
+        let totalMatches = 0;
+
+        sectionsToRender.forEach(section => {
+          let sectionHtml = '';
+          let sectionHasMatches = false;
+
+          section.groups.forEach(group => {
+            let groupItemsHtml = '';
+
+            group.keys.forEach(k => {
+              const key = k.key;
+              const enVal = this.data.en[key] !== undefined ? this.data.en[key] : '';
+              const hiVal = this.data.hi[key] !== undefined ? this.data.hi[key] : '';
+              const origEn = this.initialData.en[key] !== undefined ? this.initialData.en[key] : '';
+              const origHi = this.initialData.hi[key] !== undefined ? this.initialData.hi[key] : '';
+
+              const isHidden = enVal === '' && hiVal === '';
+              const isModified = enVal !== origEn || hiVal !== origHi;
+              const isMissingHi = enVal !== '' && hiVal === '';
+
+              // Filter logic
+              if (this.activeFilter === 'modified' && !isModified) return;
+              if (this.activeFilter === 'hidden' && !isHidden) return;
+              if (this.activeFilter === 'missing_hi' && !isMissingHi) return;
+
+              // Search query logic
+              if (this.searchQuery) {
+                const matchKey = key.toLowerCase().includes(this.searchQuery);
+                const matchLabel = k.label.toLowerCase().includes(this.searchQuery);
+                const matchEn = enVal.toLowerCase().includes(this.searchQuery);
+                const matchHi = hiVal.toLowerCase().includes(this.searchQuery);
+                if (!matchKey && !matchLabel && !matchEn && !matchHi) return;
+              }
+
+              sectionHasMatches = true;
+              totalMatches++;
+
+              const isTextarea = k.type === 'textarea' || (enVal && enVal.length > 50) || (hiVal && hiVal.length > 50);
+
+              groupItemsHtml += `
+                <div class="item-card ${isHidden ? 'is-hidden' : ''} ${isModified ? 'is-modified' : ''}" id="card-${key}">
+                  <div class="item-meta">
+                    <div class="item-info">
+                      <span class="item-title">${k.label}</span>
+                      <span class="item-key-badge" onclick="navigator.clipboard.writeText('${key}'); StudioApp.showToast('Key copied: ${key}', 'success')" title="Click to copy key">${key}</span>
+                      <span class="badge-status ${isHidden ? 'hidden' : 'visible'}">
+                        ${isHidden ? '🚫 Hidden on Website' : '✅ Visible'}
+                      </span>
+                    </div>
+
+                    <div class="item-actions">
+                      ${isHidden ? `
+                        <button class="btn btn-restore-outline" onclick="StudioApp.restoreKey('${key}')">
+                          ↩️ Restore
+                        </button>
+                      ` : `
+                        <button class="btn btn-danger-outline" onclick="StudioApp.clearKey('${key}')" title="Clears text and hides element on live site">
+                          🗑️ Clear / Hide
+                        </button>
+                      `}
+                      <button class="btn btn-ai" onclick="StudioApp.translateKey('${key}')" title="Translate English to Hindi">
+                        ✨ EN ➔ HI
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="editor-grid">
+                    <!-- English Editor -->
+                    <div class="lang-editor">
+                      <div class="lang-header">
+                        <span>🇬🇧 English</span>
+                        <div class="format-bar">
+                          <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'en', 'em')"><em>I</em></button>
+                          <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'en', 'strong')"><strong>B</strong></button>
+                          <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'en', 'br')">↵ Break</button>
+                          <button class="fmt-btn" onclick="StudioApp.stripTags('${key}', 'en')">Clear Tags</button>
+                        </div>
+                      </div>
+
+                      ${isTextarea ? `
+                        <textarea class="field-input" rows="3" id="input-en-${key}" oninput="StudioApp.updateField('${key}', 'en', this.value)">${StudioApp.escapeHtml(enVal)}</textarea>
+                      ` : `
+                        <input type="text" class="field-input" id="input-en-${key}" value="${StudioApp.escapeAttr(enVal)}" oninput="StudioApp.updateField('${key}', 'en', this.value)">
+                      `}
+
+                      <div class="live-preview-box ${!enVal ? 'empty' : ''}" id="preview-en-${key}">
+                        ${enVal ? enVal : '<em>[Empty / Hidden on site]</em>'}
+                      </div>
+                    </div>
+
+                    <!-- Hindi Editor -->
+                    <div class="lang-editor">
+                      <div class="lang-header">
+                        <span>🇮🇳 Hindi (हिंदी)</span>
+                        <div class="format-bar">
+                          <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'hi', 'em')"><em>I</em></button>
+                          <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'hi', 'strong')"><strong>B</strong></button>
+                          <button class="fmt-btn" onclick="StudioApp.formatText('${key}', 'hi', 'br')">↵ Break</button>
+                          <button class="fmt-btn" onclick="StudioApp.stripTags('${key}', 'hi')">Clear Tags</button>
+                        </div>
+                      </div>
+
+                      ${isTextarea ? `
+                        <textarea class="field-input devanagari" rows="3" id="input-hi-${key}" oninput="StudioApp.updateField('${key}', 'hi', this.value)">${StudioApp.escapeHtml(hiVal)}</textarea>
+                      ` : `
+                        <input type="text" class="field-input devanagari" id="input-hi-${key}" value="${StudioApp.escapeAttr(hiVal)}" oninput="StudioApp.updateField('${key}', 'hi', this.value)">
+                      `}
+
+                      <div class="live-preview-box ${!hiVal ? 'empty' : ''}" id="preview-hi-${key}">
+                        ${hiVal ? hiVal : '<em>[Empty / Hidden on site]</em>'}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              `;
+            });
+
+            if (groupItemsHtml) {
+              sectionHtml += `
+                <div class="group-container">
+                  <div class="group-heading">${group.icon} ${group.title}</div>
+                  ${groupItemsHtml}
+                </div>
+              `;
+            }
+          });
+
+          if (sectionHasMatches) {
+            const cardEl = document.createElement('div');
+            cardEl.className = 'section-card';
+            cardEl.innerHTML = `
+              <div class="section-header">
+                <div class="section-title">${section.icon} ${section.title}</div>
+                <div class="section-actions">
+                  <button class="btn btn-ai" onclick="StudioApp.translateSection('${section.id}')">
+                    ✨ Translate Missing Hindi in Section
+                  </button>
+                </div>
+              </div>
+              ${sectionHtml}
+            `;
+            container.appendChild(cardEl);
+          }
+        });
+
+        if (totalMatches === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
+              <div style="font-size: 32px; margin-bottom: 12px;">🔍</div>
+              <h3 style="font-size: 16px; margin-bottom: 6px;">No matching content found</h3>
+              <p style="font-size: 13px;">Try adjusting your search terms or filter.</p>
+            </div>
+          `;
+        }
+      },
+
+      updateField(key, lang, value) {
+        this.data[lang][key] = value;
+        
+        // Update rendered preview box
+        const prevEl = document.getElementById(`preview-${lang}-${key}`);
+        if (prevEl) {
+          if (value) {
+            prevEl.classList.remove('empty');
+            prevEl.innerHTML = value;
+          } else {
+            prevEl.classList.add('empty');
+            prevEl.innerHTML = '<em>[Empty / Hidden on site]</em>';
+          }
+        }
+
+        // Update card hidden / modified state
+        const cardEl = document.getElementById(`card-${key}`);
+        if (cardEl) {
+          const isHidden = !this.data.en[key] && !this.data.hi[key];
+          const isModified = this.data.en[key] !== this.initialData.en[key] || this.data.hi[key] !== this.initialData.hi[key];
+          cardEl.classList.toggle('is-hidden', isHidden);
+          cardEl.classList.toggle('is-modified', isModified);
+        }
+
+        this.updateGitStatus();
+        this.pushToLivePreview();
+      },
+
+      clearKey(key) {
+        this.data.en[key] = '';
+        this.data.hi[key] = '';
+        this.render();
+        this.showToast(`Cleared & Hidden: ${key}`, 'success');
+        this.updateGitStatus();
+        this.pushToLivePreview();
+      },
+
+      restoreKey(key) {
+        this.data.en[key] = this.initialData.en[key] || '';
+        this.data.hi[key] = this.initialData.hi[key] || '';
+        this.render();
+        this.showToast(`Restored: ${key}`, 'success');
+        this.updateGitStatus();
+        this.pushToLivePreview();
+      },
+
+      formatText(key, lang, tag) {
+        const input = document.getElementById(`input-${lang}-${key}`);
+        if (!input) return;
+
+        const start = input.selectionStart;
+        const end = input.selectionEnd;
+        const val = input.value;
+        let selected = val.substring(start, end);
+
+        let replacement = '';
+        if (tag === 'br') {
+          replacement = '<br>';
+        } else if (tag === 'em' || tag === 'strong') {
+          replacement = `<${tag}>${selected || 'text'}</${tag}>`;
+        }
+
+        const newVal = val.substring(0, start) + replacement + val.substring(end);
+        input.value = newVal;
+        this.updateField(key, lang, newVal);
+
+        input.focus();
+        input.setSelectionRange(start + (tag === 'br' ? 4 : tag.length + 2), start + replacement.length - (tag === 'br' ? 0 : tag.length + 3));
+      },
+
+      stripTags(key, lang) {
+        const current = this.data[lang][key] || '';
+        const stripped = current.replace(/<[^>]*>?/gm, '');
+        const input = document.getElementById(`input-${lang}-${key}`);
+        if (input) input.value = stripped;
+        this.updateField(key, lang, stripped);
+      },
+
+      // Intelligent Client-Side Translation with HTML tag preservation
+      async translateKey(key) {
+        const enText = this.data.en[key];
+        if (!enText) {
+          this.showToast('English text is empty', 'error');
+          return;
+        }
+
+        this.showToast('Translating...', 'success');
+        const hiText = await this.translateTextPreservingHTML(enText);
+        if (hiText) {
+          this.data.hi[key] = hiText;
+          const hiInput = document.getElementById(`input-hi-${key}`);
+          if (hiInput) hiInput.value = hiText;
+          this.updateField(key, 'hi', hiText);
+          this.showToast('Translation applied!', 'success');
+        } else {
+          this.showToast('Could not auto-translate, please enter manually.', 'error');
+        }
+      },
+
+      async translateSection(sectionId) {
+        const section = SCHEMA.sections.find(s => s.id === sectionId);
+        if (!section) return;
+
+        let translatedCount = 0;
+        this.showToast('Translating section...', 'success');
+        for (const g of section.groups) {
+          for (const k of g.keys) {
+            const key = k.key;
+            if (this.data.en[key] && !this.data.hi[key]) {
+              const hi = await this.translateTextPreservingHTML(this.data.en[key]);
+              if (hi) {
+                this.data.hi[key] = hi;
+                translatedCount++;
+              }
+            }
+          }
+        }
+
+        this.render();
+        this.showToast(`Auto-translated ${translatedCount} items!`, 'success');
+      },
+
+      async translateTextPreservingHTML(htmlText) {
+        if (!htmlText) return '';
+
+        // Split by HTML tags
+        const parts = htmlText.split(/(<[^>]+>)/g);
+        const translatedParts = [];
+
+        for (const part of parts) {
+          if (part.startsWith('<') && part.endsWith('>')) {
+            translatedParts.push(part);
+          } else if (part.trim()) {
+            const translatedChunk = await this.translateRawText(part);
+            translatedParts.push(translatedChunk || part);
+          } else {
+            translatedParts.push(part);
+          }
+        }
+
+        return translatedParts.join('');
+      },
+
+      async translateRawText(text) {
+        if (!text) return '';
+
+        // Check glossary matches first
+        let workingText = text;
+
+        try {
+          const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${encodeURIComponent(workingText)}`);
+          if (res.ok) {
+            const json = await res.json();
+            return json[0].map(s => s[0]).join('');
+          }
+        } catch(e) {}
+
+        try {
+          const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(workingText)}&langpair=en|hi`);
+          if (res.ok) {
+            const json = await res.json();
+            if (json.responseData && json.responseData.translatedText) {
+              return json.responseData.translatedText;
+            }
+          }
+        } catch(e) {}
+
+        // Fallback to glossary replacements
+        let resText = workingText;
+        for (const [enW, hiW] of Object.entries(WEDDING_GLOSSARY)) {
+          const regex = new RegExp(`\\b${enW}\\b`, 'gi');
+          resText = resText.replace(regex, hiW);
+        }
+        return resText !== workingText ? resText : '';
+      },
+
+      // Live Preview Management
+      togglePreview() {
+        const panel = document.getElementById('previewPanel');
+        this.previewVisible = !this.previewVisible;
+        panel.classList.toggle('collapsed', !this.previewVisible);
+        document.getElementById('previewBtnLabel').textContent = this.previewVisible ? 'Hide Preview' : 'Live Preview';
+        if (this.previewVisible) {
+          this.pushToLivePreview();
+        }
+      },
+
+      setPreviewPage(page) {
+        this.previewPage = page;
+        document.getElementById('previewPageSelect').value = page;
+        const iframe = document.getElementById('previewIframe');
+        iframe.src = page + '?v=' + Date.now();
+      },
+
+      setPreviewLang(lang) {
+        this.previewLang = lang;
+        document.getElementById('previewLangSelect').value = lang;
+        this.pushToLivePreview();
+      },
+
+      refreshPreview() {
+        const iframe = document.getElementById('previewIframe');
+        iframe.contentWindow.location.reload();
+      },
+
+      pushToLivePreview() {
+        const iframe = document.getElementById('previewIframe');
+        if (!iframe || !iframe.contentWindow) return;
+        try {
+          const win = iframe.contentWindow;
+          if (win.GTM_CMS && win.GTM_CMS.applyDOM) {
+            win.GTM_CMS.setLanguage(this.previewLang);
+          }
+        } catch(e) {}
+      },
+
+      // Save & Publish
+      async saveDraft() {
+        try {
+          const res = await fetch('/api/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ en: this.data.en, hi: this.data.hi })
+          });
+          const result = await res.json();
+          if (result.success) {
+            this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
+            this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
+            this.updateGitStatus(result.git);
+            this.render();
+            this.showToast('Draft saved successfully to locales/en.json and hi.json', 'success');
+          } else {
+            this.showToast(`Error saving: ${result.error}`, 'error');
+          }
+        } catch(e) {
+          this.showToast('Saved in memory. (Backend server offline)', 'success');
+        }
+      },
+
+      promptPublish() {
+        document.getElementById('publishModal').classList.add('open');
+      },
+
+      closeModal() {
+        document.getElementById('publishModal').classList.remove('open');
+      },
+
+      async executePublish() {
+        const commitMsg = document.getElementById('publishCommitMsg').value;
+        this.closeModal();
+        this.showToast('Publishing to GitHub Pages...', 'success');
+
+        try {
+          const res = await fetch('/api/publish', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              en: this.data.en,
+              hi: this.data.hi,
+              commit_message: commitMsg
+            })
+          });
+          const result = await res.json();
+          if (result.success) {
+            this.initialData.en = JSON.parse(JSON.stringify(this.data.en));
+            this.initialData.hi = JSON.parse(JSON.stringify(this.data.hi));
+            this.updateGitStatus(result.git);
+            this.render();
+            this.showToast(`🎉 Published Live! Commit: ${result.commit || 'pushed'}`, 'success');
+          } else {
+            this.showToast(`Publish failed: ${result.error}`, 'error');
+          }
+        } catch(e) {
+          this.showToast(`Network error while publishing: ${e.message}`, 'error');
+        }
+      },
+
+      showToast(msg, type = 'success') {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.textContent = msg;
+        container.appendChild(toast);
+        setTimeout(() => {
+          toast.remove();
+        }, 3500);
+      },
+
+      escapeHtml(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      },
+
+      escapeAttr(str) {
+        if (!str) return '';
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      },
+
+      setupShortcuts() {
+        window.addEventListener('keydown', (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+            e.preventDefault();
+            this.saveDraft();
+          }
+          if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            const input = document.getElementById('searchInput');
+            if (input) input.focus();
+          }
+          if (e.key === 'Escape') {
+            this.closeModal();
+          }
+        });
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      StudioApp.init();
+    });
+  </script>
+</body>
+</html>
