@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Garima & Mrinal · Concept Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Spectral:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=26000">
+
+<style>
+@font-face {
+  font-family: 'Kugile';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Kugile.ttf?v=24700') format('truetype'),
+       local('Kugile');
+}
+
+@font-face {
+  font-family: 'Snell Roundhand';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Snell Roundhand'),
+       local('SnellRoundhand'),
+       url('fonts/SnellRoundhand.woff?v=24700') format('woff');
+}
+
+:root {
+  --crimson-velvet: #4A0E17;
+  --geru-deep: #7A141A;
+  --gold-antique: #D4AF37;
+  --cream-parchment: #FAF6ED;
+  --charcoal-warm: #221F1F;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: #2D080D;
+  color: var(--cream-parchment);
+  font-family: 'Spectral', Georgia, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.preview-canvas {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 30%, #5E121D 0%, #3B0A10 65%, #220509 100%);
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 32px 20px 100px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 50px rgba(0,0,0,0.6);
+}
+
+/* ── 1. The Heirloom Collage Container ── */
+.collage-stage {
+  width: 100%;
+  max-width: 380px;
+  height: 480px;
+  position: relative;
+  margin-top: 12px;
+  perspective: 1000px;
+}
+
+/* Antique Baroque / Carved Deodar Frame */
+.collage-frame {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 430px;
+  border-radius: 120px 120px 160px 160px / 80px 80px 180px 180px;
+  background: 
+    radial-gradient(ellipse at 50% 40%, #E8D5B5 0%, #C4A77D 50%, #8A6D48 100%);
+  box-shadow: 
+    0 15px 35px rgba(0,0,0,0.5),
+    inset 0 0 0 6px #5C4326,
+    inset 0 0 0 10px #D8C29D,
+    inset 0 0 0 14px #422F19,
+    inset 0 0 30px rgba(0,0,0,0.4);
+  z-index: 2;
+  overflow: hidden;
+}
+
+.collage-frame-inner {
+  position: absolute;
+  inset: 14px;
+  border-radius: 110px 110px 150px 150px / 70px 70px 170px 170px;
+  background: 
+    radial-gradient(circle at 50% 30%, #FFFDF9 0%, #EFE5D3 60%, #D8C9B0 100%);
+  box-shadow: inset 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Botanical Flourish (Pressed Himalayan Rhododendron & Jasmine) */
+.botanical-spray {
+  position: absolute;
+  top: -15px;
+  right: 15px;
+  width: 140px;
+  height: 140px;
+  z-index: 6;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 12px rgba(0,0,0,0.4));
+  transform: rotate(12deg);
+}
+
+/* Deckle-Edged Cotton Rag "Save our Date" Calligraphy */
+.deckle-calligraphy-card {
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  width: 170px;
+  padding: 16px 12px;
+  background: #FFFDF8;
+  border-radius: 3px;
+  box-shadow: 
+    -4px 8px 20px rgba(0,0,0,0.35),
+    0 0 0 1px rgba(0,0,0,0.05);
+  transform: rotate(-10deg);
+  z-index: 4;
+  text-align: center;
+}
+
+.deckle-calligraphy-card::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(167, 31, 35, 0.25);
+  pointer-events: none;
+}
+
+.deckle-script-title {
+  font-family: 'Snell Roundhand', 'Cormorant Garamond', cursive;
+  font-size: 32px;
+  color: #7A141A;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+}
+
+/* 3-Frame Vertical Photobooth Strip */
+.photobooth-strip {
+  position: absolute;
+  top: 40px;
+  right: 22px;
+  width: 130px;
+  background: #FFFDF9;
+  padding: 8px 8px 14px 8px;
+  border-radius: 2px;
+  box-shadow: 
+    6px 12px 28px rgba(0,0,0,0.45),
+    0 2px 6px rgba(0,0,0,0.2);
+  transform: rotate(8deg);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+  cursor: pointer;
+}
+
+.photobooth-strip:hover {
+  transform: rotate(4deg) scale(1.04);
+}
+
+.photo-cell {
+  width: 100%;
+  height: 90px;
+  background: #2D2926;
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-cell-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #4A4441 0%, #1F1C1B 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #E6DFD5;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Velvet Keepsake Heart with Lace Border */
+.velvet-heart-badge {
+  position: absolute;
+  bottom: 55px;
+  left: 20px;
+  width: 160px;
+  height: 145px;
+  z-index: 7;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 10px 22px rgba(0,0,0,0.5));
+}
+
+.velvet-heart-lace {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 45%, #7A141A 0%, #4A0E17 80%, #2D050A 100%);
+  clip-path: path("M 80 140 C 30 95 0 65 0 35 C 0 12 18 0 45 0 C 62 0 74 10 80 20 C 86 10 98 0 115 0 C 142 0 160 12 160 35 C 160 65 130 95 80 140 Z");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 14px;
+  border: 3px double rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.6);
+}
+
+.velvet-heart-date {
+  font-family: 'Spectral', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #F7E7CE;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.velvet-heart-loc {
+  font-family: 'Spectral', serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #D8C29D;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* Interactive Spinning Vinyl Disc Player */
+.vinyl-disc-player {
+  position: absolute;
+  bottom: 45px;
+  right: 25px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 50% 50%, #D8C29D 0%, #8A6D48 18%, #1A1817 22%, #2B2725 35%, #1A1817 48%, #2B2725 60%, #151312 85%, #0A0908 100%);
+  box-shadow: 
+    0 10px 24px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.1);
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transform: rotate(0deg);
+}
+
+.vinyl-disc-player.is-playing {
+  animation: spinVinyl 3.5s linear infinite;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-center-label {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #E8D3C3;
+  border: 2px solid #8A6D48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Snell Roundhand', cursive;
+  font-size: 16px;
+  color: #4A0E17;
+  font-weight: bold;
+}
+
+.tap-to-play-hint {
+  position: absolute;
+  bottom: 25px;
+  right: 18px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #E8D5B5;
+  font-weight: 600;
+  z-index: 9;
+}
+
+/* ── 2. Countdown Section ── */
+.countdown-section {
+  width: 100%;
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-eyebrow {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  text-transform: uppercase;
+  color: #F0DFC8;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+}
+
+.countdown-digits-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Spectral', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #FFFDF9;
+  letter-spacing: -0.5px;
+}
+
+.countdown-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-num {
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #D8C29D;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.countdown-divider {
+  font-size: 24px;
+  color: #C4A77D;
+  margin-top: -12px;
+}
+
+/* ── 3. Script Subtitle & Call-to-Action ── */
+.editorial-subtitle {
+  font-family: 'Snell Roundhand', 'Cormorant Garamond', cursive;
+  font-size: 34px;
+  color: #F5E8D3;
+  margin-top: 24px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
+
+.cta-button-outlined {
+  margin-top: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: 1px solid rgba(245, 232, 211, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  color: #FFFDF9;
+  font-family: 'Spectral', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.cta-button-outlined:hover {
+  background: rgba(245, 232, 211, 0.15);
+  border-color: #F5E8D3;
+}
+</style>
+</head>
+<body>
+
+<div class="preview-canvas">
+
+  <!-- ── 1. The Heirloom Keepsake Stage ── -->
+  <div class="collage-stage">
+    
+    <!-- Antique Carved Deodar / Baroque Frame -->
+    <div class="collage-frame">
+      <div class="collage-frame-inner"></div>
+    </div>
+
+    <!-- Mountain Rhododendron Botanical Sprig SVG -->
+    <svg class="botanical-spray" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 90 Q 65 50 85 20" stroke="#4A6B52" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Rhododendron Blossom Petals -->
+      <circle cx="82" cy="22" r="12" fill="#A71F23" opacity="0.95"/>
+      <circle cx="72" cy="16" r="10" fill="#C42A30" opacity="0.9"/>
+      <circle cx="88" cy="14" r="9" fill="#8A151B" opacity="0.9"/>
+      <circle cx="78" cy="28" r="11" fill="#941C21" opacity="0.9"/>
+      <circle cx="80" cy="20" r="4" fill="#E6BF68"/>
+      <!-- Deodar Pine Needle Sprigs -->
+      <path d="M60 65 L 75 58 M 58 68 L 78 68 M 56 72 L 72 78" stroke="#2D4A35" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Deckle-Edged "Save our Date" Card -->
+    <div class="deckle-calligraphy-card">
+      <div class="deckle-script-title">Save our<br>Date</div>
+    </div>
+
+    <!-- 3-Frame Vertical Candid Photobooth Strip -->
+    <div class="photobooth-strip" id="photoStrip" title="Click to view full photos">
+      <div class="photo-cell">
+        <div class="photo-cell-placeholder">
+          <span>G &amp; M</span>
+        </div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-placeholder">
+          <span>NAINITAL</span>
+        </div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-placeholder">
+          <span>2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Velvet Heart Keepsake with Lace Trim -->
+    <div class="velvet-heart-badge">
+      <div class="velvet-heart-lace">
+        <div class="velvet-heart-date">20-23.11.2026</div>
+        <div class="velvet-heart-loc">NAINITAL<br>INDIA</div>
+      </div>
+    </div>
+
+    <!-- Interactive Spinning Vinyl Music Disc -->
+    <div class="vinyl-disc-player" id="vinylPlayer" onclick="togglePlayMusic()" title="Tap to Play Music">
+      <div class="vinyl-center-label">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="#4A0E17" id="playIconSvg">
+          <polygon points="6,4 20,12 6,20"></polygon>
+        </svg>
+      </div>
+    </div>
+    <div class="tap-to-play-hint">TAP TO PLAY</div>
+
+  </div>
+
+  <!-- ── 2. Live Dynamic Countdown Ticker ── -->
+  <div class="countdown-section">
+    <div class="countdown-eyebrow">THE COUNTDOWN IS ON!</div>
+    
+    <div class="countdown-digits-row">
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntDays">00</span>
+        <span class="countdown-label">DAYS</span>
+      </div>
+      <span class="countdown-divider">:</span>
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntHours">00</span>
+        <span class="countdown-label">HOURS</span>
+      </div>
+      <span class="countdown-divider">:</span>
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntMins">00</span>
+        <span class="countdown-label">MINUTES</span>
+      </div>
+      <span class="countdown-divider">:</span>
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntSecs">00</span>
+        <span class="countdown-label">SECONDS</span>
+      </div>
+    </div>
+
+    <div class="editorial-subtitle">Formal invitation to follow</div>
+
+    <a href="celebrations.html" class="cta-button-outlined">
+      Explore Celebrations ›
+    </a>
+  </div>
+
+</div>
+
+<!-- Audio Element -->
+<audio id="bgAudio" loop preload="none">
+  <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+/* ── Real-time Countdown Engine (Target: Nov 20, 2026 IST) ── */
+function updateCountdownTicker() {
+  const targetDate = new Date('2026-11-20T00:00:00+05:30').getTime();
+  const now = new Date().getTime();
+  const diff = Math.max(0, targetDate - now);
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+  const pad = (n) => String(n).padStart(2, '0');
+
+  document.getElementById('cntDays').textContent = days;
+  document.getElementById('cntHours').textContent = pad(hours);
+  document.getElementById('cntMins').textContent = pad(mins);
+  document.getElementById('cntSecs').textContent = pad(secs);
+}
+
+setInterval(updateCountdownTicker, 1000);
+updateCountdownTicker();
+
+/* ── Interactive Music Disc ── */
+let isPlaying = false;
+function togglePlayMusic() {
+  const audio = document.getElementById('bgAudio');
+  const player = document.getElementById('vinylPlayer');
+  const icon = document.getElementById('playIconSvg');
+
+  if (!isPlaying) {
+    audio.play().then(() => {
+      isPlaying = true;
+      player.classList.add('is-playing');
+      icon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+    }).catch(() => {});
+  } else {
+    audio.pause();
+    isPlaying = false;
+    player.classList.remove('is-playing');
+    icon.innerHTML = '<polygon points="6,4 20,12 6,20"></polygon>';
+  }
+}
+</script>
+
+</body>
+</html>

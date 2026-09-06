@@ -62,18 +62,21 @@
 :root {
   color-scheme: dark;
   --theme-color: #A71F23;
+  --crimson-velvet: #4A0E17;
+  --geru-deep: #7A141A;
+  --gold-antique: #D4AF37;
+  --cream-parchment: #FAF6ED;
+  --charcoal-warm: #221F1F;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent !important; }
 *, *::before, *::after, button, a { -webkit-tap-highlight-color: transparent !important; -webkit-touch-callout: none !important; }
+
 html {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: var(--app-height, 100lvh);
-  min-height: var(--app-height, 100lvh);
-  max-height: var(--app-height, 100lvh);
-  overflow: hidden !important;
+  height: 100%;
   background: #A71F23 !important;
   background-color: #A71F23 !important;
 }
@@ -82,9 +85,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
   min-height: 100%;
-  overflow: hidden !important;
   background: #A71F23 !important;
   background-color: #A71F23 !important;
   font-family: 'Spectral', Georgia, serif;
@@ -99,153 +100,420 @@ body {
 .home-mobile-canvas {
   position: relative;
   width: 100%;
-  height: var(--app-height, 100lvh);
   min-height: var(--app-height, 100lvh);
-  max-height: var(--app-height, 100lvh);
   margin: 0 auto;
-  overflow: hidden;
-  background: #FAF6ED !important;
-  background-color: #FAF6ED !important;
-  contain: layout size style;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  background: radial-gradient(circle at 50% 25%, #6E121B 0%, #440A10 50%, #200407 100%) !important;
+  background-color: #440A10 !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px 120px 16px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 1024px) {
   .home-mobile-canvas {
     max-width: 440px;
-    box-shadow: 0 0 40px rgba(0,0,0,0.25);
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
   }
 }
 
-/* ── 1. Architectural Cotton-Rag Paper (CSS Multi-Radial Mesh + Procedural SVG Micro-Fibers) ── */
-.home-bg-layer {
+/* ── 1. Architectural Parchment & Micro-Grain Texture ── */
+.home-bg-grain {
   position: absolute !important;
   inset: 0 !important;
   width: 100% !important;
   height: 100% !important;
   pointer-events: none !important;
   z-index: 1 !important;
-  overflow: hidden !important;
-  background: 
-    radial-gradient(circle at 50% 44%, #FFFDF9 0%, #FAF6ED 48%, #F3ECE0 100%) !important;
-  background-color: #FAF6ED !important;
-}
-.home-bg-layer::before {
-  display: block !important;
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: 
-    radial-gradient(ellipse 90% 60% at 50% 15%, rgba(255, 255, 255, 0.45) 0%, transparent 70%),
-    radial-gradient(ellipse 120% 80% at 50% 85%, rgba(235, 222, 205, 0.35) 0%, transparent 65%) !important;
-  pointer-events: none !important;
-  opacity: 1 !important;
-  animation: none !important;
-}
-.home-bg-layer::after {
-  display: block !important;
-  content: "" !important;
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='finePaperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.25  0 0 0 0 0.20  0 0 0 0 0.15  0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23finePaperGrain)'/%3E%3C/svg%3E") !important;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='finePaperGrain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.35  0 0 0 0 0.10  0 0 0 0 0.12  0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23finePaperGrain)'/%3E%3C/svg%3E") !important;
   background-repeat: repeat !important;
   background-size: 180px 180px !important;
-  mix-blend-mode: multiply !important;
-  opacity: 1 !important;
-  pointer-events: none !important;
+  mix-blend-mode: overlay !important;
+  opacity: 0.6 !important;
 }
 
-/* ── 2. Central Typography Block (GARIMA takes MRINAL · Date & Location) ── */
-.home-hero-text {
+/* ── 2. The Heirloom Keepsake Stage ── */
+.collage-stage {
+  width: 100%;
+  max-width: 370px;
+  height: 470px;
+  position: relative;
+  margin-top: 8px;
+  perspective: 1000px;
+  z-index: 2;
+}
+
+/* Antique Baroque / Carved Deodar Likhai Frame */
+.collage-frame {
   position: absolute;
-  top: calc(50% - 24px);
-  left: 50% !important;
-  transform: translate3d(-50%, -50%, 0) !important;
-  -webkit-transform: translate3d(-50%, -50%, 0) !important;
-  width: min(92vw, 440px);
-  max-width: 100vw;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 310px;
+  height: 420px;
+  border-radius: 115px 115px 150px 150px / 75px 75px 170px 170px;
+  background: 
+    radial-gradient(ellipse at 50% 40%, #E8D5B5 0%, #C4A77D 50%, #8A6D48 100%);
+  box-shadow: 
+    0 18px 40px rgba(0,0,0,0.55),
+    inset 0 0 0 6px #5C4326,
+    inset 0 0 0 10px #D8C29D,
+    inset 0 0 0 14px #422F19,
+    inset 0 0 30px rgba(0,0,0,0.45);
+  z-index: 2;
+  overflow: hidden;
+}
+
+.collage-frame-inner {
+  position: absolute;
+  inset: 14px;
+  border-radius: 105px 105px 140px 140px / 65px 65px 160px 160px;
+  background: 
+    radial-gradient(circle at 50% 30%, #FFFDF9 0%, #EFE5D3 60%, #D8C9B0 100%);
+  box-shadow: inset 0 6px 22px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Subtle couple silhouette / monogram in frame */
+.frame-monogram-lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.18;
+  pointer-events: none;
+}
+.frame-monogram-text {
+  font-family: 'Kugile', 'Cinzel', serif;
+  font-size: 64px;
+  color: #7A141A;
+  line-height: 0.9;
+  letter-spacing: -2px;
+}
+
+/* Botanical Flourish (Pressed Himalayan Buransh & Deodar) */
+.botanical-spray {
+  position: absolute;
+  top: -16px;
+  right: 12px;
+  width: 140px;
+  height: 140px;
+  z-index: 6;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 14px rgba(0,0,0,0.45));
+  transform: rotate(12deg);
+}
+
+/* Deckle-Edged Cotton Rag "Save our Date" Card */
+.deckle-calligraphy-card {
+  position: absolute;
+  top: 28px;
+  left: 10px;
+  width: 165px;
+  padding: 16px 12px;
+  background: #FFFDF8;
+  border-radius: 3px;
+  box-shadow: 
+    -4px 8px 22px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(0,0,0,0.06);
+  transform: rotate(-10deg);
+  z-index: 4;
+  text-align: center;
+}
+
+.deckle-calligraphy-card::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px dashed rgba(167, 31, 35, 0.25);
+  pointer-events: none;
+}
+
+.deckle-script-title {
+  font-family: 'Snell Roundhand', 'Cormorant Garamond', cursive;
+  font-size: 32px;
+  color: #7A141A;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  font-weight: 400;
+}
+
+/* 3-Frame Vertical Photobooth Strip */
+.photobooth-strip {
+  position: absolute;
+  top: 36px;
+  right: 18px;
+  width: 126px;
+  background: #FFFDF9;
+  padding: 8px 8px 12px 8px;
+  border-radius: 2px;
+  box-shadow: 
+    6px 14px 30px rgba(0,0,0,0.5),
+    0 2px 6px rgba(0,0,0,0.25);
+  transform: rotate(8deg);
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+  cursor: pointer;
+}
+
+.photobooth-strip:hover {
+  transform: rotate(4deg) scale(1.03);
+}
+
+.photo-cell {
+  width: 100%;
+  height: 86px;
+  background: #2D2926;
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo-cell-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #443E3B 0%, #1A1817 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #E6DFD5;
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Velvet Keepsake Heart with Lace Border */
+.velvet-heart-badge {
+  position: absolute;
+  bottom: 50px;
+  left: 18px;
+  width: 156px;
+  height: 142px;
+  z-index: 7;
+  transform: rotate(-6deg);
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.55));
+}
+
+.velvet-heart-lace {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 45%, #8B1820 0%, #520F19 75%, #30060C 100%);
+  clip-path: path("M 78 136 C 29 92 0 63 0 34 C 0 11 17 0 44 0 C 60 0 72 10 78 19 C 84 10 96 0 112 0 C 139 0 156 11 156 34 C 156 63 127 92 78 136 Z");
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  z-index: 3;
-  pointer-events: none;
-  margin: 0 auto;
-  box-sizing: border-box;
+  padding: 20px 12px;
+  border: 3px double rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 16px rgba(0,0,0,0.65);
 }
 
-.home-names-lockup {
+.velvet-heart-date {
+  font-family: 'Spectral', serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #F7E7CE;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.velvet-heart-loc {
+  font-family: 'Spectral', serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: #D8C29D;
+  margin-top: 4px;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+/* Interactive Spinning Vinyl Disc Player */
+.vinyl-disc-player {
+  position: absolute;
+  bottom: 45px;
+  right: 22px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 50% 50%, #D8C29D 0%, #8A6D48 18%, #1A1817 22%, #2B2725 35%, #1A1817 48%, #2B2725 60%, #151312 85%, #0A0908 100%);
+  box-shadow: 
+    0 10px 24px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.1);
+  z-index: 8;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transform: rotate(0deg);
+  border: none;
+  outline: none;
+}
+
+.vinyl-disc-player.is-playing {
+  animation: spinVinyl 4s linear infinite !important;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-center-label {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #E8D3C3;
+  border: 2px solid #8A6D48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4A0E17;
+}
+
+.vinyl-icon-play,
+.vinyl-icon-pause {
+  fill: #4A0E17;
+  display: block;
+}
+
+.vinyl-disc-player.is-playing .vinyl-icon-play {
+  display: none;
+}
+
+.vinyl-disc-player:not(.is-playing) .vinyl-icon-pause {
+  display: none;
+}
+
+.tap-to-play-hint {
+  position: absolute;
+  bottom: 22px;
+  right: 16px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #E8D5B5;
+  font-weight: 600;
+  z-index: 9;
+}
+
+/* ── 3. Live Dynamic Countdown Ticker ── */
+.countdown-section {
   width: 100%;
-}
-
-.home-title-name {
-  font-family: 'Kugile', 'Cinzel', serif !important;
-  font-size: clamp(52px, 14.5vw, 68px) !important;
-  font-weight: 400 !important;
-  line-height: 0.95 !important;
-  letter-spacing: -1.2px !important;
-  color: #A71F23 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
-  text-align: center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  white-space: nowrap !important;
-}
-
-.home-title-connector {
-  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
-  font-size: clamp(40px, 11vw, 52px) !important;
-  font-weight: 400 !important;
-  line-height: 0.85 !important;
-  color: #A71F23 !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
-  text-align: center !important;
-  margin: 4px 0 2px 0 !important;
-  padding: 0 !important;
-  display: block !important;
-}
-
-.home-details-lockup {
+  max-width: 370px;
+  text-align: center;
+  margin-top: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
+}
+
+.countdown-eyebrow {
+  font-family: 'Spectral', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #F0DFC8;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+}
+
+.countdown-digits-row {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  margin-top: clamp(20px, 5.5vw, 30px);
-  gap: 4px;
+  gap: 10px;
+  font-family: 'Spectral', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #FFFDF9;
+  letter-spacing: -0.5px;
 }
 
-.home-date-text,
-.home-location-text {
-  font-family: 'Spectral', Georgia, serif !important;
-  font-size: clamp(14px, 3.8vw, 16px) !important;
-  font-weight: 700 !important;
-  letter-spacing: clamp(1.2px, 0.16em, 2.5px) !important;
-  line-height: 1.25 !important;
-  color: #071C41 !important;
-  text-transform: uppercase !important;
-  text-shadow: 0px 1px 2px #FFFDF9 !important;
-  text-align: center !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  white-space: nowrap !important;
+.countdown-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 48px;
 }
 
-/* ── Global Audio Pill Theme ── */
-.global-audio-pill .icon-play,
-.global-audio-pill .icon-pause {
-  fill: #0b4c6d !important;
+.countdown-num {
+  line-height: 1;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
 }
-.global-audio-pill .bar {
-  background-color: #0b4c6d !important;
+
+.countdown-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #D8C29D;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.countdown-divider {
+  font-size: 24px;
+  color: #C4A77D;
+  margin-top: -12px;
+  opacity: 0.8;
+}
+
+/* ── 4. Script Subtitle & Call-to-Action ── */
+.editorial-subtitle {
+  font-family: 'Snell Roundhand', 'Cormorant Garamond', cursive;
+  font-size: 32px;
+  color: #F5E8D3;
+  margin-top: 20px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.45);
+  line-height: 1.1;
+}
+
+.cta-button-outlined {
+  margin-top: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  border: 1px solid rgba(245, 232, 211, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #FFFDF9;
+  font-family: 'Spectral', serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.cta-button-outlined:active,
+.cta-button-outlined:hover {
+  background: rgba(245, 232, 211, 0.18);
+  border-color: #F5E8D3;
 }
 </style>
 </head>
@@ -253,29 +521,116 @@ body {
 
 <main class="home-mobile-canvas">
 
-  <!-- ── 1. Background Texture ── -->
-  <div class="home-bg-layer" aria-hidden="true"></div>
+  <!-- ── 1. Background Grain Texture ── -->
+  <div class="home-bg-grain" aria-hidden="true"></div>
 
-  <!-- ── 2. Central Typography Block (GARIMA takes MRINAL · Date & Location) ── -->
-  <div class="home-hero-text">
-    <div class="home-names-lockup">
-      <h1 class="home-title-name" data-i18n="home.hero.bride_name">GARIMA</h1>
-      <span class="home-title-connector" data-i18n="home.hero.connector">takes</span>
-      <h1 class="home-title-name" data-i18n="home.hero.groom_name">MRINAL</h1>
+  <!-- ── 2. The Heirloom Keepsake Stage ── -->
+  <div class="collage-stage">
+    
+    <!-- Antique Carved Deodar / Baroque Frame -->
+    <div class="collage-frame">
+      <div class="collage-frame-inner">
+        <div class="frame-monogram-lockup">
+          <span class="frame-monogram-text">G&amp;M</span>
+        </div>
+      </div>
     </div>
-    <div class="home-details-lockup">
-      <p class="home-date-text" data-i18n="home.hero.date">NOV 21, 2026</p>
-      <p class="home-location-text" data-i18n="home.hero.location">NAINITAL, INDIA</p>
+
+    <!-- Mountain Rhododendron Botanical Sprig SVG -->
+    <svg class="botanical-spray" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M50 90 Q 65 50 85 20" stroke="#4A6B52" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Rhododendron Blossom Petals -->
+      <circle cx="82" cy="22" r="12" fill="#A71F23" opacity="0.95"/>
+      <circle cx="72" cy="16" r="10" fill="#C42A30" opacity="0.9"/>
+      <circle cx="88" cy="14" r="9" fill="#8A151B" opacity="0.9"/>
+      <circle cx="78" cy="28" r="11" fill="#941C21" opacity="0.9"/>
+      <circle cx="80" cy="20" r="4" fill="#E6BF68"/>
+      <!-- Deodar Pine Needle Sprigs -->
+      <path d="M60 65 L 75 58 M 58 68 L 78 68 M 56 72 L 72 78" stroke="#2D4A35" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Deckle-Edged "Save our Date" Card -->
+    <div class="deckle-calligraphy-card">
+      <div class="deckle-script-title" data-i18n="home.hero.save_date_script">Save our<br>Date</div>
     </div>
+
+    <!-- 3-Frame Vertical Candid Photobooth Strip -->
+    <div class="photobooth-strip" id="photoStrip" title="Garima &amp; Mrinal Moments">
+      <div class="photo-cell">
+        <div class="photo-cell-placeholder">
+          <span>G &amp; M</span>
+        </div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-placeholder">
+          <span>NAINITAL</span>
+        </div>
+      </div>
+      <div class="photo-cell">
+        <div class="photo-cell-placeholder">
+          <span>2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Velvet Heart Keepsake with Lace Trim -->
+    <div class="velvet-heart-badge">
+      <div class="velvet-heart-lace">
+        <div class="velvet-heart-date" data-i18n="home.hero.heart_dates">20-23.11.2026</div>
+        <div class="velvet-heart-loc" data-i18n="home.hero.heart_loc">NAINITAL<br>INDIA</div>
+      </div>
+    </div>
+
+    <!-- Interactive Spinning Vinyl Music Disc (Directly bound to Global Audio Player) -->
+    <button class="vinyl-disc-player celebration-player-btn" id="global-music-player" role="button" aria-label="Play Music" type="button" title="Tap to Play Music">
+      <div class="vinyl-center-label">
+        <svg class="vinyl-icon-play" viewBox="0 0 24 24" width="16" height="16">
+          <polygon points="6,4 20,12 6,20"></polygon>
+        </svg>
+        <svg class="vinyl-icon-pause" viewBox="0 0 24 24" width="16" height="16">
+          <rect x="6" y="4" width="4" height="16"></rect>
+          <rect x="14" y="4" width="4" height="16"></rect>
+        </svg>
+      </div>
+    </button>
+    <div class="tap-to-play-hint" data-i18n="home.hero.tap_play">TAP TO PLAY</div>
+
   </div>
 
-  <!-- ── Global Royal Medallion Music Player (Figma Node 26:627 · 56x56px) ── -->
-  <button id="global-music-player" class="celebration-player-btn" role="button" aria-label="Play Music" type="button">
-    <img src="images/player_figma_play.svg?v=24700" alt="Play Music" class="player-state-img player-img-play" width="56" height="56">
-    <img src="images/player_figma_pause.svg?v=24700" alt="Pause Music" class="player-state-img player-img-pause" width="56" height="56">
-  </button>
+  <!-- ── 3. Live Dynamic Countdown Ticker ── -->
+  <section class="countdown-section" aria-label="Countdown to Wedding">
+    <div class="countdown-eyebrow" data-i18n="home.countdown.eyebrow">THE COUNTDOWN IS ON!</div>
+    
+    <div class="countdown-digits-row" role="timer" aria-live="polite">
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntDays">00</span>
+        <span class="countdown-label" data-i18n="home.countdown.days">DAYS</span>
+      </div>
+      <span class="countdown-divider" aria-hidden="true">:</span>
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntHours">00</span>
+        <span class="countdown-label" data-i18n="home.countdown.hours">HOURS</span>
+      </div>
+      <span class="countdown-divider" aria-hidden="true">:</span>
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntMins">00</span>
+        <span class="countdown-label" data-i18n="home.countdown.mins">MINUTES</span>
+      </div>
+      <span class="countdown-divider" aria-hidden="true">:</span>
+      <div class="countdown-col">
+        <span class="countdown-num" id="cntSecs">00</span>
+        <span class="countdown-label" data-i18n="home.countdown.secs">SECONDS</span>
+      </div>
+    </div>
 
-  <!-- ── AUDIO ── -->
+    <div class="editorial-subtitle" data-i18n="home.hero.subtitle">Formal invitation to follow</div>
+
+    <a href="celebrations.html" class="cta-button-outlined" data-i18n="home.hero.cta_celebrations">
+      Explore Celebrations ›
+    </a>
+  </section>
+
+  <!-- ── AUDIO ELEMENT ── -->
   <audio id="bg-music" loop preload="none" playsinline>
     <source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
   </audio>
@@ -305,6 +660,7 @@ body {
       <div class="nav-pill-wrapper">
         <svg class="nav-icon" width="32" height="26" viewBox="0 0 40 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path d="M3.1349 14.0634C6.2896 13.9199 10.3184 14.7614 13.0216 16.4111C16.892 18.773 18.9938 22.5652 20.0128 26.8388C20.5987 23.9333 22.2763 20.5284 24.4171 18.4052C27.5641 15.2842 31.908 14.1276 36.2726 14.0507C36.7554 14.0422 37.0623 14.0565 37.4025 14.3876C37.7247 15.4901 37.1661 18.233 36.8712 19.3847C36.5989 20.3197 36.2508 21.2318 35.8312 22.1122C33.8454 26.2545 30.2718 29.4495 25.8966 30.9951C21.534 32.5306 16.7317 32.298 12.5431 30.3476C8.34017 28.3805 5.09845 24.851 3.52943 20.5331C3.09546 19.3314 2.13421 15.4313 2.64662 14.415C2.75035 14.2093 2.92305 14.1312 3.1349 14.0634ZM29.3781 7.42279C30.6578 7.451 31.0926 12.3455 31.1456 13.2783C30.8879 13.3393 30.6315 13.4055 30.3761 13.4755C26.7375 14.4481 23.5842 16.6967 21.5079 19.7988C21.0704 20.4528 20.7007 21.1236 20.3283 21.8154C20.226 22.0053 20.1763 22.1644 20.0783 22.3359C20.0067 22.3446 19.9808 22.3519 19.9425 22.2714C18.2212 18.6447 15.0485 15.2879 11.1251 13.9687C10.1601 13.5784 8.82872 13.2172 7.79701 13.0536C7.88342 12.4464 7.99544 11.8428 8.13392 11.2451C8.29677 10.5686 8.63092 8.53954 9.64174 8.89642C13.4459 10.2398 16.8897 12.404 19.0226 15.8701C20.5145 12.3547 23.8069 9.7162 27.2697 8.21283C27.8786 7.94844 28.7269 7.53538 29.3781 7.42279ZM19.8478 4.00384C20.9513 3.86439 23.2616 7.56119 23.7648 8.50384C21.917 9.59545 20.3162 11.1846 19.0763 12.9101C19.0138 13.0039 18.9898 13.0514 18.8947 13.1181C18.7161 13.0856 18.5068 12.846 18.3869 12.707C17.4691 11.643 16.4038 10.8912 15.2716 10.0654C15.5366 9.63267 15.8877 8.90296 16.1671 8.414C16.7376 7.41575 18.9089 4.42482 19.8478 4.00384Z" fill="currentColor"/>
+        </svg>
       </div>
       <span class="nav-label" data-i18n="global.nav.celebrations">Celebrations</span>
     </a>
@@ -319,6 +675,43 @@ body {
 </nav>
 
 <script>
+/* ── Real-time Dynamic Countdown Engine (Target: Nov 20, 2026 IST) ── */
+(function() {
+  function updateCountdownTicker() {
+    var dEl = document.getElementById('cntDays');
+    var hEl = document.getElementById('cntHours');
+    var mEl = document.getElementById('cntMins');
+    var sEl = document.getElementById('cntSecs');
+    if (!dEl || !hEl || !mEl || !sEl) return;
+
+    var targetDate = new Date('2026-11-20T00:00:00+05:30').getTime();
+    var now = new Date().getTime();
+    var diff = Math.max(0, targetDate - now);
+
+    var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    var secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+    var pad = function(n) { return String(n).padStart(2, '0'); };
+
+    dEl.textContent = days;
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+  }
+
+  if (window.__GTM_TICKER_INTERVAL__) {
+    clearInterval(window.__GTM_TICKER_INTERVAL__);
+  }
+  window.__GTM_TICKER_INTERVAL__ = setInterval(updateCountdownTicker, 1000);
+  updateCountdownTicker();
+
+  document.addEventListener('DOMContentLoaded', updateCountdownTicker);
+  window.addEventListener('gtm:page-loaded', updateCountdownTicker);
+})();
+
+/* ── Theme Color Enforcement ── */
 document.addEventListener('DOMContentLoaded', function() {
   function enforceThemeColor() {
     if (window.ensureThemeColor) {
