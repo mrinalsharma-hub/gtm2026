@@ -61,10 +61,10 @@
 
     if (targetNorm === 'index.html' || targetNorm === 'auth') {
       themeColor = '#170406'; // Exact Pure Maroon for Auth page (no white/cream patch)
-    } else if (targetNorm === 'celebrations.html' || targetNorm === 'travel&stay.html') {
-      themeColor = '#FFEFD4'; // Cream for Celebrations and Travel
-    } else if (targetNorm === 'G&M.html' || targetNorm === 'rsvp.html') {
-      themeColor = '#471618'; // Deep Burgundy Maroon for Home & RSVP
+    } else if (targetNorm === 'celebrations.html' || targetNorm === 'travel&stay.html' || targetNorm === 'rsvp.html' || targetNorm === 'joinus.html') {
+      themeColor = '#FFEFD4'; // Cream for Celebrations, Travel, and RSVP
+    } else if (targetNorm === 'G&M.html') {
+      themeColor = '#471618'; // Deep Burgundy Maroon for Home (G&M)
     }
 
     if (document.documentElement) {
