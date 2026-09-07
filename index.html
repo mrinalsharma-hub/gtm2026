@@ -119,36 +119,37 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-top: max(env(safe-area-inset-top, 0px), 16px);
-  padding-bottom: max(env(safe-area-inset-bottom, 0px), 24px);
+  justify-content: flex-start;
   box-sizing: border-box;
 }
 
-/* ── Main Vertical Content Container (Max 440px width matching Figma Artboard) ── */
-.auth-container {
+/* ── Main Canvas Wrapper: Exact 440px wide layout geometry from Figma ── */
+.auth-canvas {
   width: 100%;
   max-width: 440px;
   height: 100%;
+  max-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding-top: calc(env(safe-area-inset-top, 0px) + clamp(20px, 4.5vh, 42px));
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(20px, 4.5vh, 44px));
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
   position: relative;
   z-index: 10;
 }
 
-/* ── 1. Top Section: Couple Names & Subtitle ── */
+/* ── 1. Top Section: Typography Lockup & Subtitle ── */
 .auth-top-stack {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-top: clamp(8px, 2.5vh, 24px);
   z-index: 15;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .auth-names {
@@ -162,9 +163,9 @@ body {
 
 .auth-name-line-1 {
   font-family: 'Kugile', 'Cinzel', Georgia, serif;
-  font-size: clamp(34px, 9.5vw, 44px);
-  line-height: 1.05;
-  letter-spacing: -0.5px;
+  font-size: clamp(36px, 9.8vw, 44px);
+  line-height: 1.0;
+  letter-spacing: 0.5px;
   color: #FFFFFF;
   text-transform: uppercase;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
@@ -175,25 +176,25 @@ body {
   flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  line-height: 1.05;
+  line-height: 1.0;
   margin-top: 2px;
 }
 
 .auth-ampersand {
   font-family: 'Snell Roundhand', cursive, serif;
-  font-size: clamp(48px, 13vw, 62px);
+  font-size: clamp(52px, 13.5vw, 62px);
   color: #FFFFFF;
   line-height: 0.8;
-  margin-right: 8px;
+  margin-right: 10px;
   display: inline-block;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .auth-name-text {
   font-family: 'Kugile', 'Cinzel', Georgia, serif;
-  font-size: clamp(34px, 9.5vw, 44px);
-  line-height: 1.05;
-  letter-spacing: -0.5px;
+  font-size: clamp(36px, 9.8vw, 44px);
+  line-height: 1.0;
+  letter-spacing: 0.5px;
   color: #FFFFFF;
   text-transform: uppercase;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
@@ -203,8 +204,8 @@ body {
 .auth-subtitle-wrap {
   position: relative;
   width: 100%;
-  height: 22px;
-  margin-top: 14px;
+  height: 20px;
+  margin-top: clamp(14px, 2.8vh, 24px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -212,10 +213,10 @@ body {
 
 .auth-subtitle {
   font-family: 'Spectral', Georgia, serif;
-  font-weight: 600;
-  font-size: clamp(11.5px, 3.2vw, 13px);
+  font-weight: 700;
+  font-size: 12.5px;
   line-height: 1;
-  letter-spacing: 2.4px;
+  letter-spacing: 2.8px;
   text-transform: uppercase;
   color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
@@ -284,7 +285,7 @@ body {
   height: 56px;
   background: #F4DFBC;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -302,7 +303,7 @@ body {
   font-family: 'Cinzel', 'Spectral', Georgia, serif;
   font-weight: 700;
   font-size: 19px;
-  letter-spacing: 4.8px;
+  letter-spacing: 5px;
   text-align: center;
   text-transform: uppercase;
   color: #3F151D;
@@ -332,18 +333,19 @@ body {
   40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 3. Middle Section: Vertical Portrait Envelope (320px x 453px ratio) ── */
+/* ── 3. Middle Section: Vertical Portrait Envelope (320px x 453px ratio from Figma) ── */
 .auth-envelope-wrap {
   position: relative;
-  width: 100%;
+  width: min(320px, 72.7vw);
   max-width: 320px;
-  width: min(320px, 76vw);
   aspect-ratio: 320 / 453;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   touch-action: manipulation;
+  border-radius: 16px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.2));
   transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   z-index: 10;
   margin: auto 0;
@@ -353,22 +355,20 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 16px;
   display: block;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.7)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ── Ambient Soft Glow Pulse on Wax Seal (Centered on Envelope) ── */
+/* ── Soft Ambient Glow Pulse on Wax Seal (Centered on Envelope) ── */
 .auth-seal-pulse-anchor {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 72px;
-  height: 72px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   pointer-events: none;
   z-index: 2;
@@ -379,27 +379,27 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 84px;
-  height: 84px;
+  width: 88px;
+  height: 88px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 60, 0.28) 0%, rgba(255, 135, 25, 0.18) 45%, rgba(220, 60, 10, 0.06) 70%, transparent 85%);
+  background: radial-gradient(circle, rgba(255, 215, 60, 0.25) 0%, rgba(255, 135, 25, 0.16) 45%, rgba(220, 60, 10, 0.05) 70%, transparent 85%);
   pointer-events: none;
-  opacity: 0.5;
+  opacity: 0.45;
   filter: blur(12px);
   animation: sealAuraPulse 2.8s ease-in-out infinite;
 }
 
 @keyframes sealAuraPulse {
   0%, 100% {
-    opacity: 0.35;
+    opacity: 0.3;
     transform: translate(-50%, -50%) scale(0.95);
-  }}
+  }
   50% {
-    opacity: 0.65;
-    transform: translate(-50%, -50%) scale(1.12);
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1.1);
     filter: blur(14px);
-  }}
+  }
 }
 
 .auth-viewport.is-code-active .auth-seal-pulse-anchor::before {
@@ -419,7 +419,6 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-bottom: clamp(6px, 2vh, 16px);
   z-index: 10;
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
@@ -427,9 +426,9 @@ body {
 .auth-tap-prompt {
   font-family: 'Spectral', Georgia, serif;
   font-weight: 600;
-  font-size: clamp(11px, 3vw, 12.5px);
-  line-height: 1.5;
-  letter-spacing: 2.2px;
+  font-size: 12px;
+  line-height: 1.45;
+  letter-spacing: 2.4px;
   text-transform: uppercase;
   color: #FFFFFF;
   text-align: center;
@@ -480,9 +479,9 @@ body {
 <body style="background-color: #3F151D; background: #3F151D;">
 
 <main class="auth-viewport" id="auth-viewport">
-  <div class="auth-container">
+  <div class="auth-canvas">
     
-    <!-- ── 1. Top Typography Lockup & Code Input ── -->
+    <!-- ── 1. Top Section: Typography Lockup & Subtitle ── -->
     <div class="auth-top-stack">
       <div class="auth-names">
         <h1 class="auth-name-line-1">GARIMA</h1>
