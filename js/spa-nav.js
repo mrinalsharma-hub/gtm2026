@@ -57,10 +57,10 @@
 
   function ensureThemeColor(targetNorm) {
     targetNorm = targetNorm || normalizePath(window.location.pathname);
-    var themeColor = '#170406';
+    var themeColor = '#3F151D';
 
     if (targetNorm === 'index.html' || targetNorm === 'auth') {
-      themeColor = '#170406'; // Exact Pure Maroon for Auth page (no white/cream patch)
+      themeColor = '#3F151D'; // Exact Pure Maroon for Auth page (no white/cream patch)
     } else if (targetNorm === 'celebrations.html' || targetNorm === 'travel&stay.html' || targetNorm === 'rsvp.html' || targetNorm === 'joinus.html') {
       themeColor = '#FFEFD4'; // Cream for Celebrations, Travel, and RSVP
     } else if (targetNorm === 'G&M.html') {
