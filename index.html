@@ -38,12 +38,14 @@
 <link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
 <link rel="preload" as="image" href="images/auth/envelope_crisp.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/auth/seal_flower.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="audio" href="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css?v=26400">
 
-<style>
+<style data-spa-page="true">
 @font-face {
   font-family: 'Kugile';
   font-style: normal;
@@ -98,10 +100,10 @@ html, body {
   perspective: 1200px;
 }
 
-/* ── Centered Envelope Stage Wrapper with Upward Glide on Tap ── */
+/* ── Anchored Envelope Stage Wrapper: 25px above exact center (top anchored to upper 1/3rd) ── */
 .auth-envelope-wrapper {
   position: absolute;
-  top: 50%;
+  top: calc(50% - 25px);
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
@@ -468,14 +470,14 @@ html, body {
             type="text" 
             id="auth-code-input" 
             class="auth-code-input" 
-            placeholder="ENTER CODE PROVIDED" 
+            placeholder="ENTER INVITATION CODE" 
             aria-label="Wedding Invitation Passcode" 
             autocomplete="off" 
             autocorrect="off" 
             autocapitalize="characters" 
-            spellcheck="false"
-            inputmode="text"
-            enterkeyhint="go"
+            spellcheck="false" 
+            inputmode="text" 
+            enterkeyhint="go" 
             required>
         </div>
       </form>
@@ -494,6 +496,9 @@ html, body {
   </div>
 </main>
 
+<script src="js/cms-i18n.js?v=26300"></script>
+<script src="js/spa-nav.js?v=26300"></script>
+<script src="js/global-audio.js?v=26300"></script>
 <script>
 (function() {
   'use strict';
@@ -517,22 +522,6 @@ html, body {
     try {
       if (window.GTM_AUDIO && window.GTM_AUDIO.play) {
         window.GTM_AUDIO.play();
-      } else {
-        var existingAudio = document.getElementById('bg-music');
-        if (!existingAudio) {
-          existingAudio = document.createElement('audio');
-          existingAudio.id = 'bg-music';
-          existingAudio.loop = true;
-          existingAudio.preload = 'auto';
-          existingAudio.playsInline = true;
-          existingAudio.innerHTML = '<source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">';
-          (document.head || document.documentElement).appendChild(existingAudio);
-          window.__GTM_AUDIO__ = existingAudio;
-        }
-        existingAudio.volume = 0.85;
-        existingAudio.play().catch(function(e) {
-          console.warn('Audio play:', e);
-        });
       }
       sessionStorage.setItem('gtm2026_music_playing', 'true');
       localStorage.setItem('gtm2026_music_playing', 'true');
@@ -621,7 +610,7 @@ html, body {
     });
   }
 
-  // ── Error Shake Feedback (Only on actual code submission) ──
+  // ── Error Shake Feedback (Only on actual incorrect code submission) ──
   function triggerError() {
     if (!pill) return;
     pill.classList.remove('has-error');
@@ -636,7 +625,7 @@ html, body {
     }, 600);
   }
 
-  // ── Unlock & Transition Sequence ──
+  // ── Unlock & Seamless SPA Transition Sequence ──
   function handleSuccessfulUnlock(code) {
     if (isUnlocking) return;
     isUnlocking = true;
@@ -664,10 +653,14 @@ html, body {
       viewport.classList.add('is-unlocking');
     }
 
-    // 5. Navigate to G&M.html smoothly
+    // 5. Seamlessly navigate to G&M.html without reloading the page or dropping audio
     setTimeout(function() {
-      window.location.replace('G&M.html');
-    }, 700);
+      if (window.GTM_SPA && window.GTM_SPA.navigateTo) {
+        window.GTM_SPA.navigateTo('G&M.html', true);
+      } else {
+        window.location.replace('G&M.html');
+      }
+    }, 600);
   }
 
   function validateAndSubmit() {

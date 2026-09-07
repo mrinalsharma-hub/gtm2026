@@ -6,11 +6,15 @@
   var STORAGE_KEY_PLAYING = 'gtm2026_music_playing';
   var STORAGE_KEY_TIME = 'gtm2026_music_time';
 
-  // Singleton Audio Object attached to document.head so SPA navigation never touches or pauses it
+  // Singleton Audio Object permanently anchored in document.head
+  // This guarantees that SPA DOM transitions never touch, re-parent, or interrupt playback.
   if (!window.__GTM_AUDIO__) {
     var existingAudio = document.getElementById('bg-music');
     if (existingAudio) {
       window.__GTM_AUDIO__ = existingAudio;
+      if (existingAudio.parentNode !== document.head) {
+        (document.head || document.documentElement).appendChild(existingAudio);
+      }
     } else {
       var audioEl = document.createElement('audio');
       audioEl.id = 'bg-music';
@@ -25,6 +29,8 @@
 
   var audio = window.__GTM_AUDIO__;
   audio.volume = 0.85;
+  audio.loop = true;
+  audio.playsInline = true;
 
   function deduplicatePlayers() {
     var globalPlayers = document.querySelectorAll('#global-music-player, .celebration-player-btn');
@@ -43,7 +49,7 @@
 
   function getPlayerElements() {
     deduplicatePlayers();
-    return document.querySelectorAll('#global-music-player, #music-toggle, .celebration-player-btn, .global-audio-pill');
+    return document.querySelectorAll('#global-music-player, #music-toggle, .celebration-player-btn, .gxm-vinyl-anchor, .global-audio-pill');
   }
 
   function updateUI(playing) {
@@ -73,7 +79,7 @@
       var saved = sessionStorage.getItem(STORAGE_KEY_TIME);
       if (saved) {
         var t = parseFloat(saved);
-        if (!isNaN(t) && t > 0) {
+        if (!isNaN(t) && t > 0 && Math.abs((audio.currentTime || 0) - t) > 1.5) {
           audio.currentTime = t;
         }
       }
@@ -81,17 +87,17 @@
   }
 
   function playAudio() {
-    if (!audio) return;
+    if (!audio) return Promise.reject(new Error('No audio element'));
     if (!audio.paused) {
       // Audio is already smoothly playing! Do not touch or seek!
       updateUI(true);
-      return;
+      return Promise.resolve();
     }
     restoreTime();
     audio.volume = 0.85;
     var p = audio.play();
     if (p !== undefined) {
-      p.then(function() {
+      return p.then(function() {
         try {
           sessionStorage.setItem(STORAGE_KEY_PLAYING, 'true');
           localStorage.setItem(STORAGE_KEY_PLAYING, 'true');
@@ -102,6 +108,7 @@
         updateUI(false);
       });
     }
+    return Promise.resolve();
   }
 
   function pauseAudio() {
@@ -175,6 +182,7 @@
   // Expose global controller
   window.GTM_AUDIO = {
     play: playAudio,
+    ensureAudioPlaying: playAudio,
     pause: pauseAudio,
     toggle: toggleAudio,
     updateUI: updateUI,
@@ -196,7 +204,6 @@
 
   window.addEventListener('gtm:page-loaded', function() {
     bindPlayer();
-    // Do not call autoStartIfRequested if audio is already playing to avoid any seek glitch
     if (audio && audio.paused) {
       autoStartIfRequested();
     } else {

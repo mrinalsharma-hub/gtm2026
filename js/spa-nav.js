@@ -3,10 +3,18 @@
   'use strict';
 
   function normalizePath(url) {
-    if (!url) return 'G&M.html';
+    if (!url) return 'index.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
     try { path = decodeURIComponent(path); } catch(e) {}
-    if (!path || path === '' || path === 'index.html' || path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html') {
+    if (!path || path === '') {
+      var currentHref = (window.location && window.location.pathname) ? window.location.pathname : '';
+      if (currentHref.indexOf('G&M') !== -1 || currentHref.indexOf('gm') !== -1 || currentHref.indexOf('G%26M') !== -1) {
+        return 'G&M.html';
+      }
+      return 'index.html';
+    }
+    if (path === 'index.html') return 'index.html';
+    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html') {
       return 'G&M.html';
     }
     if (path === 'celebrations.html' || path === 'events.html' || path === 'schedule.html') return 'celebrations.html';
@@ -50,7 +58,7 @@
       document.documentElement.style.backgroundColor = themeColor;
     }
 
-    var metaTags = document.querySelectorAll('meta[name="theme-color"]');
+    var metaTags = document.querySelectorAll('meta[name=theme-color]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
       meta.name = 'theme-color';
@@ -62,12 +70,12 @@
       });
     }
 
-    var lightMeta = document.querySelector('meta[name="theme-color"][media*="light"]');
+    var lightMeta = document.querySelector('meta[name=theme-color][media*="light"]');
     if (lightMeta) lightMeta.setAttribute('content', themeColor);
-    var darkMeta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+    var darkMeta = document.querySelector('meta[name=theme-color][media*="dark"]');
     if (darkMeta) darkMeta.setAttribute('content', themeColor);
 
-    var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
+    var msMeta = document.querySelector('meta[name=msapplication-navbutton-color]');
     if (msMeta) msMeta.setAttribute('content', themeColor);
   }
   window.ensureThemeColor = ensureThemeColor;
@@ -118,7 +126,6 @@
   }
 
   function prefetchAll() {
-    if (!isAuthenticated()) return;
     TABS.forEach(prefetchPage);
   }
 
@@ -170,7 +177,19 @@
         document.title = newDoc.title;
       }
 
-      // 2. Update Dynamic Page Styles
+      // 2. Sync any missing <link rel="stylesheet"> tags from newDoc
+      var newLinks = newDoc.querySelectorAll('link[rel="stylesheet"]');
+      newLinks.forEach(function(link) {
+        var href = link.getAttribute('href');
+        if (href && !document.head.querySelector('link[rel="stylesheet"][href="' + href + '"]')) {
+          var cloneLink = document.createElement('link');
+          cloneLink.setAttribute('rel', 'stylesheet');
+          cloneLink.setAttribute('href', href);
+          document.head.appendChild(cloneLink);
+        }
+      });
+
+      // 3. Update Dynamic Page Styles
       var oldStyles = document.querySelectorAll('style[data-spa-page], #page-styles');
       oldStyles.forEach(function(s) { s.remove(); });
 
@@ -182,11 +201,12 @@
         document.head.appendChild(cloneStyle);
       });
 
-      // 3. Update Body attributes, styling, classes & reset modal overflows
+      // 4. Update Body attributes, styling, classes & reset modal overflows
       var pageKey = 'gm';
       if (targetNorm.indexOf('stay') !== -1) pageKey = 'stay';
       else if (targetNorm.indexOf('celebrat') !== -1) pageKey = 'celebrations';
       else if (targetNorm.indexOf('rsvp') !== -1) pageKey = 'rsvp';
+      else if (targetNorm === 'index.html') pageKey = 'auth';
 
       // Remove stale attributes that shouldn't persist
       Array.from(document.body.attributes).forEach(function(attr) {
@@ -209,7 +229,7 @@
       document.body.style.overflow = '';
       document.body.style.position = '';
 
-      // 4. Swap Content Nodes (Preserve audio player & bottom navigation)
+      // 5. Swap Content Nodes (Preserve audio player & bottom navigation)
       var preservedPlayer = document.getElementById('global-music-player') || document.querySelector('.celebration-player-btn');
       var preservedAudio = document.getElementById('bg-music') || window.__GTM_AUDIO__;
       var preservedNav = document.querySelector('.fixed-bottom-nav');
@@ -219,10 +239,10 @@
         var incomingGlobalPlayers = newDoc.querySelectorAll('#global-music-player, .celebration-player-btn');
         incomingGlobalPlayers.forEach(function(el) { el.remove(); });
       }
-      if (preservedAudio) {
-        var incomingAudios = newDoc.querySelectorAll('#bg-music, audio');
-        incomingAudios.forEach(function(el) { el.remove(); });
-      }
+      // Strip all incoming <audio> elements so the head singleton remains undisturbed
+      var incomingAudios = newDoc.querySelectorAll('#bg-music, audio');
+      incomingAudios.forEach(function(el) { el.remove(); });
+
       if (preservedNav) {
         var incomingNavs = newDoc.querySelectorAll('.fixed-bottom-nav');
         incomingNavs.forEach(function(el) { el.remove(); });
@@ -241,21 +261,24 @@
       Array.from(newDoc.body.childNodes).forEach(function(node) {
         if (node.nodeType === 1) {
           if (preservedPlayer && (node.id === 'global-music-player' || node.classList.contains('celebration-player-btn'))) return;
-          if (preservedAudio && (node.id === 'bg-music' || node.tagName === 'AUDIO')) return;
+          if (node.id === 'bg-music' || node.tagName === 'AUDIO') return;
           if (preservedNav && node.classList.contains('fixed-bottom-nav')) return;
         }
         var adopted = document.adoptNode(node);
         if (node.id === 'global-music-player' || (node.classList && node.classList.contains('celebration-player-btn'))) {
           preservedPlayer = adopted;
         }
-        if (preservedNav && preservedNav.parentNode === document.body) {
+        if (node.classList && node.classList.contains('fixed-bottom-nav')) {
+          preservedNav = adopted;
+        }
+        if (preservedNav && preservedNav.parentNode === document.body && adopted !== preservedNav) {
           document.body.insertBefore(adopted, preservedNav);
         } else {
           document.body.appendChild(adopted);
         }
       });
 
-      // Ensure preservedPlayer and preservedAudio sit cleanly as direct children of document.body
+      // Ensure preservedPlayer sits cleanly as direct child of document.body
       if (preservedPlayer) {
         if (preservedNav && preservedNav.parentNode === document.body) {
           document.body.insertBefore(preservedPlayer, preservedNav);
@@ -263,9 +286,10 @@
           document.body.appendChild(preservedPlayer);
         }
       }
+
       // Audio element is safely kept in head/DOM undisturbed to prevent any playback hitching
       if (preservedAudio && !preservedAudio.parentNode) {
-        document.head.appendChild(preservedAudio);
+        (document.head || document.documentElement).appendChild(preservedAudio);
       }
 
       // Purge any accidental duplicate player buttons
@@ -276,25 +300,26 @@
         }
       }
 
-      // 5. Update URL History
+      // 6. Update URL History
       if (pushState !== false) {
         history.pushState({ path: targetNorm }, newDoc.title, targetNorm);
       }
 
-      // 6. Update Active Navigation Tab & Theme Color AT THE EXACT SAME TIME AS CONTENT UPDATE
+      // 7. Update Active Navigation Tab & Theme Color AT THE EXACT SAME TIME AS CONTENT UPDATE
       updateNav(targetNorm);
       ensureThemeColor(targetNorm);
       setNavHidden(false);
 
-      // 7. Ensure audio player is bound and in sync
-      if (window.GTM_AUDIO && window.GTM_AUDIO.bindPlayer) {
-        window.GTM_AUDIO.bindPlayer();
+      // 8. Ensure audio player is bound and in sync
+      if (window.GTM_AUDIO) {
+        if (window.GTM_AUDIO.bindPlayer) window.GTM_AUDIO.bindPlayer();
+        if (window.GTM_AUDIO.updateUI) window.GTM_AUDIO.updateUI();
       }
 
-      // 8. Re-execute page scripts in the new content
+      // 9. Re-execute page scripts in the new content
       var scripts = document.body.querySelectorAll('script');
       scripts.forEach(function(oldScript) {
-        if (oldScript.src && (oldScript.src.indexOf('spa-nav.js') !== -1 || oldScript.src.indexOf('global-audio.js') !== -1)) return;
+        if (oldScript.src && (oldScript.src.indexOf('spa-nav.js') !== -1 || oldScript.src.indexOf('global-audio.js') !== -1 || oldScript.src.indexOf('cms-i18n.js') !== -1)) return;
         try {
           var newScript = document.createElement('script');
           Array.from(oldScript.attributes).forEach(function(attr) {
@@ -309,7 +334,7 @@
         }
       });
 
-      // 9. Dispatch custom ready events for page scripts
+      // 10. Dispatch custom ready events for page scripts
       try { document.dispatchEvent(new Event('DOMContentLoaded')); } catch(e) {}
       try { window.dispatchEvent(new CustomEvent('gtm:page-loaded', { detail: { url: targetUrl, name: targetNorm } })); } catch(e) {}
 
@@ -446,8 +471,6 @@
   }, { capture: true });
 
   // ── Auto-Hide Bottom Navigation on Scroll Controller ──
-  var lastScrollMap = typeof WeakMap !== 'undefined' ? new WeakMap() : null;
-  var fallbackLastScrollTop = 0;
   var isNavHidden = false;
 
   function setNavHidden(hidden) {
@@ -510,12 +533,10 @@
   }
 
   function handleAutoScroll(e) {
-    // If modal sheet is active on Celebrations or anywhere, do not hide/show nav from background scroll
     if (document.body && document.body.classList.contains('sheet-modal-open')) {
       return;
     }
 
-    // Ignore scrolling inside modal bottom sheets or overlays
     if (e && e.target && e.target.closest && (e.target.closest('.event-bottom-sheet') || e.target.closest('.event-sheet-overlay'))) {
       return;
     }
@@ -530,13 +551,11 @@
     var maxScroll = info.scrollHeight - info.clientHeight;
     var pullDistance = nav.offsetHeight || 64;
 
-    // 1. If at or reaching the top edge of the page (within top 24px) or on a non-scrollable page, reveal tab bar
     if (currentTop <= 24 || maxScroll <= 0) {
       setNavHidden(false);
       return;
     }
 
-    // 2. If reaching the bottom of the page: the bottom edge of the picture literally pulls up the bottom tab bar!
     if (maxScroll > 0) {
       var remaining = maxScroll - currentTop;
       if (remaining <= pullDistance + 4) {
@@ -552,16 +571,13 @@
       }
     }
 
-    // 3. ANY other scroll on any page (between top and bottom edges) MUST hide the tabs bar smoothly
     setNavHidden(true);
   }
 
   function bindScrollContainers() {
-    // Global capture listener catches scroll on window, document, and all child scrolling containers
     window.removeEventListener('scroll', handleAutoScroll, { capture: true });
     window.addEventListener('scroll', handleAutoScroll, { capture: true, passive: true });
 
-    // Also attach directly to known scroll containers for maximum compatibility
     var scrollSelectors = [
       '.celebrations-page-wrap',
       '.stay-page-wrap',
@@ -598,7 +614,6 @@
     window.addEventListener('resize', function() { setNavHidden(false); }, { passive: true });
     window.addEventListener('orientationchange', function() { setNavHidden(false); }, { passive: true });
 
-    // Cache the initial page HTML with normalized key
     var currentNorm = normalizePath(window.location.pathname);
     pageCache[currentNorm] = document.documentElement.outerHTML;
   }
@@ -636,7 +651,6 @@
         var top = activeScrollElem.scrollTop;
         var maxScroll = activeScrollElem.scrollHeight - activeScrollElem.clientHeight;
 
-        // Prevent iOS native rubber-band trigger by keeping touchstart within safe bounds [1, maxScroll - 1]
         if (top <= 0) {
           activeScrollElem.scrollTop = 1;
         } else if (top >= maxScroll) {
@@ -651,7 +665,6 @@
       var diffY = currentY - touchStartY;
 
       if (activeScrollElem.scrollHeight <= activeScrollElem.clientHeight) {
-        // Element cannot scroll -> prevent body rubber-band stretch
         e.preventDefault();
         return;
       }
@@ -659,7 +672,6 @@
       var top = activeScrollElem.scrollTop;
       var maxScroll = activeScrollElem.scrollHeight - activeScrollElem.clientHeight;
 
-      // If dragging past top or bottom boundaries, prevent iOS elastic bounce
       if ((top <= 0 && diffY > 0) || (top >= maxScroll && diffY < 0)) {
         e.preventDefault();
       }
