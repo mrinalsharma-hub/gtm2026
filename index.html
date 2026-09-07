@@ -42,8 +42,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=26300">
 
 <!-- ── Resource Preloads ── -->
-<link rel="preload" as="image" href="images/home/vinyl_record.png?v=26500" type="image/png" fetchpriority="high">
-<link rel="preload" as="image" href="images/home/vinyl_record_pause.png?v=26500" type="image/png">
+<link rel="preload" as="image" href="images/home/vinyl_disc.png?v=26600" type="image/png" fetchpriority="high">
 <link rel="preload" as="image" href="images/player_figma_play.svg?v=24700" type="image/svg+xml">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
@@ -276,28 +275,14 @@ body {
   border: none !important;
   box-shadow: none !important;
   transform-origin: center center !important;
-  will-change: transform, opacity !important;
+  will-change: transform !important;
   pointer-events: none !important;
   user-select: none !important;
   -webkit-user-select: none !important;
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.gxm-vinyl-disc-play {
-  opacity: 1 !important;
-}
-
-.gxm-vinyl-disc-pause {
-  opacity: 0 !important;
-}
-
-/* Rotating vinyl effect ONLY when audio is actively playing */
-.gxm-vinyl-anchor.is-playing .gxm-vinyl-disc-play {
-  opacity: 0 !important;
-}
-
-.gxm-vinyl-anchor.is-playing .gxm-vinyl-disc-pause {
-  opacity: 1 !important;
+/* Rotating vinyl disc effect ONLY when audio is actively playing */
+.gxm-vinyl-anchor.is-playing .gxm-vinyl-disc {
   animation: spinVinyl 8s linear infinite !important;
   -webkit-animation: spinVinyl 8s linear infinite !important;
 }
@@ -310,6 +295,51 @@ body {
 @-webkit-keyframes spinVinyl {
   0% { -webkit-transform: rotate(0deg); }
   100% { -webkit-transform: rotate(360deg); }
+}
+
+/* ── Stationary Center Play/Pause Icon (Fixed Upright, Never Rotates) ── */
+.gxm-vinyl-center-icon {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 45.3125% !important; /* 81.56px on 180px vinyl, matches medallion center precisely */
+  height: 45.3125% !important;
+  pointer-events: none !important;
+  z-index: 5 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.gxm-vinyl-center-icon svg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  pointer-events: none !important;
+}
+
+.gxm-icon-play {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.gxm-icon-pause {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+}
+
+.gxm-vinyl-anchor.is-playing .gxm-icon-play {
+  opacity: 0 !important;
+  transform: scale(0.9) !important;
+}
+
+.gxm-vinyl-anchor.is-playing .gxm-icon-pause {
+  opacity: 1 !important;
+  transform: scale(1) !important;
 }
 
 /* ── 4. Calligraphy & Wedding Typography Lockup (Gap reduced by 16px to net +24px below Vinyl) ── */
@@ -463,7 +493,7 @@ body {
   text-align: center !important;
   line-height: 1.45 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
-  margin: 18px auto 0 auto !important;
+  margin: 30px auto 0 auto !important; /* EXACT 30px gap below "GARIMA & MRINAL" */
   padding: 0 16px !important;
   max-width: 380px !important;
   animation: gxmFooterDescReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both !important;
@@ -706,8 +736,19 @@ body {
 
         <!-- ── Centerpiece Interactive Big Vinyl Player (Universal Audio Controller on Home) ── -->
         <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music" data-i18n-attr="aria-label:home.hero.tap_play">
-          <img src="images/home/vinyl_record.png?v=26500" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc gxm-vinyl-disc-play" width="180" height="180" fetchpriority="high">
-          <img src="images/home/vinyl_record_pause.png?v=26500" alt="Pause Wedding Celebration Music" class="gxm-vinyl-disc gxm-vinyl-disc-pause" width="180" height="180">
+          <!-- ── Rotating Vinyl Record Base (Grooves + Medallion Ring) ── -->
+          <img src="images/home/vinyl_disc.png?v=26600" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
+
+          <!-- ── Stationary Center Play / Pause Icon (Fixed Upright, Never Rotates) ── -->
+          <div class="gxm-vinyl-center-icon" aria-hidden="true">
+            <svg class="gxm-icon-play" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.0177 18.4782C20.0177 17.7705 20.7087 17.3413 21.3094 17.7156C21.9702 18.1275 22.6765 18.6018 23.1176 18.8766L28.5714 22.2799C29.2268 22.6903 29.9531 23.1613 30.6689 23.6026C31.2861 23.983 31.3359 24.8639 30.7269 25.2572C29.5726 26.0027 28.1513 26.8487 27.249 27.4262L22.6546 30.2937C22.387 30.4601 22.0803 30.6453 21.7641 30.8385C21.0438 31.2785 20.0273 30.7314 20.0284 29.8873C20.0297 28.7976 20.0171 27.6925 20.0175 26.6457L20.0177 18.4782Z" fill="#A4201E"/>
+            </svg>
+            <svg class="gxm-icon-pause" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="18" y="17.5" width="4" height="13" rx="1.5" fill="#A4201E"/>
+              <rect x="26" y="17.5" width="4" height="13" rx="1.5" fill="#A4201E"/>
+            </svg>
+          </div>
         </div>
 
         <!-- ── Calligraphy & Wedding Typography Lockup ── -->
