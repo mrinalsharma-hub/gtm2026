@@ -60,7 +60,7 @@
     var themeColor = '#3F151D';
 
     if (targetNorm === 'index.html' || targetNorm === 'auth') {
-      themeColor = '#3F151D'; // Exact Pure Maroon for Auth page (no white/cream patch)
+      themeColor = '#3F151D'; // Exact Pure Maroon for Auth page
     } else if (targetNorm === 'celebrations.html' || targetNorm === 'travel&stay.html' || targetNorm === 'rsvp.html' || targetNorm === 'joinus.html') {
       themeColor = '#FFEFD4'; // Cream for Celebrations, Travel, and RSVP
     } else if (targetNorm === 'G&M.html') {
@@ -74,22 +74,32 @@
       document.body.style.backgroundColor = themeColor;
     }
 
+    // Force iOS Safari to re-tint the top status bar & browser address bar
+    // Safari ignores attribute changes on existing tags; removing and re-appending triggers full re-tint.
     var metaTags = document.querySelectorAll('meta[name="theme-color"]');
-    if (!metaTags || metaTags.length === 0) {
-      var meta = document.createElement('meta');
-      meta.name = 'theme-color';
-      meta.content = themeColor;
-      document.head.appendChild(meta);
-    } else {
-      metaTags.forEach(function(m) {
-        m.setAttribute('content', themeColor);
-      });
-    }
+    metaTags.forEach(function(m) { m.remove(); });
 
-    var lightMeta = document.querySelector('meta[name="theme-color"][media*="light"]');
-    if (lightMeta) lightMeta.setAttribute('content', themeColor);
-    var darkMeta = document.querySelector('meta[name="theme-color"][media*="dark"]');
-    if (darkMeta) darkMeta.setAttribute('content', themeColor);
+    var baseMeta = document.createElement('meta');
+    baseMeta.name = 'theme-color';
+    baseMeta.content = themeColor;
+    document.head.appendChild(baseMeta);
+
+    var lightMeta = document.createElement('meta');
+    lightMeta.name = 'theme-color';
+    lightMeta.setAttribute('media', '(prefers-color-scheme: light)');
+    lightMeta.content = themeColor;
+    document.head.appendChild(lightMeta);
+
+    var darkMeta = document.createElement('meta');
+    darkMeta.name = 'theme-color';
+    darkMeta.setAttribute('media', '(prefers-color-scheme: dark)');
+    darkMeta.content = themeColor;
+    document.head.appendChild(darkMeta);
+
+    var statusMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    if (statusMeta) {
+      statusMeta.setAttribute('content', 'default');
+    }
 
     var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
     if (msMeta) msMeta.setAttribute('content', themeColor);
