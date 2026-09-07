@@ -99,16 +99,10 @@ html, body {
   justify-content: flex-start;
   background: radial-gradient(circle at 50% 35%, #29090D 0%, #170406 75%, #0F0204 100%);
   overflow: hidden;
-  opacity: 0;
-  animation: authFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  perspective: 1200px;
 }
 
-@keyframes authFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* ── 1:1 Physical Envelope with Crisp Defined Bottom Edge ── */
+/* ── Dramatic & Delightful Envelope Entrance Motion ── */
 .auth-envelope-stage {
   position: absolute;
   top: 0;
@@ -118,6 +112,26 @@ html, body {
   max-width: 440px;
   pointer-events: none;
   z-index: 1;
+  opacity: 0;
+  animation: envelopeGlideIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+@keyframes envelopeGlideIn {
+  0% {
+    opacity: 0;
+    transform: translate3d(100vw, 0, 0) rotate(8deg) scale(0.9);
+  }
+  65% {
+    opacity: 1;
+    transform: translate3d(-53%, 0, 0) rotate(-1deg) scale(1.01);
+  }
+  85% {
+    transform: translate3d(-49.5%, 0, 0) rotate(0.4deg) scale(0.998);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, 0) rotate(0deg) scale(1);
+  }
 }
 
 .auth-envelope-bg {
@@ -126,7 +140,7 @@ html, body {
   display: block;
   user-select: none;
   -webkit-user-drag: none;
-  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.85)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
@@ -147,6 +161,13 @@ html, body {
   padding-left: 24px;
   padding-right: 24px;
   box-sizing: border-box;
+  opacity: 0;
+  animation: contentFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes contentFadeIn {
+  0% { opacity: 0; transform: translate3d(-50%, 15px, 0); }
+  100% { opacity: 1; transform: translate3d(-50%, 0, 0); }
 }
 
 /* ── 1. Heading Lockup (Strict 2-Line Figma Structure with 20px gap) ── */
@@ -155,13 +176,6 @@ html, body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: authSlideDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-}
-
-@keyframes authSlideDown {
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .auth-eyebrow {
@@ -220,27 +234,36 @@ html, body {
   text-transform: uppercase;
 }
 
-/* ── 2. Passcode Input Form ── */
+/* ── 2. Passcode Input Form (Appears upon seal tap) ── */
 .auth-form {
   width: 100%;
   max-width: 356px;
-  margin-top: 24px;
-  position: relative;
+  margin-top: 0;
+  max-height: 0;
   opacity: 0;
-  transform: translateY(12px);
-  animation: authSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
+  overflow: hidden;
+  transform: scale(0.92) translateY(-10px);
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.4s ease, 
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              margin-top 0.4s ease;
+  position: relative;
 }
 
-@keyframes authSlideUp {
-  to { opacity: 1; transform: translateY(0); }
+.auth-viewport.is-code-active .auth-form {
+  max-height: 70px;
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  margin-top: 20px;
+  overflow: visible;
 }
 
 .auth-input-pill {
   width: 100%;
-  height: 54px;
+  height: 52px;
   background: #F4DFBC;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -295,37 +318,77 @@ html, body {
   40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 3. Golden Flower Wax Seal (Figma Node 60:849) ── */
+/* ── 3. Realistic Wax Seal (Authentic 78px Dimensions) ── */
 .auth-seal-wrap {
   position: relative;
-  margin-top: 12px;
-  width: 126px;
-  height: 126px;
+  margin-top: 22px;
+  width: 78px;
+  height: 78px;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transform: scale(0.9);
-  animation: authSealDrop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
   cursor: pointer;
   touch-action: manipulation;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease;
+  animation: sealBreathingPulse 2.4s ease-in-out infinite;
 }
 
-@keyframes authSealDrop {
-  to { opacity: 1; transform: scale(1); }
+@keyframes sealBreathingPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
+  }
+  50% {
+    transform: scale(1.07);
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 22px rgba(212, 175, 55, 0.7));
+  }
+}
+
+.auth-viewport.is-code-active .auth-seal-wrap {
+  margin-top: 12px;
+  animation: none;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
 }
 
 .auth-seal-img {
-  width: 126px;
-  height: 126px;
+  width: 78px;
+  height: 78px;
   object-fit: contain;
-  filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.75));
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-/* ── 4. Exit / Unlock Motion Sequence ── */
+/* ── 4. "Tap Seal" Message & Pulse ── */
+.auth-tap-prompt {
+  font-family: 'Spectral', Georgia, serif;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #E3BE82;
+  margin-top: 14px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+  opacity: 0.92;
+  animation: promptBreathe 2s ease-in-out infinite;
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
+}
+
+@keyframes promptBreathe {
+  0%, 100% { opacity: 0.75; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+.auth-viewport.is-code-active .auth-tap-prompt {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  max-height: 0;
+  margin: 0;
+}
+
+/* ── 5. Exit / Unlock Motion Sequence ── */
 .auth-viewport.is-unlocking {
   pointer-events: none;
 }
@@ -347,14 +410,15 @@ html, body {
 }
 
 @keyframes sealGlowUnlock {
-  0% { transform: scale(1); filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.75)); }
-  40% { transform: scale(1.2) rotate(6deg); filter: drop-shadow(0 0 35px #FFD700) drop-shadow(0 8px 24px rgba(0,0,0,0.8)); }
-  100% { transform: scale(1.35) rotate(10deg); opacity: 0; filter: drop-shadow(0 0 60px #FFF) drop-shadow(0 0 90px #FFD700); }
+  0% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)); }
+  40% { transform: scale(1.3) rotate(8deg); filter: drop-shadow(0 0 35px #FFD700) drop-shadow(0 8px 24px rgba(0,0,0,0.8)); }
+  100% { transform: scale(1.5) rotate(14deg); opacity: 0; filter: drop-shadow(0 0 60px #FFF) drop-shadow(0 0 90px #FFD700); }
 }
 
-.auth-viewport.is-unlocking .auth-envelope-bg {
-  transform: translateY(-40px) scale(1.05);
+.auth-viewport.is-unlocking .auth-envelope-stage {
+  transform: translate3d(-50%, -40px, 0) scale(1.04);
   opacity: 0;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
 .auth-viewport.is-unlocking {
@@ -386,7 +450,7 @@ html, body {
       </div>
     </div>
 
-    <!-- 2. Passcode Input Form -->
+    <!-- 2. Passcode Input Form (Revealed on seal tap) -->
     <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
       <div class="auth-input-pill" id="auth-pill">
         <input 
@@ -395,7 +459,6 @@ html, body {
           class="auth-code-input" 
           placeholder="ENTER CODE PROVIDED" 
           aria-label="Wedding Invitation Passcode" 
-          autofocus 
           autocomplete="off" 
           autocorrect="off" 
           autocapitalize="characters" 
@@ -406,13 +469,16 @@ html, body {
       </div>
     </form>
 
-    <!-- 3. Golden Flower Wax Seal -->
-    <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Unlock Wedding Invitation">
+    <!-- 3. Realistic Golden Wax Seal -->
+    <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Tap Wax Seal to Enter Code">
       <picture>
         <source srcset="images/auth/seal_flower.webp" type="image/webp">
-        <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="126" height="126">
+        <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="78" height="78">
       </picture>
     </div>
+
+    <!-- 4. Tap Prompt Message -->
+    <p class="auth-tap-prompt" id="auth-tap-prompt">TAP SEAL TO ENTER CODE</p>
   </div>
 </main>
 
@@ -420,99 +486,134 @@ html, body {
 (function() {
   'use strict';
 
-  // Strict valid passcodes: only complete valid codes (no short partials like "gtm")
   var VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal'];
   var input = document.getElementById('auth-code-input');
   var form = document.getElementById('auth-form');
   var pill = document.getElementById('auth-pill');
   var viewport = document.getElementById('auth-viewport');
   var sealBtn = document.getElementById('auth-seal-btn');
+  var isCodeActive = false;
   var isUnlocking = false;
 
   function normalize(val) {
     return String(val || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
   }
 
-  // ── Keyboard Keep-Alive & Robust Focus Lock ──
-  function lockFocus() {
-    if (isUnlocking || !input) return;
+  // ── Start Audio Playback via Direct User Gesture ──
+  function ensureAudioPlaying() {
     try {
-      if (document.activeElement !== input) {
-        input.focus({ preventScroll: true });
+      if (window.GTM_AUDIO && window.GTM_AUDIO.play) {
+        window.GTM_AUDIO.play();
+      } else {
+        var existingAudio = document.getElementById('bg-music');
+        if (!existingAudio) {
+          existingAudio = document.createElement('audio');
+          existingAudio.id = 'bg-music';
+          existingAudio.loop = true;
+          existingAudio.preload = 'auto';
+          existingAudio.playsInline = true;
+          existingAudio.innerHTML = '<source src="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">';
+          (document.head || document.documentElement).appendChild(existingAudio);
+          window.__GTM_AUDIO__ = existingAudio;
+        }
+        existingAudio.volume = 0.85;
+        existingAudio.play().catch(function(e) {
+          console.warn('Audio play:', e);
+        });
       }
-      if ('virtualKeyboard' in navigator) {
-        navigator.virtualKeyboard.overlaysContent = true;
-        navigator.virtualKeyboard.show();
-      }
+      sessionStorage.setItem('gtm2026_music_playing', 'true');
+      localStorage.setItem('gtm2026_music_playing', 'true');
     } catch(e) {}
   }
 
-  // Focus immediately on script parse, DOM ready, and load
-  lockFocus();
-  window.addEventListener('DOMContentLoaded', lockFocus);
-  window.addEventListener('load', lockFocus);
-  window.addEventListener('pageshow', lockFocus);
+  // ── Activate Passcode Input & Raise Virtual Keyboard ──
+  function activateInputAndKeyboard() {
+    if (isUnlocking) return;
+    
+    // 1. Play music immediately on this synchronous user gesture
+    ensureAudioPlaying();
 
-  // Prevent keyboard dismiss on blur
+    // 2. Expand UI state
+    if (!isCodeActive) {
+      isCodeActive = true;
+      if (viewport) {
+        viewport.classList.add('is-code-active');
+      }
+    }
+
+    // 3. Focus input synchronously to raise keyboard 100% reliably
+    if (input) {
+      input.focus({ preventScroll: true });
+      try {
+        if ('virtualKeyboard' in navigator) {
+          navigator.virtualKeyboard.overlaysContent = true;
+          navigator.virtualKeyboard.show();
+        }
+      } catch(e) {}
+    }
+  }
+
+  // Bind Seal Tap & Envelope Interaction
+  if (sealBtn) {
+    sealBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (!isCodeActive) {
+        activateInputAndKeyboard();
+      } else {
+        validateAndSubmit();
+      }
+    });
+
+    sealBtn.addEventListener('touchend', function(e) {
+      if (!isCodeActive) {
+        e.preventDefault();
+        activateInputAndKeyboard();
+      }
+    });
+  }
+
+  // Tapping anywhere on the envelope / screen also awakens the keyboard
+  document.addEventListener('pointerdown', function(e) {
+    if (isUnlocking || !input) return;
+    if (!isCodeActive) {
+      activateInputAndKeyboard();
+    } else {
+      if (e.target !== input && e.target !== sealBtn && (!sealBtn || !sealBtn.contains(e.target))) {
+        if (e.cancelable && e.type !== 'click') {
+          e.preventDefault();
+        }
+        input.focus({ preventScroll: true });
+      }
+    }
+  }, { passive: false });
+
+  // ── Keyboard Keep-Alive once active ──
   if (input) {
     input.addEventListener('blur', function() {
-      if (!isUnlocking) {
-        requestAnimationFrame(lockFocus);
-        setTimeout(lockFocus, 20);
-        setTimeout(lockFocus, 80);
+      if (isCodeActive && !isUnlocking) {
+        requestAnimationFrame(function() {
+          input.focus({ preventScroll: true });
+        });
+        setTimeout(function() {
+          if (isCodeActive && !isUnlocking && document.activeElement !== input) {
+            input.focus({ preventScroll: true });
+          }
+        }, 30);
       }
     });
   }
-
-  // Intercept all outside taps/clicks to keep keyboard permanently raised on Android & iOS
-  function handleOutsideInteraction(e) {
-    if (isUnlocking || !input) return;
-    if (sealBtn && (e.target === sealBtn || sealBtn.contains(e.target))) {
-      return; // Allow seal click to trigger unlock validation
-    }
-    if (e.target !== input) {
-      if (e.cancelable && e.type !== 'click') {
-        e.preventDefault();
-      }
-      input.focus({ preventScroll: true });
-      if (typeof input.click === 'function') {
-        input.click();
-      }
-    }
-  }
-
-  window.addEventListener('pointerdown', handleOutsideInteraction, { passive: false });
-  window.addEventListener('touchstart', handleOutsideInteraction, { passive: false });
-  window.addEventListener('mousedown', handleOutsideInteraction, { passive: false });
-  window.addEventListener('click', handleOutsideInteraction);
-
-  // If visual viewport resizes (e.g. user minimized keyboard on Android), bring it right back
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', function() {
-      if (!isUnlocking && window.visualViewport.height >= window.innerHeight * 0.85) {
-        setTimeout(lockFocus, 40);
-      }
-    });
-  }
-
-  // Heartbeat focus check
-  setInterval(function() {
-    if (!isUnlocking && document.activeElement !== input) {
-      lockFocus();
-    }
-  }, 200);
 
   // ── Error Shake Feedback ──
   function triggerError() {
     if (!pill) return;
     pill.classList.remove('has-error');
-    void pill.offsetWidth; // Force reflow
+    void pill.offsetWidth;
     pill.classList.add('has-error');
     setTimeout(function() {
       pill.classList.remove('has-error');
       if (input) {
         input.value = '';
-        lockFocus();
+        input.focus({ preventScroll: true });
       }
     }, 600);
   }
@@ -537,14 +638,8 @@ html, body {
       sessionStorage.setItem('gtm2026_music_playing', 'true');
     } catch(e) {}
 
-    // 3. Trigger Audio Playback via Global Audio API
-    try {
-      var audio = new Audio('media/Samne_Yeh_Kaun_Aaya.mp3');
-      audio.volume = 0.85;
-      audio.play().catch(function(err) {
-        console.warn('Audio start:', err);
-      });
-    } catch(e) {}
+    // 3. Ensure audio is playing
+    ensureAudioPlaying();
 
     // 4. Trigger Delightful Exit Motion Sequence
     if (viewport) {
@@ -577,15 +672,7 @@ html, body {
     });
   }
 
-  // Submit if seal is clicked
-  if (sealBtn) {
-    sealBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      validateAndSubmit();
-    });
-  }
-
-  // Auto-submit only when complete matching passcode is typed
+  // Auto-submit when complete matching passcode is typed
   if (input) {
     input.addEventListener('input', function() {
       var norm = normalize(this.value);
