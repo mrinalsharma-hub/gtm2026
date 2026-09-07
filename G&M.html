@@ -389,11 +389,16 @@ body {
 }
 
 .gxm-vinyl-anchor:hover {
-  filter: drop-shadow(0px 8px 24px rgba(167, 31, 35, 0.35)) !important;
+  filter: none !important;
 }
 
 .gxm-vinyl-anchor:active {
   transform: translate(-50%, -50%) scale(0.96) !important;
+  filter: none !important;
+}
+
+.gxm-vinyl-anchor.is-playing {
+  filter: none !important;
 }
 
 .gxm-vinyl-disc {
