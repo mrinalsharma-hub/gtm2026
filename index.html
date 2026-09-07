@@ -22,9 +22,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-<meta name="theme-color" content="#2F1216">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#2F1216">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2F1216">
+<meta name="theme-color" content="#170406">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#170406">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#170406">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Garima weds Mrinal · Invitation Gateway</title>
@@ -36,7 +36,7 @@
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
 <link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
-<link rel="preload" as="image" href="images/auth/envelope_bg.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/auth/envelope_crisp.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/auth/seal_flower.webp" type="image/webp" fetchpriority="high">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,7 +80,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #2F1216;
+  background-color: #170406;
   font-family: 'Spectral', Georgia, serif;
   color: #FFFFFF;
   touch-action: pan-x pan-y;
@@ -97,7 +97,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: #2F1216;
+  background: radial-gradient(circle at 50% 35%, #29090D 0%, #170406 75%, #0F0204 100%);
   overflow: hidden;
   opacity: 0;
   animation: authFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -108,7 +108,7 @@ html, body {
   to { opacity: 1; }
 }
 
-/* ── 1:1 Pixel-Perfect Background Envelope (Seamless Maroon Blend, Zero White Border) ── */
+/* ── 1:1 Physical Envelope with Crisp Defined Bottom Edge ── */
 .auth-envelope-stage {
   position: absolute;
   top: 0;
@@ -116,23 +116,18 @@ html, body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 440px;
-  height: 380px;
   pointer-events: none;
   z-index: 1;
-  overflow: hidden;
 }
 
 .auth-envelope-bg {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
+  height: auto;
   display: block;
   user-select: none;
   -webkit-user-drag: none;
+  filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.8)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-  -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
 }
 
 /* ── Content Stack (Strict 40px Top Gap) ── */
@@ -154,7 +149,7 @@ html, body {
   box-sizing: border-box;
 }
 
-/* ── 1. Heading Lockup (Strict 2-Line Figma Structure) ── */
+/* ── 1. Heading Lockup (Strict 2-Line Figma Structure with 20px gap) ── */
 .auth-heading-wrap {
   display: flex;
   flex-direction: column;
@@ -178,7 +173,7 @@ html, body {
   text-transform: uppercase;
   color: #FFFFFF;
   margin-bottom: 20px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
 }
 
 .auth-names {
@@ -187,7 +182,7 @@ html, body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .auth-name-line-1 {
@@ -225,11 +220,11 @@ html, body {
   text-transform: uppercase;
 }
 
-/* ── 2. Passcode Input Form (Figma 31px Gap) ── */
+/* ── 2. Passcode Input Form ── */
 .auth-form {
   width: 100%;
-  max-width: 368px;
-  margin-top: 31px;
+  max-width: 356px;
+  margin-top: 24px;
   position: relative;
   opacity: 0;
   transform: translateY(12px);
@@ -242,22 +237,22 @@ html, body {
 
 .auth-input-pill {
   width: 100%;
-  height: 56px;
+  height: 54px;
   background: #F4DFBC;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0 16px;
   position: relative;
-  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .auth-input-pill:focus-within {
   border-color: #D4AF37;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), 0 0 14px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(212, 175, 55, 0.45);
 }
 
 .auth-code-input {
@@ -282,7 +277,7 @@ html, body {
   font-size: 15px;
   letter-spacing: 3.52px;
   text-align: center;
-  color: rgba(56, 14, 19, 0.35);
+  color: rgba(56, 14, 19, 0.38);
   text-transform: uppercase;
 }
 
@@ -303,9 +298,9 @@ html, body {
 /* ── 3. Golden Flower Wax Seal (Figma Node 60:849) ── */
 .auth-seal-wrap {
   position: relative;
-  margin-top: 14px;
-  width: 136px;
-  height: 136px;
+  margin-top: 12px;
+  width: 126px;
+  height: 126px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -321,10 +316,10 @@ html, body {
 }
 
 .auth-seal-img {
-  width: 136px;
-  height: 136px;
+  width: 126px;
+  height: 126px;
   object-fit: contain;
-  filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.7));
+  filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.75));
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   user-select: none;
   -webkit-user-drag: none;
@@ -352,7 +347,7 @@ html, body {
 }
 
 @keyframes sealGlowUnlock {
-  0% { transform: scale(1); filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.7)); }
+  0% { transform: scale(1); filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.2)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.75)); }
   40% { transform: scale(1.2) rotate(6deg); filter: drop-shadow(0 0 35px #FFD700) drop-shadow(0 8px 24px rgba(0,0,0,0.8)); }
   100% { transform: scale(1.35) rotate(10deg); opacity: 0; filter: drop-shadow(0 0 60px #FFF) drop-shadow(0 0 90px #FFD700); }
 }
@@ -370,11 +365,11 @@ html, body {
 <body>
 
 <main class="auth-viewport" id="auth-viewport">
-  <!-- Exact Figma Envelope Background (Seamless Maroon, Zero Cream Line) -->
+  <!-- Physical Envelope with Crisp Defined Bottom Edge & Shadow -->
   <div class="auth-envelope-stage" aria-hidden="true">
     <picture>
-      <source srcset="images/auth/envelope_bg.webp" type="image/webp">
-      <img src="images/auth/envelope_bg.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="440" height="380">
+      <source srcset="images/auth/envelope_crisp.webp" type="image/webp">
+      <img src="images/auth/envelope_crisp.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="803" height="563">
     </picture>
   </div>
 
@@ -415,7 +410,7 @@ html, body {
     <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Unlock Wedding Invitation">
       <picture>
         <source srcset="images/auth/seal_flower.webp" type="image/webp">
-        <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="136" height="136">
+        <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="126" height="126">
       </picture>
     </div>
   </div>

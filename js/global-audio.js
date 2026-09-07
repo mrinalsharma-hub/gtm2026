@@ -6,7 +6,7 @@
   var STORAGE_KEY_PLAYING = 'gtm2026_music_playing';
   var STORAGE_KEY_TIME = 'gtm2026_music_time';
 
-  // Singleton Audio Object attached to window so SPA navigation never destroys or resets it
+  // Singleton Audio Object attached to document.head so SPA navigation never touches or pauses it
   if (!window.__GTM_AUDIO__) {
     var existingAudio = document.getElementById('bg-music');
     if (existingAudio) {
@@ -18,7 +18,7 @@
       audioEl.preload = 'auto';
       audioEl.playsInline = true;
       audioEl.innerHTML = '<source src="' + AUDIO_SRC + '" type="audio/mpeg">';
-      document.body.appendChild(audioEl);
+      (document.head || document.documentElement).appendChild(audioEl);
       window.__GTM_AUDIO__ = audioEl;
     }
   }
@@ -81,6 +81,12 @@
   }
 
   function playAudio() {
+    if (!audio) return;
+    if (!audio.paused) {
+      // Audio is already smoothly playing! Do not touch or seek!
+      updateUI(true);
+      return;
+    }
     restoreTime();
     audio.volume = 0.85;
     var p = audio.play();
@@ -92,13 +98,14 @@
         } catch(e) {}
         updateUI(true);
       }).catch(function(err) {
-        console.warn('Audio play auto-start deferred until user gesture:', err);
+        console.warn('Audio auto-play deferred to user gesture:', err);
         updateUI(false);
       });
     }
   }
 
   function pauseAudio() {
+    if (!audio) return;
     audio.pause();
     saveTime();
     try {
@@ -135,7 +142,7 @@
                    localStorage.getItem(STORAGE_KEY_PLAYING) === 'true';
     } catch(e) {}
 
-    if (shouldPlay) {
+    if (shouldPlay && audio && audio.paused) {
       playAudio();
     }
   }
@@ -189,6 +196,11 @@
 
   window.addEventListener('gtm:page-loaded', function() {
     bindPlayer();
-    autoStartIfRequested();
+    // Do not call autoStartIfRequested if audio is already playing to avoid any seek glitch
+    if (audio && audio.paused) {
+      autoStartIfRequested();
+    } else {
+      updateUI(true);
+    }
   });
 })();

@@ -263,8 +263,9 @@
           document.body.appendChild(preservedPlayer);
         }
       }
-      if (preservedAudio && preservedAudio.parentNode !== document.body) {
-        document.body.appendChild(preservedAudio);
+      // Audio element is safely kept in head/DOM undisturbed to prevent any playback hitching
+      if (preservedAudio && !preservedAudio.parentNode) {
+        document.head.appendChild(preservedAudio);
       }
 
       // Purge any accidental duplicate player buttons
