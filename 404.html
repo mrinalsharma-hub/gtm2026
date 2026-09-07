@@ -4,26 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Garima weds Mrinal · Nainital 2026</title>
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24700">
-<link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=24700">
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=24700">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=24700">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=24700">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=24700">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=24700">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=24700">
   <script>
     (function() {
       var path = window.location.pathname.split('/').pop().toLowerCase();
       try { path = decodeURIComponent(path); } catch(e) {}
       
-      var target = 'G&M.html';
+      var target = 'index.html';
       if (path === 'schedule.html' || path === 'celebrations.html' || path === 'events.html') {
         target = 'celebrations.html';
       } else if (path === 'travel.html' || path === 'stay.html' || path === 'travel&stay.html' || path === 'travel%26stay.html') {
         target = 'travel&stay.html';
       } else if (path === 'rsvp.html' || path === 'rsvp2.html' || path === 'joinus.html') {
         target = 'rsvp.html';
-      } else if (path === 'g&m.html' || path === 'gm.html' || path === 'g%26m.html' || path === 'home.html' || path === 'us.html' || path === 'index.html' || path === 'G&M.html' || path === 'G%26M.html') {
-        target = 'G&M.html';
+      } else if (path === 'invite' || path === 'invite.html') {
+        target = 'invite/index.html';
       } else {
-        target = 'G&M.html';
+        target = 'index.html';
       }
       window.location.replace(target);
     })();
