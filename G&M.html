@@ -5,10 +5,20 @@
 <script>
 (function() {
   function applyTheme() {
-    var metas = document.querySelectorAll('meta[name="theme-color"]');
-    metas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
-    if (document.documentElement) document.documentElement.style.backgroundColor = '#3F151D';
-    if (document.body) document.body.style.backgroundColor = '#3F151D';
+    var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
+    lightMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+    var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
+    darkMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+    var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'dark');
+    if (document.documentElement) {
+      document.documentElement.style.backgroundColor = '#3F151D';
+      document.documentElement.style.background = '#3F151D';
+    }
+    if (document.body) {
+      document.body.style.backgroundColor = '#3F151D';
+      document.body.style.background = '#3F151D';
+    }
   }
   applyTheme();
 
@@ -40,9 +50,9 @@
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#3F151D">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3F151D">
 <meta name="msapplication-navbutton-color" content="#3F151D">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="dark">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title data-i18n="global.title">Garima weds Mrinal · Nainital 2026</title>
@@ -89,7 +99,7 @@
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
   --theme-color: #3F151D;
   --crimson-velvet: #3F151D;
   --geru-deep: #A71F23;

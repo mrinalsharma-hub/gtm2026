@@ -57,15 +57,9 @@
 
   function ensureThemeColor(targetNorm) {
     targetNorm = targetNorm || normalizePath(window.location.pathname);
-    var themeColor = "#3F151D";
-
-    if (targetNorm === "index.html" || targetNorm === "auth") {
-      themeColor = "#3F151D"; // Exact Pure Maroon for Auth page
-    } else if (targetNorm === "celebrations.html" || targetNorm === "travel&stay.html" || targetNorm === "rsvp.html" || targetNorm === "joinus.html") {
-      themeColor = "#FFEFD4"; // Cream for Celebrations, Travel, and RSVP
-    } else if (targetNorm === "G&M.html") {
-      themeColor = "#3F151D"; // Deep Burgundy Maroon for Home (G&M)
-    }
+    var isDarkPage = (targetNorm === "index.html" || targetNorm === "auth" || targetNorm === "G&M.html");
+    var themeColor = isDarkPage ? "#3F151D" : "#FFEFD4";
+    var darkThemeColor = "#3F151D"; // Dark mode always uses #3F151D to guarantee crisp white text in dark mode omnibox
 
     if (document.documentElement) {
       document.documentElement.style.backgroundColor = themeColor;
@@ -76,43 +70,51 @@
       document.body.style.background = themeColor;
     }
 
-    // Update meta[name="theme-color"] tags directly without removing elements (prevents Chrome Android white toolbar flash)
-    var metaTags = document.querySelectorAll("meta[name=\"theme-color\"]");
-    if (metaTags.length > 0) {
-      metaTags.forEach(function(m) {
-        if (m.getAttribute("content") !== themeColor) {
-          m.setAttribute("content", themeColor);
-        }
-      });
-    } else {
-      var baseMeta = document.createElement("meta");
-      baseMeta.name = "theme-color";
-      baseMeta.content = themeColor;
+    // Ensure color-scheme is set to 'dark' for G&M/index (forces white font in Chrome) or 'light dark' for cream pages
+    var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+    if (!colorSchemeMeta) {
+      colorSchemeMeta = document.createElement('meta');
+      colorSchemeMeta.name = 'color-scheme';
+      document.head.appendChild(colorSchemeMeta);
+    }
+    colorSchemeMeta.setAttribute('content', isDarkPage ? 'dark' : 'light dark');
+
+    // Update meta[name="theme-color"] tags directly without removing elements (prevents Chrome Android toolbar flicker)
+    var baseMeta = document.querySelector('meta[name="theme-color"]:not([media])');
+    if (!baseMeta) {
+      baseMeta = document.createElement('meta');
+      baseMeta.name = 'theme-color';
+      baseMeta.id = 'meta-theme-color';
       document.head.appendChild(baseMeta);
+    }
+    baseMeta.setAttribute('content', themeColor);
 
-      var lightMeta = document.createElement("meta");
-      lightMeta.name = "theme-color";
-      lightMeta.setAttribute("media", "(prefers-color-scheme: light)");
-      lightMeta.content = themeColor;
+    var lightMeta = document.querySelector('meta[name="theme-color"][media*="light"]');
+    if (!lightMeta) {
+      lightMeta = document.createElement('meta');
+      lightMeta.name = 'theme-color';
+      lightMeta.setAttribute('media', '(prefers-color-scheme: light)');
       document.head.appendChild(lightMeta);
+    }
+    lightMeta.setAttribute('content', themeColor);
 
-      var darkMeta = document.createElement("meta");
-      darkMeta.name = "theme-color";
-      darkMeta.setAttribute("media", "(prefers-color-scheme: dark)");
-      darkMeta.content = themeColor;
+    var darkMeta = document.querySelector('meta[name="theme-color"][media*="dark"]');
+    if (!darkMeta) {
+      darkMeta = document.createElement('meta');
+      darkMeta.name = 'theme-color';
+      darkMeta.setAttribute('media', '(prefers-color-scheme: dark)');
       document.head.appendChild(darkMeta);
     }
+    darkMeta.setAttribute('content', isDarkPage ? themeColor : darkThemeColor);
 
-    var statusMeta = document.querySelector("meta[name=\"apple-mobile-web-app-status-bar-style\"]");
+    var statusMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
     if (statusMeta) {
-      statusMeta.setAttribute("content", "default");
+      statusMeta.setAttribute('content', isDarkPage ? 'black-translucent' : 'default');
     }
 
-    var msMeta = document.querySelector("meta[name=\"msapplication-navbutton-color\"]");
+    var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
     if (msMeta) {
-      if (msMeta.getAttribute("content") !== themeColor) {
-        msMeta.setAttribute("content", themeColor);
-      }
+      msMeta.setAttribute('content', themeColor);
     }
   }
   window.ensureThemeColor = ensureThemeColor;

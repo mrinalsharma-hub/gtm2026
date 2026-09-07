@@ -5,8 +5,12 @@
 <script>
 (function() {
   function applyCream() {
-    var metas = document.querySelectorAll('meta[name="theme-color"]');
-    metas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
+    var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
+    lightMetas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
+    var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
+    darkMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+    var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light dark');
     if (document.documentElement) document.documentElement.style.backgroundColor = '#FFEFD4';
     if (document.body) document.body.style.backgroundColor = '#FFEFD4';
   }
@@ -34,8 +38,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3F151D">
+<meta name="color-scheme" content="light dark">
 <meta name="msapplication-navbutton-color" content="#FFEFD4">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
