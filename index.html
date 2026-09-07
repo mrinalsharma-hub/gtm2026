@@ -11,7 +11,9 @@
   }
   // Check if already authenticated via cookie or storage
   var isAuth = getCookie('gtm2026_auth') === 'true' ||
+               getCookie('gtm2026_has_authenticated') === 'true' ||
                localStorage.getItem('gtm2026_auth') === 'true' ||
+               localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
                localStorage.getItem('wedding_access_key');
   if (isAuth) {
     window.location.replace('G&M.html');
@@ -20,9 +22,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-<meta name="theme-color" content="#380E13">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#380E13">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#380E13">
+<meta name="theme-color" content="#431A22">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#431A22">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#431A22">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Garima weds Mrinal · Invitation Gateway</title>
@@ -34,7 +36,8 @@
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
 <link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
-<link rel="preload" as="image" href="images/home/image12_554_2091.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/auth/envelope_bg.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/auth/seal_flower.webp" type="image/webp" fetchpriority="high">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,10 +77,15 @@ html, body {
   width: 100%;
   height: 100%;
   height: 100dvh;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
-  background-color: #380E13;
+  background-color: #431A22;
   font-family: 'Spectral', Georgia, serif;
   color: #FFFFFF;
+  touch-action: pan-x pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .auth-viewport {
@@ -89,84 +97,70 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: radial-gradient(circle at 50% 30%, #4D151B 0%, #380E13 70%, #29080B 100%);
+  background: #431A22;
   overflow: hidden;
   opacity: 0;
-  animation: authFadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: authFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes authFadeIn {
-  from { opacity: 0; transform: scale(0.98); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* ── Textured Envelope Layers ── */
-.envelope-art-container {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.envelope-top-flap {
+/* ── 1:1 Pixel-Perfect Background Envelope (Unstretched / Unsqueezed) ── */
+.auth-envelope-stage {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%;
-  background: linear-gradient(180deg, rgba(65, 16, 22, 0.95) 0%, rgba(50, 12, 17, 0.98) 100%);
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
-  z-index: 2;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-}
-
-.envelope-left-fold {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(45, 10, 14, 0.9) 0%, rgba(35, 8, 11, 0.95) 100%);
-  clip-path: polygon(0 0, 100% 100%, 0 100%);
-  z-index: 1;
-}
-
-.envelope-right-fold {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(225deg, rgba(45, 10, 14, 0.9) 0%, rgba(35, 8, 11, 0.95) 100%);
-  clip-path: polygon(100% 0, 100% 100%, 0 100%);
-  z-index: 1;
-}
-
-/* ── Content Stack ── */
-.auth-content-stack {
-  position: relative;
-  z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   max-width: 440px;
+  height: 393px;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.auth-envelope-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+}
+
+/* ── Content Stack (Strict 40px Top Gap) ── */
+.auth-content-stack {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 440px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: env(safe-area-inset-top, 24px) 24px 0 24px;
-  margin-top: 5vh;
+  justify-content: flex-start;
+  padding-top: 40px;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
 }
 
-/* ── 1. Heading Lockup ── */
+/* ── 1. Heading Lockup (Strict 2-Line Figma Structure) ── */
 .auth-heading-wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   opacity: 0;
-  transform: translateY(-16px);
-  animation: authSlideDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  transform: translateY(-10px);
+  animation: authSlideDown 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
 }
 
 @keyframes authSlideDown {
@@ -176,49 +170,68 @@ html, body {
 .auth-eyebrow {
   font-family: 'Spectral', Georgia, serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   letter-spacing: 1.68px;
   text-transform: uppercase;
   color: #FFFFFF;
-  opacity: 0.92;
-  margin-bottom: 12px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  margin-bottom: 8px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .auth-names {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  gap: 8px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-.auth-name {
+.auth-name-line-1 {
   font-family: 'Kugile', Georgia, serif;
   font-size: 28px;
+  line-height: 34px;
   letter-spacing: 1px;
   color: #FFFFFF;
-  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.auth-name-line-2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  line-height: 28px;
+  margin-top: -2px;
 }
 
 .auth-ampersand {
   font-family: 'Snell Roundhand', cursive, serif;
-  font-size: 38px;
-  color: #D4AF37;
-  line-height: 0.8;
-  margin: 0 2px;
+  font-size: 40px;
+  color: #FFFFFF;
+  line-height: 24px;
+  margin-right: 2px;
 }
 
-/* ── 2. Passcode Input Form ── */
+.auth-name-text {
+  font-family: 'Kugile', Georgia, serif;
+  font-size: 28px;
+  line-height: 28px;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
+
+/* ── 2. Passcode Input Form (Figma 31px Gap) ── */
 .auth-form {
   width: 100%;
   max-width: 368px;
-  margin-top: 32px;
+  margin-top: 31px;
   position: relative;
   opacity: 0;
-  transform: translateY(16px);
-  animation: authSlideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  transform: translateY(12px);
+  animation: authSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) 0.25s forwards;
 }
 
 @keyframes authSlideUp {
@@ -229,20 +242,20 @@ html, body {
   width: 100%;
   height: 56px;
   background: #F4DFBC;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 16px;
   position: relative;
-  border: 1.5px solid rgba(212, 175, 55, 0.4);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  border: 1.5px solid rgba(212, 175, 55, 0.35);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .auth-input-pill:focus-within {
   border-color: #D4AF37;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45), 0 0 12px rgba(212, 175, 55, 0.35);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45), 0 0 14px rgba(212, 175, 55, 0.4);
 }
 
 .auth-code-input {
@@ -266,35 +279,39 @@ html, body {
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 3.52px;
+  text-align: center;
   color: rgba(56, 14, 19, 0.35);
   text-transform: uppercase;
 }
 
-/* ── Error Shake Animation ── */
+/* ── Error Shake Feedback ── */
 .auth-input-pill.has-error {
   animation: authShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   border-color: #E63946 !important;
-  box-shadow: 0 0 16px rgba(230, 57, 70, 0.6) !important;
+  box-shadow: 0 0 18px rgba(230, 57, 70, 0.65) !important;
 }
 
 @keyframes authShake {
-  10%, 90% { transform: translate3d(-4px, 0, 0); }
-  20%, 80% { transform: translate3d(6px, 0, 0); }
-  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
-  40%, 60% { transform: translate3d(6px, 0, 0); }
+  10%, 90% { transform: translate3d(-5px, 0, 0); }
+  20%, 80% { transform: translate3d(7px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-7px, 0, 0); }
+  40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 3. Golden Wax Seal Element ── */
+/* ── 3. Golden Flower Wax Seal (Figma Node 60:849) ── */
 .auth-seal-wrap {
   position: relative;
-  margin-top: 36px;
+  margin-top: 14px;
+  width: 136px;
+  height: 136px;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transform: scale(0.85);
-  animation: authSealDrop 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s forwards;
+  transform: scale(0.9);
+  animation: authSealDrop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s forwards;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 @keyframes authSealDrop {
@@ -302,11 +319,11 @@ html, body {
 }
 
 .auth-seal-img {
-  width: 120px;
-  height: 120px;
+  width: 136px;
+  height: 136px;
   object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.65)) drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.7));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   user-select: none;
   -webkit-user-drag: none;
 }
@@ -318,13 +335,13 @@ html, body {
 
 .auth-viewport.is-unlocking .auth-heading-wrap {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  transform: translateY(-40px) scale(0.95);
+  transform: translateY(-35px) scale(0.96);
   opacity: 0;
 }
 
 .auth-viewport.is-unlocking .auth-form {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  transform: translateY(30px) scale(0.95);
+  transform: translateY(25px) scale(0.96);
   opacity: 0;
 }
 
@@ -333,43 +350,46 @@ html, body {
 }
 
 @keyframes sealGlowUnlock {
-  0% { transform: scale(1); filter: drop-shadow(0 8px 18px rgba(0,0,0,0.65)); }
-  40% { transform: scale(1.22) rotate(6deg); filter: drop-shadow(0 0 30px #FFD700) drop-shadow(0 8px 24px rgba(0,0,0,0.8)); }
-  100% { transform: scale(1.35) rotate(10deg); opacity: 0; filter: drop-shadow(0 0 50px #FFF) drop-shadow(0 0 80px #FFD700); }
+  0% { transform: scale(1); filter: drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.15)) drop-shadow(0px 4px 30px rgba(0, 0, 0, 0.7)); }
+  40% { transform: scale(1.2) rotate(6deg); filter: drop-shadow(0 0 35px #FFD700) drop-shadow(0 8px 24px rgba(0,0,0,0.8)); }
+  100% { transform: scale(1.35) rotate(10deg); opacity: 0; filter: drop-shadow(0 0 60px #FFF) drop-shadow(0 0 90px #FFD700); }
 }
 
-.auth-viewport.is-unlocking .envelope-top-flap {
-  transform: translateY(-80%) scaleY(0.4);
+.auth-viewport.is-unlocking .auth-envelope-bg {
+  transform: translateY(-40px) scale(1.05);
   opacity: 0;
 }
 
 .auth-viewport.is-unlocking {
-  transition: opacity 0.8s ease 0.3s;
+  transition: opacity 0.75s ease 0.3s;
 }
 </style>
 </head>
 <body>
 
 <main class="auth-viewport" id="auth-viewport">
-  <!-- Envelope Geometry Backdrop -->
-  <div class="envelope-art-container" aria-hidden="true">
-    <div class="envelope-left-fold"></div>
-    <div class="envelope-right-fold"></div>
-    <div class="envelope-top-flap"></div>
+  <!-- Exact Figma Envelope Background -->
+  <div class="auth-envelope-stage" aria-hidden="true">
+    <picture>
+      <source srcset="images/auth/envelope_bg.webp" type="image/webp">
+      <img src="images/auth/envelope_bg.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="440" height="393">
+    </picture>
   </div>
 
   <div class="auth-content-stack">
-    <!-- 1. Heading Lockup -->
+    <!-- 1. Heading Lockup (Strict 2-Line Layout) -->
     <div class="auth-heading-wrap">
       <p class="auth-eyebrow">YOU HAVE BEEN INVITED!</p>
       <div class="auth-names">
-        <span class="auth-name">GARIMA</span>
-        <span class="auth-ampersand">&amp;</span>
-        <span class="auth-name">MRINAL</span>
+        <div class="auth-name-line-1">GARIMA</div>
+        <div class="auth-name-line-2">
+          <span class="auth-ampersand">&amp;</span>
+          <span class="auth-name-text">MRINAL</span>
+        </div>
       </div>
     </div>
 
-    <!-- 2. Code Input Form -->
+    <!-- 2. Passcode Input Form -->
     <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
       <div class="auth-input-pill" id="auth-pill">
         <input 
@@ -383,13 +403,18 @@ html, body {
           autocorrect="off" 
           autocapitalize="characters" 
           spellcheck="false"
+          inputmode="text"
+          enterkeyhint="go"
           required>
       </div>
     </form>
 
-    <!-- 3. Golden Wax Seal -->
+    <!-- 3. Golden Flower Wax Seal -->
     <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Unlock Wedding Invitation">
-      <img src="images/home/image12_554_2091.webp" alt="Golden Flower Wax Seal" class="auth-seal-img" width="120" height="120" onerror="this.onerror=null;this.src='images/home/image12_554_2091.png';">
+      <picture>
+        <source srcset="images/auth/seal_flower.webp" type="image/webp">
+        <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="136" height="136">
+      </picture>
     </div>
   </div>
 </main>
@@ -398,7 +423,8 @@ html, body {
 (function() {
   'use strict';
 
-  var VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal', 'gtm'];
+  // Strict valid passcodes: only complete valid codes (no short partials like "gtm")
+  var VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal'];
   var input = document.getElementById('auth-code-input');
   var form = document.getElementById('auth-form');
   var pill = document.getElementById('auth-pill');
@@ -410,42 +436,72 @@ html, body {
     return String(val || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
   }
 
-  // ── Keyboard Keep-Alive: Keep focused at all times ──
+  // ── Keyboard Keep-Alive & Robust Focus Lock ──
   function lockFocus() {
-    if (isUnlocking) return;
-    if (input && document.activeElement !== input) {
-      input.focus();
+    if (isUnlocking || !input) return;
+    if (document.activeElement !== input) {
+      input.focus({ preventScroll: true });
     }
   }
 
+  // Focus immediately on script execution and load
+  lockFocus();
   window.addEventListener('DOMContentLoaded', lockFocus);
   window.addEventListener('load', lockFocus);
-  
+
+  // Prevent keyboard dismiss on blur
   if (input) {
     input.addEventListener('blur', function() {
       if (!isUnlocking) {
-        setTimeout(lockFocus, 15);
+        requestAnimationFrame(function() {
+          input.focus({ preventScroll: true });
+        });
+        setTimeout(lockFocus, 20);
+        setTimeout(lockFocus, 80);
       }
     });
   }
 
-  document.addEventListener('touchstart', function(e) {
-    if (!isUnlocking && input && e.target !== input) {
-      input.focus();
+  // Intercept all outside taps/clicks to keep keyboard permanently raised
+  function handleOutsideInteraction(e) {
+    if (isUnlocking || !input) return;
+    if (e.target === sealBtn || (sealBtn && sealBtn.contains(e.target))) {
+      return; // Allow seal click to trigger unlock validation
     }
-  }, { passive: true });
+    if (e.target !== input) {
+      if (e.cancelable && e.type !== 'click') {
+        e.preventDefault();
+      }
+      input.focus({ preventScroll: true });
+    }
+  }
 
-  document.addEventListener('click', function(e) {
-    if (!isUnlocking && input && e.target !== input) {
-      input.focus();
+  window.addEventListener('pointerdown', handleOutsideInteraction, { passive: false });
+  window.addEventListener('touchstart', handleOutsideInteraction, { passive: false });
+  window.addEventListener('mousedown', handleOutsideInteraction, { passive: false });
+  window.addEventListener('click', handleOutsideInteraction);
+
+  // If visual viewport resizes (e.g. user minimized keyboard on Android), bring it right back
+  if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', function() {
+      if (!isUnlocking && window.visualViewport.height >= window.innerHeight * 0.85) {
+        setTimeout(lockFocus, 50);
+      }
+    });
+  }
+
+  // Heartbeat focus check
+  setInterval(function() {
+    if (!isUnlocking && document.activeElement !== input) {
+      lockFocus();
     }
-  });
+  }, 200);
 
   // ── Error Shake Feedback ──
   function triggerError() {
     if (!pill) return;
     pill.classList.remove('has-error');
-    void pill.offsetWidth; // Trigger reflow
+    void pill.offsetWidth; // Force reflow
     pill.classList.add('has-error');
     setTimeout(function() {
       pill.classList.remove('has-error');
@@ -469,6 +525,7 @@ html, body {
     // 2. Set storage keys
     try {
       localStorage.setItem('gtm2026_auth', 'true');
+      localStorage.setItem('gtm2026_has_authenticated', 'true');
       localStorage.setItem('wedding_access_key', code);
       sessionStorage.setItem('gtm2026_auth', 'true');
       sessionStorage.setItem('gtm2026_music_playing', 'true');
@@ -479,7 +536,7 @@ html, body {
       var audio = new Audio('media/Samne_Yeh_Kaun_Aaya.mp3');
       audio.volume = 0.85;
       audio.play().catch(function(err) {
-        console.warn('Audio auto-start:', err);
+        console.warn('Audio start:', err);
       });
     } catch(e) {}
 
@@ -497,9 +554,10 @@ html, body {
   function validateAndSubmit() {
     if (isUnlocking || !input) return;
     var norm = normalize(input.value);
-    
-    if (VALID_CODES.indexOf(norm) !== -1 || norm === 'gtm2026') {
-      handleSuccessfulUnlock(norm || 'gtm2026');
+
+    // Strict validation: must match complete passcode
+    if (VALID_CODES.indexOf(norm) !== -1) {
+      handleSuccessfulUnlock(norm);
     } else {
       triggerError();
     }
@@ -513,7 +571,7 @@ html, body {
     });
   }
 
-  // Also submit if seal is clicked
+  // Submit if seal is clicked
   if (sealBtn) {
     sealBtn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -521,7 +579,7 @@ html, body {
     });
   }
 
-  // Auto-submit if exact valid code length reached
+  // Auto-submit only when complete matching passcode is typed
   if (input) {
     input.addEventListener('input', function() {
       var norm = normalize(this.value);
