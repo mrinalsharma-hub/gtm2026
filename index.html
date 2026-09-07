@@ -746,7 +746,7 @@ body {
 
     <!-- ── 3. Bottom Section: Instruction Prompt (30px below envelope) ── -->
     <div class="auth-bottom-stack">
-      <label for="auth-code-input" class="auth-tap-prompt" id="auth-tap-prompt" data-i18n="auth.tap_prompt">TAP THE ENVELOPE TO OPEN</label>
+      <label for="auth-code-input" class="auth-tap-prompt" id="auth-tap-prompt" data-i18n="auth.tap_prompt">TAP TO OPEN YOUR INVITATION</label>
     </div>
 
   </div>
@@ -861,53 +861,37 @@ body {
     }, 300);
   }
 
-  // Bind Envelope Tap & Label Click
-  if (envelopeBtn) {
-    envelopeBtn.addEventListener('click', function(e) {
-      if (!isCodeActive) {
-        activateInputAndKeyboard();
-      } else if (!isActivating) {
+  // Bind Full Screen / Envelope / Prompt Tap to Advance into Passcode Input
+  function handleScreenInteraction(e) {
+    if (isUnlocking) return;
+    if (!isCodeActive) {
+      activateInputAndKeyboard();
+    } else if (!isActivating) {
+      // If code is already active and user clicks envelope or submit triggers, validate if code entered
+      if (e && e.target && e.target.closest && e.target.closest("#auth-envelope-btn")) {
         if (input && input.value && input.value.trim().length > 0) {
           validateAndSubmit();
         } else {
           activateInputAndKeyboard();
         }
+      } else if (input && document.activeElement !== input && (!e || !e.target || !e.target.closest || !e.target.closest("input, button, form"))) {
+        try {
+          input.focus({ preventScroll: true });
+        } catch(err) {
+          input.focus();
+        }
       }
-    });
-
-    envelopeBtn.addEventListener('touchend', function(e) {
-      if (!isCodeActive) {
-        activateInputAndKeyboard();
-      }
-    });
-  }
-
-  // Bind Bottom Prompt Tap
-  if (promptEl) {
-    promptEl.addEventListener('click', function(e) {
-      activateInputAndKeyboard();
-    });
-    promptEl.addEventListener('touchend', function(e) {
-      activateInputAndKeyboard();
-    });
+    }
   }
 
-  // Bind Pill / Input Tap
-  if (pill) {
-    pill.addEventListener('click', function(e) {
+  // Tapping anywhere on the viewport/document advances the user
+  document.addEventListener("click", handleScreenInteraction);
+  document.addEventListener("touchend", function(e) {
+    if (isUnlocking) return;
+    if (!isCodeActive) {
       activateInputAndKeyboard();
-    });
-  }
-  if (input) {
-    input.addEventListener('focus', function(e) {
-      if (!isCodeActive) {
-        activateInputAndKeyboard();
-      }
-    });
-    input.addEventListener('click', function(e) {
-      activateInputAndKeyboard();
-    });
-  }
+    }
+  }, { passive: true });
 
   // ── Error Shake Feedback (Only on actual incorrect code submission) ──
   function triggerError() {

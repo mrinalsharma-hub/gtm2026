@@ -487,7 +487,12 @@
     }
 
     /* M3 Filter Chips Navigation */
-    .tab-btn {
+        .tab-icon {
+      font-size: 18px;
+      line-height: 1;
+      display: inline-block;
+    }
+.tab-btn {
       padding: 8px 16px;
       border-radius: var(--md-shape-sm);
       border: 1px solid transparent;
@@ -1048,9 +1053,9 @@
           <span>Domain:</span>
         </label>
         <select id="domainSelect" class="domain-select" onchange="StudioApp.switchDomain(this.value)">
-          <option value="gtm2026">🌐 www.gtm2026.com (Main Hub)</option>
-          <option value="mrinalgarima">🤵 www.mrinalgarima.com (Groom's Edition)</option>
-          <option value="garimamrinal">👰 www.garimamrinal.com (Bride's Edition)</option>
+          <option value="gtm2026">www.gtm2026.com (Main Hub)</option>
+          <option value="mrinalgarima">www.mrinalgarima.com (Groom's Edition)</option>
+          <option value="garimamrinal">www.garimamrinal.com (Bride's Edition)</option>
         </select>
         <a id="domainLiveLink" href="https://www.gtm2026.com" target="_blank" class="domain-link-btn" title="Open live domain in new tab">
           <span class="material-symbols-outlined" style="font-size: 16px;">open_in_new</span>
@@ -1094,32 +1099,34 @@
     <div class="header-subnav">
       <div class="subnav-content">
                 <div class="tabs" id="tabBar">
-          <button class="tab-btn active" data-tab="all" onclick="StudioApp.switchTab('all')">
-            <span>All Content</span>
-            <span class="tab-count" id="count-all">100</span>
-          </button>
-          <button class="tab-btn" data-tab="auth" onclick="StudioApp.switchTab('auth')">
-            <span>🔒 Gateway</span>
+          <button class="tab-btn active" data-tab="auth" onclick="StudioApp.switchTab('auth')">
+            <span class="material-symbols-outlined tab-icon">lock</span>
+            <span>Gateway</span>
             <span class="tab-count" id="count-auth">6</span>
           </button>
           <button class="tab-btn" data-tab="home" onclick="StudioApp.switchTab('home')">
-            <span>🏡 Home</span>
+            <span class="material-symbols-outlined tab-icon">home</span>
+            <span>Home</span>
             <span class="tab-count" id="count-home">11</span>
           </button>
           <button class="tab-btn" data-tab="celebrations" onclick="StudioApp.switchTab('celebrations')">
-            <span>📅 Schedule</span>
+            <span class="material-symbols-outlined tab-icon">calendar_month</span>
+            <span>Schedule</span>
             <span class="tab-count" id="count-celebrations">19</span>
           </button>
           <button class="tab-btn" data-tab="stay" onclick="StudioApp.switchTab('stay')">
-            <span>🏨 Travel & Stay</span>
+            <span class="material-symbols-outlined tab-icon">hotel</span>
+            <span>Travel & Stay</span>
             <span class="tab-count" id="count-stay">18</span>
           </button>
           <button class="tab-btn" data-tab="invite" onclick="StudioApp.switchTab('invite')">
-            <span>💌 Invite Story</span>
+            <span class="material-symbols-outlined tab-icon">mail</span>
+            <span>Invite Story</span>
             <span class="tab-count" id="count-invite">24</span>
           </button>
           <button class="tab-btn" data-tab="rsvp" onclick="StudioApp.switchTab('rsvp')">
-            <span>✍️ RSVP</span>
+            <span class="material-symbols-outlined tab-icon">how_to_reg</span>
+            <span>RSVP</span>
             <span class="tab-count" id="count-rsvp">22</span>
           </button>
         </div>
@@ -1150,12 +1157,12 @@
         </div>
         <div class="preview-controls">
                     <select class="preview-select" id="previewPageSelect" onchange="StudioApp.setPreviewPage(this.value)">
-            <option value="index.html">🔒 Gateway (index.html)</option>
-            <option value="G&M.html">🏡 Keepsake Home (G&M.html)</option>
-            <option value="celebrations.html">📅 Celebrations (celebrations.html)</option>
-            <option value="travel&stay.html">🏨 Travel & Stay (travel&stay.html)</option>
-            <option value="invite/index.html">💌 Invite Story (invite/index.html)</option>
-            <option value="rsvp.html">✍️ RSVP (rsvp.html)</option>
+            <option value="index.html">Gateway (index.html)</option>
+            <option value="G&M.html">Keepsake Home (G&M.html)</option>
+            <option value="celebrations.html">Celebrations (celebrations.html)</option>
+            <option value="travel&stay.html">Travel & Stay (travel&stay.html)</option>
+            <option value="invite/index.html">Invite Story (invite/index.html)</option>
+            <option value="rsvp.html">RSVP (rsvp.html)</option>
           </select>
 
           <button class="btn btn-outlined" style="padding: 4px 8px; border-radius: var(--md-shape-sm);" onclick="StudioApp.refreshPreview()" title="Refresh preview">
@@ -1215,7 +1222,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
       currentDomain: 'gtm2026',
       data: {},
       initialData: {},
-      currentTab: 'all',
+      currentTab: 'auth',
       activeFilter: 'all',
       searchQuery: '',
       previewPage: 'index.html',
@@ -1224,11 +1231,16 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
       async init() {
         this.verifyAuth();
         
-        // Check URL query parameters for domain
+        // Check URL query parameters or localStorage for persisted domain
         const urlParams = new URLSearchParams(window.location.search);
-        const queryDomain = urlParams.get('domain') || urlParams.get('site');
-        if (queryDomain && DOMAINS[queryDomain]) {
-          this.currentDomain = queryDomain;
+        let savedDomain = urlParams.get('domain') || urlParams.get('site');
+        if (!savedDomain || !DOMAINS[savedDomain]) {
+          try {
+            savedDomain = localStorage.getItem('gtm2026_selected_domain');
+          } catch(e) {}
+        }
+        if (savedDomain && DOMAINS[savedDomain]) {
+          this.currentDomain = savedDomain;
         }
 
         const domainSel = document.getElementById('domainSelect');
@@ -1295,6 +1307,18 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
       async switchDomain(domainId) {
         if (!DOMAINS[domainId]) domainId = 'gtm2026';
         if (domainId === this.currentDomain) return;
+
+        // Persist domain selection across page reloads
+        try {
+          localStorage.setItem('gtm2026_selected_domain', domainId);
+        } catch(e) {}
+
+        // Update browser URL query parameter without full reload
+        try {
+          const url = new URL(window.location);
+          url.searchParams.set('domain', domainId);
+          window.history.replaceState({}, '', url);
+        } catch(e) {}
 
         // If dirty, auto-save to domain draft
         if (this.checkIfDirty()) {
@@ -1404,23 +1428,19 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
       },
 
       updateCounts() {
-        let total = 0;
         SCHEMA.sections.forEach(s => {
           let count = 0;
           s.groups.forEach(g => count += g.keys.length);
           const el = document.getElementById(`count-${s.id}`);
           if (el) el.textContent = count;
-          total += count;
         });
-        const elAll = document.getElementById('count-all');
-        if (elAll) elAll.textContent = total;
       },
 
       render() {
         const container = document.getElementById('contentContainer');
         container.innerHTML = '';
 
-        const sectionsToRender = this.currentTab === 'all' 
+        const sectionsToRender = this.searchQuery 
           ? SCHEMA.sections 
           : SCHEMA.sections.filter(s => s.id === this.currentTab);
 
@@ -1547,7 +1567,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
         if (totalMatches === 0) {
           container.innerHTML = `
             <div style="text-align: center; padding: 60px 20px; color: var(--text-muted);">
-              <div style="font-size: 32px; margin-bottom: 12px;">🔍</div>
+              <div style="margin-bottom: 12px;"><span class="material-symbols-outlined" style="font-size: 40px; opacity: 0.5;">search_off</span></div>
               <h3 style="font-size: 16px; margin-bottom: 6px;">No matching content found</h3>
               <p style="font-size: 14px;">Try adjusting your search terms or filter.</p>
             </div>
@@ -1795,7 +1815,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
               if (btn) btn.disabled = false;
               if (icon) icon.textContent = 'rocket_launch';
               if (label) label.textContent = 'Publish Live';
-              this.showToast(`🎉 Published Live to ${dInfo.domain}! Commit: ${result.commit || 'pushed'}`, 'success');
+              this.showToast(`Published Live to ${dInfo.domain}! Commit: ${result.commit || 'pushed'}`, 'success');
               return;
             }
           }
@@ -1810,7 +1830,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
           if (btn) btn.disabled = false;
           if (icon) icon.textContent = 'rocket_launch';
           if (label) label.textContent = 'Publish Live';
-          this.showToast(`🎉 Published to ${dInfo.domain} via GitHub Pages! Live in ~30s.`, 'success');
+          this.showToast(`Published to ${dInfo.domain} via GitHub Pages! Live in ~30s.`, 'success');
         } catch(ghErr) {
           if (btn) btn.disabled = false;
           if (icon) icon.textContent = 'rocket_launch';
@@ -1846,7 +1866,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
       async cloneFromGTM() {
         if (this.currentDomain === 'gtm2026') return;
         const dInfo = DOMAINS[this.currentDomain];
-        const proceed = confirm(`⚠️ Are you sure you want to clone all content from GTM 2026 into ${dInfo.name} (${dInfo.domain})?\n\nThis will replace all text fields in ${dInfo.name} with the current GTM 2026 content.`);
+        const proceed = confirm(`Are you sure you want to clone all content from GTM 2026 into ${dInfo.name} (${dInfo.domain})?\n\nThis will replace all text fields in ${dInfo.name} with the current GTM 2026 content.`);
         if (!proceed) return;
 
         // Try local server clone API
@@ -1864,7 +1884,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
               localStorage.removeItem(`${this.currentDomain}_draft_en`);
               this.render();
               this.pushToLivePreview();
-              this.showToast(`✅ Cloned content from GTM 2026 into ${dInfo.domain}!`, 'success');
+              this.showToast(`Cloned content from GTM 2026 into ${dInfo.domain}!`, 'success');
               return;
             }
           }
@@ -1877,7 +1897,7 @@ const SCHEMA = {"sections": [{"id": "auth", "title": "Gateway & Auth Settings", 
           this.data = { ...gtmData };
           this.render();
           this.pushToLivePreview();
-          this.showToast(`✅ Cloned content from GTM 2026 into ${dInfo.name}! Remember to save/publish.`, 'success');
+          this.showToast(`Cloned content from GTM 2026 into ${dInfo.name}! Remember to save/publish.`, 'success');
         } catch(e) {
           this.showToast('Failed to fetch GTM 2026 content to clone', 'error');
         }

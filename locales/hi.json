@@ -143,7 +143,7 @@
   "auth.title": "गरिमा संग मृणाल · निमंत्रण प्रवेशद्वार",
   "auth.forever": "हमारे साथ इस उत्सव में सम्मिलित हों",
   "auth.enter_code": "कृपया अपना निमंत्रण कोड दर्ज करें",
-  "auth.tap_prompt": "निमंत्रण खोलने के लिए लिफाफे पर स्पर्श करें",
+  "auth.tap_prompt": "निमंत्रण खोलने के लिए स्पर्श करें",
   "auth.error_message": "अमान्य कोड, कृपया पुनः प्रयास करें।",
   "auth.passcodes": "gtm2026, mrinalgarima, garimamrinal, 2026, nainital"
 }
