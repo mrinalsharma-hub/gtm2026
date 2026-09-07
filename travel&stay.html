@@ -52,11 +52,11 @@
 <link rel="preload" as="image" href="images/stay/stay_title.svg?v=28000" type="image/svg+xml" fetchpriority="high">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.ttf?v=24700" type="font/ttf" crossorigin>
-<link rel="preload" as="image" href="images/stay/stay_travel_air.png" type="image/png" fetchpriority="high">
-<link rel="preload" as="image" href="images/stay/stay_travel_train.png" type="image/png">
-<link rel="preload" as="image" href="images/stay/stay_arch.png" type="image/png">
-<link rel="preload" as="image" href="images/stay/stay_weather_divider.png" type="image/png">
-<link rel="preload" as="image" href="images/stay/stay_bottom_couple.png" type="image/png">
+<link rel="preload" as="image" href="images/stay/stay_travel_air.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/stay/stay_travel_train.webp" type="image/webp">
+<link rel="preload" as="image" href="images/stay/stay_arch.webp" type="image/webp">
+<link rel="preload" as="image" href="images/stay/stay_weather_divider.webp" type="image/webp">
+<link rel="preload" as="image" href="images/stay/stay_bottom_couple.webp" type="image/webp">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1021,7 +1021,10 @@ body {
         <div class="stay-air-img-container" aria-hidden="true">
           <div class="stay-air-img-inner">
             <div class="stay-air-img-rotate">
-              <img src="images/stay/stay_travel_air.png" alt="Carved Airplane" class="stay-air-img" width="263" height="198" loading="eager" decoding="async">
+              <picture>
+                <source srcset="images/stay/stay_travel_air.webp" type="image/webp">
+                <img src="images/stay/stay_travel_air.png" alt="Carved Airplane" class="stay-air-img" width="263" height="198" loading="eager" fetchpriority="high" decoding="async">
+              </picture>
             </div>
           </div>
         </div>
@@ -1044,7 +1047,10 @@ body {
         </div>
         <div class="stay-train-img-container" aria-hidden="true">
           <div class="stay-train-img-inner">
-            <img src="images/stay/stay_travel_train.png" alt="Carved Steam Locomotive" class="stay-train-img" width="408" height="306" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/stay/stay_travel_train.webp" type="image/webp">
+              <img src="images/stay/stay_travel_train.png" alt="Carved Steam Locomotive" class="stay-train-img" width="408" height="306" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
       </section>
@@ -1058,7 +1064,10 @@ body {
         </div>
         <div class="stay-cab-img-container" aria-hidden="true">
           <div class="stay-cab-img-flip">
-            <img src="images/stay/stay_travel_cab.png" alt="Carved Taxi" class="stay-cab-img" width="325" height="161" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/stay/stay_travel_cab.webp" type="image/webp">
+              <img src="images/stay/stay_travel_cab.png" alt="Carved Taxi" class="stay-cab-img" width="325" height="161" loading="lazy" decoding="async">
+            </picture>
           </div>
         </div>
         <div class="stay-cab-text-bottom">
@@ -1073,7 +1082,10 @@ body {
     <!-- Section D: Stay / Accommodation Archway (Node 53:479) -->
     <section class="stay-arch-section" aria-label="Accommodation Details">
       <div class="stay-arch-frame-wrap">
-        <img src="images/stay/stay_arch.png" alt="Carved Palace Archway" class="stay-arch-bg-img" width="1122" height="1402" loading="lazy" decoding="async" aria-hidden="true">
+        <picture>
+          <source srcset="images/stay/stay_arch.webp" type="image/webp">
+          <img src="images/stay/stay_arch.png" alt="Carved Palace Archway" class="stay-arch-bg-img" width="1122" height="1402" loading="lazy" decoding="async" aria-hidden="true">
+        </picture>
         <div class="stay-arch-content-container">
           <h2 class="stay-arch-title" data-i18n="stay.arch.title">Your<br>stay</h2>
           <p class="stay-arch-desc" data-i18n="stay.arch.desc">
@@ -1092,7 +1104,10 @@ body {
     <!-- Section E: Weather and Packing (Node 53:487) -->
     <section class="stay-weather-section" aria-label="Weather and Packing Guide">
       <div class="stay-weather-img-container" aria-hidden="true">
-        <img src="images/stay/stay_weather.png" alt="Carved Sun and Mountains" class="stay-weather-img" width="390" height="195" loading="lazy" decoding="async">
+        <picture>
+          <source srcset="images/stay/stay_weather.webp" type="image/webp">
+          <img src="images/stay/stay_weather.png" alt="Carved Sun and Mountains" class="stay-weather-img" width="390" height="195" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="stay-weather-content-wrap">
         <h2 class="stay-weather-title" data-i18n="stay.weather.title">Weather and Packing</h2>
@@ -1111,7 +1126,10 @@ body {
     <section class="stay-bottom-section" aria-label="Traditional Woodcraft Note and Royal Illustration">
       <!-- Ornate Carved Divider (Node 53:564 · 242x81px) -->
       <div class="stay-bottom-divider-wrap" aria-hidden="true">
-        <img src="images/stay/stay_weather_divider.png" alt="" class="stay-bottom-divider-img" width="242" height="81" loading="lazy" decoding="async">
+        <picture>
+          <source srcset="images/stay/stay_weather_divider.webp" type="image/webp">
+          <img src="images/stay/stay_weather_divider.png" alt="" class="stay-bottom-divider-img" width="242" height="81" loading="lazy" decoding="async">
+        </picture>
       </div>
       
       <!-- Quote (Node 53:566 · 358px wide) -->
@@ -1121,7 +1139,10 @@ body {
       
       <!-- Royal Couple (Node 53:565 · 442x231px) -->
       <div class="stay-bottom-couple-wrap" aria-hidden="true">
-        <img src="images/stay/stay_bottom_couple.png" alt="Carved Royal Couple" class="stay-bottom-couple-img" width="442" height="231" loading="lazy" decoding="async">
+        <picture>
+          <source srcset="images/stay/stay_bottom_couple.webp" type="image/webp">
+          <img src="images/stay/stay_bottom_couple.png" alt="Carved Royal Couple" class="stay-bottom-couple-img" width="442" height="231" loading="lazy" decoding="async">
+        </picture>
       </div>
     </section>
 

@@ -42,7 +42,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=26300">
 
 <!-- ── Resource Preloads ── -->
-<link rel="preload" as="image" href="images/home/vinyl_disc.png?v=26600" type="image/png" fetchpriority="high">
+<link rel="preload" as="image" href="images/home/vinyl_disc.webp?v=26600" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/player_figma_play.svg?v=24700" type="image/svg+xml">
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
@@ -737,7 +737,10 @@ body {
         <!-- ── Centerpiece Interactive Big Vinyl Player (Universal Audio Controller on Home) ── -->
         <div class="gxm-vinyl-anchor" id="music-toggle" role="button" tabindex="0" aria-label="Play wedding celebration music" data-i18n-attr="aria-label:home.hero.tap_play">
           <!-- ── Rotating Vinyl Record Base (Grooves + Medallion Ring) ── -->
-          <img src="images/home/vinyl_disc.png?v=26600" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high">
+          <picture>
+            <source srcset="images/home/vinyl_disc.webp?v=26600" type="image/webp">
+            <img src="images/home/vinyl_disc.png?v=26600" alt="Wedding Celebration Vinyl Player" class="gxm-vinyl-disc" width="180" height="180" fetchpriority="high" decoding="async">
+          </picture>
 
           <!-- ── Stationary Center Play / Pause Icon (Fixed Upright, Never Rotates) ── -->
           <div class="gxm-vinyl-center-icon" aria-hidden="true">

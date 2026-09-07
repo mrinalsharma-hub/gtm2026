@@ -430,25 +430,47 @@
     });
   }
 
-  /* ── 7. COUNTDOWN TO BARAAT (21 Nov 2026, 10 AM IST) ── */
+  /* ── 7. ZERO-REFLOW COUNTDOWN WITH VISIBILITY PAUSING ── */
   var cd = document.getElementById('countdown');
   if (cd) {
     var wed = new Date('2026-11-21T10:00:00+05:30');
-    function tick(){
+    var cdTimer = null;
+    var lastOutput = '';
+
+    function tick() {
       var ms = wed - Date.now();
       if (ms <= 0) {
-        cd.innerHTML = '<div class="unit"><span class="num">॥</span><span class="lbl">just married</span></div>';
+        if (lastOutput !== 'married') {
+          cd.innerHTML = '<div class="unit"><span class="num">॥</span><span class="lbl">just married</span></div>';
+          lastOutput = 'married';
+        }
         return;
       }
       var d = Math.floor(ms / 864e5),
           h = Math.floor(ms % 864e5 / 36e5),
           m = Math.floor(ms % 36e5 / 6e4);
-      cd.innerHTML =
-        '<div class="unit"><span class="num">' + d + '</span><span class="lbl">days</span></div>' +
-        '<div class="unit"><span class="num">' + h + '</span><span class="lbl">hours</span></div>' +
-        '<div class="unit"><span class="num">' + m + '</span><span class="lbl">minutes</span></div>';
-      setTimeout(tick, 3e4);
+      var key = d + '-' + h + '-' + m;
+      if (lastOutput !== key) {
+        cd.innerHTML =
+          '<div class="unit"><span class="num">' + d + '</span><span class="lbl">days</span></div>' +
+          '<div class="unit"><span class="num">' + h + '</span><span class="lbl">hours</span></div>' +
+          '<div class="unit"><span class="num">' + m + '</span><span class="lbl">minutes</span></div>';
+        lastOutput = key;
+      }
+
+      if (!document.hidden) {
+        cdTimer = setTimeout(tick, 3e4);
+      }
     }
+
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        if (cdTimer) { clearTimeout(cdTimer); cdTimer = null; }
+      } else {
+        tick();
+      }
+    });
+
     tick();
   }
 
@@ -468,6 +490,73 @@
     els.forEach(function(el){ el.classList.add('in'); });
   }
 
-  /* Static Grounded Background Layer (Anchored to top with zero bounce) */
+  /* ── 9. INTELLIGENT GATEWAY BACKGROUND PREFETCHER & PREDECODER ── */
+  function startBackgroundPrefetch() {
+    try {
+      if (navigator.connection && (navigator.connection.saveData || /2g/.test(navigator.connection.effectiveType))) {
+        return;
+      }
+    } catch(e) {}
+
+    var criticalPages = ['G%26M.html', 'celebrations.html', 'travel%26stay.html', 'rsvp.html'];
+    var criticalImages = [
+      'images/celebrations/bg_motif_celebrations.webp?v=24700',
+      'images/celebrations/boat_illustration.webp?v=34000',
+      'images/celebrations/card_bg_wedding.webp?v=41000',
+      'images/celebrations/card_bg_mehndi.webp?v=24700',
+      'images/stay/stay_travel_air.webp',
+      'images/stay/stay_travel_train.webp',
+      'images/stay/stay_arch.webp',
+      'images/stay/stay_pinecone.svg?v=28100',
+      'images/stay/stay_title.svg?v=28000',
+      'images/rsvp/rsvp_footer_hands.webp?v=27700',
+      'images/home/vinyl_disc.webp?v=26600'
+    ];
+
+    function scheduleIdle(task) {
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(task, { timeout: 2000 });
+      } else {
+        setTimeout(task, 150);
+      }
+    }
+
+    scheduleIdle(function() {
+      criticalPages.forEach(function(url) {
+        if (window.fetch) {
+          fetch(url, { priority: 'low' }).catch(function(){});
+        }
+      });
+
+      criticalImages.forEach(function(src) {
+        var img = new Image();
+        img.src = src;
+        if (img.decode) {
+          img.decode().catch(function(){});
+        }
+      });
+    });
+  }
+
+  if (document.readyState === 'complete') {
+    startBackgroundPrefetch();
+  } else {
+    window.addEventListener('load', function() {
+      setTimeout(startBackgroundPrefetch, 200);
+    });
+  }
+
+  /* ── 10. SERVICE WORKER REGISTRATION ─────────────────── */
+  if ('serviceWorker' in navigator && (window.location.protocol.indexOf('http') === 0 || window.location.protocol.indexOf('https') === 0)) {
+    window.addEventListener('load', function() {
+      navigator.serviceWorker.register('sw.js')
+        .then(function(reg) {
+          if (reg && reg.update) reg.update();
+        })
+        .catch(function(err) {
+          console.warn('SW registration:', err);
+        });
+    });
+  }
 })();
 
