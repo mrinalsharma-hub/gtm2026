@@ -212,7 +212,7 @@ body {
 
 .gxm-skeleton-vinyl-glow {
   position: absolute;
-  top: 37.48%;
+  top: calc(37.48% - 8px);
   left: 50%;
   transform: translate(-50%, -50%);
   width: clamp(140px, 41.5vw, 182px);
@@ -352,7 +352,7 @@ body {
 /* ── 3. Interactive Centerpiece: Big Vinyl Record Player with Concentric Royal Medallion ── */
 .gxm-vinyl-anchor {
   position: absolute !important;
-  top: 37.48% !important;
+  top: calc(37.48% - 8px) !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
   z-index: 20 !important;
@@ -467,22 +467,26 @@ body {
 
 .gxm-icon-play {
   opacity: 1 !important;
-  transform: scale(1) !important;
+  transform: translate(1.5px, 0.5px) scale(0.8) !important;
+  transform-origin: center center !important;
 }
 
 .gxm-icon-pause {
   opacity: 0 !important;
-  transform: scale(0.9) !important;
+  transform: scale(0.72) !important;
+  transform-origin: center center !important;
 }
 
 .gxm-vinyl-anchor.is-playing .gxm-icon-play {
   opacity: 0 !important;
-  transform: scale(0.9) !important;
+  transform: translate(1.5px, 0.5px) scale(0.72) !important;
+  transform-origin: center center !important;
 }
 
 .gxm-vinyl-anchor.is-playing .gxm-icon-pause {
   opacity: 1 !important;
-  transform: scale(1) !important;
+  transform: scale(0.8) !important;
+  transform-origin: center center !important;
 }
 
 /* ── 4. Calligraphy & Wedding Typography Lockup (Gap reduced by 16px to net +24px below Vinyl) ── */
