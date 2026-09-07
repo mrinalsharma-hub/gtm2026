@@ -946,9 +946,13 @@ body {
       viewport.classList.add('is-unlocking');
     }
 
-    // 5. Navigate cleanly to G&M.html so all assets, layouts, and scripts initialize with 100% fidelity
+    // 5. Seamless SPA transition to G&M.html (preserves audio playback without iOS user gesture loss)
     setTimeout(function() {
-      window.location.replace('G&M.html');
+      if (window.GTM_SPA && window.GTM_SPA.navigateTo) {
+        window.GTM_SPA.navigateTo('G&M.html', true);
+      } else {
+        window.location.replace('G&M.html');
+      }
     }, 500);
   }
 

@@ -136,7 +136,10 @@
     if (!norm || pageCache[norm]) return;
     var fetchUrl = getFetchUrl(norm);
     fetch(fetchUrl + (fetchUrl.indexOf('?') !== -1 ? '&' : '?') + '_spa=' + Date.now())
-      .then(function(res) { if (res.ok) return res.text(); })
+      .then(function(res) {
+        if (res.ok) return res.text();
+        return fetch(norm + '?_spa=' + Date.now()).then(function(r) { if (r.ok) return r.text(); });
+      })
       .then(function(html) { if (html) pageCache[norm] = html; })
       .catch(function() {});
   }

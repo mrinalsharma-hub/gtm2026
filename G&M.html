@@ -185,17 +185,7 @@ body {
 
 /* ── Royal Keepsake Skeleton Loading Veil ── */
 .gxm-skeleton-veil {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  background: #471618 !important;
-  z-index: 50 !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s !important;
-  pointer-events: none !important;
+  display: none !important;
 }
 
 .gxm-skeleton-veil.is-hidden {
@@ -316,20 +306,21 @@ body {
 /* Keepsake Card Frame: fills 100% of viewport edge-to-edge with 0px margins on all mobile widths */
 .gxm-card-frame {
   position: absolute !important;
-  inset: 0 !important;
+  top: -20px !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
   width: 100% !important;
-  height: 100% !important;
+  height: calc(100% + 20px) !important;
   max-width: 100% !important;
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(32px) scale(0.96);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
   will-change: transform, opacity;
-  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 1.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out !important;
 }
 
 .gxm-card-frame.is-loaded {
@@ -371,7 +362,7 @@ body {
   user-select: none !important;
   -webkit-user-select: none !important;
   -webkit-tap-highlight-color: transparent !important;
-  opacity: 0;
+  opacity: 1;
   will-change: transform, opacity;
 }
 
@@ -1087,89 +1078,36 @@ body {
     enforceThemeColor();
   });
 
-  /* ── Intelligent Asset Buffer & Dramatic Unified Entrance Controller ── */
-  (function initGMBufferController() {
-    var cardFrame = document.querySelector('.gxm-card-frame');
-    var skeleton = document.getElementById('gxm-skeleton');
-    var isRevealed = false;
-
-    function triggerReveal() {
-      if (isRevealed) return;
-      isRevealed = true;
-
-      // 1. Smoothly dissolve skeleton veil
-      if (skeleton) {
-        skeleton.classList.add('is-hidden');
-        setTimeout(function() {
-          if (skeleton && skeleton.parentNode) {
-            skeleton.remove();
-          }
-        }, 700);
+  /* ── Unified Instant Keepsake Page Initializer ── */
+  (function initGMPageController() {
+    function reveal() {
+      var cf = document.querySelector('.gxm-card-frame');
+      if (cf) {
+        cf.classList.add('is-loaded');
       }
-
-      // 2. Trigger synchronized dramatic entrance sequence
-      if (cardFrame) {
-        cardFrame.classList.add('is-loaded');
+      var sk = document.getElementById('gxm-skeleton');
+      if (sk && sk.parentNode) {
+        sk.remove();
       }
-    }
-
-    function bufferAssets() {
-      var imageSources = [
-        'images/home/envelope_bottom.webp?v=26700',
-        'images/home/image0_554_2091.webp',
-        'images/home/image1_554_2091.webp',
-        'images/home/image3_554_2091.webp',
-        'images/home/image4_554_2091.webp',
-        'images/home/image5_554_2091.webp',
-        'images/home/image6_554_2091.webp',
-        'images/home/image7_554_2091.webp',
-        'images/home/image8_554_2091.webp',
-        'images/home/image9_554_2091.webp',
-        'images/home/image10_554_2091.webp',
-        'images/home/image11_554_2091.webp',
-        'images/auth/seal_flower.webp',
-        'images/home/vinyl_disc.webp?v=26700'
-      ];
-
-      var promises = imageSources.map(function(src) {
-        return new Promise(function(resolve) {
-          var img = new Image();
-          img.onload = resolve;
-          img.onerror = resolve;
-          img.src = src;
-          if (img.decode) {
-            img.decode().then(resolve).catch(resolve);
-          }
-        });
-      });
-
-      if (document.fonts && document.fonts.ready) {
-        promises.push(document.fonts.ready.catch(function() {}));
+      if (window.GTM_AUDIO && window.GTM_AUDIO.updateUI) {
+        window.GTM_AUDIO.updateUI();
       }
-
-      // Safety fallback: reveal after max 2.2s under any network condition
-      var fallbackTimer = setTimeout(triggerReveal, 2200);
-
-      Promise.all(promises).then(function() {
-        clearTimeout(fallbackTimer);
-        // Small graceful pause for smooth painting
-        setTimeout(triggerReveal, 60);
-      });
+      if (window.GTM_CMS && window.GTM_CMS.applyDOM) {
+        window.GTM_CMS.applyDOM();
+      }
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', bufferAssets);
+      document.addEventListener('DOMContentLoaded', reveal);
     } else {
-      bufferAssets();
+      reveal();
     }
 
     window.addEventListener('gtm:page-loaded', function(e) {
-      if (e && e.detail && (e.detail.name === 'G&M.html' || e.detail.name === 'gm')) {
-        var cf = document.querySelector('.gxm-card-frame');
-        if (cf) cf.classList.add('is-loaded');
-        var sk = document.getElementById('gxm-skeleton');
-        if (sk) sk.remove();
-      }
+      reveal();
+    });
+    window.addEventListener('gtm:spa-page-ready', function(e) {
+      reveal();
     });
   })();
   </script>
