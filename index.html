@@ -374,7 +374,6 @@ body {
   height: 0;
   margin-top: 0;
   opacity: 0;
-  pointer-events: none;
   transform: scale(0.94) translateY(-10px);
   transition: opacity 0.4s ease, 
               transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -715,7 +714,7 @@ body {
       <!-- 2. Passcode Input Form (Appears upon tapping envelope) -->
       <div class="auth-form-wrap" id="auth-form-wrap">
         <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
-          <div class="auth-input-pill" id="auth-pill">
+          <label for="auth-code-input" class="auth-input-pill" id="auth-pill">
             <input 
               type="text" 
               id="auth-code-input" 
@@ -730,13 +729,13 @@ body {
               inputmode="text" 
               enterkeyhint="go" 
               required>
-          </div>
+          </label>
         </form>
       </div>
     </div>
 
     <!-- ── 2. Middle Section: Vertical Portrait Envelope (+10% size) ── -->
-    <div class="auth-envelope-wrap" id="auth-envelope-btn" role="button" aria-label="Tap envelope to open invitation">
+    <label for="auth-code-input" class="auth-envelope-wrap" id="auth-envelope-btn" role="button" aria-label="Tap envelope to open invitation">
       <picture>
         <source srcset="images/auth/envelope_portrait.webp" type="image/webp">
         <img src="images/auth/envelope_portrait.png" alt="Wedding Invitation Envelope" class="auth-envelope-img" width="1086" height="1448">
@@ -745,11 +744,11 @@ body {
       <div class="auth-seal-pulse-anchor" aria-hidden="true">
         <div class="auth-seal-shimmer-gleam"></div>
       </div>
-    </div>
+    </label>
 
     <!-- ── 3. Bottom Section: Instruction Prompt (30px below envelope) ── -->
     <div class="auth-bottom-stack">
-      <p class="auth-tap-prompt" id="auth-tap-prompt" data-i18n="auth.tap_prompt">TAP THE ENVELOPE TO OPEN</p>
+      <label for="auth-code-input" class="auth-tap-prompt" id="auth-tap-prompt" data-i18n="auth.tap_prompt">TAP THE ENVELOPE TO OPEN</label>
     </div>
 
   </div>
@@ -781,18 +780,9 @@ body {
   // ── Reset any previous session timestamp & start fresh from 0:00 ──
   try {
     sessionStorage.removeItem('gtm2026_music_time');
+    sessionStorage.setItem('gtm2026_music_playing', 'false');
+    localStorage.setItem('gtm2026_music_playing', 'false');
   } catch(e) {}
-
-  // ── Audio Playback Management (Starts only on successful unlock) ──
-  function ensureAudioPlaying(forceStart) {
-    try {
-      if (window.GTM_AUDIO && window.GTM_AUDIO.play) {
-        window.GTM_AUDIO.play(forceStart !== false);
-      }
-      sessionStorage.setItem('gtm2026_music_playing', 'true');
-      localStorage.setItem('gtm2026_music_playing', 'true');
-    } catch(e) {}
-  }
 
   // ── Activate Passcode Input & Raise Virtual Keyboard (Universal for iOS & Android) ──
   function activateInputAndKeyboard() {
@@ -812,7 +802,6 @@ body {
       wrap.style.marginTop = '18px';
       wrap.style.opacity = '1';
       wrap.style.pointerEvents = 'auto';
-      void wrap.offsetHeight; // Force synchronous reflow so element has dimensions
     }
 
     // 2. Ensure input is empty on first activation
@@ -821,9 +810,8 @@ body {
         input.value = '';
       }
       input.style.pointerEvents = 'auto';
-      void input.offsetHeight; // Force layout calculation
 
-      // 3. SYNCHRONOUS FOCUS directly inside user gesture (crucial for iOS WebKit & Android Chrome)
+      // 3. SYNCHRONOUS FOCUS directly inside user gesture (vital for iOS Safari & Android Chrome)
       try {
         input.focus({ preventScroll: true });
       } catch(e) {
@@ -861,7 +849,7 @@ body {
     }, 300);
   }
 
-  // Bind Envelope Tap
+  // Bind Envelope Tap & Label Click
   if (envelopeBtn) {
     envelopeBtn.addEventListener('click', function(e) {
       if (!isCodeActive) {
@@ -885,10 +873,10 @@ body {
   // Bind Bottom Prompt Tap
   if (promptEl) {
     promptEl.addEventListener('click', function(e) {
-      if (!isCodeActive) activateInputAndKeyboard();
+      activateInputAndKeyboard();
     });
     promptEl.addEventListener('touchend', function(e) {
-      if (!isCodeActive) activateInputAndKeyboard();
+      activateInputAndKeyboard();
     });
   }
 
@@ -899,6 +887,11 @@ body {
     });
   }
   if (input) {
+    input.addEventListener('focus', function(e) {
+      if (!isCodeActive) {
+        activateInputAndKeyboard();
+      }
+    });
     input.addEventListener('click', function(e) {
       activateInputAndKeyboard();
     });
@@ -938,10 +931,15 @@ body {
       sessionStorage.setItem('gtm2026_auth', 'true');
       sessionStorage.setItem('wedding_access_key', code);
       sessionStorage.setItem('gtm2026_music_playing', 'true');
+      sessionStorage.removeItem('gtm2026_music_time');
     } catch(e) {}
 
-    // 3. Ensure audio begins playing on valid unlock
-    ensureAudioPlaying(false);
+    // 3. Trigger audio from beginning on entering home tab
+    try {
+      if (window.GTM_AUDIO && window.GTM_AUDIO.playFromStart) {
+        window.GTM_AUDIO.playFromStart();
+      }
+    } catch(e) {}
 
     // 4. Trigger Exit Motion Sequence
     if (viewport) {

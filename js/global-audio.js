@@ -6,6 +6,18 @@
   var STORAGE_KEY_PLAYING = 'gtm2026_music_playing';
   var STORAGE_KEY_TIME = 'gtm2026_music_time';
 
+  function isAuthPage() {
+    if (document.getElementById('auth-viewport')) return true;
+    var path = (window.location && window.location.pathname) ? window.location.pathname : '';
+    if (path.indexOf('index.html') !== -1) return true;
+    var isAuth = false;
+    try {
+      isAuth = sessionStorage.getItem('gtm2026_auth') === 'true' || localStorage.getItem('gtm2026_auth') === 'true';
+    } catch(e) {}
+    if (!isAuth && (path === '' || path === '/' || path.endsWith('/'))) return true;
+    return false;
+  }
+
   // Singleton Audio Object permanently anchored in document.head
   // This guarantees that SPA DOM transitions never touch, re-parent, or interrupt playback.
   if (!window.__GTM_AUDIO__) {
@@ -19,7 +31,7 @@
       var audioEl = document.createElement('audio');
       audioEl.id = 'bg-music';
       audioEl.loop = true;
-      audioEl.preload = 'auto';
+      audioEl.preload = 'none';
       audioEl.playsInline = true;
       audioEl.innerHTML = '<source src="' + AUDIO_SRC + '" type="audio/mpeg">';
       (document.head || document.documentElement).appendChild(audioEl);
@@ -31,6 +43,11 @@
   audio.volume = 0.85;
   audio.loop = true;
   audio.playsInline = true;
+
+  // On auth page, ensure audio is paused and stays paused
+  if (isAuthPage() && audio) {
+    try { audio.pause(); } catch(e) {}
+  }
 
   function deduplicatePlayers() {
     var globalPlayers = document.querySelectorAll('#global-music-player, .celebration-player-btn');
@@ -88,6 +105,11 @@
 
   function playAudio(forceStart) {
     if (!audio) return Promise.reject(new Error('No audio element'));
+
+    // Audio MUST NEVER play on auth gateway unless explicitly unlocked
+    if (isAuthPage() && !forceStart) {
+      return Promise.resolve();
+    }
 
     if (forceStart) {
       try {
@@ -151,6 +173,10 @@
   }
 
   function autoStartIfRequested() {
+    if (isAuthPage()) {
+      if (audio && !audio.paused) audio.pause();
+      return;
+    }
     var shouldPlay = false;
     try {
       shouldPlay = sessionStorage.getItem(STORAGE_KEY_PLAYING) === 'true' || 
@@ -163,6 +189,7 @@
   }
 
   function handleFirstGesture() {
+    if (isAuthPage()) return;
     var shouldPlay = false;
     try {
       shouldPlay = sessionStorage.getItem(STORAGE_KEY_PLAYING) === 'true' || 
@@ -202,7 +229,9 @@
 
   function init() {
     bindPlayer();
-    autoStartIfRequested();
+    if (!isAuthPage()) {
+      autoStartIfRequested();
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -213,10 +242,14 @@
 
   window.addEventListener('gtm:page-loaded', function() {
     bindPlayer();
-    if (audio && audio.paused) {
-      autoStartIfRequested();
+    if (!isAuthPage()) {
+      if (audio && audio.paused) {
+        autoStartIfRequested();
+      } else {
+        updateUI(true);
+      }
     } else {
-      updateUI(true);
+      if (audio && !audio.paused) audio.pause();
     }
   });
 })();
