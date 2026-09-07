@@ -86,18 +86,34 @@
   function saveTime() {
     if (audio && !isNaN(audio.currentTime) && audio.currentTime > 0) {
       try {
-        sessionStorage.setItem(STORAGE_KEY_TIME, audio.currentTime.toString());
+        var tStr = audio.currentTime.toString();
+        sessionStorage.setItem(STORAGE_KEY_TIME, tStr);
+        localStorage.setItem(STORAGE_KEY_TIME, tStr);
       } catch(e) {}
     }
   }
 
   function restoreTime() {
     try {
-      var saved = sessionStorage.getItem(STORAGE_KEY_TIME);
+      var saved = sessionStorage.getItem(STORAGE_KEY_TIME) || localStorage.getItem(STORAGE_KEY_TIME);
       if (saved) {
         var t = parseFloat(saved);
-        if (!isNaN(t) && t > 0 && Math.abs((audio.currentTime || 0) - t) > 1.5) {
-          audio.currentTime = t;
+        if (!isNaN(t) && t > 0) {
+          if (audio.readyState >= 1) {
+            if (Math.abs((audio.currentTime || 0) - t) > 0.5) {
+              audio.currentTime = t;
+            }
+          } else {
+            var onMetadata = function() {
+              audio.removeEventListener('loadedmetadata', onMetadata);
+              try {
+                if (Math.abs((audio.currentTime || 0) - t) > 0.5) {
+                  audio.currentTime = t;
+                }
+              } catch(e) {}
+            };
+            audio.addEventListener('loadedmetadata', onMetadata);
+          }
         }
       }
     } catch(e) {}
@@ -114,6 +130,7 @@
     if (forceStart) {
       try {
         sessionStorage.removeItem(STORAGE_KEY_TIME);
+        localStorage.removeItem(STORAGE_KEY_TIME);
       } catch(e) {}
       audio.currentTime = 0;
     } else if (!audio.paused) {
@@ -133,6 +150,7 @@
           localStorage.setItem(STORAGE_KEY_PLAYING, 'true');
         } catch(e) {}
         updateUI(true);
+        removeGestureListeners();
       }).catch(function(err) {
         console.warn('Audio auto-play deferred to user gesture:', err);
         updateUI(false);
@@ -184,6 +202,7 @@
     } catch(e) {}
 
     if (shouldPlay && audio && audio.paused) {
+      try { audio.preload = 'auto'; } catch(e) {}
       playAudio(false);
     }
   }
@@ -201,11 +220,21 @@
     }
   }
 
-  window.addEventListener('touchstart', handleFirstGesture, { passive: true, once: true });
-  window.addEventListener('pointerdown', handleFirstGesture, { passive: true, once: true });
-  window.addEventListener('click', handleFirstGesture, { passive: true, once: true });
+  var GESTURE_EVENTS = ['touchstart', 'touchend', 'pointerdown', 'pointerup', 'click', 'keydown'];
+  function attachGestureListeners() {
+    GESTURE_EVENTS.forEach(function(evt) {
+      window.addEventListener(evt, handleFirstGesture, { passive: true });
+    });
+  }
+  function removeGestureListeners() {
+    GESTURE_EVENTS.forEach(function(evt) {
+      window.removeEventListener(evt, handleFirstGesture, { passive: true });
+    });
+  }
 
-  audio.addEventListener('play', function() { updateUI(true); });
+  attachGestureListeners();
+
+  audio.addEventListener('play', function() { updateUI(true); removeGestureListeners(); });
   audio.addEventListener('pause', function() { updateUI(false); });
   audio.addEventListener('timeupdate', function() {
     if (!audio.paused) saveTime();
