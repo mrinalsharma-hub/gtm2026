@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #170406; background: #170406;">
 <head>
 <script>
 (function() {
@@ -22,9 +22,10 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-<meta name="theme-color" content="#170406">
+<meta name="theme-color" content="#170406" id="meta-theme-color">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#170406">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#170406">
+<meta name="msapplication-navbutton-color" content="#170406">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Garima weds Mrinal · Invitation Gateway</title>
@@ -43,7 +44,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/site.css?v=26400">
 
 <style data-spa-page="true">
 @font-face {
@@ -75,14 +75,35 @@
   -webkit-touch-callout: none !important;
 }
 
-html, body {
+:root {
+  color-scheme: dark;
+  background-color: #170406;
+}
+
+html {
   width: 100%;
   height: 100%;
   height: 100dvh;
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #170406;
+  background: #170406 !important;
+  background-color: #170406 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #170406 !important;
+  background-color: #170406 !important;
+  border: none !important;
+  outline: none !important;
   font-family: 'Spectral', Georgia, serif;
   color: #FFFFFF;
   touch-action: pan-x pan-y;
@@ -95,6 +116,9 @@ html, body {
   width: 100%;
   height: 100%;
   height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: none;
   background: radial-gradient(circle at 50% 40%, #2A090E 0%, #170406 75%, #0E0204 100%);
   overflow: hidden;
   perspective: 1200px;
@@ -437,7 +461,7 @@ html, body {
 }
 </style>
 </head>
-<body>
+<body style="background-color: #170406; background: #170406;">
 
 <main class="auth-viewport" id="auth-viewport">
   <div class="auth-envelope-wrapper" id="auth-envelope-wrapper">

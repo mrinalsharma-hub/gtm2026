@@ -52,13 +52,25 @@
   }
 
   function ensureThemeColor(targetNorm) {
-    var themeColor = '#FFEFD4';
+    targetNorm = targetNorm || normalizePath(window.location.pathname);
+    var themeColor = '#170406';
+
+    if (targetNorm === 'index.html' || targetNorm === 'auth') {
+      themeColor = '#170406'; // Exact Pure Maroon for Auth page (no white/cream patch)
+    } else if (targetNorm === 'celebrations.html' || targetNorm === 'travel&stay.html') {
+      themeColor = '#FFEFD4'; // Cream for Celebrations and Travel
+    } else if (targetNorm === 'G&M.html' || targetNorm === 'rsvp.html') {
+      themeColor = '#471618'; // Deep Burgundy Maroon for Home & RSVP
+    }
 
     if (document.documentElement) {
       document.documentElement.style.backgroundColor = themeColor;
     }
+    if (document.body) {
+      document.body.style.backgroundColor = themeColor;
+    }
 
-    var metaTags = document.querySelectorAll('meta[name=theme-color]');
+    var metaTags = document.querySelectorAll('meta[name="theme-color"]');
     if (!metaTags || metaTags.length === 0) {
       var meta = document.createElement('meta');
       meta.name = 'theme-color';
@@ -70,12 +82,12 @@
       });
     }
 
-    var lightMeta = document.querySelector('meta[name=theme-color][media*="light"]');
+    var lightMeta = document.querySelector('meta[name="theme-color"][media*="light"]');
     if (lightMeta) lightMeta.setAttribute('content', themeColor);
-    var darkMeta = document.querySelector('meta[name=theme-color][media*="dark"]');
+    var darkMeta = document.querySelector('meta[name="theme-color"][media*="dark"]');
     if (darkMeta) darkMeta.setAttribute('content', themeColor);
 
-    var msMeta = document.querySelector('meta[name=msapplication-navbutton-color]');
+    var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
     if (msMeta) msMeta.setAttribute('content', themeColor);
   }
   window.ensureThemeColor = ensureThemeColor;
