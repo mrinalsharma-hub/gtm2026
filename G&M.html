@@ -45,7 +45,9 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="GTM 2026">
 <title data-i18n="global.title">Garima weds Mrinal · Nainital 2026</title>
-<meta name="description" content="Garima weds Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand" data-i18n-attr="content:global.meta_desc">
+<meta name="description" content="Garima &amp; Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand" data-i18n-attr="content:global.meta_desc">
+<meta property="og:title" content="Garima &amp; Mrinal · Nainital 2026">
+<meta property="og:description" content="Garima &amp; Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=26300">
 <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=26300">
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=26300">
@@ -180,6 +182,136 @@ body {
   overflow: hidden !important;
 }
 
+/* ── Royal Keepsake Skeleton Loading Veil ── */
+.gxm-skeleton-veil {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: #471618 !important;
+  z-index: 50 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s !important;
+  pointer-events: none !important;
+}
+
+.gxm-skeleton-veil.is-hidden {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+.gxm-skeleton-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+@keyframes gxmShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.gxm-skeleton-vinyl-glow {
+  position: absolute;
+  top: 37.48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(140px, 41.5vw, 182px);
+  height: clamp(140px, 41.5vw, 182px);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, rgba(167, 31, 35, 0.16) 60%, transparent 80%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: gxmSkeletonPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes gxmSkeletonPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: 1;
+  }
+}
+
+.gxm-skeleton-disc {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  background: linear-gradient(90deg, rgba(80, 20, 24, 0.8) 0%, rgba(120, 35, 42, 0.9) 50%, rgba(80, 20, 24, 0.8) 100%);
+  background-size: 200% 100%;
+  animation: gxmShimmer 2s infinite linear;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.gxm-skeleton-seal {
+  position: absolute;
+  width: 38%;
+  height: 38%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 220, 100, 0.45) 0%, rgba(212, 175, 55, 0.25) 60%, rgba(167, 31, 35, 0.1) 100%);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.25);
+}
+
+.gxm-skeleton-lines {
+  position: absolute;
+  top: calc(51% + 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.gxm-sk-line {
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255, 239, 212, 0.04) 0%, rgba(212, 175, 55, 0.14) 50%, rgba(255, 239, 212, 0.04) 100%);
+  background-size: 200% 100%;
+  animation: gxmShimmer 2s infinite linear;
+}
+
+.gxm-sk-sub {
+  width: 160px;
+  height: 12px;
+  margin-bottom: 16px;
+}
+
+.gxm-sk-name1 {
+  width: 190px;
+  height: 28px;
+}
+
+.gxm-sk-amp {
+  width: 32px;
+  height: 24px;
+}
+
+.gxm-sk-name2 {
+  width: 190px;
+  height: 28px;
+}
+
+.gxm-sk-desc {
+  width: 240px;
+  height: 10px;
+  margin-top: 20px;
+}
+
 /* Keepsake Card Frame: fills 100% of viewport edge-to-edge with 0px margins on all mobile widths */
 .gxm-card-frame {
   position: absolute !important;
@@ -190,18 +322,19 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   display: block !important;
-  animation: gxmCardReveal 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(32px) scale(0.96);
+  will-change: transform, opacity;
+  transition: opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-@keyframes gxmCardReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.gxm-card-frame.is-loaded {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) scale(1) !important;
 }
 
 /* Scalable Inlined SVG Artwork Canvas (Edge-to-Edge on all mobile viewports) */
@@ -224,7 +357,7 @@ body {
   }
 }
 
-/* ── 3. Interactive Centerpiece: Big Vinyl Record Player with Concentric Royal Medallion (Figma Node 55:683) ── */
+/* ── 3. Interactive Centerpiece: Big Vinyl Record Player with Concentric Royal Medallion ── */
 .gxm-vinyl-anchor {
   position: absolute !important;
   top: 37.48% !important;
@@ -244,19 +377,26 @@ body {
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
+  opacity: 0;
+  transform: translate(-50%, -38%) rotate(-45deg) scale(0.78) !important;
   transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-  animation: gxmVinylEntrance 1.35s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both,
-             gxmVinylIdleHover 6s ease-in-out 1.55s infinite alternate !important;
+}
+
+.gxm-card-frame.is-loaded .gxm-vinyl-anchor {
+  animation: gxmVinylEntrance 1.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both,
+             gxmVinylIdleHover 6s ease-in-out 2.25s infinite alternate !important;
 }
 
 @keyframes gxmVinylEntrance {
   0% {
     opacity: 0;
-    transform: translate(-50%, -42%) rotate(-35deg) scale(0.85);
+    transform: translate(-50%, -38%) rotate(-45deg) scale(0.78);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
   }
   100% {
     opacity: 1;
     transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.55));
   }
 }
 
@@ -380,16 +520,21 @@ body {
   text-align: center !important;
   line-height: 1.35 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
-  margin: 0 0 30px 0 !important; /* EXACT 30px space between "We are.." and "GARIMA & MRINAL" */
+  margin: 0 0 30px 0 !important; /* EXACT 30px space between "We are.." and couple names */
   padding: 0 !important;
-  animation: gxmSubtitleReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.35s both !important;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.gxm-card-frame.is-loaded .gxm-subtitle {
+  animation: gxmSubtitleReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.65s both !important;
 }
 
 @keyframes gxmSubtitleReveal {
   0% {
     opacity: 0;
-    transform: translateY(12px);
-    letter-spacing: 1.8px;
+    transform: translateY(16px);
+    letter-spacing: 2px;
   }
   100% {
     opacity: 1;
@@ -398,7 +543,7 @@ body {
   }
 }
 
-/* "GARIMA & MRINAL" - Scaled down by exactly 20% while preserving all alignments & fonts */
+/* Couple Names Lockup - Scaled down by exactly 20% while preserving all alignments & fonts */
 .gxm-names {
   margin: 0 !important;
   padding: 0 !important;
@@ -410,6 +555,7 @@ body {
   width: 100% !important;
 }
 
+.gxm-name.gxm-name-1,
 .gxm-name.gxm-garima {
   width: 100% !important;
   font-family: 'Kugile', 'Cinzel', serif !important;
@@ -424,7 +570,13 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   white-space: nowrap !important;
-  animation: gxmNameReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.48s both !important;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.gxm-card-frame.is-loaded .gxm-name.gxm-name-1,
+.gxm-card-frame.is-loaded .gxm-name.gxm-garima {
+  animation: gxmNameReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both !important;
 }
 
 .gxm-name-row {
@@ -448,9 +600,15 @@ body {
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   display: inline-block !important;
   margin-right: 14px !important; /* 20% reduced from 18px */
-  animation: gxmAmpPop 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.58s both !important;
+  opacity: 0;
+  will-change: transform, opacity;
 }
 
+.gxm-card-frame.is-loaded .gxm-amp {
+  animation: gxmAmpPop 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.0s both !important;
+}
+
+.gxm-name.gxm-name-2,
 .gxm-name.gxm-mrinal {
   font-family: 'Kugile', 'Cinzel', serif !important;
   font-size: clamp(38.4px, 11.2vw, 49.6px) !important; /* 20% reduced from clamp(48px, 14vw, 62px) */
@@ -463,13 +621,19 @@ body {
   display: inline-block !important;
   margin: 0 !important;
   padding: 0 !important;
-  animation: gxmNameReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both !important;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.gxm-card-frame.is-loaded .gxm-name.gxm-name-2,
+.gxm-card-frame.is-loaded .gxm-name.gxm-mrinal {
+  animation: gxmNameReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.15s both !important;
 }
 
 @keyframes gxmNameReveal {
   0% {
     opacity: 0;
-    transform: translateY(14px);
+    transform: translateY(18px);
   }
   100% {
     opacity: 1;
@@ -480,10 +644,10 @@ body {
 @keyframes gxmAmpPop {
   0% {
     opacity: 0;
-    transform: scale(0.65) rotate(-12deg);
+    transform: scale(0.5) rotate(-18deg);
   }
   60% {
-    transform: scale(1.08) rotate(3deg);
+    transform: scale(1.12) rotate(4deg);
   }
   100% {
     opacity: 1;
@@ -491,7 +655,7 @@ body {
   }
 }
 
-/* Description text below "GARIMA & MRINAL" (matching subtitle banner style from other tabs) */
+/* Description text below couple names */
 .gxm-footer-desc {
   font-family: 'Spectral', Georgia, serif !important;
   font-weight: 700 !important;
@@ -502,16 +666,21 @@ body {
   text-align: center !important;
   line-height: 1.45 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
-  margin: 30px auto 0 auto !important; /* EXACT 30px gap below "GARIMA & MRINAL" */
+  margin: 30px auto 0 auto !important; /* EXACT 30px gap below couple names */
   padding: 0 16px !important;
   max-width: 380px !important;
-  animation: gxmFooterDescReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.68s both !important;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.gxm-card-frame.is-loaded .gxm-footer-desc {
+  animation: gxmFooterDescReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) 1.35s both !important;
 }
 
 @keyframes gxmFooterDescReveal {
   0% {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(14px);
   }
   100% {
     opacity: 1;
@@ -544,6 +713,23 @@ body {
   <main class="gxm-stage" role="main">
 
     <div class="gxm-viewport">
+      <!-- ── Royal Keepsake Skeleton Loading Veil ── -->
+      <div class="gxm-skeleton-veil" id="gxm-skeleton" aria-hidden="true">
+        <div class="gxm-skeleton-content">
+          <div class="gxm-skeleton-vinyl-glow">
+            <div class="gxm-skeleton-disc"></div>
+            <div class="gxm-skeleton-seal"></div>
+          </div>
+          <div class="gxm-skeleton-lines">
+            <div class="gxm-sk-line gxm-sk-sub"></div>
+            <div class="gxm-sk-line gxm-sk-name1"></div>
+            <div class="gxm-sk-line gxm-sk-amp"></div>
+            <div class="gxm-sk-line gxm-sk-name2"></div>
+            <div class="gxm-sk-line gxm-sk-desc"></div>
+          </div>
+        </div>
+      </div>
+
       <div class="gxm-card-frame">
         <!-- ── Inlined Background Artwork SVG ── -->
         <svg class="gxm-svg-canvas" preserveAspectRatio="none" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -768,10 +954,10 @@ body {
         <div class="gxm-typography-lockup">
           <p class="gxm-subtitle" data-i18n="home.hero.getting_married">WE ARE GETTING MARRIED!</p>
           <div class="gxm-names">
-            <h1 class="gxm-name gxm-garima" data-i18n="home.hero.bride">GARIMA</h1>
+            <h1 class="gxm-name gxm-name-1 gxm-garima" data-i18n="home.hero.bride">GARIMA</h1>
             <div class="gxm-name-row">
               <span class="gxm-amp">&amp;</span>
-              <span class="gxm-name gxm-mrinal" data-i18n="home.hero.groom">MRINAL</span>
+              <span class="gxm-name gxm-name-2 gxm-mrinal" data-i18n="home.hero.groom">MRINAL</span>
             </div>
           </div>
           <p class="gxm-footer-desc" data-i18n="home.hero.footer_desc">Explore site for details. Please RSVP and contact us in case of questions.</p>
@@ -895,6 +1081,92 @@ body {
     }
     enforceThemeColor();
   });
+
+  /* ── Intelligent Asset Buffer & Dramatic Unified Entrance Controller ── */
+  (function initGMBufferController() {
+    var cardFrame = document.querySelector('.gxm-card-frame');
+    var skeleton = document.getElementById('gxm-skeleton');
+    var isRevealed = false;
+
+    function triggerReveal() {
+      if (isRevealed) return;
+      isRevealed = true;
+
+      // 1. Smoothly dissolve skeleton veil
+      if (skeleton) {
+        skeleton.classList.add('is-hidden');
+        setTimeout(function() {
+          if (skeleton && skeleton.parentNode) {
+            skeleton.remove();
+          }
+        }, 700);
+      }
+
+      // 2. Trigger synchronized dramatic entrance sequence
+      if (cardFrame) {
+        cardFrame.classList.add('is-loaded');
+      }
+    }
+
+    function bufferAssets() {
+      var imageSources = [
+        'images/home/image0_554_2091.webp',
+        'images/home/image1_554_2091.webp',
+        'images/home/image2_554_2091.webp',
+        'images/home/image3_554_2091.webp',
+        'images/home/image4_554_2091.webp',
+        'images/home/image5_554_2091.webp',
+        'images/home/image6_554_2091.webp',
+        'images/home/image7_554_2091.webp',
+        'images/home/image8_554_2091.webp',
+        'images/home/image9_554_2091.webp',
+        'images/home/image10_554_2091.webp',
+        'images/home/image11_554_2091.webp',
+        'images/auth/seal_flower.webp',
+        'images/home/vinyl_disc.webp?v=26600'
+      ];
+
+      var promises = imageSources.map(function(src) {
+        return new Promise(function(resolve) {
+          var img = new Image();
+          img.onload = resolve;
+          img.onerror = resolve;
+          img.src = src;
+          if (img.decode) {
+            img.decode().then(resolve).catch(resolve);
+          }
+        });
+      });
+
+      if (document.fonts && document.fonts.ready) {
+        promises.push(document.fonts.ready.catch(function() {}));
+      }
+
+      // Safety fallback: reveal after max 2.2s under any network condition
+      var fallbackTimer = setTimeout(triggerReveal, 2200);
+
+      Promise.all(promises).then(function() {
+        clearTimeout(fallbackTimer);
+        // Small graceful pause for smooth painting
+        setTimeout(triggerReveal, 60);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', bufferAssets);
+    } else {
+      bufferAssets();
+    }
+
+    window.addEventListener('gtm:page-loaded', function(e) {
+      if (e && e.detail && (e.detail.name === 'G&M.html' || e.detail.name === 'gm')) {
+        var cf = document.querySelector('.gxm-card-frame');
+        if (cf) cf.classList.add('is-loaded');
+        var sk = document.getElementById('gxm-skeleton');
+        if (sk) sk.remove();
+      }
+    });
+  })();
   </script>
   <script src="js/cms-i18n.js?v=26300"></script>
   <script src="js/spa-nav.js?v=26300" defer></script>

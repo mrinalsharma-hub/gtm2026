@@ -1,4 +1,4 @@
-/* ── GTM2026 Localization & CMS Engine (Static Compiled Bundles) ── */
+/* ── GTM2026 Localization & CMS Engine (Static Compiled Bundles + Edition Aware) ── */
 (function() {
   'use strict';
 
@@ -13,6 +13,31 @@
 
   // Supported languages
   var SUPPORTED_LANGS = ['en', 'hi'];
+
+  function getWeddingEdition() {
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var q = params.get('key') || params.get('v') || params.get('code') || params.get('edition') || params.get('passcode');
+      if (q) {
+        var normQ = String(q).trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (normQ.indexOf('mrinalgarima') !== -1) return 'mrinalgarima';
+        if (normQ.indexOf('garimamrinal') !== -1) return 'garimamrinal';
+      }
+    } catch(e) {}
+
+    var host = (window.location && window.location.hostname ? window.location.hostname : '').toLowerCase();
+    if (host.indexOf('mrinalgarima') !== -1) return 'mrinalgarima';
+    if (host.indexOf('garimamrinal') !== -1) return 'garimamrinal';
+    if (host.indexOf('gtm') !== -1) return 'gtm2026';
+
+    try {
+      var stored = (localStorage.getItem('wedding_access_key') || sessionStorage.getItem('wedding_access_key') || localStorage.getItem('gtm2026_auth') || '').toLowerCase();
+      if (stored.indexOf('mrinalgarima') !== -1) return 'mrinalgarima';
+      if (stored.indexOf('garimamrinal') !== -1) return 'garimamrinal';
+    } catch(e) {}
+
+    return 'gtm2026';
+  }
 
   function getCurrentLanguage() {
     try {
@@ -53,17 +78,28 @@
       });
   }
 
-  // Translate a specific key with fallback
+  // Translate a specific key with fallback and edition adjustments
   function t(key, fallback) {
+    var edition = getWeddingEdition();
     var lang = getCurrentLanguage();
     var dict = dictionaries[lang] || dictionaries[DEFAULT_LANG] || {};
-    if (dict[key] !== undefined && dict[key] !== '') {
-      return dict[key];
+    var val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : ((dictionaries['en'] || {})[key] || '');
+
+    if (edition === 'mrinalgarima') {
+      if (key === 'home.hero.bride' || key === 'home.hero.bride_name') return 'MRINAL';
+      if (key === 'home.hero.groom' || key === 'home.hero.groom_name') return 'GARIMA';
+      if (key === 'global.title') return 'Mrinal & Garima · Nainital 2026';
+      if (key === 'global.meta_desc') return 'Mrinal & Garima · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
+      if (key === 'stay.header.banner_line2') return 'MRINAL & GARIMA · 20-22 NOV 2026';
+    } else {
+      if (key === 'home.hero.bride' || key === 'home.hero.bride_name') return 'GARIMA';
+      if (key === 'home.hero.groom' || key === 'home.hero.groom_name') return 'MRINAL';
+      if (key === 'global.title') return 'Garima & Mrinal · Nainital 2026';
+      if (key === 'global.meta_desc') return 'Garima & Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
+      if (key === 'stay.header.banner_line2' && val && val.indexOf('MRINAL') !== -1) return 'GARIMA & MRINAL · 20-22 NOV 2026';
     }
-    var enDict = dictionaries['en'] || {};
-    if (enDict[key] !== undefined && enDict[key] !== '') {
-      return enDict[key];
-    }
+
+    if (val !== undefined && val !== '') return val;
     return fallback !== undefined ? fallback : '';
   }
 
@@ -75,9 +111,10 @@
     return txt.value;
   }
 
-  // Apply translations to all DOM elements with data-i18n and data-i18n-attr
+  // Apply translations & edition customization to all DOM elements
   function applyDOM(lang) {
     lang = lang || getCurrentLanguage();
+    var edition = getWeddingEdition();
     var dict = dictionaries[lang] || {};
     var enDict = dictionaries['en'] || {};
 
@@ -86,7 +123,12 @@
     nodes.forEach(function(el) {
       var key = el.getAttribute('data-i18n');
       if (!key) return;
-      var val = dict[key] !== undefined ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
+
+      var val = t(key, null);
+      if (val === null) {
+        val = dict[key] !== undefined ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
+      }
+
       if (val !== null) {
         if (val === '') {
           el.innerHTML = '';
@@ -110,8 +152,6 @@
           }
         }
 
-        // Render content via innerHTML so HTML markup (<br>, <strong>, <em>, <span>, <a>) and entities (&amp;, &nbsp;) are properly rendered
-        // Convert any newlines (\n) to <br> so line breaks from editor or JSON display properly on the webpage
         var formattedVal = typeof val === 'string' ? val.replace(/\r\n|\r|\n/g, '<br>') : val;
         el.innerHTML = formattedVal;
       }
@@ -128,7 +168,10 @@
         if (parts.length === 2) {
           var attr = parts[0].trim();
           var key = parts[1].trim();
-          var val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
+          var val = t(key, null);
+          if (val === null) {
+            val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : (enDict[key] !== undefined ? enDict[key] : null);
+          }
           if (val !== null) {
             el.setAttribute(attr, decodeEntities(val));
           }
@@ -136,10 +179,87 @@
       });
     });
 
-    // 3. Update document title if present
-    var titleKey = 'global.title';
-    if (dict[titleKey]) {
-      document.title = decodeEntities(dict[titleKey]);
+    // 3. Update Page Titles based on path and edition
+    var path = (window.location.pathname || '').toLowerCase();
+    var pageTitle = '';
+
+    if (edition === 'mrinalgarima') {
+      if (path.indexOf('celebrat') !== -1) {
+        pageTitle = 'The Wedding Weekend · Mrinal & Garima — Nainital 2026';
+      } else if (path.indexOf('stay') !== -1 || path.indexOf('travel') !== -1) {
+        pageTitle = 'Travel & Stay · Mrinal & Garima — Nainital 2026';
+      } else if (path.indexOf('rsvp') !== -1) {
+        pageTitle = 'RSVP · Mrinal & Garima — Nainital 2026';
+      } else if (path.indexOf('index.html') !== -1 || path === '/' || path === '') {
+        pageTitle = 'Mrinal & Garima · Invitation Gateway';
+      } else if (path.indexOf('404') !== -1) {
+        pageTitle = 'Mrinal & Garima · Nainital 2026';
+      } else {
+        pageTitle = 'Mrinal & Garima · Nainital 2026';
+      }
+    } else {
+      if (path.indexOf('celebrat') !== -1) {
+        pageTitle = 'The Wedding Weekend · Garima & Mrinal — Nainital 2026';
+      } else if (path.indexOf('stay') !== -1 || path.indexOf('travel') !== -1) {
+        pageTitle = 'Travel & Stay · Garima & Mrinal — Nainital 2026';
+      } else if (path.indexOf('rsvp') !== -1) {
+        pageTitle = 'RSVP · Garima & Mrinal — Nainital 2026';
+      } else if (path.indexOf('index.html') !== -1 || path === '/' || path === '') {
+        pageTitle = 'Garima weds Mrinal · Invitation Gateway';
+      } else if (path.indexOf('404') !== -1) {
+        pageTitle = 'Garima weds Mrinal · Nainital 2026';
+      } else {
+        pageTitle = 'Garima weds Mrinal · Nainital 2026';
+      }
+    }
+
+    if (pageTitle) {
+      document.title = pageTitle;
+    }
+
+    // 4. Update Metadata tags dynamically
+    var metaDesc = document.querySelector('meta[name="description"]');
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    var appleTitle = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+
+    if (edition === 'mrinalgarima') {
+      var descText = 'Mrinal & Garima · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
+      if (metaDesc) metaDesc.setAttribute('content', descText);
+      if (ogTitle) ogTitle.setAttribute('content', pageTitle || 'Mrinal & Garima · Nainital 2026');
+      if (ogDesc) ogDesc.setAttribute('content', descText);
+      if (appleTitle) appleTitle.setAttribute('content', 'M&G 2026');
+    } else {
+      var descTextG = 'Garima & Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
+      if (metaDesc) metaDesc.setAttribute('content', descTextG);
+      if (ogTitle) ogTitle.setAttribute('content', pageTitle || 'Garima & Mrinal · Nainital 2026');
+      if (ogDesc) ogDesc.setAttribute('content', descTextG);
+      if (appleTitle) appleTitle.setAttribute('content', 'GTM 2026');
+    }
+
+    // 5. Update Auth Page & G&M Page name elements if rendered in DOM
+    var authLine1 = document.querySelector('.auth-name-line-1');
+    var authNameText = document.querySelector('.auth-name-text');
+    if (authLine1 && authNameText) {
+      if (edition === 'mrinalgarima') {
+        authLine1.textContent = 'MRINAL';
+        authNameText.textContent = 'GARIMA';
+      } else {
+        authLine1.textContent = 'GARIMA';
+        authNameText.textContent = 'MRINAL';
+      }
+    }
+
+    var gmName1 = document.querySelector('.gxm-name-1, .gxm-name.gxm-garima');
+    var gmName2 = document.querySelector('.gxm-name-2, .gxm-name.gxm-mrinal');
+    if (gmName1 && gmName2) {
+      if (edition === 'mrinalgarima') {
+        gmName1.textContent = 'MRINAL';
+        gmName2.textContent = 'GARIMA';
+      } else {
+        gmName1.textContent = 'GARIMA';
+        gmName2.textContent = 'MRINAL';
+      }
     }
   }
 
@@ -174,6 +294,7 @@
     get: t,
     setLanguage: setLanguage,
     getLanguage: getCurrentLanguage,
+    getEdition: getWeddingEdition,
     applyDOM: applyDOM,
     setDictionary: function(lang, dict) {
       dictionaries[lang] = Object.assign({}, dict);
