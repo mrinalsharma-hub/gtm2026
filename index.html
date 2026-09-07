@@ -538,36 +538,50 @@ body {
     } catch(e) {}
   }
 
-  // ── Activate Passcode Input & Raise Virtual Keyboard ──
+  // ── Activate Passcode Input & Raise Virtual Keyboard (Synchronous for iOS Safari) ──
   function activateInputAndKeyboard() {
     if (isUnlocking || isCodeActive) return;
     isCodeActive = true;
     isActivating = true;
 
-    // 1. Play music immediately on this user touch gesture
+    // 1. Play music immediately on this direct user touch gesture
     ensureAudioPlaying(true);
 
-    // 2. Trigger upward glide to top edge & expand input field
+    // 2. Trigger upward glide to top edge & reveal input field synchronously
     if (viewport) {
       viewport.classList.add('is-code-active');
     }
 
-    // 3. Focus input smoothly after expansion starts to raise keyboard reliably
+    // 3. SYNCHRONOUS FOCUS in the direct user gesture callstack (Required by iOS Safari WebKit)
+    if (input) {
+      input.focus();
+      try {
+        if ('virtualKeyboard' in navigator) {
+          navigator.virtualKeyboard.overlaysContent = true;
+          navigator.virtualKeyboard.show();
+        }
+      } catch(e) {}
+    }
+
+    // Release activating lockout after transition settles
     setTimeout(function() {
-      if (input) {
-        input.focus({ preventScroll: true });
-        try {
-          if ('virtualKeyboard' in navigator) {
-            navigator.virtualKeyboard.overlaysContent = true;
-            navigator.virtualKeyboard.show();
-          }
-        } catch(e) {}
+      isActivating = false;
+    }, 300);
+  }
+
+  // Bind Prompt Tap
+  var promptEl = document.getElementById('auth-tap-prompt');
+  if (promptEl) {
+    promptEl.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (!isCodeActive) activateInputAndKeyboard();
+    });
+    promptEl.addEventListener('touchend', function(e) {
+      if (!isCodeActive) {
+        e.preventDefault();
+        activateInputAndKeyboard();
       }
-      // Release activating lockout after transition settles
-      setTimeout(function() {
-        isActivating = false;
-      }, 300);
-    }, 180);
+    });
   }
 
   // Bind Seal Tap & Envelope Interaction
