@@ -88,12 +88,14 @@
     if (edition === 'mrinalgarima') {
       if (key === 'home.hero.bride' || key === 'home.hero.bride_name') return 'MRINAL';
       if (key === 'home.hero.groom' || key === 'home.hero.groom_name') return 'GARIMA';
+      if (key === 'global.nav.gm') return 'M&G';
       if (key === 'global.title') return 'Mrinal & Garima · Nainital 2026';
       if (key === 'global.meta_desc') return 'Mrinal & Garima · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
       if (key === 'stay.header.banner_line2') return 'MRINAL & GARIMA · 20-22 NOV 2026';
     } else {
       if (key === 'home.hero.bride' || key === 'home.hero.bride_name') return 'GARIMA';
       if (key === 'home.hero.groom' || key === 'home.hero.groom_name') return 'MRINAL';
+      if (key === 'global.nav.gm') return 'G&M';
       if (key === 'global.title') return 'Garima & Mrinal · Nainital 2026';
       if (key === 'global.meta_desc') return 'Garima & Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
       if (key === 'stay.header.banner_line2' && val && val.indexOf('MRINAL') !== -1) return 'GARIMA & MRINAL · 20-22 NOV 2026';

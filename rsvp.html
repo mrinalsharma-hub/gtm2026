@@ -1350,7 +1350,7 @@ body {
 <script src="js/global-audio.js?v=26000"></script>
 
 <script>
-/* ── RSVP Google Form Integration ── */
+/* ── RSVP Google Form Integration & Cookie Persistence ── */
 var RSVP_CONFIG = {
   formId: "1FAIpQLSdhC4wl6KT7sh4t64caDBOr_hPhlprHNQsQI3R1huuCSIpz5w",
   entries: {
@@ -1376,9 +1376,60 @@ var EVENT_FORM_MAP = {
   "Delhi Reception • Mon, Nov 23": "Delhi Reception · Monday Nov 23, 2026"
 };
 
+var RSVP_COOKIE_STATUS = 'gtm2026_rsvp_submitted';
+var RSVP_COOKIE_DATA = 'gtm2026_rsvp_data';
 var isEditMode = false;
 
-function showConfirmationScreen() {
+function setRSVPCookie(name, value, days) {
+  var maxAge = (days || 365) * 24 * 60 * 60;
+  var encoded = encodeURIComponent(value);
+  document.cookie = name + '=' + encoded + '; max-age=' + maxAge + '; path=/; SameSite=Lax';
+}
+
+function getRSVPCookie(name) {
+  var nameEQ = name + '=';
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) {
+      try {
+        return decodeURIComponent(c.substring(nameEQ.length, c.length));
+      } catch(e) {
+        return c.substring(nameEQ.length, c.length);
+      }
+    }
+  }
+  return null;
+}
+
+function saveRSVPToStorage(rsvpData) {
+  try {
+    var jsonStr = JSON.stringify(rsvpData);
+    setRSVPCookie(RSVP_COOKIE_STATUS, 'true', 365);
+    setRSVPCookie(RSVP_COOKIE_DATA, jsonStr, 365);
+    localStorage.setItem(RSVP_COOKIE_STATUS, 'true');
+    localStorage.setItem(RSVP_COOKIE_DATA, jsonStr);
+  } catch(e) {
+    console.warn('Storage save error:', e);
+  }
+}
+
+function getSavedRSVPData() {
+  try {
+    var raw = getRSVPCookie(RSVP_COOKIE_DATA) || localStorage.getItem(RSVP_COOKIE_DATA);
+    if (raw) {
+      return JSON.parse(raw);
+    }
+  } catch(e) {}
+  return null;
+}
+
+function hasSubmittedRSVP() {
+  return getRSVPCookie(RSVP_COOKIE_STATUS) === 'true' || localStorage.getItem(RSVP_COOKIE_STATUS) === 'true';
+}
+
+function showConfirmationScreen(shouldScroll) {
   var form = document.getElementById("rsvp-form"),
       thanks = document.getElementById("rsvp-thanks"),
       status = document.getElementById("rsvp-status"),
@@ -1388,7 +1439,9 @@ function showConfirmationScreen() {
   if (thanks) thanks.style.setProperty("display", "block", "important");
   if (status) status.textContent = "";
   if (btn) btn.textContent = isEditMode ? "Save RSVP" : "Send RSVP";
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (shouldScroll !== false) {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
 
 function handleEditRSVP() {
@@ -1413,6 +1466,8 @@ function handleEditRSVP() {
       addBtn = document.getElementById("add-person"),
       submitBtn = document.getElementById("btn-submit"),
       MAX_NAMES = 8;
+
+  if (!form || !list || !addBtn) return;
 
   function isFormValid() {
     var attending = form.querySelector("input[name=attending]:checked");
@@ -1569,9 +1624,62 @@ function handleEditRSVP() {
     createNameRow("", true);
   });
 
+  // Restore saved RSVP from Cookie / Storage if available
+  function restoreSavedRSVP() {
+    var savedData = getSavedRSVPData();
+    var submitted = hasSubmittedRSVP() || (savedData !== null);
+    if (!submitted || !savedData) return;
+
+    if (savedData.attending) {
+      var radio = form.querySelector('input[name=attending][value="' + savedData.attending + '"]');
+      if (radio) radio.checked = true;
+    }
+
+    if (Array.isArray(savedData.names) && savedData.names.length > 0) {
+      var existingInputs = list.querySelectorAll(".name-input");
+      if (existingInputs.length > 0) {
+        existingInputs[0].value = savedData.names[0];
+      }
+      var extraRows = list.querySelectorAll(".name-input-row.has-delete-btn");
+      extraRows.forEach(function(row) { row.remove(); });
+      for (var i = 1; i < savedData.names.length; i++) {
+        createNameRow(savedData.names[i], false);
+      }
+    }
+
+    if (savedData.contact !== undefined) {
+      var contactInput = form.querySelector("#f-contact");
+      if (contactInput) contactInput.value = savedData.contact;
+    }
+
+    if (Array.isArray(savedData.events)) {
+      form.querySelectorAll("input[name=events]").forEach(function(cb) {
+        cb.checked = savedData.events.indexOf(cb.value) !== -1;
+      });
+    }
+
+    if (savedData.diet !== undefined) {
+      var dietInput = form.querySelector("#f-diet");
+      if (dietInput) dietInput.value = savedData.diet;
+    }
+
+    if (savedData.msg !== undefined) {
+      var msgInput = form.querySelector("#f-msg");
+      if (msgInput) msgInput.value = savedData.msg;
+    }
+
+    updateAttendingState();
+    updateAddButtonState();
+    updateSubmitButtonState();
+
+    // Show confirmation screen by default so returning guest is not prompted to submit again
+    showConfirmationScreen(false);
+  }
+
   updateAttendingState();
   updateAddButtonState();
   updateSubmitButtonState();
+  restoreSavedRSVP();
 
   form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -1593,20 +1701,33 @@ function handleEditRSVP() {
     var attendingVal = ATTENDING_FORM_MAP[attending.value] || attending.value;
     p.append(RSVP_CONFIG.entries.attending, attendingVal);
     p.append(RSVP_CONFIG.entries.guests, String(names.length || 0));
+    var eventsList = [];
     events.forEach(function(c) {
       var formVal = EVENT_FORM_MAP[c.value] || c.value;
       p.append(RSVP_CONFIG.entries.events, formVal);
+      eventsList.push(c.value);
     });
     var diet = form.querySelector("#f-diet").value.trim(),
         msg = form.querySelector("#f-msg").value.trim();
     if (diet) p.append(RSVP_CONFIG.entries.dietary, diet);
     if (msg) p.append(RSVP_CONFIG.entries.message, msg);
 
+    // Persist full RSVP details to Cookie + localStorage
+    saveRSVPToStorage({
+      attending: attending.value,
+      names: names,
+      contact: contact,
+      events: eventsList,
+      diet: diet,
+      msg: msg,
+      submittedAt: new Date().toISOString()
+    });
+
     if (submitBtn) {
       submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
+      submitBtn.textContent = isEditMode ? "Saving…" : "Sending…";
     }
-    status.textContent = "Sending…";
+    status.textContent = isEditMode ? "Saving…" : "Sending…";
 
     var formUrl = "https://docs.google.com/forms/d/e/" + RSVP_CONFIG.formId + "/formResponse";
 
@@ -1649,7 +1770,7 @@ function handleEditRSVP() {
 
     setTimeout(function() {
       if (submitBtn) submitBtn.disabled = false;
-      showConfirmationScreen();
+      showConfirmationScreen(true);
     }, 450);
   });
 })();
