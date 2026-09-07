@@ -77,7 +77,6 @@
   margin: 0;
   padding: 0;
   -webkit-tap-highlight-color: transparent !important;
-  -webkit-touch-callout: none !important;
 }
 
 :root {
@@ -409,6 +408,7 @@ body {
   padding: 0 20px;
   position: relative;
   transition: box-shadow 0.25s ease;
+  cursor: text;
 }
 
 .auth-code-input {
@@ -425,6 +425,10 @@ body {
   text-transform: uppercase;
   color: #3F151D;
   caret-color: #3F151D;
+  user-select: text !important;
+  -webkit-user-select: text !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
 }
 
 .auth-code-input::placeholder {
@@ -762,8 +766,10 @@ body {
   var input = document.getElementById('auth-code-input');
   var form = document.getElementById('auth-form');
   var pill = document.getElementById('auth-pill');
+  var wrap = document.getElementById('auth-form-wrap');
   var viewport = document.getElementById('auth-viewport');
   var envelopeBtn = document.getElementById('auth-envelope-btn');
+  var promptEl = document.getElementById('auth-tap-prompt');
   var isCodeActive = false;
   var isActivating = false;
   var isUnlocking = false;
@@ -790,7 +796,9 @@ body {
 
   // ── Activate Passcode Input & Raise Virtual Keyboard (Universal for iOS & Android) ──
   function activateInputAndKeyboard() {
-    if (isUnlocking || isCodeActive) return;
+    if (isUnlocking) return;
+    
+    var isFirstActivation = !isCodeActive;
     isCodeActive = true;
     isActivating = true;
 
@@ -799,11 +807,23 @@ body {
       viewport.classList.add('is-code-active');
     }
 
-    // 2. Ensure input is empty and trigger immediate focus + selection
-    if (input) {
-      input.value = '';
+    if (wrap) {
+      wrap.style.height = '52px';
+      wrap.style.marginTop = '18px';
+      wrap.style.opacity = '1';
+      wrap.style.pointerEvents = 'auto';
+      void wrap.offsetHeight; // Force synchronous reflow so element has dimensions
+    }
 
-      // Direct synchronous focus call within user gesture event loop (vital for iOS Safari keyboard popup)
+    // 2. Ensure input is empty on first activation
+    if (input) {
+      if (isFirstActivation) {
+        input.value = '';
+      }
+      input.style.pointerEvents = 'auto';
+      void input.offsetHeight; // Force layout calculation
+
+      // 3. SYNCHRONOUS FOCUS directly inside user gesture (crucial for iOS WebKit & Android Chrome)
       try {
         input.focus({ preventScroll: true });
       } catch(e) {
@@ -818,7 +838,7 @@ body {
         }
       } catch(e) {}
 
-      // Select field after 1 millisecond as specified
+      // 4. Select the field after 1 millisecond as specified
       setTimeout(function() {
         if (input && !isUnlocking) {
           try {
@@ -836,44 +856,9 @@ body {
       }, 1);
     }
 
-    window.scrollTo(0, 0);
-    document.body.scrollTop = 0;
-    if (document.documentElement) document.documentElement.scrollTop = 0;
-
-    requestAnimationFrame(function() {
-      window.scrollTo(0, 0);
-    });
-
     setTimeout(function() {
       isActivating = false;
-      window.scrollTo(0, 0);
     }, 300);
-  }
-
-  // Prevent any window auto-scroll on input focus or visual viewport resize
-  window.addEventListener('scroll', function() {
-    if (window.scrollY !== 0 || window.scrollX !== 0) {
-      window.scrollTo(0, 0);
-    }
-  }, { passive: true });
-
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('scroll', function() {
-      if (window.scrollY !== 0 || window.scrollX !== 0) {
-        window.scrollTo(0, 0);
-      }
-    });
-    window.visualViewport.addEventListener('resize', function() {
-      window.scrollTo(0, 0);
-    });
-  }
-
-  if (input) {
-    input.addEventListener('focus', function() {
-      window.scrollTo(0, 0);
-      document.body.scrollTop = 0;
-      if (document.documentElement) document.documentElement.scrollTop = 0;
-    });
   }
 
   // Bind Envelope Tap
@@ -882,7 +867,11 @@ body {
       if (!isCodeActive) {
         activateInputAndKeyboard();
       } else if (!isActivating) {
-        validateAndSubmit();
+        if (input && input.value && input.value.trim().length > 0) {
+          validateAndSubmit();
+        } else {
+          activateInputAndKeyboard();
+        }
       }
     });
 
@@ -890,43 +879,28 @@ body {
       if (!isCodeActive) {
         activateInputAndKeyboard();
       }
-    }, { passive: true });
+    });
   }
 
   // Bind Bottom Prompt Tap
-  var promptEl = document.getElementById('auth-tap-prompt');
   if (promptEl) {
     promptEl.addEventListener('click', function(e) {
       if (!isCodeActive) activateInputAndKeyboard();
     });
     promptEl.addEventListener('touchend', function(e) {
-      if (!isCodeActive) {
-        activateInputAndKeyboard();
-      }
-    }, { passive: true });
+      if (!isCodeActive) activateInputAndKeyboard();
+    });
   }
 
-  // Tapping anywhere on the viewport before activation triggers opening
-  document.addEventListener('pointerdown', function(e) {
-    if (isUnlocking || !input) return;
-    if (!isCodeActive) {
+  // Bind Pill / Input Tap
+  if (pill) {
+    pill.addEventListener('click', function(e) {
       activateInputAndKeyboard();
-    }
-  }, { passive: true });
-
-  // ── Keyboard Keep-Alive once active ──
+    });
+  }
   if (input) {
-    input.addEventListener('blur', function() {
-      if (isCodeActive && !isUnlocking && !isActivating) {
-        requestAnimationFrame(function() {
-          input.focus({ preventScroll: true });
-        });
-        setTimeout(function() {
-          if (isCodeActive && !isUnlocking && document.activeElement !== input) {
-            input.focus({ preventScroll: true });
-          }
-        }, 30);
-      }
+    input.addEventListener('click', function(e) {
+      activateInputAndKeyboard();
     });
   }
 
