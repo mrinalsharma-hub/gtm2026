@@ -22,9 +22,9 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-<meta name="theme-color" content="#431A22">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#431A22">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#431A22">
+<meta name="theme-color" content="#2F1216">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#2F1216">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#2F1216">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Garima weds Mrinal · Invitation Gateway</title>
@@ -80,7 +80,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #431A22;
+  background-color: #2F1216;
   font-family: 'Spectral', Georgia, serif;
   color: #FFFFFF;
   touch-action: pan-x pan-y;
@@ -97,7 +97,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: #431A22;
+  background-color: #2F1216;
   overflow: hidden;
   opacity: 0;
   animation: authFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -108,7 +108,7 @@ html, body {
   to { opacity: 1; }
 }
 
-/* ── 1:1 Pixel-Perfect Background Envelope (Unstretched / Unsqueezed) ── */
+/* ── 1:1 Pixel-Perfect Background Envelope (Seamless Maroon Blend, Zero White Border) ── */
 .auth-envelope-stage {
   position: absolute;
   top: 0;
@@ -116,7 +116,7 @@ html, body {
   transform: translateX(-50%);
   width: 100%;
   max-width: 440px;
-  height: 393px;
+  height: 380px;
   pointer-events: none;
   z-index: 1;
   overflow: hidden;
@@ -131,6 +131,8 @@ html, body {
   user-select: none;
   -webkit-user-drag: none;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
+  -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
 }
 
 /* ── Content Stack (Strict 40px Top Gap) ── */
@@ -368,16 +370,16 @@ html, body {
 <body>
 
 <main class="auth-viewport" id="auth-viewport">
-  <!-- Exact Figma Envelope Background -->
+  <!-- Exact Figma Envelope Background (Seamless Maroon, Zero Cream Line) -->
   <div class="auth-envelope-stage" aria-hidden="true">
     <picture>
       <source srcset="images/auth/envelope_bg.webp" type="image/webp">
-      <img src="images/auth/envelope_bg.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="440" height="393">
+      <img src="images/auth/envelope_bg.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="440" height="380">
     </picture>
   </div>
 
   <div class="auth-content-stack">
-    <!-- 1. Heading Lockup (Strict 2-Line Layout) -->
+    <!-- 1. Heading Lockup (Strict 2-Line Layout with 20px gap) -->
     <div class="auth-heading-wrap">
       <p class="auth-eyebrow">YOU HAVE BEEN INVITED!</p>
       <div class="auth-names">
@@ -439,33 +441,38 @@ html, body {
   // ── Keyboard Keep-Alive & Robust Focus Lock ──
   function lockFocus() {
     if (isUnlocking || !input) return;
-    if (document.activeElement !== input) {
-      input.focus({ preventScroll: true });
-    }
+    try {
+      if (document.activeElement !== input) {
+        input.focus({ preventScroll: true });
+      }
+      if ('virtualKeyboard' in navigator) {
+        navigator.virtualKeyboard.overlaysContent = true;
+        navigator.virtualKeyboard.show();
+      }
+    } catch(e) {}
   }
 
-  // Focus immediately on script execution and load
+  // Focus immediately on script parse, DOM ready, and load
   lockFocus();
   window.addEventListener('DOMContentLoaded', lockFocus);
   window.addEventListener('load', lockFocus);
+  window.addEventListener('pageshow', lockFocus);
 
   // Prevent keyboard dismiss on blur
   if (input) {
     input.addEventListener('blur', function() {
       if (!isUnlocking) {
-        requestAnimationFrame(function() {
-          input.focus({ preventScroll: true });
-        });
+        requestAnimationFrame(lockFocus);
         setTimeout(lockFocus, 20);
         setTimeout(lockFocus, 80);
       }
     });
   }
 
-  // Intercept all outside taps/clicks to keep keyboard permanently raised
+  // Intercept all outside taps/clicks to keep keyboard permanently raised on Android & iOS
   function handleOutsideInteraction(e) {
     if (isUnlocking || !input) return;
-    if (e.target === sealBtn || (sealBtn && sealBtn.contains(e.target))) {
+    if (sealBtn && (e.target === sealBtn || sealBtn.contains(e.target))) {
       return; // Allow seal click to trigger unlock validation
     }
     if (e.target !== input) {
@@ -473,6 +480,9 @@ html, body {
         e.preventDefault();
       }
       input.focus({ preventScroll: true });
+      if (typeof input.click === 'function') {
+        input.click();
+      }
     }
   }
 
@@ -485,7 +495,7 @@ html, body {
   if (window.visualViewport) {
     window.visualViewport.addEventListener('resize', function() {
       if (!isUnlocking && window.visualViewport.height >= window.innerHeight * 0.85) {
-        setTimeout(lockFocus, 50);
+        setTimeout(lockFocus, 40);
       }
     });
   }
@@ -527,6 +537,7 @@ html, body {
       localStorage.setItem('gtm2026_auth', 'true');
       localStorage.setItem('gtm2026_has_authenticated', 'true');
       localStorage.setItem('wedding_access_key', code);
+      localStorage.setItem('gtm2026_music_playing', 'true');
       sessionStorage.setItem('gtm2026_auth', 'true');
       sessionStorage.setItem('gtm2026_music_playing', 'true');
     } catch(e) {}

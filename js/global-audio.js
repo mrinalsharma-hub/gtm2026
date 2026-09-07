@@ -86,10 +86,13 @@
     var p = audio.play();
     if (p !== undefined) {
       p.then(function() {
-        sessionStorage.setItem(STORAGE_KEY_PLAYING, 'true');
+        try {
+          sessionStorage.setItem(STORAGE_KEY_PLAYING, 'true');
+          localStorage.setItem(STORAGE_KEY_PLAYING, 'true');
+        } catch(e) {}
         updateUI(true);
       }).catch(function(err) {
-        console.warn('Audio play prevented:', err);
+        console.warn('Audio play auto-start deferred until user gesture:', err);
         updateUI(false);
       });
     }
@@ -98,7 +101,10 @@
   function pauseAudio() {
     audio.pause();
     saveTime();
-    sessionStorage.setItem(STORAGE_KEY_PLAYING, 'false');
+    try {
+      sessionStorage.setItem(STORAGE_KEY_PLAYING, 'false');
+      localStorage.setItem(STORAGE_KEY_PLAYING, 'false');
+    } catch(e) {}
     updateUI(false);
   }
 
@@ -122,6 +128,34 @@
     updateUI(!audio.paused);
   }
 
+  function autoStartIfRequested() {
+    var shouldPlay = false;
+    try {
+      shouldPlay = sessionStorage.getItem(STORAGE_KEY_PLAYING) === 'true' || 
+                   localStorage.getItem(STORAGE_KEY_PLAYING) === 'true';
+    } catch(e) {}
+
+    if (shouldPlay) {
+      playAudio();
+    }
+  }
+
+  function handleFirstGesture() {
+    var shouldPlay = false;
+    try {
+      shouldPlay = sessionStorage.getItem(STORAGE_KEY_PLAYING) === 'true' || 
+                   localStorage.getItem(STORAGE_KEY_PLAYING) === 'true';
+    } catch(e) {}
+
+    if (shouldPlay && audio && audio.paused) {
+      playAudio();
+    }
+  }
+
+  window.addEventListener('touchstart', handleFirstGesture, { passive: true, once: true });
+  window.addEventListener('pointerdown', handleFirstGesture, { passive: true, once: true });
+  window.addEventListener('click', handleFirstGesture, { passive: true, once: true });
+
   audio.addEventListener('play', function() { updateUI(true); });
   audio.addEventListener('pause', function() { updateUI(false); });
   audio.addEventListener('timeupdate', function() {
@@ -142,11 +176,19 @@
     get isPlaying() { return !audio.paused; }
   };
 
-  // NEVER AUTOPLAY ON LOAD OR GESTURE.
-  // ONLY bind the explicit button click handler and sync the current playing/paused UI state.
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindPlayer);
-  } else {
+  function init() {
     bindPlayer();
+    autoStartIfRequested();
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  window.addEventListener('gtm:page-loaded', function() {
+    bindPlayer();
+    autoStartIfRequested();
+  });
 })();
