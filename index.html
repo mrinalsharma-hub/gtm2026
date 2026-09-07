@@ -436,6 +436,7 @@ body {
 }
 
 /* ── 2. Middle Section: Vertical Portrait Envelope (+10% increase = 352px width, 40px gap from Subtitle) ── */
+/* Natural physical slide in from below the viewport */
 .auth-envelope-wrap {
   position: relative;
   width: min(352px, 80vw);
@@ -453,17 +454,20 @@ body {
   z-index: 10;
   opacity: 0;
   will-change: transform, opacity;
-  animation: authEnvelopeSlideUp 1.45s cubic-bezier(0.16, 1, 0.3, 1) 1.35s both;
+  animation: authEnvelopeSlideFromBelow 1.6s cubic-bezier(0.12, 0.9, 0.24, 1.0) 1.25s both;
 }
 
-@keyframes authEnvelopeSlideUp {
+@keyframes authEnvelopeSlideFromBelow {
   0% {
     opacity: 0;
-    transform: translateY(110px) scale(0.92);
+    transform: translateY(min(100vh, 750px));
+  }
+  15% {
+    opacity: 1;
   }
   100% {
     opacity: 1;
-    transform: translateY(0) scale(1);
+    transform: translateY(0);
   }
 }
 
@@ -507,7 +511,7 @@ body {
   pointer-events: none;
   opacity: 0.5;
   filter: blur(14px);
-  animation: sealAuraPulse 3.0s ease-in-out infinite 2.2s;
+  animation: sealAuraPulse 3.0s ease-in-out infinite 2.5s;
   animation-fill-mode: both;
 }
 
@@ -541,7 +545,7 @@ body {
   );
   transform: rotate(25deg);
   opacity: 0;
-  animation: sealShimmerSweep 3.8s ease-in-out infinite 2.6s;
+  animation: sealShimmerSweep 3.8s ease-in-out infinite 2.8s;
 }
 
 @keyframes sealAuraPulse {
@@ -600,7 +604,7 @@ body {
   transition: opacity 0.35s ease, transform 0.35s ease;
   opacity: 0;
   will-change: transform, opacity;
-  animation: authBottomPromptReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 2.45s both;
+  animation: authBottomPromptReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 2.6s both;
 }
 
 @keyframes authBottomPromptReveal {
@@ -619,21 +623,17 @@ body {
   font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 120%; /* or 14px */
+  line-height: 120%; /* 14px */
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
   color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   opacity: 0.95;
-  animation: promptBreathe 2.6s ease-in-out infinite 3.4s;
+  animation: promptBreathe 2.6s ease-in-out infinite 3.5s;
   cursor: pointer;
   touch-action: manipulation;
-}
-
-.auth-tap-prompt span {
-  display: block;
-  line-height: 120%;
+  white-space: nowrap;
 }
 
 @keyframes promptBreathe {
@@ -729,10 +729,7 @@ body {
 
     <!-- ── 3. Bottom Section: Instruction Prompt (40px below envelope) ── -->
     <div class="auth-bottom-stack">
-      <p class="auth-tap-prompt" id="auth-tap-prompt">
-        <span>TAP THE ENVELOPE</span>
-        <span>TO OPEN OUR INVITATION</span>
-      </p>
+      <p class="auth-tap-prompt" id="auth-tap-prompt" data-i18n="auth.tap_prompt">TAP THE ENVELOPE TO OPEN</p>
     </div>
 
   </div>
