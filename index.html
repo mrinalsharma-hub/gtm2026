@@ -29,7 +29,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
-<title>Garima weds Mrinal · Invitation Gateway</title>
+<title data-i18n="auth.title">Garima weds Mrinal · Invitation Gateway</title>
 <meta name="description" content="Garima &amp; Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand" data-i18n-attr="content:global.meta_desc">
 <meta property="og:title" content="Garima &amp; Mrinal · Invitation Gateway">
 <meta property="og:description" content="Garima &amp; Mrinal · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand">
@@ -761,7 +761,21 @@ body {
 (function() {
   'use strict';
 
-  var VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal'];
+  var DEFAULT_VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal', '2026', 'nainital', 'garima', 'mrinal'];
+  function getValidCodes() {
+    try {
+      if (window.GTM_CMS && window.GTM_CMS.get) {
+        var cmsCodes = window.GTM_CMS.get('auth.passcodes', '');
+        if (cmsCodes && cmsCodes.trim().length > 0) {
+          var parsed = cmsCodes.split(',').map(function(c) {
+            return String(c).trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+          }).filter(Boolean);
+          if (parsed.length > 0) return parsed;
+        }
+      }
+    } catch(e) {}
+    return DEFAULT_VALID_CODES;
+  }
   var input = document.getElementById('auth-code-input');
   var form = document.getElementById('auth-form');
   var pill = document.getElementById('auth-pill');
@@ -966,7 +980,7 @@ body {
     }
 
     // Strict validation: must match complete passcode
-    if (VALID_CODES.indexOf(norm) !== -1) {
+    if (getValidCodes().indexOf(norm) !== -1) {
       handleSuccessfulUnlock(norm);
     } else {
       triggerError();
@@ -985,7 +999,7 @@ body {
   if (input) {
     input.addEventListener('input', function() {
       var norm = normalize(this.value);
-      if (VALID_CODES.indexOf(norm) !== -1) {
+      if (getValidCodes().indexOf(norm) !== -1) {
         handleSuccessfulUnlock(norm);
       }
     });

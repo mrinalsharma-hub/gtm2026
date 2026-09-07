@@ -86,6 +86,7 @@
     var val = dict[key] !== undefined && dict[key] !== '' ? dict[key] : ((dictionaries['en'] || {})[key] || '');
 
     if (edition === 'mrinalgarima') {
+      if (key === 'auth.title') return 'Mrinal & Garima · Invitation Gateway';
       if (key === 'home.hero.bride' || key === 'home.hero.bride_name') return 'MRINAL';
       if (key === 'home.hero.groom' || key === 'home.hero.groom_name') return 'GARIMA';
       if (key === 'global.nav.gm') return 'M&G';
@@ -93,6 +94,7 @@
       if (key === 'global.meta_desc') return 'Mrinal & Garima · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
       if (key === 'stay.header.banner_line2') return 'MRINAL & GARIMA · 20-22 NOV 2026';
     } else {
+      if (key === 'auth.title') return 'Garima weds Mrinal · Invitation Gateway';
       if (key === 'home.hero.bride' || key === 'home.hero.bride_name') return 'GARIMA';
       if (key === 'home.hero.groom' || key === 'home.hero.groom_name') return 'MRINAL';
       if (key === 'global.nav.gm') return 'G&M';
@@ -186,6 +188,7 @@
     var pageTitle = '';
 
     if (edition === 'mrinalgarima') {
+      if (key === 'auth.title') return 'Mrinal & Garima · Invitation Gateway';
       if (path.indexOf('celebrat') !== -1) {
         pageTitle = 'The Wedding Weekend · Mrinal & Garima — Nainital 2026';
       } else if (path.indexOf('stay') !== -1 || path.indexOf('travel') !== -1) {
@@ -226,6 +229,7 @@
     var appleTitle = document.querySelector('meta[name="apple-mobile-web-app-title"]');
 
     if (edition === 'mrinalgarima') {
+      if (key === 'auth.title') return 'Mrinal & Garima · Invitation Gateway';
       var descText = 'Mrinal & Garima · A wedding in the Kumaon hills · 20–22 November 2026 · Nainital, Uttarakhand';
       if (metaDesc) metaDesc.setAttribute('content', descText);
       if (ogTitle) ogTitle.setAttribute('content', pageTitle || 'Mrinal & Garima · Nainital 2026');
@@ -244,6 +248,7 @@
     var authNameText = document.querySelector('.auth-name-text');
     if (authLine1 && authNameText) {
       if (edition === 'mrinalgarima') {
+      if (key === 'auth.title') return 'Mrinal & Garima · Invitation Gateway';
         authLine1.textContent = 'MRINAL';
         authNameText.textContent = 'GARIMA';
       } else {
@@ -256,6 +261,7 @@
     var gmName2 = document.getElementById('gxm-name-2') || document.querySelector('.gxm-name-second, .gxm-name-2');
     if (gmName1 && gmName2) {
       if (edition === 'mrinalgarima') {
+      if (key === 'auth.title') return 'Mrinal & Garima · Invitation Gateway';
         gmName1.textContent = 'MRINAL';
         gmName2.textContent = 'GARIMA';
       } else {

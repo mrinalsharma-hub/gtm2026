@@ -139,5 +139,11 @@
   "invite.scene6.where": "Nainital · Uttarakhand",
   "invite.scene6.details_website": "our wedding website",
   "invite.ctl.skip": "Skip ›",
-  "invite.ctl.replay": "↻ Replay"
+  "invite.ctl.replay": "↻ Replay",
+  "auth.title": "Garima weds Mrinal · Invitation Gateway",
+  "auth.forever": "ARE BEGINNING THEIR FOREVER",
+  "auth.enter_code": "ENTER THE CODE PROVIDED",
+  "auth.tap_prompt": "TAP THE ENVELOPE TO OPEN",
+  "auth.error_message": "Incorrect passcode, please try again.",
+  "auth.passcodes": "gtm2026, mrinalgarima, garimamrinal, 2026, nainital"
 }

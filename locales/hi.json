@@ -139,5 +139,11 @@
   "invite.scene6.where": "नैनीताल · उत्तराखंड",
   "invite.scene6.details_website": "हमारी विवाह वेबसाइट",
   "invite.ctl.skip": "आगे बढ़ें ›",
-  "invite.ctl.replay": "↻ पुनः देखें"
+  "invite.ctl.replay": "↻ पुनः देखें",
+  "auth.title": "गरिमा संग मृणाल · निमंत्रण प्रवेशद्वार",
+  "auth.forever": "एक नए जीवन का शुभारंभ",
+  "auth.enter_code": "कृपया निमंत्रण कोड दर्ज करें",
+  "auth.tap_prompt": "निमंत्रण खोलने के लिए लिफाफे पर स्पर्श करें",
+  "auth.error_message": "अमान्य कोड, कृपया पुनः प्रयास करें।",
+  "auth.passcodes": "gtm2026, mrinalgarima, garimamrinal, 2026, nainital"
 }
