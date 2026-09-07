@@ -946,14 +946,10 @@ body {
       viewport.classList.add('is-unlocking');
     }
 
-    // 5. Seamlessly navigate to G&M.html without reloading the page or dropping audio
+    // 5. Navigate cleanly to G&M.html so all assets, layouts, and scripts initialize with 100% fidelity
     setTimeout(function() {
-      if (window.GTM_SPA && window.GTM_SPA.navigateTo) {
-        window.GTM_SPA.navigateTo('G&M.html', true);
-      } else {
-        window.location.replace('G&M.html');
-      }
-    }, 600);
+      window.location.replace('G&M.html');
+    }, 500);
   }
 
   function validateAndSubmit() {
