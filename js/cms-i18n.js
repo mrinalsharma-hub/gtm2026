@@ -250,8 +250,8 @@
       }
     }
 
-    var gmName1 = document.querySelector('.gxm-name-1, .gxm-name.gxm-garima');
-    var gmName2 = document.querySelector('.gxm-name-2, .gxm-name.gxm-mrinal');
+    var gmName1 = document.getElementById('gxm-name-1') || document.querySelector('.gxm-name-first, .gxm-name-1');
+    var gmName2 = document.getElementById('gxm-name-2') || document.querySelector('.gxm-name-second, .gxm-name-2');
     if (gmName1 && gmName2) {
       if (edition === 'mrinalgarima') {
         gmName1.textContent = 'MRINAL';

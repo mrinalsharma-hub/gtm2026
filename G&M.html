@@ -555,8 +555,9 @@ body {
   width: 100% !important;
 }
 
-.gxm-name.gxm-name-1,
-.gxm-name.gxm-garima {
+/* Line 1 (Full width centered name: GARIMA or MRINAL) */
+.gxm-name.gxm-name-first,
+.gxm-name.gxm-name-1 {
   width: 100% !important;
   font-family: 'Kugile', 'Cinzel', serif !important;
   font-size: clamp(38.4px, 11.2vw, 49.6px) !important; /* 20% reduced from clamp(48px, 14vw, 62px) */
@@ -574,19 +575,21 @@ body {
   will-change: transform, opacity;
 }
 
-.gxm-card-frame.is-loaded .gxm-name.gxm-name-1,
-.gxm-card-frame.is-loaded .gxm-name.gxm-garima {
+.gxm-card-frame.is-loaded .gxm-name.gxm-name-first,
+.gxm-card-frame.is-loaded .gxm-name.gxm-name-1 {
   animation: gxmNameReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.85s both !important;
 }
 
+/* Line 2 Flex Row (& and second name inline) */
 .gxm-name-row {
   width: 100% !important;
   height: 32px !important; /* 20% reduced from 40px */
   display: flex !important;
+  flex-direction: row !important;
   align-items: baseline !important;
   justify-content: center !important;
   text-align: center !important;
-  margin: 0 !important;
+  margin: 0 auto !important;
   padding: 0 !important;
   white-space: nowrap !important;
 }
@@ -599,6 +602,7 @@ body {
   color: #A71F23 !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   display: inline-block !important;
+  flex-shrink: 0 !important;
   margin-right: 14px !important; /* 20% reduced from 18px */
   opacity: 0;
   will-change: transform, opacity;
@@ -608,8 +612,9 @@ body {
   animation: gxmAmpPop 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.0s both !important;
 }
 
-.gxm-name.gxm-name-2,
-.gxm-name.gxm-mrinal {
+/* Line 2 Second Name (Inline block next to &) */
+.gxm-name.gxm-name-second,
+.gxm-name.gxm-name-2 {
   font-family: 'Kugile', 'Cinzel', serif !important;
   font-size: clamp(38.4px, 11.2vw, 49.6px) !important; /* 20% reduced from clamp(48px, 14vw, 62px) */
   font-weight: 400 !important;
@@ -619,14 +624,16 @@ body {
   text-transform: uppercase !important;
   text-shadow: 0px 1px 2px #FFFDF9 !important;
   display: inline-block !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
   margin: 0 !important;
   padding: 0 !important;
   opacity: 0;
   will-change: transform, opacity;
 }
 
-.gxm-card-frame.is-loaded .gxm-name.gxm-name-2,
-.gxm-card-frame.is-loaded .gxm-name.gxm-mrinal {
+.gxm-card-frame.is-loaded .gxm-name.gxm-name-second,
+.gxm-card-frame.is-loaded .gxm-name.gxm-name-2 {
   animation: gxmNameReveal 1.6s cubic-bezier(0.16, 1, 0.3, 1) 1.15s both !important;
 }
 
@@ -954,10 +961,10 @@ body {
         <div class="gxm-typography-lockup">
           <p class="gxm-subtitle" data-i18n="home.hero.getting_married">WE ARE GETTING MARRIED!</p>
           <div class="gxm-names">
-            <h1 class="gxm-name gxm-name-1 gxm-garima" data-i18n="home.hero.bride">GARIMA</h1>
+            <h1 class="gxm-name gxm-name-first gxm-name-1" id="gxm-name-1" data-i18n="home.hero.bride">GARIMA</h1>
             <div class="gxm-name-row">
               <span class="gxm-amp">&amp;</span>
-              <span class="gxm-name gxm-name-2 gxm-mrinal" data-i18n="home.hero.groom">MRINAL</span>
+              <span class="gxm-name gxm-name-second gxm-name-2" id="gxm-name-2" data-i18n="home.hero.groom">MRINAL</span>
             </div>
           </div>
           <p class="gxm-footer-desc" data-i18n="home.hero.footer_desc">Explore site for details. Please RSVP and contact us in case of questions.</p>
