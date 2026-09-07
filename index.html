@@ -541,11 +541,16 @@ body {
     return String(val || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
   }
 
-  // ── Start Audio Playback via Direct User Gesture ──
-  function ensureAudioPlaying() {
+  // ── Reset any previous session timestamp & start fresh from 0:00 ──
+  try {
+    sessionStorage.removeItem('gtm2026_music_time');
+  } catch(e) {}
+
+  // ── Start Audio Playback from the beginning via Direct User Gesture ──
+  function ensureAudioPlaying(forceStart) {
     try {
       if (window.GTM_AUDIO && window.GTM_AUDIO.play) {
-        window.GTM_AUDIO.play();
+        window.GTM_AUDIO.play(forceStart !== false);
       }
       sessionStorage.setItem('gtm2026_music_playing', 'true');
       localStorage.setItem('gtm2026_music_playing', 'true');
@@ -559,7 +564,7 @@ body {
     isActivating = true;
 
     // 1. Play music immediately on this user touch gesture
-    ensureAudioPlaying();
+    ensureAudioPlaying(true);
 
     // 2. Trigger upward glide to top edge & expand input field
     if (viewport) {
@@ -670,7 +675,7 @@ body {
     } catch(e) {}
 
     // 3. Ensure audio is playing
-    ensureAudioPlaying();
+    ensureAudioPlaying(false);
 
     // 4. Trigger Delightful Exit Motion Sequence
     if (viewport) {

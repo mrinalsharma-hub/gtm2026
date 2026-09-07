@@ -86,14 +86,22 @@
     } catch(e) {}
   }
 
-  function playAudio() {
+  function playAudio(forceStart) {
     if (!audio) return Promise.reject(new Error('No audio element'));
-    if (!audio.paused) {
+
+    if (forceStart) {
+      try {
+        sessionStorage.removeItem(STORAGE_KEY_TIME);
+      } catch(e) {}
+      audio.currentTime = 0;
+    } else if (!audio.paused) {
       // Audio is already smoothly playing! Do not touch or seek!
       updateUI(true);
       return Promise.resolve();
+    } else {
+      restoreTime();
     }
-    restoreTime();
+
     audio.volume = 0.85;
     var p = audio.play();
     if (p !== undefined) {
@@ -128,7 +136,7 @@
       e.preventDefault();
     }
     if (audio.paused) {
-      playAudio();
+      playAudio(false);
     } else {
       pauseAudio();
     }
@@ -150,7 +158,7 @@
     } catch(e) {}
 
     if (shouldPlay && audio && audio.paused) {
-      playAudio();
+      playAudio(false);
     }
   }
 
@@ -162,7 +170,7 @@
     } catch(e) {}
 
     if (shouldPlay && audio && audio.paused) {
-      playAudio();
+      playAudio(false);
     }
   }
 
@@ -182,6 +190,7 @@
   // Expose global controller
   window.GTM_AUDIO = {
     play: playAudio,
+    playFromStart: function() { return playAudio(true); },
     ensureAudioPlaying: playAudio,
     pause: pauseAudio,
     toggle: toggleAudio,
