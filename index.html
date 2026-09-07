@@ -184,6 +184,22 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   white-space: nowrap !important;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  animation: authNameLine1Reveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both !important;
+}
+
+@keyframes authNameLine1Reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* Line 2 Flex Row (& and second name inline baseline aligned) */
@@ -212,6 +228,20 @@ body {
   display: inline-block !important;
   flex-shrink: 0 !important;
   margin-right: 14px !important;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: authAmpReveal 1.15s cubic-bezier(0.34, 1.56, 0.64, 1) 0.45s both !important;
+}
+
+@keyframes authAmpReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 /* Line 2 Second Name (Inline block next to &) */
@@ -232,6 +262,22 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   white-space: nowrap !important;
+  opacity: 0;
+  will-change: transform, opacity, filter;
+  animation: authNameLine2Reveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both !important;
+}
+
+@keyframes authNameLine2Reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
 }
 
 /* ── Exact 30px gap between Names and Subtitle ── */
@@ -265,8 +311,22 @@ body {
 }
 
 .auth-subtitle-default {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: authSubtitleReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.95s both;
+}
+
+@keyframes authSubtitleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+    letter-spacing: 0.14em;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 0.08em;
+  }
 }
 
 .auth-subtitle-code {
@@ -276,15 +336,17 @@ body {
 }
 
 .auth-viewport.is-code-active .auth-subtitle-default {
-  opacity: 0;
-  transform: translateY(-6px);
-  pointer-events: none;
+  animation: none !important;
+  opacity: 0 !important;
+  transform: translateY(-6px) !important;
+  pointer-events: none !important;
 }
 
 .auth-viewport.is-code-active .auth-subtitle-code {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+  animation: none !important;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  pointer-events: auto !important;
 }
 
 /* ── Passcode Input Pill Box (Auth 2 & Auth 3: 352px x 52px, rx: 12px, #F4DFBC) ── */
@@ -386,6 +448,20 @@ body {
   filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.35)) drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.25));
   transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   z-index: 10;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: authEnvelopeSlideUp 1.45s cubic-bezier(0.16, 1, 0.3, 1) 1.35s both;
+}
+
+@keyframes authEnvelopeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(110px) scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 .auth-envelope-img {
@@ -398,55 +474,115 @@ body {
   -webkit-user-drag: none;
 }
 
-/* ── Soft Ambient Glow Pulse on Wax Seal (Centered on Envelope) ── */
+/* ── Soft Ambient Glow Pulse & Shimmer on Wax Seal (Centered on Envelope) ── */
 .auth-seal-pulse-anchor {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 76px;
-  height: 76px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   pointer-events: none;
-  z-index: 2;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+/* 1. Golden Aura Radiant Breath */
 .auth-seal-pulse-anchor::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 88px;
-  height: 88px;
+  width: 108px;
+  height: 108px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 60, 0.28) 0%, rgba(255, 135, 25, 0.18) 45%, rgba(220, 60, 10, 0.05) 70%, transparent 85%);
+  background: radial-gradient(circle, rgba(255, 220, 80, 0.42) 0%, rgba(245, 175, 35, 0.22) 42%, rgba(200, 110, 15, 0.06) 68%, transparent 85%);
   pointer-events: none;
-  opacity: 0.45;
-  filter: blur(12px);
-  animation: sealAuraPulse 2.8s ease-in-out infinite;
+  opacity: 0.5;
+  filter: blur(14px);
+  animation: sealAuraPulse 3.0s ease-in-out infinite 2.2s;
+  animation-fill-mode: both;
+}
+
+/* 2. Specular Golden Light Gleam / Shimmer across the Seal */
+.auth-seal-shimmer-gleam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 82px;
+  height: 82px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.auth-seal-shimmer-gleam::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -120%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.0) 25%,
+    rgba(255, 245, 195, 0.65) 50%,
+    rgba(255, 255, 255, 0.0) 75%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  animation: sealShimmerSweep 3.8s ease-in-out infinite 2.6s;
 }
 
 @keyframes sealAuraPulse {
   0%, 100% {
-    opacity: 0.3;
-    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0.35;
+    transform: translate(-50%, -50%) scale(0.92);
+    filter: blur(12px);
   }
   50% {
-    opacity: 0.55;
-    transform: translate(-50%, -50%) scale(1.1);
-    filter: blur(14px);
+    opacity: 0.75;
+    transform: translate(-50%, -50%) scale(1.15);
+    filter: blur(16px);
   }
 }
 
-.auth-viewport.is-code-active .auth-seal-pulse-anchor::before {
+@keyframes sealShimmerSweep {
+  0% {
+    left: -120%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.85;
+  }
+  35% {
+    left: 140%;
+    opacity: 0;
+  }
+  100% {
+    left: 140%;
+    opacity: 0;
+  }
+}
+
+.auth-viewport.is-code-active .auth-seal-pulse-anchor::before,
+.auth-viewport.is-code-active .auth-seal-shimmer-gleam {
   opacity: 0;
   display: none;
 }
 
 /* ── In Active State: Envelope Smoothly Glides Downward ── */
 .auth-viewport.is-code-active .auth-envelope-wrap {
-  transform: translateY(12px);
+  animation: none !important;
+  opacity: 1 !important;
+  transform: translateY(12px) !important;
 }
 
 /* ── 3. Bottom Section: Instruction Prompt (Exact 40px gap below envelope) ── */
@@ -459,6 +595,20 @@ body {
   text-align: center;
   z-index: 10;
   transition: opacity 0.35s ease, transform 0.35s ease;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: authBottomPromptReveal 1.0s cubic-bezier(0.16, 1, 0.3, 1) 2.45s both;
+}
+
+@keyframes authBottomPromptReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .auth-tap-prompt {
@@ -473,7 +623,7 @@ body {
   color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   opacity: 0.95;
-  animation: promptBreathe 2.4s ease-in-out infinite;
+  animation: promptBreathe 2.6s ease-in-out infinite 3.4s;
   cursor: pointer;
   touch-action: manipulation;
 }
@@ -484,14 +634,15 @@ body {
 }
 
 @keyframes promptBreathe {
-  0%, 100% { opacity: 0.8; transform: translateY(0); }
+  0%, 100% { opacity: 0.82; transform: translateY(0); }
   50% { opacity: 1; transform: translateY(-2px); }
 }
 
 .auth-viewport.is-code-active .auth-bottom-stack {
-  opacity: 0;
-  transform: translateY(8px);
-  pointer-events: none;
+  animation: none !important;
+  opacity: 0 !important;
+  transform: translateY(8px) !important;
+  pointer-events: none !important;
 }
 
 /* ── 4. Exit / Unlock Motion Sequence ── */
@@ -500,14 +651,16 @@ body {
 }
 
 .auth-viewport.is-unlocking .auth-top-stack {
+  animation: none !important;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  transform: translateY(-30px) scale(0.96);
-  opacity: 0;
+  transform: translateY(-30px) scale(0.96) !important;
+  opacity: 0 !important;
 }
 
 .auth-viewport.is-unlocking .auth-envelope-wrap {
-  transform: scale(1.06) translateY(20px);
-  opacity: 0;
+  animation: none !important;
+  transform: scale(1.06) translateY(20px) !important;
+  opacity: 0 !important;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
 
@@ -565,8 +718,10 @@ body {
         <source srcset="images/auth/envelope_portrait.webp" type="image/webp">
         <img src="images/auth/envelope_portrait.png" alt="Wedding Invitation Envelope" class="auth-envelope-img" width="1086" height="1448">
       </picture>
-      <!-- Soft Amber & Gold Pulse Anchor on the Wax Seal -->
-      <div class="auth-seal-pulse-anchor" aria-hidden="true"></div>
+      <!-- Soft Amber & Gold Pulse & Shimmer Anchor on the Wax Seal -->
+      <div class="auth-seal-pulse-anchor" aria-hidden="true">
+        <div class="auth-seal-shimmer-gleam"></div>
+      </div>
     </div>
 
     <!-- ── 3. Bottom Section: Instruction Prompt (40px below envelope) ── -->
