@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #170406; background: #170406;">
+<html lang="en" style="background-color: #3F151D; background: #3F151D;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
-<meta name="theme-color" content="#170406" id="meta-theme-color">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#170406">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#170406">
-<meta name="msapplication-navbutton-color" content="#170406">
+<meta name="theme-color" content="#3F151D" id="meta-theme-color">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#3F151D">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3F151D">
+<meta name="msapplication-navbutton-color" content="#3F151D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Garima weds Mrinal · Invitation Gateway</title>
@@ -21,18 +21,13 @@
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>
 <link rel="preload" as="font" href="fonts/SnellRoundhand.woff?v=24700" type="font/woff" crossorigin>
 <link rel="preload" as="font" href="fonts/Spectral-Regular.ttf" type="font/ttf" crossorigin>
-<link rel="preload" as="image" href="images/auth/envelope_crisp.webp" type="image/webp" fetchpriority="high">
-<link rel="preload" as="image" href="images/auth/seal_flower.webp" type="image/webp" fetchpriority="high">
+<link rel="preload" as="image" href="images/auth/envelope_portrait.webp" type="image/webp" fetchpriority="high">
 <link rel="preload" as="audio" href="media/Samne_Yeh_Kaun_Aaya.mp3" type="audio/mpeg">
 <link rel="prefetch" href="G%26M.html">
-<link rel="prefetch" href="images/home/vinyl_disc.webp?v=26600">
-<link rel="prefetch" href="images/home/image0_554_2091.webp">
-<link rel="prefetch" href="images/home/image1_554_2091.webp">
-<link rel="prefetch" href="images/home/image2_554_2091.webp">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
 <style data-spa-page="true">
 @font-face {
@@ -66,7 +61,7 @@
 
 :root {
   color-scheme: dark;
-  background-color: #170406;
+  background-color: #3F151D;
 }
 
 html {
@@ -79,8 +74,8 @@ html {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #170406 !important;
-  background-color: #170406 !important;
+  background: #3F151D !important;
+  background-color: #3F151D !important;
   border: none !important;
   outline: none !important;
   touch-action: manipulation;
@@ -96,8 +91,8 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background: #170406 !important;
-  background-color: #170406 !important;
+  background: #3F151D !important;
+  background-color: #3F151D !important;
   border: none !important;
   outline: none !important;
   font-family: 'Spectral', Georgia, serif;
@@ -118,111 +113,42 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background: radial-gradient(circle at 50% 40%, #2A090E 0%, #170406 75%, #0E0204 100%);
+  background: #3F151D;
   overflow: hidden;
   touch-action: manipulation;
-  perspective: 1200px;
-}
-
-/* ── Anchored Envelope Stage Wrapper: 25px above exact center (top anchored to upper 1/3rd) ── */
-.auth-envelope-wrapper {
-  position: absolute;
-  top: calc(50% - 25px);
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  max-width: 440px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  transition: top 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
-              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 10;
-  animation: envelopeSlideInCenter 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
-}
-
-@keyframes envelopeSlideInCenter {
-  0% {
-    opacity: 0;
-    transform: translate(100vw, -50%) rotate(8deg) scale(0.9);
-  }
-  65% {
-    opacity: 1;
-    transform: translate(-53%, -50%) rotate(-1deg) scale(1.01);
-  }
-  85% {
-    transform: translate(-49.5%, -50%) rotate(0.4deg) scale(0.998);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(0deg) scale(1);
-  }
-}
-
-/* ── Activated State: Envelope Glides to 36px Below Top Edge ── */
-.auth-viewport.is-code-active .auth-envelope-wrapper {
-  top: 36px;
-  top: calc(env(safe-area-inset-top, 0px) + 36px);
-  transform: translate(-50%, 0);
-  animation: none;
-}
-
-/* ── Physical Envelope Background (Crisp Bottom Edge & Shadow) ── */
-.auth-envelope-stage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.auth-envelope-bg {
-  width: 100%;
-  height: auto;
-  display: block;
-  user-select: none;
-  -webkit-user-drag: none;
-  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.85)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
-  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-}
-
-/* ── Content Stack (Strict 40px Top Gap) ── */
-.auth-content-stack {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 40px;
-  padding-left: 24px;
-  padding-right: 24px;
-  padding-bottom: 24px;
+  justify-content: space-between;
+  padding-top: max(env(safe-area-inset-top, 0px), 16px);
+  padding-bottom: max(env(safe-area-inset-bottom, 0px), 24px);
   box-sizing: border-box;
 }
 
-/* ── 1. Heading Lockup (Strict 2-Line Structure with 20px gap) ── */
-.auth-heading-wrap {
+/* ── Main Vertical Content Container (Max 440px width matching Figma Artboard) ── */
+.auth-container {
+  width: 100%;
+  max-width: 440px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── 1. Top Section: Couple Names & Subtitle ── */
+.auth-top-stack {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-}
-
-.auth-eyebrow {
-  font-family: 'Spectral', Georgia, serif;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 1;
-  letter-spacing: 1.68px;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  margin-bottom: 20px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  padding-top: clamp(8px, 2.5vh, 24px);
+  z-index: 15;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .auth-names {
@@ -231,86 +157,140 @@ body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  width: 100%;
 }
 
 .auth-name-line-1 {
-  font-family: 'Kugile', Georgia, serif;
-  font-size: 28px;
-  line-height: 30px;
-  letter-spacing: 1px;
+  font-family: 'Kugile', 'Cinzel', Georgia, serif;
+  font-size: clamp(34px, 9.5vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
   color: #FFFFFF;
   text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .auth-name-line-2 {
   display: flex;
+  flex-direction: row;
   align-items: baseline;
   justify-content: center;
-  gap: 4px;
-  line-height: 25px;
-  margin-top: -2px;
+  line-height: 1.05;
+  margin-top: 2px;
 }
 
 .auth-ampersand {
   font-family: 'Snell Roundhand', cursive, serif;
-  font-size: 40px;
+  font-size: clamp(48px, 13vw, 62px);
   color: #FFFFFF;
-  line-height: 21.6px;
-  margin-right: 2px;
+  line-height: 0.8;
+  margin-right: 8px;
+  display: inline-block;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .auth-name-text {
-  font-family: 'Kugile', Georgia, serif;
-  font-size: 28px;
-  line-height: 25px;
-  letter-spacing: 1px;
+  font-family: 'Kugile', 'Cinzel', Georgia, serif;
+  font-size: clamp(34px, 9.5vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.5px;
   color: #FFFFFF;
   text-transform: uppercase;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-/* ── 2. Passcode Input Form (Expands upon tap) ── */
-.auth-form {
+/* ── Subtitle (Swaps smoothly from 'ARE BEGINNING THEIR FOREVER' to 'ENTER THE CODE PROVIDED') ── */
+.auth-subtitle-wrap {
+  position: relative;
   width: 100%;
-  max-width: 356px;
-  height: 52px;
+  height: 22px;
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-subtitle {
+  font-family: 'Spectral', Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(11.5px, 3.2vw, 13px);
+  line-height: 1;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-subtitle-default {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.auth-subtitle-code {
+  opacity: 0;
+  transform: translateY(6px);
+  pointer-events: none;
+}
+
+.auth-viewport.is-code-active .auth-subtitle-default {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.auth-viewport.is-code-active .auth-subtitle-code {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ── 2. Passcode Input Pill Box (Auth 2 & Auth 3: 368px x 56px, rx: 12px, #F4DFBC) ── */
+.auth-form-wrap {
+  width: 100%;
+  max-width: 368px;
+  height: 0;
   margin-top: 0;
   opacity: 0;
   pointer-events: none;
-  transform: scale(0.92) translateY(-8px);
-  transition: opacity 0.35s ease, 
-              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+  transform: scale(0.94) translateY(-10px);
+  transition: opacity 0.4s ease, 
+              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+              height 0.4s ease,
               margin-top 0.4s ease;
-  position: relative;
-  display: none;
+  overflow: visible;
 }
 
-.auth-viewport.is-code-active .auth-form {
-  display: block;
+.auth-viewport.is-code-active .auth-form-wrap {
+  height: 56px;
+  margin-top: 18px;
   opacity: 1;
   pointer-events: auto;
   transform: scale(1) translateY(0);
-  margin-top: 20px;
+}
+
+.auth-form {
+  width: 100%;
+  height: 56px;
 }
 
 .auth-input-pill {
   width: 100%;
-  height: 52px;
+  height: 56px;
   background: #F4DFBC;
   border-radius: 12px;
-  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.6);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 16px;
+  padding: 0 20px;
   position: relative;
-  border: 1.5px solid rgba(212, 175, 55, 0.4);
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.auth-input-pill:focus-within {
-  border-color: #D4AF37;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5), 0 0 14px rgba(212, 175, 55, 0.45);
+  transition: box-shadow 0.25s ease;
 }
 
 .auth-code-input {
@@ -319,31 +299,30 @@ body {
   background: transparent;
   border: none;
   outline: none;
-  font-family: 'Spectral', Georgia, serif;
-  font-weight: 600;
-  font-size: 16px;
-  letter-spacing: 3.52px;
+  font-family: 'Cinzel', 'Spectral', Georgia, serif;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: 4.8px;
   text-align: center;
   text-transform: uppercase;
-  color: #380E13;
-  caret-color: #A71F23;
+  color: #3F151D;
+  caret-color: #3F151D;
 }
 
 .auth-code-input::placeholder {
   font-family: 'Spectral', Georgia, serif;
   font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 3.52px;
+  font-size: 14px;
+  letter-spacing: 3px;
   text-align: center;
-  color: rgba(56, 14, 19, 0.38);
+  color: rgba(63, 21, 29, 0.38);
   text-transform: uppercase;
 }
 
-/* ── Error Shake Feedback (Only on actual incorrect code submission) ── */
+/* ── Error Shake Feedback ── */
 .auth-input-pill.has-error {
   animation: authShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-  border-color: #E63946 !important;
-  box-shadow: 0 0 18px rgba(230, 57, 70, 0.65) !important;
+  box-shadow: 0 0 20px rgba(230, 57, 70, 0.75) !important;
 }
 
 @keyframes authShake {
@@ -353,119 +332,127 @@ body {
   40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 3. Realistic Wax Seal (78px Dimensions) with Soft, Elegant Amber & Gold Pulse ── */
-.auth-seal-wrap {
+/* ── 3. Middle Section: Vertical Portrait Envelope (320px x 453px ratio) ── */
+.auth-envelope-wrap {
   position: relative;
-  margin-top: 24px;
-  width: 78px;
-  height: 78px;
+  width: 100%;
+  max-width: 320px;
+  width: min(320px, 76vw);
+  aspect-ratio: 320 / 453;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s ease;
-  animation: sealBreathingPulse 2.8s ease-in-out infinite;
-  will-change: transform, filter;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+  z-index: 10;
+  margin: auto 0;
 }
 
-/* Ambient soft radial aura behind seal: gently diffused warm embers blending with maroon */
-.auth-seal-wrap::before {
+.auth-envelope-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.7)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.45));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Ambient Soft Glow Pulse on Wax Seal (Centered on Envelope) ── */
+.auth-seal-pulse-anchor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.auth-seal-pulse-anchor::before {
   content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 88px;
-  height: 88px;
+  width: 84px;
+  height: 84px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 60, 0.22) 0%, rgba(255, 135, 25, 0.16) 45%, rgba(220, 60, 10, 0.06) 70%, transparent 85%);
+  background: radial-gradient(circle, rgba(255, 215, 60, 0.28) 0%, rgba(255, 135, 25, 0.18) 45%, rgba(220, 60, 10, 0.06) 70%, transparent 85%);
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.45;
+  opacity: 0.5;
   filter: blur(12px);
   animation: sealAuraPulse 2.8s ease-in-out infinite;
-  transition: opacity 0.3s ease;
-}
-
-@keyframes sealBreathingPulse {
-  0%, 100% {
-    transform: scale(1);
-    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)) 
-            drop-shadow(0 0 6px rgba(255, 135, 25, 0.22)) 
-            drop-shadow(0 0 12px rgba(255, 215, 50, 0.18));
-  }
-  50% {
-    transform: scale(1.038);
-    filter: drop-shadow(0 5px 14px rgba(0, 0, 0, 0.7)) 
-            drop-shadow(0 0 10px rgba(255, 130, 20, 0.38)) 
-            drop-shadow(0 0 18px rgba(255, 215, 50, 0.42)) 
-            drop-shadow(0 0 28px rgba(255, 150, 0, 0.18));
-  }
 }
 
 @keyframes sealAuraPulse {
   0%, 100% {
     opacity: 0.35;
     transform: translate(-50%, -50%) scale(0.95);
-  }
+  }}
   50% {
-    opacity: 0.6;
-    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.65;
+    transform: translate(-50%, -50%) scale(1.12);
     filter: blur(14px);
-  }
+  }}
 }
 
-.auth-viewport.is-code-active .auth-seal-wrap {
-  margin-top: 12px;
-  animation: none;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
-}
-
-.auth-viewport.is-code-active .auth-seal-wrap::before {
+.auth-viewport.is-code-active .auth-seal-pulse-anchor::before {
   opacity: 0;
   display: none;
 }
 
-.auth-seal-img {
-  position: relative;
-  z-index: 1;
-  width: 78px;
-  height: 78px;
-  object-fit: contain;
-  user-select: none;
-  -webkit-user-drag: none;
+/* ── In Active State: Envelope Smoothly Glides Downward ── */
+.auth-viewport.is-code-active .auth-envelope-wrap {
+  transform: translateY(12px);
 }
 
-/* ── 4. "Tap Seal" Message & Pulse (Fades away completely on tap) ── */
+/* ── 4. Bottom Section: Instruction Prompt ── */
+.auth-bottom-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-bottom: clamp(6px, 2vh, 16px);
+  z-index: 10;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
 .auth-tap-prompt {
   font-family: 'Spectral', Georgia, serif;
   font-weight: 600;
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 2.4px;
+  font-size: clamp(11px, 3vw, 12.5px);
+  line-height: 1.5;
+  letter-spacing: 2.2px;
   text-transform: uppercase;
-  color: #E3BE82;
-  margin-top: 14px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.85);
+  color: #FFFFFF;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
   opacity: 0.92;
-  animation: promptBreathe 2s ease-in-out infinite;
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+  animation: promptBreathe 2.4s ease-in-out infinite;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.auth-tap-prompt span {
+  display: block;
 }
 
 @keyframes promptBreathe {
-  0%, 100% { opacity: 0.75; transform: translateY(0); }
-  50% { opacity: 1; transform: translateY(-3px); }
+  0%, 100% { opacity: 0.8; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-2px); }
 }
 
-.auth-viewport.is-code-active .auth-tap-prompt {
-  opacity: 0 !important;
-  transform: translateY(8px) !important;
-  pointer-events: none !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  display: none !important;
+.auth-viewport.is-code-active .auth-bottom-stack {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
 }
 
 /* ── 5. Exit / Unlock Motion Sequence ── */
@@ -473,30 +460,14 @@ body {
   pointer-events: none;
 }
 
-.auth-viewport.is-unlocking .auth-heading-wrap {
+.auth-viewport.is-unlocking .auth-top-stack {
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  transform: translateY(-35px) scale(0.96);
+  transform: translateY(-30px) scale(0.96);
   opacity: 0;
 }
 
-.auth-viewport.is-unlocking .auth-form {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
-  transform: translateY(25px) scale(0.96);
-  opacity: 0;
-}
-
-.auth-viewport.is-unlocking .auth-seal-img {
-  animation: sealGlowUnlock 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes sealGlowUnlock {
-  0% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6)); }
-  40% { transform: scale(1.3) rotate(8deg); filter: drop-shadow(0 0 28px #FF8C00) drop-shadow(0 0 45px #FFD700) drop-shadow(0 8px 24px rgba(0,0,0,0.8)); }
-  100% { transform: scale(1.5) rotate(14deg); opacity: 0; filter: drop-shadow(0 0 50px #FFF) drop-shadow(0 0 80px #FF9F00) drop-shadow(0 0 100px #FFD700); }
-}
-
-.auth-viewport.is-unlocking .auth-envelope-wrapper {
-  transform: translate3d(-50%, -40px, 0) scale(1.04);
+.auth-viewport.is-unlocking .auth-envelope-wrap {
+  transform: scale(1.06) translateY(20px);
   opacity: 0;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
 }
@@ -506,62 +477,67 @@ body {
 }
 </style>
 </head>
-<body style="background-color: #170406; background: #170406;">
+<body style="background-color: #3F151D; background: #3F151D;">
 
 <main class="auth-viewport" id="auth-viewport">
-  <div class="auth-envelope-wrapper" id="auth-envelope-wrapper">
-    <!-- Physical Envelope Background -->
-    <div class="auth-envelope-stage" aria-hidden="true">
-      <picture>
-        <source srcset="images/auth/envelope_crisp.webp" type="image/webp">
-        <img src="images/auth/envelope_crisp.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="803" height="563">
-      </picture>
-    </div>
+  <div class="auth-container">
+    
+    <!-- ── 1. Top Typography Lockup & Code Input ── -->
+    <div class="auth-top-stack">
+      <div class="auth-names">
+        <h1 class="auth-name-line-1">GARIMA</h1>
+        <div class="auth-name-line-2">
+          <span class="auth-ampersand">&amp;</span>
+          <span class="auth-name-text">MRINAL</span>
+        </div>
+      </div>
 
-    <!-- Envelope Content Stack -->
-    <div class="auth-content-stack">
-      <!-- 1. Heading Lockup (Strict 2-Line Layout with 20px gap) -->
-      <div class="auth-heading-wrap">
-        <p class="auth-eyebrow">YOU HAVE BEEN INVITED!</p>
-        <div class="auth-names">
-          <div class="auth-name-line-1">GARIMA</div>
-          <div class="auth-name-line-2">
-            <span class="auth-ampersand">&amp;</span>
-            <span class="auth-name-text">MRINAL</span>
+      <!-- Subtitle (Smooth transition between idle & code entry) -->
+      <div class="auth-subtitle-wrap">
+        <p class="auth-subtitle auth-subtitle-default" data-i18n="auth.forever">ARE BEGINNING THEIR FOREVER</p>
+        <p class="auth-subtitle auth-subtitle-code" data-i18n="auth.enter_code">ENTER THE CODE PROVIDED</p>
+      </div>
+
+      <!-- 2. Passcode Input Form (Appears upon tapping envelope) -->
+      <div class="auth-form-wrap" id="auth-form-wrap">
+        <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
+          <div class="auth-input-pill" id="auth-pill">
+            <input 
+              type="text" 
+              id="auth-code-input" 
+              class="auth-code-input" 
+              placeholder="GTM2026" 
+              aria-label="Wedding Invitation Passcode" 
+              autocomplete="off" 
+              autocorrect="off" 
+              autocapitalize="characters" 
+              spellcheck="false" 
+              inputmode="text" 
+              enterkeyhint="go" 
+              required>
           </div>
-        </div>
+        </form>
       </div>
-
-      <!-- 2. Passcode Input Form (Expands upon tap) -->
-      <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
-        <div class="auth-input-pill" id="auth-pill">
-          <input 
-            type="text" 
-            id="auth-code-input" 
-            class="auth-code-input" 
-            placeholder="ENTER INVITATION CODE" 
-            aria-label="Wedding Invitation Passcode" 
-            autocomplete="off" 
-            autocorrect="off" 
-            autocapitalize="characters" 
-            spellcheck="false" 
-            inputmode="text" 
-            enterkeyhint="go" 
-            required>
-        </div>
-      </form>
-
-      <!-- 3. Realistic Golden Wax Seal -->
-      <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Tap Wax Seal to Enter Code">
-        <picture>
-          <source srcset="images/auth/seal_flower.webp" type="image/webp">
-          <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="78" height="78">
-        </picture>
-      </div>
-
-      <!-- 4. Tap Prompt Message (Vanishes on tap) -->
-      <p class="auth-tap-prompt" id="auth-tap-prompt">TAP SEAL TO ENTER CODE</p>
     </div>
+
+    <!-- ── 2. Middle Section: Vertical Portrait Envelope ── -->
+    <div class="auth-envelope-wrap" id="auth-envelope-btn" role="button" aria-label="Tap envelope to open invitation">
+      <picture>
+        <source srcset="images/auth/envelope_portrait.webp" type="image/webp">
+        <img src="images/auth/envelope_portrait.png" alt="Wedding Invitation Envelope" class="auth-envelope-img" width="1086" height="1448">
+      </picture>
+      <!-- Soft Amber & Gold Pulse Anchor on the Wax Seal -->
+      <div class="auth-seal-pulse-anchor" aria-hidden="true"></div>
+    </div>
+
+    <!-- ── 3. Bottom Section: Instruction Prompt ── -->
+    <div class="auth-bottom-stack">
+      <p class="auth-tap-prompt" id="auth-tap-prompt">
+        <span>TAP THE ENVELOPE</span>
+        <span>TO OPEN OUR INVITATION</span>
+      </p>
+    </div>
+
   </div>
 </main>
 
@@ -577,7 +553,7 @@ body {
   var form = document.getElementById('auth-form');
   var pill = document.getElementById('auth-pill');
   var viewport = document.getElementById('auth-viewport');
-  var sealBtn = document.getElementById('auth-seal-btn');
+  var envelopeBtn = document.getElementById('auth-envelope-btn');
   var isCodeActive = false;
   var isActivating = false;
   var isUnlocking = false;
@@ -611,7 +587,7 @@ body {
     // 1. Play music immediately on this direct user touch gesture
     ensureAudioPlaying(true);
 
-    // 2. Trigger upward glide to top edge & reveal input field synchronously
+    // 2. Trigger active UI state
     if (viewport) {
       viewport.classList.add('is-code-active');
     }
@@ -648,7 +624,6 @@ body {
       }, 40);
     }
 
-    // Lock scroll offset at 0 on animation frame and completion
     requestAnimationFrame(function() {
       window.scrollTo(0, 0);
     });
@@ -685,7 +660,24 @@ body {
     });
   }
 
-  // Bind Prompt Tap
+  // Bind Envelope Tap
+  if (envelopeBtn) {
+    envelopeBtn.addEventListener('click', function(e) {
+      if (!isCodeActive) {
+        activateInputAndKeyboard();
+      } else if (!isActivating) {
+        validateAndSubmit();
+      }
+    });
+
+    envelopeBtn.addEventListener('touchend', function(e) {
+      if (!isCodeActive) {
+        activateInputAndKeyboard();
+      }
+    }, { passive: true });
+  }
+
+  // Bind Bottom Prompt Tap
   var promptEl = document.getElementById('auth-tap-prompt');
   if (promptEl) {
     promptEl.addEventListener('click', function(e) {
@@ -698,24 +690,7 @@ body {
     }, { passive: true });
   }
 
-  // Bind Seal Tap & Envelope Interaction
-  if (sealBtn) {
-    sealBtn.addEventListener('click', function(e) {
-      if (!isCodeActive) {
-        activateInputAndKeyboard();
-      } else if (!isActivating) {
-        validateAndSubmit();
-      }
-    });
-
-    sealBtn.addEventListener('touchend', function(e) {
-      if (!isCodeActive) {
-        activateInputAndKeyboard();
-      }
-    }, { passive: true });
-  }
-
-  // Tapping anywhere on the envelope before activation triggers opening
+  // Tapping anywhere on the viewport before activation triggers opening
   document.addEventListener('pointerdown', function(e) {
     if (isUnlocking || !input) return;
     if (!isCodeActive) {
@@ -778,7 +753,7 @@ body {
     // 3. Ensure audio is playing
     ensureAudioPlaying(false);
 
-    // 4. Trigger Delightful Exit Motion Sequence
+    // 4. Trigger Exit Motion Sequence
     if (viewport) {
       viewport.classList.add('is-unlocking');
     }
