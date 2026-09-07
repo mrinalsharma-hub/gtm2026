@@ -93,45 +93,63 @@ html, body {
   width: 100%;
   height: 100%;
   height: 100dvh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: radial-gradient(circle at 50% 35%, #29090D 0%, #170406 75%, #0F0204 100%);
+  background: radial-gradient(circle at 50% 40%, #2A090E 0%, #170406 75%, #0E0204 100%);
   overflow: hidden;
   perspective: 1200px;
 }
 
-/* ── Dramatic & Delightful Envelope Entrance Motion ── */
-.auth-envelope-stage {
+/* ── Centered Envelope Stage Wrapper with Upward Glide on Tap ── */
+.auth-envelope-wrapper {
   position: absolute;
-  top: 0;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   width: 100%;
   max-width: 440px;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  animation: envelopeGlideIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: top 0.65s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+  animation: envelopeSlideInCenter 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
 }
 
-@keyframes envelopeGlideIn {
+@keyframes envelopeSlideInCenter {
   0% {
     opacity: 0;
-    transform: translate3d(100vw, 0, 0) rotate(8deg) scale(0.9);
+    transform: translate(100vw, -50%) rotate(8deg) scale(0.9);
   }
   65% {
     opacity: 1;
-    transform: translate3d(-53%, 0, 0) rotate(-1deg) scale(1.01);
+    transform: translate(-53%, -50%) rotate(-1deg) scale(1.01);
   }
   85% {
-    transform: translate3d(-49.5%, 0, 0) rotate(0.4deg) scale(0.998);
+    transform: translate(-49.5%, -50%) rotate(0.4deg) scale(0.998);
   }
   100% {
     opacity: 1;
-    transform: translate3d(-50%, 0, 0) rotate(0deg) scale(1);
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
   }
+}
+
+/* ── Activated State: Envelope Glides to the Top Edge ── */
+.auth-viewport.is-code-active .auth-envelope-wrapper {
+  top: 0;
+  transform: translate(-50%, 0);
+  animation: none;
+}
+
+/* ── Physical Envelope Background (Crisp Bottom Edge & Shadow) ── */
+.auth-envelope-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .auth-envelope-bg {
@@ -146,13 +164,9 @@ html, body {
 
 /* ── Content Stack (Strict 40px Top Gap) ── */
 .auth-content-stack {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 440px;
+  position: relative;
   z-index: 10;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -160,17 +174,11 @@ html, body {
   padding-top: 40px;
   padding-left: 24px;
   padding-right: 24px;
+  padding-bottom: 24px;
   box-sizing: border-box;
-  opacity: 0;
-  animation: contentFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
 }
 
-@keyframes contentFadeIn {
-  0% { opacity: 0; transform: translate3d(-50%, 15px, 0); }
-  100% { opacity: 1; transform: translate3d(-50%, 0, 0); }
-}
-
-/* ── 1. Heading Lockup (Strict 2-Line Figma Structure with 20px gap) ── */
+/* ── 1. Heading Lockup (Strict 2-Line Structure with 20px gap) ── */
 .auth-heading-wrap {
   display: flex;
   flex-direction: column;
@@ -234,7 +242,7 @@ html, body {
   text-transform: uppercase;
 }
 
-/* ── 2. Passcode Input Form (Appears upon seal tap) ── */
+/* ── 2. Passcode Input Form (Expands upon tap) ── */
 .auth-form {
   width: 100%;
   max-width: 356px;
@@ -304,7 +312,7 @@ html, body {
   text-transform: uppercase;
 }
 
-/* ── Error Shake Feedback ── */
+/* ── Error Shake Feedback (Only on actual incorrect code submission) ── */
 .auth-input-pill.has-error {
   animation: authShake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   border-color: #E63946 !important;
@@ -318,10 +326,10 @@ html, body {
   40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 3. Realistic Wax Seal (Authentic 78px Dimensions) ── */
+/* ── 3. Realistic Wax Seal (78px Dimensions) ── */
 .auth-seal-wrap {
   position: relative;
-  margin-top: 22px;
+  margin-top: 24px;
   width: 78px;
   height: 78px;
   display: flex;
@@ -358,7 +366,7 @@ html, body {
   -webkit-user-drag: none;
 }
 
-/* ── 4. "Tap Seal" Message & Pulse ── */
+/* ── 4. "Tap Seal" Message & Pulse (Fades away completely on tap) ── */
 .auth-tap-prompt {
   font-family: 'Spectral', Georgia, serif;
   font-weight: 600;
@@ -372,7 +380,7 @@ html, body {
   opacity: 0.92;
   animation: promptBreathe 2s ease-in-out infinite;
   pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease, max-height 0.35s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
 }
 
 @keyframes promptBreathe {
@@ -381,11 +389,12 @@ html, body {
 }
 
 .auth-viewport.is-code-active .auth-tap-prompt {
-  opacity: 0;
-  transform: translateY(8px);
-  pointer-events: none;
-  max-height: 0;
-  margin: 0;
+  opacity: 0 !important;
+  transform: translateY(8px) !important;
+  pointer-events: none !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  display: none !important;
 }
 
 /* ── 5. Exit / Unlock Motion Sequence ── */
@@ -415,7 +424,7 @@ html, body {
   100% { transform: scale(1.5) rotate(14deg); opacity: 0; filter: drop-shadow(0 0 60px #FFF) drop-shadow(0 0 90px #FFD700); }
 }
 
-.auth-viewport.is-unlocking .auth-envelope-stage {
+.auth-viewport.is-unlocking .auth-envelope-wrapper {
   transform: translate3d(-50%, -40px, 0) scale(1.04);
   opacity: 0;
   transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
@@ -429,56 +438,59 @@ html, body {
 <body>
 
 <main class="auth-viewport" id="auth-viewport">
-  <!-- Physical Envelope with Crisp Defined Bottom Edge & Shadow -->
-  <div class="auth-envelope-stage" aria-hidden="true">
-    <picture>
-      <source srcset="images/auth/envelope_crisp.webp" type="image/webp">
-      <img src="images/auth/envelope_crisp.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="803" height="563">
-    </picture>
-  </div>
-
-  <div class="auth-content-stack">
-    <!-- 1. Heading Lockup (Strict 2-Line Layout with 20px gap) -->
-    <div class="auth-heading-wrap">
-      <p class="auth-eyebrow">YOU HAVE BEEN INVITED!</p>
-      <div class="auth-names">
-        <div class="auth-name-line-1">GARIMA</div>
-        <div class="auth-name-line-2">
-          <span class="auth-ampersand">&amp;</span>
-          <span class="auth-name-text">MRINAL</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2. Passcode Input Form (Revealed on seal tap) -->
-    <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
-      <div class="auth-input-pill" id="auth-pill">
-        <input 
-          type="text" 
-          id="auth-code-input" 
-          class="auth-code-input" 
-          placeholder="ENTER CODE PROVIDED" 
-          aria-label="Wedding Invitation Passcode" 
-          autocomplete="off" 
-          autocorrect="off" 
-          autocapitalize="characters" 
-          spellcheck="false"
-          inputmode="text"
-          enterkeyhint="go"
-          required>
-      </div>
-    </form>
-
-    <!-- 3. Realistic Golden Wax Seal -->
-    <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Tap Wax Seal to Enter Code">
+  <div class="auth-envelope-wrapper" id="auth-envelope-wrapper">
+    <!-- Physical Envelope Background -->
+    <div class="auth-envelope-stage" aria-hidden="true">
       <picture>
-        <source srcset="images/auth/seal_flower.webp" type="image/webp">
-        <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="78" height="78">
+        <source srcset="images/auth/envelope_crisp.webp" type="image/webp">
+        <img src="images/auth/envelope_crisp.png" alt="Wedding Invitation Envelope" class="auth-envelope-bg" width="803" height="563">
       </picture>
     </div>
 
-    <!-- 4. Tap Prompt Message -->
-    <p class="auth-tap-prompt" id="auth-tap-prompt">TAP SEAL TO ENTER CODE</p>
+    <!-- Envelope Content Stack -->
+    <div class="auth-content-stack">
+      <!-- 1. Heading Lockup (Strict 2-Line Layout with 20px gap) -->
+      <div class="auth-heading-wrap">
+        <p class="auth-eyebrow">YOU HAVE BEEN INVITED!</p>
+        <div class="auth-names">
+          <div class="auth-name-line-1">GARIMA</div>
+          <div class="auth-name-line-2">
+            <span class="auth-ampersand">&amp;</span>
+            <span class="auth-name-text">MRINAL</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Passcode Input Form (Expands upon tap) -->
+      <form class="auth-form" id="auth-form" onsubmit="return false;" autocomplete="off">
+        <div class="auth-input-pill" id="auth-pill">
+          <input 
+            type="text" 
+            id="auth-code-input" 
+            class="auth-code-input" 
+            placeholder="ENTER CODE PROVIDED" 
+            aria-label="Wedding Invitation Passcode" 
+            autocomplete="off" 
+            autocorrect="off" 
+            autocapitalize="characters" 
+            spellcheck="false"
+            inputmode="text"
+            enterkeyhint="go"
+            required>
+        </div>
+      </form>
+
+      <!-- 3. Realistic Golden Wax Seal -->
+      <div class="auth-seal-wrap" id="auth-seal-btn" role="button" aria-label="Tap Wax Seal to Enter Code">
+        <picture>
+          <source srcset="images/auth/seal_flower.webp" type="image/webp">
+          <img src="images/auth/seal_flower.png" alt="Golden Flower Wax Seal" class="auth-seal-img" width="78" height="78">
+        </picture>
+      </div>
+
+      <!-- 4. Tap Prompt Message (Vanishes on tap) -->
+      <p class="auth-tap-prompt" id="auth-tap-prompt">TAP SEAL TO ENTER CODE</p>
+    </div>
   </div>
 </main>
 
@@ -493,6 +505,7 @@ html, body {
   var viewport = document.getElementById('auth-viewport');
   var sealBtn = document.getElementById('auth-seal-btn');
   var isCodeActive = false;
+  var isActivating = false;
   var isUnlocking = false;
 
   function normalize(val) {
@@ -528,29 +541,34 @@ html, body {
 
   // ── Activate Passcode Input & Raise Virtual Keyboard ──
   function activateInputAndKeyboard() {
-    if (isUnlocking) return;
-    
-    // 1. Play music immediately on this synchronous user gesture
+    if (isUnlocking || isCodeActive) return;
+    isCodeActive = true;
+    isActivating = true;
+
+    // 1. Play music immediately on this user touch gesture
     ensureAudioPlaying();
 
-    // 2. Expand UI state
-    if (!isCodeActive) {
-      isCodeActive = true;
-      if (viewport) {
-        viewport.classList.add('is-code-active');
-      }
+    // 2. Trigger upward glide to top edge & expand input field
+    if (viewport) {
+      viewport.classList.add('is-code-active');
     }
 
-    // 3. Focus input synchronously to raise keyboard 100% reliably
-    if (input) {
-      input.focus({ preventScroll: true });
-      try {
-        if ('virtualKeyboard' in navigator) {
-          navigator.virtualKeyboard.overlaysContent = true;
-          navigator.virtualKeyboard.show();
-        }
-      } catch(e) {}
-    }
+    // 3. Focus input smoothly after expansion starts to raise keyboard reliably
+    setTimeout(function() {
+      if (input) {
+        input.focus({ preventScroll: true });
+        try {
+          if ('virtualKeyboard' in navigator) {
+            navigator.virtualKeyboard.overlaysContent = true;
+            navigator.virtualKeyboard.show();
+          }
+        } catch(e) {}
+      }
+      // Release activating lockout after transition settles
+      setTimeout(function() {
+        isActivating = false;
+      }, 300);
+    }, 180);
   }
 
   // Bind Seal Tap & Envelope Interaction
@@ -559,7 +577,7 @@ html, body {
       e.preventDefault();
       if (!isCodeActive) {
         activateInputAndKeyboard();
-      } else {
+      } else if (!isActivating) {
         validateAndSubmit();
       }
     });
@@ -572,12 +590,12 @@ html, body {
     });
   }
 
-  // Tapping anywhere on the envelope / screen also awakens the keyboard
+  // Tapping anywhere on the envelope before activation triggers opening
   document.addEventListener('pointerdown', function(e) {
     if (isUnlocking || !input) return;
     if (!isCodeActive) {
       activateInputAndKeyboard();
-    } else {
+    } else if (!isActivating) {
       if (e.target !== input && e.target !== sealBtn && (!sealBtn || !sealBtn.contains(e.target))) {
         if (e.cancelable && e.type !== 'click') {
           e.preventDefault();
@@ -590,7 +608,7 @@ html, body {
   // ── Keyboard Keep-Alive once active ──
   if (input) {
     input.addEventListener('blur', function() {
-      if (isCodeActive && !isUnlocking) {
+      if (isCodeActive && !isUnlocking && !isActivating) {
         requestAnimationFrame(function() {
           input.focus({ preventScroll: true });
         });
@@ -603,11 +621,11 @@ html, body {
     });
   }
 
-  // ── Error Shake Feedback ──
+  // ── Error Shake Feedback (Only on actual code submission) ──
   function triggerError() {
     if (!pill) return;
     pill.classList.remove('has-error');
-    void pill.offsetWidth;
+    void pill.offsetWidth; // Force reflow
     pill.classList.add('has-error');
     setTimeout(function() {
       pill.classList.remove('has-error');
@@ -653,8 +671,13 @@ html, body {
   }
 
   function validateAndSubmit() {
-    if (isUnlocking || !input) return;
+    if (isUnlocking || isActivating || !input) return;
     var norm = normalize(input.value);
+
+    // If input is empty, do not trigger error
+    if (!norm || norm === '') {
+      return;
+    }
 
     // Strict validation: must match complete passcode
     if (VALID_CODES.indexOf(norm) !== -1) {
