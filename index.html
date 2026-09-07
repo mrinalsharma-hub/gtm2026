@@ -716,7 +716,8 @@ body {
               type="text" 
               id="auth-code-input" 
               class="auth-code-input" 
-              placeholder="GTM2026" 
+              value="" 
+              placeholder="" 
               aria-label="Wedding Invitation Passcode" 
               autocomplete="off" 
               autocorrect="off" 
@@ -776,7 +777,7 @@ body {
     sessionStorage.removeItem('gtm2026_music_time');
   } catch(e) {}
 
-  // ── Start Audio Playback from the beginning via Direct User Gesture ──
+  // ── Audio Playback Management (Starts only on successful unlock) ──
   function ensureAudioPlaying(forceStart) {
     try {
       if (window.GTM_AUDIO && window.GTM_AUDIO.play) {
@@ -793,25 +794,23 @@ body {
     isCodeActive = true;
     isActivating = true;
 
-    // 1. Play music immediately on this direct user touch gesture
-    ensureAudioPlaying(true);
-
-    // 2. Trigger active UI state
+    // 1. Trigger active UI state immediately
     if (viewport) {
       viewport.classList.add('is-code-active');
     }
 
-    // 3. SYNCHRONOUS FOCUS for both iOS and Android Web Engines
+    // 2. Ensure input is empty and trigger immediate focus + selection
     if (input) {
+      input.value = '';
+
+      // Direct synchronous focus call within user gesture event loop (vital for iOS Safari keyboard popup)
       try {
         input.focus({ preventScroll: true });
       } catch(e) {
         input.focus();
       }
-      window.scrollTo(0, 0);
-      document.body.scrollTop = 0;
-      if (document.documentElement) document.documentElement.scrollTop = 0;
 
+      // Android Virtual Keyboard API if supported
       try {
         if (navigator.virtualKeyboard) {
           navigator.virtualKeyboard.overlaysContent = true;
@@ -819,19 +818,27 @@ body {
         }
       } catch(e) {}
 
-      // Secondary micro-tick focus to guarantee Android IME brings up the keyboard after DOM reflow
+      // Select field after 1 millisecond as specified
       setTimeout(function() {
         if (input && !isUnlocking) {
-          input.focus({ preventScroll: true });
           try {
-            if (input.setSelectionRange) {
-              var len = input.value.length;
-              input.setSelectionRange(len, len);
-            }
-          } catch(e) {}
+            input.focus({ preventScroll: true });
+          } catch(e) {
+            input.focus();
+          }
+          if (input.select) {
+            input.select();
+          }
+          if (input.setSelectionRange) {
+            input.setSelectionRange(0, input.value.length);
+          }
         }
-      }, 40);
+      }, 1);
     }
+
+    window.scrollTo(0, 0);
+    document.body.scrollTop = 0;
+    if (document.documentElement) document.documentElement.scrollTop = 0;
 
     requestAnimationFrame(function() {
       window.scrollTo(0, 0);
@@ -843,7 +850,7 @@ body {
     }, 300);
   }
 
-  // Prevent any iOS window auto-scroll on input focus or visual viewport resize
+  // Prevent any window auto-scroll on input focus or visual viewport resize
   window.addEventListener('scroll', function() {
     if (window.scrollY !== 0 || window.scrollX !== 0) {
       window.scrollTo(0, 0);
@@ -959,7 +966,7 @@ body {
       sessionStorage.setItem('gtm2026_music_playing', 'true');
     } catch(e) {}
 
-    // 3. Ensure audio is playing
+    // 3. Ensure audio begins playing on valid unlock
     ensureAudioPlaying(false);
 
     // 4. Trigger Exit Motion Sequence
