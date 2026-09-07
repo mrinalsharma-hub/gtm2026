@@ -6,6 +6,7 @@
 <meta name="theme-color" content="#3F151D" id="meta-theme-color">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#3F151D">
 <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3F151D">
+<meta name="color-scheme" content="light">
 <meta name="msapplication-navbutton-color" content="#3F151D">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -60,7 +61,7 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   background-color: #3F151D;
 }
 
@@ -114,7 +115,9 @@ body {
   padding: 0;
   border: none;
   background: #3F151D;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   touch-action: manipulation;
   display: flex;
   flex-direction: column;
@@ -123,18 +126,18 @@ body {
   box-sizing: border-box;
 }
 
-/* ── Main Canvas Wrapper: Exact 440px wide layout geometry from Figma ── */
+/* ── Main Canvas Wrapper: Exact Spacing & Layout Geometry from Figma ── */
 .auth-canvas {
   width: 100%;
   max-width: 440px;
-  height: 100%;
-  max-height: 100dvh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-top: calc(env(safe-area-inset-top, 0px) + clamp(20px, 4.5vh, 42px));
-  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + clamp(20px, 4.5vh, 44px));
+  justify-content: flex-start;
+  /* Exact 80px top padding to top of couple names */
+  padding-top: calc(env(safe-area-inset-top, 0px) + 80px);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 32px);
   padding-left: 20px;
   padding-right: 20px;
   box-sizing: border-box;
@@ -152,60 +155,91 @@ body {
   z-index: 15;
 }
 
+/* Couple Names Lockup - Exact G&M tab typography rules & proportions */
 .auth-names {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  width: 100% !important;
 }
 
+/* Line 1 (Full width centered name: GARIMA or MRINAL) */
+.auth-name-first,
+.auth-name-1,
 .auth-name-line-1 {
-  font-family: 'Kugile', 'Cinzel', Georgia, serif;
-  font-size: clamp(36px, 9.8vw, 44px);
-  line-height: 1.0;
-  letter-spacing: 0.5px;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  width: 100% !important;
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: clamp(38.4px, 11.2vw, 49.6px) !important;
+  font-weight: 400 !important;
+  line-height: 32px !important;
+  letter-spacing: -0.98px !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.35) !important;
+  text-align: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
 }
 
+/* Line 2 Flex Row (& and second name inline baseline aligned) */
+.auth-name-row,
 .auth-name-line-2 {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  justify-content: center;
-  line-height: 1.0;
-  margin-top: 2px;
+  width: 100% !important;
+  height: 32px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: baseline !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
 }
 
+.auth-amp,
 .auth-ampersand {
-  font-family: 'Snell Roundhand', cursive, serif;
-  font-size: clamp(52px, 13.5vw, 62px);
-  color: #FFFFFF;
-  line-height: 0.8;
-  margin-right: 10px;
-  display: inline-block;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  font-family: 'Snell Roundhand', 'SnellRoundhand', cursive, serif !important;
+  font-size: clamp(54.4px, 16vw, 72px) !important;
+  line-height: 32px !important;
+  font-weight: 400 !important;
+  color: #FFFFFF !important;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.35) !important;
+  display: inline-block !important;
+  flex-shrink: 0 !important;
+  margin-right: 14px !important;
 }
 
+/* Line 2 Second Name (Inline block next to &) */
+.auth-name-second,
+.auth-name-2,
 .auth-name-text {
-  font-family: 'Kugile', 'Cinzel', Georgia, serif;
-  font-size: clamp(36px, 9.8vw, 44px);
-  line-height: 1.0;
-  letter-spacing: 0.5px;
-  color: #FFFFFF;
-  text-transform: uppercase;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  font-family: 'Kugile', 'Cinzel', serif !important;
+  font-size: clamp(38.4px, 11.2vw, 49.6px) !important;
+  font-weight: 400 !important;
+  line-height: 32px !important;
+  letter-spacing: -0.98px !important;
+  color: #FFFFFF !important;
+  text-transform: uppercase !important;
+  text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.35) !important;
+  display: inline-block !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
 }
 
-/* ── Subtitle (Swaps smoothly from 'ARE BEGINNING THEIR FOREVER' to 'ENTER THE CODE PROVIDED') ── */
+/* ── Exact 30px gap between Names and Subtitle ── */
 .auth-subtitle-wrap {
   position: relative;
   width: 100%;
-  height: 20px;
-  margin-top: clamp(14px, 2.8vh, 24px);
+  height: 17px;
+  margin-top: 30px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,18 +247,20 @@ body {
 
 .auth-subtitle {
   font-family: 'Spectral', Georgia, serif;
-  font-weight: 700;
-  font-size: 12.5px;
-  line-height: 1;
-  letter-spacing: 2.8px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 120%; /* 14px */
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-align: center;
   color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  text-align: center;
+  height: 17px;
   transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -251,10 +287,10 @@ body {
   pointer-events: auto;
 }
 
-/* ── 2. Passcode Input Pill Box (Auth 2 & Auth 3: 368px x 56px, rx: 12px, #F4DFBC) ── */
+/* ── Passcode Input Pill Box (Auth 2 & Auth 3: 352px x 52px, rx: 12px, #F4DFBC) ── */
 .auth-form-wrap {
   width: 100%;
-  max-width: 368px;
+  max-width: 352px;
   height: 0;
   margin-top: 0;
   opacity: 0;
@@ -268,7 +304,7 @@ body {
 }
 
 .auth-viewport.is-code-active .auth-form-wrap {
-  height: 56px;
+  height: 52px;
   margin-top: 18px;
   opacity: 1;
   pointer-events: auto;
@@ -277,12 +313,12 @@ body {
 
 .auth-form {
   width: 100%;
-  height: 56px;
+  height: 52px;
 }
 
 .auth-input-pill {
   width: 100%;
-  height: 56px;
+  height: 52px;
   background: #F4DFBC;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -312,11 +348,12 @@ body {
 
 .auth-code-input::placeholder {
   font-family: 'Spectral', Georgia, serif;
+  font-style: normal;
   font-weight: 500;
-  font-size: 14px;
-  letter-spacing: 3px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   text-align: center;
-  color: rgba(63, 21, 29, 0.38);
+  color: rgba(63, 21, 29, 0.45);
   text-transform: uppercase;
 }
 
@@ -333,22 +370,22 @@ body {
   40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 3. Middle Section: Vertical Portrait Envelope (320px x 453px ratio from Figma) ── */
+/* ── 2. Middle Section: Vertical Portrait Envelope (+10% increase = 352px width, 40px gap from Subtitle) ── */
 .auth-envelope-wrap {
   position: relative;
-  width: min(320px, 72.7vw);
-  max-width: 320px;
+  width: min(352px, 80vw);
+  max-width: 352px;
   aspect-ratio: 320 / 453;
+  margin-top: 40px !important;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   touch-action: manipulation;
   border-radius: 16px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.3)) drop-shadow(0px 8px 12px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 6px 12px rgba(0, 0, 0, 0.35)) drop-shadow(0px 12px 24px rgba(0, 0, 0, 0.25));
   transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
   z-index: 10;
-  margin: auto 0;
 }
 
 .auth-envelope-img {
@@ -383,7 +420,7 @@ body {
   height: 88px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 215, 60, 0.25) 0%, rgba(255, 135, 25, 0.16) 45%, rgba(220, 60, 10, 0.05) 70%, transparent 85%);
+  background: radial-gradient(circle, rgba(255, 215, 60, 0.28) 0%, rgba(255, 135, 25, 0.18) 45%, rgba(220, 60, 10, 0.05) 70%, transparent 85%);
   pointer-events: none;
   opacity: 0.45;
   filter: blur(12px);
@@ -412,9 +449,10 @@ body {
   transform: translateY(12px);
 }
 
-/* ── 4. Bottom Section: Instruction Prompt ── */
+/* ── 3. Bottom Section: Instruction Prompt (Exact 40px gap below envelope) ── */
 .auth-bottom-stack {
   width: 100%;
+  margin-top: 40px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -425,15 +463,16 @@ body {
 
 .auth-tap-prompt {
   font-family: 'Spectral', Georgia, serif;
+  font-style: normal;
   font-weight: 600;
   font-size: 12px;
-  line-height: 1.45;
-  letter-spacing: 2.4px;
+  line-height: 120%; /* or 14px */
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #FFFFFF;
   text-align: center;
+  color: #FFFFFF;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
-  opacity: 0.92;
+  opacity: 0.95;
   animation: promptBreathe 2.4s ease-in-out infinite;
   cursor: pointer;
   touch-action: manipulation;
@@ -441,6 +480,7 @@ body {
 
 .auth-tap-prompt span {
   display: block;
+  line-height: 120%;
 }
 
 @keyframes promptBreathe {
@@ -454,7 +494,7 @@ body {
   pointer-events: none;
 }
 
-/* ── 5. Exit / Unlock Motion Sequence ── */
+/* ── 4. Exit / Unlock Motion Sequence ── */
 .auth-viewport.is-unlocking {
   pointer-events: none;
 }
@@ -484,10 +524,10 @@ body {
     <!-- ── 1. Top Section: Typography Lockup & Subtitle ── -->
     <div class="auth-top-stack">
       <div class="auth-names">
-        <h1 class="auth-name-line-1">GARIMA</h1>
-        <div class="auth-name-line-2">
-          <span class="auth-ampersand">&amp;</span>
-          <span class="auth-name-text">MRINAL</span>
+        <h1 class="auth-name-line-1 auth-name auth-name-first auth-name-1" id="auth-name-1">GARIMA</h1>
+        <div class="auth-name-line-2 auth-name-row">
+          <span class="auth-ampersand auth-amp">&amp;</span>
+          <span class="auth-name-text auth-name auth-name-second auth-name-2" id="auth-name-2">MRINAL</span>
         </div>
       </div>
 
@@ -519,7 +559,7 @@ body {
       </div>
     </div>
 
-    <!-- ── 2. Middle Section: Vertical Portrait Envelope ── -->
+    <!-- ── 2. Middle Section: Vertical Portrait Envelope (+10% size) ── -->
     <div class="auth-envelope-wrap" id="auth-envelope-btn" role="button" aria-label="Tap envelope to open invitation">
       <picture>
         <source srcset="images/auth/envelope_portrait.webp" type="image/webp">
@@ -529,7 +569,7 @@ body {
       <div class="auth-seal-pulse-anchor" aria-hidden="true"></div>
     </div>
 
-    <!-- ── 3. Bottom Section: Instruction Prompt ── -->
+    <!-- ── 3. Bottom Section: Instruction Prompt (40px below envelope) ── -->
     <div class="auth-bottom-stack">
       <p class="auth-tap-prompt" id="auth-tap-prompt">
         <span>TAP THE ENVELOPE</span>
