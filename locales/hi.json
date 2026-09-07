@@ -1,6 +1,6 @@
 {
   "global.title": "गरिमा संग मृणाल · नैनीताल २०२६",
-  "global.meta_desc": "गरिमा संग मृणाल · कुमाऊं की पहाड़ियों में विवाह · २०–२२ नवंबर २०२६ · नैनीताल, उत्तराखंड",
+  "global.meta_desc": "गरिमा और मृणाल का विवाह समारोह · २०–२२ नवंबर २०२६ · नैनीताल, उत्तराखंड",
   "global.nav.gm": "ग & म",
   "global.nav.travel_stay": "यात्रा और प्रवास",
   "global.nav.celebrations": "समारोह",
@@ -141,8 +141,8 @@
   "invite.ctl.skip": "आगे बढ़ें ›",
   "invite.ctl.replay": "↻ पुनः देखें",
   "auth.title": "गरिमा संग मृणाल · निमंत्रण प्रवेशद्वार",
-  "auth.forever": "एक नए जीवन का शुभारंभ",
-  "auth.enter_code": "कृपया निमंत्रण कोड दर्ज करें",
+  "auth.forever": "हमारे साथ इस उत्सव में सम्मिलित हों",
+  "auth.enter_code": "कृपया अपना निमंत्रण कोड दर्ज करें",
   "auth.tap_prompt": "निमंत्रण खोलने के लिए लिफाफे पर स्पर्श करें",
   "auth.error_message": "अमान्य कोड, कृपया पुनः प्रयास करें।",
   "auth.passcodes": "gtm2026, mrinalgarima, garimamrinal, 2026, nainital"
