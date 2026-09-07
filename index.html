@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" style="background-color: #170406; background: #170406;">
 <head>
-<script>
-(function() {
-  function getCookie(name) {
-    var value = '; ' + document.cookie;
-    var parts = value.split('; ' + name + '=');
-    if (parts.length === 2) return parts.pop().split(';').shift();
-    return null;
-  }
-  // Check if already authenticated via cookie or storage
-  var isAuth = getCookie('gtm2026_auth') === 'true' ||
-               getCookie('gtm2026_has_authenticated') === 'true' ||
-               localStorage.getItem('gtm2026_auth') === 'true' ||
-               localStorage.getItem('gtm2026_has_authenticated') === 'true' ||
-               localStorage.getItem('wedding_access_key');
-  if (isAuth) {
-    window.location.replace('G&M.html');
-  }
-})();
-</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#170406" id="meta-theme-color">
@@ -671,6 +652,7 @@ body {
       localStorage.setItem('wedding_access_key', code);
       localStorage.setItem('gtm2026_music_playing', 'true');
       sessionStorage.setItem('gtm2026_auth', 'true');
+      sessionStorage.setItem('wedding_access_key', code);
       sessionStorage.setItem('gtm2026_music_playing', 'true');
     } catch(e) {}
 

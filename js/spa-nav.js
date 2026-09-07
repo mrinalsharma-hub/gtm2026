@@ -2,6 +2,8 @@
 (function() {
   'use strict';
 
+  var VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal'];
+
   function normalizePath(url) {
     if (!url) return 'index.html';
     var path = url.split('?')[0].split('#')[0].split('/').pop();
@@ -31,23 +33,25 @@
   }
 
   function isAuthenticated() {
-    return true;
-  }
-
-  function setPersistentAuth() {
     try {
-      sessionStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_auth', 'true');
-      localStorage.setItem('gtm2026_has_authenticated', 'true');
-      var maxAge = 365 * 24 * 60 * 60;
-      document.cookie = 'gtm2026_auth=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
-      document.cookie = 'gtm2026_has_authenticated=true; max-age=' + maxAge + '; path=/; SameSite=Lax';
+      var key = localStorage.getItem('wedding_access_key') || sessionStorage.getItem('wedding_access_key');
+      if (key && VALID_CODES.indexOf(String(key).trim().toLowerCase()) !== -1) {
+        return true;
+      }
+      var authFlag = localStorage.getItem('gtm2026_auth') || sessionStorage.getItem('gtm2026_auth') || getCookie('gtm2026_auth');
+      if (authFlag === 'true' || (authFlag && VALID_CODES.indexOf(String(authFlag).trim().toLowerCase()) !== -1)) {
+        return true;
+      }
     } catch(e) {}
+    return false;
   }
-
-  setPersistentAuth();
 
   function checkAuthGuard() {
+    var currentNorm = normalizePath(window.location.pathname);
+    if (currentNorm !== 'index.html' && !isAuthenticated()) {
+      window.location.replace('index.html');
+      return false;
+    }
     return true;
   }
 
@@ -151,11 +155,7 @@
 
     // If unauthenticated and trying to go to protected pages
     if (targetNorm !== 'index.html' && !isAuthenticated()) {
-      if (window.handleOpenDetails) {
-        window.handleOpenDetails();
-      } else {
-        window.location.href = 'index.html';
-      }
+      window.location.replace('index.html');
       return;
     }
 
@@ -413,11 +413,7 @@
     // If unauthenticated and clicking a locked tab
     if (!isAuthenticated() && targetNorm !== 'index.html') {
       if (e) { e.preventDefault(); e.stopPropagation(); }
-      if (window.handleOpenDetails) {
-        window.handleOpenDetails(e);
-      } else {
-        window.location.href = 'index.html';
-      }
+      window.location.replace('index.html');
       return;
     }
 
