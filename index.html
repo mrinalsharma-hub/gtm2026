@@ -455,14 +455,14 @@ body {
   40%, 60% { transform: translate3d(7px, 0, 0); }
 }
 
-/* ── 2. Middle Section: Vertical Portrait Envelope (+10% increase = 352px width, 40px gap from Subtitle) ── */
+/* ── 2. Middle Section: Vertical Portrait Envelope (+10% increase = 352px width, 30px gap from Subtitle) ── */
 /* Natural physical slide in from below the viewport (20% slowed: 2.0s duration) */
 .auth-envelope-wrap {
   position: relative;
   width: min(352px, 80vw);
   max-width: 352px;
   aspect-ratio: 320 / 453;
-  margin-top: 40px !important;
+  margin-top: 30px !important;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -612,10 +612,10 @@ body {
   transform: translateY(12px) !important;
 }
 
-/* ── 3. Bottom Section: Instruction Prompt (Exact 40px gap below envelope) - 20% slowed ── */
+/* ── 3. Bottom Section: Instruction Prompt (Exact 30px gap below envelope) - 20% slowed ── */
 .auth-bottom-stack {
   width: 100%;
-  margin-top: 40px !important;
+  margin-top: 30px !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -747,7 +747,7 @@ body {
       </div>
     </div>
 
-    <!-- ── 3. Bottom Section: Instruction Prompt (40px below envelope) ── -->
+    <!-- ── 3. Bottom Section: Instruction Prompt (30px below envelope) ── -->
     <div class="auth-bottom-stack">
       <p class="auth-tap-prompt" id="auth-tap-prompt" data-i18n="auth.tap_prompt">TAP THE ENVELOPE TO OPEN</p>
     </div>
