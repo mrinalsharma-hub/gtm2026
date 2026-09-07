@@ -75,7 +75,7 @@ html {
   background-color: #170406 !important;
   border: none !important;
   outline: none !important;
-  touch-action: none;
+  touch-action: manipulation;
 }
 
 body {
@@ -94,7 +94,7 @@ body {
   outline: none !important;
   font-family: 'Spectral', Georgia, serif;
   color: #FFFFFF;
-  touch-action: none;
+  touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
   -webkit-text-size-adjust: 100%;
@@ -112,7 +112,7 @@ body {
   border: none;
   background: radial-gradient(circle at 50% 40%, #2A090E 0%, #170406 75%, #0E0204 100%);
   overflow: hidden;
-  touch-action: none;
+  touch-action: manipulation;
   perspective: 1200px;
 }
 
@@ -265,24 +265,24 @@ body {
 .auth-form {
   width: 100%;
   max-width: 356px;
+  height: 52px;
   margin-top: 0;
-  max-height: 0;
   opacity: 0;
-  overflow: hidden;
-  transform: scale(0.92) translateY(-10px);
-  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
-              opacity 0.4s ease, 
-              transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), 
+  pointer-events: none;
+  transform: scale(0.92) translateY(-8px);
+  transition: opacity 0.35s ease, 
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
               margin-top 0.4s ease;
   position: relative;
+  display: none;
 }
 
 .auth-viewport.is-code-active .auth-form {
-  max-height: 70px;
+  display: block;
   opacity: 1;
+  pointer-events: auto;
   transform: scale(1) translateY(0);
   margin-top: 20px;
-  overflow: visible;
 }
 
 .auth-input-pill {
@@ -594,7 +594,7 @@ body {
     } catch(e) {}
   }
 
-  // ── Activate Passcode Input & Raise Virtual Keyboard (Synchronous for iOS Safari) ──
+  // ── Activate Passcode Input & Raise Virtual Keyboard (Universal for iOS & Android) ──
   function activateInputAndKeyboard() {
     if (isUnlocking || isCodeActive) return;
     isCodeActive = true;
@@ -608,7 +608,7 @@ body {
       viewport.classList.add('is-code-active');
     }
 
-    // 3. SYNCHRONOUS FOCUS with preventScroll to stop iOS Safari window displacement
+    // 3. SYNCHRONOUS FOCUS for both iOS and Android Web Engines
     if (input) {
       try {
         input.focus({ preventScroll: true });
@@ -618,12 +618,26 @@ body {
       window.scrollTo(0, 0);
       document.body.scrollTop = 0;
       if (document.documentElement) document.documentElement.scrollTop = 0;
+
       try {
-        if ('virtualKeyboard' in navigator) {
+        if (navigator.virtualKeyboard) {
           navigator.virtualKeyboard.overlaysContent = true;
           navigator.virtualKeyboard.show();
         }
       } catch(e) {}
+
+      // Secondary micro-tick focus to guarantee Android IME brings up the keyboard after DOM reflow
+      setTimeout(function() {
+        if (input && !isUnlocking) {
+          input.focus({ preventScroll: true });
+          try {
+            if (input.setSelectionRange) {
+              var len = input.value.length;
+              input.setSelectionRange(len, len);
+            }
+          } catch(e) {}
+        }
+      }, 40);
     }
 
     // Lock scroll offset at 0 on animation frame and completion
@@ -667,21 +681,18 @@ body {
   var promptEl = document.getElementById('auth-tap-prompt');
   if (promptEl) {
     promptEl.addEventListener('click', function(e) {
-      e.preventDefault();
       if (!isCodeActive) activateInputAndKeyboard();
     });
     promptEl.addEventListener('touchend', function(e) {
       if (!isCodeActive) {
-        e.preventDefault();
         activateInputAndKeyboard();
       }
-    });
+    }, { passive: true });
   }
 
   // Bind Seal Tap & Envelope Interaction
   if (sealBtn) {
     sealBtn.addEventListener('click', function(e) {
-      e.preventDefault();
       if (!isCodeActive) {
         activateInputAndKeyboard();
       } else if (!isActivating) {
@@ -691,10 +702,9 @@ body {
 
     sealBtn.addEventListener('touchend', function(e) {
       if (!isCodeActive) {
-        e.preventDefault();
         activateInputAndKeyboard();
       }
-    });
+    }, { passive: true });
   }
 
   // Tapping anywhere on the envelope before activation triggers opening
@@ -702,15 +712,8 @@ body {
     if (isUnlocking || !input) return;
     if (!isCodeActive) {
       activateInputAndKeyboard();
-    } else if (!isActivating) {
-      if (e.target !== input && e.target !== sealBtn && (!sealBtn || !sealBtn.contains(e.target))) {
-        if (e.cancelable && e.type !== 'click') {
-          e.preventDefault();
-        }
-        input.focus({ preventScroll: true });
-      }
     }
-  }, { passive: false });
+  }, { passive: true });
 
   // ── Keyboard Keep-Alive once active ──
   if (input) {
