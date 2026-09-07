@@ -64,14 +64,16 @@
     } else if (targetNorm === 'celebrations.html' || targetNorm === 'travel&stay.html' || targetNorm === 'rsvp.html' || targetNorm === 'joinus.html') {
       themeColor = '#FFEFD4'; // Cream for Celebrations, Travel, and RSVP
     } else if (targetNorm === 'G&M.html') {
-      themeColor = '#471618'; // Deep Burgundy Maroon for Home (G&M)
+      themeColor = '#3F151D'; // Deep Burgundy Maroon for Home (G&M)
     }
 
     if (document.documentElement) {
       document.documentElement.style.backgroundColor = themeColor;
+      document.documentElement.style.background = themeColor;
     }
     if (document.body) {
       document.body.style.backgroundColor = themeColor;
+      document.body.style.background = themeColor;
     }
 
     // Force iOS Safari to re-tint the top status bar & browser address bar
