@@ -452,13 +452,16 @@ body {
   top: 50% !important;
   left: 50% !important;
   transform: translate(-50%, -50%) !important;
+  -webkit-transform: translate(-50%, -50%) !important;
   width: 40.78% !important; /* Reduced by 10% from 45.3125% */
   height: 40.78% !important;
   pointer-events: none !important;
-  z-index: 5 !important;
+  z-index: 25 !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
+  animation: none !important;
+  -webkit-animation: none !important;
 }
 
 .gxm-vinyl-center-icon svg {
@@ -469,6 +472,8 @@ body {
   display: block !important;
   transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
   pointer-events: none !important;
+  animation: none !important;
+  -webkit-animation: none !important;
 }
 
 .gxm-icon-play {
