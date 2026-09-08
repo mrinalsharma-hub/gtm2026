@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" style="background-color: #3F151D; background: #3F151D;">
+<html lang="en" style="background-color: #FFEFD4; background: #FFEFD4;">
 <head>
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=35000">
 <script>
 (function() {
-  function applyTheme() {
-    var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
-    lightMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
-    var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
-    darkMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+  function applyCream() {
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    metas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
     var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
-    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'dark');
+    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light');
+    var statusMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    if (statusMeta) statusMeta.setAttribute('content', 'default');
     if (document.documentElement) {
-      document.documentElement.style.backgroundColor = '#3F151D';
-      document.documentElement.style.background = '#3F151D';
+      document.documentElement.style.backgroundColor = '#FFEFD4';
+      document.documentElement.style.background = '#FFEFD4';
     }
     if (document.body) {
-      document.body.style.backgroundColor = '#3F151D';
-      document.body.style.background = '#3F151D';
+      document.body.style.backgroundColor = '#FFEFD4';
+      document.body.style.background = '#FFEFD4';
     }
   }
-  applyTheme();
+  applyCream();
 
   function getCookie(name) {
     var value = '; ' + document.cookie;
@@ -42,17 +42,20 @@
 })();
 </script>
 <meta charset="UTF-8">
+<meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, interactive-widget=overlays-content">
-<meta name="theme-color" content="#3F151D" id="meta-theme-color">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#3F151D">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3F151D">
-<meta name="msapplication-navbutton-color" content="#3F151D">
-<meta name="color-scheme" content="dark">
+
+
+
+<meta name="msapplication-navbutton-color" content="#FFEFD4">
+<meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="M&amp;G 2026">
 <title data-i18n="global.title">Mrinal &amp; Garima · Nainital 2026</title>
@@ -64,6 +67,7 @@
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=35000">
 
 <!-- ── Resource Preloads ── -->
+<link rel="preload" as="image" href="images/celebrations/bg_motif_celebrations.webp?v=24700" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/home/vinyl_record.webp?v=26500" type="image/webp" fetchpriority="high">
 <link rel="preload" as="image" href="images/home/vinyl_record_pause.webp?v=26500" type="image/webp">
 <link rel="preload" as="image" href="images/player_figma_play.svg?v=24700" type="image/svg+xml">
@@ -99,7 +103,7 @@
 }
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
   --theme-color: #3F151D;
   --crimson-velvet: #3F151D;
   --geru-deep: #A71F23;
@@ -137,8 +141,8 @@ html {
   width: 100% !important;
   height: 100% !important;
   height: 100dvh !important;
-  background: #3F151D !important;
-  background-color: #3F151D !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
   overflow: hidden !important;
 }
 
@@ -150,8 +154,8 @@ body {
   height: 100dvh !important;
   margin: 0 !important;
   padding: 0 !important;
-  background: #3F151D !important;
-  background-color: #3F151D !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
   font-family: 'Spectral', Georgia, serif;
   overflow: hidden !important;
   overscroll-behavior: none !important;
@@ -161,7 +165,47 @@ body {
   align-items: center;
 }
 
-/* ── 1. Edge-to-Edge Main Stage ── */
+/* ── 1. Page Background Canvas (Botanical Texture & Glow Matching Celebrations & Stay) ── */
+.celebrations-bg-layer {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  overflow: hidden !important;
+  background: #FFEFD4 !important;
+  background-color: #FFEFD4 !important;
+}
+
+.celebrations-botanical-art-layer {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background-image: url('images/celebrations/bg_motif_celebrations.webp?v=24700') !important;
+  background-repeat: repeat !important;
+  background-position: top center !important;
+  background-size: 388px 291px !important;
+  opacity: 0.16 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+.celebrations-radial-glow {
+  position: absolute !important;
+  top: 40px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 480px !important;
+  height: 480px !important;
+  background: radial-gradient(circle, rgba(255, 253, 249, 0.65) 0%, rgba(255, 239, 213, 0) 70%) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* ── 2. Edge-to-Edge Main Stage ── */
 .gxm-stage {
   position: fixed !important;
   inset: 0 !important;
@@ -172,12 +216,13 @@ body {
   margin: 0 !important;
   padding: 0 !important;
   overflow: hidden !important;
-  background: #3F151D !important;
-  background-color: #3F151D !important;
+  background: transparent !important;
+  background-color: transparent !important;
   display: flex !important;
   flex-direction: column !important;
   justify-content: flex-end !important;
   align-items: center !important;
+  z-index: 2 !important;
 }
 
 /* Viewport above the fixed bottom navigation bar: 100% Edge-to-Edge on all iOS & Android screens */
@@ -722,9 +767,15 @@ body {
 }
 </style>
 </head>
-<body class="home-page" data-page="gm" style="background-color: #3F151D; background: #3F151D;">
+<body class="home-page" data-page="gm" style="background-color: #FFEFD4; background: #FFEFD4;">
 
   <!-- ── Main Keepsake Stage (Edge-to-Edge) ── -->
+    <!-- ── Page Background Canvas (Botanical Texture & Glow Behind Envelope & Items) ── -->
+  <div class="celebrations-bg-layer" aria-hidden="true">
+    <div class="celebrations-botanical-art-layer"></div>
+    <div class="celebrations-radial-glow"></div>
+  </div>
+
   <main class="gxm-stage" role="main">
 
     <div class="gxm-viewport">
@@ -749,9 +800,6 @@ body {
         <!-- ── Inlined Background Artwork SVG ── -->
         <svg class="gxm-svg-canvas" preserveAspectRatio="none" width="440" height="755" viewBox="0 0 440 755" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g clip-path="url(#clip0_554_2091)">
-<rect width="440" height="755" fill="#3F151D"/>
-<rect width="440" height="755" fill="url(#pattern0_554_2091)" fill-opacity="0.2" style="mix-blend-mode:plus-darker"/>
-<path d="M0 0H445V225H0V0Z" fill="url(#pattern2_554_2091)"/>
 <image id="image2_554_2091" x="0" y="222" width="440" height="533" preserveAspectRatio="none" href="images/home/envelope_bottom.webp?v=26700" xlink:href="images/home/envelope_bottom.webp?v=26700"/>
 <g filter="url(#filter0_d_554_2091)">
 <rect width="248.704" height="240.414" transform="matrix(-0.998662 0.0517142 0.0517142 0.998662 206.856 -30.9249)" fill="url(#pattern4_554_2091)" shape-rendering="crispEdges"/>
@@ -1069,22 +1117,24 @@ body {
     window.addEventListener('gtm:page-loaded', updateCountdownTicker);
   })();
 
-  /* ── Theme Color Enforcement (Deep Burgundy #3F151D) ── */
+  /* ── Theme Color Enforcement (#FFEFD4 Cream) ── */
   document.addEventListener('DOMContentLoaded', function() {
     function enforceThemeColor() {
       if (window.ensureThemeColor) {
-        window.ensureThemeColor();
+        window.ensureThemeColor('G&M.html');
         return;
       }
       var metas = document.querySelectorAll('meta[name="theme-color"]');
       metas.forEach(function(m) {
-        m.setAttribute('content', '#3F151D');
+        m.setAttribute('content', '#FFEFD4');
       });
+      var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+      if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light');
       if (document.documentElement) {
-        document.documentElement.style.backgroundColor = '#3F151D';
+        document.documentElement.style.backgroundColor = '#FFEFD4';
       }
       if (document.body) {
-        document.body.style.backgroundColor = '#3F151D';
+        document.body.style.backgroundColor = '#FFEFD4';
       }
     }
 

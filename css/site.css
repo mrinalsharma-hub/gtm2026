@@ -70,7 +70,7 @@
 }
 
 :root{
-  color-scheme: dark;
+  color-scheme: light;
   --bg-gradient: radial-gradient(circle 800px at 50% 20%, #B42425 0%, #AC2525 30%, #761219 60%, #3E050A 100%);
   --bg-color: #AC2525;
   --gold: #FFDF85;

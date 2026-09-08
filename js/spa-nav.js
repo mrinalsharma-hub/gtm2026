@@ -57,9 +57,8 @@
 
   function ensureThemeColor(targetNorm) {
     targetNorm = targetNorm || normalizePath(window.location.pathname);
-    var isDarkPage = (targetNorm === "index.html" || targetNorm === "auth" || targetNorm === "G&M.html");
-    var themeColor = isDarkPage ? "#3F151D" : "#FFEFD4";
-    var darkThemeColor = "#3F151D"; // Dark mode always uses #3F151D to guarantee crisp white text in dark mode omnibox
+    var isAuth = (targetNorm === "index.html" || targetNorm === "auth");
+    var themeColor = isAuth ? "#3F151D" : "#FFEFD4";
 
     if (document.documentElement) {
       document.documentElement.style.backgroundColor = themeColor;
@@ -70,51 +69,53 @@
       document.body.style.background = themeColor;
     }
 
-    // Ensure color-scheme is set to 'dark' for G&M/index (forces white font in Chrome) or 'light dark' for cream pages
+    // Set color-scheme to 'light' for all tabs (ensures cream status bar and address bar on Safari iOS & Chrome), 'dark' only on auth
     var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
     if (!colorSchemeMeta) {
       colorSchemeMeta = document.createElement('meta');
       colorSchemeMeta.name = 'color-scheme';
       document.head.appendChild(colorSchemeMeta);
     }
-    colorSchemeMeta.setAttribute('content', isDarkPage ? 'dark' : 'light dark');
+    colorSchemeMeta.setAttribute('content', isAuth ? 'dark' : 'light');
 
-    // Update meta[name="theme-color"] tags directly without removing elements (prevents Chrome Android toolbar flicker)
-    var baseMeta = document.querySelector('meta[name="theme-color"]:not([media])');
-    if (!baseMeta) {
-      baseMeta = document.createElement('meta');
+    // Update meta[name="theme-color"] tags directly without removing elements (prevents toolbar flicker)
+    var metaTags = document.querySelectorAll('meta[name="theme-color"]');
+    if (metaTags.length > 0) {
+      metaTags.forEach(function(m) {
+        if (m.getAttribute('content') !== themeColor) {
+          m.setAttribute('content', themeColor);
+        }
+      });
+    } else {
+      var baseMeta = document.createElement('meta');
       baseMeta.name = 'theme-color';
       baseMeta.id = 'meta-theme-color';
+      baseMeta.content = themeColor;
       document.head.appendChild(baseMeta);
-    }
-    baseMeta.setAttribute('content', themeColor);
 
-    var lightMeta = document.querySelector('meta[name="theme-color"][media*="light"]');
-    if (!lightMeta) {
-      lightMeta = document.createElement('meta');
+      var lightMeta = document.createElement('meta');
       lightMeta.name = 'theme-color';
       lightMeta.setAttribute('media', '(prefers-color-scheme: light)');
+      lightMeta.content = themeColor;
       document.head.appendChild(lightMeta);
-    }
-    lightMeta.setAttribute('content', themeColor);
 
-    var darkMeta = document.querySelector('meta[name="theme-color"][media*="dark"]');
-    if (!darkMeta) {
-      darkMeta = document.createElement('meta');
+      var darkMeta = document.createElement('meta');
       darkMeta.name = 'theme-color';
       darkMeta.setAttribute('media', '(prefers-color-scheme: dark)');
+      darkMeta.content = themeColor;
       document.head.appendChild(darkMeta);
     }
-    darkMeta.setAttribute('content', isDarkPage ? themeColor : darkThemeColor);
 
     var statusMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
     if (statusMeta) {
-      statusMeta.setAttribute('content', isDarkPage ? 'black-translucent' : 'default');
+      statusMeta.setAttribute('content', isAuth ? 'black-translucent' : 'default');
     }
 
     var msMeta = document.querySelector('meta[name="msapplication-navbutton-color"]');
     if (msMeta) {
-      msMeta.setAttribute('content', themeColor);
+      if (msMeta.getAttribute('content') !== themeColor) {
+        msMeta.setAttribute('content', themeColor);
+      }
     }
   }
   window.ensureThemeColor = ensureThemeColor;

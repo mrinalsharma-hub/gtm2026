@@ -5,14 +5,20 @@
 <script>
 (function() {
   function applyCream() {
-    var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
-    lightMetas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
-    var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
-    darkMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+    var metas = document.querySelectorAll('meta[name="theme-color"]');
+    metas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
     var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
-    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light dark');
-    if (document.documentElement) document.documentElement.style.backgroundColor = '#FFEFD4';
-    if (document.body) document.body.style.backgroundColor = '#FFEFD4';
+    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light');
+    var statusMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    if (statusMeta) statusMeta.setAttribute('content', 'default');
+    if (document.documentElement) {
+      document.documentElement.style.backgroundColor = '#FFEFD4';
+      document.documentElement.style.background = '#FFEFD4';
+    }
+    if (document.body) {
+      document.body.style.backgroundColor = '#FFEFD4';
+      document.body.style.background = '#FFEFD4';
+    }
   }
   applyCream();
 
@@ -35,12 +41,15 @@
 })();
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
 <meta name="theme-color" content="#FFEFD4" id="meta-theme-color">
 <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FFEFD4">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#3F151D">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#FFEFD4">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+
+
 <meta name="msapplication-navbutton-color" content="#FFEFD4">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
@@ -89,7 +98,7 @@
 }
 
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
   --theme-color: #A71F23;
 }
 
@@ -1496,7 +1505,7 @@ body.sheet-modal-open .fixed-bottom-nav {
   updateParallax();
 })();
 
-/* ── Celebrations Address Bar Theme Watchdog (#FFEFD4 Cream / #3F151D Dark) ── */
+/* ── Celebrations Address Bar Theme Watchdog (#FFEFD4 Cream) ── */
 (function() {
   function enforceCreamTheme() {
     var path = (window.location.pathname || '').toLowerCase();
@@ -1506,16 +1515,12 @@ body.sheet-modal-open .fixed-bottom-nav {
         window.ensureThemeColor('celebrations.html');
         return;
       }
-      var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
-      lightMetas.forEach(function(m) {
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      metas.forEach(function(m) {
         if (m.getAttribute('content') !== '#FFEFD4') m.setAttribute('content', '#FFEFD4');
       });
-      var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
-      darkMetas.forEach(function(m) {
-        if (m.getAttribute('content') !== '#3F151D') m.setAttribute('content', '#3F151D');
-      });
       var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
-      if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light dark');
+      if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'light');
       if (document.documentElement && document.documentElement.style.backgroundColor !== 'rgb(255, 239, 212)' && document.documentElement.style.backgroundColor !== '#FFEFD4') {
         document.documentElement.style.backgroundColor = '#FFEFD4';
       }
