@@ -941,7 +941,7 @@ body {
     }, 600);
   }
 
-  // ── Unlock & Seamless SPA Transition Sequence ──
+  // ── Unlock & Direct Navigation Transition Sequence ──
   function handleSuccessfulUnlock(code) {
     if (isUnlocking) return;
     isUnlocking = true;
@@ -963,26 +963,40 @@ body {
       sessionStorage.removeItem('gtm2026_music_time');
     } catch(e) {}
 
-    // 3. Trigger audio from beginning on entering home tab
+    // 3. Immediately apply cream theme styles and meta tags
+    try {
+      var metas = document.querySelectorAll('meta[name="theme-color"]');
+      metas.forEach(function(m) { m.setAttribute('content', '#FFEFD4'); });
+      var cs = document.querySelector('meta[name="color-scheme"]');
+      if (cs) cs.setAttribute('content', 'light');
+      var sm = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+      if (sm) sm.setAttribute('content', 'default');
+      if (document.documentElement) {
+        document.documentElement.style.backgroundColor = '#FFEFD4';
+        document.documentElement.style.background = '#FFEFD4';
+      }
+      if (document.body) {
+        document.body.style.backgroundColor = '#FFEFD4';
+        document.body.style.background = '#FFEFD4';
+      }
+    } catch(e) {}
+
+    // 4. Trigger audio from beginning on entering home tab
     try {
       if (window.GTM_AUDIO && window.GTM_AUDIO.playFromStart) {
         window.GTM_AUDIO.playFromStart();
       }
     } catch(e) {}
 
-    // 4. Trigger Exit Motion Sequence
+    // 5. Trigger Exit Motion Sequence
     if (viewport) {
       viewport.classList.add('is-unlocking');
     }
 
-    // 5. Seamless SPA transition to G&M.html (preserves audio playback without iOS user gesture loss)
+    // 6. Direct navigation to G&M.html (forces iOS Safari to initialize fresh status bar & address bar in cream #FFEFD4)
     setTimeout(function() {
-      if (window.GTM_SPA && window.GTM_SPA.navigateTo) {
-        window.GTM_SPA.navigateTo('G&M.html', true);
-      } else {
-        window.location.replace('G&M.html');
-      }
-    }, 500);
+      window.location.replace('G%26M.html');
+    }, 450);
   }
 
   function validateAndSubmit() {
