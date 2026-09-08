@@ -4,24 +4,52 @@
   <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png?v=35000">
 <script>
 (function() {
-  function applyAuthTheme() {
-    var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
-    lightMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
-    var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
-    darkMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
-    var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
-    if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'dark');
+  function getCookie(name) {
+    var value = '; ' + document.cookie;
+    var parts = value.split('; ' + name + '=');
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+  }
+  var VALID_CODES = ['gtm2026', 'mrinalgarima', 'garimamrinal', '2026', 'nainital', 'garima', 'mrinal'];
+  var isAuthed = false;
+  try {
+    var key = (localStorage.getItem('wedding_access_key') || sessionStorage.getItem('wedding_access_key') || '').trim().toLowerCase();
+    if (key && VALID_CODES.indexOf(key) !== -1) isAuthed = true;
+    var authFlag = localStorage.getItem('gtm2026_auth') || sessionStorage.getItem('gtm2026_auth') || getCookie('gtm2026_auth');
+    if (authFlag === 'true' || (authFlag && VALID_CODES.indexOf(String(authFlag).trim().toLowerCase()) !== -1)) isAuthed = true;
+    if (localStorage.getItem('gtm2026_has_authenticated') === 'true' || getCookie('gtm2026_has_authenticated') === 'true') isAuthed = true;
+  } catch(e) {}
+
+  if (isAuthed) {
     if (document.documentElement) {
-      document.documentElement.style.backgroundColor = '#3F151D';
-      document.documentElement.style.background = '#3F151D';
+      document.documentElement.style.backgroundColor = '#FFEFD4';
+      document.documentElement.style.background = '#FFEFD4';
     }
     if (document.body) {
-      document.body.style.backgroundColor = '#3F151D';
-      document.body.style.background = '#3F151D';
+      document.body.style.backgroundColor = '#FFEFD4';
+      document.body.style.background = '#FFEFD4';
     }
+    window.location.replace('G%26M.html');
+  } else {
+    function applyAuthTheme() {
+      var lightMetas = document.querySelectorAll('meta[name="theme-color"]:not([media*="dark"])');
+      lightMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+      var darkMetas = document.querySelectorAll('meta[name="theme-color"][media*="dark"]');
+      darkMetas.forEach(function(m) { m.setAttribute('content', '#3F151D'); });
+      var colorSchemeMeta = document.querySelector('meta[name="color-scheme"]');
+      if (colorSchemeMeta) colorSchemeMeta.setAttribute('content', 'dark');
+      if (document.documentElement) {
+        document.documentElement.style.backgroundColor = '#3F151D';
+        document.documentElement.style.background = '#3F151D';
+      }
+      if (document.body) {
+        document.body.style.backgroundColor = '#3F151D';
+        document.body.style.background = '#3F151D';
+      }
+    }
+    applyAuthTheme();
+    document.addEventListener('DOMContentLoaded', applyAuthTheme);
   }
-  applyAuthTheme();
-  document.addEventListener('DOMContentLoaded', applyAuthTheme);
 })();
 </script>
 <meta charset="UTF-8">
@@ -41,7 +69,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png?v=35000">
 <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64x64.png?v=35000">
 <link rel="icon" type="image/x-icon" href="favicon.ico?v=35000">
-<link rel="manifest" href="site.webmanifest">
+<link rel="manifest" href="site.webmanifest?v=26800">
 
 <!-- Preload critical fonts & assets -->
 <link rel="preload" as="font" href="fonts/Kugile.ttf?v=24700" type="font/ttf" crossorigin>

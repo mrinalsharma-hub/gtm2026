@@ -57,7 +57,7 @@
 
   function ensureThemeColor(targetNorm) {
     targetNorm = targetNorm || normalizePath(window.location.pathname);
-    var isAuth = (targetNorm === "index.html" || targetNorm === "auth");
+    var isAuth = (targetNorm === "index.html" || targetNorm === "auth") && !isAuthenticated();
     var themeColor = isAuth ? "#3F151D" : "#FFEFD4";
 
     if (document.documentElement) {

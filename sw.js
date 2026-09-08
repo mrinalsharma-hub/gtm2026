@@ -1,7 +1,7 @@
 /* ══════════════════════════════════════════════════════════════
    GTM 2026 High-Performance Wedding Service Worker (v1.2.0)
    ══════════════════════════════════════════════════════════════ */
-const CACHE_NAME = 'gtm2026-v1.2';
+const CACHE_NAME = 'gtm2026-v1.3';
 
 const STATIC_PRECACHE = [
   './',
