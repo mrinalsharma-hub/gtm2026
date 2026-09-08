@@ -10,13 +10,13 @@
     try { path = decodeURIComponent(path); } catch(e) {}
     if (!path || path === '') {
       var currentHref = (window.location && window.location.pathname) ? window.location.pathname : '';
-      if (currentHref.indexOf('G&M') !== -1 || currentHref.indexOf('gm') !== -1 || currentHref.indexOf('G%26M') !== -1) {
+      if (currentHref.indexOf('G&M') !== -1 || currentHref.indexOf('gm') !== -1 || currentHref.indexOf('G%26M') !== -1 || currentHref.indexOf('M&G') !== -1 || currentHref.indexOf('mg') !== -1 || currentHref.indexOf('M%26G') !== -1) {
         return 'G&M.html';
       }
       return 'index.html';
     }
     if (path === 'index.html') return 'index.html';
-    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html') {
+    if (path === 'G&M.html' || path === 'g&m.html' || path === 'gm.html' || path === 'home.html' || path === 'us.html' || path === 'G%26M.html' || path === 'g%26m.html' || path === 'M&G.html' || path === 'm&g.html' || path === 'mg.html' || path === 'M%26G.html' || path === 'm%26g.html') {
       return 'G&M.html';
     }
     if (path === 'celebrations.html' || path === 'events.html' || path === 'schedule.html') return 'celebrations.html';

@@ -14,7 +14,9 @@
       try { path = decodeURIComponent(path); } catch(e) {}
       
       var target = 'index.html';
-      if (path === 'schedule.html' || path === 'celebrations.html' || path === 'events.html') {
+      if (path === 'g&m.html' || path === 'g%26m.html' || path === 'm&g.html' || path === 'm%26g.html' || path === 'gm.html' || path === 'mg.html' || path === 'home.html' || path === 'us.html') {
+        target = 'G&M.html';
+      } else if (path === 'schedule.html' || path === 'celebrations.html' || path === 'events.html') {
         target = 'celebrations.html';
       } else if (path === 'travel.html' || path === 'stay.html' || path === 'travel&stay.html' || path === 'travel%26stay.html') {
         target = 'travel&stay.html';
