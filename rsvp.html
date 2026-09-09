@@ -1714,7 +1714,7 @@ function handleEditRSVP() {
     if (contact) p.append(RSVP_CONFIG.entries.contact, contact);
     var attendingVal = ATTENDING_FORM_MAP[attending.value] || attending.value;
     p.append(RSVP_CONFIG.entries.attending, attendingVal);
-    p.append(RSVP_CONFIG.entries.guests, String(names.length || 0));
+    p.append(RSVP_CONFIG.entries.guests, isYes ? String(names.length || 0) : "0");
     var eventsList = [];
     events.forEach(function(c) {
       var formVal = EVENT_FORM_MAP[c.value] || c.value;
